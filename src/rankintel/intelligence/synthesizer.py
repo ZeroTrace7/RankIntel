@@ -17,7 +17,8 @@ from rankintel.models.schema import (
     SchemaEvidence,
     GeoAeoEvidence,
     TrustStackResult,
-    PerformanceEvidence
+    PerformanceEvidence,
+    CloudIntelligenceEvidence
 )
 from rankintel.evidence.conflicts import ConflictDetector
 from rankintel.evidence.provenance import ProvenanceTagger
@@ -126,6 +127,28 @@ class IntelligenceSynthesizer:
         else:
             unified_performance = PerformanceEvidence(overall_performance_score=75)
 
+        # 7. Cloud Intelligence Reconciliation (OpenSEO MCP)
+        cloud_res = engine_results.get("mcp_cloud")
+        cloud_intelligence = (
+            cloud_res.cloud_intelligence
+            if cloud_res and cloud_res.cloud_intelligence
+            else CloudIntelligenceEvidence()
+        )
+
+        keyword_score = 0
+        if cloud_intelligence.available and cloud_intelligence.keywords:
+            traffic = cloud_intelligence.keywords.estimated_monthly_traffic
+            if traffic >= 100_000:
+                keyword_score = 95
+            elif traffic >= 25_000:
+                keyword_score = 80
+            elif traffic >= 5_000:
+                keyword_score = 65
+            elif traffic >= 500:
+                keyword_score = 50
+            else:
+                keyword_score = 35
+
         # Compute Holistic Health Score
         tech_score = self._compute_technical_score(unified_on_page, unified_robots, unified_schema)
         geo_score = unified_geo.overall_citability_score or 40
@@ -133,13 +156,23 @@ class IntelligenceSynthesizer:
         perf_score = unified_performance.overall_performance_score
 
         # Holistic Triangulated Score:
-        # Technical 35% | GEO 30% | Trust Stack 20% | Performance 15%
-        overall_health = int(round(
-            (tech_score * 0.35) +
-            (geo_score * 0.30) +
-            (trust_score * 0.20) +
-            (perf_score * 0.15)
-        ))
+        if cloud_intelligence.available and keyword_score > 0:
+            # 5-Engine Formula: Tech 30% | GEO 25% | Trust 20% | Perf 15% | Keyword Authority 10%
+            overall_health = int(round(
+                (tech_score * 0.30) +
+                (geo_score * 0.25) +
+                (trust_score * 0.20) +
+                (perf_score * 0.15) +
+                (keyword_score * 0.10)
+            ))
+        else:
+            # Standard 4-Engine Formula: Tech 35% | GEO 30% | Trust Stack 20% | Performance 15%
+            overall_health = int(round(
+                (tech_score * 0.35) +
+                (geo_score * 0.30) +
+                (trust_score * 0.20) +
+                (perf_score * 0.15)
+            ))
 
         # Build Prioritized Actions
         actions = self._build_prioritized_actions(
@@ -168,6 +201,7 @@ class IntelligenceSynthesizer:
             technical_health_score=tech_score,
             trust_score=trust_score,
             performance_score=perf_score,
+            keyword_score=keyword_score,
             engines_executed=[k for k, v in engine_results.items() if v.status == "success"],
             conflicts_detected=conflicts,
             prioritized_actions=actions,
@@ -178,6 +212,7 @@ class IntelligenceSynthesizer:
             unified_geo=unified_geo,
             unified_trust=unified_trust,
             unified_performance=unified_performance,
+            cloud_intelligence=cloud_intelligence,
             fixes=fixes
         )
 
