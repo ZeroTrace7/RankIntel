@@ -115,6 +115,67 @@ class PerformanceEvidence(BaseModel):
     passed_audit: bool = True
     notes: List[str] = Field(default_factory=list)
 
+class EvidenceProvenanceTag(BaseModel):
+    """Tracks which engine produced a specific finding, with confidence rating."""
+    finding: str
+    source_file: str
+    engine: str
+    evidence_snippet: str = ""
+    confidence: str = "high"  # high, medium, low
+    confirmed_by: List[str] = Field(default_factory=list)
+    contradicted_by: List[str] = Field(default_factory=list)
+
+class KeywordIntelligence(BaseModel):
+    """Keyword ranking and traffic data from cloud sources."""
+    source: str = "openseo_mcp"
+    estimated_monthly_traffic: int = 0
+    total_keywords: int = 0
+    top_keywords: List[Dict[str, Any]] = Field(default_factory=list)
+    keyword_gaps: List[Dict[str, Any]] = Field(default_factory=list)
+
+class BacklinkIntelligence(BaseModel):
+    """Backlink authority data from cloud sources."""
+    source: str = "openseo_mcp"
+    referring_domains: int = 0
+    total_backlinks: int = 0
+    domain_authority_score: int = 0
+    top_anchors: List[str] = Field(default_factory=list)
+
+class CloudIntelligenceEvidence(BaseModel):
+    """Aggregated cloud intelligence (keyword + backlink + AI visibility)."""
+    available: bool = False
+    keywords: Optional[KeywordIntelligence] = None
+    backlinks: Optional[BacklinkIntelligence] = None
+    ai_visibility_score: int = 0
+    notes: List[str] = Field(default_factory=list)
+
+class PageSummary(BaseModel):
+    """Summary of a single crawled page for site-wide analysis."""
+    url: str
+    status_code: int = 200
+    title: str = ""
+    title_length: int = 0
+    meta_desc_length: int = 0
+    h1_count: int = 0
+    has_canonical: bool = False
+    word_count: int = 0
+    schema_types: List[str] = Field(default_factory=list)
+    issues: List[str] = Field(default_factory=list)
+
+class SiteCrawlResult(BaseModel):
+    """Aggregated multi-page crawl intelligence."""
+    pages_crawled: int = 0
+    pages_with_issues: int = 0
+    crawl_depth: int = 2
+    pages: List[PageSummary] = Field(default_factory=list)
+    site_wide_issues: List[str] = Field(default_factory=list)
+    orphan_pages: List[str] = Field(default_factory=list)
+    broken_links: List[str] = Field(default_factory=list)
+    duplicate_titles: List[str] = Field(default_factory=list)
+    missing_h1_pages: List[str] = Field(default_factory=list)
+    thin_content_pages: List[str] = Field(default_factory=list)
+    pages_without_meta_desc: List[str] = Field(default_factory=list)
+
 class EngineResult(BaseModel):
     engine_name: str
     status: str = "success"  # success, error, skipped
@@ -126,6 +187,7 @@ class EngineResult(BaseModel):
     geo_aeo: Optional[GeoAeoEvidence] = None
     trust_stack: Optional[TrustStackResult] = None
     performance: Optional[PerformanceEvidence] = None
+    cloud_intelligence: Optional[CloudIntelligenceEvidence] = None
 
 class ConflictFinding(BaseModel):
     category: str
@@ -153,9 +215,12 @@ class SynthesisReport(BaseModel):
     technical_health_score: int = 0
     trust_score: int = 0
     performance_score: int = 0
+    keyword_score: int = 0
+    site_health_score: int = 0
     engines_executed: List[str] = Field(default_factory=list)
     conflicts_detected: List[ConflictFinding] = Field(default_factory=list)
     prioritized_actions: List[PrioritizedAction] = Field(default_factory=list)
+    provenance: List[EvidenceProvenanceTag] = Field(default_factory=list)
     
     # Unified reconciled states
     unified_on_page: OnPageEvidence = Field(default_factory=OnPageEvidence)
@@ -164,6 +229,8 @@ class SynthesisReport(BaseModel):
     unified_geo: GeoAeoEvidence = Field(default_factory=GeoAeoEvidence)
     unified_trust: TrustStackResult = Field(default_factory=TrustStackResult)
     unified_performance: PerformanceEvidence = Field(default_factory=PerformanceEvidence)
+    cloud_intelligence: CloudIntelligenceEvidence = Field(default_factory=CloudIntelligenceEvidence)
+    site_crawl: Optional[SiteCrawlResult] = None
     
     # Generated fixes
     fixes: Dict[str, str] = Field(default_factory=dict)
