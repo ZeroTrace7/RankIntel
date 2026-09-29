@@ -91,12 +91,20 @@ class IntelligenceComparer:
             impact="5-layer trust: security headers, identity, social proof, citations, and compliance."
         ))
 
-        # 5. Performance / TTFB
+        # 5. Performance / TTFB (guard against unmeasured 0.0ms defaults)
+        ttfb_a = report_a.unified_performance.ttfb_ms
+        ttfb_b = report_b.unified_performance.ttfb_ms
+        ttfb_a_valid = ttfb_a > 0
+        ttfb_b_valid = ttfb_b > 0
+        if ttfb_a_valid and ttfb_b_valid:
+            ttfb_winner = report_a.url if ttfb_a < ttfb_b else (report_b.url if ttfb_b < ttfb_a else "TIE")
+        else:
+            ttfb_winner = "TIE"  # Can't compare when one side is unmeasured
         deltas.append(GapDelta(
             category="Server Responsiveness (TTFB)",
-            target_a_val=f"{report_a.unified_performance.ttfb_ms:.0f}ms",
-            target_b_val=f"{report_b.unified_performance.ttfb_ms:.0f}ms",
-            winner=report_a.url if report_a.unified_performance.ttfb_ms < report_b.unified_performance.ttfb_ms else (report_b.url if report_b.unified_performance.ttfb_ms < report_a.unified_performance.ttfb_ms else "TIE"),
+            target_a_val=f"{ttfb_a:.0f}ms" if ttfb_a_valid else "N/A",
+            target_b_val=f"{ttfb_b:.0f}ms" if ttfb_b_valid else "N/A",
+            winner=ttfb_winner,
             impact="Time to First Byte latency affects crawl efficiency and user perception."
         ))
 
