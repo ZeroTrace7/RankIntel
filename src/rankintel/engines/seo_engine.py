@@ -17,7 +17,9 @@ from rankintel.models.schema import (
     RobotsEvidence,
     OnPageEvidence,
     SchemaEvidence,
-    EngineResult
+    EngineResult,
+    PageSummary,
+    SiteCrawlResult
 )
 
 try:

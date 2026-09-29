@@ -120,6 +120,20 @@ class IntelligenceComparer:
             impact="Access for OAI-SearchBot, Claude-SearchBot, PerplexityBot, and Applebot."
         ))
 
+        # 8. Organic Traffic & Keywords (Cloud Intelligence)
+        cloud_a = report_a.cloud_intelligence
+        cloud_b = report_b.cloud_intelligence
+        if cloud_a.available or cloud_b.available:
+            traf_a = cloud_a.keywords.estimated_monthly_traffic if (cloud_a.available and cloud_a.keywords) else 0
+            traf_b = cloud_b.keywords.estimated_monthly_traffic if (cloud_b.available and cloud_b.keywords) else 0
+            deltas.append(GapDelta(
+                category="Estimated Organic Search Traffic",
+                target_a_val=f"{traf_a:,} visits/mo" if cloud_a.available else "N/A (local)",
+                target_b_val=f"{traf_b:,} visits/mo" if cloud_b.available else "N/A (local)",
+                winner=report_a.url if traf_a > traf_b else (report_b.url if traf_b > traf_a else "TIE"),
+                impact="Estimated monthly organic visitors driven by search index keyword breadth."
+            ))
+
         # Build Action Plan targeting the weaker site
         action_plan = self._build_gap_actions(report_a, report_b)
 
@@ -206,6 +220,23 @@ class IntelligenceComparer:
                 winning_advantage=f"{s_dom} serves pages faster to crawlers and users.",
                 remediation_suggestion="Enable Edge CDN caching (Cloudflare/Fastly) and optimize database queries for initial HTML generation."
             ))
+
+        # 6. Authority & Backlinks Gap (Cloud Intelligence)
+        cloud_s = stronger.cloud_intelligence
+        cloud_w = weaker.cloud_intelligence
+        if cloud_s.available and cloud_w.available:
+            ref_s = cloud_s.backlinks.referring_domains if cloud_s.backlinks else 0
+            ref_w = cloud_w.backlinks.referring_domains if cloud_w.backlinks else 0
+            if ref_s > ref_w * 2 and ref_s > 10:
+                actions.append(GapAction(
+                    category="Authority & Backlinks",
+                    title=f"Expand Digital PR & Referring Domains to bridge gap with {s_dom}",
+                    rationale=f"{s_dom} possesses {ref_s} referring domains vs {ref_w} on {w_dom}.",
+                    impact_points=12,
+                    priority="HIGH",
+                    winning_advantage=f"{s_dom} has a much stronger backlink moat and PageRank authority.",
+                    remediation_suggestion="Execute targeted digital PR, partner integrations, and publish original statistical data to attract organic citations."
+                ))
 
         actions.sort(key=lambda a: a.impact_points, reverse=True)
         return actions
