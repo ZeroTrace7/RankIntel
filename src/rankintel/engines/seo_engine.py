@@ -5,9 +5,10 @@ Handles RFC-compliant robots.txt, sitemaps, and static DOM analysis.
 from __future__ import annotations
 import time
 import requests
+import json
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse, urljoin
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 
 from rankintel.references.ai_crawlers import AI_SEARCH_BOTS, AI_TRAINING_BOTS
 from rankintel.references.schema_registry import DEPRECATED_OR_RESTRICTED_SCHEMAS
@@ -54,7 +55,7 @@ class SeoEngine:
             for line in content.splitlines():
                 if line.strip().lower().startswith("sitemap:"):
                     s_url = line.split(":", 1)[1].strip()
-                    if s_url:
+                    if s_url and s_url not in evidence.sitemaps:
                         evidence.sitemaps.append(s_url)
 
             # Test using advertools if available
@@ -80,6 +81,10 @@ class SeoEngine:
                             role_or_purpose=role,
                             via_wildcard=False
                         )
+                    
+                    # Extract sample URLs from sitemap if available
+                    if evidence.sitemaps:
+                        evidence.discovered_urls = self.extract_sitemap_urls(evidence.sitemaps[0], max_urls=25)
                     return evidence
                 except Exception:
                     pass  # Fallback to urllib.robotparser
@@ -103,12 +108,46 @@ class SeoEngine:
                     via_wildcard=False
                 )
 
+            if evidence.sitemaps:
+                evidence.discovered_urls = self.extract_sitemap_urls(evidence.sitemaps[0], max_urls=25)
+
         except Exception:
             evidence.found = False
 
         return evidence
 
-    def audit_static_page(self, url: str) -> tuple[OnPageEvidence, SchemaEvidence]:
+    def extract_sitemap_urls(self, sitemap_url: str, max_urls: int = 25) -> List[str]:
+        """Extract URLs from XML sitemap using advertools or basic XML parsing."""
+        discovered: List[str] = []
+        if HAS_ADVERTOOLS:
+            try:
+                df = adv.sitemap_to_df(sitemap_url)
+                if "loc" in df.columns:
+                    locs = df["loc"].dropna().tolist()
+                    for u in locs[:max_urls]:
+                        if isinstance(u, str) and u.startswith("http"):
+                            discovered.append(u)
+                    return discovered
+            except Exception:
+                pass
+
+        # Fallback XML parsing
+        try:
+            r = requests.get(sitemap_url, headers=self.headers, timeout=10)
+            if r.status_code == 200:
+                soup = BeautifulSoup(r.content, "xml")
+                for loc in soup.find_all("loc"):
+                    u = loc.get_text().strip()
+                    if u and u.startswith("http") and u not in discovered:
+                        discovered.append(u)
+                        if len(discovered) >= max_urls:
+                            break
+        except Exception:
+            pass
+
+        return discovered
+
+    def audit_static_page(self, url: str) -> Tuple[OnPageEvidence, SchemaEvidence]:
         """Audit static HTML page using HTTP request and BeautifulSoup."""
         on_page = OnPageEvidence(url=url, engine_source="advertools_static_http")
         schema_ev = SchemaEvidence(engine_source="advertools_static_http")
@@ -119,6 +158,7 @@ class SeoEngine:
             on_page.response_time_sec = round(time.time() - start, 2)
             on_page.status_code = resp.status_code
             on_page.is_redirect = len(resp.history) > 0
+            on_page.response_headers = {k: v for k, v in resp.headers.items()}
 
             if resp.status_code != 200:
                 return on_page, schema_ev
@@ -158,6 +198,26 @@ class SeoEngine:
             on_page.total_images = len(imgs)
             on_page.images_with_alt = len([img for img in imgs if img.get('alt') and img.get('alt').strip()])
 
+            # Links extraction (Internal vs External)
+            parsed_current = urlparse(url)
+            current_domain = parsed_current.netloc.lower()
+            internal_links = set()
+            external_links = set()
+
+            for a in soup.find_all('a', href=True):
+                href = a['href'].strip()
+                if not href or href.startswith(("#", "javascript:", "mailto:", "tel:")):
+                    continue
+                full_url = urljoin(url, href)
+                parsed_href = urlparse(full_url)
+                if parsed_href.netloc.lower() == current_domain or not parsed_href.netloc:
+                    internal_links.add(full_url)
+                else:
+                    external_links.add(full_url)
+
+            on_page.internal_links = list(internal_links)
+            on_page.external_links = list(external_links)
+
             # Word count
             for s in soup(["script", "style", "nav", "footer"]):
                 s.extract()
@@ -167,10 +227,13 @@ class SeoEngine:
             # Schema detection from static DOM
             schema_tags = soup.find_all('script', type='application/ld+json')
             schema_ev.blocks_count = len(schema_tags)
-            import json
 
             detected = []
             deprecated = []
+            sameas_urls = []
+            has_org = False
+            has_author = False
+
             for tag in schema_tags:
                 try:
                     c = tag.string if tag.string else tag.text
@@ -193,6 +256,24 @@ class SeoEngine:
                                     detected.append(str(sub_t))
                             else:
                                 detected.append(str(t))
+
+                        # Check Organization / Person
+                        type_str = str(t)
+                        if any(o in type_str for o in ["Organization", "Corporation", "LocalBusiness"]):
+                            has_org = True
+                        if any(p in type_str for p in ["Person", "Author"]):
+                            has_author = True
+
+                        # Extract sameAs
+                        sameas = item.get("sameAs")
+                        if sameas:
+                            if isinstance(sameas, list):
+                                for s_u in sameas:
+                                    if isinstance(s_u, str) and s_u.startswith("http"):
+                                        sameas_urls.append(s_u)
+                            elif isinstance(sameas, str) and sameas.startswith("http"):
+                                sameas_urls.append(sameas)
+
                 except Exception as e:
                     schema_ev.validation_issues.append(f"Malformed JSON-LD block: {e}")
 
@@ -202,12 +283,28 @@ class SeoEngine:
 
             schema_ev.detected_types = list(set(detected))
             schema_ev.deprecated_types_detected = list(set(deprecated))
+            schema_ev.sameas_urls = list(set(sameas_urls))
+            schema_ev.has_organization = has_org
+            schema_ev.has_author = has_author
 
         except Exception as e:
             on_page.status_code = 0
             on_page.response_time_sec = round(time.time() - start, 2)
 
         return on_page, schema_ev
+
+    def discover_site_urls(self, start_url: str, max_urls: int = 25) -> List[str]:
+        """Discover URLs on a website via sitemap and internal crawl links."""
+        parsed = urlparse(start_url)
+        base_url = f"{parsed.scheme}://{parsed.netloc}"
+        robots = self.audit_robots_txt(base_url)
+        if robots.discovered_urls:
+            return robots.discovered_urls[:max_urls]
+
+        # If no sitemap urls, perform single-page link discovery
+        on_page, _ = self.audit_static_page(start_url)
+        discovered = [start_url] + on_page.internal_links
+        return list(dict.fromkeys(discovered))[:max_urls]
 
     def execute(self, url: str) -> EngineResult:
         """Run complete SEO engine pass."""

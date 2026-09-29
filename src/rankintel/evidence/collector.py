@@ -3,6 +3,7 @@ Evidence Collector — Orchestrates the specialized engines:
 1. SEO Engine (advertools / RFC robots / sitemaps)
 2. Browser Engine (crawl4ai / client-side JS DOM)
 3. GEO Engine (Princeton GEO / AutoGEO / llms.txt validation)
+4. Performance Engine (PageSpeed API / Core Web Vitals / TTFB)
 """
 from __future__ import annotations
 import time
@@ -12,6 +13,7 @@ from urllib.parse import urlparse
 from rankintel.engines.seo_engine import SeoEngine
 from rankintel.engines.geo_engine import GeoEngine
 from rankintel.engines.browser_engine import BrowserEngine
+from rankintel.engines.performance_engine import PerformanceEngine
 from rankintel.models.schema import EngineResult
 
 class EvidenceCollector:
@@ -21,9 +23,10 @@ class EvidenceCollector:
         self.seo_engine = SeoEngine()
         self.geo_engine = GeoEngine()
         self.browser_engine = BrowserEngine()
+        self.performance_engine = PerformanceEngine()
 
     def collect(self, url: str) -> Dict[str, EngineResult]:
-        """Run all three engines on the target URL and collect raw evidence."""
+        """Run all engines on the target URL and collect raw evidence."""
         results: Dict[str, EngineResult] = {}
 
         # 1. Run SEO Engine (advertools)
@@ -54,6 +57,16 @@ class EvidenceCollector:
                 engine_name="browser_engine",
                 status="error",
                 error_message=f"Browser engine failed: {e}"
+            )
+
+        # 4. Run Performance Engine (PageSpeed / Core Web Vitals)
+        try:
+            results["performance_engine"] = self.performance_engine.execute(url)
+        except Exception as e:
+            results["performance_engine"] = EngineResult(
+                engine_name="performance_engine",
+                status="error",
+                error_message=f"Performance engine failed: {e}"
             )
 
         return results
