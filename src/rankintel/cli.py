@@ -1,28 +1,35 @@
 """
-RankIntel — Unified Multi-Engine Audit Entrypoint.
-Backward compatible runner delegating to the RankIntel v2 Multi-Engine Platform.
+RankIntel CLI — Autonomous Search & Intelligence Triangulation Engine.
 """
+from __future__ import annotations
 import sys
-import os
+import click
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 if hasattr(sys.stderr, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
-# Ensure src/ is on sys.path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "src")))
+from rich.console import Console
+from rich.table import Table
+from rich.panel import Panel
 
 from rankintel.evidence.collector import EvidenceCollector
 from rankintel.intelligence.synthesizer import IntelligenceSynthesizer
 from rankintel.reporters.markdown import MarkdownReporter
-from rich.console import Console
-from rich.panel import Panel
-from rich.table import Table
 
 console = Console(highlight=False)
 
-def run_audit(url: str, output_dir: str = "audits"):
+@click.group()
+def main():
+    """RankIntel — Multi-Engine SEO, GEO & AI Search Triangulation Platform."""
+    pass
+
+@main.command()
+@click.argument("url")
+@click.option("--output-dir", default="audits", help="Directory to save audit report")
+def audit(url: str, output_dir: str):
+    """Run full multi-engine SEO, GEO, and browser triangulation audit."""
     if not url.startswith("http://") and not url.startswith("https://"):
         url = "https://" + url
 
@@ -88,11 +95,6 @@ def run_audit(url: str, output_dir: str = "audits"):
             console.print(f"    [dim]Interpretation:[/dim] {c.interpretation}\n")
 
     console.print(f"[bold green]Report saved to:[/bold green] [underline cyan]{report_file}[/underline cyan]")
-    return report_file
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        console.print("[bold red]Usage:[/bold red] python audit_engine.py <url>")
-        sys.exit(1)
-    target_url = sys.argv[1]
-    run_audit(target_url)
+    main()

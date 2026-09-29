@@ -231,8 +231,18 @@ RankIntel/
 ├── .mcp.json               # OpenSEO MCP server configuration
 ├── AGENTS.md               # RankIntel agent core brain and execution rules
 ├── README.md               # Project documentation and architecture guide
+├── pyproject.toml          # Build configuration and CLI entry points (v2.0)
 ├── requirements.txt        # Python package dependencies
-├── audit_engine.py         # Engine A: Local crawling, Core Web Vitals & GEO engine
+├── audit_engine.py         # Multi-engine CLI runner & backward-compatible entry point
+├── src/                    # Modular engine source code
+│   └── rankintel/
+│       ├── cli.py          # Click-based CLI entry point (rankintel audit <url>)
+│       ├── engines/        # SEO, GEO & Browser DOM extraction engines
+│       ├── evidence/       # Evidence collectors & cross-engine conflict detection
+│       ├── intelligence/   # Synthesizer & automated fix generator
+│       ├── models/         # Pydantic telemetry & schema models
+│       ├── references/     # AI crawlers, CWV thresholds & quality gates
+│       └── reporters/      # Markdown report synthesis
 ├── audits/                 # Generated markdown audit reports (timestamped)
 └── reports/                # Head-to-head comparison and keyword gap dossiers
 ```

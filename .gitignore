@@ -4,3 +4,7 @@ __pycache__/
 .env
 audits/*.md
 reports/*.md
+*.egg-info/
+build/
+dist/
+.pytest_cache/

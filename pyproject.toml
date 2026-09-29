@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rankintel"
+version = "2.0.0"
+description = "Autonomous Multi-Engine SEO, GEO & Search Intelligence Triangulation Platform"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [
+    { name = "RankIntel Team" }
+]
+keywords = [
+    "seo", "geo", "aeo", "search-engine-optimization",
+    "generative-engine-optimization", "mcp", "llms-txt", "crawler"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Internet :: WWW/HTTP :: Indexing/Search",
+]
+
+dependencies = [
+    "beautifulsoup4>=4.12.0",
+    "requests>=2.31.0",
+    "httpx>=0.27.0",
+    "rich>=13.0.0",
+    "pydantic>=2.0.0",
+    "click>=8.1.0",
+]
+
+[project.optional-dependencies]
+advertools = [
+    "advertools>=0.16.0",
+]
+browser = [
+    "crawl4ai>=0.6.0",
+]
+mcp = [
+    "mcp[cli]>=1.0.0",
+]
+all = [
+    "rankintel[advertools,browser,mcp]",
+]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+]
+
+[project.scripts]
+rankintel = "rankintel.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
