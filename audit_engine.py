@@ -19,22 +19,24 @@ from rankintel.intelligence.synthesizer import IntelligenceSynthesizer
 from rankintel.intelligence.comparer import IntelligenceComparer
 from rankintel.reporters.markdown import MarkdownReporter
 from rankintel.reporters.gap_reporter import GapReporter
+from rankintel.reporters.json_reporter import JsonReporter
 from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
 
 console = Console(highlight=False)
 
-def run_audit(url: str, output_dir: str = "audits"):
+def run_audit(url: str, output_dir: str = "audits", output_format: str = "markdown", deep_crawl: bool = False, max_pages: int = 25):
     if not url.startswith("http://") and not url.startswith("https://"):
         url = "https://" + url
 
-    console.print(Panel.fit(
-        f"[bold cyan]RankIntel Intelligence Engine v2.0[/bold cyan]\n"
-        f"[dim]Triangulating:[/dim] [yellow]advertools (SEO)[/yellow] + [green]crawl4ai (Browser)[/green] + [magenta]RankIntel (GEO/AEO)[/magenta] + [blue]CWV Performance[/blue]\n"
-        f"[bold white]Target:[/bold white] [underline]{url}[/underline]",
-        border_style="cyan"
-    ))
+    if output_format == "markdown":
+        console.print(Panel.fit(
+            f"[bold cyan]RankIntel Intelligence Engine v3.0[/bold cyan]\n"
+            f"[dim]Triangulating:[/dim] [yellow]advertools (SEO)[/yellow] + [green]crawl4ai (Browser)[/green] + [magenta]RankIntel (GEO/AEO)[/magenta] + [blue]CWV/CrUX[/blue] + [cyan]OpenSEO MCP[/cyan]\n"
+            f"[bold white]Target:[/bold white] [underline]{url}[/underline]",
+            border_style="cyan"
+        ))
 
     # Phase 1: Collect Evidence
     with console.status("[bold green]Executing multi-engine audit pass...[/bold green]", spinner="dots"):
@@ -42,11 +44,23 @@ def run_audit(url: str, output_dir: str = "audits"):
         engine_results = collector.collect(url)
 
     # Phase 2: Synthesize Intelligence
-    with console.status("[bold cyan]Reconciling evidence and detecting cross-engine conflicts...[/bold cyan]", spinner="dots"):
+    with console.status("[bold cyan]Reconciling evidence, provenance, and detecting cross-engine conflicts...[/bold cyan]", spinner="dots"):
         synthesizer = IntelligenceSynthesizer()
         report = synthesizer.synthesize(url, engine_results)
 
+    # Optional: Deep Multi-Page Crawling
+    if deep_crawl:
+        with console.status(f"[bold blue]Deep crawling up to {max_pages} pages for site hygiene...[/bold blue]", spinner="dots"):
+            site_crawl = collector.seo_engine.crawl_site(url, max_pages=max_pages)
+            report.site_crawl = site_crawl
+
     # Phase 3: Persist Audit Report
+    if output_format == "json":
+        report_file = JsonReporter.save_audit(report, output_dir=output_dir)
+        console.print_json(JsonReporter.render_audit(report))
+        console.print(f"\n[bold green]Report saved to:[/bold green] [underline cyan]{report_file}[/underline cyan]")
+        return report_file
+
     report_file = MarkdownReporter.save(report, output_dir=output_dir)
 
     console.print("\n[bold green][SUCCESS] Multi-Engine Triangulation Completed Successfully![/bold green]\n")
@@ -103,7 +117,7 @@ def run_audit(url: str, output_dir: str = "audits"):
     console.print(f"[bold green]Report saved to:[/bold green] [underline cyan]{report_file}[/underline cyan]")
     return report_file
 
-def run_compare(url_a: str, url_b: str, output_dir: str = "reports"):
+def run_compare(url_a: str, url_b: str, output_dir: str = "reports", output_format: str = "markdown"):
     if not url_a.startswith("http://") and not url_a.startswith("https://"):
         url_a = "https://" + url_a
     if not url_b.startswith("http://") and not url_b.startswith("https://"):
@@ -112,16 +126,23 @@ def run_compare(url_a: str, url_b: str, output_dir: str = "reports"):
     dom_a = urlparse(url_a).netloc
     dom_b = urlparse(url_b).netloc
 
-    console.print(Panel.fit(
-        f"[bold cyan]RankIntel Competitive Intelligence Engine[/bold cyan]\n"
-        f"[dim]Benchmarking:[/dim] [yellow]{dom_a}[/yellow] vs [green]{dom_b}[/green]\n"
-        f"[dim]Triangulating technical SEO, Princeton GEO, 5-layer Trust Stack, and CWV[/dim]",
-        border_style="cyan"
-    ))
+    if output_format == "markdown":
+        console.print(Panel.fit(
+            f"[bold cyan]RankIntel Competitive Intelligence Engine[/bold cyan]\n"
+            f"[dim]Benchmarking:[/dim] [yellow]{dom_a}[/yellow] vs [green]{dom_b}[/green]\n"
+            f"[dim]Triangulating technical SEO, Princeton GEO, 5-layer Trust Stack, and CWV[/dim]",
+            border_style="cyan"
+        ))
 
     with console.status(f"[bold green]Auditing {dom_a} and {dom_b} across all engines...[/bold green]", spinner="dots"):
         comparer = IntelligenceComparer()
         comparison = comparer.compare(url_a, url_b)
+
+    if output_format == "json":
+        report_file = JsonReporter.save_comparison(comparison, output_dir=output_dir)
+        console.print_json(JsonReporter.render_comparison(comparison))
+        console.print(f"\n[bold green]Detailed gap report saved to:[/bold green] [underline cyan]{report_file}[/underline cyan]")
+        return report_file
 
     report_file = GapReporter.save(comparison, output_dir=output_dir)
 
@@ -158,16 +179,21 @@ def run_compare(url_a: str, url_b: str, output_dir: str = "reports"):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        console.print("[bold red]Usage:[/bold red] python audit_engine.py <url> OR python audit_engine.py compare <url1> vs <url2>")
+        console.print("[bold red]Usage:[/bold red] python audit_engine.py <url> [--format json] [--deep-crawl] OR python audit_engine.py compare <url1> vs <url2> [--format json]")
         sys.exit(1)
 
-    if sys.argv[1].lower() == "compare":
-        if len(sys.argv) < 4:
-            console.print("[bold red]Usage:[/bold red] python audit_engine.py compare <url1> vs <url2>")
+    fmt = "json" if "--format" in sys.argv and "json" in sys.argv else ("json" if "--json" in sys.argv else "markdown")
+    deep = "--deep-crawl" in sys.argv
+
+    cleaned_args = [a for a in sys.argv[1:] if not a.startswith("--") and a not in ("json", "markdown")]
+
+    if cleaned_args and cleaned_args[0].lower() == "compare":
+        if len(cleaned_args) < 3:
+            console.print("[bold red]Usage:[/bold red] python audit_engine.py compare <url1> vs <url2> [--format json]")
             sys.exit(1)
-        url1 = sys.argv[2]
-        url2 = sys.argv[4] if sys.argv[3].lower() == "vs" and len(sys.argv) > 4 else sys.argv[3]
-        run_compare(url1, url2)
-    else:
-        target_url = sys.argv[1]
-        run_audit(target_url)
+        url1 = cleaned_args[1]
+        url2 = cleaned_args[3] if len(cleaned_args) > 3 and cleaned_args[2].lower() == "vs" else cleaned_args[2]
+        run_compare(url1, url2, output_format=fmt)
+    elif cleaned_args:
+        target_url = cleaned_args[0]
+        run_audit(target_url, output_format=fmt, deep_crawl=deep)

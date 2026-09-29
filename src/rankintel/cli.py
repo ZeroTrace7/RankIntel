@@ -20,6 +20,7 @@ from rankintel.intelligence.synthesizer import IntelligenceSynthesizer
 from rankintel.intelligence.comparer import IntelligenceComparer
 from rankintel.reporters.markdown import MarkdownReporter
 from rankintel.reporters.gap_reporter import GapReporter
+from rankintel.reporters.json_reporter import JsonReporter
 
 console = Console(highlight=False)
 
@@ -31,17 +32,21 @@ def main():
 @main.command()
 @click.argument("url")
 @click.option("--output-dir", default="audits", help="Directory to save audit report")
-def audit(url: str, output_dir: str):
+@click.option("--format", "output_format", default="markdown", type=click.Choice(["markdown", "json"], case_sensitive=False), help="Output format: 'markdown' (default) or 'json'")
+@click.option("--deep-crawl", is_flag=True, default=False, help="Crawl internal pages for site-wide hygiene issues")
+@click.option("--max-pages", default=25, help="Maximum pages to crawl in deep mode")
+def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_pages: int):
     """Run full multi-engine SEO, GEO, browser, and performance triangulation audit."""
     if not url.startswith("http://") and not url.startswith("https://"):
         url = "https://" + url
 
-    console.print(Panel.fit(
-        f"[bold cyan]RankIntel Intelligence Engine v2.0[/bold cyan]\n"
-        f"[dim]Triangulating:[/dim] [yellow]advertools (SEO)[/yellow] + [green]crawl4ai (Browser)[/green] + [magenta]RankIntel (GEO/AEO)[/magenta] + [blue]CWV Performance[/blue]\n"
-        f"[bold white]Target:[/bold white] [underline]{url}[/underline]",
-        border_style="cyan"
-    ))
+    if output_format == "markdown":
+        console.print(Panel.fit(
+            f"[bold cyan]RankIntel Intelligence Engine v3.0[/bold cyan]\n"
+            f"[dim]Triangulating:[/dim] [yellow]advertools (SEO)[/yellow] + [green]crawl4ai (Browser)[/green] + [magenta]RankIntel (GEO/AEO)[/magenta] + [blue]CWV/CrUX[/blue] + [cyan]OpenSEO MCP[/cyan]\n"
+            f"[bold white]Target:[/bold white] [underline]{url}[/underline]",
+            border_style="cyan"
+        ))
 
     # Phase 1: Collect Evidence
     with console.status("[bold green]Executing multi-engine audit pass...[/bold green]", spinner="dots"):
@@ -49,11 +54,23 @@ def audit(url: str, output_dir: str):
         engine_results = collector.collect(url)
 
     # Phase 2: Synthesize Intelligence
-    with console.status("[bold cyan]Reconciling evidence and detecting cross-engine conflicts...[/bold cyan]", spinner="dots"):
+    with console.status("[bold cyan]Reconciling evidence, provenance, and detecting cross-engine conflicts...[/bold cyan]", spinner="dots"):
         synthesizer = IntelligenceSynthesizer()
         report = synthesizer.synthesize(url, engine_results)
 
+    # Optional: Deep Multi-Page Crawling
+    if deep_crawl:
+        with console.status(f"[bold blue]Deep crawling up to {max_pages} pages for site hygiene...[/bold blue]", spinner="dots"):
+            site_crawl = collector.seo_engine.crawl_site(url, max_pages=max_pages)
+            report.site_crawl = site_crawl
+
     # Phase 3: Persist Audit Report
+    if output_format == "json":
+        report_file = JsonReporter.save_audit(report, output_dir=output_dir)
+        console.print_json(JsonReporter.render_audit(report))
+        console.print(f"\n[bold green]Report saved to:[/bold green] [underline cyan]{report_file}[/underline cyan]")
+        return
+
     report_file = MarkdownReporter.save(report, output_dir=output_dir)
 
     console.print("\n[bold green][SUCCESS] Multi-Engine Triangulation Completed Successfully![/bold green]\n")
@@ -98,6 +115,19 @@ def audit(url: str, output_dir: str):
         "Present" if report.unified_geo.llms_txt_found else "Missing",
         "llmstxt.org v2 check"
     )
+    if report.cloud_intelligence.available:
+        traf = report.cloud_intelligence.keywords.estimated_monthly_traffic if report.cloud_intelligence.keywords else 0
+        table.add_row(
+            "Organic Search Traffic",
+            f"{traf:,} visits/mo",
+            "OpenSEO MCP"
+        )
+    if report.site_crawl:
+        table.add_row(
+            "Site-Wide Multi-Page Scope",
+            f"{report.site_crawl.pages_crawled} pages audited ({report.site_crawl.pages_with_issues} issues)",
+            "advertools multi-page spider"
+        )
 
     console.print(table)
 
@@ -113,7 +143,8 @@ def audit(url: str, output_dir: str):
 @click.argument("target_a")
 @click.argument("args", nargs=-1, required=True)
 @click.option("--output-dir", default="reports", help="Directory to save comparison report")
-def compare(target_a: str, args: tuple, output_dir: str):
+@click.option("--format", "output_format", default="markdown", type=click.Choice(["markdown", "json"], case_sensitive=False), help="Output format: 'markdown' (default) or 'json'")
+def compare(target_a: str, args: tuple, output_dir: str, output_format: str):
     """Run competitive gap analysis between two URLs (e.g. `rankintel compare url1 vs url2`)."""
     if len(args) == 0:
         console.print("[bold red]Error: Please specify the second URL to compare against.[/bold red]")
@@ -129,18 +160,25 @@ def compare(target_a: str, args: tuple, output_dir: str):
     dom_a = urlparse(target_a).netloc
     dom_b = urlparse(target_b).netloc
 
-    console.print(Panel.fit(
-        f"[bold cyan]RankIntel Competitive Intelligence Engine[/bold cyan]\n"
-        f"[dim]Benchmarking:[/dim] [yellow]{dom_a}[/yellow] vs [green]{dom_b}[/green]\n"
-        f"[dim]Triangulating technical SEO, Princeton GEO, 5-layer Trust Stack, and CWV[/dim]",
-        border_style="cyan"
-    ))
+    if output_format == "markdown":
+        console.print(Panel.fit(
+            f"[bold cyan]RankIntel Competitive Intelligence Engine[/bold cyan]\n"
+            f"[dim]Benchmarking:[/dim] [yellow]{dom_a}[/yellow] vs [green]{dom_b}[/green]\n"
+            f"[dim]Triangulating technical SEO, Princeton GEO, 5-layer Trust Stack, and CWV[/dim]",
+            border_style="cyan"
+        ))
 
     with console.status(f"[bold green]Auditing {dom_a} and {dom_b} across all engines...[/bold green]", spinner="dots"):
         comparer = IntelligenceComparer()
         comparison = comparer.compare(target_a, target_b)
 
-    # Save Markdown report
+    # Save and output report
+    if output_format == "json":
+        report_file = JsonReporter.save_comparison(comparison, output_dir=output_dir)
+        console.print_json(JsonReporter.render_comparison(comparison))
+        console.print(f"\n[bold green]Detailed gap report saved to:[/bold green] [underline cyan]{report_file}[/underline cyan]")
+        return
+
     report_file = GapReporter.save(comparison, output_dir=output_dir)
 
     console.print("\n[bold green][SUCCESS] Competitive Gap Analysis Completed![/bold green]\n")
