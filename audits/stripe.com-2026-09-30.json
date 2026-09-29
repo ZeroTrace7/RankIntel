@@ -1,0 +1,806 @@
+{
+  "url": "https://stripe.com",
+  "domain": "stripe.com",
+  "timestamp": "2026-09-30",
+  "overall_health_score": 58,
+  "geo_readiness_score": 55,
+  "technical_health_score": 55,
+  "trust_score": 48,
+  "performance_score": 85,
+  "keyword_score": 0,
+  "site_health_score": 0,
+  "engines_executed": [
+    "advertools_seo",
+    "rankintel_geo",
+    "browser_engine",
+    "performance_engine"
+  ],
+  "conflicts_detected": [],
+  "prioritized_actions": [
+    {
+      "level": "HIGH",
+      "title": "Consolidate Multiple H1 Headings into Single Logical H1",
+      "finding": "Found 2 H1 tags on page.",
+      "rationale": "Multiple H1 tags dilute topical focus. Best practice is a single clear H1 reflecting page intent.",
+      "engine_confidence": "HIGH",
+      "fix_snippet": null
+    },
+    {
+      "level": "CRITICAL",
+      "title": "Deploy JSON-LD Structured Data",
+      "finding": "Zero Schema.org types detected on page.",
+      "rationale": "Structured data is required for rich snippets and assists generative AI models in entity disambiguation.",
+      "engine_confidence": "HIGH (Verified by both static and browser engines)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Add Organization Schema & Entity Anchors",
+      "finding": "No Organization / LocalBusiness entity defined in structured data.",
+      "rationale": "Essential for establishing E-E-A-T and anchoring your entity in Google's Knowledge Graph.",
+      "engine_confidence": "HIGH",
+      "fix_snippet": null
+    },
+    {
+      "level": "GEO_WIN",
+      "title": "Implement Answer-First H2 Structure",
+      "finding": "Only 20% of H2 sections open with direct factual answers.",
+      "rationale": "AutoGEO research proves AI models prioritize passages providing concrete numbers/facts in the first 150 characters.",
+      "engine_confidence": "MEDIUM (Heuristic NLP)",
+      "fix_snippet": null
+    }
+  ],
+  "provenance": [
+    {
+      "finding": "Applebot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Applebot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Applebot-Extended: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Applebot-Extended -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bingbot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Bingbot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bytespider: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Bytespider -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "CCBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: CCBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Claude-SearchBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Claude-SearchBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "ClaudeBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: ClaudeBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "FacebookBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: FacebookBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "GPTBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: GPTBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Google-Extended: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Google-Extended -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Googlebot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Googlebot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "OAI-SearchBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: OAI-SearchBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "PerplexityBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: PerplexityBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "cohere-ai: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: cohere-ai -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Page Title (54 chars): 'Stripe | Financial Infrastructure to Grow You...'",
+      "source_file": "<title> tag",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "TTFB Latency: 438ms",
+      "source_file": "HTTP response probe",
+      "engine": "performance_engine",
+      "evidence_snippet": "Telemetry Source: local_probe",
+      "confidence": "medium",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "/llms.txt: PRESENT",
+      "source_file": "/llms.txt HTTP check",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Princeton GEO Citability: 55/100",
+      "source_file": "DOM content passages",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    }
+  ],
+  "unified_on_page": {
+    "url": "https://stripe.com",
+    "status_code": 200,
+    "response_time_sec": 0.59,
+    "title": "Stripe | Financial Infrastructure to Grow Your Revenue",
+    "title_length": 54,
+    "meta_description": "Stripe is a financial services platform that helps all types of businesses accept payments, build flexible billing models and manage money movement.",
+    "meta_desc_length": 148,
+    "h1_count": 2,
+    "h1_text": [
+      "Financial infrastructure to grow your revenue. Accept payments, offer financial services and implement custom revenue models – from your first transaction to your billionth.",
+      "Financial infrastructure to grow your revenue. Accept payments, offer financial services and implement custom revenue models – from your first transaction to your billionth."
+    ],
+    "h2_count": 5,
+    "h2_text": [
+      "Flexible solutions for every business model.",
+      "The backbone of global commerce",
+      "Powering businesses of all sizes.",
+      "Reliable, extensible infrastructure for every stack.",
+      "What's happening"
+    ],
+    "h3_count": 25,
+    "h3_text": [
+      "Accept and optimise payments globally – online and in person",
+      "Enable any billing model",
+      "Monetise through agentic commerce",
+      "Create a card issuing programme",
+      "Access borderless money movement with stablecoins and crypto",
+      "Embed payments in your platform",
+      "Transform your enterprise with agile financial infrastructure",
+      "Hertz unifies commerce with Stripe.",
+      "URBN consolidates $5 billion in online and in-store revenue onto Stripe.",
+      "Instacart powers online grocery delivery with Stripe.",
+      "Le Monde improves local and international payments with Stripe.",
+      "Build a foundation for your startup that enables faster growth",
+      "Make your SaaS platform a complete financial operating system",
+      "Connect to existing systems.",
+      "Scale with confidence.",
+      "Choose an integration path.",
+      "Businesses on Stripe generated US$1.9tn in 2025.",
+      "150K+ users have their best day ever on Stripe.",
+      "Tidemark's vertical and SMB SaaS benchmark report.",
+      "Shopify's Tobi Lütke sits down with John Collison.",
+      "New tools to process payments outside app stores.",
+      "Crypto.com partners with Stripe to enable better crypto payments.",
+      "Make your products shoppable through AI platforms.",
+      "How leading retailers unify customer experiences and drive growth.",
+      "Book of the week"
+    ],
+    "total_images": 31,
+    "images_with_alt": 4,
+    "word_count": 1714,
+    "canonical_url": null,
+    "is_redirect": false,
+    "response_headers": {
+      "Server": "nginx",
+      "Date": "Tue, 29 Sep 2026 20:50:03 GMT",
+      "Content-Type": "text/html; charset=utf-8",
+      "Transfer-Encoding": "chunked",
+      "Connection": "keep-alive",
+      "Content-Security-Policy": "base-uri 'none'; child-src 'none'; connect-src https://c.increment.com https://c.stripe.dev https://c.stripe.global https://c.stripe.partners blob: https://b.stripecdn.com https://errors.stripe.com https://ext.stripe.com https://r.stripe.com https://stripe-images.s3.us-west-1.amazonaws.com https://stripe.com 'self'; default-src 'none'; font-src https://b.stripecdn.com 'self'; form-action https://stripe.com 'self'; frame-ancestors https://app.contentful.com 'self'; frame-src https://b.stripecdn.com https://js.stripe.com https://support-conversations.stripe.com 'self'; img-src data: https://assets.ctfassets.net https://assets.stripeassets.com https://b.stripecdn.com https://images.ctfassets.net https://images.stripeassets.com https://q.stripe.com 'self'; manifest-src 'none'; media-src https://assets.ctfassets.net https://assets.stripeassets.com https://b.stripecdn.com https://videos.ctfassets.net https://videos.stripeassets.com 'self'; object-src 'none'; script-src https://b.stripecdn.com https://js.stripe.com 'self' 'sha256-3aWvb9tRBjmz1OjR3n7mwiTm94+s4iki4mMZF82asmc=' 'sha256-5LtzXhT7UFn+GqP5pKEMGL08UNZsrzANHFEBW/mQHGw=' 'sha256-beLzNcen8LrazzSCRjAapoIMTgJI0osPWGNSX7aK6lc=' 'sha256-cCM0Z4lzGkzQnmbdVw+ouz0JRawyaKcZ4yiqzqYS7ek=' 'sha256-vTifGUJH6hJYTvstw4xJ4xfr/vE0ELkOV4GpCumyqfg=' 'sha256-KxhSaxKB5RFTQsqfRwp+zG7iLjvMrTAySqnSvWlqct0=' 'sha256-tMuJ8c00j54yuxogrdIJeGhNVB350dc56i969XRz/Mc=' 'sha256-aEFSvCaVnb2wNwuO3IzA8J44RdTKt6vms9beA7BcCYg=' 'sha256-0SWEc2BfR2o77i2vUiNNIrFKQkjc2Ujsr2hlfZ6oUek=' 'report-sample'; style-src https://b.stripecdn.com 'self' 'unsafe-inline'; worker-src https://b.stripecdn.com 'self'; upgrade-insecure-requests; report-uri https://q.stripe.com/csp-violation?q=7aE94KkLtq9wc4kCFZgC5SyP_ZKX3MHxYcluW3ZYh2EQHIOJL-2__1hkifXShLk%3D; report-to csp",
+      "Cross-Origin-Opener-Policy": "same-origin-allow-popups; report-to=\"wsp_coop\"",
+      "Cross-Origin-Opener-Policy-Report-Only": "same-origin-allow-popups; report-to=\"wsp_coop\"",
+      "Referrer-Policy": "no-referrer-when-downgrade",
+      "Report-To": "{\"group\":\"coop\",\"max_age\":8640,\"endpoints\":[{\"url\":\"https://q.stripe.com/coop-report\"}],\"include_subdomains\":true}, {\"group\":\"wsp_coop\",\"max_age\":8640,\"endpoints\":[{\"url\":\"https://q.stripe.com/coop-report?s=7aE94KkLtq9wc4kCFZgC5SyP_ZKX3MHxYcluW3ZYh2EQHIOJL-2__1hkifXShLk=\"}],\"include_subdomains\":true}, {\"group\":\"wsp_coep\",\"max_age\":8640,\"endpoints\":[{\"url\":\"https://q.stripe.com/coep-report?s=7aE94KkLtq9wc4kCFZgC5SyP_ZKX3MHxYcluW3ZYh2EQHIOJL-2__1hkifXShLk=\"}],\"include_subdomains\":true}, {\"group\":\"csp\",\"max_age\":8640,\"endpoints\":[{\"url\":\"https://q.stripe.com/csp-report-v2?q=7aE94KkLtq9wc4kCFZgC5SyP_ZKX3MHxYcluW3ZYh2EQHIOJL-2__1hkifXShLk%3D&t=1\"}],\"include_subdomains\":true}",
+      "Reporting-Endpoints": "coop=\"https://q.stripe.com/coop-report\", wsp_coop=\"https://q.stripe.com/coop-report?s=7aE94KkLtq9wc4kCFZgC5SyP_ZKX3MHxYcluW3ZYh2EQHIOJL-2__1hkifXShLk=\", wsp_coep=\"https://q.stripe.com/coep-report?s=7aE94KkLtq9wc4kCFZgC5SyP_ZKX3MHxYcluW3ZYh2EQHIOJL-2__1hkifXShLk=\", csp=\"https://q.stripe.com/csp-report-v2?q=7aE94KkLtq9wc4kCFZgC5SyP_ZKX3MHxYcluW3ZYh2EQHIOJL-2__1hkifXShLk%3D&t=1\"",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Mkt-Cache": "HIT",
+      "X-Stripe-Proxy-Response": "upstream",
+      "X-Stripe-Server-Rpc-Duration-Micros": "40611",
+      "X-Wc": "3ff",
+      "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+      "Content-Encoding": "gzip"
+    },
+    "internal_links": [
+      "https://stripe.com/in/privacy",
+      "https://stripe.com/in/newsroom/news/stripe-openai-instant-checkout",
+      "https://stripe.com/in/sitemap",
+      "https://stripe.com/in/crypto-onramp",
+      "https://stripe.com/in/payments/payment-links",
+      "https://stripe.com/in/financial-connections",
+      "https://stripe.com/in/managed-payments",
+      "https://stripe.com/in/customers/figma",
+      "https://stripe.com/in/newsroom/news/google-and-stripe",
+      "https://stripe.com/in/billing/usage-based-billing",
+      "https://stripe.com/in/atlas",
+      "https://stripe.com/in/customers/instacart",
+      "https://stripe.com/in/lp/how-retailers-drive-growth",
+      "https://stripe.com/in/industries/professional-services",
+      "https://stripe.com/in/customers/vercel",
+      "https://stripe.com/in/industries/public-sector",
+      "https://stripe.com/in/enterprise",
+      "https://stripe.com/in/newsroom/news/stripe-and-uber",
+      "https://stripe.com/in/newsroom/news/stripe-ford-agreement",
+      "https://stripe.com/in/customers/runway",
+      "https://stripe.com/in/careers",
+      "https://stripe.com/in/customers/decagon",
+      "https://stripe.com/in/capital",
+      "https://stripe.com/in/identity",
+      "https://stripe.com/in/invoicing",
+      "https://stripe.com/in/products",
+      "https://stripe.com/in/guides/introduction-to-monetizing-payments",
+      "https://stripe.com/in/payouts",
+      "https://stripe.com/in/use-cases/saas",
+      "https://stripe.com/in/contact/sales",
+      "https://stripe.com/in/guides/best-practices-for-launching-and-scaling-platform-payments",
+      "https://stripe.com/in",
+      "https://stripe.com/in/use-cases/platforms",
+      "https://stripe.com/in/tax",
+      "https://stripe.com/in/treasury/platforms",
+      "https://stripe.com/in/customers/jobber",
+      "https://stripe.com/in/professional-services",
+      "https://stripe.com/in/customers/lightspeed-terminal",
+      "https://stripe.com/in/money-management/availability",
+      "https://stripe.com/in/customers/urbn",
+      "https://stripe.com/in/use-cases/embedded-finance",
+      "https://stripe.com/in/use-cases/marketplaces",
+      "https://stripe.com/in/customers/hertz",
+      "https://stripe.com/in/industries/nonprofits",
+      "https://stripe.com/in/industries/insurance",
+      "https://stripe.com/in/customers/cursor",
+      "https://stripe.com/in/use-cases/in-app-payments",
+      "https://stripe.com/in/use-cases/ecommerce",
+      "https://stripe.com/in/customers/gamma",
+      "https://stripe.com/in/treasury",
+      "https://stripe.com/in/customers/browserbase",
+      "https://stripe.com/in/cookie-settings",
+      "https://stripe.com/in/payments/payment-methods",
+      "https://stripe.com/in/roadmap",
+      "https://stripe.com/in/customers/linear",
+      "https://stripe.com/in/customers/mindbody",
+      "https://stripe.com/in/payments/checkout",
+      "https://stripe.com/in/use-cases/creator-economy",
+      "https://stripe.com/in/industries/retail",
+      "https://stripe.com/in/sessions/2026?utm_medium=owned-surfaces&utm_source=9cb9&utm_campaign=GLOBAL_4301&utm_content=8a70&utm_term=5a728d3d167c",
+      "https://stripe.com/in/use-cases/crypto",
+      "https://stripe.com/in/startups",
+      "https://stripe.com/in/legal/restricted-businesses",
+      "https://stripe.com/in/payments",
+      "https://stripe.com/in/data-pipeline",
+      "https://stripe.com/in/industries/travel",
+      "https://stripe.com/in/support-plans",
+      "https://stripe.com/in/revenue-recognition",
+      "https://stripe.com/in/payments/link",
+      "https://stripe.com/in/startups#application",
+      "https://stripe.com/in/lp/vertical-saas-benchmark-2025?utm_medium=owned-surfaces&utm_source=33d6&utm_campaign=GLOBAL_4250&utm_content=819a&utm_term=a6a6d7b23e01",
+      "https://stripe.com/in/guides",
+      "https://stripe.com/in/authorization-boost",
+      "https://stripe.com/in/payments/elements",
+      "https://stripe.com/in/customers/crypto-com-spotlight",
+      "https://stripe.com/in/newsroom",
+      "https://stripe.com/in/customers/supabase",
+      "https://stripe.com/in/climate",
+      "https://stripe.com/in/customers/ramp",
+      "https://stripe.com/in/use-cases/finance-automation",
+      "https://stripe.com/in/use-cases/global-businesses",
+      "https://stripe.com/in/use-cases/ai",
+      "https://stripe.com/in/customers/substack",
+      "https://stripe.com/in/blog",
+      "https://stripe.com/in/spc/licenses",
+      "https://stripe.com/in/customers/lovable",
+      "https://stripe.com/in/annual-updates/2025",
+      "https://stripe.com/in/billing/subscriptions",
+      "https://stripe.com/in/terminal",
+      "https://stripe.com/in/issuing",
+      "https://stripe.com/in/customers/woo",
+      "https://stripe.com/in/newsroom/news/bfcm2025",
+      "https://stripe.com/in/industries/fintech",
+      "https://stripe.com/in/billing",
+      "https://stripe.com/in/use-cases/agentic-commerce",
+      "https://stripe.com/in/customers/anthropic",
+      "https://stripe.com/in/sessions",
+      "https://stripe.com/in/partners",
+      "https://stripe.com/in/pricing",
+      "https://stripe.com/in/resources/more",
+      "https://stripe.com/in/customers/amazon",
+      "https://stripe.com/in/industries/gaming",
+      "https://stripe.com/in/customers/le-monde",
+      "https://stripe.com/in/sigma",
+      "https://stripe.com/in/guides/introduction-to-risk-management",
+      "https://stripe.com/in/connect",
+      "https://stripe.com/in/radar",
+      "https://stripe.com/in/customers/elevenlabs",
+      "https://stripe.com/in/about",
+      "https://stripe.com/in/capital/platforms",
+      "https://stripe.com/in/customers/brightwheel",
+      "https://stripe.com/in/blog/introducing-our-agentic-commerce-solutions",
+      "https://stripe.com/in/industries/media-entertainment",
+      "https://stripe.com/in/customers",
+      "https://stripe.com/in/newsroom/news/nvidia-collaboration-with-stripe",
+      "https://stripe.com/in/customers/shopify"
+    ],
+    "external_links": [
+      "https://support.stripe.com/",
+      "https://status.stripe.com/",
+      "https://stripecommunity.com/",
+      "https://status.stripe.com",
+      "https://docs.stripe.com/get-started",
+      "https://docs.stripe.com/projects",
+      "https://docs.stripe.com/no-code",
+      "https://www.youtube.com/watch?v=eMSqlQMk480",
+      "https://dashboard.stripe.com/register",
+      "https://github.com/stripe",
+      "https://worksinprogress.co/",
+      "https://stripe.dev/",
+      "https://docs.stripe.com/development",
+      "https://docs.stripe.com/",
+      "https://dashboard.stripe.com/login",
+      "https://docs.stripe.com/changelog",
+      "https://press.stripe.com/",
+      "https://docs.stripe.com/api",
+      "https://marketplace.stripe.com/"
+    ],
+    "engine_source": "browser_client_render_check"
+  },
+  "unified_robots": {
+    "found": true,
+    "robots_url": "https://stripe.com/robots.txt",
+    "bot_access": {
+      "Applebot": {
+        "bot": "Applebot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Apple Intelligence & Siri",
+        "role_or_purpose": "Apple Intelligence search & Safari citations",
+        "via_wildcard": false
+      },
+      "Applebot-Extended": {
+        "bot": "Applebot-Extended",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Apple",
+        "role_or_purpose": "Apple Foundation model training",
+        "via_wildcard": false
+      },
+      "Bingbot": {
+        "bot": "Bingbot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Microsoft Copilot & Bing",
+        "role_or_purpose": "Microsoft AI search indexer",
+        "via_wildcard": false
+      },
+      "Bytespider": {
+        "bot": "Bytespider",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "ByteDance",
+        "role_or_purpose": "ByteDance AI training",
+        "via_wildcard": false
+      },
+      "CCBot": {
+        "bot": "CCBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Common Crawl",
+        "role_or_purpose": "Open web dataset scraped for AI foundation training",
+        "via_wildcard": false
+      },
+      "Claude-SearchBot": {
+        "bot": "Claude-SearchBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Claude Search",
+        "role_or_purpose": "Anthropic search indexer (NOT ClaudeBot)",
+        "via_wildcard": false
+      },
+      "ClaudeBot": {
+        "bot": "ClaudeBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Anthropic",
+        "role_or_purpose": "Model training data collection (Claude base models)",
+        "via_wildcard": false
+      },
+      "FacebookBot": {
+        "bot": "FacebookBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Meta",
+        "role_or_purpose": "Llama & Meta AI model training",
+        "via_wildcard": false
+      },
+      "GPTBot": {
+        "bot": "GPTBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "OpenAI",
+        "role_or_purpose": "Model training data collection (ChatGPT base models)",
+        "via_wildcard": false
+      },
+      "Google-Extended": {
+        "bot": "Google-Extended",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Google",
+        "role_or_purpose": "Gemini & Vertex AI model training (Separate from Googlebot)",
+        "via_wildcard": false
+      },
+      "Googlebot": {
+        "bot": "Googlebot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Google Search & AI Overviews",
+        "role_or_purpose": "Primary web indexer driving Google SGE/AI Overviews",
+        "via_wildcard": false
+      },
+      "OAI-SearchBot": {
+        "bot": "OAI-SearchBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "ChatGPT Search",
+        "role_or_purpose": "Search indexer & live web citation retriever (NOT GPTBot)",
+        "via_wildcard": false
+      },
+      "PerplexityBot": {
+        "bot": "PerplexityBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Perplexity AI",
+        "role_or_purpose": "Live answer engine citation crawler",
+        "via_wildcard": false
+      },
+      "cohere-ai": {
+        "bot": "cohere-ai",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Cohere",
+        "role_or_purpose": "Enterprise LLM training",
+        "via_wildcard": false
+      }
+    },
+    "sitemaps": [
+      "https://stripe.com/sitemap/sitemap.xml"
+    ],
+    "crawl_delay": null,
+    "discovered_urls": [
+      "https://stripe.com/sitemap/partition-0.xml",
+      "https://stripe.com/sitemap/partition-1.xml",
+      "https://stripe.com/sitemap/partition-2.xml",
+      "https://stripe.com/sitemap/partition-3.xml",
+      "https://stripe.com/sitemap/partition-4.xml",
+      "https://stripe.com/sitemap/partition-5.xml",
+      "https://stripe.com/sitemap/partition-6.xml",
+      "https://stripe.com/sitemap/partition-7.xml",
+      "https://stripe.com/sitemap/partition-8.xml"
+    ],
+    "engine_source": "advertools_rfc"
+  },
+  "unified_schema": {
+    "detected_types": [],
+    "deprecated_types_detected": [],
+    "blocks_count": 0,
+    "is_injected_via_js": false,
+    "validation_issues": [],
+    "sameas_urls": [],
+    "has_organization": false,
+    "has_author": false,
+    "engine_source": "triangulated_union"
+  },
+  "unified_geo": {
+    "overall_citability_score": 55,
+    "answer_first_ratio": 0.2,
+    "passage_density_ratio": 0.0,
+    "statistical_density_per_1000": 10.5,
+    "outbound_citations_count": 26,
+    "authoritative_citations_count": 0,
+    "llms_txt_found": true,
+    "llms_txt_warnings": [],
+    "llms_full_found": false,
+    "question_h2s": [
+      "What's happening"
+    ],
+    "methods": [
+      {
+        "name": "cite_sources",
+        "label": "Cite Authoritative Sources",
+        "detected": false,
+        "score": 1,
+        "max_score": 6,
+        "impact": "+27%",
+        "details": {
+          "authoritative": 0,
+          "total_external": 26
+        }
+      },
+      {
+        "name": "quotation_addition",
+        "label": "Attributed Quotations",
+        "detected": true,
+        "score": 6,
+        "max_score": 6,
+        "impact": "+41%",
+        "details": {
+          "blockquotes": 0,
+          "q_tags": 4
+        }
+      },
+      {
+        "name": "statistics_addition",
+        "label": "Statistical & Quantitative Data",
+        "detected": true,
+        "score": 6,
+        "max_score": 6,
+        "impact": "+33%",
+        "details": {
+          "stats_count": 20,
+          "density_per_1000": 10.5
+        }
+      },
+      {
+        "name": "answer_first",
+        "label": "Answer-First H2 Structure",
+        "detected": false,
+        "score": 1,
+        "max_score": 5,
+        "impact": "+25%",
+        "details": {
+          "h2_count": 5,
+          "answer_first_h2s": 1,
+          "ratio": 0.2
+        }
+      },
+      {
+        "name": "passage_density",
+        "label": "Passage Citability Density (50-150 words)",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+23%",
+        "details": {
+          "dense_paragraphs": 0,
+          "total_paragraphs": 24,
+          "ratio": 0.0
+        }
+      },
+      {
+        "name": "technical_terms",
+        "label": "Technical & Standards Terminology",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+18%",
+        "details": {
+          "tech_matches": 37,
+          "code_blocks": 0
+        }
+      },
+      {
+        "name": "authoritative_tone",
+        "label": "Authoritative Tone & Credentials",
+        "detected": true,
+        "score": 2,
+        "max_score": 5,
+        "impact": "+16%",
+        "details": {
+          "authority_signals": 0,
+          "has_author_byline": true
+        }
+      }
+    ],
+    "engine_source": "rankintel_geo_engine"
+  },
+  "unified_trust": {
+    "overall_score": 48,
+    "raw_score": 12,
+    "grade": "D",
+    "layers": {
+      "technical": {
+        "name": "technical",
+        "label": "Technical & Infrastructure Trust",
+        "score": 5,
+        "max_score": 5,
+        "signals_found": [
+          "HTTPS Protocol Active (+2)",
+          "Strict-Transport-Security (HSTS)",
+          "Content-Security-Policy (CSP)",
+          "Clickjacking Protection (X-Frame-Options/frame-ancestors)"
+        ],
+        "signals_missing": []
+      },
+      "identity": {
+        "name": "identity",
+        "label": "Entity & Identity Trust",
+        "score": 3,
+        "max_score": 5,
+        "signals_found": [
+          "About Page Link",
+          "Contact / Support Page Link",
+          "Consistent Brand Identity across Title/H1"
+        ],
+        "signals_missing": [
+          "No Organization/Business Schema in JSON-LD",
+          "No Author Attribution in Meta or Schema"
+        ]
+      },
+      "social": {
+        "name": "social",
+        "label": "Social Proof & Reputation Trust",
+        "score": 1,
+        "max_score": 5,
+        "signals_found": [
+          "Linked Social Profiles (github.com, youtube.com)"
+        ],
+        "signals_missing": [
+          "No sameAs Links in Schema.org",
+          "Fewer than 3 verified sameAs profiles",
+          "No Reviews or Testimonials Detected",
+          "No Knowledge Graph Pillar Link (Wikidata/Wikipedia)"
+        ]
+      },
+      "academic": {
+        "name": "academic",
+        "label": "Academic & Authority Trust",
+        "score": 2,
+        "max_score": 5,
+        "signals_found": [
+          "Data-Rich Content (10.5 stats per 1,000 words)",
+          "External Source Citations (17 non-social links)"
+        ],
+        "signals_missing": [
+          "No Links to Recognized Authoritative Sources (.gov, .edu, DOI, PubMed)",
+          "No Dedicated References or Sources Section",
+          "Few Formal Statistical Patterns (Percentages / Research Citations)"
+        ]
+      },
+      "consistency": {
+        "name": "consistency",
+        "label": "Consistency & Compliance Trust",
+        "score": 1,
+        "max_score": 5,
+        "signals_found": [
+          "Privacy Policy Documented"
+        ],
+        "signals_missing": [
+          "No Terms of Service Link Detected",
+          "Missing or Undated Copyright Notice",
+          "Missing Canonical Tag",
+          "No Machine-Readable Publication/Modification Timestamps"
+        ]
+      }
+    },
+    "summary": "Trust Grade: D (48/100, Raw 12/25). Strongest layer: Technical & Infrastructure Trust. Weakest layer: Social Proof & Reputation Trust."
+  },
+  "unified_performance": {
+    "source": "local_probe",
+    "overall_performance_score": 85,
+    "ttfb_ms": 437.8,
+    "fcp_ms": null,
+    "lcp_ms": null,
+    "cls": null,
+    "inp_ms": null,
+    "metrics": [
+      {
+        "name": "TTFB",
+        "value": 0.438,
+        "unit": "s",
+        "status": "GOOD",
+        "threshold_good": 0.8,
+        "threshold_poor": 1.8
+      }
+    ],
+    "passed_audit": true,
+    "notes": [
+      "Local high-precision TTFB probe (set PAGESPEED_API_KEY for CrUX real-user telemetry)"
+    ]
+  },
+  "cloud_intelligence": {
+    "available": false,
+    "keywords": null,
+    "backlinks": null,
+    "ai_visibility_score": 0,
+    "notes": []
+  },
+  "site_crawl": null,
+  "fixes": {
+    "current_title": "Stripe | Financial Infrastructure to Grow Your Revenue",
+    "optimized_title": "Financial infrastructure to grow yo... | Stripe",
+    "title_length": "47",
+    "current_description": "Stripe is a financial services platform that helps all types of businesses accept payments, build flexible billing models and manage money movement.",
+    "optimized_description": "Stripe is a financial services platform that helps all types of businesses accept payments, build flexible billing models and manage money movement.",
+    "desc_length": "148",
+    "jsonld_schema": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"Organization\",\n      \"@id\": \"https://stripe.com/#organization\",\n      \"name\": \"Stripe\",\n      \"url\": \"https://stripe.com\",\n      \"description\": \"Stripe is a financial services platform that helps all types of businesses accept payments, build flexible billing models and manage money movement.\"\n    },\n    {\n      \"@type\": \"WebSite\",\n      \"@id\": \"https://stripe.com/#website\",\n      \"url\": \"https://stripe.com\",\n      \"name\": \"Stripe\",\n      \"publisher\": {\n        \"@id\": \"https://stripe.com/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://stripe.com#webpage\",\n      \"url\": \"https://stripe.com\",\n      \"name\": \"Stripe | Financial Infrastructure to Grow Your Revenue\",\n      \"isPartOf\": {\n        \"@id\": \"https://stripe.com/#website\"\n      },\n      \"about\": {\n        \"@id\": \"https://stripe.com/#organization\"\n      },\n      \"description\": \"Stripe is a financial services platform that helps all types of businesses accept payments, build flexible billing models and manage money movement.\"\n    }\n  ]\n}\n</script>",
+    "llms_txt": "# Stripe\n\n> Stripe is a financial services platform that helps all types of businesses accept payments, build flexible billing models and manage money movement.\n\n## Core Services & Knowledge Base\n- [Stripe | Financial Infrastructure to Grow Your Revenue](https://stripe.com): Primary portal and overview.\n\n## Key Inquiries & Subject Matter\n- What's happening\n\n## Optional & Detailed Documentation\n- [/llms-full.txt](https://stripe.com/llms-full.txt): Comprehensive documentation for deeper context.",
+    "hardened_robots": "# RankIntel Hardened AI Robots.txt Policy\n# 1. Allow AI Search & Citation Bots (Essential for ChatGPT Search, Google, Perplexity, Claude)\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Claude-SearchBot\nAllow: /\n\nUser-agent: Googlebot\nAllow: /\n\nUser-agent: Applebot\nAllow: /\n\n# 2. Optional: Disallow AI Model Pre-Training Scrapers (If preserving intellectual property)\n# User-agent: GPTBot\n# Disallow: /\n# User-agent: ClaudeBot\n# Disallow: /\n# User-agent: Google-Extended\n# Disallow: /\n\n# 3. Standard Crawler Settings\nUser-agent: *\nAllow: /\n"
+  }
+}
