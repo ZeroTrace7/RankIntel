@@ -70,12 +70,13 @@ class BrowserEngine:
                 dur = round(time.time() - t0, 2)
                 
                 soup = BeautifulSoup(resp.text, "html.parser")
+                # Parse schema BEFORE on_page (which strips <script> tags)
+                schema_ev = self._parse_schema(soup)
+                schema_ev.engine_source = "browser_client_render_check"
+
                 on_page = self._parse_on_page(soup, url, dur)
                 on_page.status_code = resp.status_code
                 on_page.engine_source = "browser_client_render_check"
-
-                schema_ev = self._parse_schema(soup)
-                schema_ev.engine_source = "browser_client_render_check"
 
                 return EngineResult(
                     engine_name="browser_engine",
