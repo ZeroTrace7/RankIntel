@@ -60,12 +60,18 @@ class MarkdownReporter:
         # Performance & CWV
         perf = report.unified_performance
         lines.append("## ⚡ PERFORMANCE & CORE WEB VITALS TELEMETRY")
-        lines.append(f"- **Telemetry Source:** `{perf.source}`")
+        src_labels = {
+            "pagespeed_crux_field": "🟢 CrUX Real-User Field Data (75th percentile)",
+            "pagespeed_lighthouse_lab": "🟡 Google Lighthouse Lab Simulation",
+            "local_probe": "⚪ Local Network TTFB Probe (no CrUX data)"
+        }
+        lines.append(f"- **Telemetry Source:** {src_labels.get(perf.source, perf.source)}")
         lines.append(f"- **Server Latency (TTFB):** {perf.ttfb_ms:.1f}ms")
         if perf.lcp_ms:
-            lines.append(f"- **Estimated LCP:** {perf.lcp_ms:.1f}ms")
+            lcp_label = "CrUX Real-User LCP (P75)" if perf.source == "pagespeed_crux_field" else "Lighthouse Lab LCP"
+            lines.append(f"- **{lcp_label}:** {perf.lcp_ms:.1f}ms")
         if perf.cls is not None:
-            lines.append(f"- **Estimated CLS:** {perf.cls:.3f}")
+            lines.append(f"- **Layout Shift (CLS):** {perf.cls:.3f}")
         if perf.metrics:
             lines.append("\n| Metric | Value | Status | Target Threshold |")
             lines.append("|---|---|---|---|")

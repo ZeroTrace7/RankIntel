@@ -14,6 +14,7 @@ from rankintel.engines.seo_engine import SeoEngine
 from rankintel.engines.geo_engine import GeoEngine
 from rankintel.engines.browser_engine import BrowserEngine
 from rankintel.engines.performance_engine import PerformanceEngine
+from rankintel.engines.mcp_engine import McpEngine
 from rankintel.models.schema import EngineResult
 
 class EvidenceCollector:
@@ -24,6 +25,7 @@ class EvidenceCollector:
         self.geo_engine = GeoEngine()
         self.browser_engine = BrowserEngine()
         self.performance_engine = PerformanceEngine()
+        self.mcp_engine = McpEngine()
 
     def collect(self, url: str) -> Dict[str, EngineResult]:
         """Run all engines on the target URL and collect raw evidence."""
@@ -67,6 +69,16 @@ class EvidenceCollector:
                 engine_name="performance_engine",
                 status="error",
                 error_message=f"Performance engine failed: {e}"
+            )
+
+        # 5. Run MCP Cloud Engine (OpenSEO / DataForSEO - silent fallback)
+        try:
+            results["mcp_cloud"] = self.mcp_engine.execute(url)
+        except Exception as e:
+            results["mcp_cloud"] = EngineResult(
+                engine_name="mcp_cloud",
+                status="skipped",
+                error_message=f"Cloud intelligence skipped: {e}"
             )
 
         return results
