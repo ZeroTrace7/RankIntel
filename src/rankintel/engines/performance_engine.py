@@ -27,10 +27,8 @@ class PerformanceEngine:
         """Run performance audit pass."""
         t0 = time.time()
 
-        # Try PageSpeed Insights first if API key is provided or as public probe
-        evidence = None
-        if self.api_key:
-            evidence = self._query_pagespeed_api(url)
+        # Try PageSpeed Insights first (authenticated or unauthenticated public tier)
+        evidence = self._query_pagespeed_api(url)
 
         if not evidence:
             # Fallback to local probe
@@ -44,7 +42,7 @@ class PerformanceEngine:
         )
 
     def _query_pagespeed_api(self, url: str) -> Optional[PerformanceEvidence]:
-        """Fetch Core Web Vitals from Google PageSpeed Insights API."""
+        """Fetch Core Web Vitals from Google PageSpeed Insights API, extracting CrUX field data or Lighthouse lab data."""
         params = {
             "url": url,
             "strategy": "mobile",
@@ -63,9 +61,38 @@ class PerformanceEngine:
             perf_cat = categories.get("performance", {})
             score = int((perf_cat.get("score", 0.5) or 0.5) * 100)
 
+            # Check for CrUX field data first (loadingExperience)
+            loading_exp = data.get("loadingExperience", {})
+            crux_metrics = loading_exp.get("metrics", {})
+            has_crux = bool(crux_metrics and "LARGEST_CONTENTFUL_PAINT_MS" in crux_metrics)
+
+            if has_crux:
+                crux_lcp_ms = float(crux_metrics.get("LARGEST_CONTENTFUL_PAINT_MS", {}).get("percentile", 2500))
+                crux_inp_ms = float(crux_metrics.get("INTERACTION_TO_NEXT_PAINT", {}).get("percentile", 200))
+                crux_cls_val = float(crux_metrics.get("CUMULATIVE_LAYOUT_SHIFT_SCORE", {}).get("percentile", 10)) / 100.0
+                crux_ttfb_ms = float(crux_metrics.get("EXPERIMENTAL_TIME_TO_FIRST_BYTE", {}).get("percentile", 800))
+
+                metrics = [
+                    self._evaluate_metric("LCP", crux_lcp_ms / 1000.0),
+                    self._evaluate_metric("CLS", crux_cls_val),
+                    self._evaluate_metric("INP", crux_inp_ms),
+                    self._evaluate_metric("TTFB", crux_ttfb_ms / 1000.0),
+                ]
+
+                return PerformanceEvidence(
+                    source="pagespeed_crux_field",
+                    overall_performance_score=score,
+                    ttfb_ms=round(crux_ttfb_ms, 1),
+                    lcp_ms=round(crux_lcp_ms, 1),
+                    cls=round(crux_cls_val, 3),
+                    inp_ms=round(crux_inp_ms, 1),
+                    metrics=metrics,
+                    passed_audit=score >= 60,
+                    notes=["CrUX field data (75th percentile of real Google users)"]
+                )
+
+            # Fallback to Lighthouse lab data
             audits = lighthouse.get("audits", {})
-            
-            # Extract raw values
             lcp_val = audits.get("largest-contentful-paint", {}).get("numericValue", 2500) / 1000.0  # seconds
             cls_val = audits.get("cumulative-layout-shift", {}).get("numericValue", 0.05)
             fcp_val = audits.get("first-contentful-paint", {}).get("numericValue", 1500)
@@ -80,7 +107,7 @@ class PerformanceEngine:
             ]
 
             return PerformanceEvidence(
-                source="pagespeed_api",
+                source="pagespeed_lighthouse_lab",
                 overall_performance_score=score,
                 ttfb_ms=round(ttfb_val * 1000, 1),
                 fcp_ms=round(fcp_val, 1),
@@ -89,7 +116,7 @@ class PerformanceEngine:
                 inp_ms=round(inp_val, 1),
                 metrics=metrics,
                 passed_audit=score >= 60,
-                notes=["Retrieved real-user Lighthouse metrics from Google PageSpeed Insights API"]
+                notes=["Lighthouse lab simulation (insufficient CrUX field traffic)"]
             )
         except Exception:
             return None
@@ -135,11 +162,12 @@ class PerformanceEngine:
             source="local_probe",
             overall_performance_score=score,
             ttfb_ms=round(ttfb_ms, 1),
-            lcp_ms=round(ttfb_ms * 1.8, 1),  # estimated LCP
-            cls=0.05,                       # estimated CLS
+            lcp_ms=None,
+            cls=None,
+            inp_ms=None,
             metrics=[ttfb_metric],
             passed_audit=avg_ttfb_sec <= 1.8,
-            notes=["Local high-precision TTFB probe (PageSpeed API key optional for full CrUX telemetry)"]
+            notes=["Local high-precision TTFB probe (set PAGESPEED_API_KEY for CrUX real-user telemetry)"]
         )
 
     def _evaluate_metric(self, name: str, val: float) -> PerformanceMetric:
