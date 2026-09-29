@@ -24,9 +24,11 @@ class MarkdownReporter:
 
         # Executive Scorecard
         lines.append("## 📊 EXECUTIVE SCORECARD")
-        lines.append(f"- **Overall Search Health Score:** {report.overall_health_score}/100")
-        lines.append(f"- **Technical SEO Score:** {report.technical_health_score}/100")
-        lines.append(f"- **GEO / AI Search Readiness:** {report.geo_readiness_score}/100")
+        lines.append(f"- **Overall Search & GEO Health Score:** {report.overall_health_score}/100")
+        lines.append(f"- **Technical SEO Foundation:** {report.technical_health_score}/100")
+        lines.append(f"- **GEO / AI Citability Readiness:** {report.geo_readiness_score}/100")
+        lines.append(f"- **Trust Stack (E-E-A-T) Grade:** {report.unified_trust.grade} ({report.trust_score}/100)")
+        lines.append(f"- **Performance & CWV Score:** {report.performance_score}/100")
         lines.append("")
 
         # Cross-Engine Conflicts
@@ -48,9 +50,41 @@ class MarkdownReporter:
         p = report.unified_on_page
         lines.append("## ⚙️ TECHNICAL FOUNDATION")
         lines.append(f"- **HTTP Status Code:** {p.status_code}")
-        lines.append(f"- **Server Latency (TTFB):** {p.response_time_sec}s")
+        lines.append(f"- **Server Latency (TTFB):** {report.unified_performance.ttfb_ms:.0f}ms")
         lines.append(f"- **Redirect Detected:** {p.is_redirect}")
         lines.append(f"- **Canonical URL:** {p.canonical_url or '⚪ Not specified'}")
+        lines.append(f"- **Internal Links Discovered:** {len(p.internal_links)} links")
+        lines.append(f"- **External Links Discovered:** {len(p.external_links)} links")
+        lines.append("")
+
+        # Performance & CWV
+        perf = report.unified_performance
+        lines.append("## ⚡ PERFORMANCE & CORE WEB VITALS TELEMETRY")
+        lines.append(f"- **Telemetry Source:** `{perf.source}`")
+        lines.append(f"- **Server Latency (TTFB):** {perf.ttfb_ms:.1f}ms")
+        if perf.lcp_ms:
+            lines.append(f"- **Estimated LCP:** {perf.lcp_ms:.1f}ms")
+        if perf.cls is not None:
+            lines.append(f"- **Estimated CLS:** {perf.cls:.3f}")
+        if perf.metrics:
+            lines.append("\n| Metric | Value | Status | Target Threshold |")
+            lines.append("|---|---|---|---|")
+            for m in perf.metrics:
+                m_icon = "🟢" if m.status == "GOOD" else ("🟡" if m.status == "NEEDS_IMPROVEMENT" else "🔴")
+                lines.append(f"| **{m.name}** | {m.value}{m.unit} | {m_icon} {m.status} | ≤{m.threshold_good}{m.unit} |")
+        lines.append("")
+
+        # Trust Stack (5-Layer E-E-A-T)
+        t = report.unified_trust
+        lines.append("## 🛡️ TRUST STACK & E-E-A-T AUDIT (5 LAYERS)")
+        lines.append(f"**Overall Trust Grade:** `{t.grade}` ({t.overall_score}/100, Raw {t.raw_score}/25)")
+        lines.append(f"*{t.summary}*\n")
+        lines.append("| Trust Layer | Score | Signals Detected | Missing Safeguards |")
+        lines.append("|---|---|---|---|")
+        for layer_name, layer in t.layers.items():
+            found_str = "<br>• ".join([""] + layer.signals_found) if layer.signals_found else "None"
+            missing_str = "<br>• ".join([""] + layer.signals_missing) if layer.signals_missing else "None"
+            lines.append(f"| **{layer.label}** | {layer.score}/5 | {found_str} | {missing_str} |")
         lines.append("")
 
         # On-Page Signals
@@ -72,6 +106,14 @@ class MarkdownReporter:
             lines.append(f"- **Detected Schemas:** {', '.join(s.detected_types)}")
         else:
             lines.append("- **Detected Schemas:** 🔴 NONE DETECTED")
+
+        if s.has_organization:
+            lines.append("- **Organization Entity:** 🟢 Explicitly Defined")
+        else:
+            lines.append("- **Organization Entity:** 🔴 Missing")
+
+        if s.sameas_urls:
+            lines.append(f"- **Verified sameAs Profiles:** {len(s.sameas_urls)} linked")
 
         if s.is_injected_via_js:
             lines.append("- **Client-Side Dependency:** ⚠️ Schemas are injected via client-side JavaScript")

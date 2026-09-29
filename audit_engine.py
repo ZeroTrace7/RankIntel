@@ -1,9 +1,10 @@
 """
-RankIntel — Unified Multi-Engine Audit Entrypoint.
+RankIntel — Unified Multi-Engine Audit & Intelligence Entrypoint.
 Backward compatible runner delegating to the RankIntel v2 Multi-Engine Platform.
 """
 import sys
 import os
+from urllib.parse import urlparse
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -15,7 +16,9 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "src"
 
 from rankintel.evidence.collector import EvidenceCollector
 from rankintel.intelligence.synthesizer import IntelligenceSynthesizer
+from rankintel.intelligence.comparer import IntelligenceComparer
 from rankintel.reporters.markdown import MarkdownReporter
+from rankintel.reporters.gap_reporter import GapReporter
 from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
@@ -28,7 +31,7 @@ def run_audit(url: str, output_dir: str = "audits"):
 
     console.print(Panel.fit(
         f"[bold cyan]RankIntel Intelligence Engine v2.0[/bold cyan]\n"
-        f"[dim]Triangulating:[/dim] [yellow]advertools (SEO)[/yellow] + [green]crawl4ai (Browser)[/green] + [magenta]RankIntel (GEO/AEO)[/magenta]\n"
+        f"[dim]Triangulating:[/dim] [yellow]advertools (SEO)[/yellow] + [green]crawl4ai (Browser)[/green] + [magenta]RankIntel (GEO/AEO)[/magenta] + [blue]CWV Performance[/blue]\n"
         f"[bold white]Target:[/bold white] [underline]{url}[/underline]",
         border_style="cyan"
     ))
@@ -69,8 +72,18 @@ def run_audit(url: str, output_dir: str = "audits"):
         "Princeton GEO metrics"
     )
     table.add_row(
+        "Trust Stack (E-E-A-T) Grade",
+        f"[bold cyan]{report.unified_trust.grade}[/bold cyan] ({report.trust_score}/100)",
+        "5-layer trust aggregation"
+    )
+    table.add_row(
+        "Server Latency (TTFB)",
+        f"{report.unified_performance.ttfb_ms:.0f}ms",
+        report.unified_performance.source
+    )
+    table.add_row(
         "AI Search Bot Status",
-        f"{len([b for b in report.unified_robots.bot_access.values() if b.status == 'ALLOWED'])} Allowed",
+        f"{len([b for b in report.unified_robots.bot_access.values() if b.status == 'ALLOWED' and b.category == 'search'])} Search Bots Allowed",
         "RFC robots parser"
     )
     table.add_row(
@@ -90,9 +103,71 @@ def run_audit(url: str, output_dir: str = "audits"):
     console.print(f"[bold green]Report saved to:[/bold green] [underline cyan]{report_file}[/underline cyan]")
     return report_file
 
+def run_compare(url_a: str, url_b: str, output_dir: str = "reports"):
+    if not url_a.startswith("http://") and not url_a.startswith("https://"):
+        url_a = "https://" + url_a
+    if not url_b.startswith("http://") and not url_b.startswith("https://"):
+        url_b = "https://" + url_b
+
+    dom_a = urlparse(url_a).netloc
+    dom_b = urlparse(url_b).netloc
+
+    console.print(Panel.fit(
+        f"[bold cyan]RankIntel Competitive Intelligence Engine[/bold cyan]\n"
+        f"[dim]Benchmarking:[/dim] [yellow]{dom_a}[/yellow] vs [green]{dom_b}[/green]\n"
+        f"[dim]Triangulating technical SEO, Princeton GEO, 5-layer Trust Stack, and CWV[/dim]",
+        border_style="cyan"
+    ))
+
+    with console.status(f"[bold green]Auditing {dom_a} and {dom_b} across all engines...[/bold green]", spinner="dots"):
+        comparer = IntelligenceComparer()
+        comparison = comparer.compare(url_a, url_b)
+
+    report_file = GapReporter.save(comparison, output_dir=output_dir)
+
+    console.print("\n[bold green][SUCCESS] Competitive Gap Analysis Completed![/bold green]\n")
+
+    winner_dom = urlparse(comparison.winner_url).netloc if comparison.winner_url != "TIE" else "Statistical Tie"
+    comp_table = Table(title=f"Head-to-Head Comparison: {dom_a} vs {dom_b}", show_header=True, header_style="bold magenta")
+    comp_table.add_column("Telemetry Category", style="cyan")
+    comp_table.add_column(dom_a, justify="center")
+    comp_table.add_column(dom_b, justify="center")
+    comp_table.add_column("Advantage", style="bold")
+
+    for d in comparison.category_deltas:
+        w_dom = urlparse(d.winner).netloc if d.winner not in ("TIE", "") else "TIE"
+        if w_dom == dom_a:
+            adv_str = f"[green]{dom_a}[/green]"
+        elif w_dom == dom_b:
+            adv_str = f"[cyan]{dom_b}[/cyan]"
+        else:
+            adv_str = "[dim]Tie[/dim]"
+        comp_table.add_row(d.category, str(d.target_a_val), str(d.target_b_val), adv_str)
+
+    console.print(comp_table)
+    console.print(f"\n[bold yellow]Overall Leader:[/bold yellow] [bold green]{winner_dom}[/bold green] (Gap: {comparison.score_gap} pts)")
+
+    if comparison.action_plan:
+        console.print("\n[bold cyan]Top Competitive Remediation Actions:[/bold cyan]")
+        for idx, act in enumerate(comparison.action_plan[:4], 1):
+            console.print(f"  {idx}. [bold red][+{act.impact_points} pts][/bold red] [bold]{act.title}[/bold]")
+            console.print(f"     [dim]Advantage:[/dim] {act.winning_advantage}\n")
+
+    console.print(f"[bold green]Detailed gap report saved to:[/bold green] [underline cyan]{report_file}[/underline cyan]")
+    return report_file
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        console.print("[bold red]Usage:[/bold red] python audit_engine.py <url>")
+        console.print("[bold red]Usage:[/bold red] python audit_engine.py <url> OR python audit_engine.py compare <url1> vs <url2>")
         sys.exit(1)
-    target_url = sys.argv[1]
-    run_audit(target_url)
+
+    if sys.argv[1].lower() == "compare":
+        if len(sys.argv) < 4:
+            console.print("[bold red]Usage:[/bold red] python audit_engine.py compare <url1> vs <url2>")
+            sys.exit(1)
+        url1 = sys.argv[2]
+        url2 = sys.argv[4] if sys.argv[3].lower() == "vs" and len(sys.argv) > 4 else sys.argv[3]
+        run_compare(url1, url2)
+    else:
+        target_url = sys.argv[1]
+        run_audit(target_url)
