@@ -15,11 +15,14 @@ from rankintel.models.schema import (
     OnPageEvidence,
     RobotsEvidence,
     SchemaEvidence,
-    GeoAeoEvidence
+    GeoAeoEvidence,
+    TrustStackResult,
+    PerformanceEvidence
 )
 from rankintel.evidence.conflicts import ConflictDetector
 from rankintel.intelligence.fixer import FixGenerator
 from rankintel.references.quality_gates import META_LENGTH_BOUNDS, HEADING_HIERARCHY_RULES
+from rankintel.analyzers.trust_evaluator import TrustEvaluator
 
 class IntelligenceSynthesizer:
     """Synthesizes multi-engine findings into a single unified intelligence audit."""
@@ -39,10 +42,19 @@ class IntelligenceSynthesizer:
         seo_res = engine_results.get("advertools_seo")
         browser_res = engine_results.get("browser_engine")
         geo_res = engine_results.get("rankintel_geo")
+        perf_res = engine_results.get("performance_engine")
 
         # 1. OnPage Reconciliation
         if browser_res and browser_res.on_page and browser_res.on_page.status_code == 200:
             unified_on_page = browser_res.on_page
+            # Merge response headers and links if static SEO had them
+            if seo_res and seo_res.on_page:
+                if not unified_on_page.response_headers and seo_res.on_page.response_headers:
+                    unified_on_page.response_headers = seo_res.on_page.response_headers
+                if not unified_on_page.internal_links and seo_res.on_page.internal_links:
+                    unified_on_page.internal_links = seo_res.on_page.internal_links
+                if not unified_on_page.external_links and seo_res.on_page.external_links:
+                    unified_on_page.external_links = seo_res.on_page.external_links
         elif seo_res and seo_res.on_page:
             unified_on_page = seo_res.on_page
         else:
@@ -57,23 +69,36 @@ class IntelligenceSynthesizer:
         # 3. Schema Reconciliation (Union of static + browser)
         all_schemas = set()
         validation_issues = []
+        sameas_urls = set()
+        has_org = False
+        has_author = False
         is_js_injected = False
 
         if seo_res and seo_res.schema_data:
             all_schemas.update(seo_res.schema_data.detected_types)
             validation_issues.extend(seo_res.schema_data.validation_issues)
+            sameas_urls.update(seo_res.schema_data.sameas_urls)
+            has_org = has_org or seo_res.schema_data.has_organization
+            has_author = has_author or seo_res.schema_data.has_author
 
         if browser_res and browser_res.schema_data:
             all_schemas.update(browser_res.schema_data.detected_types)
             validation_issues.extend(browser_res.schema_data.validation_issues)
+            sameas_urls.update(browser_res.schema_data.sameas_urls)
+            has_org = has_org or browser_res.schema_data.has_organization
+            has_author = has_author or browser_res.schema_data.has_author
             if any(c.category == "CLIENT_RENDERED_SCHEMA" for c in conflicts):
                 is_js_injected = True
 
         unified_schema = SchemaEvidence(
             detected_types=list(all_schemas),
+            deprecated_types_detected=[s for s in all_schemas if s in ["FAQPage", "SpecialAnnouncement"]],
             blocks_count=len(all_schemas),
             is_injected_via_js=is_js_injected,
             validation_issues=list(set(validation_issues)),
+            sameas_urls=list(sameas_urls),
+            has_organization=has_org,
+            has_author=has_author,
             engine_source="triangulated_union"
         )
 
@@ -83,14 +108,38 @@ class IntelligenceSynthesizer:
         else:
             unified_geo = GeoAeoEvidence()
 
-        # Compute Categorical Scores
+        # 5. Trust Stack Reconciliation (5-layer E-E-A-T analysis)
+        unified_trust = TrustEvaluator.evaluate(
+            url=url,
+            on_page=unified_on_page,
+            schema=unified_schema,
+            geo=unified_geo
+        )
+
+        # 6. Performance Telemetry Reconciliation
+        if perf_res and perf_res.performance:
+            unified_performance = perf_res.performance
+        else:
+            unified_performance = PerformanceEvidence(overall_performance_score=75)
+
+        # Compute Holistic Health Score
         tech_score = self._compute_technical_score(unified_on_page, unified_robots, unified_schema)
         geo_score = unified_geo.overall_citability_score or 40
-        overall_health = int(round((tech_score * 0.55) + (geo_score * 0.45)))
+        trust_score = unified_trust.overall_score
+        perf_score = unified_performance.overall_performance_score
+
+        # Holistic Triangulated Score:
+        # Technical 35% | GEO 30% | Trust Stack 20% | Performance 15%
+        overall_health = int(round(
+            (tech_score * 0.35) +
+            (geo_score * 0.30) +
+            (trust_score * 0.20) +
+            (perf_score * 0.15)
+        ))
 
         # Build Prioritized Actions
         actions = self._build_prioritized_actions(
-            unified_on_page, unified_robots, unified_schema, unified_geo, conflicts
+            unified_on_page, unified_robots, unified_schema, unified_geo, unified_trust, unified_performance, conflicts
         )
 
         # Generate Production Fixes
@@ -113,6 +162,8 @@ class IntelligenceSynthesizer:
             overall_health_score=overall_health,
             geo_readiness_score=geo_score,
             technical_health_score=tech_score,
+            trust_score=trust_score,
+            performance_score=perf_score,
             engines_executed=[k for k, v in engine_results.items() if v.status == "success"],
             conflicts_detected=conflicts,
             prioritized_actions=actions,
@@ -120,6 +171,8 @@ class IntelligenceSynthesizer:
             unified_robots=unified_robots,
             unified_schema=unified_schema,
             unified_geo=unified_geo,
+            unified_trust=unified_trust,
+            unified_performance=unified_performance,
             fixes=fixes
         )
 
@@ -162,6 +215,8 @@ class IntelligenceSynthesizer:
         robots: RobotsEvidence,
         schema: SchemaEvidence,
         geo: GeoAeoEvidence,
+        trust: TrustStackResult,
+        perf: PerformanceEvidence,
         conflicts: List[ConflictFinding]
     ) -> List[PrioritizedAction]:
         actions: List[PrioritizedAction] = []
@@ -223,6 +278,38 @@ class IntelligenceSynthesizer:
                 finding="Zero Schema.org types detected on page.",
                 rationale="Structured data is required for rich snippets and assists generative AI models in entity disambiguation.",
                 engine_confidence="HIGH (Verified by both static and browser engines)"
+            ))
+
+        # Trust Stack: Missing Security Headers
+        tech_layer = trust.layers.get("technical")
+        if tech_layer and tech_layer.signals_missing:
+            actions.append(PrioritizedAction(
+                level="HIGH",
+                title="Harden Technical Trust & Security Headers",
+                finding=", ".join(tech_layer.signals_missing),
+                rationale="HSTS and Content-Security-Policy prevent security downgrades and satisfy AI agent reliability gates.",
+                engine_confidence="HIGH (Header telemetry)"
+            ))
+
+        # Trust Stack: Identity & Organization
+        ident_layer = trust.layers.get("identity")
+        if ident_layer and not schema.has_organization:
+            actions.append(PrioritizedAction(
+                level="HIGH",
+                title="Add Organization Schema & Entity Anchors",
+                finding="No Organization / LocalBusiness entity defined in structured data.",
+                rationale="Essential for establishing E-E-A-T and anchoring your entity in Google's Knowledge Graph.",
+                engine_confidence="HIGH"
+            ))
+
+        # Performance / Latency
+        if perf.ttfb_ms > 1200:
+            actions.append(PrioritizedAction(
+                level="HIGH",
+                title="Reduce Server Latency (TTFB)",
+                finding=f"Time to First Byte is {perf.ttfb_ms:.0f}ms (threshold is 800ms).",
+                rationale="High TTFB delays page hydration, crawler budget efficiency, and hurts user interaction metrics.",
+                engine_confidence="HIGH"
             ))
 
         # GEO llms.txt
