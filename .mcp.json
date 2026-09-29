@@ -2,6 +2,10 @@
   "mcpServers": {
     "openseo": {
       "url": "https://app.openseo.so/mcp"
+    },
+    "rankintel": {
+      "command": "python",
+      "args": ["-m", "rankintel.mcp.server"]
     }
   }
 }

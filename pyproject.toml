@@ -53,6 +53,11 @@ dev = [
 
 [project.scripts]
 rankintel = "rankintel.cli:main"
+rankintel-mcp = "rankintel.mcp.server:run_server"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
