@@ -138,28 +138,33 @@ When interacting with RankIntel in your AI assistant (Antigravity, Claude Code, 
 
 ## 💻 Standalone CLI Usage (Engine A)
 
-You can run the local intelligence crawler directly from the terminal without any AI assistant or MCP server:
+You can run the local intelligence crawler directly from the terminal. With RankIntel v2.0, you can use the built-in CLI:
 
 ```bash
 # Activate your virtual environment
 source venv/bin/activate   # Linux/macOS
 .\venv\Scripts\Activate.ps1 # Windows PowerShell
 
-# Run an audit on any target website
+# Run a multi-engine audit
+rankintel audit https://example.com
+
+# (Or use the backward-compatible entry point)
 python audit_engine.py https://example.com
 ```
 
 ### CLI Terminal Output Sample
 
 ```text
-Fetching https://example.com...
-Extracting Structured Data (Schema JSON-LD)...
-Extracting On-Page Signals...
-Checking AI Crawler Access (robots.txt & llms.txt)...
-Fetching Google PageSpeed Data (Mobile)...
-Analyzing AEO (Answer Engine Optimization) Readiness...
+╭──────────────────────────────────────────────────────────────────────────╮
+│ RankIntel Intelligence Engine v2.0                                       │
+│ Triangulating: advertools (SEO) + crawl4ai (Browser) + RankIntel (GEO)   │
+│ Target: https://example.com                                              │
+╰──────────────────────────────────────────────────────────────────────────╯
+✔ Multi-Engine Triangulation Completed Successfully!
 
-Report successfully saved to: audits/example.com-2026-09-30.md
+📊 Executive Audit Scorecard
+...
+Report saved to: audits/example.com-2026-09-30.md
 ```
 
 ---
