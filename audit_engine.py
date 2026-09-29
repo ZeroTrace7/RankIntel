@@ -19,7 +19,7 @@ except ImportError:
             print(*args)
     console = Console()
 
-class SunriseIntelligenceEngine:
+class RankIntelEngine:
     def __init__(self, url):
         if not url.startswith("http"):
             url = "https://" + url
@@ -204,7 +204,7 @@ class SunriseIntelligenceEngine:
             f.write(f"# COMPETITOR INTELLIGENCE REPORT — {self.domain}\n")
             f.write(f"**URL:** {self.url}\n")
             f.write(f"**Date:** {timestamp}\n")
-            f.write(f"**Audited by:** Sunrise Intelligence Engine\n\n")
+            f.write(f"**Audited by:** RankIntel Engine\n\n")
             f.write("---\n\n")
 
             # Technical Foundation
@@ -282,9 +282,9 @@ class SunriseIntelligenceEngine:
             self.generate_report()
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Sunrise Competitor Intelligence Engine")
+    parser = argparse.ArgumentParser(description="RankIntel - Search & Competitor Intelligence Engine")
     parser.add_argument("url", help="The URL to audit (e.g., https://alephindia.in)")
     args = parser.parse_args()
     
-    engine = SunriseIntelligenceEngine(args.url)
+    engine = RankIntelEngine(args.url)
     engine.run_audit()

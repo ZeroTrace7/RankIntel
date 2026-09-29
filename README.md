@@ -1,6 +1,6 @@
-# Website SEO Automations
+# RankIntel
 
-An AI-powered SEO agent workspace. Drop a URL, get a full audit — technical, on-page, keyword gaps, backlinks, AND AI search (GEO) — with copy-paste ready fixes. No dashboards, no manual copy-paste.
+Next-Gen SEO, GEO & Search Intelligence Engine. Drop a URL, get a full audit — technical, on-page, keyword gaps, backlinks, AND AI search (GEO / AEO) — with copy-paste ready fixes. No dashboards, no manual copy-paste.
 
 ---
 
@@ -34,7 +34,7 @@ Report saved to: audits/alephindia.in-[date].md
 
 ### Step 3 — Open This Project in Antigravity / Claude Code
 - The `.mcp.json` file in this folder automatically connects OpenSEO
-- Set `D:\Projects\website-seo-automations` as your active workspace
+- Set `D:\Projects\RankIntel` as your active workspace
 
 ### Step 4 — Authorize Once
 First time you use an OpenSEO tool, it will prompt you to log in via browser. Do that once and you're permanently connected.
@@ -59,10 +59,11 @@ First time you use an OpenSEO tool, it will prompt you to log in via browser. Do
 ## Project Structure
 
 ```
-website-seo-automations/
+RankIntel/
 ├── AGENTS.md          ← Agent brain (do not delete)
 ├── .mcp.json          ← MCP server connection (do not delete)
 ├── README.md          ← This file
+├── audit_engine.py    ← Local Python intelligence & crawler engine
 ├── audits/            ← Saved audit reports (auto-generated)
 └── reports/           ← Custom reports and comparisons
 ```
