@@ -308,6 +308,121 @@ class SeoEngine:
         discovered = [start_url] + on_page.internal_links
         return list(dict.fromkeys(discovered))[:max_urls]
 
+    def crawl_site(self, start_url: str, max_pages: int = 50, depth: int = 2) -> SiteCrawlResult:
+        """Multi-page advertools crawl with site-wide issue detection."""
+        import tempfile
+        import os
+        import pandas as pd
+
+        result = SiteCrawlResult(crawl_depth=depth)
+
+        if not HAS_ADVERTOOLS:
+            discovered = self.discover_site_urls(start_url, max_urls=min(max_pages, 10))
+            for u in discovered:
+                p, _ = self.audit_static_page(u)
+                issues = []
+                if p.status_code >= 400:
+                    issues.append(f"HTTP_{p.status_code}")
+                if p.h1_count == 0:
+                    issues.append("MISSING_H1")
+                if p.word_count < 300:
+                    issues.append("THIN_CONTENT")
+                if not p.meta_description:
+                    issues.append("NO_META_DESC")
+                result.pages.append(PageSummary(
+                    url=u, status_code=p.status_code,
+                    title=p.title, title_length=p.title_length,
+                    meta_desc_length=p.meta_desc_length,
+                    h1_count=p.h1_count,
+                    has_canonical=bool(p.canonical_url),
+                    word_count=p.word_count,
+                    issues=issues
+                ))
+            result.pages_crawled = len(result.pages)
+            result.pages_with_issues = len([page for page in result.pages if page.issues])
+            return result
+
+        with tempfile.NamedTemporaryFile(suffix=".jl", delete=False) as f:
+            tmp_path = f.name
+
+        try:
+            adv.crawl(
+                url_list=[start_url],
+                output_file=tmp_path,
+                follow_links=True,
+                custom_settings={
+                    "DEPTH_LIMIT": depth,
+                    "CLOSESPIDER_PAGECOUNT": max_pages,
+                    "LOG_LEVEL": "ERROR",
+                    "USER_AGENT": "RankIntel/2.0 MultiPage Crawler",
+                }
+            )
+
+            if os.path.exists(tmp_path) and os.path.getsize(tmp_path) > 0:
+                df = pd.read_json(tmp_path, lines=True)
+                result.pages_crawled = len(df)
+                title_counts: dict = {}
+
+                for _, row in df.iterrows():
+                    url = str(row.get("url", ""))
+                    status = int(row.get("status", 200)) if not pd.isna(row.get("status")) else 200
+                    title = str(row.get("title", "") or "") if not pd.isna(row.get("title")) else ""
+                    meta_desc = str(row.get("meta_description", "") or "") if not pd.isna(row.get("meta_description")) else ""
+                    h1 = str(row.get("h1", "") or "") if not pd.isna(row.get("h1")) else ""
+                    body = str(row.get("body_text", "") or "") if not pd.isna(row.get("body_text")) else ""
+                    canonical = str(row.get("canonical", "") or "") if not pd.isna(row.get("canonical")) else ""
+                    word_count = len(body.split())
+
+                    issues = []
+                    if status >= 400:
+                        result.broken_links.append(url)
+                        issues.append(f"HTTP_{status}")
+                    if not h1 and status == 200:
+                        result.missing_h1_pages.append(url)
+                        issues.append("MISSING_H1")
+                    if word_count < 300 and status == 200:
+                        result.thin_content_pages.append(url)
+                        issues.append("THIN_CONTENT")
+                    if not meta_desc and status == 200:
+                        result.pages_without_meta_desc.append(url)
+                        issues.append("NO_META_DESC")
+                    if title:
+                        title_counts[title] = title_counts.get(title, 0) + 1
+
+                    page = PageSummary(
+                        url=url, status_code=status,
+                        title=title, title_length=len(title),
+                        meta_desc_length=len(meta_desc),
+                        h1_count=1 if h1 else 0,
+                        has_canonical=bool(canonical),
+                        word_count=word_count,
+                        issues=issues
+                    )
+                    result.pages.append(page)
+
+                result.duplicate_titles = [t for t, c in title_counts.items() if c > 1 and t]
+
+                if result.missing_h1_pages:
+                    result.site_wide_issues.append(f"{len(result.missing_h1_pages)} pages missing an H1 tag")
+                if result.thin_content_pages:
+                    result.site_wide_issues.append(f"{len(result.thin_content_pages)} pages with thin content (<300 words)")
+                if result.duplicate_titles:
+                    result.site_wide_issues.append(f"{len(result.duplicate_titles)} duplicate title tags detected across pages")
+                if result.broken_links:
+                    result.site_wide_issues.append(f"{len(result.broken_links)} broken response URLs (HTTP 4xx/5xx)")
+
+                result.pages_with_issues = len([page for page in result.pages if page.issues])
+        except Exception as e:
+            result.site_wide_issues.append(f"Crawl error encountered: {e}")
+        finally:
+            try:
+                if os.path.exists(tmp_path):
+                    os.remove(tmp_path)
+            except Exception:
+                pass
+
+        return result
+
     def execute(self, url: str) -> EngineResult:
         """Run complete SEO engine pass."""
         t0 = time.time()

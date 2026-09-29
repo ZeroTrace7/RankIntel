@@ -105,6 +105,22 @@ class MarkdownReporter:
         lines.append(f"- **Image Alt Coverage:** {p.images_with_alt} / {p.total_images} images have alt attributes ({alt_pct}%)")
         lines.append("")
 
+        # Multi-page site crawl
+        if report.site_crawl and report.site_crawl.pages_crawled > 0:
+            sc = report.site_crawl
+            lines.append("## 🕸️ SITE-WIDE MULTI-PAGE ANALYSIS")
+            lines.append(f"- **Pages Crawled:** {sc.pages_crawled} (Depth: {sc.crawl_depth})")
+            lines.append(f"- **Pages with Hygiene Issues:** {sc.pages_with_issues}")
+            lines.append(f"- **Broken Links (HTTP 4xx/5xx):** {len(sc.broken_links)}")
+            lines.append(f"- **Pages Missing H1:** {len(sc.missing_h1_pages)}")
+            lines.append(f"- **Thin Content Pages (<300 words):** {len(sc.thin_content_pages)}")
+            lines.append(f"- **Duplicate Title Tags Detected:** {len(sc.duplicate_titles)}")
+            if sc.site_wide_issues:
+                lines.append("\n### 🔴 Site-Wide Structural Findings:")
+                for issue in sc.site_wide_issues:
+                    lines.append(f"- {issue}")
+            lines.append("")
+
         # Structured Data
         s = report.unified_schema
         lines.append("## 🏗️ STRUCTURED DATA (SCHEMA.ORG)")
