@@ -8,10 +8,17 @@ from rankintel.models.schema import (
     SchemaEvidence,
     GeoCitabilityMethod,
     GeoAeoEvidence,
+    TrustLayerScore,
+    TrustStackResult,
+    PerformanceMetric,
+    PerformanceEvidence,
     EngineResult,
     ConflictFinding,
     PrioritizedAction,
     SynthesisReport,
+    GapAction,
+    GapDelta,
+    ComparisonReport,
 )
 
 __all__ = [
@@ -21,8 +28,15 @@ __all__ = [
     "SchemaEvidence",
     "GeoCitabilityMethod",
     "GeoAeoEvidence",
+    "TrustLayerScore",
+    "TrustStackResult",
+    "PerformanceMetric",
+    "PerformanceEvidence",
     "EngineResult",
     "ConflictFinding",
     "PrioritizedAction",
     "SynthesisReport",
+    "GapAction",
+    "GapDelta",
+    "ComparisonReport",
 ]
