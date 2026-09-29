@@ -20,6 +20,7 @@ from rankintel.models.schema import (
     PerformanceEvidence
 )
 from rankintel.evidence.conflicts import ConflictDetector
+from rankintel.evidence.provenance import ProvenanceTagger
 from rankintel.intelligence.fixer import FixGenerator
 from rankintel.references.quality_gates import META_LENGTH_BOUNDS, HEADING_HIERARCHY_RULES
 from rankintel.analyzers.trust_evaluator import TrustEvaluator
@@ -37,6 +38,9 @@ class IntelligenceSynthesizer:
 
         # Detect conflicts across engines
         conflicts = self.conflict_detector.detect(engine_results)
+
+        # Build evidence provenance chain
+        provenance = ProvenanceTagger.tag(engine_results)
 
         # Reconcile Unified State (Prioritizing Browser DOM if available, otherwise static SEO)
         seo_res = engine_results.get("advertools_seo")
@@ -167,6 +171,7 @@ class IntelligenceSynthesizer:
             engines_executed=[k for k, v in engine_results.items() if v.status == "success"],
             conflicts_detected=conflicts,
             prioritized_actions=actions,
+            provenance=provenance,
             unified_on_page=unified_on_page,
             unified_robots=unified_robots,
             unified_schema=unified_schema,

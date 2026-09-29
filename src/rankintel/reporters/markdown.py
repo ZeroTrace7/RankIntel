@@ -122,6 +122,19 @@ class MarkdownReporter:
             lines.append(f"- **Deprecated Schemas:** ⚠️ {', '.join(s.deprecated_types_detected)}")
         lines.append("")
 
+        # Evidence Provenance Chain
+        if report.provenance:
+            lines.append("## 🔬 EVIDENCE PROVENANCE & ENGINE ATTRIBUTION")
+            lines.append("*(Which engine produced each key finding, and cross-engine consensus status)*\n")
+            lines.append("| Finding | Source Element | Primary Engine | Confidence | Cross-Engine Consensus |")
+            lines.append("|---|---|---|---|---|")
+            for tag in report.provenance:
+                confirmed = f"🟢 Confirmed by {', '.join(tag.confirmed_by)}" if tag.confirmed_by else ""
+                contradicted = f"🔴 Conflicts with {', '.join(tag.contradicted_by)}" if tag.contradicted_by else ""
+                status = confirmed or contradicted or "⚪ Single source"
+                lines.append(f"| {tag.finding} | `{tag.source_file}` | `{tag.engine}` | {tag.confidence.upper()} | {status} |")
+            lines.append("")
+
         # AI Bot Matrix
         r = report.unified_robots
         lines.append("## 🤖 AI CRAWLER ACCESS MATRIX")
