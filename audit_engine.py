@@ -268,7 +268,7 @@ class SunriseIntelligenceEngine:
             f.write("## 🔍 GAPS & RECOMMENDATIONS (Manual/AI Review Required)\n")
             f.write("*(Feed this report to the AI agent to generate specific fixes and compare against your site)*\n")
 
-        console.print(f"\n[bold green]✅ Report successfully saved to: {report_path}[/bold green]")
+        console.print(f"\n[bold green]Report successfully saved to: {report_path}[/bold green]")
 
     def run_audit(self):
         if self.fetch_page():
