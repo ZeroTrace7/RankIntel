@@ -361,7 +361,7 @@ class TrustEvaluator:
 
         if auth_links_found or (geo and geo.authoritative_citations_count > 0):
             score += 1
-            found.append(f"Authoritative Domain Links ({', '.join(set(auth_links_found)[:2]) or 'Academic/Gov'})")
+            found.append(f"Authoritative Domain Links ({', '.join(list(set(auth_links_found))[:2]) or 'Academic/Gov'})")
         else:
             missing.append("No Links to Recognized Authoritative Sources (.gov, .edu, DOI, PubMed)")
 
