@@ -151,7 +151,11 @@ class IntelligenceSynthesizer:
 
         # Compute Holistic Health Score
         tech_score = self._compute_technical_score(unified_on_page, unified_robots, unified_schema)
-        geo_score = unified_geo.overall_citability_score or 40
+        geo_score = (
+            unified_geo.overall_citability_score
+            if (geo_res and geo_res.status == "success")
+            else 40  # Default only when GEO engine didn't execute
+        )
         trust_score = unified_trust.overall_score
         perf_score = unified_performance.overall_performance_score
 

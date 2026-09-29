@@ -312,7 +312,6 @@ class SeoEngine:
         """Multi-page advertools crawl with site-wide issue detection."""
         import tempfile
         import os
-        import pandas as pd
 
         result = SiteCrawlResult(crawl_depth=depth)
 
@@ -341,6 +340,8 @@ class SeoEngine:
             result.pages_crawled = len(result.pages)
             result.pages_with_issues = len([page for page in result.pages if page.issues])
             return result
+
+        import pandas as pd  # Only imported when HAS_ADVERTOOLS is True (pandas is an advertools dependency)
 
         with tempfile.NamedTemporaryFile(suffix=".jl", delete=False) as f:
             tmp_path = f.name
