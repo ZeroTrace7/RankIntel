@@ -220,13 +220,7 @@ class SeoEngine:
             on_page.internal_links = list(internal_links)
             on_page.external_links = list(external_links)
 
-            # Word count
-            for s in soup(["script", "style", "nav", "footer"]):
-                s.extract()
-            text = soup.get_text(separator=' ')
-            on_page.word_count = len(text.split())
-
-            # Schema detection from static DOM
+            # Schema detection from static DOM — MUST run BEFORE stripping <script> tags
             schema_tags = soup.find_all('script', type='application/ld+json')
             schema_ev.blocks_count = len(schema_tags)
 
@@ -288,6 +282,12 @@ class SeoEngine:
             schema_ev.sameas_urls = list(set(sameas_urls))
             schema_ev.has_organization = has_org
             schema_ev.has_author = has_author
+
+            # Word count — strip scripts/styles AFTER schema extraction
+            for s in soup(["script", "style", "nav", "footer"]):
+                s.extract()
+            text = soup.get_text(separator=' ')
+            on_page.word_count = len(text.split())
 
         except Exception as e:
             on_page.status_code = 0
