@@ -121,7 +121,7 @@ class SeoEngine:
         discovered: List[str] = []
         if HAS_ADVERTOOLS:
             try:
-                df = adv.sitemap_to_df(sitemap_url)
+                df = adv.sitemap_to_df(sitemap_url, recursive=False)
                 if "loc" in df.columns:
                     locs = df["loc"].dropna().tolist()
                     for u in locs[:max_urls]:
