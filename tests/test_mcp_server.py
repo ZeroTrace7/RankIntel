@@ -51,10 +51,12 @@ def test_rankintel_compare_tool():
         geo_readiness_score=50
     )
 
-    with patch("rankintel.mcp.server.EvidenceCollector"), \
-         patch("rankintel.mcp.server.IntelligenceSynthesizer") as mock_synth_cls:
-        mock_synth = mock_synth_cls.return_value
-        mock_synth.synthesize.side_effect = [rep_a, rep_b]
+    from rankintel.intelligence.comparer import IntelligenceComparer
+    comp_report = IntelligenceComparer().build_comparison(rep_a, rep_b)
+
+    with patch("rankintel.mcp.server.IntelligenceComparer") as mock_comp_cls:
+        mock_comp = mock_comp_cls.return_value
+        mock_comp.compare.return_value = comp_report
 
         res = rankintel_compare("https://a.com", "https://b.com")
 
