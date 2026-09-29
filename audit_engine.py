@@ -50,6 +50,7 @@ class SunriseIntelligenceEngine:
             self.data["technical"]["is_redirect"] = len(response.history) > 0
             
             if response.status_code == 200:
+                response.encoding = 'utf-8' if not response.encoding or response.encoding.lower() == 'iso-8859-1' else response.encoding
                 self.html = response.text
                 self.soup = BeautifulSoup(self.html, 'html.parser')
                 return True
@@ -104,7 +105,8 @@ class SunriseIntelligenceEngine:
         
         for block in schema_blocks:
             try:
-                data = json.loads(block.string)
+                content = block.string if block.string else block.text
+                data = json.loads(content, strict=False)
                 # Handle lists of schema
                 if isinstance(data, list):
                     for item in data:
@@ -117,8 +119,8 @@ class SunriseIntelligenceEngine:
                         for item in data['@graph']:
                             if '@type' in item:
                                 schema_types.append(item['@type'])
-            except:
-                pass
+            except Exception as e:
+                console.print(f"[yellow]Skipped a malformed schema block: {e}[/yellow]")
         
         # Deduplicate
         self.data["schema"] = list(set(schema_types))
@@ -272,8 +274,8 @@ class SunriseIntelligenceEngine:
 
     def run_audit(self):
         if self.fetch_page():
-            self.extract_on_page()
             self.extract_schema()
+            self.extract_on_page()
             self.check_ai_crawlers()
             self.check_performance()
             self.analyze_aeo()
