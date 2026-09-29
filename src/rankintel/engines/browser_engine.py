@@ -41,12 +41,13 @@ class BrowserEngine:
                 
                 if result and result.success:
                     soup = BeautifulSoup(result.html or "", "html.parser")
-                    on_page = self._parse_on_page(soup, url, round(time.time() - t0, 2))
-                    on_page.engine_source = "crawl4ai_browser_dom"
-                    
+                    # Parse schema BEFORE on_page (which strips <script> tags)
                     schema_ev = self._parse_schema(soup)
                     schema_ev.engine_source = "crawl4ai_browser_dom"
                     schema_ev.is_injected_via_js = True
+
+                    on_page = self._parse_on_page(soup, url, round(time.time() - t0, 2))
+                    on_page.engine_source = "crawl4ai_browser_dom"
 
                     return EngineResult(
                         engine_name="crawl4ai_browser",
