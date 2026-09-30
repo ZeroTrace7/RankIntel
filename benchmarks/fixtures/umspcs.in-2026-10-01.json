@@ -1,0 +1,2033 @@
+{
+  "url": "https://umspcs.in/",
+  "domain": "umspcs.in",
+  "timestamp": "2026-10-01",
+  "overall_health_score": 67,
+  "geo_readiness_score": 55,
+  "technical_health_score": 75,
+  "trust_score": 56,
+  "performance_score": 85,
+  "keyword_score": 0,
+  "site_health_score": 0,
+  "score_formula_mode": "4_engine",
+  "engines_executed": [
+    "advertools_seo",
+    "browser_engine",
+    "rankintel_geo",
+    "performance_engine"
+  ],
+  "conflicts_detected": [],
+  "prioritized_actions": [
+    {
+      "level": "HIGH",
+      "title": "Optimize Title Tag Length & CTR Hook",
+      "finding": "Current title is 0 characters.",
+      "rationale": "Titles over 60 chars are truncated in SERPs with ellipses. Target 50-60 chars with primary keyword front-loaded.",
+      "engine_confidence": "HIGH (Deterministic measurement)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Harden Technical Trust & Security Headers",
+      "finding": "X-Frame-Options Header Missing",
+      "rationale": "HSTS and Content-Security-Policy prevent security downgrades and satisfy AI agent reliability gates.",
+      "engine_confidence": "HIGH (Header telemetry)",
+      "fix_snippet": null
+    },
+    {
+      "level": "GEO_WIN",
+      "title": "Implement Answer-First H2 Structure",
+      "finding": "Only 28% of H2 sections open with direct factual answers.",
+      "rationale": "AutoGEO research proves AI models prioritize passages providing concrete numbers/facts in the first 150 characters.",
+      "engine_confidence": "MEDIUM (Heuristic NLP)",
+      "fix_snippet": null
+    }
+  ],
+  "provenance": [
+    {
+      "finding": "Applebot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Applebot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Applebot-Extended: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Applebot-Extended -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bingbot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Bingbot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bytespider: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Bytespider -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "CCBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: CCBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Claude-SearchBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Claude-SearchBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "ClaudeBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: ClaudeBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "FacebookBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: FacebookBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "GPTBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: GPTBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Google-Extended: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Google-Extended -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Googlebot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Googlebot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "OAI-SearchBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: OAI-SearchBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "PerplexityBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: PerplexityBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "cohere-ai: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: cohere-ai -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'BreadcrumbList' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'FAQPage' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'ImageObject' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'LocalBusiness' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'Organization' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'Place' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'PostalAddress' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'WebPage' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'WebSite' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Page Title (61 chars): 'BIS Certifications Consultant & Other Certifi...'",
+      "source_file": "<title> tag",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "TTFB Latency: 129ms",
+      "source_file": "HTTP response probe",
+      "engine": "performance_engine",
+      "evidence_snippet": "Telemetry Source: local_probe",
+      "confidence": "medium",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "/llms.txt: PRESENT",
+      "source_file": "/llms.txt HTTP check",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Princeton GEO Citability: 55/100",
+      "source_file": "DOM content passages",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    }
+  ],
+  "unified_on_page": {
+    "url": "https://umspcs.in/",
+    "status_code": 200,
+    "response_time_sec": 2.37,
+    "title": "",
+    "title_length": 0,
+    "meta_description": "UMSPCS provides certifications (BIS - ISI, CRS, FMCS), product compliance, MTCTE, WPC, CDSCO, BEE, EPR, ISO, CE, UKCE, and more for businesses in India and globally.",
+    "meta_desc_length": 165,
+    "h1_count": 1,
+    "h1_text": [
+      "UMS Product Compliance Services –BIS Certification Consultant in India"
+    ],
+    "h2_count": 14,
+    "h2_text": [
+      "About UMSPCS - Top BIS Certification Consultant in Delhi NCR, India",
+      "Search Any Product Here",
+      "UMS Provides Specialized Support for",
+      "BIS certification- Trusted compliance consultancy in India",
+      "Supporting Business Growth and Expansion",
+      "Why Choose UMSPCS",
+      "How We Work (Step-by-Step Process)",
+      "Testimonials & Client Stories",
+      "Our Google Reviews",
+      "We Are Serving Pan India",
+      "Our Clients",
+      "Way To Reach Success",
+      "We Love To Hear From You",
+      "Get Free Expert Consultation"
+    ],
+    "h3_count": 44,
+    "h3_text": [
+      "Submit Your Query",
+      "Submit Your Query",
+      "Compliance Journey at UMSPCS",
+      "Step 1 Assessment & Strategy",
+      "Step 2 Documentation & Testing",
+      "Step 3 Factory Audit & Inspection",
+      "Step 4 Certification & Registration",
+      "Step  5Post-Certification Support",
+      "We Serve all Over India and Internationally as Well",
+      "BIS Certification Consultant in Bangalore",
+      "ISI Certification Consultant in Pune",
+      "FMCS Certification Consultant in Pune",
+      "BIS CRS Certification Consultant in Mumbai",
+      "BIS Certificate Consultant in Mumbai",
+      "BIS CRS Certification Consultant in Pune",
+      "BIS Certification Consultant in Pune",
+      "BIS Certification Consultant in Gurgaon",
+      "FMCS Certification Consultant in Gurgaon",
+      "BIS CRS Certification Consultant in Gurgaon",
+      "ISI Certification Consultant in Gurgaon",
+      "FMCS Certification Consultant in Mumbai",
+      "BIS ISI Certification Consultant in Bangalore",
+      "BIS ISI Certification Consultant in Mumbai",
+      "BIS CRS Certification Consultant in Bangalore",
+      "BIS FMCS Certification Consultant in Bangalore",
+      "BIS  Certification Consultant in Chennai",
+      "Submit Your Query",
+      "Discussion",
+      "Initiation",
+      "Closure",
+      "Our Trusted Partners",
+      "Ready to Begin Your BIS Certification?",
+      "+91-7011067811‬",
+      "Biscro.customercare@umspcs.in",
+      "Logix Technova, A-810, Sector 132, Noida, 201304, Uttar Pradesh",
+      "Frequently Asked Questions",
+      "Latest Blogs and News",
+      "What Do German Furniture & Electrical Manufacturers Know About BIS",
+      "BIS Certification Under IS 17875:2022: Requirements for Stainless Steel Seamless",
+      "How to Get CDSCO Certification for Bath/Shower Products in India:",
+      "Services",
+      "Important Links",
+      "Contact",
+      "FOR ANY QUERY"
+    ],
+    "total_images": 171,
+    "images_with_alt": 170,
+    "word_count": 3008,
+    "canonical_url": null,
+    "is_redirect": false,
+    "response_headers": {
+      "Date": "Wed, 30 Sep 2026 20:06:47 GMT",
+      "Content-Type": "text/html; charset=UTF-8",
+      "Transfer-Encoding": "chunked",
+      "Connection": "keep-alive",
+      "X-Powered-By": "PHP/8.2.33",
+      "X-DNS-Prefetch-Control": "on",
+      "Link": "<https://umspcs.in/wp-json/>; rel=\"https://api.w.org/\", <https://umspcs.in/wp-json/wp/v2/pages/7436>; rel=\"alternate\"; title=\"JSON\"; type=\"application/json\", <https://umspcs.in/>; rel=shortlink",
+      "Etag": "\"56514-1790762774;br\"",
+      "X-LiteSpeed-Cache": "hit",
+      "Content-Encoding": "br",
+      "platform": "hostinger",
+      "panel": "hpanel",
+      "Content-Security-Policy": "upgrade-insecure-requests",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Vary": "Accept-Encoding",
+      "Server": "hcdn",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "x-hcdn-request-id": "0b3f14608d645e8b8763aabbdfc40fc2-mum-edge6",
+      "x-hcdn-cache-status": "MISS",
+      "x-hcdn-upstream-rt": "0.006"
+    },
+    "internal_links": [
+      "https://umspcs.in/service/import-export-license-iec-certificate/",
+      "https://umspcs.in/service/wpc-approval/",
+      "https://umspcs.in/service/bis-hallmarking-registration/",
+      "https://umspcs.in/contact-us/",
+      "https://umspcs.in/blog/bis-certification-for-industrial-safety-footwear-compliance/",
+      "https://umspcs.in/local-service/isi-consultant-in-gurgaon/",
+      "https://umspcs.in/service/epr-for-tyre-waste/",
+      "https://umspcs.in/service/etsi-en-300-113-v3-1-1-testing/",
+      "https://umspcs.in/service/shock-and-vibration-testing/",
+      "https://umspcs.in/service/nsic-registration/",
+      "https://umspcs.in/privacy-policy/",
+      "https://umspcs.in/service/bis-certification-for-electronic-product/",
+      "https://umspcs.in/service/wmi-registration/",
+      "https://umspcs.in/service/bis-certificate-for-foreign-manufacture/",
+      "https://umspcs.in/service/scheme-x/",
+      "https://umspcs.in/service/cybersecurity-certification/",
+      "https://umspcs.in/blog/bis-isi-mark-for-marine-plywood-testing-factory-inspection-approval/",
+      "https://umspcs.in/local-service/isi-consultant-in-bangalore/",
+      "https://umspcs.in/service/bis-isi-certificate-for-indian-manufacture/",
+      "https://umspcs.in/news-updates/",
+      "https://umspcs.in/service/bis-certificate-of-conformity/",
+      "https://umspcs.in/service/bis-crs-product/",
+      "https://umspcs.in/service/epr-for-used-oil/",
+      "https://umspcs.in/news-updates/government-notifies-safety-of-electrical-appliances-qco-2026-what-it-means-for-manufacturers-and-consumers/",
+      "https://umspcs.in/service/fssai-licence-registration/",
+      "https://umspcs.in/bis-qco/",
+      "https://umspcs.in/international/",
+      "https://umspcs.in/service/cb-certification/",
+      "https://umspcs.in/blog/an-insight-into-upcoming-qcos-quality-control-orders-in-india/",
+      "https://umspcs.in/blog/",
+      "https://umspcs.in/about-us/",
+      "https://umspcs.in/service/emc-test-tec/",
+      "https://umspcs.in/local-service/fmcs-consultant-in-gurgaon/",
+      "https://umspcs.in/service/fcc-certification/",
+      "https://umspcs.in/blog/bis-crs-certification-for-cash-registers/",
+      "https://umspcs.in/local-service/isi-consultant-in-pune/",
+      "https://umspcs.in/service/drug-licence/",
+      "https://umspcs.in/local-service/bis-certificate-in-bangalore/",
+      "https://umspcs.in/service/atex-testing/",
+      "https://umspcs.in/service/ukca-mark/",
+      "https://umspcs.in/service/solar-equipment-certification/",
+      "https://umspcs.in/service/legal-metrology/",
+      "https://umspcs.in/service/bis-isi-product/",
+      "https://umspcs.in/service/mtcte-phase-wise-products/",
+      "https://umspcs.in/local-service/bis-certificate-in-mumbai/",
+      "https://umspcs.in/blog/copyright-registration-in-india-guide-for-businesses-creators/",
+      "https://umspcs.in/service/epr-for-tyre-waste",
+      "https://umspcs.in/service/technical-and-policy-representation/",
+      "https://umspcs.in/blog/how-to-get-cdsco-certification-for-bath-shower-products-in-india/",
+      "https://umspcs.in/news-updates/important-notification-launch-of-bis-scheme-x-certification/",
+      "https://umspcs.in/service/rohs-certification-approval/",
+      "https://umspcs.in/service/e-waste-management-registration/",
+      "https://umspcs.in/service/tec-certification-telecom/",
+      "https://umspcs.in/service/iso-13485/",
+      "https://umspcs.in/service/msme-ssi-udyam-registration/",
+      "https://umspcs.in/service/imei-registration/",
+      "https://umspcs.in/our-photo-gallery/",
+      "https://umspcs.in/service/lm79-lm80-testing-services/",
+      "https://umspcs.in/service/moef-certification/",
+      "https://umspcs.in/local-service/fmcs-consultant-in-pune/",
+      "https://umspcs.in/blog/how-to-get-bis-certification-for-cross-recessed-screws-in-india/",
+      "https://umspcs.in/service/mtcte-er-list/",
+      "https://umspcs.in/service/tac-approval-certificate-for-automobile/",
+      "https://umspcs.in/blog/nsic-registration-for-msmes-benefits-process-government-tender-advantages/",
+      "https://umspcs.in/service/noc-for-steel/",
+      "https://umspcs.in/service/rdso/",
+      "https://umspcs.in/service/cdsco-cosmetic/",
+      "https://umspcs.in/service/gem-registration/",
+      "https://umspcs.in/service/ce-certification/",
+      "https://umspcs.in/local-service/isi-consultant-in-mumbai/",
+      "https://umspcs.in/service/mtcte-certification/",
+      "https://umspcs.in/service/drone-certification/",
+      "https://umspcs.in/service/weee-directive/",
+      "https://umspcs.in/local-service/fmcs-consultant-in-mumbai/",
+      "https://umspcs.in/local-service/fmcs-consultant-in-bangalore/",
+      "https://umspcs.in/service/trademark-registration/",
+      "https://umspcs.in/service/cdsco-approvals/",
+      "https://umspcs.in/service/eco-mark/",
+      "https://umspcs.in/service/iso-certification/",
+      "https://umspcs.in/service/cdsco-medical-devices/",
+      "https://umspcs.in/service/cb-certification",
+      "https://umspcs.in/blog/bis-certificate-license-registration-consultant-in-pune/",
+      "https://umspcs.in/blog/bis-certification-for-electric-heating-tools/",
+      "https://umspcs.in/service/bee-registration-india/",
+      "https://umspcs.in/our-clients-umspcs/",
+      "https://umspcs.in/",
+      "https://umspcs.in/blog/ultimate-guide-to-bis-certification-in-2025-new-rules-compliance-updates/",
+      "https://umspcs.in/local-service/bis-certificate-in-pune/",
+      "https://umspcs.in/service/global-market-access/",
+      "https://umspcs.in/blog/what-do-german-furniture-electrical-manufacturers-know-about-bis-certification/",
+      "https://umspcs.in/service/ip-rating-test/",
+      "https://umspcs.in/service/plastic-waste-approval/",
+      "https://umspcs.in/author/umspcs/",
+      "https://umspcs.in/local-service/crs-consultant-in-pune/",
+      "https://umspcs.in/#contact-form",
+      "https://umspcs.in/local-service/",
+      "https://umspcs.in/service/rf-test-wpc/",
+      "https://umspcs.in/local-service/crs-consultant-in-gurgaon/",
+      "https://umspcs.in/service/epr-for-battery-waste/",
+      "https://umspcs.in/service/nabl-accreditation/",
+      "https://umspcs.in/blog/bis-crs-certification-for-passport-reader/",
+      "https://umspcs.in/category/blog/",
+      "https://umspcs.in/service/copyright-registration/",
+      "https://umspcs.in/local-service/bis-certificate-in-gurgaon/",
+      "https://umspcs.in/service/ul-certification/",
+      "https://umspcs.in/service/gulf-certification/",
+      "https://umspcs.in/service/wireless-product-testing/",
+      "https://umspcs.in/service/peso-certificate/",
+      "https://umspcs.in/local-service/crs-consultant-in-mumbai/",
+      "https://umspcs.in/local-service/crs-consultant-in-bangalore/",
+      "https://umspcs.in/blog/bis-certification-under-is-17875-requirements-for-stainless-steel-seamless-pipes-tubes/",
+      "https://umspcs.in/local-service/bis-certificate-in-chennai/"
+    ],
+    "external_links": [
+      "https://www.pinterest.com/umspcs/",
+      "https://www.google.com/maps/search/?api=1&query=Logix+Technova,+A-810,+Sector+132,+Noida,+201305,+Uttar+Pradesh",
+      "https://www.instagram.com/umspcs_official/",
+      "http://wa.me/917011067811",
+      "https://www.facebook.com/umsproductcomplianceservices",
+      "https://www.linkedin.com/company/ums-product-compliance-services-pvt-ltd/",
+      "https://wa.me/917011067811",
+      "https://www.youtube.com/@UMSPCS",
+      "https://x.com/Umspcsofficial",
+      "#content",
+      "mailto:biscro.customercare@umspcs.in",
+      "tel:+91-7011067811",
+      "https://www.facebook.com/umsproductcomplianceservices",
+      "https://x.com/Umspcsofficial",
+      "https://www.linkedin.com/company/ums-product-compliance-services-pvt-ltd/",
+      "https://www.youtube.com/@UMSPCS",
+      "https://www.pinterest.com/umspcs/",
+      "https://www.instagram.com/umspcs_official/",
+      "https://umspcs.in/",
+      "https://umspcs.in/",
+      "https://umspcs.in/",
+      "#",
+      "https://umspcs.in/service/bis-certification-for-electronic-product/",
+      "https://umspcs.in/service/trademark-registration/",
+      "https://umspcs.in/service/bee-registration-india/",
+      "https://umspcs.in/service/fssai-licence-registration/",
+      "https://umspcs.in/service/gem-registration/",
+      "https://umspcs.in/service/copyright-registration/",
+      "https://umspcs.in/service/wpc-approval/",
+      "https://umspcs.in/service/msme-ssi-udyam-registration/",
+      "https://umspcs.in/service/tac-approval-certificate-for-automobile/",
+      "https://umspcs.in/service/nsic-registration/",
+      "https://umspcs.in/service/imei-registration/",
+      "https://umspcs.in/service/rohs-certification-approval/",
+      "https://umspcs.in/service/legal-metrology/",
+      "https://umspcs.in/service/cdsco-approvals/",
+      "https://umspcs.in/service/rdso/",
+      "https://umspcs.in/service/moef-certification/",
+      "https://umspcs.in/service/drone-certification/",
+      "https://umspcs.in/service/ul-certification/",
+      "https://umspcs.in/service/cybersecurity-certification/",
+      "https://umspcs.in/service/weee-directive/",
+      "#",
+      "https://umspcs.in/service/bis-isi-certificate-for-indian-manufacture/",
+      "https://umspcs.in/service/bis-certificate-for-foreign-manufacture/",
+      "https://umspcs.in/service/e-waste-management-registration/",
+      "https://umspcs.in/service/iso-certification/",
+      "https://umspcs.in/service/bis-certificate-of-conformity/",
+      "https://umspcs.in/service/drug-licence/",
+      "https://umspcs.in/service/plastic-waste-approval/",
+      "https://umspcs.in/service/mtcte-certification/",
+      "https://umspcs.in/service/tec-certification-telecom/",
+      "https://umspcs.in/service/bis-hallmarking-registration/",
+      "https://umspcs.in/service/peso-certificate/",
+      "https://umspcs.in/service/wmi-registration/",
+      "https://umspcs.in/service/epr-for-battery-waste/",
+      "https://umspcs.in/service/epr-for-used-oil/",
+      "https://umspcs.in/service/epr-for-tyre-waste/",
+      "https://umspcs.in/service/solar-equipment-certification/",
+      "#",
+      "https://umspcs.in/service/ip-rating-test/",
+      "https://umspcs.in/service/rf-test-wpc/",
+      "https://umspcs.in/service/emc-test-tec/",
+      "https://umspcs.in/service/lm79-lm80-testing-services/",
+      "https://umspcs.in/service/gulf-certification/",
+      "https://umspcs.in/service/ukca-mark/",
+      "https://umspcs.in/service/nabl-accreditation/",
+      "https://umspcs.in/service/global-market-access/",
+      "https://umspcs.in/service/eco-mark/",
+      "https://umspcs.in/service/cb-certification/",
+      "https://umspcs.in/service/fcc-certification/",
+      "https://umspcs.in/service/scheme-x/",
+      "https://umspcs.in/service/noc-for-steel/",
+      "https://umspcs.in/service/import-export-license-iec-certificate/",
+      "https://umspcs.in/service/etsi-en-300-113-v3-1-1-testing/",
+      "https://umspcs.in/service/wireless-product-testing/",
+      "https://umspcs.in/service/technical-and-policy-representation/",
+      "https://umspcs.in/service/shock-and-vibration-testing/",
+      "https://umspcs.in/service/ce-certification/",
+      "https://umspcs.in/service/atex-testing/",
+      "#",
+      "https://umspcs.in/service/bis-crs-product/",
+      "https://umspcs.in/service/bis-isi-product/",
+      "https://umspcs.in/service/mtcte-er-list/",
+      "https://umspcs.in/service/mtcte-phase-wise-products/",
+      "https://umspcs.in/service/cdsco-medical-devices/",
+      "https://umspcs.in/service/cdsco-cosmetic/",
+      "https://umspcs.in/service/iso-13485/",
+      "https://umspcs.in/service/bis-certification-for-electronic-product/",
+      "https://umspcs.in/service/bis-isi-certificate-for-indian-manufacture/",
+      "https://umspcs.in/service/bis-certificate-for-foreign-manufacture/",
+      "https://umspcs.in/service/import-export-license-iec-certificate/",
+      "https://umspcs.in/service/e-waste-management-registration/",
+      "https://umspcs.in/service/msme-ssi-udyam-registration/",
+      "https://umspcs.in/service/imei-registration/",
+      "https://umspcs.in/service/bee-registration-india/",
+      "https://umspcs.in/service/cdsco-approvals/",
+      "https://umspcs.in/service/copyright-registration/",
+      "https://umspcs.in/service/drug-licence/",
+      "https://umspcs.in/service/emc-test-tec/",
+      "https://umspcs.in/service/fssai-licence-registration/",
+      "https://umspcs.in/service/gem-registration/",
+      "https://umspcs.in/service/ip-rating-test/",
+      "https://umspcs.in/service/iso-certification/",
+      "https://umspcs.in/service/bis-certificate-of-conformity/",
+      "https://umspcs.in/service/legal-metrology/",
+      "https://umspcs.in/service/lm79-lm80-testing-services/",
+      "https://umspcs.in/service/noc-for-steel/",
+      "https://umspcs.in/service/nsic-registration/",
+      "https://umspcs.in/service/plastic-waste-approval/",
+      "https://umspcs.in/service/rf-test-wpc/",
+      "https://umspcs.in/service/rohs-certification-approval/",
+      "https://umspcs.in/service/mtcte-certification/",
+      "https://umspcs.in/service/tec-certification-telecom/",
+      "https://umspcs.in/service/scheme-x/",
+      "https://umspcs.in/service/wmi-registration/",
+      "https://umspcs.in/service/epr-for-battery-waste/",
+      "https://umspcs.in/service/epr-for-used-oil/",
+      "https://umspcs.in/service/peso-certificate/",
+      "https://umspcs.in/service/tac-approval-certificate-for-automobile/",
+      "https://umspcs.in/service/bis-hallmarking-registration/",
+      "https://umspcs.in/service/trademark-registration/",
+      "https://umspcs.in/service/import-export-license-iec-certificate/",
+      "https://umspcs.in/service/wpc-approval/",
+      "https://umspcs.in/service/bis-isi-product/",
+      "https://umspcs.in/service/bis-crs-product/",
+      "https://umspcs.in/service/mtcte-er-list/",
+      "https://umspcs.in/service/mtcte-phase-wise-products/",
+      "https://umspcs.in/service/cdsco-medical-devices/",
+      "https://umspcs.in/service/cdsco-cosmetic/",
+      "https://umspcs.in/service/fcc-certification/",
+      "https://umspcs.in/service/cb-certification/",
+      "https://umspcs.in/service/epr-for-tyre-waste/",
+      "https://umspcs.in/service/eco-mark/",
+      "https://umspcs.in/service/global-market-access/",
+      "https://umspcs.in/service/nabl-accreditation/",
+      "https://umspcs.in/service/gulf-certification/",
+      "https://umspcs.in/service/ukca-mark/",
+      "https://umspcs.in/service/rdso/",
+      "https://umspcs.in/service/moef-certification/",
+      "https://umspcs.in/service/drone-certification/",
+      "https://umspcs.in/service/ul-certification/",
+      "https://umspcs.in/service/cybersecurity-certification/",
+      "https://umspcs.in/service/etsi-en-300-113-v3-1-1-testing/",
+      "https://umspcs.in/service/weee-directive/",
+      "https://umspcs.in/service/solar-equipment-certification/",
+      "https://umspcs.in/service/wireless-product-testing/",
+      "https://umspcs.in/service/technical-and-policy-representation/",
+      "https://umspcs.in/service/iso-13485/",
+      "https://umspcs.in/service/ce-certification/",
+      "https://umspcs.in/service/shock-and-vibration-testing/",
+      "https://umspcs.in/service/atex-testing/",
+      "https://umspcs.in/local-service/",
+      "https://umspcs.in/international/",
+      "https://umspcs.in/blog/",
+      "https://umspcs.in/news-updates/",
+      "https://umspcs.in/bis-qco/",
+      "https://umspcs.in/our-clients-umspcs/",
+      "https://umspcs.in/about-us/",
+      "https://umspcs.in/contact-us/",
+      "https://umspcs.in/",
+      "https://umspcs.in/",
+      "#",
+      "https://umspcs.in/service/bis-certification-for-electronic-product/",
+      "https://umspcs.in/service/trademark-registration/",
+      "https://umspcs.in/service/bee-registration-india/",
+      "https://umspcs.in/service/fssai-licence-registration/",
+      "https://umspcs.in/service/gem-registration/",
+      "https://umspcs.in/service/copyright-registration/",
+      "https://umspcs.in/service/wpc-approval/",
+      "https://umspcs.in/service/msme-ssi-udyam-registration/",
+      "https://umspcs.in/service/tac-approval-certificate-for-automobile/",
+      "https://umspcs.in/service/nsic-registration/",
+      "https://umspcs.in/service/imei-registration/",
+      "https://umspcs.in/service/rohs-certification-approval/",
+      "https://umspcs.in/service/legal-metrology/",
+      "https://umspcs.in/service/cdsco-approvals/",
+      "https://umspcs.in/service/rdso/",
+      "https://umspcs.in/service/moef-certification/",
+      "https://umspcs.in/service/drone-certification/",
+      "https://umspcs.in/service/ul-certification/",
+      "https://umspcs.in/service/cybersecurity-certification/",
+      "https://umspcs.in/service/weee-directive/",
+      "#",
+      "https://umspcs.in/service/bis-isi-certificate-for-indian-manufacture/",
+      "https://umspcs.in/service/bis-certificate-for-foreign-manufacture/",
+      "https://umspcs.in/service/e-waste-management-registration/",
+      "https://umspcs.in/service/iso-certification/",
+      "https://umspcs.in/service/bis-certificate-of-conformity/",
+      "https://umspcs.in/service/drug-licence/",
+      "https://umspcs.in/service/plastic-waste-approval/",
+      "https://umspcs.in/service/mtcte-certification/",
+      "https://umspcs.in/service/tec-certification-telecom/",
+      "https://umspcs.in/service/bis-hallmarking-registration/",
+      "https://umspcs.in/service/peso-certificate/",
+      "https://umspcs.in/service/wmi-registration/",
+      "https://umspcs.in/service/epr-for-battery-waste/",
+      "https://umspcs.in/service/epr-for-used-oil/",
+      "https://umspcs.in/service/epr-for-tyre-waste/",
+      "https://umspcs.in/service/solar-equipment-certification/",
+      "#",
+      "https://umspcs.in/service/ip-rating-test/",
+      "https://umspcs.in/service/rf-test-wpc/",
+      "https://umspcs.in/service/emc-test-tec/",
+      "https://umspcs.in/service/lm79-lm80-testing-services/",
+      "https://umspcs.in/service/gulf-certification/",
+      "https://umspcs.in/service/ukca-mark/",
+      "https://umspcs.in/service/nabl-accreditation/",
+      "https://umspcs.in/service/global-market-access/",
+      "https://umspcs.in/service/eco-mark/",
+      "https://umspcs.in/service/cb-certification/",
+      "https://umspcs.in/service/fcc-certification/",
+      "https://umspcs.in/service/scheme-x/",
+      "https://umspcs.in/service/noc-for-steel/",
+      "https://umspcs.in/service/import-export-license-iec-certificate/",
+      "https://umspcs.in/service/etsi-en-300-113-v3-1-1-testing/",
+      "https://umspcs.in/service/wireless-product-testing/",
+      "https://umspcs.in/service/technical-and-policy-representation/",
+      "https://umspcs.in/service/shock-and-vibration-testing/",
+      "https://umspcs.in/service/ce-certification/",
+      "https://umspcs.in/service/atex-testing/",
+      "#",
+      "https://umspcs.in/service/bis-crs-product/",
+      "https://umspcs.in/service/bis-isi-product/",
+      "https://umspcs.in/service/mtcte-er-list/",
+      "https://umspcs.in/service/mtcte-phase-wise-products/",
+      "https://umspcs.in/service/cdsco-medical-devices/",
+      "https://umspcs.in/service/cdsco-cosmetic/",
+      "https://umspcs.in/service/iso-13485/",
+      "https://umspcs.in/service/bis-certification-for-electronic-product/",
+      "https://umspcs.in/service/bis-isi-certificate-for-indian-manufacture/",
+      "https://umspcs.in/service/bis-certificate-for-foreign-manufacture/",
+      "https://umspcs.in/service/import-export-license-iec-certificate/",
+      "https://umspcs.in/service/e-waste-management-registration/",
+      "https://umspcs.in/service/msme-ssi-udyam-registration/",
+      "https://umspcs.in/service/imei-registration/",
+      "https://umspcs.in/service/bee-registration-india/",
+      "https://umspcs.in/service/cdsco-approvals/",
+      "https://umspcs.in/service/copyright-registration/",
+      "https://umspcs.in/service/drug-licence/",
+      "https://umspcs.in/service/emc-test-tec/",
+      "https://umspcs.in/service/fssai-licence-registration/",
+      "https://umspcs.in/service/gem-registration/",
+      "https://umspcs.in/service/ip-rating-test/",
+      "https://umspcs.in/service/iso-certification/",
+      "https://umspcs.in/service/bis-certificate-of-conformity/",
+      "https://umspcs.in/service/legal-metrology/",
+      "https://umspcs.in/service/lm79-lm80-testing-services/",
+      "https://umspcs.in/service/noc-for-steel/",
+      "https://umspcs.in/service/nsic-registration/",
+      "https://umspcs.in/service/plastic-waste-approval/",
+      "https://umspcs.in/service/rf-test-wpc/",
+      "https://umspcs.in/service/rohs-certification-approval/",
+      "https://umspcs.in/service/mtcte-certification/",
+      "https://umspcs.in/service/tec-certification-telecom/",
+      "https://umspcs.in/service/scheme-x/",
+      "https://umspcs.in/service/wmi-registration/",
+      "https://umspcs.in/service/epr-for-battery-waste/",
+      "https://umspcs.in/service/epr-for-used-oil/",
+      "https://umspcs.in/service/peso-certificate/",
+      "https://umspcs.in/service/tac-approval-certificate-for-automobile/",
+      "https://umspcs.in/service/bis-hallmarking-registration/",
+      "https://umspcs.in/service/trademark-registration/",
+      "https://umspcs.in/service/import-export-license-iec-certificate/",
+      "https://umspcs.in/service/wpc-approval/",
+      "https://umspcs.in/service/bis-isi-product/",
+      "https://umspcs.in/service/bis-crs-product/",
+      "https://umspcs.in/service/mtcte-er-list/",
+      "https://umspcs.in/service/mtcte-phase-wise-products/",
+      "https://umspcs.in/service/cdsco-medical-devices/",
+      "https://umspcs.in/service/cdsco-cosmetic/",
+      "https://umspcs.in/service/fcc-certification/",
+      "https://umspcs.in/service/cb-certification/",
+      "https://umspcs.in/service/epr-for-tyre-waste/",
+      "https://umspcs.in/service/eco-mark/",
+      "https://umspcs.in/service/global-market-access/",
+      "https://umspcs.in/service/nabl-accreditation/",
+      "https://umspcs.in/service/gulf-certification/",
+      "https://umspcs.in/service/ukca-mark/",
+      "https://umspcs.in/service/rdso/",
+      "https://umspcs.in/service/moef-certification/",
+      "https://umspcs.in/service/drone-certification/",
+      "https://umspcs.in/service/ul-certification/",
+      "https://umspcs.in/service/cybersecurity-certification/",
+      "https://umspcs.in/service/etsi-en-300-113-v3-1-1-testing/",
+      "https://umspcs.in/service/weee-directive/",
+      "https://umspcs.in/service/solar-equipment-certification/",
+      "https://umspcs.in/service/wireless-product-testing/",
+      "https://umspcs.in/service/technical-and-policy-representation/",
+      "https://umspcs.in/service/iso-13485/",
+      "https://umspcs.in/service/ce-certification/",
+      "https://umspcs.in/service/shock-and-vibration-testing/",
+      "https://umspcs.in/service/atex-testing/",
+      "https://umspcs.in/local-service/",
+      "https://umspcs.in/international/",
+      "https://umspcs.in/blog/",
+      "https://umspcs.in/news-updates/",
+      "https://umspcs.in/bis-qco/",
+      "https://umspcs.in/our-clients-umspcs/",
+      "https://umspcs.in/about-us/",
+      "https://umspcs.in/contact-us/",
+      "tel:+917011067811",
+      "http://wa.me/917011067811",
+      "https://umspcs.in/news-updates/government-notifies-safety-of-electrical-appliances-qco-2026-what-it-means-for-manufacturers-and-consumers/",
+      "https://umspcs.in/blog/bis-crs-certification-for-passport-reader/",
+      "https://umspcs.in/blog/copyright-registration-in-india-guide-for-businesses-creators/",
+      "https://umspcs.in/blog/bis-isi-mark-for-marine-plywood-testing-factory-inspection-approval/",
+      "https://umspcs.in/blog/bis-certification-for-electric-heating-tools/",
+      "https://umspcs.in/blog/nsic-registration-for-msmes-benefits-process-government-tender-advantages/",
+      "https://umspcs.in/blog/bis-certificate-license-registration-consultant-in-pune/",
+      "https://umspcs.in/blog/bis-crs-certification-for-cash-registers/",
+      "https://umspcs.in/about-us/",
+      "https://umspcs.in/news-updates/government-notifies-safety-of-electrical-appliances-qco-2026-what-it-means-for-manufacturers-and-consumers/",
+      "https://umspcs.in/blog/an-insight-into-upcoming-qcos-quality-control-orders-in-india/",
+      "https://umspcs.in/blog/how-to-get-bis-certification-for-cross-recessed-screws-in-india/",
+      "https://umspcs.in/blog/ultimate-guide-to-bis-certification-in-2025-new-rules-compliance-updates/",
+      "https://umspcs.in/news-updates/important-notification-launch-of-bis-scheme-x-certification/",
+      "https://umspcs.in/blog/bis-certification-for-industrial-safety-footwear-compliance/",
+      "https://umspcs.in/news-updates/government-notifies-safety-of-electrical-appliances-qco-2026-what-it-means-for-manufacturers-and-consumers/",
+      "https://umspcs.in/blog/an-insight-into-upcoming-qcos-quality-control-orders-in-india/",
+      "https://umspcs.in/blog/how-to-get-bis-certification-for-cross-recessed-screws-in-india/",
+      "https://umspcs.in/blog/ultimate-guide-to-bis-certification-in-2025-new-rules-compliance-updates/",
+      "https://umspcs.in/news-updates/important-notification-launch-of-bis-scheme-x-certification/",
+      "https://umspcs.in/blog/bis-certification-for-industrial-safety-footwear-compliance/",
+      "https://umspcs.in/service/bis-certificate-for-foreign-manufacture/",
+      "https://umspcs.in/service/bis-isi-certificate-for-indian-manufacture/",
+      "https://umspcs.in/service/scheme-x/",
+      "https://umspcs.in/service/bis-certificate-of-conformity/",
+      "https://umspcs.in/service/bis-hallmarking-registration/",
+      "https://umspcs.in/service/global-market-access/",
+      "https://umspcs.in/service/cdsco-approvals/",
+      "https://umspcs.in/service/nabl-accreditation/",
+      "https://umspcs.in/service/wmi-registration/",
+      "https://umspcs.in/service/eco-mark/",
+      "https://umspcs.in/service/drug-licence/",
+      "https://umspcs.in/service/peso-certificate/",
+      "https://umspcs.in/service/iso-certification/",
+      "https://umspcs.in/service/e-waste-management-registration/",
+      "https://umspcs.in/service/plastic-waste-approval/",
+      "https://umspcs.in/service/epr-for-battery-waste/",
+      "https://umspcs.in/service/epr-for-used-oil/",
+      "https://umspcs.in/service/epr-for-tyre-waste",
+      "https://umspcs.in/service/tec-certification-telecom/",
+      "https://umspcs.in/service/mtcte-certification/",
+      "https://umspcs.in/service/noc-for-steel/",
+      "https://umspcs.in/service/import-export-license-iec-certificate/",
+      "https://umspcs.in/service/cb-certification",
+      "https://umspcs.in/service/fcc-certification/",
+      "https://umspcs.in/service/technical-and-policy-representation/",
+      "#",
+      "https://umspcs.in/service/cybersecurity-certification/",
+      "#",
+      "https://umspcs.in/service/ukca-mark/",
+      "https://umspcs.in/service/weee-directive/",
+      "https://umspcs.in/service/gulf-certification/",
+      "https://umspcs.in/service/solar-equipment-certification/",
+      "https://umspcs.in/service/bis-certification-for-electronic-product/",
+      "#",
+      "https://umspcs.in/service/wpc-approval/",
+      "https://umspcs.in/service/bee-registration-india/",
+      "https://umspcs.in/service/legal-metrology/",
+      "https://umspcs.in/service/ce-certification/",
+      "https://umspcs.in/service/tac-approval-certificate-for-automobile/",
+      "https://umspcs.in/service/ul-certification/",
+      "https://umspcs.in/service/rohs-certification-approval/",
+      "https://umspcs.in/service/drone-certification/",
+      "https://umspcs.in/service/moef-certification/",
+      "https://umspcs.in/service/trademark-registration/",
+      "https://umspcs.in/service/fssai-licence-registration/",
+      "https://umspcs.in/service/gem-registration/",
+      "https://umspcs.in/service/copyright-registration/",
+      "https://umspcs.in/service/msme-ssi-udyam-registration/",
+      "https://umspcs.in/service/nsic-registration/",
+      "https://umspcs.in/service/imei-registration/",
+      "https://umspcs.in/service/rdso/",
+      "https://umspcs.in/service/ip-rating-test/",
+      "https://umspcs.in/service/rf-test-wpc/",
+      "https://umspcs.in/service/emc-test-tec/",
+      "https://umspcs.in/service/lm79-lm80-testing-services/",
+      "https://umspcs.in/service/wireless-product-testing/",
+      "https://umspcs.in/service/etsi-en-300-113-v3-1-1-testing/",
+      "https://umspcs.in/service/atex-testing/",
+      "#",
+      "https://umspcs.in/service/shock-and-vibration-testing/",
+      "https://umspcs.in/#contact-form",
+      "https://umspcs.in/local-service/bis-certificate-in-bangalore/",
+      "https://umspcs.in/local-service/bis-certificate-in-bangalore/",
+      "tel:+917011067811",
+      "http://wa.me/917011067811",
+      "https://umspcs.in/local-service/isi-consultant-in-pune/",
+      "https://umspcs.in/local-service/isi-consultant-in-pune/",
+      "tel:+917011067811",
+      "http://wa.me/917011067811",
+      "https://umspcs.in/local-service/fmcs-consultant-in-pune/",
+      "https://umspcs.in/local-service/fmcs-consultant-in-pune/",
+      "tel:+917011067811",
+      "http://wa.me/917011067811",
+      "https://umspcs.in/local-service/crs-consultant-in-mumbai/",
+      "https://umspcs.in/local-service/crs-consultant-in-mumbai/",
+      "tel:+917011067811",
+      "http://wa.me/917011067811",
+      "https://umspcs.in/local-service/bis-certificate-in-mumbai/",
+      "https://umspcs.in/local-service/bis-certificate-in-mumbai/",
+      "tel:+917011067811",
+      "http://wa.me/917011067811",
+      "https://umspcs.in/local-service/crs-consultant-in-pune/",
+      "https://umspcs.in/local-service/crs-consultant-in-pune/",
+      "tel:+917011067811",
+      "http://wa.me/917011067811",
+      "https://umspcs.in/local-service/bis-certificate-in-pune/",
+      "https://umspcs.in/local-service/bis-certificate-in-pune/",
+      "tel:+917011067811",
+      "http://wa.me/917011067811",
+      "https://umspcs.in/local-service/bis-certificate-in-gurgaon/",
+      "https://umspcs.in/local-service/bis-certificate-in-gurgaon/",
+      "tel:+917011067811",
+      "http://wa.me/917011067811",
+      "https://umspcs.in/local-service/fmcs-consultant-in-gurgaon/",
+      "https://umspcs.in/local-service/fmcs-consultant-in-gurgaon/",
+      "tel:+917011067811",
+      "http://wa.me/917011067811",
+      "https://umspcs.in/local-service/crs-consultant-in-gurgaon/",
+      "https://umspcs.in/local-service/crs-consultant-in-gurgaon/",
+      "tel:+917011067811",
+      "http://wa.me/917011067811",
+      "https://umspcs.in/local-service/isi-consultant-in-gurgaon/",
+      "https://umspcs.in/local-service/isi-consultant-in-gurgaon/",
+      "tel:+917011067811",
+      "http://wa.me/917011067811",
+      "https://umspcs.in/local-service/fmcs-consultant-in-mumbai/",
+      "https://umspcs.in/local-service/fmcs-consultant-in-mumbai/",
+      "tel:+917011067811",
+      "http://wa.me/917011067811",
+      "https://umspcs.in/local-service/isi-consultant-in-bangalore/",
+      "https://umspcs.in/local-service/isi-consultant-in-bangalore/",
+      "tel:+917011067811",
+      "http://wa.me/917011067811",
+      "https://umspcs.in/local-service/isi-consultant-in-mumbai/",
+      "https://umspcs.in/local-service/isi-consultant-in-mumbai/",
+      "tel:+917011067811",
+      "http://wa.me/917011067811",
+      "https://umspcs.in/local-service/crs-consultant-in-bangalore/",
+      "https://umspcs.in/local-service/crs-consultant-in-bangalore/",
+      "tel:+917011067811",
+      "http://wa.me/917011067811",
+      "https://umspcs.in/local-service/fmcs-consultant-in-bangalore/",
+      "https://umspcs.in/local-service/fmcs-consultant-in-bangalore/",
+      "tel:+917011067811",
+      "http://wa.me/917011067811",
+      "https://umspcs.in/local-service/bis-certificate-in-chennai/",
+      "https://umspcs.in/local-service/bis-certificate-in-chennai/",
+      "tel:+917011067811",
+      "http://wa.me/917011067811",
+      "https://umspcs.in/our-clients-umspcs/",
+      "tel:+917011067811",
+      "tel:+917011067811",
+      "mailto:Biscro.customercare@umspcs.in",
+      "mailto:Biscro.customercare@umspcs.in",
+      "https://www.google.com/maps/search/?api=1&query=Logix+Technova,+A-810,+Sector+132,+Noida,+201305,+Uttar+Pradesh",
+      "https://www.google.com/maps/search/?api=1&query=Logix+Technova,+A-810,+Sector+132,+Noida,+201305,+Uttar+Pradesh",
+      "https://umspcs.in/author/umspcs/",
+      "https://umspcs.in/category/blog/",
+      "https://umspcs.in/blog/what-do-german-furniture-electrical-manufacturers-know-about-bis-certification/",
+      "https://umspcs.in/blog/what-do-german-furniture-electrical-manufacturers-know-about-bis-certification/",
+      "https://umspcs.in/author/umspcs/",
+      "https://umspcs.in/category/blog/",
+      "https://umspcs.in/blog/bis-certification-under-is-17875-requirements-for-stainless-steel-seamless-pipes-tubes/",
+      "https://umspcs.in/blog/bis-certification-under-is-17875-requirements-for-stainless-steel-seamless-pipes-tubes/",
+      "https://umspcs.in/author/umspcs/",
+      "https://umspcs.in/category/blog/",
+      "https://umspcs.in/blog/how-to-get-cdsco-certification-for-bath-shower-products-in-india/",
+      "https://umspcs.in/blog/how-to-get-cdsco-certification-for-bath-shower-products-in-india/",
+      "https://www.facebook.com/umsproductcomplianceservices",
+      "https://x.com/Umspcsofficial",
+      "https://www.linkedin.com/company/ums-product-compliance-services-pvt-ltd/",
+      "https://www.pinterest.com/umspcs/",
+      "https://www.youtube.com/@UMSPCS",
+      "https://www.instagram.com/umspcs_official/",
+      "https://umspcs.in/service/bis-certificate-for-foreign-manufacture/",
+      "https://umspcs.in/service/bis-certification-for-electronic-product/",
+      "https://umspcs.in/service/bis-isi-certificate-for-indian-manufacture/",
+      "https://umspcs.in/service/wpc-approval/",
+      "https://umspcs.in/service/bee-registration-india/",
+      "https://umspcs.in/service/e-waste-management-registration/",
+      "https://umspcs.in/service/tec-certification-telecom/",
+      "https://umspcs.in/service/copyright-registration/",
+      "https://umspcs.in/service/cdsco-approvals/",
+      "https://umspcs.in/service/iso-certification/",
+      "https://umspcs.in/privacy-policy/",
+      "https://umspcs.in/our-clients-umspcs/",
+      "https://umspcs.in/bis-qco/",
+      "https://umspcs.in/our-photo-gallery/",
+      "https://umspcs.in/about-us/",
+      "https://umspcs.in/contact-us/",
+      "tel:+917011067811",
+      "tel:+918779540645",
+      "#",
+      "tel:+917011067811",
+      "https://wa.me/917011067811"
+    ],
+    "engine_source": "httpx_static_fallback"
+  },
+  "unified_robots": {
+    "found": true,
+    "robots_url": "https://umspcs.in/robots.txt",
+    "bot_access": {
+      "Applebot": {
+        "bot": "Applebot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Apple Intelligence & Siri",
+        "role_or_purpose": "Apple Intelligence search & Safari citations",
+        "via_wildcard": false
+      },
+      "Applebot-Extended": {
+        "bot": "Applebot-Extended",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Apple",
+        "role_or_purpose": "Apple Foundation model training",
+        "via_wildcard": false
+      },
+      "Bingbot": {
+        "bot": "Bingbot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Microsoft Copilot & Bing",
+        "role_or_purpose": "Microsoft AI search indexer",
+        "via_wildcard": false
+      },
+      "Bytespider": {
+        "bot": "Bytespider",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "ByteDance",
+        "role_or_purpose": "ByteDance AI training",
+        "via_wildcard": false
+      },
+      "CCBot": {
+        "bot": "CCBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Common Crawl",
+        "role_or_purpose": "Open web dataset scraped for AI foundation training",
+        "via_wildcard": false
+      },
+      "Claude-SearchBot": {
+        "bot": "Claude-SearchBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Claude Search",
+        "role_or_purpose": "Anthropic search indexer (NOT ClaudeBot)",
+        "via_wildcard": false
+      },
+      "ClaudeBot": {
+        "bot": "ClaudeBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Anthropic",
+        "role_or_purpose": "Model training data collection (Claude base models)",
+        "via_wildcard": false
+      },
+      "FacebookBot": {
+        "bot": "FacebookBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Meta",
+        "role_or_purpose": "Llama & Meta AI model training",
+        "via_wildcard": false
+      },
+      "GPTBot": {
+        "bot": "GPTBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "OpenAI",
+        "role_or_purpose": "Model training data collection (ChatGPT base models)",
+        "via_wildcard": false
+      },
+      "Google-Extended": {
+        "bot": "Google-Extended",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Google",
+        "role_or_purpose": "Gemini & Vertex AI model training (Separate from Googlebot)",
+        "via_wildcard": false
+      },
+      "Googlebot": {
+        "bot": "Googlebot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Google Search & AI Overviews",
+        "role_or_purpose": "Primary web indexer driving Google SGE/AI Overviews",
+        "via_wildcard": false
+      },
+      "OAI-SearchBot": {
+        "bot": "OAI-SearchBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "ChatGPT Search",
+        "role_or_purpose": "Search indexer & live web citation retriever (NOT GPTBot)",
+        "via_wildcard": false
+      },
+      "PerplexityBot": {
+        "bot": "PerplexityBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Perplexity AI",
+        "role_or_purpose": "Live answer engine citation crawler",
+        "via_wildcard": false
+      },
+      "cohere-ai": {
+        "bot": "cohere-ai",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Cohere",
+        "role_or_purpose": "Enterprise LLM training",
+        "via_wildcard": false
+      }
+    },
+    "sitemaps": [
+      "https://umspcs.in/sitemap_index.xml"
+    ],
+    "crawl_delay": null,
+    "discovered_urls": [
+      "https://umspcs.in/post-sitemap.xml",
+      "https://umspcs.in/page-sitemap.xml",
+      "https://umspcs.in/bis_isi-sitemap.xml",
+      "https://umspcs.in/bis_crs-sitemap.xml",
+      "https://umspcs.in/mtcte-phase-wise-pro-sitemap.xml",
+      "https://umspcs.in/mtcte-er-list-sitemap.xml",
+      "https://umspcs.in/cdsco-cosmetic-sitemap.xml",
+      "https://umspcs.in/cdsco-medical-device-sitemap.xml",
+      "https://umspcs.in/qco-sitemap.xml",
+      "https://umspcs.in/finbuzz_service-sitemap.xml",
+      "https://umspcs.in/category-sitemap.xml",
+      "https://umspcs.in/author-sitemap.xml",
+      "https://umspcs.in/geo-sitemap.xml"
+    ],
+    "engine_source": "advertools_rfc"
+  },
+  "unified_schema": {
+    "detected_types": [
+      "FAQPage",
+      "Organization",
+      "WebSite",
+      "WebPage",
+      "Place",
+      "BreadcrumbList",
+      "ImageObject",
+      "LocalBusiness",
+      "PostalAddress"
+    ],
+    "deprecated_types_detected": [
+      "FAQPage"
+    ],
+    "blocks_count": 9,
+    "is_injected_via_js": false,
+    "validation_issues": [],
+    "sameas_urls": [
+      "https://www.instagram.com/umspcs_official/",
+      "https://www.facebook.com/umsproductcomplianceservices",
+      "https://umspcs.in/",
+      "https://www.linkedin.com/company/ums-product-compliance-services-pvt-ltd/",
+      "https://x.com/UMSPCS_Official",
+      "https://www.youtube.com/@UMSPCS"
+    ],
+    "has_organization": true,
+    "has_author": false,
+    "engine_source": "triangulated_union"
+  },
+  "unified_geo": {
+    "overall_citability_score": 55,
+    "answer_first_ratio": 0.29,
+    "passage_density_ratio": 0.03,
+    "statistical_density_per_1000": 0.0,
+    "outbound_citations_count": 0,
+    "authoritative_citations_count": 0,
+    "llms_txt_found": true,
+    "llms_txt_warnings": [
+      "llms.txt should have a > blockquote description after H1"
+    ],
+    "llms_full_found": false,
+    "question_h2s": [],
+    "methods": [
+      {
+        "name": "quotation_addition",
+        "label": "Quotation Addition",
+        "detected": true,
+        "score": 6,
+        "max_score": 6,
+        "impact": "+41%",
+        "details": {
+          "blockquotes": 0,
+          "q_tags": 0,
+          "attributed_quotes": 0,
+          "pull_quotes": 49
+        }
+      },
+      {
+        "name": "statistics_addition",
+        "label": "Statistics Addition",
+        "detected": false,
+        "score": 0,
+        "max_score": 6,
+        "impact": "+33%",
+        "details": {
+          "stat_matches": 0,
+          "density_per_1000_words": 0.0,
+          "tables_with_data": 0
+        }
+      },
+      {
+        "name": "fluency_optimization",
+        "label": "Fluency Optimization",
+        "detected": false,
+        "score": 1,
+        "max_score": 6,
+        "impact": "+29%",
+        "details": {
+          "avg_paragraph_words": 13.5,
+          "connective_count": 1,
+          "paragraphs": 73,
+          "list_items": 419
+        }
+      },
+      {
+        "name": "cite_sources",
+        "label": "Cite Sources",
+        "detected": true,
+        "score": 6,
+        "max_score": 6,
+        "impact": "+27%",
+        "details": {
+          "authoritative_links": 0,
+          "external_links": 33,
+          "cite_tags": 12,
+          "has_reference_section": false
+        }
+      },
+      {
+        "name": "answer_first",
+        "label": "Answer-First Structure",
+        "detected": false,
+        "score": 2,
+        "max_score": 5,
+        "impact": "+25%",
+        "details": {
+          "h2_count": 14,
+          "answer_first_count": 4,
+          "ratio": 0.29
+        }
+      },
+      {
+        "name": "passage_density",
+        "label": "Passage Density",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+23%",
+        "details": {
+          "total_paragraphs": 38,
+          "dense_paragraphs": 1,
+          "ratio": 0.03
+        }
+      },
+      {
+        "name": "technical_terms",
+        "label": "Technical Terms",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+18%",
+        "details": {
+          "tech_matches": 287,
+          "density_per_1000": 95.7,
+          "code_blocks": 2,
+          "abbr_tags": 0
+        }
+      },
+      {
+        "name": "authoritative_tone",
+        "label": "Authoritative Tone",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+16%",
+        "details": {
+          "authority_markers": 3,
+          "hedge_markers": 0,
+          "has_author_bio": false,
+          "credentials": [
+            "CEO"
+          ],
+          "has_author_meta": false
+        }
+      },
+      {
+        "name": "easy_to_understand",
+        "label": "Easy-to-Understand",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+14%",
+        "details": {
+          "avg_sentence_length": 10.7,
+          "h2_count": 14,
+          "h3_count": 44,
+          "faq_sections": 2
+        }
+      },
+      {
+        "name": "unique_words",
+        "label": "Unique Words",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+7%",
+        "details": {
+          "ttr": 0.533,
+          "total_words": 2065,
+          "unique_count": 673
+        }
+      },
+      {
+        "name": "keyword_stuffing",
+        "label": "No Keyword Stuffing",
+        "detected": true,
+        "score": 2,
+        "max_score": 6,
+        "impact": "-9%",
+        "details": {
+          "suspicious_keywords": {
+            "bis": 5.1,
+            "certification": 3.3
+          },
+          "stuffing_severity": "medium",
+          "repeated_phrases": 0,
+          "front_loading_detected": false
+        }
+      },
+      {
+        "name": "readability",
+        "label": "Readability Score",
+        "detected": false,
+        "score": 0,
+        "max_score": 8,
+        "impact": "+15%",
+        "details": {
+          "flesch_kincaid_grade": 18.7,
+          "avg_words_per_sentence": 23.4,
+          "avg_syllables_per_word": 2.13,
+          "optimal_sections": 0,
+          "total_sections": 13
+        }
+      },
+      {
+        "name": "faq_in_content",
+        "label": "FAQ-in-Content",
+        "detected": true,
+        "score": 6,
+        "max_score": 6,
+        "impact": "+12%",
+        "details": {
+          "faq_patterns_found": 9
+        }
+      },
+      {
+        "name": "image_alt_quality",
+        "label": "Image Alt Quality",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+8%",
+        "details": {
+          "total_images": 171,
+          "with_alt": 170,
+          "descriptive_alt": 156,
+          "generic_alt": 14,
+          "missing_alt": 1
+        }
+      },
+      {
+        "name": "content_freshness",
+        "label": "Content Freshness",
+        "detected": true,
+        "score": 6,
+        "max_score": 6,
+        "impact": "+10%",
+        "details": {
+          "date_modified": "2026-09-28T08:16:02+00:00",
+          "date_published": "2022-02-04T09:33:32+00:00",
+          "is_fresh": true,
+          "freshness_level": "very_fresh",
+          "months_old": 0.1,
+          "year_references": {
+            "2026": 3,
+            "2010": 2,
+            "2024": 1,
+            "2020": 1,
+            "2025": 2,
+            "2022": 1
+          },
+          "warnings": []
+        }
+      },
+      {
+        "name": "citability_density",
+        "label": "Citability Density",
+        "detected": false,
+        "score": 0,
+        "max_score": 7,
+        "impact": "+15%",
+        "details": {
+          "total_paragraphs": 38,
+          "dense_paragraphs": 0,
+          "density_ratio": 0.0,
+          "total_citable_facts": 5
+        }
+      },
+      {
+        "name": "definition_patterns",
+        "label": "Definition Patterns",
+        "detected": true,
+        "score": 3,
+        "max_score": 5,
+        "impact": "+10%",
+        "details": {
+          "definitions_found": 3,
+          "total_headings": 15,
+          "ratio": 0.2
+        }
+      },
+      {
+        "name": "format_mix",
+        "label": "Response Format Mix",
+        "detected": true,
+        "score": 3,
+        "max_score": 5,
+        "impact": "+8%",
+        "details": {
+          "has_paragraphs": true,
+          "has_lists": true,
+          "has_tables": false,
+          "has_code": true,
+          "has_blockquote": false,
+          "format_count": 3
+        }
+      },
+      {
+        "name": "attribution_completeness",
+        "label": "Attribution Completeness",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+12%",
+        "details": {
+          "inline_attributions": 2,
+          "footnotes": 4,
+          "inline_link_citations": 0
+        }
+      },
+      {
+        "name": "no_negative_signals",
+        "label": "No Negative Signals",
+        "detected": false,
+        "score": 4,
+        "max_score": 5,
+        "impact": "-15%",
+        "details": {
+          "cta_count": 0,
+          "is_thin_content": false,
+          "has_author": false,
+          "repeated_phrases": 0,
+          "total_penalties": 1
+        }
+      },
+      {
+        "name": "comparison_content",
+        "label": "Comparison Content",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "vs_headings": 0,
+          "pro_con_sections": 0,
+          "comparison_tables": 0,
+          "large_tables": 0
+        }
+      },
+      {
+        "name": "eeat_signals",
+        "label": "E-E-A-T Signals",
+        "detected": true,
+        "score": 4,
+        "max_score": 7,
+        "impact": "+15%",
+        "details": {
+          "trust_links": {
+            "privacy": true,
+            "terms": false,
+            "about": true,
+            "contact": true
+          },
+          "trust_link_count": 3,
+          "has_detailed_bio": false,
+          "has_structured_author": false,
+          "has_verified_author": false,
+          "is_https": true
+        }
+      },
+      {
+        "name": "no_content_decay",
+        "label": "No Content Decay",
+        "detected": false,
+        "score": 5,
+        "max_score": 5,
+        "impact": "-10%",
+        "details": {
+          "old_year_references": [
+            2024,
+            2010,
+            2020,
+            2022
+          ],
+          "is_recently_modified": true,
+          "stale_update_patterns": 0,
+          "external_links_count": 449,
+          "total_penalties": 0
+        }
+      },
+      {
+        "name": "boilerplate_ratio",
+        "label": "Content-to-Boilerplate Ratio",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "content_length": 230,
+          "total_length": 28149,
+          "ratio": 0.01,
+          "method": "heuristic"
+        }
+      },
+      {
+        "name": "nuance_signals",
+        "label": "Nuance/Honesty Signals",
+        "detected": true,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "nuance_patterns": 2,
+          "nuance_headings": 0,
+          "total_signals": 2
+        }
+      },
+      {
+        "name": "snippet_ready",
+        "label": "Snippet-Ready Content",
+        "detected": true,
+        "score": 1,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "snippet_ready_sections": 12,
+          "total_headings": 123,
+          "ratio": 0.1
+        }
+      },
+      {
+        "name": "chunk_quotability",
+        "label": "Chunk Quotability",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "candidate_paragraphs": 1,
+          "quotable_paragraphs": 0,
+          "ratio": 0.0
+        }
+      },
+      {
+        "name": "blog_structure",
+        "label": "Blog Structure",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "has_article_schema": false
+        }
+      },
+      {
+        "name": "shopping_readiness",
+        "label": "AI Shopping Readiness",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_product_schema": false
+        }
+      },
+      {
+        "name": "chatgpt_shopping",
+        "label": "ChatGPT Shopping Feed",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_product_schema": false
+        }
+      },
+      {
+        "name": "voice_search_ready",
+        "label": "Voice/Conversational Search",
+        "detected": true,
+        "score": 2,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "question_headings": 2,
+          "concise_answers": 1,
+          "has_speakable_schema": false
+        }
+      },
+      {
+        "name": "multi_platform",
+        "label": "Multi-Platform Presence",
+        "detected": true,
+        "score": 4,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "platforms_found": [
+            "Facebook",
+            "Instagram",
+            "LinkedIn",
+            "Twitter/X",
+            "YouTube"
+          ],
+          "platform_count": 5
+        }
+      },
+      {
+        "name": "entity_disambiguation",
+        "label": "Entity Disambiguation",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "names_found": [
+            "bis certifications consultant & other certifications",
+            "umspcs",
+            "best bis registration consultants in delhi, india",
+            "umspcs",
+            "bis certifications consultant & other certifications - umspcs",
+            "umspcs",
+            "umspcs",
+            "best bis registration consultants in delhi, india- umspcs"
+          ],
+          "names_consistent": true,
+          "sameas_count": 10
+        }
+      },
+      {
+        "name": "first_party_data",
+        "label": "First-Party Data",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+12%",
+        "details": {
+          "first_party_patterns": 0,
+          "own_data_signals": 0,
+          "has_methodology_section": false
+        }
+      },
+      {
+        "name": "no_stale_data",
+        "label": "No Stale Data",
+        "detected": false,
+        "score": 4,
+        "max_score": 4,
+        "impact": "-10%",
+        "details": {
+          "old_copyright_in_footer": false,
+          "stale_year_references": [],
+          "penalties": 0
+        }
+      },
+      {
+        "name": "social_proof",
+        "label": "Social Proof",
+        "detected": true,
+        "score": 2,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_testimonial": true,
+          "has_aggregate_rating": false,
+          "has_trust_badges": true
+        }
+      },
+      {
+        "name": "accessibility_signals",
+        "label": "Accessibility Signals",
+        "detected": true,
+        "score": 2,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "semantic_tags": [
+            "footer",
+            "header",
+            "nav"
+          ],
+          "aria_landmarks": [],
+          "has_skip_link": true
+        }
+      },
+      {
+        "name": "conversion_funnel",
+        "label": "AI Conversion Funnel",
+        "detected": true,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_cta": false,
+          "has_pricing_link": false,
+          "has_contact": true
+        }
+      },
+      {
+        "name": "temporal_coherence",
+        "label": "Temporal Signal Coherence",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "dates_found": {
+            "schema_dateModified": "2026-09-28T00:00:00+00:00",
+            "schema_datePublished": "2022-02-04T00:00:00+00:00",
+            "meta_modified": "2026-09-28T00:00:00+00:00"
+          },
+          "date_count": 3,
+          "max_diff_days": 1697,
+          "is_coherent": false,
+          "is_incoherent": true
+        }
+      },
+      {
+        "name": "anchor_text_quality",
+        "label": "Anchor Text Quality",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "total_internal_links": 396,
+          "generic_count": 0,
+          "descriptive_count": 396,
+          "descriptive_ratio": 1.0
+        }
+      },
+      {
+        "name": "international_geo",
+        "label": "International GEO",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "html_lang": "en-US",
+          "hreflang_count": 3,
+          "hreflang_langs": [
+            "en-in",
+            "en",
+            "x-default"
+          ],
+          "schema_inLanguage": "en-US",
+          "is_multilingual": true
+        }
+      },
+      {
+        "name": "crawl_budget",
+        "label": "AI Crawl Budget",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "has_noindex": false,
+          "has_nofollow": false,
+          "has_sitemap_link": false,
+          "penalties": []
+        }
+      },
+      {
+        "name": "answer_capsule",
+        "label": "Answer Capsule Detection",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+12%",
+        "details": {
+          "capsule_count": 0,
+          "total_candidates": 4,
+          "ratio": 0.0
+        }
+      },
+      {
+        "name": "token_efficiency",
+        "label": "Token Efficiency",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "total_words": 3913,
+          "content_words": 954,
+          "noise_words": 2959,
+          "ratio": 0.24
+        }
+      },
+      {
+        "name": "entity_resolution",
+        "label": "Entity Resolution Friendliness",
+        "detected": true,
+        "score": 4,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "has_schema_entity": true,
+          "has_sameas": true,
+          "has_definition": true,
+          "entity_types": [
+            "WebPage",
+            "WebSite",
+            "Organization",
+            "Place",
+            "LocalBusiness"
+          ]
+        }
+      },
+      {
+        "name": "kg_density",
+        "label": "Knowledge Graph Density",
+        "detected": true,
+        "score": 2,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "relation_count": 6,
+          "density_per_500w": 1.0,
+          "schema_relations": 5,
+          "word_count": 2999
+        }
+      },
+      {
+        "name": "retrieval_triggers",
+        "label": "Retrieval Trigger Patterns",
+        "detected": true,
+        "score": 4,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "trigger_count": 13,
+          "unique_triggers": 10,
+          "density_per_500w": 2.2,
+          "question_headings": 5
+        }
+      }
+    ],
+    "engine_source": "geo_optimizer_skill"
+  },
+  "unified_trust": {
+    "overall_score": 56,
+    "raw_score": 14,
+    "grade": "C",
+    "layers": {
+      "technical": {
+        "name": "technical",
+        "label": "Technical & Infrastructure Trust",
+        "score": 4,
+        "max_score": 5,
+        "signals_found": [
+          "HTTPS Protocol Active (+2)",
+          "Strict-Transport-Security (HSTS)",
+          "Content-Security-Policy (CSP)"
+        ],
+        "signals_missing": [
+          "X-Frame-Options Header Missing"
+        ]
+      },
+      "identity": {
+        "name": "identity",
+        "label": "Entity & Identity Trust",
+        "score": 3,
+        "max_score": 5,
+        "signals_found": [
+          "Organization / LocalBusiness Structured Data",
+          "About Page Link",
+          "Contact / Support Page Link"
+        ],
+        "signals_missing": [
+          "No Author Attribution in Meta or Schema",
+          "Weak or Inconsistent Brand Signature"
+        ]
+      },
+      "social": {
+        "name": "social",
+        "label": "Social Proof & Reputation Trust",
+        "score": 4,
+        "max_score": 5,
+        "signals_found": [
+          "Entity sameAs Profiles (6 linked)",
+          "Multi-Platform Verification (3+ sameAs)",
+          "Linked Social Profiles (linkedin.com, youtube.com, instagram.com)",
+          "Customer Reviews / Testimonials Evidence"
+        ],
+        "signals_missing": [
+          "No Knowledge Graph Pillar Link (Wikidata/Wikipedia)"
+        ]
+      },
+      "academic": {
+        "name": "academic",
+        "label": "Academic & Authority Trust",
+        "score": 1,
+        "max_score": 5,
+        "signals_found": [
+          "External Source Citations (481 non-social links)"
+        ],
+        "signals_missing": [
+          "Sparse Quantitative Data / Statistics",
+          "No Links to Recognized Authoritative Sources (.gov, .edu, DOI, PubMed)",
+          "No Dedicated References or Sources Section",
+          "Few Formal Statistical Patterns (Percentages / Research Citations)"
+        ]
+      },
+      "consistency": {
+        "name": "consistency",
+        "label": "Consistency & Compliance Trust",
+        "score": 2,
+        "max_score": 5,
+        "signals_found": [
+          "Privacy Policy Documented",
+          "Dated Copyright Notice"
+        ],
+        "signals_missing": [
+          "No Terms of Service Link Detected",
+          "Missing Canonical Tag",
+          "No Machine-Readable Publication/Modification Timestamps"
+        ]
+      }
+    },
+    "summary": "Trust Grade: C (56/100, Raw 14/25). Strongest layer: Technical & Infrastructure Trust. Weakest layer: Academic & Authority Trust."
+  },
+  "unified_performance": {
+    "source": "local_probe",
+    "overall_performance_score": 85,
+    "ttfb_ms": 129.2,
+    "fcp_ms": null,
+    "lcp_ms": null,
+    "cls": null,
+    "inp_ms": null,
+    "metrics": [
+      {
+        "name": "TTFB",
+        "value": 0.129,
+        "unit": "s",
+        "status": "GOOD",
+        "threshold_good": 0.8,
+        "threshold_poor": 1.8
+      }
+    ],
+    "passed_audit": false,
+    "notes": [
+      "Local high-precision TTFB probe (set PAGESPEED_API_KEY for CrUX real-user telemetry).",
+      "RankIntel performance bands: 90–100=Pass, 50–89=Needs Improvement, <50=Poor (based on Lighthouse scale)."
+    ]
+  },
+  "cloud_intelligence": {
+    "available": false,
+    "keywords": null,
+    "backlinks": null,
+    "ai_visibility_score": 0,
+    "notes": []
+  },
+  "site_crawl": null,
+  "fixes": {
+    "current_title": "",
+    "optimized_title": "UMS Product Compliance Services –BI... | Umspcs",
+    "title_length": "47",
+    "current_description": "UMSPCS provides certifications (BIS - ISI, CRS, FMCS), product compliance, MTCTE, WPC, CDSCO, BEE, EPR, ISO, CE, UKCE, and more for businesses in India and globally.",
+    "optimized_description": "UMSPCS provides certifications (BIS - ISI, CRS, FMCS), product compliance, MTCTE, WPC, CDSCO, BEE, EPR, ISO, CE, UKCE, and more for businesses in India and...",
+    "desc_length": "158",
+    "hardened_robots": "# RankIntel Hardened AI Robots.txt Policy\n# 1. Allow AI Search & Citation Bots (Essential for ChatGPT Search, Google, Perplexity, Claude)\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Claude-SearchBot\nAllow: /\n\nUser-agent: Googlebot\nAllow: /\n\nUser-agent: Applebot\nAllow: /\n\n# 2. Optional: Disallow AI Model Pre-Training Scrapers (If preserving intellectual property)\n# User-agent: GPTBot\n# Disallow: /\n# User-agent: ClaudeBot\n# Disallow: /\n# User-agent: Google-Extended\n# Disallow: /\n\n# 3. Standard Crawler Settings\nUser-agent: *\nAllow: /\n"
+  }
+}

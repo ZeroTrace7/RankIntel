@@ -1,0 +1,1535 @@
+{
+  "url": "https://sqccertification.com/",
+  "domain": "sqccertification.com",
+  "timestamp": "2026-10-01",
+  "overall_health_score": 57,
+  "geo_readiness_score": 49,
+  "technical_health_score": 65,
+  "trust_score": 48,
+  "performance_score": 65,
+  "keyword_score": 0,
+  "site_health_score": 0,
+  "score_formula_mode": "4_engine",
+  "engines_executed": [
+    "advertools_seo",
+    "browser_engine",
+    "rankintel_geo",
+    "performance_engine"
+  ],
+  "conflicts_detected": [],
+  "prioritized_actions": [
+    {
+      "level": "HIGH",
+      "title": "Optimize Title Tag Length & CTR Hook",
+      "finding": "Current title is 0 characters.",
+      "rationale": "Titles over 60 chars are truncated in SERPs with ellipses. Target 50-60 chars with primary keyword front-loaded.",
+      "engine_confidence": "HIGH (Deterministic measurement)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Harden Technical Trust & Security Headers",
+      "finding": "HSTS Header Missing, X-Frame-Options Header Missing",
+      "rationale": "HSTS and Content-Security-Policy prevent security downgrades and satisfy AI agent reliability gates.",
+      "engine_confidence": "HIGH (Header telemetry)",
+      "fix_snippet": null
+    },
+    {
+      "level": "GEO_WIN",
+      "title": "Publish Standard /llms.txt AI Agent Manifest",
+      "finding": "/llms.txt is missing from root domain.",
+      "rationale": "Provides AI assistants (ChatGPT, Claude, Perplexity) with clean, curated markdown documentation.",
+      "engine_confidence": "HIGH",
+      "fix_snippet": null
+    }
+  ],
+  "provenance": [
+    {
+      "finding": "Applebot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Applebot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Applebot-Extended: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Applebot-Extended -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bingbot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Bingbot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bytespider: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Bytespider -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "CCBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: CCBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Claude-SearchBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Claude-SearchBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "ClaudeBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: ClaudeBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "FacebookBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: FacebookBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "GPTBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: GPTBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Google-Extended: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Google-Extended -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Googlebot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Googlebot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "OAI-SearchBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: OAI-SearchBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "PerplexityBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: PerplexityBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "cohere-ai: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: cohere-ai -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'BreadcrumbList' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'Organization' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'WebPage' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'WebSite' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Page Title (65 chars): 'SQC Certification Provides Globally recognize...'",
+      "source_file": "<title> tag",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "TTFB Latency: 848ms",
+      "source_file": "HTTP response probe",
+      "engine": "performance_engine",
+      "evidence_snippet": "Telemetry Source: local_probe",
+      "confidence": "medium",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "/llms.txt: MISSING",
+      "source_file": "/llms.txt HTTP check",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Princeton GEO Citability: 49/100",
+      "source_file": "DOM content passages",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    }
+  ],
+  "unified_on_page": {
+    "url": "https://sqccertification.com/",
+    "status_code": 200,
+    "response_time_sec": 3.16,
+    "title": "",
+    "title_length": 0,
+    "meta_description": "We specialize in assessing and certifying organizations to internationally recognized standards such as ISO 9001, 14001, 45001, 37001, 42001, and 27001.",
+    "meta_desc_length": 152,
+    "h1_count": 1,
+    "h1_text": [
+      "About SQC Certification"
+    ],
+    "h2_count": 22,
+    "h2_text": [
+      "Our services",
+      "Some of the major ISO certifications we offer.",
+      "Planning for ISO Certification or ISO Training Services?",
+      "Worldwide Experience",
+      "Serving Our Clients Across 67+ Countries",
+      "Terms & Policy",
+      "Certification Process",
+      "Quality Policy",
+      "Privacy Policy",
+      "Appeals and Complaints",
+      "Impartiality Policy",
+      "Procedure for Issue / Suspension / Withdrawing or Reducing the Scope of Certification",
+      "Fake/Suspended Certificates",
+      "Important links",
+      "Home",
+      "About Us",
+      "Services We Offer",
+      "Location",
+      "Contact Us",
+      "Contact Info",
+      "205, 2nd Floor, B-158, B Block, Sector 63, Noida, Uttar Pradesh 201301",
+      "+91-9990747758 \n+91-85956 60914\n01204634181"
+    ],
+    "h3_count": 10,
+    "h3_text": [
+      "Achieve ISO certification:\n\n\nISO 9001:2026\nISO 14001:2026\nISO 45001:2018\nISO/IEC 27001:2022 ISMS\n\n|",
+      "Customer Service",
+      "Reliability and Trustworthiness",
+      "Innovative Solutions",
+      "Global Presence",
+      "ISO 9001 : 2026",
+      "ISO 14001 : 2026",
+      "ISO/IEC 27001 2022",
+      "ISO 45001 2018",
+      "Looking for a Globally Accepted Certificate?"
+    ],
+    "total_images": 4,
+    "images_with_alt": 3,
+    "word_count": 687,
+    "canonical_url": null,
+    "is_redirect": false,
+    "response_headers": {
+      "Date": "Wed, 30 Sep 2026 20:06:59 GMT",
+      "Content-Type": "text/html; charset=UTF-8",
+      "Transfer-Encoding": "chunked",
+      "Connection": "keep-alive",
+      "x-powered-by": "PHP/8.1.34",
+      "link": "<https://sqccertification.com/wp-json/>; rel=\"https://api.w.org/\", <https://sqccertification.com/wp-json/wp/v2/pages/574>; rel=\"alternate\"; type=\"application/json\", <https://sqccertification.com/>; rel=shortlink",
+      "Content-Encoding": "br",
+      "platform": "hostinger",
+      "panel": "hpanel",
+      "content-security-policy": "upgrade-insecure-requests",
+      "Vary": "Accept-Encoding",
+      "Server": "hcdn",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "x-hcdn-request-id": "52ddba3ee31c91604c7f5838926e870a-mum-edge5",
+      "x-hcdn-cache-status": "DYNAMIC",
+      "x-hcdn-upstream-rt": "0.775"
+    },
+    "internal_links": [
+      "https://sqccertification.com/iso-iec-27018-certification/",
+      "https://sqccertification.com/wp-content/uploads/2025/07/SQC-D-003_Quality-Policy.pdf",
+      "https://sqccertification.com/iso-22000-certification/",
+      "https://sqccertification.com/iso-9001-certification/",
+      "https://sqccertification.com/iso-iec-42001-certification/",
+      "https://sqccertification.com/global-coverage/",
+      "https://sqccertification.com/wp-content/uploads/2026/02/SQC-F-45-Rules-and-Regulation-for-Use-of-Certification-Mark-NEW-2026.pdf",
+      "https://sqccertification.com/career/",
+      "https://sqccertification.com/wp-content/uploads/2025/07/SQC_P_03_Procedure-for-Suspension-Withdrawal-Restoring-Renewing-Refusing-and-Cancellation-of-Certificates_Rev01.pdf",
+      "https://sqccertification.com/resources/",
+      "https://sqccertification.com/wp-content/uploads/2024/04/SQC_P_09_Procedure-for-handling-complaints-and-appeals.pdf",
+      "https://sqccertification.com/iso-14001-certification/",
+      "https://sqccertification.com/wp-content/uploads/2024/04/Certification-process.pdf",
+      "https://sqccertification.com/",
+      "https://sqccertification.com/iso-45001-certification/",
+      "https://sqccertification.com/iso-13485-certification/",
+      "https://sqccertification.com/management-system-certification/",
+      "https://sqccertification.com/system-and-organization-controls/",
+      "https://sqccertification.com/industries/",
+      "https://sqccertification.com/fake-certificate/",
+      "https://sqccertification.com/iso-27001-certification/",
+      "https://sqccertification.com/accreditation/",
+      "https://sqccertification.com/apply-for-franchise/",
+      "https://sqccertification.com/privacy-policy/",
+      "https://sqccertification.com/cert/Verify",
+      "https://sqccertification.com/iso-14001-certifications/",
+      "https://sqccertification.com/pci-dss-certification/",
+      "https://sqccertification.com/wp-content/uploads/2025/10/SQC-F-001_Application_form-1-1.docx",
+      "https://sqccertification.com/iso-iec-27019-certification/",
+      "https://sqccertification.com/contact-us/",
+      "https://sqccertification.com/blog/",
+      "https://sqccertification.com/services-we-offer/",
+      "https://sqccertification.com/wp-content/uploads/2025/07/SQC-FINAL-@1.pdf",
+      "https://sqccertification.com/iso-37001-certification/",
+      "https://sqccertification.com/iso-certification-for-aerospace-industry/",
+      "https://sqccertification.com/about-us/",
+      "https://sqccertification.com/location/",
+      "https://sqccertification.com/iso-140012026/",
+      "https://sqccertification.com/contact/",
+      "https://sqccertification.com/about/",
+      "https://sqccertification.com/iso-iec-20000-1-certification/",
+      "https://sqccertification.com/verify-training-certificate/",
+      "https://sqccertification.com/iatf-16949-certification/",
+      "https://sqccertification.com/cmmi/",
+      "https://sqccertification.com/iso-22301-certification/",
+      "https://sqccertification.com/wp-content/uploads/2025/07/SQC-D-008_Impartiality-Policy.pdf",
+      "https://sqccertification.com/iso-iec-27001-certification/",
+      "https://sqccertification.com/iso-50001-certification/",
+      "https://sqccertification.com/vulnerability-assessment-and-penetration-testing-vapt/"
+    ],
+    "external_links": [
+      "https://www.instagram.com/sqccertifications/",
+      "https://www.facebook.com/sqccertification",
+      "https://www.linkedin.com/company/90888190/admin/dashboard/",
+      "http://sqctraining.com/",
+      "https://x.com/Sqccertservices",
+      "https://www.google.com/maps/place/ISO+Certification+%2F+SQC+Certification+Services+Pvt.+Ltd./@28.6148021,77.3799315,20.25z/data=!4m6!3m5!1s0x390cf1585e9fa267:0xdc606df1b0e81430!8m2!3d28.6149376!4d77.379723!16s%2Fg%2F11rznssdp8?entry=ttu&g_ep=EgoyMDI0MTIwOS4wIKXMDSoASAFQAw%3D%3D",
+      "https://www.youtube.com/@SQC.CERTIFICATION",
+      "https://sqctraining.com/",
+      "https://sqccertification.com/",
+      "https://sqccertification.com/",
+      "#",
+      "https://sqccertification.com/about/",
+      "https://sqccertification.com/services-we-offer/",
+      "https://sqccertification.com/industries/",
+      "https://sqccertification.com/global-coverage/",
+      "#",
+      "https://sqccertification.com/accreditation/",
+      "#",
+      "#",
+      "http://sqctraining.com/",
+      "#",
+      "https://sqccertification.com/wp-content/uploads/2024/04/Certification-process.pdf",
+      "https://sqccertification.com/wp-content/uploads/2025/07/SQC-D-003_Quality-Policy.pdf",
+      "https://sqccertification.com/privacy-policy/",
+      "https://sqccertification.com/wp-content/uploads/2024/04/SQC_P_09_Procedure-for-handling-complaints-and-appeals.pdf",
+      "https://sqccertification.com/wp-content/uploads/2025/07/SQC-D-008_Impartiality-Policy.pdf",
+      "https://sqccertification.com/services-we-offer/",
+      "https://sqccertification.com/management-system-certification/",
+      "#",
+      "https://sqccertification.com/iso-9001-certification/",
+      "https://sqccertification.com/iso-14001-certifications/",
+      "https://sqccertification.com/iso-45001-certification/",
+      "https://sqccertification.com/iso-iec-27001-certification/",
+      "https://sqccertification.com/iso-iec-42001-certification/",
+      "https://sqccertification.com/iso-37001-certification/",
+      "#",
+      "https://sqccertification.com/iso-9001-certification/",
+      "https://sqccertification.com/iso-140012026/",
+      "https://sqccertification.com/iso-45001-certification/",
+      "https://sqccertification.com/iso-iec-27001-certification/",
+      "https://sqccertification.com/iso-iec-42001-certification/",
+      "https://sqccertification.com/iso-37001-certification/",
+      "https://sqccertification.com/iso-13485-certification/",
+      "https://sqccertification.com/iso-22301-certification/",
+      "https://sqccertification.com/iso-50001-certification/",
+      "https://sqccertification.com/iso-iec-27019-certification/",
+      "https://sqccertification.com/iso-iec-27018-certification/",
+      "https://sqccertification.com/iso-iec-20000-1-certification/",
+      "https://sqccertification.com/iso-22000-certification/",
+      "https://sqccertification.com/iso-certification-for-aerospace-industry/",
+      "https://sqccertification.com/iatf-16949-certification/",
+      "#",
+      "#",
+      "#",
+      "https://sqccertification.com/vulnerability-assessment-and-penetration-testing-vapt/",
+      "https://sqccertification.com/pci-dss-certification/",
+      "https://sqccertification.com/system-and-organization-controls/",
+      "https://sqccertification.com/cmmi/",
+      "#",
+      "https://sqccertification.com/resources/",
+      "https://sqccertification.com/career/",
+      "#",
+      "https://sqccertification.com/wp-content/uploads/2025/07/SQC-FINAL-@1.pdf",
+      "https://sqccertification.com/wp-content/uploads/2025/10/SQC-F-001_Application_form-1-1.docx",
+      "https://sqccertification.com/wp-content/uploads/2026/02/SQC-F-45-Rules-and-Regulation-for-Use-of-Certification-Mark-NEW-2026.pdf",
+      "https://sqccertification.com/blog/",
+      "#",
+      "https://sqccertification.com/cert/Verify",
+      "https://sqccertification.com/verify-training-certificate/",
+      "https://sqccertification.com/fake-certificate/",
+      "#",
+      "https://sqccertification.com/",
+      "#",
+      "https://sqccertification.com/about/",
+      "https://sqccertification.com/services-we-offer/",
+      "https://sqccertification.com/industries/",
+      "https://sqccertification.com/global-coverage/",
+      "#",
+      "https://sqccertification.com/accreditation/",
+      "#",
+      "#",
+      "http://sqctraining.com/",
+      "#",
+      "https://sqccertification.com/wp-content/uploads/2024/04/Certification-process.pdf",
+      "https://sqccertification.com/wp-content/uploads/2025/07/SQC-D-003_Quality-Policy.pdf",
+      "https://sqccertification.com/privacy-policy/",
+      "https://sqccertification.com/wp-content/uploads/2024/04/SQC_P_09_Procedure-for-handling-complaints-and-appeals.pdf",
+      "https://sqccertification.com/wp-content/uploads/2025/07/SQC-D-008_Impartiality-Policy.pdf",
+      "https://sqccertification.com/services-we-offer/",
+      "https://sqccertification.com/management-system-certification/",
+      "#",
+      "https://sqccertification.com/iso-9001-certification/",
+      "https://sqccertification.com/iso-14001-certifications/",
+      "https://sqccertification.com/iso-45001-certification/",
+      "https://sqccertification.com/iso-iec-27001-certification/",
+      "https://sqccertification.com/iso-iec-42001-certification/",
+      "https://sqccertification.com/iso-37001-certification/",
+      "#",
+      "https://sqccertification.com/iso-9001-certification/",
+      "https://sqccertification.com/iso-140012026/",
+      "https://sqccertification.com/iso-45001-certification/",
+      "https://sqccertification.com/iso-iec-27001-certification/",
+      "https://sqccertification.com/iso-iec-42001-certification/",
+      "https://sqccertification.com/iso-37001-certification/",
+      "https://sqccertification.com/iso-13485-certification/",
+      "https://sqccertification.com/iso-22301-certification/",
+      "https://sqccertification.com/iso-50001-certification/",
+      "https://sqccertification.com/iso-iec-27019-certification/",
+      "https://sqccertification.com/iso-iec-27018-certification/",
+      "https://sqccertification.com/iso-iec-20000-1-certification/",
+      "https://sqccertification.com/iso-22000-certification/",
+      "https://sqccertification.com/iso-certification-for-aerospace-industry/",
+      "https://sqccertification.com/iatf-16949-certification/",
+      "#",
+      "#",
+      "#",
+      "https://sqccertification.com/vulnerability-assessment-and-penetration-testing-vapt/",
+      "https://sqccertification.com/pci-dss-certification/",
+      "https://sqccertification.com/system-and-organization-controls/",
+      "https://sqccertification.com/cmmi/",
+      "#",
+      "https://sqccertification.com/resources/",
+      "https://sqccertification.com/career/",
+      "#",
+      "https://sqccertification.com/wp-content/uploads/2025/07/SQC-FINAL-@1.pdf",
+      "https://sqccertification.com/wp-content/uploads/2025/10/SQC-F-001_Application_form-1-1.docx",
+      "https://sqccertification.com/wp-content/uploads/2026/02/SQC-F-45-Rules-and-Regulation-for-Use-of-Certification-Mark-NEW-2026.pdf",
+      "https://sqccertification.com/blog/",
+      "#",
+      "https://sqccertification.com/cert/Verify",
+      "https://sqccertification.com/verify-training-certificate/",
+      "https://sqccertification.com/fake-certificate/",
+      "#",
+      "https://sqccertification.com/contact-us/",
+      "https://sqccertification.com/about/",
+      "https://sqccertification.com/services-we-offer/",
+      "https://sqctraining.com/",
+      "https://sqccertification.com/apply-for-franchise/",
+      "https://sqccertification.com/global-coverage/",
+      "https://sqccertification.com/industries/",
+      "https://sqccertification.com/services-we-offer/",
+      "https://sqccertification.com/iso-9001-certification/",
+      "https://sqccertification.com/iso-14001-certification/",
+      "https://sqccertification.com/iso-27001-certification/",
+      "https://sqccertification.com/iso-45001-certification/",
+      "https://sqccertification.com/contact/",
+      "tel:%20+91-9990747758",
+      "https://sqccertification.com/",
+      "https://sqccertification.com/",
+      "https://www.facebook.com/sqccertification",
+      "https://x.com/Sqccertservices",
+      "https://www.youtube.com/@SQC.CERTIFICATION",
+      "https://www.linkedin.com/company/90888190/admin/dashboard/",
+      "https://www.instagram.com/sqccertifications/",
+      "https://sqccertification.com/wp-content/uploads/2024/04/Certification-process.pdf",
+      "https://sqccertification.com/wp-content/uploads/2025/07/SQC-D-003_Quality-Policy.pdf",
+      "https://sqccertification.com/privacy-policy/",
+      "https://sqccertification.com/wp-content/uploads/2024/04/SQC_P_09_Procedure-for-handling-complaints-and-appeals.pdf",
+      "https://sqccertification.com/wp-content/uploads/2025/07/SQC-D-008_Impartiality-Policy.pdf",
+      "https://sqccertification.com/wp-content/uploads/2025/07/SQC_P_03_Procedure-for-Suspension-Withdrawal-Restoring-Renewing-Refusing-and-Cancellation-of-Certificates_Rev01.pdf",
+      "https://sqccertification.com/fake-certificate/",
+      "https://sqccertification.com/",
+      "https://sqccertification.com/about-us/",
+      "https://sqccertification.com/services-we-offer/",
+      "https://sqccertification.com/location/",
+      "https://sqccertification.com/contact-us/",
+      "https://www.google.com/maps/place/ISO+Certification+%2F+SQC+Certification+Services+Pvt.+Ltd./@28.6148021,77.3799315,20.25z/data=!4m6!3m5!1s0x390cf1585e9fa267:0xdc606df1b0e81430!8m2!3d28.6149376!4d77.379723!16s%2Fg%2F11rznssdp8?entry=ttu&g_ep=EgoyMDI0MTIwOS4wIKXMDSoASAFQAw%3D%3D",
+      "tel:+91-9990747758",
+      "tel:%20+91-85956%2060914",
+      "mailto:info@sqccertification.com"
+    ],
+    "engine_source": "httpx_static_fallback"
+  },
+  "unified_robots": {
+    "found": true,
+    "robots_url": "https://sqccertification.com/robots.txt",
+    "bot_access": {
+      "Applebot": {
+        "bot": "Applebot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Apple Intelligence & Siri",
+        "role_or_purpose": "Apple Intelligence search & Safari citations",
+        "via_wildcard": false
+      },
+      "Applebot-Extended": {
+        "bot": "Applebot-Extended",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Apple",
+        "role_or_purpose": "Apple Foundation model training",
+        "via_wildcard": false
+      },
+      "Bingbot": {
+        "bot": "Bingbot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Microsoft Copilot & Bing",
+        "role_or_purpose": "Microsoft AI search indexer",
+        "via_wildcard": false
+      },
+      "Bytespider": {
+        "bot": "Bytespider",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "ByteDance",
+        "role_or_purpose": "ByteDance AI training",
+        "via_wildcard": false
+      },
+      "CCBot": {
+        "bot": "CCBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Common Crawl",
+        "role_or_purpose": "Open web dataset scraped for AI foundation training",
+        "via_wildcard": false
+      },
+      "Claude-SearchBot": {
+        "bot": "Claude-SearchBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Claude Search",
+        "role_or_purpose": "Anthropic search indexer (NOT ClaudeBot)",
+        "via_wildcard": false
+      },
+      "ClaudeBot": {
+        "bot": "ClaudeBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Anthropic",
+        "role_or_purpose": "Model training data collection (Claude base models)",
+        "via_wildcard": false
+      },
+      "FacebookBot": {
+        "bot": "FacebookBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Meta",
+        "role_or_purpose": "Llama & Meta AI model training",
+        "via_wildcard": false
+      },
+      "GPTBot": {
+        "bot": "GPTBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "OpenAI",
+        "role_or_purpose": "Model training data collection (ChatGPT base models)",
+        "via_wildcard": false
+      },
+      "Google-Extended": {
+        "bot": "Google-Extended",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Google",
+        "role_or_purpose": "Gemini & Vertex AI model training (Separate from Googlebot)",
+        "via_wildcard": false
+      },
+      "Googlebot": {
+        "bot": "Googlebot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Google Search & AI Overviews",
+        "role_or_purpose": "Primary web indexer driving Google SGE/AI Overviews",
+        "via_wildcard": false
+      },
+      "OAI-SearchBot": {
+        "bot": "OAI-SearchBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "ChatGPT Search",
+        "role_or_purpose": "Search indexer & live web citation retriever (NOT GPTBot)",
+        "via_wildcard": false
+      },
+      "PerplexityBot": {
+        "bot": "PerplexityBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Perplexity AI",
+        "role_or_purpose": "Live answer engine citation crawler",
+        "via_wildcard": false
+      },
+      "cohere-ai": {
+        "bot": "cohere-ai",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Cohere",
+        "role_or_purpose": "Enterprise LLM training",
+        "via_wildcard": false
+      }
+    },
+    "sitemaps": [
+      "https://sqccertification.com/sitemap.xml",
+      "https://sqccertification.com/sitemap.rss"
+    ],
+    "crawl_delay": null,
+    "discovered_urls": [
+      "https://sqccertification.com/post-sitemap.xml",
+      "https://sqccertification.com/page-sitemap.xml",
+      "https://sqccertification.com/elementor-hf-sitemap.xml",
+      "https://sqccertification.com/wpr_templates-sitemap.xml",
+      "https://sqccertification.com/web-story-sitemap.xml",
+      "https://sqccertification.com/wpr_mega_menu-sitemap.xml",
+      "https://sqccertification.com/post-archive-sitemap.xml",
+      "https://sqccertification.com/category-sitemap.xml",
+      "https://sqccertification.com/post_tag-sitemap.xml",
+      "https://sqccertification.com/web_story_tag-sitemap.xml"
+    ],
+    "engine_source": "advertools_rfc"
+  },
+  "unified_schema": {
+    "detected_types": [
+      "WebSite",
+      "Organization",
+      "BreadcrumbList",
+      "WebPage"
+    ],
+    "deprecated_types_detected": [],
+    "blocks_count": 4,
+    "is_injected_via_js": false,
+    "validation_issues": [],
+    "sameas_urls": [
+      "https://youtube.com/",
+      "https://pinterest.com/",
+      "https://instagram.com/",
+      "https://facebook.com/",
+      "https://x.com/",
+      "https://linkedin.com/in/"
+    ],
+    "has_organization": true,
+    "has_author": false,
+    "engine_source": "triangulated_union"
+  },
+  "unified_geo": {
+    "overall_citability_score": 49,
+    "answer_first_ratio": 0.32,
+    "passage_density_ratio": 0.05,
+    "statistical_density_per_1000": 0.0,
+    "outbound_citations_count": 0,
+    "authoritative_citations_count": 0,
+    "llms_txt_found": false,
+    "llms_txt_warnings": [],
+    "llms_full_found": false,
+    "question_h2s": [],
+    "methods": [
+      {
+        "name": "quotation_addition",
+        "label": "Quotation Addition",
+        "detected": false,
+        "score": 0,
+        "max_score": 6,
+        "impact": "+41%",
+        "details": {
+          "blockquotes": 0,
+          "q_tags": 0,
+          "attributed_quotes": 0,
+          "pull_quotes": 0
+        }
+      },
+      {
+        "name": "statistics_addition",
+        "label": "Statistics Addition",
+        "detected": false,
+        "score": 0,
+        "max_score": 6,
+        "impact": "+33%",
+        "details": {
+          "stat_matches": 0,
+          "density_per_1000_words": 0.0,
+          "tables_with_data": 0
+        }
+      },
+      {
+        "name": "fluency_optimization",
+        "label": "Fluency Optimization",
+        "detected": false,
+        "score": 2,
+        "max_score": 6,
+        "impact": "+29%",
+        "details": {
+          "avg_paragraph_words": 29.7,
+          "connective_count": 0,
+          "paragraphs": 26,
+          "list_items": 127
+        }
+      },
+      {
+        "name": "cite_sources",
+        "label": "Cite Sources",
+        "detected": false,
+        "score": 6,
+        "max_score": 6,
+        "impact": "+27%",
+        "details": {
+          "authoritative_links": 0,
+          "external_links": 9,
+          "cite_tags": 0,
+          "has_reference_section": false
+        }
+      },
+      {
+        "name": "answer_first",
+        "label": "Answer-First Structure",
+        "detected": true,
+        "score": 2,
+        "max_score": 5,
+        "impact": "+25%",
+        "details": {
+          "h2_count": 22,
+          "answer_first_count": 7,
+          "ratio": 0.32
+        }
+      },
+      {
+        "name": "passage_density",
+        "label": "Passage Density",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+23%",
+        "details": {
+          "total_paragraphs": 22,
+          "dense_paragraphs": 1,
+          "ratio": 0.05
+        }
+      },
+      {
+        "name": "technical_terms",
+        "label": "Technical Terms",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+18%",
+        "details": {
+          "tech_matches": 47,
+          "density_per_1000": 69.12,
+          "code_blocks": 0,
+          "abbr_tags": 0
+        }
+      },
+      {
+        "name": "authoritative_tone",
+        "label": "Authoritative Tone",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+16%",
+        "details": {
+          "authority_markers": 0,
+          "hedge_markers": 0,
+          "has_author_bio": false,
+          "credentials": [],
+          "has_author_meta": false
+        }
+      },
+      {
+        "name": "easy_to_understand",
+        "label": "Easy-to-Understand",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+14%",
+        "details": {
+          "avg_sentence_length": 16.4,
+          "h2_count": 22,
+          "h3_count": 10,
+          "faq_sections": 0
+        }
+      },
+      {
+        "name": "unique_words",
+        "label": "Unique Words",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+7%",
+        "details": {
+          "ttr": 0.684,
+          "total_words": 399,
+          "unique_count": 248
+        }
+      },
+      {
+        "name": "keyword_stuffing",
+        "label": "No Keyword Stuffing",
+        "detected": true,
+        "score": 2,
+        "max_score": 6,
+        "impact": "-9%",
+        "details": {
+          "suspicious_keywords": {
+            "iso": 5.0,
+            "our": 3.0,
+            "certification": 2.8
+          },
+          "stuffing_severity": "medium",
+          "repeated_phrases": 0,
+          "front_loading_detected": false
+        }
+      },
+      {
+        "name": "readability",
+        "label": "Readability Score",
+        "detected": false,
+        "score": 0,
+        "max_score": 8,
+        "impact": "+15%",
+        "details": {
+          "flesch_kincaid_grade": 16.5,
+          "avg_words_per_sentence": 18.9,
+          "avg_syllables_per_word": 2.1,
+          "optimal_sections": 0,
+          "total_sections": 0
+        }
+      },
+      {
+        "name": "faq_in_content",
+        "label": "FAQ-in-Content",
+        "detected": false,
+        "score": 0,
+        "max_score": 6,
+        "impact": "+12%",
+        "details": {
+          "faq_patterns_found": 0
+        }
+      },
+      {
+        "name": "image_alt_quality",
+        "label": "Image Alt Quality",
+        "detected": true,
+        "score": 3,
+        "max_score": 5,
+        "impact": "+8%",
+        "details": {
+          "total_images": 4,
+          "with_alt": 3,
+          "descriptive_alt": 2,
+          "generic_alt": 1,
+          "missing_alt": 1
+        }
+      },
+      {
+        "name": "content_freshness",
+        "label": "Content Freshness",
+        "detected": true,
+        "score": 6,
+        "max_score": 6,
+        "impact": "+10%",
+        "details": {
+          "date_modified": "2026-09-23T11:38:54+00:00",
+          "date_published": "2024-05-27T04:43:05+00:00",
+          "is_fresh": true,
+          "freshness_level": "very_fresh",
+          "months_old": 0.2,
+          "year_references": {
+            "2026": 5,
+            "2018": 4,
+            "2022": 3,
+            "2015": 1
+          },
+          "warnings": []
+        }
+      },
+      {
+        "name": "citability_density",
+        "label": "Citability Density",
+        "detected": true,
+        "score": 5,
+        "max_score": 7,
+        "impact": "+15%",
+        "details": {
+          "total_paragraphs": 22,
+          "dense_paragraphs": 9,
+          "density_ratio": 0.41,
+          "total_citable_facts": 25
+        }
+      },
+      {
+        "name": "definition_patterns",
+        "label": "Definition Patterns",
+        "detected": true,
+        "score": 2,
+        "max_score": 5,
+        "impact": "+10%",
+        "details": {
+          "definitions_found": 4,
+          "total_headings": 23,
+          "ratio": 0.17
+        }
+      },
+      {
+        "name": "format_mix",
+        "label": "Response Format Mix",
+        "detected": true,
+        "score": 2,
+        "max_score": 5,
+        "impact": "+8%",
+        "details": {
+          "has_paragraphs": true,
+          "has_lists": true,
+          "has_tables": false,
+          "has_code": false,
+          "has_blockquote": false,
+          "format_count": 2
+        }
+      },
+      {
+        "name": "attribution_completeness",
+        "label": "Attribution Completeness",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+12%",
+        "details": {
+          "inline_attributions": 0,
+          "footnotes": 6,
+          "inline_link_citations": 0
+        }
+      },
+      {
+        "name": "no_negative_signals",
+        "label": "No Negative Signals",
+        "detected": false,
+        "score": 4,
+        "max_score": 5,
+        "impact": "-15%",
+        "details": {
+          "cta_count": 1,
+          "is_thin_content": false,
+          "has_author": false,
+          "repeated_phrases": 0,
+          "total_penalties": 1
+        }
+      },
+      {
+        "name": "comparison_content",
+        "label": "Comparison Content",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "vs_headings": 0,
+          "pro_con_sections": 0,
+          "comparison_tables": 0,
+          "large_tables": 0
+        }
+      },
+      {
+        "name": "eeat_signals",
+        "label": "E-E-A-T Signals",
+        "detected": true,
+        "score": 4,
+        "max_score": 7,
+        "impact": "+15%",
+        "details": {
+          "trust_links": {
+            "privacy": true,
+            "terms": true,
+            "about": true,
+            "contact": true
+          },
+          "trust_link_count": 4,
+          "has_detailed_bio": false,
+          "has_structured_author": false,
+          "has_verified_author": false,
+          "is_https": true
+        }
+      },
+      {
+        "name": "no_content_decay",
+        "label": "No Content Decay",
+        "detected": false,
+        "score": 5,
+        "max_score": 5,
+        "impact": "-10%",
+        "details": {
+          "old_year_references": [
+            2018,
+            2022,
+            2015
+          ],
+          "is_recently_modified": true,
+          "stale_update_patterns": 0,
+          "external_links_count": 130,
+          "total_penalties": 0
+        }
+      },
+      {
+        "name": "boilerplate_ratio",
+        "label": "Content-to-Boilerplate Ratio",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "content_length": 79,
+          "total_length": 7070,
+          "ratio": 0.01,
+          "method": "heuristic"
+        }
+      },
+      {
+        "name": "nuance_signals",
+        "label": "Nuance/Honesty Signals",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "nuance_patterns": 0,
+          "nuance_headings": 0,
+          "total_signals": 0
+        }
+      },
+      {
+        "name": "snippet_ready",
+        "label": "Snippet-Ready Content",
+        "detected": true,
+        "score": 2,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "snippet_ready_sections": 9,
+          "total_headings": 32,
+          "ratio": 0.28
+        }
+      },
+      {
+        "name": "chunk_quotability",
+        "label": "Chunk Quotability",
+        "detected": true,
+        "score": 4,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "candidate_paragraphs": 1,
+          "quotable_paragraphs": 1,
+          "ratio": 1.0
+        }
+      },
+      {
+        "name": "blog_structure",
+        "label": "Blog Structure",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "has_article_schema": false
+        }
+      },
+      {
+        "name": "shopping_readiness",
+        "label": "AI Shopping Readiness",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_product_schema": false
+        }
+      },
+      {
+        "name": "chatgpt_shopping",
+        "label": "ChatGPT Shopping Feed",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_product_schema": false
+        }
+      },
+      {
+        "name": "voice_search_ready",
+        "label": "Voice/Conversational Search",
+        "detected": true,
+        "score": 2,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "question_headings": 2,
+          "concise_answers": 2,
+          "has_speakable_schema": false
+        }
+      },
+      {
+        "name": "multi_platform",
+        "label": "Multi-Platform Presence",
+        "detected": true,
+        "score": 4,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "platforms_found": [
+            "Facebook",
+            "Instagram",
+            "LinkedIn",
+            "Twitter/X",
+            "YouTube"
+          ],
+          "platform_count": 5
+        }
+      },
+      {
+        "name": "entity_disambiguation",
+        "label": "Entity Disambiguation",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "names_found": [
+            "sqc certification provides globally recognized iso certifications",
+            "sqc certification provides globally recognized iso certifications",
+            "sqc certification services pvt. ltd",
+            "sqc certification provides globally recognized iso certifications",
+            "sqc certification services pvt. ltd"
+          ],
+          "names_consistent": true,
+          "sameas_count": 6
+        }
+      },
+      {
+        "name": "first_party_data",
+        "label": "First-Party Data",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+12%",
+        "details": {
+          "first_party_patterns": 0,
+          "own_data_signals": 0,
+          "has_methodology_section": false
+        }
+      },
+      {
+        "name": "no_stale_data",
+        "label": "No Stale Data",
+        "detected": true,
+        "score": 3,
+        "max_score": 4,
+        "impact": "-10%",
+        "details": {
+          "old_copyright_in_footer": false,
+          "stale_year_references": [
+            2018
+          ],
+          "penalties": 1
+        }
+      },
+      {
+        "name": "social_proof",
+        "label": "Social Proof",
+        "detected": true,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_testimonial": false,
+          "has_aggregate_rating": false,
+          "has_trust_badges": true
+        }
+      },
+      {
+        "name": "accessibility_signals",
+        "label": "Accessibility Signals",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "semantic_tags": [
+            "header",
+            "nav"
+          ],
+          "aria_landmarks": [],
+          "has_skip_link": false
+        }
+      },
+      {
+        "name": "conversion_funnel",
+        "label": "AI Conversion Funnel",
+        "detected": true,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_cta": false,
+          "has_pricing_link": false,
+          "has_contact": true
+        }
+      },
+      {
+        "name": "temporal_coherence",
+        "label": "Temporal Signal Coherence",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "dates_found": {
+            "schema_dateModified": "2026-09-23T00:00:00+00:00",
+            "schema_datePublished": "2024-05-27T00:00:00+00:00",
+            "meta_modified": "2026-09-23T00:00:00+00:00",
+            "meta_published": "2024-05-27T00:00:00+00:00"
+          },
+          "date_count": 4,
+          "max_diff_days": 849,
+          "is_coherent": false,
+          "is_incoherent": true
+        }
+      },
+      {
+        "name": "anchor_text_quality",
+        "label": "Anchor Text Quality",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "total_internal_links": 119,
+          "generic_count": 5,
+          "descriptive_count": 114,
+          "descriptive_ratio": 0.96
+        }
+      },
+      {
+        "name": "international_geo",
+        "label": "International GEO",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "html_lang": "en-US",
+          "hreflang_count": 0,
+          "hreflang_langs": [],
+          "schema_inLanguage": "en-US",
+          "is_multilingual": false
+        }
+      },
+      {
+        "name": "crawl_budget",
+        "label": "AI Crawl Budget",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "has_noindex": false,
+          "has_nofollow": false,
+          "has_sitemap_link": false,
+          "penalties": []
+        }
+      },
+      {
+        "name": "answer_capsule",
+        "label": "Answer Capsule Detection",
+        "detected": true,
+        "score": 4,
+        "max_score": 4,
+        "impact": "+12%",
+        "details": {
+          "capsule_count": 10,
+          "total_candidates": 14,
+          "ratio": 0.71
+        }
+      },
+      {
+        "name": "token_efficiency",
+        "label": "Token Efficiency",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "total_words": 957,
+          "content_words": 743,
+          "noise_words": 214,
+          "ratio": 0.78
+        }
+      },
+      {
+        "name": "entity_resolution",
+        "label": "Entity Resolution Friendliness",
+        "detected": true,
+        "score": 4,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "has_schema_entity": true,
+          "has_sameas": true,
+          "has_definition": false,
+          "entity_types": [
+            "Organization",
+            "WebPage",
+            "WebSite"
+          ]
+        }
+      },
+      {
+        "name": "kg_density",
+        "label": "Knowledge Graph Density",
+        "detected": true,
+        "score": 3,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "relation_count": 6,
+          "density_per_500w": 4.4,
+          "schema_relations": 2,
+          "word_count": 680
+        }
+      },
+      {
+        "name": "retrieval_triggers",
+        "label": "Retrieval Trigger Patterns",
+        "detected": false,
+        "score": 1,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "trigger_count": 1,
+          "unique_triggers": 1,
+          "density_per_500w": 0.7,
+          "question_headings": 2
+        }
+      }
+    ],
+    "engine_source": "geo_optimizer_skill"
+  },
+  "unified_trust": {
+    "overall_score": 48,
+    "raw_score": 12,
+    "grade": "D",
+    "layers": {
+      "technical": {
+        "name": "technical",
+        "label": "Technical & Infrastructure Trust",
+        "score": 3,
+        "max_score": 5,
+        "signals_found": [
+          "HTTPS Protocol Active (+2)",
+          "Content-Security-Policy (CSP)"
+        ],
+        "signals_missing": [
+          "HSTS Header Missing",
+          "X-Frame-Options Header Missing"
+        ]
+      },
+      "identity": {
+        "name": "identity",
+        "label": "Entity & Identity Trust",
+        "score": 3,
+        "max_score": 5,
+        "signals_found": [
+          "Organization / LocalBusiness Structured Data",
+          "About Page Link",
+          "Contact / Support Page Link"
+        ],
+        "signals_missing": [
+          "No Author Attribution in Meta or Schema",
+          "Weak or Inconsistent Brand Signature"
+        ]
+      },
+      "social": {
+        "name": "social",
+        "label": "Social Proof & Reputation Trust",
+        "score": 3,
+        "max_score": 5,
+        "signals_found": [
+          "Entity sameAs Profiles (6 linked)",
+          "Multi-Platform Verification (3+ sameAs)",
+          "Linked Social Profiles (instagram.com, x.com, linkedin.com)"
+        ],
+        "signals_missing": [
+          "No Reviews or Testimonials Detected",
+          "No Knowledge Graph Pillar Link (Wikidata/Wikipedia)"
+        ]
+      },
+      "academic": {
+        "name": "academic",
+        "label": "Academic & Authority Trust",
+        "score": 1,
+        "max_score": 5,
+        "signals_found": [
+          "External Source Citations (160 non-social links)"
+        ],
+        "signals_missing": [
+          "Sparse Quantitative Data / Statistics",
+          "No Links to Recognized Authoritative Sources (.gov, .edu, DOI, PubMed)",
+          "No Dedicated References or Sources Section",
+          "Few Formal Statistical Patterns (Percentages / Research Citations)"
+        ]
+      },
+      "consistency": {
+        "name": "consistency",
+        "label": "Consistency & Compliance Trust",
+        "score": 2,
+        "max_score": 5,
+        "signals_found": [
+          "Privacy Policy Documented",
+          "Dated Copyright Notice"
+        ],
+        "signals_missing": [
+          "No Terms of Service Link Detected",
+          "Missing Canonical Tag",
+          "No Machine-Readable Publication/Modification Timestamps"
+        ]
+      }
+    },
+    "summary": "Trust Grade: D (48/100, Raw 12/25). Strongest layer: Technical & Infrastructure Trust. Weakest layer: Academic & Authority Trust."
+  },
+  "unified_performance": {
+    "source": "local_probe",
+    "overall_performance_score": 65,
+    "ttfb_ms": 848.0,
+    "fcp_ms": null,
+    "lcp_ms": null,
+    "cls": null,
+    "inp_ms": null,
+    "metrics": [
+      {
+        "name": "TTFB",
+        "value": 0.848,
+        "unit": "s",
+        "status": "NEEDS_IMPROVEMENT",
+        "threshold_good": 0.8,
+        "threshold_poor": 1.8
+      }
+    ],
+    "passed_audit": false,
+    "notes": [
+      "Local high-precision TTFB probe (set PAGESPEED_API_KEY for CrUX real-user telemetry).",
+      "RankIntel performance bands: 90–100=Pass, 50–89=Needs Improvement, <50=Poor (based on Lighthouse scale)."
+    ]
+  },
+  "cloud_intelligence": {
+    "available": false,
+    "keywords": null,
+    "backlinks": null,
+    "ai_visibility_score": 0,
+    "notes": []
+  },
+  "site_crawl": null,
+  "fixes": {
+    "current_title": "",
+    "optimized_title": "About SQC Certification | Sqccertification",
+    "title_length": "42",
+    "current_description": "We specialize in assessing and certifying organizations to internationally recognized standards such as ISO 9001, 14001, 45001, 37001, 42001, and 27001.",
+    "optimized_description": "We specialize in assessing and certifying organizations to internationally recognized standards such as ISO 9001, 14001, 45001, 37001, 42001, and 27001.",
+    "desc_length": "152",
+    "llms_txt": "# Sqccertification\n\n> We specialize in assessing and certifying organizations to internationally recognized standards such as ISO 9001, 14001, 45001, 37001, 42001, and 27001.\n\n## Core Services & Knowledge Base\n- [Homepage](https://sqccertification.com/): Primary portal and overview.\n\n## Optional & Detailed Documentation\n- [/llms-full.txt](https://sqccertification.com/llms-full.txt): Comprehensive documentation for deeper context.",
+    "hardened_robots": "# RankIntel Hardened AI Robots.txt Policy\n# 1. Allow AI Search & Citation Bots (Essential for ChatGPT Search, Google, Perplexity, Claude)\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Claude-SearchBot\nAllow: /\n\nUser-agent: Googlebot\nAllow: /\n\nUser-agent: Applebot\nAllow: /\n\n# 2. Optional: Disallow AI Model Pre-Training Scrapers (If preserving intellectual property)\n# User-agent: GPTBot\n# Disallow: /\n# User-agent: ClaudeBot\n# Disallow: /\n# User-agent: Google-Extended\n# Disallow: /\n\n# 3. Standard Crawler Settings\nUser-agent: *\nAllow: /\n"
+  }
+}
