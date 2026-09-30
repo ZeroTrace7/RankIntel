@@ -1,0 +1,1 @@
+# RankIntel Adapters Package

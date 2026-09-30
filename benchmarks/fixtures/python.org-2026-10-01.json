@@ -1,0 +1,1586 @@
+{
+  "url": "https://python.org",
+  "domain": "python.org",
+  "timestamp": "2026-10-01",
+  "overall_health_score": 51,
+  "geo_readiness_score": 36,
+  "technical_health_score": 50,
+  "trust_score": 52,
+  "performance_score": 85,
+  "keyword_score": 0,
+  "site_health_score": 0,
+  "score_formula_mode": "4_engine",
+  "engines_executed": [
+    "advertools_seo",
+    "browser_engine",
+    "rankintel_geo",
+    "performance_engine"
+  ],
+  "conflicts_detected": [],
+  "prioritized_actions": [
+    {
+      "level": "HIGH",
+      "title": "Optimize Title Tag Length & CTR Hook",
+      "finding": "Current title is 0 characters.",
+      "rationale": "Titles over 60 chars are truncated in SERPs with ellipses. Target 50-60 chars with primary keyword front-loaded.",
+      "engine_confidence": "HIGH (Deterministic measurement)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Rewrite Meta Description with Active Call-to-Action",
+      "finding": "Current description is 52 characters.",
+      "rationale": "Descriptions over 160 chars are clipped. Overly short descriptions fail to compel searcher clicks.",
+      "engine_confidence": "HIGH (Deterministic measurement)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Consolidate Multiple H1 Headings into Single Logical H1",
+      "finding": "Found 5 H1 tags on page.",
+      "rationale": "Multiple H1 tags dilute topical focus. Best practice is a single clear H1 reflecting page intent.",
+      "engine_confidence": "HIGH",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Harden Technical Trust & Security Headers",
+      "finding": "Content-Security-Policy Header Missing",
+      "rationale": "HSTS and Content-Security-Policy prevent security downgrades and satisfy AI agent reliability gates.",
+      "engine_confidence": "HIGH (Header telemetry)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Add Organization Schema & Entity Anchors",
+      "finding": "No Organization / LocalBusiness entity defined in structured data.",
+      "rationale": "Essential for establishing E-E-A-T and anchoring your entity in Google's Knowledge Graph.",
+      "engine_confidence": "HIGH",
+      "fix_snippet": null
+    },
+    {
+      "level": "GEO_WIN",
+      "title": "Publish Standard /llms.txt AI Agent Manifest",
+      "finding": "/llms.txt is missing from root domain.",
+      "rationale": "Provides AI assistants (ChatGPT, Claude, Perplexity) with clean, curated markdown documentation.",
+      "engine_confidence": "HIGH",
+      "fix_snippet": null
+    }
+  ],
+  "provenance": [
+    {
+      "finding": "Applebot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Applebot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Applebot-Extended: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Applebot-Extended -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bingbot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Bingbot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bytespider: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Bytespider -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "CCBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: CCBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Claude-SearchBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Claude-SearchBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "ClaudeBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: ClaudeBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "FacebookBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: FacebookBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "GPTBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: GPTBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Google-Extended: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Google-Extended -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Googlebot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Googlebot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "OAI-SearchBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: OAI-SearchBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "PerplexityBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: PerplexityBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "cohere-ai: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: cohere-ai -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'WebSite' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Page Title (21 chars): 'Welcome to Python.org...'",
+      "source_file": "<title> tag",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "TTFB Latency: 109ms",
+      "source_file": "HTTP response probe",
+      "engine": "performance_engine",
+      "evidence_snippet": "Telemetry Source: local_probe",
+      "confidence": "medium",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "/llms.txt: MISSING",
+      "source_file": "/llms.txt HTTP check",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Princeton GEO Citability: 36/100",
+      "source_file": "DOM content passages",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    }
+  ],
+  "unified_on_page": {
+    "url": "https://python.org",
+    "status_code": 200,
+    "response_time_sec": 2.22,
+    "title": "",
+    "title_length": 0,
+    "meta_description": "The official home of the Python Programming Language",
+    "meta_desc_length": 52,
+    "h1_count": 5,
+    "h1_text": [
+      "Intuitive Interpretation",
+      "Compound Data Types",
+      "All the Flow You’d Expect",
+      "Functions Defined",
+      "Quick & Easy to Learn"
+    ],
+    "h2_count": 9,
+    "h2_text": [
+      "Get Started",
+      "Download",
+      "Docs",
+      "Jobs",
+      "Latest News",
+      "Upcoming Events",
+      "Success Stories",
+      "Use Python for…",
+      ">>> Python Software Foundation"
+    ],
+    "h3_count": 0,
+    "h3_text": [],
+    "total_images": 1,
+    "images_with_alt": 1,
+    "word_count": 861,
+    "canonical_url": null,
+    "is_redirect": false,
+    "response_headers": {
+      "Connection": "keep-alive",
+      "Content-Length": "11635",
+      "content-encoding": "gzip",
+      "x-frame-options": "SAMEORIGIN",
+      "content-type": "text/html; charset=utf-8",
+      "content-security-policy-report-only": "form-action 'self'; base-uri 'self'; default-src 'self'; img-src 'self' data: https://media.ethicalads.io; frame-ancestors 'self'; script-src 'self' 'nonce-gxGwjpOGF56WRAP+YbDS3Q==' https://analytics.python.org https://media.ethicalads.io https://ajax.googleapis.com; connect-src 'self' https://console.python.org https://analytics.python.org https://server.ethicalads.io https://2p66nmmycsj3.statuspage.io; object-src 'none'; font-src 'self' data:; style-src 'self' 'unsafe-inline' https://ajax.googleapis.com; report-uri https://o20004.ingest.us.sentry.io/api/39935/security/?sentry_key=95f826ce8a6d47e9ab5dbb055c24eb74",
+      "server": "nginx",
+      "via": "1.1 varnish, 1.1 varnish, 1.1 varnish",
+      "Accept-Ranges": "bytes",
+      "Date": "Wed, 30 Sep 2026 18:30:42 GMT",
+      "Age": "783",
+      "X-Served-By": "cache-iad-kcgs7200026-IAD, cache-iad-kcgs7200026-IAD, cache-iad-kcgs7270046-IAD, cache-maa10250-MAA",
+      "X-Cache": "MISS, HIT, HIT",
+      "X-Cache-Hits": "0, 9, 14",
+      "X-Timer": "S1790793043.872489,VS0,VE0",
+      "Vary": "Cookie",
+      "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload"
+    },
+    "internal_links": [
+      "https://python.org/events/python-events/past/",
+      "https://python.org/community/lists/",
+      "https://python.org/",
+      "https://python.org/downloads/ios/",
+      "https://python.org/download/alternatives",
+      "https://python.org/community/diversity/",
+      "https://python.org/events/python-events/",
+      "https://python.org/success-stories/zama-concrete-ml-simplifying-homomorphic-encryption-for-python-machine-learning/",
+      "https://python.org/about/gettingstarted/",
+      "https://python.org/community/workshops/",
+      "https://python.org/shell/",
+      "https://python.org/psf/community-stories/",
+      "https://python.org/about/apps",
+      "https://python.org/doc/essays/",
+      "https://python.org/downloads/source/",
+      "https://python.org/about/help/",
+      "https://python.org/community/awards",
+      "https://python.org/downloads/android/",
+      "https://python.org/community/irc/",
+      "https://python.org/blogs/",
+      "https://python.org/success-stories/category/education/",
+      "https://python.org/community/logos/",
+      "https://python.org/doc/",
+      "https://python.org/psf/membership/",
+      "https://python.org/success-stories/",
+      "https://python.org/success-stories/category/software-development/",
+      "https://python.org/events/python-events/2134/",
+      "https://python.org/dev/security/",
+      "https://python.org/about/quotes/",
+      "https://python.org/community/sigs/",
+      "https://python.org/downloads/release/python-3147/",
+      "https://python.org/downloads/macos/",
+      "https://python.org/psf/donations/",
+      "https://python.org/community/",
+      "https://python.org/dev/core-mentorship/",
+      "https://python.org/psf/",
+      "https://python.org/psf-landing/",
+      "https://python.org/download/other/",
+      "https://python.org/success-stories/category/government/",
+      "https://python.org/downloads/",
+      "https://python.org/events/python-user-group/",
+      "https://python.org/about/apps/",
+      "https://python.org/events/python-user-group/2210/",
+      "https://python.org/jobs/",
+      "https://python.org/downloads/windows/",
+      "https://python.org/psf/get-involved/",
+      "https://python.org/events/python-user-group/past/",
+      "https://python.org/psf/conduct/",
+      "https://python.org/doc/av",
+      "https://python.org/community/forums/",
+      "https://python.org/success-stories/category/arts/",
+      "https://python.org/success-stories/category/business/",
+      "https://python.org/about/",
+      "https://python.org/psf/newsletter/",
+      "https://python.org/success-stories/category/scientific/",
+      "https://python.org/events/",
+      "https://python.org/events/python-events/2187/",
+      "https://python.org/dev/",
+      "https://python.org/about/legal/",
+      "https://python.org/psf/annual-report/2024/",
+      "https://python.org/events/python-events/2136/",
+      "https://python.org/success-stories/category/engineering/",
+      "https://python.org/events/calendars/",
+      "https://python.org/events/python-user-group/2215/"
+    ],
+    "external_links": [
+      "https://devguide.python.org/",
+      "https://flask.palletsprojects.com/",
+      "https://saltproject.io/",
+      "https://planetpython.org/",
+      "https://peps.python.org",
+      "https://docs.anthropic.com/",
+      "https://docs.ansible.com/",
+      "https://blog.python.org",
+      "https://policies.python.org/python.org/Privacy-Notice/",
+      "https://fosstodon.org/@ThePSF",
+      "https://www.openstack.org/",
+      "https://scikit-learn.org/",
+      "https://www.wxpython.org/",
+      "https://www.roundup-tracker.org/",
+      "https://github.com/python/pythondotorg/issues",
+      "https://twitter.com/ThePSF",
+      "https://fastapi.tiangolo.com/",
+      "https://huggingface.co/docs/transformers/",
+      "https://pandas.pydata.org/",
+      "https://bottlepy.org",
+      "https://docs.python.org/3/tutorial/introduction.html#lists",
+      "https://xon.sh/",
+      "https://pypi.org/",
+      "https://wiki.python.org/moin/PythonBooks",
+      "https://docs.python.org/3/tutorial/controlflow.html",
+      "https://docs.python.org/3/tutorial/controlflow.html#defining-functions",
+      "https://pyfound.blogspot.com/2026/09/python-language-summit-2026.html",
+      "https://github.com/python/cpython/issues",
+      "https://donate.python.org/",
+      "https://litestar.dev/",
+      "https://langchain.com/",
+      "https://blog.python.org/2026/09/language-summit-2026-lightning-talks/",
+      "https://trypyramid.com/",
+      "https://scipy.org/",
+      "https://docs.python.org/3/license.html",
+      "https://www.python.org/psf/",
+      "http://docs.python.org/3/tutorial/introduction.html#using-python-as-a-calculator",
+      "https://blog.python.org/2026/09/language-summit-2026/",
+      "https://pycon.blogspot.com/",
+      "https://pyfound.blogspot.com",
+      "https://docs.python.org",
+      "https://kivy.org/",
+      "https://www.tensorflow.org/",
+      "https://riverbankcomputing.com/software/pyqt/intro",
+      "https://status.python.org/",
+      "https://dearpygui.readthedocs.io/en/latest/",
+      "https://pygobject.gnome.org/",
+      "https://pytorch.org/",
+      "https://www.linkedin.com/company/python-software-foundation/",
+      "https://blog.python.org/2026/09/language-summit-2026-free-threading-post-era/",
+      "https://buildbot.net/",
+      "https://trac.edgewall.org/",
+      "https://blog.python.org/2026/09/language-summit-2026-pep-827-type-manipulation/",
+      "https://wiki.python.org/moin/BeginnersGuide",
+      "https://www.tornadoweb.org/",
+      "https://docs.python.org/3/tutorial/",
+      "https://mail.python.org/mailman/listinfo/python-dev",
+      "https://translations.python.org/",
+      "https://wiki.python.org/moin/",
+      "https://www.djangoproject.com/",
+      "https://wiki.qt.io/Qt_for_Python",
+      "https://jobs.python.org",
+      "https://ipython.org/",
+      "https://wiki.python.org/moin/PythonEventsCalendar#Submitting_an_Event",
+      "https://en.wikipedia.org/wiki/Tkinter",
+      "https://docs.python.org/3/faq/",
+      "#content",
+      "#python-network",
+      "/",
+      "https://www.python.org/psf/",
+      "https://docs.python.org",
+      "https://pypi.org/",
+      "/jobs/",
+      "/community/",
+      "#top",
+      "/",
+      "https://donate.python.org/",
+      "#site-map",
+      "#",
+      "javascript:;",
+      "javascript:;",
+      "javascript:;",
+      "#",
+      "https://www.linkedin.com/company/python-software-foundation/",
+      "https://fosstodon.org/@ThePSF",
+      "/community/irc/",
+      "https://twitter.com/ThePSF",
+      "/about/",
+      "/about/apps/",
+      "/about/quotes/",
+      "/about/gettingstarted/",
+      "/about/help/",
+      "/downloads/",
+      "/downloads/",
+      "/downloads/source/",
+      "/downloads/windows/",
+      "/downloads/macos/",
+      "/downloads/android/",
+      "/downloads/ios/",
+      "/download/other/",
+      "https://docs.python.org/3/license.html",
+      "/download/alternatives",
+      "/doc/",
+      "/doc/",
+      "/doc/av",
+      "https://wiki.python.org/moin/BeginnersGuide",
+      "https://docs.python.org/3/faq/",
+      "https://translations.python.org/",
+      "https://peps.python.org",
+      "https://wiki.python.org/moin/PythonBooks",
+      "/doc/essays/",
+      "/community/",
+      "/community/diversity/",
+      "/community/lists/",
+      "/community/irc/",
+      "/community/forums/",
+      "/psf/annual-report/2024/",
+      "/community/workshops/",
+      "/community/sigs/",
+      "/community/logos/",
+      "https://wiki.python.org/moin/",
+      "/psf/conduct/",
+      "/community/awards",
+      "/psf/get-involved/",
+      "/psf/community-stories/",
+      "/success-stories/",
+      "/success-stories/category/arts/",
+      "/success-stories/category/business/",
+      "/success-stories/category/education/",
+      "/success-stories/category/engineering/",
+      "/success-stories/category/government/",
+      "/success-stories/category/scientific/",
+      "/success-stories/category/software-development/",
+      "/blogs/",
+      "/blogs/",
+      "/psf/newsletter/",
+      "https://pyfound.blogspot.com",
+      "https://pycon.blogspot.com/",
+      "https://blog.python.org",
+      "https://planetpython.org/",
+      "/events/",
+      "/events/python-events/",
+      "/events/python-user-group/",
+      "/events/python-events/past/",
+      "/events/python-user-group/past/",
+      "https://wiki.python.org/moin/PythonEventsCalendar#Submitting_an_Event",
+      "/shell/",
+      "http://docs.python.org/3/tutorial/introduction.html#using-python-as-a-calculator",
+      "//docs.python.org/3/tutorial/introduction.html#lists",
+      "//docs.python.org/3/tutorial/controlflow.html",
+      "//docs.python.org/3/tutorial/controlflow.html#defining-functions",
+      "//docs.python.org/3/tutorial/",
+      "/doc/",
+      "/about/gettingstarted/",
+      "/downloads/release/python-3147/",
+      "https://docs.python.org",
+      "//jobs.python.org",
+      "/blogs/",
+      "https://pyfound.blogspot.com/2026/09/python-language-summit-2026.html",
+      "https://blog.python.org/2026/09/language-summit-2026/",
+      "https://blog.python.org/2026/09/language-summit-2026-lightning-talks/",
+      "https://blog.python.org/2026/09/language-summit-2026-pep-827-type-manipulation/",
+      "https://blog.python.org/2026/09/language-summit-2026-free-threading-post-era/",
+      "/events/calendars/",
+      "/events/python-events/2136/",
+      "/events/python-events/2187/",
+      "/events/python-user-group/2215/",
+      "/events/python-user-group/2210/",
+      "/events/python-events/2134/",
+      "/success-stories/",
+      "/success-stories/zama-concrete-ml-simplifying-homomorphic-encryption-for-python-machine-learning/",
+      "/success-stories/zama-concrete-ml-simplifying-homomorphic-encryption-for-python-machine-learning/",
+      "/about/apps",
+      "https://www.djangoproject.com/",
+      "https://trypyramid.com/",
+      "https://bottlepy.org",
+      "https://www.tornadoweb.org/",
+      "https://flask.palletsprojects.com/",
+      "https://litestar.dev/",
+      "https://fastapi.tiangolo.com/",
+      "https://en.wikipedia.org/wiki/Tkinter",
+      "https://pygobject.gnome.org/",
+      "https://riverbankcomputing.com/software/pyqt/intro",
+      "https://wiki.qt.io/Qt_for_Python",
+      "https://kivy.org/",
+      "https://www.wxpython.org/",
+      "https://dearpygui.readthedocs.io/en/latest/",
+      "https://pytorch.org/",
+      "https://www.tensorflow.org/",
+      "https://scikit-learn.org/",
+      "https://huggingface.co/docs/transformers/",
+      "https://docs.anthropic.com/",
+      "https://langchain.com/",
+      "https://scipy.org/",
+      "https://pandas.pydata.org/",
+      "https://ipython.org/",
+      "https://buildbot.net/",
+      "https://trac.edgewall.org/",
+      "https://www.roundup-tracker.org/",
+      "https://docs.ansible.com/",
+      "https://saltproject.io/",
+      "https://www.openstack.org/",
+      "https://xon.sh/",
+      "/psf/",
+      "/psf/",
+      "/psf/membership/",
+      "/psf/donations/",
+      "#python-network",
+      "/about/",
+      "/about/apps/",
+      "/about/quotes/",
+      "/about/gettingstarted/",
+      "/about/help/",
+      "/downloads/",
+      "/downloads/",
+      "/downloads/source/",
+      "/downloads/windows/",
+      "/downloads/macos/",
+      "/downloads/android/",
+      "/downloads/ios/",
+      "/download/other/",
+      "https://docs.python.org/3/license.html",
+      "/download/alternatives",
+      "/doc/",
+      "/doc/",
+      "/doc/av",
+      "https://wiki.python.org/moin/BeginnersGuide",
+      "https://docs.python.org/3/faq/",
+      "https://translations.python.org/",
+      "https://peps.python.org",
+      "https://wiki.python.org/moin/PythonBooks",
+      "/doc/essays/",
+      "/community/",
+      "/community/diversity/",
+      "/community/lists/",
+      "/community/irc/",
+      "/community/forums/",
+      "/psf/annual-report/2024/",
+      "/community/workshops/",
+      "/community/sigs/",
+      "/community/logos/",
+      "https://wiki.python.org/moin/",
+      "/psf/conduct/",
+      "/community/awards",
+      "/psf/get-involved/",
+      "/psf/community-stories/",
+      "/success-stories/",
+      "/success-stories/category/arts/",
+      "/success-stories/category/business/",
+      "/success-stories/category/education/",
+      "/success-stories/category/engineering/",
+      "/success-stories/category/government/",
+      "/success-stories/category/scientific/",
+      "/success-stories/category/software-development/",
+      "/blogs/",
+      "/blogs/",
+      "/psf/newsletter/",
+      "https://pyfound.blogspot.com",
+      "https://pycon.blogspot.com/",
+      "https://blog.python.org",
+      "https://planetpython.org/",
+      "/events/",
+      "/events/python-events/",
+      "/events/python-user-group/",
+      "/events/python-events/past/",
+      "/events/python-user-group/past/",
+      "https://wiki.python.org/moin/PythonEventsCalendar#Submitting_an_Event",
+      "/dev/",
+      "https://devguide.python.org/",
+      "https://github.com/python/cpython/issues",
+      "https://mail.python.org/mailman/listinfo/python-dev",
+      "/dev/core-mentorship/",
+      "/dev/security/",
+      "#python-network",
+      "/about/help/",
+      "/community/diversity/",
+      "https://github.com/python/pythondotorg/issues",
+      "https://status.python.org/",
+      "/psf-landing/",
+      "/about/legal/",
+      "https://policies.python.org/python.org/Privacy-Notice/"
+    ],
+    "engine_source": "httpx_static_fallback"
+  },
+  "unified_robots": {
+    "found": true,
+    "robots_url": "https://python.org/robots.txt",
+    "bot_access": {
+      "Applebot": {
+        "bot": "Applebot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Apple Intelligence & Siri",
+        "role_or_purpose": "Apple Intelligence search & Safari citations",
+        "via_wildcard": false
+      },
+      "Applebot-Extended": {
+        "bot": "Applebot-Extended",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Apple",
+        "role_or_purpose": "Apple Foundation model training",
+        "via_wildcard": false
+      },
+      "Bingbot": {
+        "bot": "Bingbot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Microsoft Copilot & Bing",
+        "role_or_purpose": "Microsoft AI search indexer",
+        "via_wildcard": false
+      },
+      "Bytespider": {
+        "bot": "Bytespider",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "ByteDance",
+        "role_or_purpose": "ByteDance AI training",
+        "via_wildcard": false
+      },
+      "CCBot": {
+        "bot": "CCBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Common Crawl",
+        "role_or_purpose": "Open web dataset scraped for AI foundation training",
+        "via_wildcard": false
+      },
+      "Claude-SearchBot": {
+        "bot": "Claude-SearchBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Claude Search",
+        "role_or_purpose": "Anthropic search indexer (NOT ClaudeBot)",
+        "via_wildcard": false
+      },
+      "ClaudeBot": {
+        "bot": "ClaudeBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Anthropic",
+        "role_or_purpose": "Model training data collection (Claude base models)",
+        "via_wildcard": false
+      },
+      "FacebookBot": {
+        "bot": "FacebookBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Meta",
+        "role_or_purpose": "Llama & Meta AI model training",
+        "via_wildcard": false
+      },
+      "GPTBot": {
+        "bot": "GPTBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "OpenAI",
+        "role_or_purpose": "Model training data collection (ChatGPT base models)",
+        "via_wildcard": false
+      },
+      "Google-Extended": {
+        "bot": "Google-Extended",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Google",
+        "role_or_purpose": "Gemini & Vertex AI model training (Separate from Googlebot)",
+        "via_wildcard": false
+      },
+      "Googlebot": {
+        "bot": "Googlebot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Google Search & AI Overviews",
+        "role_or_purpose": "Primary web indexer driving Google SGE/AI Overviews",
+        "via_wildcard": false
+      },
+      "OAI-SearchBot": {
+        "bot": "OAI-SearchBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "ChatGPT Search",
+        "role_or_purpose": "Search indexer & live web citation retriever (NOT GPTBot)",
+        "via_wildcard": false
+      },
+      "PerplexityBot": {
+        "bot": "PerplexityBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Perplexity AI",
+        "role_or_purpose": "Live answer engine citation crawler",
+        "via_wildcard": false
+      },
+      "cohere-ai": {
+        "bot": "cohere-ai",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Cohere",
+        "role_or_purpose": "Enterprise LLM training",
+        "via_wildcard": false
+      }
+    },
+    "sitemaps": [],
+    "crawl_delay": null,
+    "discovered_urls": [],
+    "engine_source": "advertools_rfc"
+  },
+  "unified_schema": {
+    "detected_types": [
+      "WebSite"
+    ],
+    "deprecated_types_detected": [],
+    "blocks_count": 1,
+    "is_injected_via_js": false,
+    "validation_issues": [],
+    "sameas_urls": [],
+    "has_organization": false,
+    "has_author": false,
+    "engine_source": "triangulated_union"
+  },
+  "unified_geo": {
+    "overall_citability_score": 36,
+    "answer_first_ratio": 0.44,
+    "passage_density_ratio": 0.0,
+    "statistical_density_per_1000": 0.0,
+    "outbound_citations_count": 0,
+    "authoritative_citations_count": 0,
+    "llms_txt_found": false,
+    "llms_txt_warnings": [],
+    "llms_full_found": false,
+    "question_h2s": [],
+    "methods": [
+      {
+        "name": "quotation_addition",
+        "label": "Quotation Addition",
+        "detected": true,
+        "score": 2,
+        "max_score": 6,
+        "impact": "+41%",
+        "details": {
+          "blockquotes": 1,
+          "q_tags": 0,
+          "attributed_quotes": 0,
+          "pull_quotes": 0
+        }
+      },
+      {
+        "name": "statistics_addition",
+        "label": "Statistics Addition",
+        "detected": false,
+        "score": 0,
+        "max_score": 6,
+        "impact": "+33%",
+        "details": {
+          "stat_matches": 0,
+          "density_per_1000_words": 0.0,
+          "tables_with_data": 0
+        }
+      },
+      {
+        "name": "fluency_optimization",
+        "label": "Fluency Optimization",
+        "detected": false,
+        "score": 2,
+        "max_score": 6,
+        "impact": "+29%",
+        "details": {
+          "avg_paragraph_words": 15.3,
+          "connective_count": 0,
+          "paragraphs": 23,
+          "list_items": 165
+        }
+      },
+      {
+        "name": "cite_sources",
+        "label": "Cite Sources",
+        "detected": true,
+        "score": 6,
+        "max_score": 6,
+        "impact": "+27%",
+        "details": {
+          "authoritative_links": 49,
+          "external_links": 73,
+          "cite_tags": 0,
+          "has_reference_section": false
+        }
+      },
+      {
+        "name": "answer_first",
+        "label": "Answer-First Structure",
+        "detected": true,
+        "score": 3,
+        "max_score": 5,
+        "impact": "+25%",
+        "details": {
+          "h2_count": 9,
+          "answer_first_count": 4,
+          "ratio": 0.44
+        }
+      },
+      {
+        "name": "passage_density",
+        "label": "Passage Density",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+23%",
+        "details": {
+          "total_paragraphs": 13,
+          "dense_paragraphs": 0,
+          "ratio": 0.0
+        }
+      },
+      {
+        "name": "technical_terms",
+        "label": "Technical Terms",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+18%",
+        "details": {
+          "tech_matches": 10,
+          "density_per_1000": 26.18,
+          "code_blocks": 19,
+          "abbr_tags": 0
+        }
+      },
+      {
+        "name": "authoritative_tone",
+        "label": "Authoritative Tone",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+16%",
+        "details": {
+          "authority_markers": 0,
+          "hedge_markers": 0,
+          "has_author_bio": false,
+          "credentials": [],
+          "has_author_meta": false
+        }
+      },
+      {
+        "name": "easy_to_understand",
+        "label": "Easy-to-Understand",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+14%",
+        "details": {
+          "avg_sentence_length": 13.2,
+          "h2_count": 9,
+          "h3_count": 0,
+          "faq_sections": 0
+        }
+      },
+      {
+        "name": "unique_words",
+        "label": "Unique Words",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+7%",
+        "details": {
+          "ttr": 0.745,
+          "total_words": 225,
+          "unique_count": 163
+        }
+      },
+      {
+        "name": "keyword_stuffing",
+        "label": "No Keyword Stuffing",
+        "detected": false,
+        "score": 4,
+        "max_score": 6,
+        "impact": "-9%",
+        "details": {
+          "suspicious_keywords": {
+            "python": 8.0
+          },
+          "stuffing_severity": "none",
+          "repeated_phrases": 0,
+          "front_loading_detected": false
+        }
+      },
+      {
+        "name": "readability",
+        "label": "Readability Score",
+        "detected": false,
+        "score": 0,
+        "max_score": 8,
+        "impact": "+15%",
+        "details": {
+          "flesch_kincaid_grade": 18.0,
+          "avg_words_per_sentence": 29.4,
+          "avg_syllables_per_word": 1.87,
+          "optimal_sections": 0,
+          "total_sections": 14
+        }
+      },
+      {
+        "name": "faq_in_content",
+        "label": "FAQ-in-Content",
+        "detected": false,
+        "score": 0,
+        "max_score": 6,
+        "impact": "+12%",
+        "details": {
+          "faq_patterns_found": 0
+        }
+      },
+      {
+        "name": "image_alt_quality",
+        "label": "Image Alt Quality",
+        "detected": false,
+        "score": 1,
+        "max_score": 5,
+        "impact": "+8%",
+        "details": {
+          "total_images": 1,
+          "with_alt": 1,
+          "descriptive_alt": 0,
+          "generic_alt": 1,
+          "missing_alt": 0
+        }
+      },
+      {
+        "name": "content_freshness",
+        "label": "Content Freshness",
+        "detected": true,
+        "score": 3,
+        "max_score": 6,
+        "impact": "+10%",
+        "details": {
+          "date_modified": null,
+          "date_published": null,
+          "is_fresh": false,
+          "freshness_level": "stale",
+          "months_old": null,
+          "year_references": {
+            "2026": 18
+          },
+          "warnings": [
+            "No date signal (dateModified/datePublished) found"
+          ]
+        }
+      },
+      {
+        "name": "citability_density",
+        "label": "Citability Density",
+        "detected": false,
+        "score": 1,
+        "max_score": 7,
+        "impact": "+15%",
+        "details": {
+          "total_paragraphs": 13,
+          "dense_paragraphs": 1,
+          "density_ratio": 0.08,
+          "total_citable_facts": 5
+        }
+      },
+      {
+        "name": "definition_patterns",
+        "label": "Definition Patterns",
+        "detected": true,
+        "score": 4,
+        "max_score": 5,
+        "impact": "+10%",
+        "details": {
+          "definitions_found": 6,
+          "total_headings": 14,
+          "ratio": 0.43
+        }
+      },
+      {
+        "name": "format_mix",
+        "label": "Response Format Mix",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+8%",
+        "details": {
+          "has_paragraphs": true,
+          "has_lists": true,
+          "has_tables": true,
+          "has_code": true,
+          "has_blockquote": true,
+          "format_count": 5
+        }
+      },
+      {
+        "name": "attribution_completeness",
+        "label": "Attribution Completeness",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+12%",
+        "details": {
+          "inline_attributions": 0,
+          "footnotes": 0,
+          "inline_link_citations": 0
+        }
+      },
+      {
+        "name": "no_negative_signals",
+        "label": "No Negative Signals",
+        "detected": false,
+        "score": 4,
+        "max_score": 5,
+        "impact": "-15%",
+        "details": {
+          "cta_count": 1,
+          "is_thin_content": false,
+          "has_author": false,
+          "repeated_phrases": 0,
+          "total_penalties": 1
+        }
+      },
+      {
+        "name": "comparison_content",
+        "label": "Comparison Content",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "vs_headings": 0,
+          "pro_con_sections": 0,
+          "comparison_tables": 0,
+          "large_tables": 0
+        }
+      },
+      {
+        "name": "eeat_signals",
+        "label": "E-E-A-T Signals",
+        "detected": true,
+        "score": 4,
+        "max_score": 7,
+        "impact": "+15%",
+        "details": {
+          "trust_links": {
+            "privacy": true,
+            "terms": false,
+            "about": true,
+            "contact": true
+          },
+          "trust_link_count": 3,
+          "has_detailed_bio": false,
+          "has_structured_author": false,
+          "has_verified_author": false,
+          "is_https": true
+        }
+      },
+      {
+        "name": "no_content_decay",
+        "label": "No Content Decay",
+        "detected": false,
+        "score": 5,
+        "max_score": 5,
+        "impact": "-10%",
+        "details": {
+          "old_year_references": [],
+          "is_recently_modified": false,
+          "stale_update_patterns": 0,
+          "external_links_count": 74,
+          "total_penalties": 0
+        }
+      },
+      {
+        "name": "boilerplate_ratio",
+        "label": "Content-to-Boilerplate Ratio",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "content_length": 187,
+          "total_length": 6805,
+          "ratio": 0.03,
+          "method": "heuristic"
+        }
+      },
+      {
+        "name": "nuance_signals",
+        "label": "Nuance/Honesty Signals",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "nuance_patterns": 0,
+          "nuance_headings": 0,
+          "total_signals": 0
+        }
+      },
+      {
+        "name": "snippet_ready",
+        "label": "Snippet-Ready Content",
+        "detected": true,
+        "score": 3,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "snippet_ready_sections": 3,
+          "total_headings": 9,
+          "ratio": 0.33
+        }
+      },
+      {
+        "name": "chunk_quotability",
+        "label": "Chunk Quotability",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "candidate_paragraphs": 0,
+          "quotable_paragraphs": 0,
+          "ratio": 0
+        }
+      },
+      {
+        "name": "blog_structure",
+        "label": "Blog Structure",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "has_article_schema": false
+        }
+      },
+      {
+        "name": "shopping_readiness",
+        "label": "AI Shopping Readiness",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_product_schema": false
+        }
+      },
+      {
+        "name": "chatgpt_shopping",
+        "label": "ChatGPT Shopping Feed",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_product_schema": false
+        }
+      },
+      {
+        "name": "voice_search_ready",
+        "label": "Voice/Conversational Search",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "question_headings": 0,
+          "concise_answers": 0,
+          "has_speakable_schema": false
+        }
+      },
+      {
+        "name": "multi_platform",
+        "label": "Multi-Platform Presence",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "platforms_found": [],
+          "platform_count": 0
+        }
+      },
+      {
+        "name": "entity_disambiguation",
+        "label": "Entity Disambiguation",
+        "detected": false,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "names_found": [
+            "welcome to python.org",
+            "welcome to python.org"
+          ],
+          "names_consistent": true,
+          "sameas_count": 0
+        }
+      },
+      {
+        "name": "first_party_data",
+        "label": "First-Party Data",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+12%",
+        "details": {
+          "first_party_patterns": 0,
+          "own_data_signals": 0,
+          "has_methodology_section": false
+        }
+      },
+      {
+        "name": "no_stale_data",
+        "label": "No Stale Data",
+        "detected": false,
+        "score": 4,
+        "max_score": 4,
+        "impact": "-10%",
+        "details": {
+          "old_copyright_in_footer": false,
+          "stale_year_references": [],
+          "penalties": 0
+        }
+      },
+      {
+        "name": "social_proof",
+        "label": "Social Proof",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_testimonial": false,
+          "has_aggregate_rating": false,
+          "has_trust_badges": false
+        }
+      },
+      {
+        "name": "accessibility_signals",
+        "label": "Accessibility Signals",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "semantic_tags": [
+            "footer",
+            "header",
+            "nav"
+          ],
+          "aria_landmarks": [
+            "main"
+          ],
+          "has_skip_link": true
+        }
+      },
+      {
+        "name": "conversion_funnel",
+        "label": "AI Conversion Funnel",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_cta": false,
+          "has_pricing_link": false,
+          "has_contact": false
+        }
+      },
+      {
+        "name": "temporal_coherence",
+        "label": "Temporal Signal Coherence",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "dates_found": {},
+          "date_count": 0,
+          "max_diff_days": 0,
+          "is_coherent": false,
+          "is_incoherent": false
+        }
+      },
+      {
+        "name": "anchor_text_quality",
+        "label": "Anchor Text Quality",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "total_internal_links": 133,
+          "generic_count": 5,
+          "descriptive_count": 128,
+          "descriptive_ratio": 0.96
+        }
+      },
+      {
+        "name": "international_geo",
+        "label": "International GEO",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "html_lang": "en",
+          "hreflang_count": 0,
+          "hreflang_langs": [],
+          "schema_inLanguage": null,
+          "is_multilingual": false
+        }
+      },
+      {
+        "name": "crawl_budget",
+        "label": "AI Crawl Budget",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "has_noindex": false,
+          "has_nofollow": false,
+          "has_sitemap_link": false,
+          "penalties": []
+        }
+      },
+      {
+        "name": "answer_capsule",
+        "label": "Answer Capsule Detection",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+12%",
+        "details": {
+          "capsule_count": 0,
+          "total_candidates": 3,
+          "ratio": 0.0
+        }
+      },
+      {
+        "name": "token_efficiency",
+        "label": "Token Efficiency",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "total_words": 1126,
+          "content_words": 319,
+          "noise_words": 807,
+          "ratio": 0.28
+        }
+      },
+      {
+        "name": "entity_resolution",
+        "label": "Entity Resolution Friendliness",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "has_schema_entity": false,
+          "has_sameas": false,
+          "has_definition": false,
+          "entity_types": []
+        }
+      },
+      {
+        "name": "kg_density",
+        "label": "Knowledge Graph Density",
+        "detected": true,
+        "score": 2,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "relation_count": 3,
+          "density_per_500w": 3.9,
+          "schema_relations": 0,
+          "word_count": 382
+        }
+      },
+      {
+        "name": "retrieval_triggers",
+        "label": "Retrieval Trigger Patterns",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "trigger_count": 0,
+          "unique_triggers": 0,
+          "density_per_500w": 0.0,
+          "question_headings": 0
+        }
+      }
+    ],
+    "engine_source": "geo_optimizer_skill"
+  },
+  "unified_trust": {
+    "overall_score": 52,
+    "raw_score": 13,
+    "grade": "C",
+    "layers": {
+      "technical": {
+        "name": "technical",
+        "label": "Technical & Infrastructure Trust",
+        "score": 4,
+        "max_score": 5,
+        "signals_found": [
+          "HTTPS Protocol Active (+2)",
+          "Strict-Transport-Security (HSTS)",
+          "Clickjacking Protection (X-Frame-Options/frame-ancestors)"
+        ],
+        "signals_missing": [
+          "Content-Security-Policy Header Missing"
+        ]
+      },
+      "identity": {
+        "name": "identity",
+        "label": "Entity & Identity Trust",
+        "score": 2,
+        "max_score": 5,
+        "signals_found": [
+          "About Page Link",
+          "Contact / Support Page Link"
+        ],
+        "signals_missing": [
+          "No Organization/Business Schema in JSON-LD",
+          "No Author Attribution in Meta or Schema",
+          "Weak or Inconsistent Brand Signature"
+        ]
+      },
+      "social": {
+        "name": "social",
+        "label": "Social Proof & Reputation Trust",
+        "score": 2,
+        "max_score": 5,
+        "signals_found": [
+          "Linked Social Profiles (twitter.com, linkedin.com, github.com)",
+          "Knowledge Graph Anchor (Wikipedia/Wikidata link)"
+        ],
+        "signals_missing": [
+          "No sameAs Links in Schema.org",
+          "Fewer than 3 verified sameAs profiles",
+          "No Reviews or Testimonials Detected"
+        ]
+      },
+      "academic": {
+        "name": "academic",
+        "label": "Academic & Authority Trust",
+        "score": 2,
+        "max_score": 5,
+        "signals_found": [
+          "External Source Citations (273 non-social links)",
+          "Authoritative Domain Links (wikipedia.org)"
+        ],
+        "signals_missing": [
+          "Sparse Quantitative Data / Statistics",
+          "No Dedicated References or Sources Section",
+          "Few Formal Statistical Patterns (Percentages / Research Citations)"
+        ]
+      },
+      "consistency": {
+        "name": "consistency",
+        "label": "Consistency & Compliance Trust",
+        "score": 3,
+        "max_score": 5,
+        "signals_found": [
+          "Privacy Policy Documented",
+          "Dated Copyright Notice",
+          "Machine-Readable Timestamp / Freshness Signal"
+        ],
+        "signals_missing": [
+          "No Terms of Service Link Detected",
+          "Missing Canonical Tag"
+        ]
+      }
+    },
+    "summary": "Trust Grade: C (52/100, Raw 13/25). Strongest layer: Technical & Infrastructure Trust. Weakest layer: Entity & Identity Trust."
+  },
+  "unified_performance": {
+    "source": "local_probe",
+    "overall_performance_score": 85,
+    "ttfb_ms": 109.0,
+    "fcp_ms": null,
+    "lcp_ms": null,
+    "cls": null,
+    "inp_ms": null,
+    "metrics": [
+      {
+        "name": "TTFB",
+        "value": 0.109,
+        "unit": "s",
+        "status": "GOOD",
+        "threshold_good": 0.8,
+        "threshold_poor": 1.8
+      }
+    ],
+    "passed_audit": false,
+    "notes": [
+      "Local high-precision TTFB probe (set PAGESPEED_API_KEY for CrUX real-user telemetry).",
+      "RankIntel performance bands: 90–100=Pass, 50–89=Needs Improvement, <50=Poor (based on Lighthouse scale)."
+    ]
+  },
+  "cloud_intelligence": {
+    "available": false,
+    "keywords": null,
+    "backlinks": null,
+    "ai_visibility_score": 0,
+    "notes": []
+  },
+  "site_crawl": null,
+  "fixes": {
+    "current_title": "",
+    "optimized_title": "Intuitive Interpretation | Python",
+    "title_length": "33",
+    "current_description": "The official home of the Python Programming Language",
+    "optimized_description": "Discover comprehensive services with Python. Leading technical expertise, certified quality, and dedicated support. Contact our specialists today.",
+    "desc_length": "146",
+    "jsonld_schema": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"Organization\",\n      \"@id\": \"https://python.org/#organization\",\n      \"name\": \"Python\",\n      \"url\": \"https://python.org\",\n      \"description\": \"The official home of the Python Programming Language\"\n    },\n    {\n      \"@type\": \"WebSite\",\n      \"@id\": \"https://python.org/#website\",\n      \"url\": \"https://python.org\",\n      \"name\": \"Python\",\n      \"publisher\": {\n        \"@id\": \"https://python.org/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://python.org#webpage\",\n      \"url\": \"https://python.org\",\n      \"name\": \"Python\",\n      \"isPartOf\": {\n        \"@id\": \"https://python.org/#website\"\n      },\n      \"about\": {\n        \"@id\": \"https://python.org/#organization\"\n      },\n      \"description\": \"The official home of the Python Programming Language\"\n    }\n  ]\n}\n</script>",
+    "llms_txt": "# Python\n\n> The official home of the Python Programming Language\n\n## Core Services & Knowledge Base\n- [Homepage](https://python.org): Primary portal and overview.\n\n## Optional & Detailed Documentation\n- [/llms-full.txt](https://python.org/llms-full.txt): Comprehensive documentation for deeper context.",
+    "hardened_robots": "# RankIntel Hardened AI Robots.txt Policy\n# 1. Allow AI Search & Citation Bots (Essential for ChatGPT Search, Google, Perplexity, Claude)\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Claude-SearchBot\nAllow: /\n\nUser-agent: Googlebot\nAllow: /\n\nUser-agent: Applebot\nAllow: /\n\n# 2. Optional: Disallow AI Model Pre-Training Scrapers (If preserving intellectual property)\n# User-agent: GPTBot\n# Disallow: /\n# User-agent: ClaudeBot\n# Disallow: /\n# User-agent: Google-Extended\n# Disallow: /\n\n# 3. Standard Crawler Settings\nUser-agent: *\nAllow: /\n"
+  }
+}

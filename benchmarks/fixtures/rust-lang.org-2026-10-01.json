@@ -1,0 +1,1091 @@
+{
+  "url": "https://rust-lang.org",
+  "domain": "rust-lang.org",
+  "timestamp": "2026-10-01",
+  "overall_health_score": 43,
+  "geo_readiness_score": 35,
+  "technical_health_score": 45,
+  "trust_score": 20,
+  "performance_score": 85,
+  "keyword_score": 0,
+  "site_health_score": 0,
+  "score_formula_mode": "4_engine",
+  "engines_executed": [
+    "advertools_seo",
+    "browser_engine",
+    "rankintel_geo",
+    "performance_engine"
+  ],
+  "conflicts_detected": [],
+  "prioritized_actions": [
+    {
+      "level": "HIGH",
+      "title": "Optimize Title Tag Length & CTR Hook",
+      "finding": "Current title is 0 characters.",
+      "rationale": "Titles over 60 chars are truncated in SERPs with ellipses. Target 50-60 chars with primary keyword front-loaded.",
+      "engine_confidence": "HIGH (Deterministic measurement)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Rewrite Meta Description with Active Call-to-Action",
+      "finding": "Current description is 72 characters.",
+      "rationale": "Descriptions over 160 chars are clipped. Overly short descriptions fail to compel searcher clicks.",
+      "engine_confidence": "HIGH (Deterministic measurement)",
+      "fix_snippet": null
+    },
+    {
+      "level": "CRITICAL",
+      "title": "Deploy JSON-LD Structured Data",
+      "finding": "Zero Schema.org types detected on page.",
+      "rationale": "Structured data is required for rich snippets and assists generative AI models in entity disambiguation.",
+      "engine_confidence": "HIGH (Verified by both static and browser engines)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Harden Technical Trust & Security Headers",
+      "finding": "HSTS Header Missing, Content-Security-Policy Header Missing, X-Frame-Options Header Missing",
+      "rationale": "HSTS and Content-Security-Policy prevent security downgrades and satisfy AI agent reliability gates.",
+      "engine_confidence": "HIGH (Header telemetry)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Add Organization Schema & Entity Anchors",
+      "finding": "No Organization / LocalBusiness entity defined in structured data.",
+      "rationale": "Essential for establishing E-E-A-T and anchoring your entity in Google's Knowledge Graph.",
+      "engine_confidence": "HIGH",
+      "fix_snippet": null
+    },
+    {
+      "level": "GEO_WIN",
+      "title": "Publish Standard /llms.txt AI Agent Manifest",
+      "finding": "/llms.txt is missing from root domain.",
+      "rationale": "Provides AI assistants (ChatGPT, Claude, Perplexity) with clean, curated markdown documentation.",
+      "engine_confidence": "HIGH",
+      "fix_snippet": null
+    },
+    {
+      "level": "GEO_WIN",
+      "title": "Implement Answer-First H2 Structure",
+      "finding": "Only 17% of H2 sections open with direct factual answers.",
+      "rationale": "AutoGEO research proves AI models prioritize passages providing concrete numbers/facts in the first 150 characters.",
+      "engine_confidence": "MEDIUM (Heuristic NLP)",
+      "fix_snippet": null
+    }
+  ],
+  "provenance": [
+    {
+      "finding": "Page Title (25 chars): 'Rust Programming Language...'",
+      "source_file": "<title> tag",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "TTFB Latency: 49ms",
+      "source_file": "HTTP response probe",
+      "engine": "performance_engine",
+      "evidence_snippet": "Telemetry Source: local_probe",
+      "confidence": "medium",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "/llms.txt: MISSING",
+      "source_file": "/llms.txt HTTP check",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Princeton GEO Citability: 35/100",
+      "source_file": "DOM content passages",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    }
+  ],
+  "unified_on_page": {
+    "url": "https://rust-lang.org",
+    "status_code": 200,
+    "response_time_sec": 2.11,
+    "title": "",
+    "title_length": 0,
+    "meta_description": "A language empowering everyone to build reliable and efficient software.",
+    "meta_desc_length": 72,
+    "h1_count": 1,
+    "h1_text": [
+      "Rust"
+    ],
+    "h2_count": 6,
+    "h2_text": [
+      "A language empowering everyone  to build reliable and efficient software.",
+      "Why Rust?",
+      "Build it in Rust",
+      "Rust in production",
+      "Get involved",
+      "Thanks"
+    ],
+    "h3_count": 12,
+    "h3_text": [
+      "Performance",
+      "Reliability",
+      "Productivity",
+      "Command Line",
+      "WebAssembly",
+      "Networking",
+      "Embedded",
+      "Read Rust",
+      "Watch Rust",
+      "Contribute code",
+      "Individuals",
+      "Corporate sponsors"
+    ],
+    "total_images": 9,
+    "images_with_alt": 9,
+    "word_count": 418,
+    "canonical_url": null,
+    "is_redirect": false,
+    "response_headers": {
+      "Connection": "keep-alive",
+      "Content-Length": "4828",
+      "Server": "GitHub.com",
+      "Content-Type": "text/html; charset=utf-8",
+      "x-origin-cache": "HIT",
+      "Last-Modified": "Wed, 30 Sep 2026 01:39:52 GMT",
+      "Access-Control-Allow-Origin": "*",
+      "ETag": "W/\"6abc6868-48a2\"",
+      "expires": "Wed, 30 Sep 2026 01:51:19 GMT",
+      "Cache-Control": "max-age=600",
+      "Content-Encoding": "gzip",
+      "x-proxy-cache": "HIT",
+      "X-GitHub-Request-Id": "6D68:E9496:1CEA52:1DB4A9:6ABC6960",
+      "x-github-edge-region": "centralindia",
+      "Accept-Ranges": "bytes",
+      "Date": "Wed, 30 Sep 2026 18:31:11 GMT",
+      "Via": "1.1 varnish",
+      "Age": "518",
+      "X-Served-By": "cache-maa10238-MAA",
+      "X-Cache": "HIT",
+      "X-Cache-Hits": "1",
+      "X-Timer": "S1790793071.129429,VS0,VE1",
+      "Vary": "Accept-Encoding",
+      "X-Fastly-Request-ID": "c3a8a52812ef81071448e2f125e9cbcc4da6ee12"
+    },
+    "internal_links": [
+      "https://rust-lang.org/community",
+      "https://rust-lang.org/learn",
+      "https://rust-lang.org/governance",
+      "https://rust-lang.org/what/cli",
+      "https://rust-lang.org/policies/code-of-conduct",
+      "https://rust-lang.org/",
+      "https://rust-lang.org/learn/get-started",
+      "https://rust-lang.org/tools",
+      "https://rust-lang.org/funding",
+      "https://rust-lang.org/what/wasm",
+      "https://rust-lang.org/what/embedded",
+      "https://rust-lang.org/policies/licenses",
+      "https://rust-lang.org/policies/security",
+      "https://rust-lang.org/tools/install",
+      "https://rust-lang.org/policies",
+      "https://rust-lang.org/what/networking"
+    ],
+    "external_links": [
+      "https://play.rust-lang.org/",
+      "https://blog.rust-lang.org/releases/latest",
+      "https://users.rust-lang.org",
+      "https://social.rust-lang.org/@rust",
+      "https://github.com/rust-lang/www.rust-lang.org/issues/new/choose",
+      "http://forge.rust-lang.org",
+      "https://thanks.rust-lang.org/",
+      "https://blog.rust-lang.org/",
+      "https://foundation.rust-lang.org/policies/logo-policy-and-media-guide/",
+      "https://foundation.rust-lang.org/policies/privacy-policy/",
+      "https://bsky.app/profile/rust-lang.org",
+      "https://github.com/rust-lang",
+      "https://rustc-dev-guide.rust-lang.org/getting-started.html",
+      "https://www.youtube.com/channel/UCaYhcUwRBNscFNUKTjgPFiA",
+      "https://blog.rust-lang.org/2018/03/12/roadmap.html",
+      "https://foundation.rust-lang.org/members",
+      "/",
+      "/tools/install",
+      "/learn",
+      "https://play.rust-lang.org/",
+      "/tools",
+      "/governance",
+      "/funding",
+      "/community",
+      "https://blog.rust-lang.org/",
+      "/learn/get-started",
+      "https://blog.rust-lang.org/releases/latest",
+      "https://blog.rust-lang.org/2018/03/12/roadmap.html",
+      "/what/cli",
+      "/what/wasm",
+      "/what/networking",
+      "/what/embedded",
+      "learn",
+      "https://www.youtube.com/channel/UCaYhcUwRBNscFNUKTjgPFiA",
+      "https://rustc-dev-guide.rust-lang.org/getting-started.html",
+      "https://thanks.rust-lang.org/",
+      "https://foundation.rust-lang.org/members",
+      "/learn",
+      "http://forge.rust-lang.org",
+      "https://users.rust-lang.org",
+      "/policies/code-of-conduct",
+      "/policies/licenses",
+      "https://foundation.rust-lang.org/policies/logo-policy-and-media-guide/",
+      "/policies/security",
+      "https://foundation.rust-lang.org/policies/privacy-policy/",
+      "/policies",
+      "https://social.rust-lang.org/@rust",
+      "https://bsky.app/profile/rust-lang.org",
+      "https://www.youtube.com/channel/UCaYhcUwRBNscFNUKTjgPFiA",
+      "https://github.com/rust-lang",
+      "https://github.com/rust-lang/www.rust-lang.org/issues/new/choose"
+    ],
+    "engine_source": "httpx_static_fallback"
+  },
+  "unified_robots": {
+    "found": false,
+    "robots_url": "https://rust-lang.org/robots.txt",
+    "bot_access": {},
+    "sitemaps": [],
+    "crawl_delay": null,
+    "discovered_urls": [],
+    "engine_source": "advertools_rfc"
+  },
+  "unified_schema": {
+    "detected_types": [],
+    "deprecated_types_detected": [],
+    "blocks_count": 0,
+    "is_injected_via_js": false,
+    "validation_issues": [],
+    "sameas_urls": [],
+    "has_organization": false,
+    "has_author": false,
+    "engine_source": "triangulated_union"
+  },
+  "unified_geo": {
+    "overall_citability_score": 35,
+    "answer_first_ratio": 0.17,
+    "passage_density_ratio": 0.0,
+    "statistical_density_per_1000": 0.0,
+    "outbound_citations_count": 0,
+    "authoritative_citations_count": 0,
+    "llms_txt_found": false,
+    "llms_txt_warnings": [],
+    "llms_full_found": false,
+    "question_h2s": [],
+    "methods": [
+      {
+        "name": "quotation_addition",
+        "label": "Quotation Addition",
+        "detected": false,
+        "score": 0,
+        "max_score": 6,
+        "impact": "+41%",
+        "details": {
+          "blockquotes": 0,
+          "q_tags": 0,
+          "attributed_quotes": 0,
+          "pull_quotes": 0
+        }
+      },
+      {
+        "name": "statistics_addition",
+        "label": "Statistics Addition",
+        "detected": false,
+        "score": 0,
+        "max_score": 6,
+        "impact": "+33%",
+        "details": {
+          "stat_matches": 0,
+          "density_per_1000_words": 0.0,
+          "tables_with_data": 0
+        }
+      },
+      {
+        "name": "fluency_optimization",
+        "label": "Fluency Optimization",
+        "detected": false,
+        "score": 2,
+        "max_score": 6,
+        "impact": "+29%",
+        "details": {
+          "avg_paragraph_words": 20.3,
+          "connective_count": 0,
+          "paragraphs": 18,
+          "list_items": 17
+        }
+      },
+      {
+        "name": "cite_sources",
+        "label": "Cite Sources",
+        "detected": true,
+        "score": 6,
+        "max_score": 6,
+        "impact": "+27%",
+        "details": {
+          "authoritative_links": 12,
+          "external_links": 17,
+          "cite_tags": 0,
+          "has_reference_section": false
+        }
+      },
+      {
+        "name": "answer_first",
+        "label": "Answer-First Structure",
+        "detected": false,
+        "score": 1,
+        "max_score": 5,
+        "impact": "+25%",
+        "details": {
+          "h2_count": 6,
+          "answer_first_count": 1,
+          "ratio": 0.17
+        }
+      },
+      {
+        "name": "passage_density",
+        "label": "Passage Density",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+23%",
+        "details": {
+          "total_paragraphs": 16,
+          "dense_paragraphs": 0,
+          "ratio": 0.0
+        }
+      },
+      {
+        "name": "technical_terms",
+        "label": "Technical Terms",
+        "detected": false,
+        "score": 2,
+        "max_score": 5,
+        "impact": "+18%",
+        "details": {
+          "tech_matches": 1,
+          "density_per_1000": 2.56,
+          "code_blocks": 0,
+          "abbr_tags": 0
+        }
+      },
+      {
+        "name": "authoritative_tone",
+        "label": "Authoritative Tone",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+16%",
+        "details": {
+          "authority_markers": 0,
+          "hedge_markers": 0,
+          "has_author_bio": false,
+          "credentials": [],
+          "has_author_meta": false
+        }
+      },
+      {
+        "name": "easy_to_understand",
+        "label": "Easy-to-Understand",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+14%",
+        "details": {
+          "avg_sentence_length": 13.6,
+          "h2_count": 6,
+          "h3_count": 12,
+          "faq_sections": 0
+        }
+      },
+      {
+        "name": "unique_words",
+        "label": "Unique Words",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+7%",
+        "details": {
+          "ttr": 0.775,
+          "total_words": 260,
+          "unique_count": 189
+        }
+      },
+      {
+        "name": "keyword_stuffing",
+        "label": "No Keyword Stuffing",
+        "detected": false,
+        "score": 4,
+        "max_score": 6,
+        "impact": "-9%",
+        "details": {
+          "suspicious_keywords": {
+            "rust": 6.0
+          },
+          "stuffing_severity": "none",
+          "repeated_phrases": 0,
+          "front_loading_detected": false
+        }
+      },
+      {
+        "name": "readability",
+        "label": "Readability Score",
+        "detected": false,
+        "score": 0,
+        "max_score": 8,
+        "impact": "+15%",
+        "details": {
+          "flesch_kincaid_grade": 13.2,
+          "avg_words_per_sentence": 14.5,
+          "avg_syllables_per_word": 1.96,
+          "optimal_sections": 0,
+          "total_sections": 12
+        }
+      },
+      {
+        "name": "faq_in_content",
+        "label": "FAQ-in-Content",
+        "detected": false,
+        "score": 0,
+        "max_score": 6,
+        "impact": "+12%",
+        "details": {
+          "faq_patterns_found": 0
+        }
+      },
+      {
+        "name": "image_alt_quality",
+        "label": "Image Alt Quality",
+        "detected": true,
+        "score": 3,
+        "max_score": 5,
+        "impact": "+8%",
+        "details": {
+          "total_images": 9,
+          "with_alt": 9,
+          "descriptive_alt": 5,
+          "generic_alt": 4,
+          "missing_alt": 0
+        }
+      },
+      {
+        "name": "content_freshness",
+        "label": "Content Freshness",
+        "detected": false,
+        "score": 1,
+        "max_score": 6,
+        "impact": "+10%",
+        "details": {
+          "date_modified": null,
+          "date_published": null,
+          "is_fresh": false,
+          "freshness_level": "stale",
+          "months_old": null,
+          "year_references": {
+            "2018": 2
+          },
+          "warnings": [
+            "No date signal (dateModified/datePublished) found",
+            "References to past years without recent update date"
+          ]
+        }
+      },
+      {
+        "name": "citability_density",
+        "label": "Citability Density",
+        "detected": false,
+        "score": 1,
+        "max_score": 7,
+        "impact": "+15%",
+        "details": {
+          "total_paragraphs": 16,
+          "dense_paragraphs": 1,
+          "density_ratio": 0.06,
+          "total_citable_facts": 4
+        }
+      },
+      {
+        "name": "definition_patterns",
+        "label": "Definition Patterns",
+        "detected": true,
+        "score": 4,
+        "max_score": 5,
+        "impact": "+10%",
+        "details": {
+          "definitions_found": 3,
+          "total_headings": 7,
+          "ratio": 0.43
+        }
+      },
+      {
+        "name": "format_mix",
+        "label": "Response Format Mix",
+        "detected": true,
+        "score": 2,
+        "max_score": 5,
+        "impact": "+8%",
+        "details": {
+          "has_paragraphs": true,
+          "has_lists": true,
+          "has_tables": false,
+          "has_code": false,
+          "has_blockquote": false,
+          "format_count": 2
+        }
+      },
+      {
+        "name": "attribution_completeness",
+        "label": "Attribution Completeness",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+12%",
+        "details": {
+          "inline_attributions": 0,
+          "footnotes": 0,
+          "inline_link_citations": 0
+        }
+      },
+      {
+        "name": "no_negative_signals",
+        "label": "No Negative Signals",
+        "detected": false,
+        "score": 4,
+        "max_score": 5,
+        "impact": "-15%",
+        "details": {
+          "cta_count": 1,
+          "is_thin_content": false,
+          "has_author": false,
+          "repeated_phrases": 0,
+          "total_penalties": 1
+        }
+      },
+      {
+        "name": "comparison_content",
+        "label": "Comparison Content",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "vs_headings": 0,
+          "pro_con_sections": 0,
+          "comparison_tables": 0,
+          "large_tables": 0
+        }
+      },
+      {
+        "name": "eeat_signals",
+        "label": "E-E-A-T Signals",
+        "detected": false,
+        "score": 1,
+        "max_score": 7,
+        "impact": "+15%",
+        "details": {
+          "trust_links": {
+            "privacy": true,
+            "terms": false,
+            "about": false,
+            "contact": false
+          },
+          "trust_link_count": 1,
+          "has_detailed_bio": false,
+          "has_structured_author": false,
+          "has_verified_author": false,
+          "is_https": false
+        }
+      },
+      {
+        "name": "no_content_decay",
+        "label": "No Content Decay",
+        "detected": false,
+        "score": 4,
+        "max_score": 5,
+        "impact": "-10%",
+        "details": {
+          "old_year_references": [
+            2018
+          ],
+          "is_recently_modified": false,
+          "stale_update_patterns": 0,
+          "external_links_count": 17,
+          "total_penalties": 1
+        }
+      },
+      {
+        "name": "boilerplate_ratio",
+        "label": "Content-to-Boilerplate Ratio",
+        "detected": true,
+        "score": 4,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "content_length": 2781,
+          "total_length": 3478,
+          "ratio": 0.8,
+          "method": "main_tag"
+        }
+      },
+      {
+        "name": "nuance_signals",
+        "label": "Nuance/Honesty Signals",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "nuance_patterns": 0,
+          "nuance_headings": 0,
+          "total_signals": 0
+        }
+      },
+      {
+        "name": "snippet_ready",
+        "label": "Snippet-Ready Content",
+        "detected": true,
+        "score": 3,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "snippet_ready_sections": 7,
+          "total_headings": 21,
+          "ratio": 0.33
+        }
+      },
+      {
+        "name": "chunk_quotability",
+        "label": "Chunk Quotability",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "candidate_paragraphs": 0,
+          "quotable_paragraphs": 0,
+          "ratio": 0
+        }
+      },
+      {
+        "name": "blog_structure",
+        "label": "Blog Structure",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "has_article_schema": false
+        }
+      },
+      {
+        "name": "shopping_readiness",
+        "label": "AI Shopping Readiness",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_product_schema": false
+        }
+      },
+      {
+        "name": "chatgpt_shopping",
+        "label": "ChatGPT Shopping Feed",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_product_schema": false
+        }
+      },
+      {
+        "name": "voice_search_ready",
+        "label": "Voice/Conversational Search",
+        "detected": false,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "question_headings": 1,
+          "concise_answers": 1,
+          "has_speakable_schema": false
+        }
+      },
+      {
+        "name": "multi_platform",
+        "label": "Multi-Platform Presence",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "platforms_found": [],
+          "platform_count": 0
+        }
+      },
+      {
+        "name": "entity_disambiguation",
+        "label": "Entity Disambiguation",
+        "detected": false,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "names_found": [
+            "rust programming language"
+          ],
+          "names_consistent": true,
+          "sameas_count": 0
+        }
+      },
+      {
+        "name": "first_party_data",
+        "label": "First-Party Data",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+12%",
+        "details": {
+          "first_party_patterns": 0,
+          "own_data_signals": 0,
+          "has_methodology_section": false
+        }
+      },
+      {
+        "name": "no_stale_data",
+        "label": "No Stale Data",
+        "detected": true,
+        "score": 3,
+        "max_score": 4,
+        "impact": "-10%",
+        "details": {
+          "old_copyright_in_footer": false,
+          "stale_year_references": [
+            2018
+          ],
+          "penalties": 1
+        }
+      },
+      {
+        "name": "social_proof",
+        "label": "Social Proof",
+        "detected": true,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_testimonial": false,
+          "has_aggregate_rating": false,
+          "has_trust_badges": true
+        }
+      },
+      {
+        "name": "accessibility_signals",
+        "label": "Accessibility Signals",
+        "detected": true,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "semantic_tags": [
+            "footer",
+            "header",
+            "main",
+            "nav"
+          ],
+          "aria_landmarks": [],
+          "has_skip_link": false
+        }
+      },
+      {
+        "name": "conversion_funnel",
+        "label": "AI Conversion Funnel",
+        "detected": true,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_cta": true,
+          "has_pricing_link": false,
+          "has_contact": false
+        }
+      },
+      {
+        "name": "temporal_coherence",
+        "label": "Temporal Signal Coherence",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "dates_found": {},
+          "date_count": 0,
+          "max_diff_days": 0,
+          "is_coherent": false,
+          "is_incoherent": false
+        }
+      },
+      {
+        "name": "anchor_text_quality",
+        "label": "Anchor Text Quality",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "total_internal_links": 17,
+          "generic_count": 0,
+          "descriptive_count": 17,
+          "descriptive_ratio": 1.0
+        }
+      },
+      {
+        "name": "international_geo",
+        "label": "International GEO",
+        "detected": true,
+        "score": 2,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "html_lang": "en-US",
+          "hreflang_count": 11,
+          "hreflang_langs": [
+            "en-US",
+            "es",
+            "fr",
+            "it",
+            "ja",
+            "pt-BR",
+            "ru",
+            "tr",
+            "zh-CN",
+            "zh-TW",
+            "x-default"
+          ],
+          "schema_inLanguage": null,
+          "is_multilingual": true
+        }
+      },
+      {
+        "name": "crawl_budget",
+        "label": "AI Crawl Budget",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "has_noindex": false,
+          "has_nofollow": false,
+          "has_sitemap_link": false,
+          "penalties": []
+        }
+      },
+      {
+        "name": "answer_capsule",
+        "label": "Answer Capsule Detection",
+        "detected": false,
+        "score": 3,
+        "max_score": 4,
+        "impact": "+12%",
+        "details": {
+          "capsule_count": 1,
+          "total_candidates": 3,
+          "ratio": 0.33
+        }
+      },
+      {
+        "name": "token_efficiency",
+        "label": "Token Efficiency",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "total_words": 520,
+          "content_words": 415,
+          "noise_words": 105,
+          "ratio": 0.8
+        }
+      },
+      {
+        "name": "entity_resolution",
+        "label": "Entity Resolution Friendliness",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "has_schema_entity": false,
+          "has_sameas": false,
+          "has_definition": false,
+          "entity_types": []
+        }
+      },
+      {
+        "name": "kg_density",
+        "label": "Knowledge Graph Density",
+        "detected": false,
+        "score": 1,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "relation_count": 2,
+          "density_per_500w": 2.6,
+          "schema_relations": 0,
+          "word_count": 391
+        }
+      },
+      {
+        "name": "retrieval_triggers",
+        "label": "Retrieval Trigger Patterns",
+        "detected": false,
+        "score": 1,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "trigger_count": 1,
+          "unique_triggers": 1,
+          "density_per_500w": 1.3,
+          "question_headings": 1
+        }
+      }
+    ],
+    "engine_source": "geo_optimizer_skill"
+  },
+  "unified_trust": {
+    "overall_score": 20,
+    "raw_score": 5,
+    "grade": "F",
+    "layers": {
+      "technical": {
+        "name": "technical",
+        "label": "Technical & Infrastructure Trust",
+        "score": 2,
+        "max_score": 5,
+        "signals_found": [
+          "HTTPS Protocol Active (+2)"
+        ],
+        "signals_missing": [
+          "HSTS Header Missing",
+          "Content-Security-Policy Header Missing",
+          "X-Frame-Options Header Missing"
+        ]
+      },
+      "identity": {
+        "name": "identity",
+        "label": "Entity & Identity Trust",
+        "score": 0,
+        "max_score": 5,
+        "signals_found": [],
+        "signals_missing": [
+          "No Organization/Business Schema in JSON-LD",
+          "No Author Attribution in Meta or Schema",
+          "No Clear 'About' Page Link Found",
+          "No Contact Page Link Found",
+          "Weak or Inconsistent Brand Signature"
+        ]
+      },
+      "social": {
+        "name": "social",
+        "label": "Social Proof & Reputation Trust",
+        "score": 1,
+        "max_score": 5,
+        "signals_found": [
+          "Linked Social Profiles (github.com, youtube.com)"
+        ],
+        "signals_missing": [
+          "No sameAs Links in Schema.org",
+          "Fewer than 3 verified sameAs profiles",
+          "No Reviews or Testimonials Detected",
+          "No Knowledge Graph Pillar Link (Wikidata/Wikipedia)"
+        ]
+      },
+      "academic": {
+        "name": "academic",
+        "label": "Academic & Authority Trust",
+        "score": 1,
+        "max_score": 5,
+        "signals_found": [
+          "External Source Citations (44 non-social links)"
+        ],
+        "signals_missing": [
+          "Sparse Quantitative Data / Statistics",
+          "No Links to Recognized Authoritative Sources (.gov, .edu, DOI, PubMed)",
+          "No Dedicated References or Sources Section",
+          "Few Formal Statistical Patterns (Percentages / Research Citations)"
+        ]
+      },
+      "consistency": {
+        "name": "consistency",
+        "label": "Consistency & Compliance Trust",
+        "score": 1,
+        "max_score": 5,
+        "signals_found": [
+          "Privacy Policy Documented"
+        ],
+        "signals_missing": [
+          "No Terms of Service Link Detected",
+          "Missing or Undated Copyright Notice",
+          "Missing Canonical Tag",
+          "No Machine-Readable Publication/Modification Timestamps"
+        ]
+      }
+    },
+    "summary": "Trust Grade: F (20/100, Raw 5/25). Strongest layer: Technical & Infrastructure Trust. Weakest layer: Entity & Identity Trust."
+  },
+  "unified_performance": {
+    "source": "local_probe",
+    "overall_performance_score": 85,
+    "ttfb_ms": 48.8,
+    "fcp_ms": null,
+    "lcp_ms": null,
+    "cls": null,
+    "inp_ms": null,
+    "metrics": [
+      {
+        "name": "TTFB",
+        "value": 0.049,
+        "unit": "s",
+        "status": "GOOD",
+        "threshold_good": 0.8,
+        "threshold_poor": 1.8
+      }
+    ],
+    "passed_audit": false,
+    "notes": [
+      "Local high-precision TTFB probe (set PAGESPEED_API_KEY for CrUX real-user telemetry).",
+      "RankIntel performance bands: 90–100=Pass, 50–89=Needs Improvement, <50=Poor (based on Lighthouse scale)."
+    ]
+  },
+  "cloud_intelligence": {
+    "available": false,
+    "keywords": null,
+    "backlinks": null,
+    "ai_visibility_score": 0,
+    "notes": []
+  },
+  "site_crawl": null,
+  "fixes": {
+    "current_title": "",
+    "optimized_title": "Rust | Rust-lang",
+    "title_length": "16",
+    "current_description": "A language empowering everyone to build reliable and efficient software.",
+    "optimized_description": "Discover comprehensive services with Rust-lang. Leading technical expertise, certified quality, and dedicated support. Contact our specialists today.",
+    "desc_length": "149",
+    "jsonld_schema": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"Organization\",\n      \"@id\": \"https://rust-lang.org/#organization\",\n      \"name\": \"Rust-lang\",\n      \"url\": \"https://rust-lang.org\",\n      \"description\": \"A language empowering everyone to build reliable and efficient software.\"\n    },\n    {\n      \"@type\": \"WebSite\",\n      \"@id\": \"https://rust-lang.org/#website\",\n      \"url\": \"https://rust-lang.org\",\n      \"name\": \"Rust-lang\",\n      \"publisher\": {\n        \"@id\": \"https://rust-lang.org/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://rust-lang.org#webpage\",\n      \"url\": \"https://rust-lang.org\",\n      \"name\": \"Rust-lang\",\n      \"isPartOf\": {\n        \"@id\": \"https://rust-lang.org/#website\"\n      },\n      \"about\": {\n        \"@id\": \"https://rust-lang.org/#organization\"\n      },\n      \"description\": \"A language empowering everyone to build reliable and efficient software.\"\n    }\n  ]\n}\n</script>",
+    "llms_txt": "# Rust-lang\n\n> A language empowering everyone to build reliable and efficient software.\n\n## Core Services & Knowledge Base\n- [Homepage](https://rust-lang.org): Primary portal and overview.\n\n## Optional & Detailed Documentation\n- [/llms-full.txt](https://rust-lang.org/llms-full.txt): Comprehensive documentation for deeper context.",
+    "hardened_robots": "# RankIntel Hardened AI Robots.txt Policy\n# 1. Allow AI Search & Citation Bots (Essential for ChatGPT Search, Google, Perplexity, Claude)\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Claude-SearchBot\nAllow: /\n\nUser-agent: Googlebot\nAllow: /\n\nUser-agent: Applebot\nAllow: /\n\n# 2. Optional: Disallow AI Model Pre-Training Scrapers (If preserving intellectual property)\n# User-agent: GPTBot\n# Disallow: /\n# User-agent: ClaudeBot\n# Disallow: /\n# User-agent: Google-Extended\n# Disallow: /\n\n# 3. Standard Crawler Settings\nUser-agent: *\nAllow: /\n"
+  }
+}

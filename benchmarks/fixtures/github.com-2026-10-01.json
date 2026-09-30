@@ -1,0 +1,1508 @@
+{
+  "url": "https://github.com",
+  "domain": "github.com",
+  "timestamp": "2026-10-01",
+  "overall_health_score": 48,
+  "geo_readiness_score": 37,
+  "technical_health_score": 35,
+  "trust_score": 60,
+  "performance_score": 85,
+  "keyword_score": 0,
+  "site_health_score": 0,
+  "score_formula_mode": "4_engine",
+  "engines_executed": [
+    "advertools_seo",
+    "browser_engine",
+    "rankintel_geo",
+    "performance_engine"
+  ],
+  "conflicts_detected": [],
+  "prioritized_actions": [
+    {
+      "level": "HIGH",
+      "title": "Optimize Title Tag Length & CTR Hook",
+      "finding": "Current title is 0 characters.",
+      "rationale": "Titles over 60 chars are truncated in SERPs with ellipses. Target 50-60 chars with primary keyword front-loaded.",
+      "engine_confidence": "HIGH (Deterministic measurement)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Rewrite Meta Description with Active Call-to-Action",
+      "finding": "Current description is 186 characters.",
+      "rationale": "Descriptions over 160 chars are clipped. Overly short descriptions fail to compel searcher clicks.",
+      "engine_confidence": "HIGH (Deterministic measurement)",
+      "fix_snippet": null
+    },
+    {
+      "level": "CRITICAL",
+      "title": "Deploy JSON-LD Structured Data",
+      "finding": "Zero Schema.org types detected on page.",
+      "rationale": "Structured data is required for rich snippets and assists generative AI models in entity disambiguation.",
+      "engine_confidence": "HIGH (Verified by both static and browser engines)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Add Organization Schema & Entity Anchors",
+      "finding": "No Organization / LocalBusiness entity defined in structured data.",
+      "rationale": "Essential for establishing E-E-A-T and anchoring your entity in Google's Knowledge Graph.",
+      "engine_confidence": "HIGH",
+      "fix_snippet": null
+    },
+    {
+      "level": "GEO_WIN",
+      "title": "Implement Answer-First H2 Structure",
+      "finding": "Only 11% of H2 sections open with direct factual answers.",
+      "rationale": "AutoGEO research proves AI models prioritize passages providing concrete numbers/facts in the first 150 characters.",
+      "engine_confidence": "MEDIUM (Heuristic NLP)",
+      "fix_snippet": null
+    }
+  ],
+  "provenance": [
+    {
+      "finding": "Applebot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Applebot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Applebot-Extended: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Applebot-Extended -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bingbot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Bingbot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bytespider: BLOCKED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Bytespider -> BLOCKED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "CCBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: CCBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Claude-SearchBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Claude-SearchBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "ClaudeBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: ClaudeBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "FacebookBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: FacebookBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "GPTBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: GPTBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Google-Extended: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Google-Extended -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Googlebot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Googlebot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "OAI-SearchBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: OAI-SearchBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "PerplexityBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: PerplexityBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "cohere-ai: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: cohere-ai -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Page Title (61 chars): 'GitHub · Change is constant. GitHub keeps you...'",
+      "source_file": "<title> tag",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "TTFB Latency: 129ms",
+      "source_file": "HTTP response probe",
+      "engine": "performance_engine",
+      "evidence_snippet": "Telemetry Source: local_probe",
+      "confidence": "medium",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "/llms.txt: PRESENT",
+      "source_file": "/llms.txt HTTP check",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Princeton GEO Citability: 37/100",
+      "source_file": "DOM content passages",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    }
+  ],
+  "unified_on_page": {
+    "url": "https://github.com",
+    "status_code": 200,
+    "response_time_sec": 3.04,
+    "title": "",
+    "title_length": 0,
+    "meta_description": "Join the world's most widely adopted, AI-powered developer platform where millions of developers, businesses, and the largest open source community build software that advances humanity.",
+    "meta_desc_length": 186,
+    "h1_count": 1,
+    "h1_text": [
+      "The future of building happens together"
+    ],
+    "h2_count": 9,
+    "h2_text": [
+      "Navigation Menu",
+      "GitHub features",
+      "GitHub customers",
+      "Accelerate your entire workflow",
+      "Built-in application security where found means fixed",
+      "Work together, achieve more",
+      "From startups to enterprises, GitHub scales with teams of any size in any industry.",
+      "Millions of developers and businesses call GitHub home",
+      "Site-wide Links"
+    ],
+    "h3_count": 16,
+    "h3_text": [
+      "Your AI partner everywhere. Copilot is ready to work with you at each step of the software development lifecycle.",
+      "Automate your path to production",
+      "Code instantly from anywhere",
+      "Keep momentum on the go",
+      "Shape your toolchain",
+      "Apply fixes in seconds. Spend less time debugging and more time building features with Copilot Autofix.",
+      "Plan with clarity. Organize everything from high-level roadmaps to everyday tasks.",
+      "Keep track of your tasks",
+      "Share ideas and ask questions",
+      "Review code changes together",
+      "Fund open source projects",
+      "The developer newsletter",
+      "Platform",
+      "Ecosystem",
+      "Support",
+      "Company"
+    ],
+    "total_images": 24,
+    "images_with_alt": 7,
+    "word_count": 805,
+    "canonical_url": null,
+    "is_redirect": false,
+    "response_headers": {
+      "Date": "Wed, 30 Sep 2026 18:31:24 GMT",
+      "Content-Type": "text/html; charset=utf-8",
+      "content-language": "en-US",
+      "Vary": "X-PJAX, X-PJAX-Container, Turbo-Visit, Turbo-Frame, X-Requested-With, X-GitHub-Client-Version, Accept-Language, Sec-Fetch-Site,Accept-Encoding, Accept, X-Requested-With",
+      "ETag": "W/\"903eea3f9663922f5cd3ca171f3224e3\"",
+      "Cache-Control": "max-age=0, private, must-revalidate",
+      "Strict-Transport-Security": "max-age=31536000; includeSubdomains; preload",
+      "X-Frame-Options": "deny",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "0",
+      "Referrer-Policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
+      "Content-Security-Policy": "default-src 'none'; base-uri 'self'; child-src github.githubassets.com github.com/assets-cdn/worker/ github.com/assets/ gist.github.com/assets-cdn/worker/; connect-src 'self' uploads.github.com www.githubstatus.com collector.github.com raw.githubusercontent.com api.github.com github-cloud.s3.amazonaws.com github-production-repository-file-5c1aeb.s3.amazonaws.com github-production-upload-manifest-file-7fdce7.s3.amazonaws.com github-production-user-asset-6210df.s3.amazonaws.com *.rel.tunnels.api.visualstudio.com wss://*.rel.tunnels.api.visualstudio.com github.githubassets.com objects-origin.githubusercontent.com copilot-proxy.githubusercontent.com proxy.individual.githubcopilot.com proxy.business.githubcopilot.com proxy.enterprise.githubcopilot.com *.actions.githubusercontent.com wss://*.actions.githubusercontent.com productionresultssa0.blob.core.windows.net productionresultssa1.blob.core.windows.net productionresultssa2.blob.core.windows.net productionresultssa3.blob.core.windows.net productionresultssa4.blob.core.windows.net productionresultssa5.blob.core.windows.net productionresultssa6.blob.core.windows.net productionresultssa7.blob.core.windows.net productionresultssa8.blob.core.windows.net productionresultssa9.blob.core.windows.net productionresultssa10.blob.core.windows.net productionresultssa11.blob.core.windows.net productionresultssa12.blob.core.windows.net productionresultssa13.blob.core.windows.net productionresultssa14.blob.core.windows.net productionresultssa15.blob.core.windows.net productionresultssa16.blob.core.windows.net productionresultssa17.blob.core.windows.net productionresultssa18.blob.core.windows.net productionresultssa19.blob.core.windows.net github-production-repository-image-32fea6.s3.amazonaws.com github-production-release-asset-2e65be.s3.amazonaws.com insights.github.com wss://alive.github.com wss://alive-staging.github.com api.githubcopilot.com api.individual.githubcopilot.com api.business.githubcopilot.com api.enterprise.githubcopilot.com wss://production-copilot-host.webpubsub.azure.com api.github.com/cmc_internal/api/ edge.fullstory.com rs.fullstory.com; font-src github.githubassets.com; form-action 'self' github.com gist.github.com copilot-workspace.githubnext.com objects-origin.githubusercontent.com; frame-ancestors 'none'; frame-src viewscreen.githubusercontent.com notebooks.githubusercontent.com www.youtube-nocookie.com; img-src 'self' data: blob: github.githubassets.com media.githubusercontent.com camo.githubusercontent.com identicons.github.com avatars.githubusercontent.com private-avatars.githubusercontent.com github-cloud.s3.amazonaws.com objects.githubusercontent.com release-assets.githubusercontent.com secured-user-images.githubusercontent.com user-images.githubusercontent.com private-user-images.githubusercontent.com opengraph.githubassets.com repository-images.githubusercontent.com marketplace-screenshots.githubusercontent.com copilotprodattachments.blob.core.windows.net/github-production-copilot-attachments/ github-production-user-asset-6210df.s3.amazonaws.com customer-stories-feed.github.com spotlights-feed.github.com explore-feed.github.com *.googleusercontent.com objects-origin.githubusercontent.com *.githubusercontent.com images.ctfassets.net/8aevphvgewt8/; manifest-src 'self'; media-src github.com user-images.githubusercontent.com secured-user-images.githubusercontent.com private-user-images.githubusercontent.com github-production-user-asset-6210df.s3.amazonaws.com gist.github.com github.githubassets.com assets.ctfassets.net/8aevphvgewt8/ videos.ctfassets.net/8aevphvgewt8/; script-src github.githubassets.com 'sha256-tSjmyPUky1KbRZ0fw9VUil3wFEbeM82rtbJDygGJAXw='; style-src 'unsafe-inline' github.githubassets.com; upgrade-insecure-requests; worker-src github.githubassets.com github.com/assets-cdn/worker/ github.com/assets/ gist.github.com/assets-cdn/worker/",
+      "Server": "github.com",
+      "Content-Encoding": "gzip",
+      "Accept-Ranges": "bytes",
+      "Set-Cookie": "_gh_sess=Mvdoaxc91yhUiNIdcKGjrtynFqCBJvzCbl4pjDAGUYfAkGtPgBv3Cmp21UTLCpesL8hb%2FLJCaoj2zRf7M%2FVagmczeDzKfXMKBVZmzdouPWUyNfNx8LV9OJZ3SEeaZ2Nim%2BODW7e9MOxEJAxEDpTK0lPKeIkyNNdI9SVmVw%2BOXglvnHS14xoMRoGqmWyEwv7s3p10EQMUgK9Gr1QZ21MdFjzRstFzvTqkx7%2FinBV%2BA4yvme0so2tjKcLGCE4j4b0CRJ9xFKiw1D2er%2FShEZ3qdw%3D%3D--WoBZtgKP1viJ6Caz--FLhGygq%2FNdmTeJc3NfwqFA%3D%3D; path=/; HttpOnly; secure; SameSite=Lax, _octo=GH1.1.2129583355.1790793087; expires=Thu, 30 Sep 2027 18:31:27 GMT; domain=.github.com; path=/; secure; SameSite=Lax, logged_in=no; expires=Thu, 30 Sep 2027 18:31:27 GMT; domain=.github.com; path=/; HttpOnly; secure; SameSite=Lax",
+      "X-GitHub-Request-Id": "9A7C:223806:11FC149:1355D49:6ABD557F",
+      "x-github-edge-region": "centralindia",
+      "Transfer-Encoding": "chunked"
+    },
+    "internal_links": [
+      "https://github.com/enterprise",
+      "https://github.com/enterprise/startups",
+      "https://github.com/customer-stories/mercado-libre",
+      "https://github.com/features/codespaces",
+      "https://github.com/resources",
+      "https://github.com/resources/articles?topic=security",
+      "https://github.com/resources/articles/devops-tools-comparison",
+      "https://github.com/resources/articles?topic=software-development",
+      "https://github.com/features/code-review",
+      "https://github.com/security/advanced-security",
+      "https://github.com/security/advanced-security/software-supply-chain",
+      "https://github.com/",
+      "https://github.com/features/actions",
+      "https://github.com/solutions/use-case/app-modernization",
+      "https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home",
+      "https://github.com/features/ai",
+      "https://github.com/solutions/industry",
+      "https://github.com/customer-stories/figma",
+      "https://github.com/solutions/industry/nonprofits",
+      "https://github.com/customer-stories/mercedes-benz",
+      "https://github.com/apps/desktop",
+      "https://github.com/about",
+      "https://github.com/topics",
+      "https://github.com/security",
+      "https://github.com/features/copilot",
+      "https://github.com/features/issues",
+      "https://github.com/login",
+      "https://github.com/resources/articles",
+      "https://github.com/solutions/executive-insights",
+      "https://github.com/github/roadmap",
+      "https://github.com/mobile",
+      "https://github.com/solutions/use-case/ci-cd",
+      "https://github.com/resources/whitepapers",
+      "https://github.com/solutions/industry/government",
+      "https://github.com/sitemap",
+      "https://github.com/features",
+      "https://github.com/features/code-quality",
+      "https://github.com/git-guides",
+      "https://github.com/resources/articles?topic=ai",
+      "https://github.com/features/copilot/copilot-business",
+      "https://github.com/collections",
+      "https://github.com/customer-stories",
+      "https://github.com/marketplace",
+      "https://github.com/solutions/use-case",
+      "https://github.com/solutions/use-case/devops",
+      "https://github.com/solutions/use-case/devsecops",
+      "https://github.com/trust-center",
+      "https://github.com/customer-stories/duolingo",
+      "https://github.com/trending",
+      "https://github.com/customer-stories?type=enterprise",
+      "https://github.com/features/ai/github-app",
+      "https://github.com/resources/events",
+      "https://github.com/team",
+      "https://github.com/security/advanced-security/secret-protection",
+      "https://github.com/services",
+      "https://github.com/why-github",
+      "https://github.com/mcp",
+      "https://github.com/solutions",
+      "https://github.com/orgs/community/discussions",
+      "https://github.com/partners",
+      "https://github.com/education",
+      "https://github.com/pricing",
+      "https://github.com/features/discussions",
+      "https://github.com/security/advanced-security/code-security",
+      "https://github.com/open-source/sponsors",
+      "https://github.com/sponsors",
+      "https://github.com/solutions/industry/financial-services",
+      "https://github.com/readme",
+      "https://github.com/about/diversity",
+      "https://github.com/enterprise/premium-support",
+      "https://github.com/newsletter",
+      "https://github.com/github",
+      "https://github.com/resources/articles?topic=devops",
+      "https://github.com/solutions/industry/healthcare",
+      "https://github.com/solutions/industry/manufacturing"
+    ],
+    "external_links": [
+      "https://securitylab.github.com",
+      "https://skills.github.com",
+      "https://archiveprogram.github.com",
+      "https://thegithubshop.com",
+      "https://maintainers.github.com",
+      "https://www.twitch.tv/github",
+      "https://www.githubstatus.com",
+      "https://support.github.com?tags=dotcom-footer",
+      "https://github.community",
+      "https://www.linkedin.com/company/github",
+      "https://docs.github.com",
+      "https://x.com/github",
+      "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
+      "https://cli.github.com",
+      "https://docs.github.com/site-policy/github-terms/github-terms-of-service",
+      "https://github.blog",
+      "https://github.careers",
+      "https://www.tiktok.com/@github",
+      "https://www.youtube.com/github",
+      "https://github.blog/changelog",
+      "https://www.instagram.com/github",
+      "https://www.gartner.com/reprints/?id=1-2LVTG7RP&ct=250915&st=sb",
+      "https://support.github.com",
+      "https://docs.github.com/integrations/concepts/about-building-integrations",
+      "https://stars.github.com",
+      "https://socialimpact.github.com",
+      "#start-of-content",
+      "/",
+      "/login",
+      "https://github.com/features/copilot",
+      "https://github.com/features/ai/github-app",
+      "https://github.com/mcp",
+      "https://github.com/features/actions",
+      "https://github.com/features/codespaces",
+      "https://github.com/features/issues",
+      "https://github.com/features/code-review",
+      "https://github.com/features/code-quality",
+      "https://github.com/security/advanced-security",
+      "https://github.com/security/advanced-security/code-security",
+      "https://github.com/security/advanced-security/secret-protection",
+      "https://github.com/why-github",
+      "https://docs.github.com",
+      "https://github.blog",
+      "https://github.blog/changelog",
+      "https://github.com/marketplace",
+      "https://github.com/features",
+      "https://github.com/enterprise",
+      "https://github.com/team",
+      "https://github.com/enterprise/startups",
+      "https://github.com/solutions/industry/nonprofits",
+      "https://github.com/solutions/use-case/app-modernization",
+      "https://github.com/solutions/use-case/devsecops",
+      "https://github.com/solutions/use-case/devops",
+      "https://github.com/solutions/use-case/ci-cd",
+      "https://github.com/solutions/use-case",
+      "https://github.com/solutions/industry/healthcare",
+      "https://github.com/solutions/industry/financial-services",
+      "https://github.com/solutions/industry/manufacturing",
+      "https://github.com/solutions/industry/government",
+      "https://github.com/solutions/industry",
+      "https://github.com/solutions",
+      "https://github.com/resources/articles?topic=ai",
+      "https://github.com/resources/articles?topic=software-development",
+      "https://github.com/resources/articles?topic=devops",
+      "https://github.com/resources/articles?topic=security",
+      "https://github.com/resources/articles",
+      "https://github.com/customer-stories",
+      "https://github.com/resources/events",
+      "https://github.com/resources/whitepapers",
+      "https://github.com/solutions/executive-insights",
+      "https://skills.github.com",
+      "https://docs.github.com",
+      "https://support.github.com",
+      "https://github.com/orgs/community/discussions",
+      "https://github.com/trust-center",
+      "https://github.com/partners",
+      "https://github.com/resources",
+      "https://github.com/open-source/sponsors",
+      "https://securitylab.github.com",
+      "https://maintainers.github.com",
+      "https://stars.github.com",
+      "https://archiveprogram.github.com",
+      "https://github.com/topics",
+      "https://github.com/trending",
+      "https://github.com/collections",
+      "https://github.com/enterprise",
+      "https://github.com/security/advanced-security",
+      "https://github.com/features/copilot/copilot-business",
+      "https://github.com/enterprise/premium-support",
+      "https://github.com/pricing",
+      "/login",
+      "/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home",
+      "",
+      "",
+      "",
+      "/features/ai/github-app",
+      "/features/copilot",
+      "/customer-stories/duolingo",
+      "https://www.gartner.com/reprints/?id=1-2LVTG7RP&ct=250915&st=sb",
+      "/features/actions",
+      "/features/codespaces",
+      "/mobile",
+      "/marketplace",
+      "/security/advanced-security",
+      "/security/advanced-security/code-security",
+      "/security/advanced-security/software-supply-chain",
+      "/security/advanced-security/secret-protection",
+      "/features/issues",
+      "/features/issues",
+      "/features/discussions",
+      "/features/code-review",
+      "/sponsors",
+      "/customer-stories/figma",
+      "/customer-stories/mercedes-benz",
+      "/customer-stories/mercado-libre",
+      "/customer-stories",
+      "/solutions",
+      "/features/ai/github-app",
+      "#hero",
+      "/",
+      "/newsletter",
+      "/features",
+      "/enterprise",
+      "/features/copilot",
+      "/features/ai",
+      "/security",
+      "/pricing",
+      "/team",
+      "https://github.com/resources",
+      "/github/roadmap",
+      "/resources/articles/devops-tools-comparison",
+      "https://docs.github.com/integrations/concepts/about-building-integrations",
+      "https://github.com/partners",
+      "/education",
+      "https://cli.github.com",
+      "https://github.com/apps/desktop",
+      "/mobile",
+      "/marketplace",
+      "/mcp",
+      "https://docs.github.com",
+      "https://github.community",
+      "https://github.com/services",
+      "/enterprise/premium-support",
+      "https://skills.github.com",
+      "https://www.githubstatus.com",
+      "https://support.github.com?tags=dotcom-footer",
+      "/git-guides",
+      "/sitemap",
+      "/about",
+      "/why-github",
+      "/customer-stories?type=enterprise",
+      "https://github.blog",
+      "/readme",
+      "https://github.careers",
+      "/about/diversity",
+      "https://socialimpact.github.com",
+      "https://thegithubshop.com",
+      "https://docs.github.com/site-policy/github-terms/github-terms-of-service",
+      "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement",
+      "https://www.linkedin.com/company/github",
+      "https://www.instagram.com/github",
+      "https://www.youtube.com/github",
+      "https://x.com/github",
+      "https://www.tiktok.com/@github",
+      "https://www.twitch.tv/github",
+      "https://github.com/github"
+    ],
+    "engine_source": "httpx_static_fallback"
+  },
+  "unified_robots": {
+    "found": true,
+    "robots_url": "https://github.com/robots.txt",
+    "bot_access": {
+      "Applebot": {
+        "bot": "Applebot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Apple Intelligence & Siri",
+        "role_or_purpose": "Apple Intelligence search & Safari citations",
+        "via_wildcard": false
+      },
+      "Applebot-Extended": {
+        "bot": "Applebot-Extended",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Apple",
+        "role_or_purpose": "Apple Foundation model training",
+        "via_wildcard": false
+      },
+      "Bingbot": {
+        "bot": "Bingbot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Microsoft Copilot & Bing",
+        "role_or_purpose": "Microsoft AI search indexer",
+        "via_wildcard": false
+      },
+      "Bytespider": {
+        "bot": "Bytespider",
+        "status": "BLOCKED",
+        "category": "training",
+        "engine": "ByteDance",
+        "role_or_purpose": "ByteDance AI training",
+        "via_wildcard": false
+      },
+      "CCBot": {
+        "bot": "CCBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Common Crawl",
+        "role_or_purpose": "Open web dataset scraped for AI foundation training",
+        "via_wildcard": false
+      },
+      "Claude-SearchBot": {
+        "bot": "Claude-SearchBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Claude Search",
+        "role_or_purpose": "Anthropic search indexer (NOT ClaudeBot)",
+        "via_wildcard": false
+      },
+      "ClaudeBot": {
+        "bot": "ClaudeBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Anthropic",
+        "role_or_purpose": "Model training data collection (Claude base models)",
+        "via_wildcard": false
+      },
+      "FacebookBot": {
+        "bot": "FacebookBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Meta",
+        "role_or_purpose": "Llama & Meta AI model training",
+        "via_wildcard": false
+      },
+      "GPTBot": {
+        "bot": "GPTBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "OpenAI",
+        "role_or_purpose": "Model training data collection (ChatGPT base models)",
+        "via_wildcard": false
+      },
+      "Google-Extended": {
+        "bot": "Google-Extended",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Google",
+        "role_or_purpose": "Gemini & Vertex AI model training (Separate from Googlebot)",
+        "via_wildcard": false
+      },
+      "Googlebot": {
+        "bot": "Googlebot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Google Search & AI Overviews",
+        "role_or_purpose": "Primary web indexer driving Google SGE/AI Overviews",
+        "via_wildcard": false
+      },
+      "OAI-SearchBot": {
+        "bot": "OAI-SearchBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "ChatGPT Search",
+        "role_or_purpose": "Search indexer & live web citation retriever (NOT GPTBot)",
+        "via_wildcard": false
+      },
+      "PerplexityBot": {
+        "bot": "PerplexityBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Perplexity AI",
+        "role_or_purpose": "Live answer engine citation crawler",
+        "via_wildcard": false
+      },
+      "cohere-ai": {
+        "bot": "cohere-ai",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Cohere",
+        "role_or_purpose": "Enterprise LLM training",
+        "via_wildcard": false
+      }
+    },
+    "sitemaps": [],
+    "crawl_delay": null,
+    "discovered_urls": [],
+    "engine_source": "advertools_rfc"
+  },
+  "unified_schema": {
+    "detected_types": [],
+    "deprecated_types_detected": [],
+    "blocks_count": 0,
+    "is_injected_via_js": false,
+    "validation_issues": [],
+    "sameas_urls": [],
+    "has_organization": false,
+    "has_author": false,
+    "engine_source": "triangulated_union"
+  },
+  "unified_geo": {
+    "overall_citability_score": 37,
+    "answer_first_ratio": 0.11,
+    "passage_density_ratio": 0.0,
+    "statistical_density_per_1000": 0.0,
+    "outbound_citations_count": 0,
+    "authoritative_citations_count": 0,
+    "llms_txt_found": true,
+    "llms_txt_warnings": [],
+    "llms_full_found": true,
+    "question_h2s": [],
+    "methods": [
+      {
+        "name": "quotation_addition",
+        "label": "Quotation Addition",
+        "detected": true,
+        "score": 6,
+        "max_score": 6,
+        "impact": "+41%",
+        "details": {
+          "blockquotes": 1,
+          "q_tags": 0,
+          "attributed_quotes": 0,
+          "pull_quotes": 5
+        }
+      },
+      {
+        "name": "statistics_addition",
+        "label": "Statistics Addition",
+        "detected": true,
+        "score": 6,
+        "max_score": 6,
+        "impact": "+33%",
+        "details": {
+          "stat_matches": 3,
+          "density_per_1000_words": 4.24,
+          "tables_with_data": 0
+        }
+      },
+      {
+        "name": "fluency_optimization",
+        "label": "Fluency Optimization",
+        "detected": false,
+        "score": 1,
+        "max_score": 6,
+        "impact": "+29%",
+        "details": {
+          "avg_paragraph_words": 12.5,
+          "connective_count": 0,
+          "paragraphs": 25,
+          "list_items": 131
+        }
+      },
+      {
+        "name": "cite_sources",
+        "label": "Cite Sources",
+        "detected": true,
+        "score": 6,
+        "max_score": 6,
+        "impact": "+27%",
+        "details": {
+          "authoritative_links": 0,
+          "external_links": 30,
+          "cite_tags": 0,
+          "has_reference_section": true
+        }
+      },
+      {
+        "name": "answer_first",
+        "label": "Answer-First Structure",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+25%",
+        "details": {
+          "h2_count": 9,
+          "answer_first_count": 1,
+          "ratio": 0.11
+        }
+      },
+      {
+        "name": "passage_density",
+        "label": "Passage Density",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+23%",
+        "details": {
+          "total_paragraphs": 15,
+          "dense_paragraphs": 0,
+          "ratio": 0.0
+        }
+      },
+      {
+        "name": "technical_terms",
+        "label": "Technical Terms",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+18%",
+        "details": {
+          "tech_matches": 6,
+          "density_per_1000": 8.47,
+          "code_blocks": 1,
+          "abbr_tags": 0
+        }
+      },
+      {
+        "name": "authoritative_tone",
+        "label": "Authoritative Tone",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+16%",
+        "details": {
+          "authority_markers": 0,
+          "hedge_markers": 0,
+          "has_author_bio": false,
+          "credentials": [],
+          "has_author_meta": false
+        }
+      },
+      {
+        "name": "easy_to_understand",
+        "label": "Easy-to-Understand",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+14%",
+        "details": {
+          "avg_sentence_length": 10.3,
+          "h2_count": 9,
+          "h3_count": 16,
+          "faq_sections": 1
+        }
+      },
+      {
+        "name": "unique_words",
+        "label": "Unique Words",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+7%",
+        "details": {
+          "ttr": 0.694,
+          "total_words": 515,
+          "unique_count": 301
+        }
+      },
+      {
+        "name": "keyword_stuffing",
+        "label": "No Keyword Stuffing",
+        "detected": true,
+        "score": 1,
+        "max_score": 6,
+        "impact": "-9%",
+        "details": {
+          "suspicious_keywords": {
+            "github": 4.6,
+            "your": 2.9,
+            "copilot": 2.5
+          },
+          "stuffing_severity": "medium",
+          "repeated_phrases": 1,
+          "front_loading_detected": false
+        }
+      },
+      {
+        "name": "readability",
+        "label": "Readability Score",
+        "detected": false,
+        "score": 0,
+        "max_score": 8,
+        "impact": "+15%",
+        "details": {
+          "flesch_kincaid_grade": 13.9,
+          "avg_words_per_sentence": 16.5,
+          "avg_syllables_per_word": 1.96,
+          "optimal_sections": 0,
+          "total_sections": 6
+        }
+      },
+      {
+        "name": "faq_in_content",
+        "label": "FAQ-in-Content",
+        "detected": false,
+        "score": 0,
+        "max_score": 6,
+        "impact": "+12%",
+        "details": {
+          "faq_patterns_found": 0
+        }
+      },
+      {
+        "name": "image_alt_quality",
+        "label": "Image Alt Quality",
+        "detected": false,
+        "score": 2,
+        "max_score": 5,
+        "impact": "+8%",
+        "details": {
+          "total_images": 24,
+          "with_alt": 7,
+          "descriptive_alt": 5,
+          "generic_alt": 2,
+          "missing_alt": 17
+        }
+      },
+      {
+        "name": "content_freshness",
+        "label": "Content Freshness",
+        "detected": false,
+        "score": 1,
+        "max_score": 6,
+        "impact": "+10%",
+        "details": {
+          "date_modified": null,
+          "date_published": null,
+          "is_fresh": false,
+          "freshness_level": "stale",
+          "months_old": null,
+          "year_references": {
+            "2025": 1
+          },
+          "warnings": [
+            "No date signal (dateModified/datePublished) found"
+          ]
+        }
+      },
+      {
+        "name": "citability_density",
+        "label": "Citability Density",
+        "detected": false,
+        "score": 0,
+        "max_score": 7,
+        "impact": "+15%",
+        "details": {
+          "total_paragraphs": 15,
+          "dense_paragraphs": 0,
+          "density_ratio": 0.0,
+          "total_citable_facts": 1
+        }
+      },
+      {
+        "name": "definition_patterns",
+        "label": "Definition Patterns",
+        "detected": true,
+        "score": 2,
+        "max_score": 5,
+        "impact": "+10%",
+        "details": {
+          "definitions_found": 1,
+          "total_headings": 10,
+          "ratio": 0.1
+        }
+      },
+      {
+        "name": "format_mix",
+        "label": "Response Format Mix",
+        "detected": true,
+        "score": 3,
+        "max_score": 5,
+        "impact": "+8%",
+        "details": {
+          "has_paragraphs": true,
+          "has_lists": true,
+          "has_tables": false,
+          "has_code": false,
+          "has_blockquote": true,
+          "format_count": 3
+        }
+      },
+      {
+        "name": "attribution_completeness",
+        "label": "Attribution Completeness",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+12%",
+        "details": {
+          "inline_attributions": 0,
+          "footnotes": 0,
+          "inline_link_citations": 0
+        }
+      },
+      {
+        "name": "no_negative_signals",
+        "label": "No Negative Signals",
+        "detected": true,
+        "score": 3,
+        "max_score": 5,
+        "impact": "-15%",
+        "details": {
+          "cta_count": 2,
+          "is_thin_content": false,
+          "has_author": false,
+          "repeated_phrases": 1,
+          "total_penalties": 2
+        }
+      },
+      {
+        "name": "comparison_content",
+        "label": "Comparison Content",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "vs_headings": 0,
+          "pro_con_sections": 0,
+          "comparison_tables": 0,
+          "large_tables": 0
+        }
+      },
+      {
+        "name": "eeat_signals",
+        "label": "E-E-A-T Signals",
+        "detected": true,
+        "score": 4,
+        "max_score": 7,
+        "impact": "+15%",
+        "details": {
+          "trust_links": {
+            "privacy": true,
+            "terms": true,
+            "about": true,
+            "contact": true
+          },
+          "trust_link_count": 4,
+          "has_detailed_bio": false,
+          "has_structured_author": false,
+          "has_verified_author": false,
+          "is_https": true
+        }
+      },
+      {
+        "name": "no_content_decay",
+        "label": "No Content Decay",
+        "detected": false,
+        "score": 5,
+        "max_score": 5,
+        "impact": "-10%",
+        "details": {
+          "old_year_references": [],
+          "is_recently_modified": false,
+          "stale_update_patterns": 0,
+          "external_links_count": 86,
+          "total_penalties": 0
+        }
+      },
+      {
+        "name": "boilerplate_ratio",
+        "label": "Content-to-Boilerplate Ratio",
+        "detected": true,
+        "score": 4,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "content_length": 4872,
+          "total_length": 7655,
+          "ratio": 0.64,
+          "method": "main_tag"
+        }
+      },
+      {
+        "name": "nuance_signals",
+        "label": "Nuance/Honesty Signals",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "nuance_patterns": 0,
+          "nuance_headings": 0,
+          "total_signals": 0
+        }
+      },
+      {
+        "name": "snippet_ready",
+        "label": "Snippet-Ready Content",
+        "detected": true,
+        "score": 1,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "snippet_ready_sections": 1,
+          "total_headings": 25,
+          "ratio": 0.04
+        }
+      },
+      {
+        "name": "chunk_quotability",
+        "label": "Chunk Quotability",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "candidate_paragraphs": 0,
+          "quotable_paragraphs": 0,
+          "ratio": 0
+        }
+      },
+      {
+        "name": "blog_structure",
+        "label": "Blog Structure",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "has_article_schema": false
+        }
+      },
+      {
+        "name": "shopping_readiness",
+        "label": "AI Shopping Readiness",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_product_schema": false
+        }
+      },
+      {
+        "name": "chatgpt_shopping",
+        "label": "ChatGPT Shopping Feed",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_product_schema": false
+        }
+      },
+      {
+        "name": "voice_search_ready",
+        "label": "Voice/Conversational Search",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "question_headings": 0,
+          "concise_answers": 0,
+          "has_speakable_schema": false
+        }
+      },
+      {
+        "name": "multi_platform",
+        "label": "Multi-Platform Presence",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "platforms_found": [],
+          "platform_count": 0
+        }
+      },
+      {
+        "name": "entity_disambiguation",
+        "label": "Entity Disambiguation",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "names_found": [
+            "github",
+            "change is constant. github keeps you ahead.",
+            "github",
+            "github",
+            "change is constant. github keeps you ahead."
+          ],
+          "names_consistent": false,
+          "sameas_count": 0
+        }
+      },
+      {
+        "name": "first_party_data",
+        "label": "First-Party Data",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+12%",
+        "details": {
+          "first_party_patterns": 0,
+          "own_data_signals": 0,
+          "has_methodology_section": false
+        }
+      },
+      {
+        "name": "no_stale_data",
+        "label": "No Stale Data",
+        "detected": false,
+        "score": 4,
+        "max_score": 4,
+        "impact": "-10%",
+        "details": {
+          "old_copyright_in_footer": false,
+          "stale_year_references": [],
+          "penalties": 0
+        }
+      },
+      {
+        "name": "social_proof",
+        "label": "Social Proof",
+        "detected": true,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_testimonial": true,
+          "has_aggregate_rating": false,
+          "has_trust_badges": false
+        }
+      },
+      {
+        "name": "accessibility_signals",
+        "label": "Accessibility Signals",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "semantic_tags": [
+            "footer",
+            "header",
+            "main",
+            "nav"
+          ],
+          "aria_landmarks": [
+            "banner",
+            "contentinfo"
+          ],
+          "has_skip_link": true
+        }
+      },
+      {
+        "name": "conversion_funnel",
+        "label": "AI Conversion Funnel",
+        "detected": true,
+        "score": 2,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_cta": true,
+          "has_pricing_link": true,
+          "has_contact": false
+        }
+      },
+      {
+        "name": "temporal_coherence",
+        "label": "Temporal Signal Coherence",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "dates_found": {},
+          "date_count": 0,
+          "max_diff_days": 0,
+          "is_coherent": false,
+          "is_incoherent": false
+        }
+      },
+      {
+        "name": "anchor_text_quality",
+        "label": "Anchor Text Quality",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "total_internal_links": 106,
+          "generic_count": 0,
+          "descriptive_count": 106,
+          "descriptive_ratio": 1.0
+        }
+      },
+      {
+        "name": "international_geo",
+        "label": "International GEO",
+        "detected": true,
+        "score": 2,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "html_lang": "en",
+          "hreflang_count": 26,
+          "hreflang_langs": [
+            "en-us",
+            "pt-br",
+            "es-AR",
+            "es-BO",
+            "es-CL",
+            "es-CO",
+            "es-CR",
+            "es-CU",
+            "es-DO",
+            "es-EC",
+            "es-GT",
+            "es-HN",
+            "es-MX",
+            "es-NI",
+            "es-PA",
+            "es-PE",
+            "es-PR",
+            "es-PY",
+            "es-SV",
+            "es-UY",
+            "es-VE",
+            "ja",
+            "ko-kr",
+            "fr-fr",
+            "de-de",
+            "x-default"
+          ],
+          "schema_inLanguage": null,
+          "is_multilingual": true
+        }
+      },
+      {
+        "name": "crawl_budget",
+        "label": "AI Crawl Budget",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "has_noindex": false,
+          "has_nofollow": false,
+          "has_sitemap_link": false,
+          "penalties": []
+        }
+      },
+      {
+        "name": "answer_capsule",
+        "label": "Answer Capsule Detection",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+12%",
+        "details": {
+          "capsule_count": 0,
+          "total_candidates": 1,
+          "ratio": 0.0
+        }
+      },
+      {
+        "name": "token_efficiency",
+        "label": "Token Efficiency",
+        "detected": true,
+        "score": 2,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "total_words": 1132,
+          "content_words": 732,
+          "noise_words": 400,
+          "ratio": 0.65
+        }
+      },
+      {
+        "name": "entity_resolution",
+        "label": "Entity Resolution Friendliness",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "has_schema_entity": false,
+          "has_sameas": false,
+          "has_definition": false,
+          "entity_types": []
+        }
+      },
+      {
+        "name": "kg_density",
+        "label": "Knowledge Graph Density",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "relation_count": 1,
+          "density_per_500w": 0.7,
+          "schema_relations": 0,
+          "word_count": 708
+        }
+      },
+      {
+        "name": "retrieval_triggers",
+        "label": "Retrieval Trigger Patterns",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "trigger_count": 1,
+          "unique_triggers": 1,
+          "density_per_500w": 0.7,
+          "question_headings": 0
+        }
+      }
+    ],
+    "engine_source": "geo_optimizer_skill"
+  },
+  "unified_trust": {
+    "overall_score": 60,
+    "raw_score": 15,
+    "grade": "C",
+    "layers": {
+      "technical": {
+        "name": "technical",
+        "label": "Technical & Infrastructure Trust",
+        "score": 5,
+        "max_score": 5,
+        "signals_found": [
+          "HTTPS Protocol Active (+2)",
+          "Strict-Transport-Security (HSTS)",
+          "Content-Security-Policy (CSP)",
+          "Clickjacking Protection (X-Frame-Options/frame-ancestors)"
+        ],
+        "signals_missing": []
+      },
+      "identity": {
+        "name": "identity",
+        "label": "Entity & Identity Trust",
+        "score": 2,
+        "max_score": 5,
+        "signals_found": [
+          "About Page Link",
+          "Contact / Support Page Link"
+        ],
+        "signals_missing": [
+          "No Organization/Business Schema in JSON-LD",
+          "No Author Attribution in Meta or Schema",
+          "Weak or Inconsistent Brand Signature"
+        ]
+      },
+      "social": {
+        "name": "social",
+        "label": "Social Proof & Reputation Trust",
+        "score": 2,
+        "max_score": 5,
+        "signals_found": [
+          "Linked Social Profiles (instagram.com, github.com, x.com)",
+          "Customer Reviews / Testimonials Evidence"
+        ],
+        "signals_missing": [
+          "No sameAs Links in Schema.org",
+          "Fewer than 3 verified sameAs profiles",
+          "No Knowledge Graph Pillar Link (Wikidata/Wikipedia)"
+        ]
+      },
+      "academic": {
+        "name": "academic",
+        "label": "Academic & Authority Trust",
+        "score": 2,
+        "max_score": 5,
+        "signals_found": [
+          "External Source Citations (71 non-social links)",
+          "Statistical Evidence Patterns (3 research/metric instances)"
+        ],
+        "signals_missing": [
+          "Sparse Quantitative Data / Statistics",
+          "No Links to Recognized Authoritative Sources (.gov, .edu, DOI, PubMed)",
+          "No Dedicated References or Sources Section"
+        ]
+      },
+      "consistency": {
+        "name": "consistency",
+        "label": "Consistency & Compliance Trust",
+        "score": 4,
+        "max_score": 5,
+        "signals_found": [
+          "Privacy Policy Documented",
+          "Terms of Service / Terms of Use Documented",
+          "Dated Copyright Notice",
+          "Machine-Readable Timestamp / Freshness Signal"
+        ],
+        "signals_missing": [
+          "Missing Canonical Tag"
+        ]
+      }
+    },
+    "summary": "Trust Grade: C (60/100, Raw 15/25). Strongest layer: Technical & Infrastructure Trust. Weakest layer: Entity & Identity Trust."
+  },
+  "unified_performance": {
+    "source": "local_probe",
+    "overall_performance_score": 85,
+    "ttfb_ms": 128.9,
+    "fcp_ms": null,
+    "lcp_ms": null,
+    "cls": null,
+    "inp_ms": null,
+    "metrics": [
+      {
+        "name": "TTFB",
+        "value": 0.129,
+        "unit": "s",
+        "status": "GOOD",
+        "threshold_good": 0.8,
+        "threshold_poor": 1.8
+      }
+    ],
+    "passed_audit": false,
+    "notes": [
+      "Local high-precision TTFB probe (set PAGESPEED_API_KEY for CrUX real-user telemetry).",
+      "RankIntel performance bands: 90–100=Pass, 50–89=Needs Improvement, <50=Poor (based on Lighthouse scale)."
+    ]
+  },
+  "cloud_intelligence": {
+    "available": false,
+    "keywords": null,
+    "backlinks": null,
+    "ai_visibility_score": 0,
+    "notes": []
+  },
+  "site_crawl": null,
+  "fixes": {
+    "current_title": "",
+    "optimized_title": "The future of building happens toge... | Github",
+    "title_length": "47",
+    "current_description": "Join the world's most widely adopted, AI-powered developer platform where millions of developers, businesses, and the largest open source community build software that advances humanity.",
+    "optimized_description": "Join the world's most widely adopted, AI-powered developer platform where millions of developers, businesses, and the largest open. Get a quote today.",
+    "desc_length": "150",
+    "jsonld_schema": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"Organization\",\n      \"@id\": \"https://github.com/#organization\",\n      \"name\": \"Github\",\n      \"url\": \"https://github.com\",\n      \"description\": \"Join the world's most widely adopted, AI-powered developer platform where millions of developers, businesses, and the largest open source community build software that advances humanity.\"\n    },\n    {\n      \"@type\": \"WebSite\",\n      \"@id\": \"https://github.com/#website\",\n      \"url\": \"https://github.com\",\n      \"name\": \"Github\",\n      \"publisher\": {\n        \"@id\": \"https://github.com/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://github.com#webpage\",\n      \"url\": \"https://github.com\",\n      \"name\": \"Github\",\n      \"isPartOf\": {\n        \"@id\": \"https://github.com/#website\"\n      },\n      \"about\": {\n        \"@id\": \"https://github.com/#organization\"\n      },\n      \"description\": \"Join the world's most widely adopted, AI-powered developer platform where millions of developers, businesses, and the largest open source community build software that advances humanity.\"\n    }\n  ]\n}\n</script>",
+    "hardened_robots": "# RankIntel Hardened AI Robots.txt Policy\n# 1. Allow AI Search & Citation Bots (Essential for ChatGPT Search, Google, Perplexity, Claude)\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Claude-SearchBot\nAllow: /\n\nUser-agent: Googlebot\nAllow: /\n\nUser-agent: Applebot\nAllow: /\n\n# 2. Optional: Disallow AI Model Pre-Training Scrapers (If preserving intellectual property)\n# User-agent: GPTBot\n# Disallow: /\n# User-agent: ClaudeBot\n# Disallow: /\n# User-agent: Google-Extended\n# Disallow: /\n\n# 3. Standard Crawler Settings\nUser-agent: *\nAllow: /\n"
+  }
+}

@@ -82,3 +82,37 @@ def test_provenance_robots_and_geo_tags():
     
     perf_tag = next(t for t in tags if "TTFB Latency" in t.finding)
     assert perf_tag.confidence == "high"
+
+def test_provenance_cloud_intelligence():
+    from rankintel.models.schema import CloudIntelligenceEvidence, KeywordIntelligence, BacklinkIntelligence
+
+    cloud = CloudIntelligenceEvidence(
+        available=True,
+        keywords=KeywordIntelligence(
+            estimated_monthly_traffic=125000,
+            total_keywords=4200
+        ),
+        backlinks=BacklinkIntelligence(
+            referring_domains=850,
+            domain_authority_score=78
+        )
+    )
+
+    results = {
+        "mcp_cloud": EngineResult(
+            engine_name="mcp_cloud",
+            status="success",
+            cloud_intelligence=cloud
+        )
+    }
+
+    tags = ProvenanceTagger.tag(results)
+    assert len(tags) == 2
+    traf_tag = next(t for t in tags if "Organic Search Traffic" in t.finding)
+    assert "125,000 visits/mo" in traf_tag.finding
+    assert traf_tag.engine == "mcp_cloud"
+    assert traf_tag.confidence == "high"
+
+    ref_tag = next(t for t in tags if "Referring Domains" in t.finding)
+    assert "850" in ref_tag.finding
+    assert ref_tag.engine == "mcp_cloud"

@@ -63,7 +63,8 @@ class MarkdownReporter:
         src_labels = {
             "pagespeed_crux_field": "🟢 CrUX Real-User Field Data (75th percentile)",
             "pagespeed_lighthouse_lab": "🟡 Google Lighthouse Lab Simulation",
-            "local_probe": "⚪ Local Network TTFB Probe (no CrUX data)"
+            "local_probe": "⚪ Local Network TTFB Probe (no CrUX data)",
+            "local": "⚪ Local Network TTFB Probe (no CrUX data)"
         }
         lines.append(f"- **Telemetry Source:** {src_labels.get(perf.source, perf.source)}")
         lines.append(f"- **Server Latency (TTFB):** {perf.ttfb_ms:.1f}ms")
@@ -223,7 +224,7 @@ class MarkdownReporter:
     @staticmethod
     def save(report: SynthesisReport, output_dir: str = "audits") -> str:
         os.makedirs(output_dir, exist_ok=True)
-        domain_clean = report.domain.replace("www.", "")
+        domain_clean = report.domain.replace("www.", "").replace(":", "_")
         filename = f"{domain_clean}-{report.timestamp}.md"
         path = os.path.join(output_dir, filename)
         content = MarkdownReporter.render(report)

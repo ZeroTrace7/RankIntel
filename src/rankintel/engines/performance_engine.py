@@ -87,8 +87,11 @@ class PerformanceEngine:
                     cls=round(crux_cls_val, 3),
                     inp_ms=round(crux_inp_ms, 1),
                     metrics=metrics,
-                    passed_audit=score >= 60,
-                    notes=["CrUX field data (75th percentile of real Google users)"]
+                    passed_audit=score >= 90,
+                    notes=[
+                        "CrUX field data (75th percentile of real Google users).",
+                        "RankIntel performance bands: 90–100=Pass, 50–89=Needs Improvement, <50=Poor (based on Lighthouse scale).",
+                    ]
                 )
 
             # Fallback to Lighthouse lab data
@@ -115,9 +118,13 @@ class PerformanceEngine:
                 cls=round(cls_val, 3),
                 inp_ms=round(inp_val, 1),
                 metrics=metrics,
-                passed_audit=score >= 60,
-                notes=["Lighthouse lab simulation (insufficient CrUX field traffic)"]
+                passed_audit=score >= 90,
+                notes=[
+                    "Lighthouse lab simulation (insufficient CrUX field traffic).",
+                    "RankIntel performance bands: 90–100=Pass, 50–89=Needs Improvement, <50=Poor (based on Lighthouse scale).",
+                ]
             )
+
         except Exception:
             return None
 
@@ -166,9 +173,13 @@ class PerformanceEngine:
             cls=None,
             inp_ms=None,
             metrics=[ttfb_metric],
-            passed_audit=avg_ttfb_sec <= 1.8,
-            notes=["Local high-precision TTFB probe (set PAGESPEED_API_KEY for CrUX real-user telemetry)"]
+            passed_audit=score >= 90,
+            notes=[
+                "Local high-precision TTFB probe (set PAGESPEED_API_KEY for CrUX real-user telemetry).",
+                "RankIntel performance bands: 90–100=Pass, 50–89=Needs Improvement, <50=Poor (based on Lighthouse scale).",
+            ]
         )
+
 
     def _evaluate_metric(self, name: str, val: float) -> PerformanceMetric:
         """Evaluate a metric against CWV_THRESHOLDS."""

@@ -33,6 +33,8 @@ class IntelligenceSynthesizer:
         self.conflict_detector = ConflictDetector()
 
     def synthesize(self, url: str, engine_results: Dict[str, EngineResult]) -> SynthesisReport:
+        if not url.startswith("http://") and not url.startswith("https://"):
+            url = "https://" + url
         parsed = urlparse(url)
         domain = parsed.netloc
         timestamp = datetime.now().strftime("%Y-%m-%d")
@@ -113,19 +115,28 @@ class IntelligenceSynthesizer:
         else:
             unified_geo = GeoAeoEvidence()
 
-        # 5. Trust Stack Reconciliation (5-layer E-E-A-T analysis)
+        # 5. Trust Stack Reconciliation — pass raw_html so soup is no longer None
+        browser_res = engine_results.get("browser_engine")
+        _raw_html = browser_res.raw_html if browser_res else None
         unified_trust = TrustEvaluator.evaluate(
             url=url,
             on_page=unified_on_page,
             schema=unified_schema,
-            geo=unified_geo
+            geo=unified_geo,
+            raw_html=_raw_html,
         )
+
 
         # 6. Performance Telemetry Reconciliation
         if perf_res and perf_res.performance:
             unified_performance = perf_res.performance
         else:
-            unified_performance = PerformanceEvidence(overall_performance_score=75)
+            unified_performance = PerformanceEvidence(
+                overall_performance_score=0,
+                source="unavailable",
+                notes=["Performance engine did not execute — score excluded from holistic formula."],
+            )
+
 
         # 7. Cloud Intelligence Reconciliation (OpenSEO MCP)
         cloud_res = engine_results.get("mcp_cloud")
@@ -158,24 +169,36 @@ class IntelligenceSynthesizer:
         )
         trust_score = unified_trust.overall_score
         perf_score = unified_performance.overall_performance_score
+        perf_available = unified_performance.source != "unavailable"
 
-        # Holistic Triangulated Score:
+        # Holistic Triangulated Score — formula depends on which engines ran:
         if cloud_intelligence.available and keyword_score > 0:
-            # 5-Engine Formula: Tech 30% | GEO 25% | Trust 20% | Perf 15% | Keyword Authority 10%
+            # 5-Engine Formula: Tech 30% | GEO 25% | Trust 20% | Perf 15% | Keyword 10%
+            formula_mode = "5_engine"
+            if perf_available:
+                overall_health = int(round(
+                    (tech_score * 0.30) + (geo_score * 0.25) +
+                    (trust_score * 0.20) + (perf_score * 0.15) + (keyword_score * 0.10)
+                ))
+            else:
+                # Redistribute perf weight across remaining components
+                formula_mode = "4_engine"
+                overall_health = int(round(
+                    (tech_score * 0.35) + (geo_score * 0.30) +
+                    (trust_score * 0.25) + (keyword_score * 0.10)
+                ))
+        elif perf_available:
+            # Standard 4-Engine Formula: Tech 35% | GEO 30% | Trust 20% | Perf 15%
+            formula_mode = "4_engine"
             overall_health = int(round(
-                (tech_score * 0.30) +
-                (geo_score * 0.25) +
-                (trust_score * 0.20) +
-                (perf_score * 0.15) +
-                (keyword_score * 0.10)
+                (tech_score * 0.35) + (geo_score * 0.30) +
+                (trust_score * 0.20) + (perf_score * 0.15)
             ))
         else:
-            # Standard 4-Engine Formula: Tech 35% | GEO 30% | Trust Stack 20% | Performance 15%
+            # 3-Engine Formula (no performance): Tech 44% | GEO 37% | Trust 19%
+            formula_mode = "3_engine"
             overall_health = int(round(
-                (tech_score * 0.35) +
-                (geo_score * 0.30) +
-                (trust_score * 0.20) +
-                (perf_score * 0.15)
+                (tech_score * 0.44) + (geo_score * 0.37) + (trust_score * 0.19)
             ))
 
         # Build Prioritized Actions
@@ -183,18 +206,19 @@ class IntelligenceSynthesizer:
             unified_on_page, unified_robots, unified_schema, unified_geo, unified_trust, unified_performance, conflicts
         )
 
-        # Generate Production Fixes
+        # Generate Production Fixes — only when genuinely needed
         meta_fixes = FixGenerator.generate_meta_fixes(unified_on_page, domain)
-        jsonld_fix = FixGenerator.generate_jsonld_schema(url, domain, unified_on_page)
+        jsonld_fix = FixGenerator.generate_jsonld_schema(url, domain, unified_on_page, unified_schema)
         llms_fix = FixGenerator.generate_llms_txt(domain, url, unified_on_page, unified_geo)
         robots_fix = FixGenerator.generate_hardened_robots_txt()
 
-        fixes = {
-            **meta_fixes,
-            "jsonld_schema": jsonld_fix,
-            "llms_txt": llms_fix,
-            "hardened_robots": robots_fix
-        }
+        fixes: dict = {**meta_fixes}
+        if jsonld_fix:
+            fixes["jsonld_schema"] = jsonld_fix
+        if llms_fix:
+            fixes["llms_txt"] = llms_fix
+        if robots_fix:
+            fixes["hardened_robots"] = robots_fix
 
         return SynthesisReport(
             url=url,
@@ -206,6 +230,7 @@ class IntelligenceSynthesizer:
             trust_score=trust_score,
             performance_score=perf_score,
             keyword_score=keyword_score,
+            score_formula_mode=formula_mode,
             engines_executed=[k for k, v in engine_results.items() if v.status == "success"],
             conflicts_detected=conflicts,
             prioritized_actions=actions,
@@ -225,17 +250,17 @@ class IntelligenceSynthesizer:
     ) -> int:
         score = 100
 
-        # Title checks
-        if on_page.title_length < META_LENGTH_BOUNDS["title_min"] or on_page.title_length > META_LENGTH_BOUNDS["title_max"]:
-            score -= 10
+        # Title checks — mutually exclusive: absence OR wrong length, never both
         if not on_page.title:
             score -= 25
-
-        # Description checks
-        if on_page.meta_desc_length < META_LENGTH_BOUNDS["desc_min"] or on_page.meta_desc_length > META_LENGTH_BOUNDS["desc_max"]:
+        elif on_page.title_length < META_LENGTH_BOUNDS["title_min"] or on_page.title_length > META_LENGTH_BOUNDS["title_max"]:
             score -= 10
+
+        # Description checks — mutually exclusive: absence OR wrong length, never both
         if not on_page.meta_description:
             score -= 20
+        elif on_page.meta_desc_length < META_LENGTH_BOUNDS["desc_min"] or on_page.meta_desc_length > META_LENGTH_BOUNDS["desc_max"]:
+            score -= 10
 
         # H1 checks
         if on_page.h1_count != 1:
@@ -252,6 +277,7 @@ class IntelligenceSynthesizer:
             score -= 20
 
         return max(score, 10)
+
 
     def _build_prioritized_actions(
         self,

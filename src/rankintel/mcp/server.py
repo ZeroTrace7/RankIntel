@@ -4,7 +4,10 @@ Can be invoked by Claude, Cursor, Antigravity, or any standard MCP client.
 """
 from __future__ import annotations
 from typing import Dict, Any, Optional
-from fastmcp import FastMCP
+try:
+    from fastmcp import FastMCP
+except ImportError:
+    from mcp.server.fastmcp import FastMCP
 
 from rankintel.evidence.collector import EvidenceCollector
 from rankintel.intelligence.synthesizer import IntelligenceSynthesizer

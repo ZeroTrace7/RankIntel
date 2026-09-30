@@ -104,7 +104,7 @@ class PerformanceMetric(BaseModel):
     threshold_poor: float
 
 class PerformanceEvidence(BaseModel):
-    source: str = "local"  # "pagespeed_api" or "local_timing"
+    source: str = "local_probe"  # "pagespeed_crux_field", "pagespeed_lighthouse_lab", "local_probe"
     overall_performance_score: int = 0  # 0-100
     ttfb_ms: float = 0.0
     fcp_ms: Optional[float] = None
@@ -188,6 +188,7 @@ class EngineResult(BaseModel):
     trust_stack: Optional[TrustStackResult] = None
     performance: Optional[PerformanceEvidence] = None
     cloud_intelligence: Optional[CloudIntelligenceEvidence] = None
+    raw_html: Optional[str] = None  # Post-JS rendered HTML from crawl4ai; used by TrustEvaluator and GeoEngine
 
 class ConflictFinding(BaseModel):
     category: str
@@ -217,6 +218,7 @@ class SynthesisReport(BaseModel):
     performance_score: int = 0
     keyword_score: int = 0
     site_health_score: int = 0
+    score_formula_mode: str = "4_engine"  # "3_engine", "4_engine", "5_engine"
     engines_executed: List[str] = Field(default_factory=list)
     conflicts_detected: List[ConflictFinding] = Field(default_factory=list)
     prioritized_actions: List[PrioritizedAction] = Field(default_factory=list)

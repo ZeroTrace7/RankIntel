@@ -17,35 +17,11 @@ from rankintel.models.schema import (
     GeoAeoEvidence
 )
 
-# Academic & Authority domains
-AUTHORITATIVE_DOMAINS = [
-    "ncbi.nlm.nih.gov",
-    "pubmed.ncbi.nlm.nih.gov",
-    "doi.org",
-    "scholar.google.com",
-    "arxiv.org",
-    "wikipedia.org",
-    "wikidata.org",
-    "nature.com",
-    "sciencedirect.com",
-    "ieee.org",
-    "acm.org",
-    "gov",
-    "edu",
-]
+# Authority and social domains — imported from shared reference module
+from rankintel.references.authority_domains import AUTHORITATIVE_DOMAINS, SOCIAL_DOMAINS
 
-# Social proof domains
-SOCIAL_DOMAINS = [
-    "twitter.com",
-    "x.com",
-    "instagram.com",
-    "facebook.com",
-    "linkedin.com",
-    "youtube.com",
-    "github.com",
-    "pinterest.com",
-    "reddit.com",
-]
+# Ensure these are lists for compatibility with existing iteration code
+AUTHORITATIVE_DOMAINS = list(AUTHORITATIVE_DOMAINS)
 
 # Regex for statistics and research patterns
 STATISTICS_PATTERN = re.compile(
@@ -69,24 +45,32 @@ class TrustEvaluator:
         on_page: OnPageEvidence,
         schema: SchemaEvidence,
         geo: Optional[GeoAeoEvidence] = None,
-        html_soup: Optional[BeautifulSoup] = None,
+        raw_html: Optional[str] = None,
+        html_soup: Optional[BeautifulSoup] = None,  # kept for backward compatibility
     ) -> TrustStackResult:
+        # Parse soup from raw_html when available; use html_soup as legacy fallback
+        soup: Optional[BeautifulSoup] = None
+        if raw_html:
+            soup = BeautifulSoup(raw_html, "html.parser")
+        elif html_soup is not None:
+            soup = html_soup
+
         layers: Dict[str, TrustLayerScore] = {}
 
         # Layer 1: Technical Trust
         layers["technical"] = cls._evaluate_technical_trust(url, on_page.response_headers)
 
         # Layer 2: Identity Trust
-        layers["identity"] = cls._evaluate_identity_trust(url, on_page, schema, html_soup)
+        layers["identity"] = cls._evaluate_identity_trust(url, on_page, schema, soup)
 
         # Layer 3: Social Trust
-        layers["social"] = cls._evaluate_social_trust(schema, on_page, html_soup)
+        layers["social"] = cls._evaluate_social_trust(schema, on_page, soup)
 
         # Layer 4: Academic & Authority Trust
-        layers["academic"] = cls._evaluate_academic_trust(on_page, geo, html_soup)
+        layers["academic"] = cls._evaluate_academic_trust(on_page, geo, soup)
 
         # Layer 5: Consistency & Compliance Trust
-        layers["consistency"] = cls._evaluate_consistency_trust(on_page, schema, html_soup)
+        layers["consistency"] = cls._evaluate_consistency_trust(on_page, schema, soup)
 
         # Calculate totals
         raw_score = sum(layer.score for layer in layers.values())

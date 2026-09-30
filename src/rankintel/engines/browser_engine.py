@@ -1,11 +1,17 @@
 """
-Browser Engine Adapter — Handles JavaScript rendering and DOM extraction.
-Leverages crawl4ai when installed, with async httpx fallback.
+Browser Engine — JavaScript rendering via crawl4ai AsyncWebCrawler.
+Falls back to httpx when crawl4ai/Playwright is not available.
+
+Key change from previous version:
+- Uses AsyncWebCrawler (crawl4ai ≥0.4 current API) instead of removed WebCrawler
+- Stores CrawlResult.html in EngineResult.raw_html for use by TrustEvaluator and GeoEngine
+- httpx fallback is clearly labeled as "httpx_static_fallback" — not a browser render
 """
 from __future__ import annotations
+import asyncio
 import time
 import json
-from typing import Dict, List, Optional
+from typing import List, Optional
 from bs4 import BeautifulSoup
 
 from rankintel.models.schema import (
@@ -15,122 +21,152 @@ from rankintel.models.schema import (
 )
 
 try:
-    import crawl4ai
+    from crawl4ai import AsyncWebCrawler, BrowserConfig
     HAS_CRAWL4AI = True
 except ImportError:
     HAS_CRAWL4AI = False
 
+
 class BrowserEngine:
-    """Specialized engine for JavaScript rendering, dynamic DOM extraction, and client-side schemas."""
+    """JavaScript rendering engine. Uses crawl4ai AsyncWebCrawler when available."""
 
     def __init__(self, headless: bool = True):
         self.headless = headless
 
     def execute_sync(self, url: str) -> EngineResult:
-        """Execute browser rendering or async-fetch fallback."""
+        """Synchronous entry point. Runs async crawl4ai in a new event loop, falls back to httpx."""
         t0 = time.time()
-        
-        # If crawl4ai is installed and ready, we can use it
         if HAS_CRAWL4AI:
             try:
-                # Crawl4ai run
-                from crawl4ai import WebCrawler
-                crawler = WebCrawler(verbose=False)
-                crawler.warmup()
-                result = crawler.run(url=url)
-                
-                if result and result.success:
-                    soup = BeautifulSoup(result.html or "", "html.parser")
-                    # Parse schema BEFORE on_page (which strips <script> tags)
-                    schema_ev = self._parse_schema(soup)
-                    schema_ev.engine_source = "crawl4ai_browser_dom"
-                    schema_ev.is_injected_via_js = True
+                return asyncio.run(self._execute_async(url, t0))
+            except Exception:
+                pass  # fall through to httpx fallback
+        return self._execute_httpx_fallback(url, t0)
 
-                    on_page = self._parse_on_page(soup, url, round(time.time() - t0, 2))
-                    on_page.engine_source = "crawl4ai_browser_dom"
+    async def _execute_async(self, url: str, t0: float) -> EngineResult:
+        """Run crawl4ai AsyncWebCrawler and return EngineResult with raw_html."""
+        config = BrowserConfig(headless=self.headless)
+        async with AsyncWebCrawler(config=config) as crawler:
+            result = await crawler.arun(url=url)
 
-                    return EngineResult(
-                        engine_name="crawl4ai_browser",
-                        status="success",
-                        execution_time_sec=round(time.time() - t0, 2),
-                        on_page=on_page,
-                        schema_data=schema_ev
-                    )
-            except Exception as e:
-                pass  # Fall through to resilient httpx fallback
+        if not result.success:
+            raise RuntimeError(result.error_message or "crawl4ai returned failure")
 
-        # Resilient HTTP fallback with browser headers
+        html = result.html or ""
+        soup = BeautifulSoup(html, "html.parser")
+
+        # Use crawl4ai metadata where available; fall back to BeautifulSoup
+        meta = result.metadata or {}
+        title = str(meta.get("title") or "")
+        if not title:
+            t_tag = soup.find("title")
+            title = t_tag.text.strip() if t_tag else ""
+
+        # Use crawl4ai's pre-classified link lists
+        raw_links = result.links or {}
+        internal = [lk.get("href", "") for lk in raw_links.get("internal", []) if lk.get("href")]
+        external = [lk.get("href", "") for lk in raw_links.get("external", []) if lk.get("href")]
+
+        # Parse schema BEFORE _build_on_page strips <script> tags from soup
+        schema_ev = self._parse_schema(soup)
+        schema_ev.engine_source = "crawl4ai_browser_dom"
+        schema_ev.is_injected_via_js = True  # browser engine can see JS-injected schema
+
+        duration = round(time.time() - t0, 2)
+        on_page = self._build_on_page(soup, url, title, internal, external, duration)
+        on_page.status_code = result.status_code or 200
+        on_page.engine_source = "crawl4ai_browser_dom"
+
+        return EngineResult(
+            engine_name="browser_engine",
+            status="success",
+            execution_time_sec=duration,
+            on_page=on_page,
+            schema_data=schema_ev,
+            raw_html=html,  # Stored for TrustEvaluator and GeoOptimizerAdapter
+        )
+
+    def _execute_httpx_fallback(self, url: str, t0: float) -> EngineResult:
+        """Plain HTTP fallback — no JS execution. Clearly labeled."""
         import httpx
         try:
             headers = {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                              "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
             }
             with httpx.Client(timeout=15.0, follow_redirects=True, headers=headers) as client:
                 resp = client.get(url)
-                dur = round(time.time() - t0, 2)
-                
-                soup = BeautifulSoup(resp.text, "html.parser")
-                # Parse schema BEFORE on_page (which strips <script> tags)
-                schema_ev = self._parse_schema(soup)
-                schema_ev.engine_source = "browser_client_render_check"
 
-                on_page = self._parse_on_page(soup, url, dur)
-                on_page.status_code = resp.status_code
-                on_page.engine_source = "browser_client_render_check"
+            html = resp.text
+            soup = BeautifulSoup(html, "html.parser")
+            duration = round(time.time() - t0, 2)
 
-                return EngineResult(
-                    engine_name="browser_engine",
-                    status="success" if resp.status_code == 200 else "error",
-                    execution_time_sec=dur,
-                    on_page=on_page,
-                    schema_data=schema_ev
-                )
+            # Parse schema BEFORE _build_on_page strips <script> tags
+            schema_ev = self._parse_schema(soup)
+            schema_ev.engine_source = "httpx_static_fallback"
+            schema_ev.is_injected_via_js = False  # Cannot detect JS injection via plain HTTP
+
+            on_page = self._build_on_page(soup, url, "", [], [], duration)
+            on_page.status_code = resp.status_code
+            on_page.engine_source = "httpx_static_fallback"  # NOT browser rendering
+
+            return EngineResult(
+                engine_name="browser_engine",
+                status="success" if resp.status_code == 200 else "error",
+                execution_time_sec=duration,
+                on_page=on_page,
+                schema_data=schema_ev,
+                raw_html=html,  # Still store HTML for TrustEvaluator even on fallback path
+            )
         except Exception as e:
             return EngineResult(
                 engine_name="browser_engine",
                 status="error",
                 error_message=str(e),
-                execution_time_sec=round(time.time() - t0, 2)
+                execution_time_sec=round(time.time() - t0, 2),
             )
 
-    def _parse_on_page(self, soup: BeautifulSoup, url: str, dur: float) -> OnPageEvidence:
+    def _build_on_page(
+        self, soup: BeautifulSoup, url: str, title: str,
+        internal: List[str], external: List[str], dur: float
+    ) -> OnPageEvidence:
         on_page = OnPageEvidence(url=url, status_code=200, response_time_sec=dur)
-        
-        t_tag = soup.find('title')
-        title = t_tag.text.strip() if t_tag else ""
+
         on_page.title = title
         on_page.title_length = len(title)
 
-        m_tag = soup.find('meta', attrs={'name': 'description'})
-        m_desc = m_tag['content'].strip() if m_tag and m_tag.get('content') else ""
+        m_tag = soup.find("meta", attrs={"name": "description"})
+        m_desc = m_tag["content"].strip() if m_tag and m_tag.get("content") else ""
         on_page.meta_description = m_desc
         on_page.meta_desc_length = len(m_desc)
 
-        on_page.h1_text = [h1.get_text().strip() for h1 in soup.find_all('h1') if h1.get_text().strip()]
+        on_page.h1_text = [h.get_text().strip() for h in soup.find_all("h1") if h.get_text().strip()]
         on_page.h1_count = len(on_page.h1_text)
-
-        on_page.h2_text = [h2.get_text().strip() for h2 in soup.find_all('h2') if h2.get_text().strip()]
+        on_page.h2_text = [h.get_text().strip() for h in soup.find_all("h2") if h.get_text().strip()]
         on_page.h2_count = len(on_page.h2_text)
-
-        on_page.h3_text = [h3.get_text().strip() for h3 in soup.find_all('h3') if h3.get_text().strip()]
+        on_page.h3_text = [h.get_text().strip() for h in soup.find_all("h3") if h.get_text().strip()]
         on_page.h3_count = len(on_page.h3_text)
 
-        imgs = soup.find_all('img')
+        imgs = soup.find_all("img")
         on_page.total_images = len(imgs)
-        on_page.images_with_alt = len([img for img in imgs if img.get('alt') and img.get('alt').strip()])
+        on_page.images_with_alt = len([img for img in imgs if img.get("alt") and img.get("alt").strip()])
 
-        for s in soup(["script", "style", "nav", "footer"]):
-            s.extract()
-        text = soup.get_text(separator=' ')
-        on_page.word_count = len(text.split())
+        on_page.internal_links = internal or []
+        on_page.external_links = external or []
+
+        # Word count — strip scripts/styles/nav/footer first
+        for tag in soup(["script", "style", "nav", "footer"]):
+            tag.extract()
+        on_page.word_count = len(soup.get_text(separator=" ").split())
+
         return on_page
 
     def _parse_schema(self, soup: BeautifulSoup) -> SchemaEvidence:
         schema_ev = SchemaEvidence()
-        schema_tags = soup.find_all('script', type='application/ld+json')
+        schema_tags = soup.find_all("script", type="application/ld+json")
         schema_ev.blocks_count = len(schema_tags)
-        
+
         detected = []
         for tag in schema_tags:
             try:
@@ -142,20 +178,13 @@ class BrowserEngine:
                 if isinstance(data, list):
                     items = data
                 elif isinstance(data, dict):
-                    if "@graph" in data and isinstance(data["@graph"], list):
-                        items = data["@graph"]
-                    else:
-                        items = [data]
+                    items = data.get("@graph", [data]) if "@graph" in data else [data]
                 for item in items:
                     t = item.get("@type")
                     if t:
-                        if isinstance(t, list):
-                            for sub_t in t:
-                                detected.append(str(sub_t))
-                        else:
-                            detected.append(str(t))
+                        detected.extend([str(t)] if isinstance(t, str) else [str(x) for x in t])
             except Exception as e:
                 schema_ev.validation_issues.append(str(e))
-        
+
         schema_ev.detected_types = list(set(detected))
         return schema_ev

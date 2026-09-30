@@ -106,4 +106,24 @@ class ProvenanceTagger:
                 confidence="high"
             ))
 
+        # 6. Cloud Intelligence provenance (OpenSEO MCP)
+        mcp = engine_results.get("mcp_cloud")
+        if mcp and mcp.cloud_intelligence and mcp.cloud_intelligence.available:
+            if mcp.cloud_intelligence.keywords:
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"Organic Search Traffic: {mcp.cloud_intelligence.keywords.estimated_monthly_traffic:,} visits/mo",
+                    source_file="OpenSEO MCP (DataForSEO)",
+                    engine="mcp_cloud",
+                    evidence_snippet=f"{mcp.cloud_intelligence.keywords.total_keywords} total keywords tracked",
+                    confidence="high"
+                ))
+            if mcp.cloud_intelligence.backlinks:
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"Referring Domains: {mcp.cloud_intelligence.backlinks.referring_domains}",
+                    source_file="OpenSEO MCP (DataForSEO)",
+                    engine="mcp_cloud",
+                    evidence_snippet=f"Authority score: {mcp.cloud_intelligence.backlinks.domain_authority_score}",
+                    confidence="high"
+                ))
+
         return tags

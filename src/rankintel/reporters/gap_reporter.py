@@ -111,8 +111,8 @@ class GapReporter:
     def save(cls, report: ComparisonReport, output_dir: str = "reports") -> str:
         """Render and save comparison report to disk."""
         os.makedirs(output_dir, exist_ok=True)
-        dom_a = urlparse(report.target_a_url).netloc.replace(":", "_")
-        dom_b = urlparse(report.target_b_url).netloc.replace(":", "_")
+        dom_a = urlparse(report.target_a_url).netloc.replace("www.", "").replace(":", "_")
+        dom_b = urlparse(report.target_b_url).netloc.replace("www.", "").replace(":", "_")
         filename = f"comparison-{dom_a}-vs-{dom_b}-{report.timestamp}.md"
         filepath = os.path.join(output_dir, filename)
 

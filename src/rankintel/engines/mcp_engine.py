@@ -4,6 +4,7 @@ Performs silent fallback if MCP is unavailable or has no credits.
 """
 from __future__ import annotations
 import os
+import time
 import requests
 from urllib.parse import urlparse
 from typing import Optional, Dict, Any
@@ -24,13 +25,22 @@ class McpEngine:
 
     def execute(self, url: str) -> EngineResult:
         """Run cloud intelligence pass with silent fallback."""
+        t0 = time.time()
         domain = urlparse(url).netloc.replace("www.", "")
         cloud_data = self._query_openseo(domain, url)
         return EngineResult(
             engine_name="mcp_cloud",
             status="success" if cloud_data.available else "skipped",
+            execution_time_sec=round(time.time() - t0, 2),
             cloud_intelligence=cloud_data
         )
+
+    def compare(self, url_a: str, url_b: str) -> Dict[str, CloudIntelligenceEvidence]:
+        """Fetch cloud intelligence for both targets in a comparison."""
+        return {
+            url_a: self._query_openseo(urlparse(url_a).netloc.replace("www.", ""), url_a),
+            url_b: self._query_openseo(urlparse(url_b).netloc.replace("www.", ""), url_b)
+        }
 
     def _query_openseo(self, domain: str, url: str) -> CloudIntelligenceEvidence:
         """Query OpenSEO endpoints. Catches all network/API exceptions silently."""

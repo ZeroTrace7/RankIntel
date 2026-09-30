@@ -40,11 +40,14 @@ advertools = [
 browser = [
     "crawl4ai>=0.6.0",
 ]
+geo = [
+    "geo-optimizer-skill>=4.0.0",
+]
 mcp = [
     "mcp[cli]>=1.0.0",
 ]
 all = [
-    "rankintel[advertools,browser,mcp]",
+    "rankintel[advertools,browser,geo,mcp]",
 ]
 dev = [
     "pytest>=8.0.0",
@@ -60,3 +63,4 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["src"]

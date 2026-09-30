@@ -1,0 +1,1048 @@
+{
+  "url": "https://sunrisetesting.vercel.app",
+  "domain": "sunrisetesting.vercel.app",
+  "timestamp": "2026-10-01",
+  "overall_health_score": 43,
+  "geo_readiness_score": 35,
+  "technical_health_score": 45,
+  "trust_score": 20,
+  "performance_score": 85,
+  "keyword_score": 0,
+  "site_health_score": 0,
+  "score_formula_mode": "4_engine",
+  "engines_executed": [
+    "advertools_seo",
+    "browser_engine",
+    "rankintel_geo",
+    "performance_engine"
+  ],
+  "conflicts_detected": [],
+  "prioritized_actions": [
+    {
+      "level": "HIGH",
+      "title": "Optimize Title Tag Length & CTR Hook",
+      "finding": "Current title is 0 characters.",
+      "rationale": "Titles over 60 chars are truncated in SERPs with ellipses. Target 50-60 chars with primary keyword front-loaded.",
+      "engine_confidence": "HIGH (Deterministic measurement)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Rewrite Meta Description with Active Call-to-Action",
+      "finding": "Current description is 181 characters.",
+      "rationale": "Descriptions over 160 chars are clipped. Overly short descriptions fail to compel searcher clicks.",
+      "engine_confidence": "HIGH (Deterministic measurement)",
+      "fix_snippet": null
+    },
+    {
+      "level": "CRITICAL",
+      "title": "Deploy JSON-LD Structured Data",
+      "finding": "Zero Schema.org types detected on page.",
+      "rationale": "Structured data is required for rich snippets and assists generative AI models in entity disambiguation.",
+      "engine_confidence": "HIGH (Verified by both static and browser engines)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Harden Technical Trust & Security Headers",
+      "finding": "Content-Security-Policy Header Missing, X-Frame-Options Header Missing",
+      "rationale": "HSTS and Content-Security-Policy prevent security downgrades and satisfy AI agent reliability gates.",
+      "engine_confidence": "HIGH (Header telemetry)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Add Organization Schema & Entity Anchors",
+      "finding": "No Organization / LocalBusiness entity defined in structured data.",
+      "rationale": "Essential for establishing E-E-A-T and anchoring your entity in Google's Knowledge Graph.",
+      "engine_confidence": "HIGH",
+      "fix_snippet": null
+    },
+    {
+      "level": "GEO_WIN",
+      "title": "Publish Standard /llms.txt AI Agent Manifest",
+      "finding": "/llms.txt is missing from root domain.",
+      "rationale": "Provides AI assistants (ChatGPT, Claude, Perplexity) with clean, curated markdown documentation.",
+      "engine_confidence": "HIGH",
+      "fix_snippet": null
+    }
+  ],
+  "provenance": [
+    {
+      "finding": "Page Title (81 chars): 'Sunrise Testing & Calibration Centre | Testin...'",
+      "source_file": "<title> tag",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "TTFB Latency: 231ms",
+      "source_file": "HTTP response probe",
+      "engine": "performance_engine",
+      "evidence_snippet": "Telemetry Source: local_probe",
+      "confidence": "medium",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "/llms.txt: MISSING",
+      "source_file": "/llms.txt HTTP check",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Princeton GEO Citability: 35/100",
+      "source_file": "DOM content passages",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    }
+  ],
+  "unified_on_page": {
+    "url": "https://sunrisetesting.vercel.app",
+    "status_code": 200,
+    "response_time_sec": 2.56,
+    "title": "",
+    "title_length": 0,
+    "meta_description": "Sunrise Testing & Calibration Centre — Testing, Calibration, Inspection and Certification Support services across Raipur, Nagpur, Madhya Pradesh, Uttar Pradesh, Jharkhand and Bihar.",
+    "meta_desc_length": 181,
+    "h1_count": 1,
+    "h1_text": [
+      "Precision Instrumentsfor Accurate Results"
+    ],
+    "h2_count": 8,
+    "h2_text": [
+      "One partner for testing, calibration and compliance",
+      "What Sunrise Delivers",
+      "Instruments We Service",
+      "QMS & BIS Consultancy",
+      "A Simple, Managed Journey",
+      "A Verified Business Anchor",
+      "Where Sunrise Serves",
+      "Send Your Requirement"
+    ],
+    "h3_count": 25,
+    "h3_text": [
+      "Sunrise Testing & Calibration Centre",
+      "Sun Associates",
+      "Testing",
+      "Calibration",
+      "Inspection",
+      "Certification Support",
+      "Pressure Gauges & Transmitters",
+      "Electrical & Electronic Instruments",
+      "Dimensional Instruments",
+      "Temperature Instruments",
+      "Weighing Scales & Balances",
+      "Torque Tools & Others",
+      "Certification & Licensing",
+      "Registration & Brand Protection",
+      "Contact Us",
+      "Share Your Requirement",
+      "We Handle the Job",
+      "Receive Results & Documentation",
+      "Primary Operating Centres",
+      "Extended Reach",
+      "Sunrise Testing & Calibration Centre",
+      "Sunrise Testing & Calibration Centre",
+      "Services",
+      "Sun Associates — QMS & BIS Consultancy",
+      "Contact / Quick Navigation"
+    ],
+    "total_images": 0,
+    "images_with_alt": 0,
+    "word_count": 910,
+    "canonical_url": null,
+    "is_redirect": false,
+    "response_headers": {
+      "Access-Control-Allow-Origin": "*",
+      "Age": "0",
+      "Cache-Control": "public, max-age=0, must-revalidate",
+      "Content-Disposition": "inline",
+      "Content-Encoding": "br",
+      "Content-Type": "text/html; charset=utf-8",
+      "Date": "Wed, 30 Sep 2026 18:31:37 GMT",
+      "Etag": "W/\"02b86f963f47140aed134e4d31c13011\"",
+      "Last-Modified": "Wed, 30 Sep 2026 18:31:37 GMT",
+      "Server": "Vercel",
+      "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+      "X-Vercel-Cache": "MISS",
+      "X-Vercel-Id": "bom1::8frr7-1790793097028-ce5009a88afe",
+      "Transfer-Encoding": "chunked"
+    },
+    "internal_links": [
+      "https://sunrisetesting.vercel.app/"
+    ],
+    "external_links": [
+      "https://wa.me/919326048829?text=Hello%20Sunrise%2C%20I%20have%20a%20testing%2Fcalibration%20requirement.",
+      "#main-content",
+      "/",
+      "/",
+      "#services",
+      "#consultancy",
+      "#trust",
+      "#contact",
+      "#contact",
+      "tel:+919326048829",
+      "https://wa.me/919326048829?text=Hello%20Sunrise%2C%20I%20have%20a%20testing%2Fcalibration%20requirement.",
+      "#contact",
+      "#services",
+      "#consultancy",
+      "mailto:sunqms@gmail.com?subject=Testing%2FCalibration%20Requirement%20%E2%80%94%20Sunrise",
+      "tel:+919326048829",
+      "https://wa.me/919326048829?text=Hello%20Sunrise%2C%20I%20have%20a%20testing%2Fcalibration%20requirement.",
+      "tel:+919326048829",
+      "tel:+917400745559",
+      "mailto:sunqms@gmail.com",
+      "mailto:stacraipur@gmail.com",
+      "mailto:sunqms@gmail.com",
+      "#services",
+      "#trust",
+      "#coverage",
+      "#contact",
+      "#contact",
+      "mailto:sunqms@gmail.com",
+      "tel:+917020848061",
+      "tel:+919326048829",
+      "tel:+917400745559",
+      "mailto:sunqms@gmail.com",
+      "mailto:stacraipur@gmail.com",
+      "https://wa.me/919326048829?text=Hello%20Sunrise%2C%20I%20have%20a%20testing%2Fcalibration%20requirement.",
+      "tel:+919326048829"
+    ],
+    "engine_source": "httpx_static_fallback"
+  },
+  "unified_robots": {
+    "found": false,
+    "robots_url": "https://sunrisetesting.vercel.app/robots.txt",
+    "bot_access": {},
+    "sitemaps": [],
+    "crawl_delay": null,
+    "discovered_urls": [],
+    "engine_source": "advertools_rfc"
+  },
+  "unified_schema": {
+    "detected_types": [],
+    "deprecated_types_detected": [],
+    "blocks_count": 0,
+    "is_injected_via_js": false,
+    "validation_issues": [],
+    "sameas_urls": [],
+    "has_organization": false,
+    "has_author": false,
+    "engine_source": "triangulated_union"
+  },
+  "unified_geo": {
+    "overall_citability_score": 35,
+    "answer_first_ratio": 0.38,
+    "passage_density_ratio": 0.0,
+    "statistical_density_per_1000": 0.0,
+    "outbound_citations_count": 0,
+    "authoritative_citations_count": 0,
+    "llms_txt_found": false,
+    "llms_txt_warnings": [],
+    "llms_full_found": false,
+    "question_h2s": [],
+    "methods": [
+      {
+        "name": "quotation_addition",
+        "label": "Quotation Addition",
+        "detected": false,
+        "score": 0,
+        "max_score": 6,
+        "impact": "+41%",
+        "details": {
+          "blockquotes": 0,
+          "q_tags": 0,
+          "attributed_quotes": 0,
+          "pull_quotes": 0
+        }
+      },
+      {
+        "name": "statistics_addition",
+        "label": "Statistics Addition",
+        "detected": false,
+        "score": 0,
+        "max_score": 6,
+        "impact": "+33%",
+        "details": {
+          "stat_matches": 0,
+          "density_per_1000_words": 0.0,
+          "tables_with_data": 0
+        }
+      },
+      {
+        "name": "fluency_optimization",
+        "label": "Fluency Optimization",
+        "detected": false,
+        "score": 2,
+        "max_score": 6,
+        "impact": "+29%",
+        "details": {
+          "avg_paragraph_words": 15.2,
+          "connective_count": 0,
+          "paragraphs": 39,
+          "list_items": 33
+        }
+      },
+      {
+        "name": "cite_sources",
+        "label": "Cite Sources",
+        "detected": false,
+        "score": 3,
+        "max_score": 6,
+        "impact": "+27%",
+        "details": {
+          "authoritative_links": 0,
+          "external_links": 3,
+          "cite_tags": 0,
+          "has_reference_section": false
+        }
+      },
+      {
+        "name": "answer_first",
+        "label": "Answer-First Structure",
+        "detected": true,
+        "score": 3,
+        "max_score": 5,
+        "impact": "+25%",
+        "details": {
+          "h2_count": 8,
+          "answer_first_count": 3,
+          "ratio": 0.38
+        }
+      },
+      {
+        "name": "passage_density",
+        "label": "Passage Density",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+23%",
+        "details": {
+          "total_paragraphs": 24,
+          "dense_paragraphs": 0,
+          "ratio": 0.0
+        }
+      },
+      {
+        "name": "technical_terms",
+        "label": "Technical Terms",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+18%",
+        "details": {
+          "tech_matches": 39,
+          "density_per_1000": 43.92,
+          "code_blocks": 0,
+          "abbr_tags": 0
+        }
+      },
+      {
+        "name": "authoritative_tone",
+        "label": "Authoritative Tone",
+        "detected": true,
+        "score": 4,
+        "max_score": 5,
+        "impact": "+16%",
+        "details": {
+          "authority_markers": 4,
+          "hedge_markers": 0,
+          "has_author_bio": false,
+          "credentials": [],
+          "has_author_meta": false
+        }
+      },
+      {
+        "name": "easy_to_understand",
+        "label": "Easy-to-Understand",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+14%",
+        "details": {
+          "avg_sentence_length": 12.9,
+          "h2_count": 8,
+          "h3_count": 25,
+          "faq_sections": 0
+        }
+      },
+      {
+        "name": "unique_words",
+        "label": "Unique Words",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+7%",
+        "details": {
+          "ttr": 0.582,
+          "total_words": 619,
+          "unique_count": 264
+        }
+      },
+      {
+        "name": "keyword_stuffing",
+        "label": "No Keyword Stuffing",
+        "detected": true,
+        "score": 1,
+        "max_score": 6,
+        "impact": "-9%",
+        "details": {
+          "suspicious_keywords": {
+            "testing": 3.3,
+            "calibration": 3.3,
+            "your": 2.6
+          },
+          "stuffing_severity": "medium",
+          "repeated_phrases": 0,
+          "front_loading_detected": true
+        }
+      },
+      {
+        "name": "readability",
+        "label": "Readability Score",
+        "detected": false,
+        "score": 0,
+        "max_score": 8,
+        "impact": "+15%",
+        "details": {
+          "flesch_kincaid_grade": 18.2,
+          "avg_words_per_sentence": 19.7,
+          "avg_syllables_per_word": 2.21,
+          "optimal_sections": 0,
+          "total_sections": 29
+        }
+      },
+      {
+        "name": "faq_in_content",
+        "label": "FAQ-in-Content",
+        "detected": false,
+        "score": 0,
+        "max_score": 6,
+        "impact": "+12%",
+        "details": {
+          "faq_patterns_found": 0
+        }
+      },
+      {
+        "name": "image_alt_quality",
+        "label": "Image Alt Quality",
+        "detected": false,
+        "score": 3,
+        "max_score": 5,
+        "impact": "+8%",
+        "details": {
+          "total_images": 0,
+          "with_alt": 0,
+          "descriptive_alt": 0,
+          "generic_alt": 0,
+          "missing_alt": 0
+        }
+      },
+      {
+        "name": "content_freshness",
+        "label": "Content Freshness",
+        "detected": false,
+        "score": 1,
+        "max_score": 6,
+        "impact": "+10%",
+        "details": {
+          "date_modified": null,
+          "date_published": null,
+          "is_fresh": false,
+          "freshness_level": "stale",
+          "months_old": null,
+          "year_references": {
+            "2021": 1
+          },
+          "warnings": [
+            "No date signal (dateModified/datePublished) found",
+            "References to past years without recent update date"
+          ]
+        }
+      },
+      {
+        "name": "citability_density",
+        "label": "Citability Density",
+        "detected": false,
+        "score": 1,
+        "max_score": 7,
+        "impact": "+15%",
+        "details": {
+          "total_paragraphs": 24,
+          "dense_paragraphs": 1,
+          "density_ratio": 0.04,
+          "total_citable_facts": 7
+        }
+      },
+      {
+        "name": "definition_patterns",
+        "label": "Definition Patterns",
+        "detected": true,
+        "score": 3,
+        "max_score": 5,
+        "impact": "+10%",
+        "details": {
+          "definitions_found": 2,
+          "total_headings": 9,
+          "ratio": 0.22
+        }
+      },
+      {
+        "name": "format_mix",
+        "label": "Response Format Mix",
+        "detected": true,
+        "score": 2,
+        "max_score": 5,
+        "impact": "+8%",
+        "details": {
+          "has_paragraphs": true,
+          "has_lists": true,
+          "has_tables": false,
+          "has_code": false,
+          "has_blockquote": false,
+          "format_count": 2
+        }
+      },
+      {
+        "name": "attribution_completeness",
+        "label": "Attribution Completeness",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+12%",
+        "details": {
+          "inline_attributions": 4,
+          "footnotes": 0,
+          "inline_link_citations": 0
+        }
+      },
+      {
+        "name": "no_negative_signals",
+        "label": "No Negative Signals",
+        "detected": false,
+        "score": 4,
+        "max_score": 5,
+        "impact": "-15%",
+        "details": {
+          "cta_count": 0,
+          "is_thin_content": false,
+          "has_author": false,
+          "repeated_phrases": 0,
+          "total_penalties": 1
+        }
+      },
+      {
+        "name": "comparison_content",
+        "label": "Comparison Content",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "vs_headings": 0,
+          "pro_con_sections": 0,
+          "comparison_tables": 0,
+          "large_tables": 0
+        }
+      },
+      {
+        "name": "eeat_signals",
+        "label": "E-E-A-T Signals",
+        "detected": false,
+        "score": 1,
+        "max_score": 7,
+        "impact": "+15%",
+        "details": {
+          "trust_links": {
+            "privacy": false,
+            "terms": false,
+            "about": false,
+            "contact": true
+          },
+          "trust_link_count": 1,
+          "has_detailed_bio": false,
+          "has_structured_author": false,
+          "has_verified_author": false,
+          "is_https": false
+        }
+      },
+      {
+        "name": "no_content_decay",
+        "label": "No Content Decay",
+        "detected": false,
+        "score": 4,
+        "max_score": 5,
+        "impact": "-10%",
+        "details": {
+          "old_year_references": [
+            2021
+          ],
+          "is_recently_modified": false,
+          "stale_update_patterns": 0,
+          "external_links_count": 3,
+          "total_penalties": 1
+        }
+      },
+      {
+        "name": "boilerplate_ratio",
+        "label": "Content-to-Boilerplate Ratio",
+        "detected": true,
+        "score": 4,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "content_length": 7779,
+          "total_length": 8019,
+          "ratio": 0.97,
+          "method": "main_tag"
+        }
+      },
+      {
+        "name": "nuance_signals",
+        "label": "Nuance/Honesty Signals",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "nuance_patterns": 0,
+          "nuance_headings": 0,
+          "total_signals": 0
+        }
+      },
+      {
+        "name": "snippet_ready",
+        "label": "Snippet-Ready Content",
+        "detected": true,
+        "score": 1,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "snippet_ready_sections": 3,
+          "total_headings": 34,
+          "ratio": 0.09
+        }
+      },
+      {
+        "name": "chunk_quotability",
+        "label": "Chunk Quotability",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "candidate_paragraphs": 0,
+          "quotable_paragraphs": 0,
+          "ratio": 0
+        }
+      },
+      {
+        "name": "blog_structure",
+        "label": "Blog Structure",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "has_article_schema": false
+        }
+      },
+      {
+        "name": "shopping_readiness",
+        "label": "AI Shopping Readiness",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_product_schema": false
+        }
+      },
+      {
+        "name": "chatgpt_shopping",
+        "label": "ChatGPT Shopping Feed",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_product_schema": false
+        }
+      },
+      {
+        "name": "voice_search_ready",
+        "label": "Voice/Conversational Search",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "question_headings": 0,
+          "concise_answers": 0,
+          "has_speakable_schema": false
+        }
+      },
+      {
+        "name": "multi_platform",
+        "label": "Multi-Platform Presence",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "platforms_found": [],
+          "platform_count": 0
+        }
+      },
+      {
+        "name": "entity_disambiguation",
+        "label": "Entity Disambiguation",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "names_found": [
+            "sunrise testing & calibration centre",
+            "testing, calibration & inspection services"
+          ],
+          "names_consistent": false,
+          "sameas_count": 0
+        }
+      },
+      {
+        "name": "first_party_data",
+        "label": "First-Party Data",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+12%",
+        "details": {
+          "first_party_patterns": 0,
+          "own_data_signals": 0,
+          "has_methodology_section": false
+        }
+      },
+      {
+        "name": "no_stale_data",
+        "label": "No Stale Data",
+        "detected": false,
+        "score": 4,
+        "max_score": 4,
+        "impact": "-10%",
+        "details": {
+          "old_copyright_in_footer": false,
+          "stale_year_references": [],
+          "penalties": 0
+        }
+      },
+      {
+        "name": "social_proof",
+        "label": "Social Proof",
+        "detected": true,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_testimonial": false,
+          "has_aggregate_rating": false,
+          "has_trust_badges": true
+        }
+      },
+      {
+        "name": "accessibility_signals",
+        "label": "Accessibility Signals",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "semantic_tags": [
+            "footer",
+            "header",
+            "main",
+            "nav"
+          ],
+          "aria_landmarks": [
+            "banner",
+            "contentinfo"
+          ],
+          "has_skip_link": true
+        }
+      },
+      {
+        "name": "conversion_funnel",
+        "label": "AI Conversion Funnel",
+        "detected": true,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_cta": false,
+          "has_pricing_link": false,
+          "has_contact": true
+        }
+      },
+      {
+        "name": "temporal_coherence",
+        "label": "Temporal Signal Coherence",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "dates_found": {},
+          "date_count": 0,
+          "max_diff_days": 0,
+          "is_coherent": false,
+          "is_incoherent": false
+        }
+      },
+      {
+        "name": "anchor_text_quality",
+        "label": "Anchor Text Quality",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "total_internal_links": 2,
+          "generic_count": 0,
+          "descriptive_count": 2,
+          "descriptive_ratio": 1.0
+        }
+      },
+      {
+        "name": "international_geo",
+        "label": "International GEO",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "html_lang": "en",
+          "hreflang_count": 0,
+          "hreflang_langs": [],
+          "schema_inLanguage": null,
+          "is_multilingual": false
+        }
+      },
+      {
+        "name": "crawl_budget",
+        "label": "AI Crawl Budget",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "has_noindex": false,
+          "has_nofollow": false,
+          "has_sitemap_link": false,
+          "penalties": []
+        }
+      },
+      {
+        "name": "answer_capsule",
+        "label": "Answer Capsule Detection",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+12%",
+        "details": {
+          "capsule_count": 0,
+          "total_candidates": 5,
+          "ratio": 0.0
+        }
+      },
+      {
+        "name": "token_efficiency",
+        "label": "Token Efficiency",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "total_words": 1030,
+          "content_words": 995,
+          "noise_words": 35,
+          "ratio": 0.97
+        }
+      },
+      {
+        "name": "entity_resolution",
+        "label": "Entity Resolution Friendliness",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "has_schema_entity": false,
+          "has_sameas": false,
+          "has_definition": false,
+          "entity_types": []
+        }
+      },
+      {
+        "name": "kg_density",
+        "label": "Knowledge Graph Density",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "relation_count": 0,
+          "density_per_500w": 0.0,
+          "schema_relations": 0,
+          "word_count": 888
+        }
+      },
+      {
+        "name": "retrieval_triggers",
+        "label": "Retrieval Trigger Patterns",
+        "detected": false,
+        "score": 1,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "trigger_count": 4,
+          "unique_triggers": 1,
+          "density_per_500w": 2.3,
+          "question_headings": 2
+        }
+      }
+    ],
+    "engine_source": "geo_optimizer_skill"
+  },
+  "unified_trust": {
+    "overall_score": 20,
+    "raw_score": 5,
+    "grade": "F",
+    "layers": {
+      "technical": {
+        "name": "technical",
+        "label": "Technical & Infrastructure Trust",
+        "score": 3,
+        "max_score": 5,
+        "signals_found": [
+          "HTTPS Protocol Active (+2)",
+          "Strict-Transport-Security (HSTS)"
+        ],
+        "signals_missing": [
+          "Content-Security-Policy Header Missing",
+          "X-Frame-Options Header Missing"
+        ]
+      },
+      "identity": {
+        "name": "identity",
+        "label": "Entity & Identity Trust",
+        "score": 1,
+        "max_score": 5,
+        "signals_found": [
+          "Contact / Support Page Link"
+        ],
+        "signals_missing": [
+          "No Organization/Business Schema in JSON-LD",
+          "No Author Attribution in Meta or Schema",
+          "No Clear 'About' Page Link Found",
+          "Weak or Inconsistent Brand Signature"
+        ]
+      },
+      "social": {
+        "name": "social",
+        "label": "Social Proof & Reputation Trust",
+        "score": 0,
+        "max_score": 5,
+        "signals_found": [],
+        "signals_missing": [
+          "No sameAs Links in Schema.org",
+          "Fewer than 3 verified sameAs profiles",
+          "No Outbound Social Media Profile Links",
+          "No Reviews or Testimonials Detected",
+          "No Knowledge Graph Pillar Link (Wikidata/Wikipedia)"
+        ]
+      },
+      "academic": {
+        "name": "academic",
+        "label": "Academic & Authority Trust",
+        "score": 1,
+        "max_score": 5,
+        "signals_found": [
+          "External Source Citations (35 non-social links)"
+        ],
+        "signals_missing": [
+          "Sparse Quantitative Data / Statistics",
+          "No Links to Recognized Authoritative Sources (.gov, .edu, DOI, PubMed)",
+          "No Dedicated References or Sources Section",
+          "Few Formal Statistical Patterns (Percentages / Research Citations)"
+        ]
+      },
+      "consistency": {
+        "name": "consistency",
+        "label": "Consistency & Compliance Trust",
+        "score": 0,
+        "max_score": 5,
+        "signals_found": [],
+        "signals_missing": [
+          "No Privacy Policy Link Detected",
+          "No Terms of Service Link Detected",
+          "Missing or Undated Copyright Notice",
+          "Missing Canonical Tag",
+          "No Machine-Readable Publication/Modification Timestamps"
+        ]
+      }
+    },
+    "summary": "Trust Grade: F (20/100, Raw 5/25). Strongest layer: Technical & Infrastructure Trust. Weakest layer: Social Proof & Reputation Trust."
+  },
+  "unified_performance": {
+    "source": "local_probe",
+    "overall_performance_score": 85,
+    "ttfb_ms": 231.2,
+    "fcp_ms": null,
+    "lcp_ms": null,
+    "cls": null,
+    "inp_ms": null,
+    "metrics": [
+      {
+        "name": "TTFB",
+        "value": 0.231,
+        "unit": "s",
+        "status": "GOOD",
+        "threshold_good": 0.8,
+        "threshold_poor": 1.8
+      }
+    ],
+    "passed_audit": false,
+    "notes": [
+      "Local high-precision TTFB probe (set PAGESPEED_API_KEY for CrUX real-user telemetry).",
+      "RankIntel performance bands: 90–100=Pass, 50–89=Needs Improvement, <50=Poor (based on Lighthouse scale)."
+    ]
+  },
+  "cloud_intelligence": {
+    "available": false,
+    "keywords": null,
+    "backlinks": null,
+    "ai_visibility_score": 0,
+    "notes": []
+  },
+  "site_crawl": null,
+  "fixes": {
+    "current_title": "",
+    "optimized_title": "Precision Instrumentsfor Accurate R... | Sunrisetesting",
+    "title_length": "55",
+    "current_description": "Sunrise Testing & Calibration Centre — Testing, Calibration, Inspection and Certification Support services across Raipur, Nagpur, Madhya Pradesh, Uttar Pradesh, Jharkhand and Bihar.",
+    "optimized_description": "Sunrise Testing & Calibration Centre — Testing, Calibration, Inspection and Certification Support services across Raipur, Nagpur,. Get a quote today.",
+    "desc_length": "149",
+    "jsonld_schema": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"Organization\",\n      \"@id\": \"https://sunrisetesting.vercel.app/#organization\",\n      \"name\": \"Sunrisetesting\",\n      \"url\": \"https://sunrisetesting.vercel.app\",\n      \"description\": \"Sunrise Testing & Calibration Centre — Testing, Calibration, Inspection and Certification Support services across Raipur, Nagpur, Madhya Pradesh, Uttar Pradesh, Jharkhand and Bihar.\"\n    },\n    {\n      \"@type\": \"WebSite\",\n      \"@id\": \"https://sunrisetesting.vercel.app/#website\",\n      \"url\": \"https://sunrisetesting.vercel.app\",\n      \"name\": \"Sunrisetesting\",\n      \"publisher\": {\n        \"@id\": \"https://sunrisetesting.vercel.app/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://sunrisetesting.vercel.app#webpage\",\n      \"url\": \"https://sunrisetesting.vercel.app\",\n      \"name\": \"Sunrisetesting\",\n      \"isPartOf\": {\n        \"@id\": \"https://sunrisetesting.vercel.app/#website\"\n      },\n      \"about\": {\n        \"@id\": \"https://sunrisetesting.vercel.app/#organization\"\n      },\n      \"description\": \"Sunrise Testing & Calibration Centre — Testing, Calibration, Inspection and Certification Support services across Raipur, Nagpur, Madhya Pradesh, Uttar Pradesh, Jharkhand and Bihar.\"\n    }\n  ]\n}\n</script>",
+    "llms_txt": "# Sunrisetesting\n\n> Sunrise Testing & Calibration Centre — Testing, Calibration, Inspection and Certification Support services across Raipur, Nagpur, Madhya Pradesh, Uttar Pradesh, Jharkhand and Bihar.\n\n## Core Services & Knowledge Base\n- [Homepage](https://sunrisetesting.vercel.app): Primary portal and overview.\n\n## Optional & Detailed Documentation\n- [/llms-full.txt](https://sunrisetesting.vercel.app/llms-full.txt): Comprehensive documentation for deeper context.",
+    "hardened_robots": "# RankIntel Hardened AI Robots.txt Policy\n# 1. Allow AI Search & Citation Bots (Essential for ChatGPT Search, Google, Perplexity, Claude)\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Claude-SearchBot\nAllow: /\n\nUser-agent: Googlebot\nAllow: /\n\nUser-agent: Applebot\nAllow: /\n\n# 2. Optional: Disallow AI Model Pre-Training Scrapers (If preserving intellectual property)\n# User-agent: GPTBot\n# Disallow: /\n# User-agent: ClaudeBot\n# Disallow: /\n# User-agent: Google-Extended\n# Disallow: /\n\n# 3. Standard Crawler Settings\nUser-agent: *\nAllow: /\n"
+  }
+}

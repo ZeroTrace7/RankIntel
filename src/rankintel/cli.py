@@ -67,8 +67,8 @@ def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_p
     # Phase 3: Persist Audit Report
     if output_format == "json":
         report_file = JsonReporter.save_audit(report, output_dir=output_dir)
-        console.print_json(JsonReporter.render_audit(report))
-        console.print(f"\n[bold green]Report saved to:[/bold green] [underline cyan]{report_file}[/underline cyan]")
+        click.echo(JsonReporter.render_audit(report))
+        sys.stderr.write(f"\nReport saved to: {report_file}\n")
         return
 
     report_file = MarkdownReporter.save(report, output_dir=output_dir)
@@ -150,7 +150,13 @@ def compare(target_a: str, args: tuple, output_dir: str, output_format: str):
         console.print("[bold red]Error: Please specify the second URL to compare against.[/bold red]")
         sys.exit(1)
 
-    target_b = args[1] if args[0].lower() == "vs" and len(args) > 1 else args[0]
+    if args[0].lower() == "vs":
+        if len(args) < 2:
+            console.print("[bold red]Error: Please specify the second URL after 'vs'.[/bold red]")
+            sys.exit(1)
+        target_b = args[1]
+    else:
+        target_b = args[0]
 
     if not target_a.startswith("http://") and not target_a.startswith("https://"):
         target_a = "https://" + target_a
@@ -175,8 +181,8 @@ def compare(target_a: str, args: tuple, output_dir: str, output_format: str):
     # Save and output report
     if output_format == "json":
         report_file = JsonReporter.save_comparison(comparison, output_dir=output_dir)
-        console.print_json(JsonReporter.render_comparison(comparison))
-        console.print(f"\n[bold green]Detailed gap report saved to:[/bold green] [underline cyan]{report_file}[/underline cyan]")
+        click.echo(JsonReporter.render_comparison(comparison))
+        sys.stderr.write(f"\nDetailed gap report saved to: {report_file}\n")
         return
 
     report_file = GapReporter.save(comparison, output_dir=output_dir)

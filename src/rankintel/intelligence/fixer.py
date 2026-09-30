@@ -35,9 +35,13 @@ class FixGenerator:
         if current_desc and len(current_desc) >= 120 and len(current_desc) <= 165:
             opt_desc = current_desc
         elif current_desc and len(current_desc) > 165:
-            opt_desc = current_desc[:152].rsplit(' ', 1)[0] + ". Get a quote today."
+            base_cut = current_desc[:135].rsplit(' ', 1)[0]
+            opt_desc = f"{base_cut}. Get a quote today."
         else:
             opt_desc = f"Discover comprehensive services with {brand}. Leading technical expertise, certified quality, and dedicated support. Contact our specialists today."
+
+        if len(opt_desc) > 160:
+            opt_desc = opt_desc[:157].rsplit(' ', 1)[0] + "..."
 
         return {
             "current_title": current_title,
@@ -49,8 +53,17 @@ class FixGenerator:
         }
 
     @staticmethod
-    def generate_jsonld_schema(url: str, domain: str, on_page: OnPageEvidence) -> str:
-        """Generate complete, valid JSON-LD @graph schema block."""
+    def generate_jsonld_schema(
+        url: str, domain: str, on_page: OnPageEvidence,
+        schema: Optional[SchemaEvidence] = None
+    ) -> Optional[str]:
+        """
+        Generate complete, valid JSON-LD @graph schema block.
+        Returns None if Organization schema is already present (no fix needed).
+        """
+        if schema and schema.has_organization:
+            return None  # Already has Organization schema — skip generation
+
         brand = domain.replace("www.", "").split(".")[0].capitalize()
         base_url = f"{urlparse(url).scheme}://{urlparse(url).netloc}"
 
@@ -95,8 +108,14 @@ class FixGenerator:
         return f'<script type="application/ld+json">\n{json_str}\n</script>'
 
     @staticmethod
-    def generate_llms_txt(domain: str, url: str, on_page: OnPageEvidence, geo: GeoAeoEvidence) -> str:
-        """Generate standard-compliant /llms.txt manifest per llmstxt.org specification."""
+    def generate_llms_txt(domain: str, url: str, on_page: OnPageEvidence, geo: GeoAeoEvidence) -> Optional[str]:
+        """
+        Generate standard-compliant /llms.txt manifest per llmstxt.org specification.
+        Returns None if llms.txt is already present (no fix needed).
+        """
+        if geo.llms_txt_found:
+            return None  # Already present — skip generation
+
         brand = domain.replace("www.", "").split(".")[0].capitalize()
         summary = on_page.meta_description or f"{brand} delivers premier industry solutions, compliance, and enterprise services."
 
@@ -122,6 +141,7 @@ class FixGenerator:
         ])
 
         return "\n".join(lines)
+
 
     @staticmethod
     def generate_hardened_robots_txt() -> str:

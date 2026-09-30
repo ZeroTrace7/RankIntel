@@ -19,6 +19,12 @@ from rankintel.models.schema import (
     GapAction,
     GapDelta,
     ComparisonReport,
+    EvidenceProvenanceTag,
+    KeywordIntelligence,
+    BacklinkIntelligence,
+    CloudIntelligenceEvidence,
+    PageSummary,
+    SiteCrawlResult,
 )
 
 __all__ = [
@@ -39,4 +45,10 @@ __all__ = [
     "GapAction",
     "GapDelta",
     "ComparisonReport",
+    "EvidenceProvenanceTag",
+    "KeywordIntelligence",
+    "BacklinkIntelligence",
+    "CloudIntelligenceEvidence",
+    "PageSummary",
+    "SiteCrawlResult",
 ]
