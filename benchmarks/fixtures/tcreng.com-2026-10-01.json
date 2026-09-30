@@ -1,0 +1,1947 @@
+{
+  "url": "https://www.tcreng.com/",
+  "domain": "www.tcreng.com",
+  "timestamp": "2026-10-01",
+  "overall_health_score": 68,
+  "geo_readiness_score": 63,
+  "technical_health_score": 75,
+  "trust_score": 52,
+  "performance_score": 85,
+  "keyword_score": 0,
+  "site_health_score": 0,
+  "score_formula_mode": "4_engine",
+  "engines_executed": [
+    "advertools_seo",
+    "browser_engine",
+    "rankintel_geo",
+    "performance_engine"
+  ],
+  "conflicts_detected": [],
+  "prioritized_actions": [
+    {
+      "level": "HIGH",
+      "title": "Optimize Title Tag Length & CTR Hook",
+      "finding": "Current title is 0 characters.",
+      "rationale": "Titles over 60 chars are truncated in SERPs with ellipses. Target 50-60 chars with primary keyword front-loaded.",
+      "engine_confidence": "HIGH (Deterministic measurement)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Harden Technical Trust & Security Headers",
+      "finding": "Content-Security-Policy Header Missing",
+      "rationale": "HSTS and Content-Security-Policy prevent security downgrades and satisfy AI agent reliability gates.",
+      "engine_confidence": "HIGH (Header telemetry)",
+      "fix_snippet": null
+    }
+  ],
+  "provenance": [
+    {
+      "finding": "Applebot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Applebot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Applebot-Extended: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Applebot-Extended -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bingbot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Bingbot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bytespider: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Bytespider -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "CCBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: CCBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Claude-SearchBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Claude-SearchBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "ClaudeBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: ClaudeBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "FacebookBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: FacebookBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "GPTBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: GPTBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Google-Extended: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Google-Extended -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Googlebot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Googlebot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "OAI-SearchBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: OAI-SearchBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "PerplexityBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: PerplexityBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "cohere-ai: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: cohere-ai -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'BreadcrumbList' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'FAQPage' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'ItemList' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'NewsArticle' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'Organization' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'VideoObject' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'WebPage' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'WebSite' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Page Title (58 chars): 'Materials Testing, NDT & Asset Integrity | TC...'",
+      "source_file": "<title> tag",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "TTFB Latency: 107ms",
+      "source_file": "HTTP response probe",
+      "engine": "performance_engine",
+      "evidence_snippet": "Telemetry Source: local_probe",
+      "confidence": "medium",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "/llms.txt: PRESENT",
+      "source_file": "/llms.txt HTTP check",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Princeton GEO Citability: 63/100",
+      "source_file": "DOM content passages",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    }
+  ],
+  "unified_on_page": {
+    "url": "https://www.tcreng.com/",
+    "status_code": 200,
+    "response_time_sec": 2.29,
+    "title": "",
+    "title_length": 0,
+    "meta_description": "India's oldest third-party materials testing, NDT and asset integrity company. NABL ISO/IEC 17025, NADCAP AC7101, BIS, IBR, BMC and CIDCO approved.",
+    "meta_desc_length": 147,
+    "h1_count": 1,
+    "h1_text": [
+      "Materials fail. Evidence doesn't."
+    ],
+    "h2_count": 17,
+    "h2_text": [
+      "What TCR Engineering is",
+      "Client impact",
+      "Solution Finder",
+      "Sixteen industries. Six service pillars. One accredited signature.",
+      "Fifty-three years of integrity engineering, in three minutes.",
+      "Latest Insights",
+      "Newsroom",
+      "TCR is exhibiting at",
+      "Accreditations and approvals",
+      "Clients",
+      "Recognition",
+      "Frequently asked questions",
+      "Put fifty-three years of failure data behind your next decision.",
+      "Services",
+      "Company",
+      "Locations",
+      "Contact"
+    ],
+    "h3_count": 26,
+    "h3_text": [
+      "Industries We Serve",
+      "Services",
+      "Materials Testing",
+      "Non-Destructive Testing",
+      "Asset Integrity & Engineering Consulting",
+      "Robotic & AI-Assisted Inspection",
+      "Civil & Infrastructure Testing",
+      "Inspection Manpower & Third-Party Services",
+      "Rebuilding a 13Cr valve seat on a WCB body: the qualification is an overlay, and E410 is the wrong filler",
+      "Hydrogen induced disbonding testing to ASTM G146 opens at Mahape, and why the overlay fails on the way down",
+      "TCR commissions a WDXRF spectrometer for building materials, and what ASTM C114 demands of an XRF result",
+      "What an Accredited Materials Test Report Must Contain",
+      "Concrete NDT: Which Test Answers Which Question, and What Each One Cannot Tell You",
+      "Reformer tube fitness for service: Evolve by TCR opens a complimentary webinar on 25 September 2026",
+      "Quality, Quality, Quality: The Prime Minister's Zero-Defect Mantra and What It Asks of Indian Manufacturing",
+      "Make in India, Test in India: Building a Resilient Domestic Quality Assurance Ecosystem for Aerospace Forgings, Castings and Machining",
+      "Case Study: HIC and SSC Qualification of Sour-Service Line Pipe for a PDO Project",
+      "ARTiS comes to Japan: answering when a reformer tube comes out, not whether it is damaged",
+      "TCR becomes the first Indian group with two NADCAP AC7101 accredited laboratories: Navi Mumbai and Vadodara",
+      "TCR Engineering renews NABL ISO/IEC 17025 accreditation to 2030, with 1,483 test methods in scope",
+      "TCR secures Nadcap accreditation at two independent materials labs",
+      "TCR's NADCAP nod gives Indian MSMEs passport to aerospace supply chain",
+      "TCR Engineering plans expansion, eyes IPO",
+      "TCR Engineering gets new projects in defence, gas pipeline space",
+      "Boiler failures cause 3% loss to production of industrial units",
+      "How National Infrastructure Pipeline is creating jobs for engineers in Odisha"
+    ],
+    "total_images": 42,
+    "images_with_alt": 42,
+    "word_count": 2036,
+    "canonical_url": null,
+    "is_redirect": false,
+    "response_headers": {
+      "Date": "Wed, 30 Sep 2026 20:05:26 GMT",
+      "Content-Type": "text/html",
+      "Transfer-Encoding": "chunked",
+      "Connection": "keep-alive",
+      "CF-Cache-Status": "HIT",
+      "Cache-Control": "public, max-age=0, must-revalidate",
+      "Reporting-Endpoints": "cf-csp-endpoint=\"https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=4KAaiHrR8BaGvVamlK30DjFm0KhKmaI9gTlvvARfvpc-1790798726.9273872-1.0.1.1-QM9AKm_j_omgW0hjPDnPP4H3yLeCH95AVR1PRDHnPOR1_nMKV8aETXNY_7f.nD5suFJvqCkHwH6Pf23fUoSn6iODPjyK25bIdGrDyolD7LoKcSQSeo7FR5SJ9nN33ol8ifonOYFS6o3a2unayjdhbtuv8KYOFBBB_h0EDSM8tis\"",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "content-security-policy-report-only": "default-src 'self'; script-src 'self' https://challenges.cloudflare.com https://analytics.ahrefs.com https://static.cloudflareinsights.com 'sha256-ZH2BSt8Eb37+7DLCrzdop8JFKMkX+E9+1bhlEo3MLBs=' 'sha256-fIcJfVfCAXXOzbNIV6b3dIwsFr7qaDpjMpw89+nFAis=' 'sha256-3OaGN4SU7jGDGZb/dFD0TxOvDdZUFkX1TeGIN+jdcSc=' 'sha256-QFnjAN2yn18HvV131Awdob79v4NwN9MamnEI0F6bbiA=' 'sha256-tSMnhnbIitmCKvjuMeAfwJg/ICK+G27zhS8VsvYHg/8='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://challenges.cloudflare.com https://analytics.ahrefs.com https://cloudflareinsights.com; frame-src https://challenges.cloudflare.com https://www.youtube-nocookie.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; form-action 'self', script-src 'unsafe-inline' 'unsafe-eval'; connect-src 'none'; report-uri https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=4KAaiHrR8BaGvVamlK30DjFm0KhKmaI9gTlvvARfvpc-1790798726.9273872-1.0.1.1-QM9AKm_j_omgW0hjPDnPP4H3yLeCH95AVR1PRDHnPOR1_nMKV8aETXNY_7f.nD5suFJvqCkHwH6Pf23fUoSn6iODPjyK25bIdGrDyolD7LoKcSQSeo7FR5SJ9nN33ol8ifonOYFS6o3a2unayjdhbtuv8KYOFBBB_h0EDSM8tis; report-to cf-csp-endpoint",
+      "permissions-policy": "geolocation=(), microphone=(), camera=()",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "x-frame-options": "SAMEORIGIN",
+      "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=ZquJ8Qr2CsF%2B29XwUWytYYZvKSreVa5SjK4uJHZyEVTG8wTxprg%2F9x978mO8vdFo5Nt4IIXyvLwpZoVDsrUprXOOsEb%2FRL6Ojae1s9H3h7d6f0J%2F%2FwOisGRlUGEx45jCEUSpi0NBnXTx4PNc\"}]}, {\"group\":\"cf-csp-endpoint\",\"max_age\":86400,\"endpoints\":[{\"url\":\"https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=4KAaiHrR8BaGvVamlK30DjFm0KhKmaI9gTlvvARfvpc-1790798726.9273872-1.0.1.1-QM9AKm_j_omgW0hjPDnPP4H3yLeCH95AVR1PRDHnPOR1_nMKV8aETXNY_7f.nD5suFJvqCkHwH6Pf23fUoSn6iODPjyK25bIdGrDyolD7LoKcSQSeo7FR5SJ9nN33ol8ifonOYFS6o3a2unayjdhbtuv8KYOFBBB_h0EDSM8tis\"}]}",
+      "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+      "Content-Encoding": "br",
+      "Server": "cloudflare",
+      "CF-RAY": "a435d7ab4cf59bc1-MAA"
+    },
+    "internal_links": [
+      "https://www.tcreng.com/global/",
+      "https://www.tcreng.com/global/tcr-arabia/",
+      "https://www.tcreng.com/services/civil-testing/structural-audit/",
+      "https://www.tcreng.com/services/materials-testing/chemical-analysis/",
+      "https://www.tcreng.com/terms/",
+      "https://www.tcreng.com/industries/power-generation/",
+      "https://www.tcreng.com/services/robotic-inspection/scale-checker/",
+      "https://www.tcreng.com/services/asset-integrity/storage-tank-inspection/",
+      "https://www.tcreng.com/services/civil-testing/bridge-inspection/",
+      "https://www.tcreng.com/services/robotic-inspection/rt-crawlers/",
+      "https://www.tcreng.com/services/inspection-manpower/coating-inspection/",
+      "https://www.tcreng.com/post/astm-g146-hydrogen-induced-disbonding-testing-mahape/",
+      "https://www.tcreng.com/events/#fertilizer-show-2026",
+      "https://www.tcreng.com/services/asset-integrity/boiler-audit/",
+      "https://www.tcreng.com/services/non-destructive-testing/acoustic-emission-testing/",
+      "https://www.tcreng.com/post/tcr-engineering-nabl-iso-17025-accreditation-renewed-2026-2030/",
+      "https://www.tcreng.com/client-login/",
+      "https://www.tcreng.com/services/non-destructive-testing/thermography-drone/",
+      "https://www.tcreng.com/services/asset-integrity/energy-audit/",
+      "https://www.tcreng.com/industries/marine-offshore/",
+      "https://www.tcreng.com/industries/aerospace/",
+      "https://www.tcreng.com/services/asset-integrity/weld-failure-analysis/",
+      "https://www.tcreng.com/services/materials-testing/machine-shop/",
+      "https://www.tcreng.com/about/locations/mumbai-metal-market/",
+      "https://www.tcreng.com/industries/metal-trading/",
+      "https://www.tcreng.com/services/non-destructive-testing/pipeline-radiography/",
+      "https://www.tcreng.com/services/robotic-inspection/tank-robots/",
+      "https://www.tcreng.com/post/case-study-hic-ssc-qualification-sour-service-line-pipe/",
+      "https://www.tcreng.com/services/civil-testing/",
+      "https://www.tcreng.com/events/#nde-2026",
+      "https://www.tcreng.com/services/asset-integrity/fitness-for-service/",
+      "https://www.tcreng.com/global/tcr-japan/",
+      "https://www.tcreng.com/services/materials-testing/residual-stress-xrd/",
+      "https://www.tcreng.com/global/tcr-advanced/",
+      "https://www.tcreng.com/services/materials-testing/heat-treatment-verification/",
+      "https://www.tcreng.com/services/non-destructive-testing/tube-inspection/",
+      "https://www.tcreng.com/post/artis-reformer-tube-inspection-japan-launch-jima-2026/",
+      "https://www.tcreng.com/services/inspection-manpower/third-party-inspection/",
+      "https://www.tcreng.com/quality/",
+      "https://www.tcreng.com/services/civil-testing/home-inspection/",
+      "https://www.tcreng.com/services/civil-testing/bitumen-road/",
+      "https://www.tcreng.com/services/inspection-manpower/turnaround-manpower/",
+      "https://www.tcreng.com/post/wdxrf-chemical-analysis-cement-building-materials/",
+      "https://www.tcreng.com/services/civil-testing/concrete-cement-aggregates/",
+      "https://www.tcreng.com/services/inspection-manpower/source-inspection/",
+      "https://www.tcreng.com/investors/",
+      "https://www.tcreng.com/industries/chemicals/",
+      "https://www.tcreng.com/post/which-concrete-ndt-test-answers-which-question/",
+      "https://www.tcreng.com/industries/refining-petrochemicals/",
+      "https://www.tcreng.com/newsroom/",
+      "https://www.tcreng.com/assets/docs/bureau-of-indian-standards-bis-approval.pdf",
+      "https://www.tcreng.com/contact/",
+      "https://www.tcreng.com/post/reformer-tube-fitness-for-service-evolve-by-tcr-webinar-september-2026/",
+      "https://www.tcreng.com/services/materials-testing/ftir-gre-pipes/",
+      "https://www.tcreng.com/events/",
+      "https://www.tcreng.com/services/asset-integrity/remaining-life-assessment/",
+      "https://www.tcreng.com/services/non-destructive-testing/tank-floor-mfl-scanning/",
+      "https://www.tcreng.com/assets/docs/ibr-directorate-of-steam-boilers-lab-approval.pdf",
+      "https://www.tcreng.com/services/materials-testing/creep-stress-rupture/",
+      "https://www.tcreng.com/services/civil-testing/soil-geotechnical/",
+      "https://www.tcreng.com/services/asset-integrity/boiler-tube-failure-analysis/",
+      "https://www.tcreng.com/search/",
+      "https://www.tcreng.com/services/asset-integrity/contract-research/",
+      "https://www.tcreng.com/post/make-in-india-test-in-india-aerospace-quality-assurance/",
+      "https://www.tcreng.com/events/#corcon-2026",
+      "https://www.tcreng.com/industries/construction/",
+      "https://www.tcreng.com/services/civil-testing/plywood-testing/",
+      "https://www.tcreng.com/insights/",
+      "https://www.tcreng.com/post/tcr-engineering-nadcap-ac7101-accreditation-two-laboratories-india/",
+      "https://www.tcreng.com/global/tcr-kuwait/",
+      "https://www.tcreng.com/services/materials-testing/tmt-rebar-couplers/",
+      "https://www.tcreng.com/services/civil-testing/building-materials/",
+      "https://www.tcreng.com/",
+      "https://www.tcreng.com/services/civil-testing/rebar-couplers-bis/",
+      "https://www.tcreng.com/services/asset-integrity/design-review/",
+      "https://www.tcreng.com/services/",
+      "https://www.tcreng.com/industries/",
+      "https://www.tcreng.com/services/asset-integrity/fastener-failure-analysis/",
+      "https://www.tcreng.com/services/materials-testing/",
+      "https://www.tcreng.com/services/asset-integrity/engineering-critical-analysis/",
+      "https://www.tcreng.com/services/asset-integrity/shaft-failure-analysis/",
+      "https://www.tcreng.com/services/non-destructive-testing/advanced-ultrasonics/",
+      "https://www.tcreng.com/services/materials-testing/hydrogen-induced-disbonding/",
+      "https://www.tcreng.com/about/locations/bhubaneswar/",
+      "https://www.tcreng.com/about/locations/paradip/",
+      "https://www.tcreng.com/services/non-destructive-testing/pwht/",
+      "https://www.tcreng.com/services/materials-testing/welder-qualification/",
+      "https://www.tcreng.com/services/non-destructive-testing/asnt-level-iii-consultancy/",
+      "https://www.tcreng.com/about/hse/",
+      "https://www.tcreng.com/services/asset-integrity/plant-life-extension/",
+      "https://www.tcreng.com/about/locations/mahape-navi-mumbai/",
+      "https://www.tcreng.com/services/asset-integrity/artis/",
+      "https://www.tcreng.com/services/asset-integrity/cathodic-protection/",
+      "https://www.tcreng.com/about/locations/gorakhpur/",
+      "https://www.tcreng.com/events/#met-hts-2026",
+      "https://www.tcreng.com/services/materials-testing/dsc-glass-transition/",
+      "https://www.tcreng.com/services/non-destructive-testing/leak-testing/",
+      "https://www.tcreng.com/about/locations/guwahati/",
+      "https://www.tcreng.com/global/evolve/",
+      "https://www.tcreng.com/contact/#quote",
+      "https://www.tcreng.com/events/#cii-aerospace-defence-2026",
+      "https://www.tcreng.com/about/leadership/",
+      "https://www.tcreng.com/services/materials-testing/mechanical-testing/",
+      "https://www.tcreng.com/services/civil-testing/gpr-upv-subsurface/",
+      "https://www.tcreng.com/assets/docs/tcr-engineering-nabl-certificate-and-scope-2026-30.pdf",
+      "https://www.tcreng.com/services/inspection-manpower/",
+      "https://www.tcreng.com/industries/fertilisers/",
+      "https://www.tcreng.com/industries/insurance-referee/",
+      "https://www.tcreng.com/industries/oil-gas-upstream/",
+      "https://www.tcreng.com/services/asset-integrity/",
+      "https://www.tcreng.com/services/non-destructive-testing/",
+      "https://www.tcreng.com/industries/steel-metals/",
+      "https://www.tcreng.com/services/materials-testing/coating-evaluation/",
+      "https://www.tcreng.com/services/a-z/",
+      "https://www.tcreng.com/services/civil-testing/door-shutter-testing/",
+      "https://www.tcreng.com/industries/infrastructure/",
+      "https://www.tcreng.com/global/tcr-qatar/",
+      "https://www.tcreng.com/services/non-destructive-testing/conventional-ndt/",
+      "https://www.tcreng.com/post/what-an-accredited-materials-test-report-must-contain/",
+      "https://www.tcreng.com/industries/automotive/",
+      "https://www.tcreng.com/global/alliances/",
+      "https://www.tcreng.com/insights/case-studies/",
+      "https://www.tcreng.com/post/quality-quality-quality-zero-defect-manufacturing-make-in-india/",
+      "https://www.tcreng.com/services/materials-testing/composites-polymers/",
+      "https://www.tcreng.com/about/",
+      "https://www.tcreng.com/services/civil-testing/rebar-cover-meter/",
+      "https://www.tcreng.com/services/robotic-inspection/",
+      "https://www.tcreng.com/services/asset-integrity/structural-integrity/",
+      "https://www.tcreng.com/services/materials-testing/rohs/",
+      "https://www.tcreng.com/services/materials-testing/corrosion-sour-service/",
+      "https://www.tcreng.com/assets/docs/press/tcr-s-nadcap-nod-gives-indian-msmes-passport-to-aerospace-supply-chain.pdf",
+      "https://www.tcreng.com/services/asset-integrity/fire-damage-assessment/",
+      "https://www.tcreng.com/industries/pipelines-city-gas/",
+      "https://www.tcreng.com/energy-transition/",
+      "https://www.tcreng.com/industries/industrial-research/",
+      "https://www.tcreng.com/services/asset-integrity/knowledge-based-audit/",
+      "https://www.tcreng.com/services/robotic-inspection/rov-underwater/",
+      "https://www.tcreng.com/assets/docs/tcr-advanced-fertilizer-show-2026-spotlight.pdf",
+      "https://www.tcreng.com/services/materials-testing/oil-ferrography/",
+      "https://www.tcreng.com/services/asset-integrity/failure-analysis/",
+      "https://www.tcreng.com/services/asset-integrity/in-situ-metallography/",
+      "https://www.tcreng.com/services/materials-testing/fatigue-fracture-toughness/",
+      "https://www.tcreng.com/about/careers/",
+      "https://www.tcreng.com/services/robotic-inspection/agaas/",
+      "https://www.tcreng.com/downloads/",
+      "https://www.tcreng.com/assets/docs/tcr-engineering-nadcap-certificate-and-scope.pdf",
+      "https://www.tcreng.com/services/asset-integrity/aiom/",
+      "https://www.tcreng.com/assets/docs/excellent-laboratory-in-private-sector-by-nace.pdf",
+      "https://www.tcreng.com/post/13cr-valve-seat-rebuild-on-wcb-hardfacing-qualification/",
+      "https://www.tcreng.com/services/materials-testing/metallurgical-evaluation/",
+      "https://www.tcreng.com/assets/docs/nabl-iso-17025-bhubaneswar-lab.pdf",
+      "https://www.tcreng.com/industries/railways/",
+      "https://www.tcreng.com/about/locations/",
+      "https://www.tcreng.com/services/civil-testing/pavement-evaluation/"
+    ],
+    "external_links": [
+      "https://www.instagram.com/tcrengineeringservices",
+      "https://x.com/rohitbafna",
+      "https://theprint.in/ani-press-releases/how-national-infrastructure-pipeline-is-creating-jobs-for-engineers-in-odisha/936414/",
+      "https://www.linkedin.com/company/tcr-engineering-services/",
+      "https://wa.me/message/G4WTVYMLUIYUI1",
+      "https://energy.economictimes.indiatimes.com/news/oil-and-gas/tcr-engineering-gets-new-projects-in-defence-gas-pipeline-space-president-rohit-bafna/95503063",
+      "https://www.youtube.com/@tcrengineeringservices",
+      "https://www.aero-mag.com/tcr-secures-nadcap-accreditation-at-two-independent-materials-labs",
+      "https://www.livemint.com/market/ipo/tcr-engineering-plans-expansion-eyes-ipo-by-2025-11687014395011.html",
+      "https://timesofindia.indiatimes.com/boiler-failures-cause-3-pc-loss-to-production-of-industrial-units/articleshow/95713655.cms",
+      "https://www.facebook.com/tcrengineering/",
+      "https://www.business-standard.com/industry/news/tcr-s-nadcap-nod-gives-indian-msmes-passport-to-aerospace-supply-chain-126081701122_1.html",
+      "#main",
+      "tel:+919833530200",
+      "mailto:sales@tcreng.com",
+      "/global/tcr-arabia/",
+      "/global/tcr-advanced/",
+      "/global/tcr-kuwait/",
+      "/global/tcr-qatar/",
+      "/global/tcr-japan/",
+      "/global/evolve/",
+      "/investors/",
+      "/search/",
+      "/client-login/",
+      "/",
+      "/industries/",
+      "/industries/power-generation/",
+      "/industries/oil-gas-upstream/",
+      "/industries/refining-petrochemicals/",
+      "/industries/pipelines-city-gas/",
+      "/energy-transition/",
+      "/industries/chemicals/",
+      "/industries/fertilisers/",
+      "/industries/steel-metals/",
+      "/industries/metal-trading/",
+      "/industries/construction/",
+      "/industries/infrastructure/",
+      "/industries/railways/",
+      "/industries/marine-offshore/",
+      "/industries/aerospace/",
+      "/industries/automotive/",
+      "/industries/industrial-research/",
+      "/industries/insurance-referee/",
+      "/industries/",
+      "/services/",
+      "/services/materials-testing/",
+      "/services/materials-testing/fatigue-fracture-toughness/",
+      "/services/materials-testing/corrosion-sour-service/",
+      "/services/materials-testing/metallurgical-evaluation/",
+      "/services/materials-testing/mechanical-testing/",
+      "/services/materials-testing/chemical-analysis/",
+      "/services/materials-testing/tmt-rebar-couplers/",
+      "/services/materials-testing/creep-stress-rupture/",
+      "/services/materials-testing/welder-qualification/",
+      "/services/materials-testing/heat-treatment-verification/",
+      "/services/materials-testing/rohs/",
+      "/services/materials-testing/residual-stress-xrd/",
+      "/services/materials-testing/composites-polymers/",
+      "/services/materials-testing/coating-evaluation/",
+      "/services/materials-testing/oil-ferrography/",
+      "/services/materials-testing/machine-shop/",
+      "/services/materials-testing/hydrogen-induced-disbonding/",
+      "/services/materials-testing/ftir-gre-pipes/",
+      "/services/materials-testing/dsc-glass-transition/",
+      "/services/non-destructive-testing/",
+      "/services/non-destructive-testing/pipeline-radiography/",
+      "/services/non-destructive-testing/advanced-ultrasonics/",
+      "/services/non-destructive-testing/tube-inspection/",
+      "/services/non-destructive-testing/tank-floor-mfl-scanning/",
+      "/services/non-destructive-testing/acoustic-emission-testing/",
+      "/services/non-destructive-testing/conventional-ndt/",
+      "/services/non-destructive-testing/pwht/",
+      "/services/non-destructive-testing/leak-testing/",
+      "/services/non-destructive-testing/thermography-drone/",
+      "/services/non-destructive-testing/asnt-level-iii-consultancy/",
+      "/services/asset-integrity/",
+      "/services/asset-integrity/aiom/",
+      "/services/asset-integrity/failure-analysis/",
+      "/services/asset-integrity/remaining-life-assessment/",
+      "/services/asset-integrity/fitness-for-service/",
+      "/services/asset-integrity/in-situ-metallography/",
+      "/services/asset-integrity/artis/",
+      "/services/asset-integrity/boiler-audit/",
+      "/services/asset-integrity/cathodic-protection/",
+      "/services/asset-integrity/knowledge-based-audit/",
+      "/services/asset-integrity/engineering-critical-analysis/",
+      "/services/asset-integrity/storage-tank-inspection/",
+      "/services/asset-integrity/fire-damage-assessment/",
+      "/services/asset-integrity/plant-life-extension/",
+      "/services/asset-integrity/design-review/",
+      "/services/asset-integrity/structural-integrity/",
+      "/services/asset-integrity/energy-audit/",
+      "/services/asset-integrity/contract-research/",
+      "/services/asset-integrity/shaft-failure-analysis/",
+      "/services/asset-integrity/boiler-tube-failure-analysis/",
+      "/services/asset-integrity/weld-failure-analysis/",
+      "/services/asset-integrity/fastener-failure-analysis/",
+      "/services/civil-testing/",
+      "/services/civil-testing/concrete-cement-aggregates/",
+      "/services/civil-testing/rebar-couplers-bis/",
+      "/services/civil-testing/soil-geotechnical/",
+      "/services/civil-testing/building-materials/",
+      "/services/civil-testing/bitumen-road/",
+      "/services/civil-testing/structural-audit/",
+      "/services/civil-testing/pavement-evaluation/",
+      "/services/civil-testing/gpr-upv-subsurface/",
+      "/services/civil-testing/bridge-inspection/",
+      "/services/civil-testing/plywood-testing/",
+      "/services/civil-testing/door-shutter-testing/",
+      "/services/civil-testing/rebar-cover-meter/",
+      "/services/civil-testing/home-inspection/",
+      "/services/robotic-inspection/",
+      "/services/robotic-inspection/rt-crawlers/",
+      "/services/robotic-inspection/tank-robots/",
+      "/services/robotic-inspection/rov-underwater/",
+      "/services/robotic-inspection/scale-checker/",
+      "/services/robotic-inspection/agaas/",
+      "/services/inspection-manpower/",
+      "/services/inspection-manpower/third-party-inspection/",
+      "/services/inspection-manpower/turnaround-manpower/",
+      "/services/inspection-manpower/source-inspection/",
+      "/services/inspection-manpower/coating-inspection/",
+      "/services/a-z/",
+      "/services/",
+      "/about/",
+      "/about/",
+      "/about/leadership/",
+      "/quality/",
+      "/about/hse/",
+      "/about/careers/",
+      "/global/",
+      "/global/alliances/",
+      "/global/",
+      "/global/tcr-arabia/",
+      "/global/tcr-advanced/",
+      "/global/tcr-qatar/",
+      "/global/tcr-kuwait/",
+      "/global/tcr-japan/",
+      "/global/evolve/",
+      "/about/locations/",
+      "/about/locations/mahape-navi-mumbai/",
+      "/about/locations/mumbai-metal-market/",
+      "/about/locations/bhubaneswar/",
+      "/about/locations/paradip/",
+      "/about/locations/gorakhpur/",
+      "/about/locations/guwahati/",
+      "/insights/",
+      "/newsroom/",
+      "/about/careers/",
+      "/downloads/",
+      "/contact/",
+      "/industries/",
+      "/industries/power-generation/",
+      "/industries/oil-gas-upstream/",
+      "/industries/refining-petrochemicals/",
+      "/industries/pipelines-city-gas/",
+      "/energy-transition/",
+      "/industries/chemicals/",
+      "/industries/fertilisers/",
+      "/industries/steel-metals/",
+      "/industries/metal-trading/",
+      "/industries/construction/",
+      "/industries/infrastructure/",
+      "/industries/railways/",
+      "/industries/marine-offshore/",
+      "/industries/aerospace/",
+      "/industries/automotive/",
+      "/industries/industrial-research/",
+      "/industries/insurance-referee/",
+      "/services/",
+      "/services/materials-testing/",
+      "/services/materials-testing/fatigue-fracture-toughness/",
+      "/services/materials-testing/corrosion-sour-service/",
+      "/services/materials-testing/metallurgical-evaluation/",
+      "/services/materials-testing/mechanical-testing/",
+      "/services/materials-testing/chemical-analysis/",
+      "/services/materials-testing/tmt-rebar-couplers/",
+      "/services/materials-testing/creep-stress-rupture/",
+      "/services/materials-testing/welder-qualification/",
+      "/services/materials-testing/heat-treatment-verification/",
+      "/services/materials-testing/rohs/",
+      "/services/materials-testing/residual-stress-xrd/",
+      "/services/materials-testing/composites-polymers/",
+      "/services/materials-testing/coating-evaluation/",
+      "/services/materials-testing/oil-ferrography/",
+      "/services/materials-testing/machine-shop/",
+      "/services/materials-testing/hydrogen-induced-disbonding/",
+      "/services/materials-testing/ftir-gre-pipes/",
+      "/services/materials-testing/dsc-glass-transition/",
+      "/services/non-destructive-testing/",
+      "/services/non-destructive-testing/pipeline-radiography/",
+      "/services/non-destructive-testing/advanced-ultrasonics/",
+      "/services/non-destructive-testing/tube-inspection/",
+      "/services/non-destructive-testing/tank-floor-mfl-scanning/",
+      "/services/non-destructive-testing/acoustic-emission-testing/",
+      "/services/non-destructive-testing/conventional-ndt/",
+      "/services/non-destructive-testing/pwht/",
+      "/services/non-destructive-testing/leak-testing/",
+      "/services/non-destructive-testing/thermography-drone/",
+      "/services/non-destructive-testing/asnt-level-iii-consultancy/",
+      "/services/asset-integrity/",
+      "/services/asset-integrity/aiom/",
+      "/services/asset-integrity/failure-analysis/",
+      "/services/asset-integrity/remaining-life-assessment/",
+      "/services/asset-integrity/fitness-for-service/",
+      "/services/asset-integrity/in-situ-metallography/",
+      "/services/asset-integrity/artis/",
+      "/services/asset-integrity/boiler-audit/",
+      "/services/asset-integrity/cathodic-protection/",
+      "/services/asset-integrity/knowledge-based-audit/",
+      "/services/asset-integrity/engineering-critical-analysis/",
+      "/services/asset-integrity/storage-tank-inspection/",
+      "/services/asset-integrity/fire-damage-assessment/",
+      "/services/asset-integrity/plant-life-extension/",
+      "/services/asset-integrity/design-review/",
+      "/services/asset-integrity/structural-integrity/",
+      "/services/asset-integrity/energy-audit/",
+      "/services/asset-integrity/contract-research/",
+      "/services/asset-integrity/shaft-failure-analysis/",
+      "/services/asset-integrity/boiler-tube-failure-analysis/",
+      "/services/asset-integrity/weld-failure-analysis/",
+      "/services/asset-integrity/fastener-failure-analysis/",
+      "/services/civil-testing/",
+      "/services/civil-testing/concrete-cement-aggregates/",
+      "/services/civil-testing/rebar-couplers-bis/",
+      "/services/civil-testing/soil-geotechnical/",
+      "/services/civil-testing/building-materials/",
+      "/services/civil-testing/bitumen-road/",
+      "/services/civil-testing/structural-audit/",
+      "/services/civil-testing/pavement-evaluation/",
+      "/services/civil-testing/gpr-upv-subsurface/",
+      "/services/civil-testing/bridge-inspection/",
+      "/services/civil-testing/plywood-testing/",
+      "/services/civil-testing/door-shutter-testing/",
+      "/services/civil-testing/rebar-cover-meter/",
+      "/services/civil-testing/home-inspection/",
+      "/services/robotic-inspection/",
+      "/services/robotic-inspection/rt-crawlers/",
+      "/services/robotic-inspection/tank-robots/",
+      "/services/robotic-inspection/rov-underwater/",
+      "/services/robotic-inspection/scale-checker/",
+      "/services/robotic-inspection/agaas/",
+      "/services/inspection-manpower/",
+      "/services/inspection-manpower/third-party-inspection/",
+      "/services/inspection-manpower/turnaround-manpower/",
+      "/services/inspection-manpower/source-inspection/",
+      "/services/inspection-manpower/coating-inspection/",
+      "/services/a-z/",
+      "/about/",
+      "/about/leadership/",
+      "/quality/",
+      "/about/hse/",
+      "/about/locations/",
+      "/about/locations/mahape-navi-mumbai/",
+      "/about/locations/mumbai-metal-market/",
+      "/about/locations/bhubaneswar/",
+      "/about/locations/paradip/",
+      "/about/locations/gorakhpur/",
+      "/about/locations/guwahati/",
+      "/global/tcr-arabia/",
+      "/global/tcr-advanced/",
+      "/global/evolve/",
+      "/global/",
+      "/global/alliances/",
+      "/insights/",
+      "/newsroom/",
+      "/about/careers/",
+      "/downloads/",
+      "/contact/",
+      "/global/tcr-arabia/",
+      "/global/tcr-advanced/",
+      "/global/tcr-kuwait/",
+      "/global/tcr-qatar/",
+      "/global/tcr-japan/",
+      "/global/evolve/",
+      "/investors/",
+      "/search/",
+      "/client-login/",
+      "tel:+919833530200",
+      "/assets/docs/tcr-engineering-nabl-certificate-and-scope-2026-30.pdf",
+      "/assets/docs/tcr-engineering-nadcap-certificate-and-scope.pdf",
+      "/contact/#quote",
+      "#matrix-heading",
+      "/services/robotic-inspection/",
+      "/industries/power-generation/",
+      "/services/asset-integrity/",
+      "/services/civil-testing/",
+      "/services/materials-testing/",
+      "/industries/pipelines-city-gas/",
+      "/industries/",
+      "/services/",
+      "/services/materials-testing/",
+      "/services/non-destructive-testing/",
+      "/services/asset-integrity/",
+      "/services/robotic-inspection/",
+      "/services/civil-testing/",
+      "/services/inspection-manpower/",
+      "/insights/",
+      "/post/13cr-valve-seat-rebuild-on-wcb-hardfacing-qualification/",
+      "/post/13cr-valve-seat-rebuild-on-wcb-hardfacing-qualification/",
+      "/post/astm-g146-hydrogen-induced-disbonding-testing-mahape/",
+      "/post/astm-g146-hydrogen-induced-disbonding-testing-mahape/",
+      "/post/wdxrf-chemical-analysis-cement-building-materials/",
+      "/post/wdxrf-chemical-analysis-cement-building-materials/",
+      "/post/what-an-accredited-materials-test-report-must-contain/",
+      "/post/what-an-accredited-materials-test-report-must-contain/",
+      "/post/which-concrete-ndt-test-answers-which-question/",
+      "/post/which-concrete-ndt-test-answers-which-question/",
+      "/post/reformer-tube-fitness-for-service-evolve-by-tcr-webinar-september-2026/",
+      "/post/reformer-tube-fitness-for-service-evolve-by-tcr-webinar-september-2026/",
+      "/post/quality-quality-quality-zero-defect-manufacturing-make-in-india/",
+      "/post/quality-quality-quality-zero-defect-manufacturing-make-in-india/",
+      "/post/make-in-india-test-in-india-aerospace-quality-assurance/",
+      "/post/make-in-india-test-in-india-aerospace-quality-assurance/",
+      "/post/case-study-hic-ssc-qualification-sour-service-line-pipe/",
+      "/post/case-study-hic-ssc-qualification-sour-service-line-pipe/",
+      "/post/artis-reformer-tube-inspection-japan-launch-jima-2026/",
+      "/post/artis-reformer-tube-inspection-japan-launch-jima-2026/",
+      "/post/tcr-engineering-nadcap-ac7101-accreditation-two-laboratories-india/",
+      "/post/tcr-engineering-nadcap-ac7101-accreditation-two-laboratories-india/",
+      "/post/tcr-engineering-nabl-iso-17025-accreditation-renewed-2026-2030/",
+      "/post/tcr-engineering-nabl-iso-17025-accreditation-renewed-2026-2030/",
+      "/newsroom/",
+      "https://www.aero-mag.com/tcr-secures-nadcap-accreditation-at-two-independent-materials-labs",
+      "https://www.business-standard.com/industry/news/tcr-s-nadcap-nod-gives-indian-msmes-passport-to-aerospace-supply-chain-126081701122_1.html",
+      "https://www.business-standard.com/industry/news/tcr-s-nadcap-nod-gives-indian-msmes-passport-to-aerospace-supply-chain-126081701122_1.html",
+      "/assets/docs/press/tcr-s-nadcap-nod-gives-indian-msmes-passport-to-aerospace-supply-chain.pdf",
+      "https://www.livemint.com/market/ipo/tcr-engineering-plans-expansion-eyes-ipo-by-2025-11687014395011.html",
+      "https://energy.economictimes.indiatimes.com/news/oil-and-gas/tcr-engineering-gets-new-projects-in-defence-gas-pipeline-space-president-rohit-bafna/95503063",
+      "https://timesofindia.indiatimes.com/boiler-failures-cause-3-pc-loss-to-production-of-industrial-units/articleshow/95713655.cms",
+      "https://theprint.in/ani-press-releases/how-national-infrastructure-pipeline-is-creating-jobs-for-engineers-in-odisha/936414/",
+      "/events/",
+      "/events/#cii-aerospace-defence-2026",
+      "/events/#corcon-2026",
+      "/events/#nde-2026",
+      "/events/#fertilizer-show-2026",
+      "/assets/docs/tcr-advanced-fertilizer-show-2026-spotlight.pdf",
+      "/assets/docs/tcr-advanced-fertilizer-show-2026-spotlight.pdf",
+      "/events/#met-hts-2026",
+      "/assets/docs/tcr-engineering-nabl-certificate-and-scope-2026-30.pdf",
+      "/assets/docs/tcr-engineering-nadcap-certificate-and-scope.pdf",
+      "/quality/",
+      "/assets/docs/ibr-directorate-of-steam-boilers-lab-approval.pdf",
+      "/assets/docs/bureau-of-indian-standards-bis-approval.pdf",
+      "/assets/docs/nabl-iso-17025-bhubaneswar-lab.pdf",
+      "/quality/",
+      "/assets/docs/excellent-laboratory-in-private-sector-by-nace.pdf",
+      "/contact/#quote",
+      "https://www.linkedin.com/company/tcr-engineering-services/",
+      "https://www.youtube.com/@tcrengineeringservices",
+      "https://x.com/rohitbafna",
+      "https://www.facebook.com/tcrengineering/",
+      "https://www.instagram.com/tcrengineeringservices",
+      "https://wa.me/message/G4WTVYMLUIYUI1",
+      "/services/materials-testing/",
+      "/services/non-destructive-testing/",
+      "/services/asset-integrity/",
+      "/services/robotic-inspection/",
+      "/services/civil-testing/",
+      "/services/inspection-manpower/",
+      "/services/a-z/",
+      "/industries/",
+      "/about/",
+      "/about/leadership/",
+      "/quality/",
+      "/insights/",
+      "/insights/case-studies/",
+      "/newsroom/",
+      "/events/",
+      "/about/careers/",
+      "/downloads/",
+      "/investors/",
+      "/client-login/",
+      "/terms/",
+      "/about/locations/mahape-navi-mumbai/",
+      "/about/locations/mumbai-metal-market/",
+      "/about/locations/bhubaneswar/",
+      "/about/locations/paradip/",
+      "/about/locations/gorakhpur/",
+      "/about/locations/guwahati/",
+      "/global/tcr-advanced/",
+      "/global/tcr-arabia/",
+      "/about/locations/",
+      "mailto:sales@tcreng.com",
+      "tel:+919833530200",
+      "/contact/",
+      "/contact/#quote",
+      "/global/tcr-arabia/",
+      "/global/tcr-advanced/",
+      "/global/tcr-kuwait/",
+      "/global/tcr-qatar/",
+      "/global/tcr-japan/",
+      "/global/evolve/",
+      "https://wa.me/message/G4WTVYMLUIYUI1"
+    ],
+    "engine_source": "httpx_static_fallback"
+  },
+  "unified_robots": {
+    "found": true,
+    "robots_url": "https://www.tcreng.com/robots.txt",
+    "bot_access": {
+      "Applebot": {
+        "bot": "Applebot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Apple Intelligence & Siri",
+        "role_or_purpose": "Apple Intelligence search & Safari citations",
+        "via_wildcard": false
+      },
+      "Applebot-Extended": {
+        "bot": "Applebot-Extended",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Apple",
+        "role_or_purpose": "Apple Foundation model training",
+        "via_wildcard": false
+      },
+      "Bingbot": {
+        "bot": "Bingbot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Microsoft Copilot & Bing",
+        "role_or_purpose": "Microsoft AI search indexer",
+        "via_wildcard": false
+      },
+      "Bytespider": {
+        "bot": "Bytespider",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "ByteDance",
+        "role_or_purpose": "ByteDance AI training",
+        "via_wildcard": false
+      },
+      "CCBot": {
+        "bot": "CCBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Common Crawl",
+        "role_or_purpose": "Open web dataset scraped for AI foundation training",
+        "via_wildcard": false
+      },
+      "Claude-SearchBot": {
+        "bot": "Claude-SearchBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Claude Search",
+        "role_or_purpose": "Anthropic search indexer (NOT ClaudeBot)",
+        "via_wildcard": false
+      },
+      "ClaudeBot": {
+        "bot": "ClaudeBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Anthropic",
+        "role_or_purpose": "Model training data collection (Claude base models)",
+        "via_wildcard": false
+      },
+      "FacebookBot": {
+        "bot": "FacebookBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Meta",
+        "role_or_purpose": "Llama & Meta AI model training",
+        "via_wildcard": false
+      },
+      "GPTBot": {
+        "bot": "GPTBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "OpenAI",
+        "role_or_purpose": "Model training data collection (ChatGPT base models)",
+        "via_wildcard": false
+      },
+      "Google-Extended": {
+        "bot": "Google-Extended",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Google",
+        "role_or_purpose": "Gemini & Vertex AI model training (Separate from Googlebot)",
+        "via_wildcard": false
+      },
+      "Googlebot": {
+        "bot": "Googlebot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Google Search & AI Overviews",
+        "role_or_purpose": "Primary web indexer driving Google SGE/AI Overviews",
+        "via_wildcard": false
+      },
+      "OAI-SearchBot": {
+        "bot": "OAI-SearchBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "ChatGPT Search",
+        "role_or_purpose": "Search indexer & live web citation retriever (NOT GPTBot)",
+        "via_wildcard": false
+      },
+      "PerplexityBot": {
+        "bot": "PerplexityBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Perplexity AI",
+        "role_or_purpose": "Live answer engine citation crawler",
+        "via_wildcard": false
+      },
+      "cohere-ai": {
+        "bot": "cohere-ai",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Cohere",
+        "role_or_purpose": "Enterprise LLM training",
+        "via_wildcard": false
+      }
+    },
+    "sitemaps": [
+      "https://www.tcreng.com/sitemap.xml",
+      "https://www.tcreng.com/news-sitemap.xml"
+    ],
+    "crawl_delay": null,
+    "discovered_urls": [
+      "https://www.tcreng.com/",
+      "https://www.tcreng.com/about/",
+      "https://www.tcreng.com/about/careers/",
+      "https://www.tcreng.com/about/careers/jobs-available/",
+      "https://www.tcreng.com/about/hse/",
+      "https://www.tcreng.com/about/leadership/",
+      "https://www.tcreng.com/about/leadership/aarti-bhawari/",
+      "https://www.tcreng.com/about/leadership/abhay-dhuri/",
+      "https://www.tcreng.com/about/leadership/ajay-essampally/",
+      "https://www.tcreng.com/about/leadership/anil-lund/",
+      "https://www.tcreng.com/about/leadership/ashwant-singh/",
+      "https://www.tcreng.com/about/leadership/atul-yadav/",
+      "https://www.tcreng.com/about/leadership/avinash-tambewagh/",
+      "https://www.tcreng.com/about/leadership/harshal-tambe/",
+      "https://www.tcreng.com/about/leadership/hemant-sakpal/",
+      "https://www.tcreng.com/about/leadership/lalit-surve/",
+      "https://www.tcreng.com/about/leadership/manoj-bhandari/",
+      "https://www.tcreng.com/about/leadership/manoj-prabhakar-singh/",
+      "https://www.tcreng.com/about/leadership/mukesh-kumar/",
+      "https://www.tcreng.com/about/leadership/neelam-bafna/",
+      "https://www.tcreng.com/about/leadership/nishat-baig/",
+      "https://www.tcreng.com/about/leadership/paresh-haribhakti/",
+      "https://www.tcreng.com/about/leadership/parul-hariya/",
+      "https://www.tcreng.com/about/leadership/rafi-baig/",
+      "https://www.tcreng.com/about/leadership/rehan-baig/"
+    ],
+    "engine_source": "advertools_rfc"
+  },
+  "unified_schema": {
+    "detected_types": [
+      "NewsArticle",
+      "WebSite",
+      "BreadcrumbList",
+      "Organization",
+      "WebPage",
+      "VideoObject",
+      "FAQPage",
+      "ItemList"
+    ],
+    "deprecated_types_detected": [
+      "FAQPage"
+    ],
+    "blocks_count": 8,
+    "is_injected_via_js": false,
+    "validation_issues": [],
+    "sameas_urls": [
+      "https://www.instagram.com/tcrengineeringservices",
+      "https://search.gleif.org/#/record/335800LR5UPHQB6W5P18",
+      "https://www.google.com/maps?cid=12160363747165330753",
+      "https://en.everybodywiki.com/TCR_Engineering",
+      "https://www.linkedin.com/company/tcr-engineering-services/",
+      "https://www.crunchbase.com/organization/tcr-material-testing-ndt-inspection-and-engineering-consulting-services",
+      "https://www.youtube.com/@tcrengineeringservices",
+      "https://www.facebook.com/tcrengineering/"
+    ],
+    "has_organization": true,
+    "has_author": false,
+    "engine_source": "triangulated_union"
+  },
+  "unified_geo": {
+    "overall_citability_score": 63,
+    "answer_first_ratio": 0.53,
+    "passage_density_ratio": 0.02,
+    "statistical_density_per_1000": 0.0,
+    "outbound_citations_count": 0,
+    "authoritative_citations_count": 0,
+    "llms_txt_found": true,
+    "llms_txt_warnings": [],
+    "llms_full_found": true,
+    "question_h2s": [],
+    "methods": [
+      {
+        "name": "quotation_addition",
+        "label": "Quotation Addition",
+        "detected": true,
+        "score": 4,
+        "max_score": 6,
+        "impact": "+41%",
+        "details": {
+          "blockquotes": 1,
+          "q_tags": 0,
+          "attributed_quotes": 0,
+          "pull_quotes": 0
+        }
+      },
+      {
+        "name": "statistics_addition",
+        "label": "Statistics Addition",
+        "detected": true,
+        "score": 6,
+        "max_score": 6,
+        "impact": "+33%",
+        "details": {
+          "stat_matches": 21,
+          "density_per_1000_words": 10.32,
+          "tables_with_data": 0
+        }
+      },
+      {
+        "name": "fluency_optimization",
+        "label": "Fluency Optimization",
+        "detected": false,
+        "score": 1,
+        "max_score": 6,
+        "impact": "+29%",
+        "details": {
+          "avg_paragraph_words": 8.6,
+          "connective_count": 0,
+          "paragraphs": 144,
+          "list_items": 104
+        }
+      },
+      {
+        "name": "cite_sources",
+        "label": "Cite Sources",
+        "detected": true,
+        "score": 6,
+        "max_score": 6,
+        "impact": "+27%",
+        "details": {
+          "authoritative_links": 0,
+          "external_links": 14,
+          "cite_tags": 1,
+          "has_reference_section": false
+        }
+      },
+      {
+        "name": "answer_first",
+        "label": "Answer-First Structure",
+        "detected": true,
+        "score": 4,
+        "max_score": 5,
+        "impact": "+25%",
+        "details": {
+          "h2_count": 17,
+          "answer_first_count": 9,
+          "ratio": 0.53
+        }
+      },
+      {
+        "name": "passage_density",
+        "label": "Passage Density",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+23%",
+        "details": {
+          "total_paragraphs": 41,
+          "dense_paragraphs": 1,
+          "ratio": 0.02
+        }
+      },
+      {
+        "name": "technical_terms",
+        "label": "Technical Terms",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+18%",
+        "details": {
+          "tech_matches": 206,
+          "density_per_1000": 101.23,
+          "code_blocks": 0,
+          "abbr_tags": 0
+        }
+      },
+      {
+        "name": "authoritative_tone",
+        "label": "Authoritative Tone",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+16%",
+        "details": {
+          "authority_markers": 0,
+          "hedge_markers": 0,
+          "has_author_bio": false,
+          "credentials": [],
+          "has_author_meta": false
+        }
+      },
+      {
+        "name": "easy_to_understand",
+        "label": "Easy-to-Understand",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+14%",
+        "details": {
+          "avg_sentence_length": 9.9,
+          "h2_count": 17,
+          "h3_count": 26,
+          "faq_sections": 4
+        }
+      },
+      {
+        "name": "unique_words",
+        "label": "Unique Words",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+7%",
+        "details": {
+          "ttr": 0.715,
+          "total_words": 1273,
+          "unique_count": 586
+        }
+      },
+      {
+        "name": "keyword_stuffing",
+        "label": "No Keyword Stuffing",
+        "detected": false,
+        "score": 4,
+        "max_score": 6,
+        "impact": "-9%",
+        "details": {
+          "suspicious_keywords": {
+            "tcr": 2.9
+          },
+          "stuffing_severity": "none",
+          "repeated_phrases": 0,
+          "front_loading_detected": false
+        }
+      },
+      {
+        "name": "readability",
+        "label": "Readability Score",
+        "detected": false,
+        "score": 0,
+        "max_score": 8,
+        "impact": "+15%",
+        "details": {
+          "flesch_kincaid_grade": 19.3,
+          "avg_words_per_sentence": 29.9,
+          "avg_syllables_per_word": 1.97,
+          "optimal_sections": 0,
+          "total_sections": 20
+        }
+      },
+      {
+        "name": "faq_in_content",
+        "label": "FAQ-in-Content",
+        "detected": true,
+        "score": 6,
+        "max_score": 6,
+        "impact": "+12%",
+        "details": {
+          "faq_patterns_found": 14
+        }
+      },
+      {
+        "name": "image_alt_quality",
+        "label": "Image Alt Quality",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+8%",
+        "details": {
+          "total_images": 42,
+          "with_alt": 42,
+          "descriptive_alt": 40,
+          "generic_alt": 2,
+          "missing_alt": 0
+        }
+      },
+      {
+        "name": "content_freshness",
+        "label": "Content Freshness",
+        "detected": true,
+        "score": 6,
+        "max_score": 6,
+        "impact": "+10%",
+        "details": {
+          "date_modified": "2026-09-28",
+          "date_published": "2026-08-17",
+          "is_fresh": true,
+          "freshness_level": "very_fresh",
+          "months_old": 0.1,
+          "year_references": {
+            "2017": 5,
+            "2027": 3,
+            "2026": 32,
+            "2023": 1,
+            "2022": 3,
+            "2014": 2,
+            "2024": 1,
+            "2029": 2,
+            "2025": 1
+          },
+          "warnings": []
+        }
+      },
+      {
+        "name": "citability_density",
+        "label": "Citability Density",
+        "detected": true,
+        "score": 3,
+        "max_score": 7,
+        "impact": "+15%",
+        "details": {
+          "total_paragraphs": 41,
+          "dense_paragraphs": 9,
+          "density_ratio": 0.22,
+          "total_citable_facts": 43
+        }
+      },
+      {
+        "name": "definition_patterns",
+        "label": "Definition Patterns",
+        "detected": true,
+        "score": 3,
+        "max_score": 5,
+        "impact": "+10%",
+        "details": {
+          "definitions_found": 4,
+          "total_headings": 18,
+          "ratio": 0.22
+        }
+      },
+      {
+        "name": "format_mix",
+        "label": "Response Format Mix",
+        "detected": true,
+        "score": 3,
+        "max_score": 5,
+        "impact": "+8%",
+        "details": {
+          "has_paragraphs": true,
+          "has_lists": true,
+          "has_tables": false,
+          "has_code": false,
+          "has_blockquote": true,
+          "format_count": 3
+        }
+      },
+      {
+        "name": "attribution_completeness",
+        "label": "Attribution Completeness",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+12%",
+        "details": {
+          "inline_attributions": 0,
+          "footnotes": 11,
+          "inline_link_citations": 0
+        }
+      },
+      {
+        "name": "no_negative_signals",
+        "label": "No Negative Signals",
+        "detected": false,
+        "score": 4,
+        "max_score": 5,
+        "impact": "-15%",
+        "details": {
+          "cta_count": 0,
+          "is_thin_content": false,
+          "has_author": false,
+          "repeated_phrases": 0,
+          "total_penalties": 1
+        }
+      },
+      {
+        "name": "comparison_content",
+        "label": "Comparison Content",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "vs_headings": 0,
+          "pro_con_sections": 0,
+          "comparison_tables": 0,
+          "large_tables": 0
+        }
+      },
+      {
+        "name": "eeat_signals",
+        "label": "E-E-A-T Signals",
+        "detected": true,
+        "score": 5,
+        "max_score": 7,
+        "impact": "+15%",
+        "details": {
+          "trust_links": {
+            "privacy": false,
+            "terms": true,
+            "about": true,
+            "contact": true
+          },
+          "trust_link_count": 3,
+          "has_detailed_bio": false,
+          "has_structured_author": true,
+          "has_verified_author": false,
+          "is_https": true
+        }
+      },
+      {
+        "name": "no_content_decay",
+        "label": "No Content Decay",
+        "detected": false,
+        "score": 5,
+        "max_score": 5,
+        "impact": "-10%",
+        "details": {
+          "old_year_references": [
+            2017,
+            2022,
+            2023,
+            2024,
+            2014
+          ],
+          "is_recently_modified": true,
+          "stale_update_patterns": 0,
+          "external_links_count": 14,
+          "total_penalties": 0
+        }
+      },
+      {
+        "name": "boilerplate_ratio",
+        "label": "Content-to-Boilerplate Ratio",
+        "detected": true,
+        "score": 4,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "content_length": 10893,
+          "total_length": 17068,
+          "ratio": 0.64,
+          "method": "main_tag"
+        }
+      },
+      {
+        "name": "nuance_signals",
+        "label": "Nuance/Honesty Signals",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "nuance_patterns": 0,
+          "nuance_headings": 0,
+          "total_signals": 0
+        }
+      },
+      {
+        "name": "snippet_ready",
+        "label": "Snippet-Ready Content",
+        "detected": true,
+        "score": 1,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "snippet_ready_sections": 4,
+          "total_headings": 43,
+          "ratio": 0.09
+        }
+      },
+      {
+        "name": "chunk_quotability",
+        "label": "Chunk Quotability",
+        "detected": true,
+        "score": 4,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "candidate_paragraphs": 1,
+          "quotable_paragraphs": 1,
+          "ratio": 1.0
+        }
+      },
+      {
+        "name": "blog_structure",
+        "label": "Blog Structure",
+        "detected": true,
+        "score": 2,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "has_article_schema": true,
+          "has_dates": true,
+          "has_author": true,
+          "has_author_bio": false,
+          "has_categories": false
+        }
+      },
+      {
+        "name": "shopping_readiness",
+        "label": "AI Shopping Readiness",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_product_schema": false
+        }
+      },
+      {
+        "name": "chatgpt_shopping",
+        "label": "ChatGPT Shopping Feed",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_product_schema": false
+        }
+      },
+      {
+        "name": "voice_search_ready",
+        "label": "Voice/Conversational Search",
+        "detected": true,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "question_headings": 0,
+          "concise_answers": 0,
+          "has_speakable_schema": true
+        }
+      },
+      {
+        "name": "multi_platform",
+        "label": "Multi-Platform Presence",
+        "detected": true,
+        "score": 2,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "platforms_found": [
+            "Facebook",
+            "Instagram",
+            "LinkedIn",
+            "YouTube"
+          ],
+          "platform_count": 4
+        }
+      },
+      {
+        "name": "entity_disambiguation",
+        "label": "Entity Disambiguation",
+        "detected": true,
+        "score": 2,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "names_found": [
+            "materials testing, ndt & asset integrity",
+            "tcr engineering",
+            "materials testing, ndt & asset integrity",
+            "tcr engineering",
+            "tcr engineering services pvt. ltd.",
+            "tcr engineering",
+            "tcr engineering service pillars",
+            "tcr engineering corporate video",
+            "documents: materials fail. evidence doesn't."
+          ],
+          "names_consistent": true,
+          "sameas_count": 8
+        }
+      },
+      {
+        "name": "first_party_data",
+        "label": "First-Party Data",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+12%",
+        "details": {
+          "first_party_patterns": 0,
+          "own_data_signals": 0,
+          "has_methodology_section": false
+        }
+      },
+      {
+        "name": "no_stale_data",
+        "label": "No Stale Data",
+        "detected": false,
+        "score": 4,
+        "max_score": 4,
+        "impact": "-10%",
+        "details": {
+          "old_copyright_in_footer": false,
+          "stale_year_references": [],
+          "penalties": 0
+        }
+      },
+      {
+        "name": "social_proof",
+        "label": "Social Proof",
+        "detected": true,
+        "score": 2,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_testimonial": true,
+          "has_aggregate_rating": false,
+          "has_trust_badges": true
+        }
+      },
+      {
+        "name": "accessibility_signals",
+        "label": "Accessibility Signals",
+        "detected": true,
+        "score": 2,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "semantic_tags": [
+            "footer",
+            "header",
+            "main",
+            "nav"
+          ],
+          "aria_landmarks": [],
+          "has_skip_link": true
+        }
+      },
+      {
+        "name": "conversion_funnel",
+        "label": "AI Conversion Funnel",
+        "detected": true,
+        "score": 2,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_cta": false,
+          "has_pricing_link": true,
+          "has_contact": true
+        }
+      },
+      {
+        "name": "temporal_coherence",
+        "label": "Temporal Signal Coherence",
+        "detected": false,
+        "score": 2,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "dates_found": {
+            "schema_dateModified": "2026-09-28T00:00:00+00:00",
+            "schema_datePublished": "2026-08-21T00:00:00+00:00"
+          },
+          "date_count": 2,
+          "max_diff_days": 38,
+          "is_coherent": false,
+          "is_incoherent": false
+        }
+      },
+      {
+        "name": "anchor_text_quality",
+        "label": "Anchor Text Quality",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "total_internal_links": 346,
+          "generic_count": 0,
+          "descriptive_count": 346,
+          "descriptive_ratio": 1.0
+        }
+      },
+      {
+        "name": "international_geo",
+        "label": "International GEO",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "html_lang": "en-IN",
+          "hreflang_count": 0,
+          "hreflang_langs": [],
+          "schema_inLanguage": "en-IN",
+          "is_multilingual": false
+        }
+      },
+      {
+        "name": "crawl_budget",
+        "label": "AI Crawl Budget",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "has_noindex": false,
+          "has_nofollow": false,
+          "has_sitemap_link": false,
+          "penalties": []
+        }
+      },
+      {
+        "name": "answer_capsule",
+        "label": "Answer Capsule Detection",
+        "detected": true,
+        "score": 4,
+        "max_score": 4,
+        "impact": "+12%",
+        "details": {
+          "capsule_count": 3,
+          "total_candidates": 5,
+          "ratio": 0.6
+        }
+      },
+      {
+        "name": "token_efficiency",
+        "label": "Token Efficiency",
+        "detected": true,
+        "score": 2,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "total_words": 2492,
+          "content_words": 1654,
+          "noise_words": 838,
+          "ratio": 0.66
+        }
+      },
+      {
+        "name": "entity_resolution",
+        "label": "Entity Resolution Friendliness",
+        "detected": true,
+        "score": 4,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "has_schema_entity": true,
+          "has_sameas": true,
+          "has_definition": false,
+          "entity_types": [
+            "Organization",
+            "WebSite",
+            "ItemList",
+            "VideoObject",
+            "ItemList"
+          ]
+        }
+      },
+      {
+        "name": "kg_density",
+        "label": "Knowledge Graph Density",
+        "detected": true,
+        "score": 2,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "relation_count": 7,
+          "density_per_500w": 1.7,
+          "schema_relations": 9,
+          "word_count": 2035
+        }
+      },
+      {
+        "name": "retrieval_triggers",
+        "label": "Retrieval Trigger Patterns",
+        "detected": true,
+        "score": 3,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "trigger_count": 5,
+          "unique_triggers": 4,
+          "density_per_500w": 1.2,
+          "question_headings": 3
+        }
+      }
+    ],
+    "engine_source": "geo_optimizer_skill"
+  },
+  "unified_trust": {
+    "overall_score": 52,
+    "raw_score": 13,
+    "grade": "C",
+    "layers": {
+      "technical": {
+        "name": "technical",
+        "label": "Technical & Infrastructure Trust",
+        "score": 4,
+        "max_score": 5,
+        "signals_found": [
+          "HTTPS Protocol Active (+2)",
+          "Strict-Transport-Security (HSTS)",
+          "Clickjacking Protection (X-Frame-Options/frame-ancestors)"
+        ],
+        "signals_missing": [
+          "Content-Security-Policy Header Missing"
+        ]
+      },
+      "identity": {
+        "name": "identity",
+        "label": "Entity & Identity Trust",
+        "score": 3,
+        "max_score": 5,
+        "signals_found": [
+          "Organization / LocalBusiness Structured Data",
+          "About Page Link",
+          "Contact / Support Page Link"
+        ],
+        "signals_missing": [
+          "No Author Attribution in Meta or Schema",
+          "Weak or Inconsistent Brand Signature"
+        ]
+      },
+      "social": {
+        "name": "social",
+        "label": "Social Proof & Reputation Trust",
+        "score": 3,
+        "max_score": 5,
+        "signals_found": [
+          "Entity sameAs Profiles (8 linked)",
+          "Multi-Platform Verification (3+ sameAs)",
+          "Linked Social Profiles (facebook.com, instagram.com, x.com)"
+        ],
+        "signals_missing": [
+          "No Reviews or Testimonials Detected",
+          "No Knowledge Graph Pillar Link (Wikidata/Wikipedia)"
+        ]
+      },
+      "academic": {
+        "name": "academic",
+        "label": "Academic & Authority Trust",
+        "score": 1,
+        "max_score": 5,
+        "signals_found": [
+          "External Source Citations (384 non-social links)"
+        ],
+        "signals_missing": [
+          "Sparse Quantitative Data / Statistics",
+          "No Links to Recognized Authoritative Sources (.gov, .edu, DOI, PubMed)",
+          "No Dedicated References or Sources Section",
+          "Few Formal Statistical Patterns (Percentages / Research Citations)"
+        ]
+      },
+      "consistency": {
+        "name": "consistency",
+        "label": "Consistency & Compliance Trust",
+        "score": 2,
+        "max_score": 5,
+        "signals_found": [
+          "Terms of Service / Terms of Use Documented",
+          "Machine-Readable Timestamp / Freshness Signal"
+        ],
+        "signals_missing": [
+          "No Privacy Policy Link Detected",
+          "Missing or Undated Copyright Notice",
+          "Missing Canonical Tag"
+        ]
+      }
+    },
+    "summary": "Trust Grade: C (52/100, Raw 13/25). Strongest layer: Technical & Infrastructure Trust. Weakest layer: Academic & Authority Trust."
+  },
+  "unified_performance": {
+    "source": "local_probe",
+    "overall_performance_score": 85,
+    "ttfb_ms": 106.6,
+    "fcp_ms": null,
+    "lcp_ms": null,
+    "cls": null,
+    "inp_ms": null,
+    "metrics": [
+      {
+        "name": "TTFB",
+        "value": 0.107,
+        "unit": "s",
+        "status": "GOOD",
+        "threshold_good": 0.8,
+        "threshold_poor": 1.8
+      }
+    ],
+    "passed_audit": false,
+    "notes": [
+      "Local high-precision TTFB probe (set PAGESPEED_API_KEY for CrUX real-user telemetry).",
+      "RankIntel performance bands: 90–100=Pass, 50–89=Needs Improvement, <50=Poor (based on Lighthouse scale)."
+    ]
+  },
+  "cloud_intelligence": {
+    "available": false,
+    "keywords": null,
+    "backlinks": null,
+    "ai_visibility_score": 0,
+    "notes": []
+  },
+  "site_crawl": null,
+  "fixes": {
+    "current_title": "",
+    "optimized_title": "Materials fail. Evidence doesn't. | Tcreng",
+    "title_length": "42",
+    "current_description": "India's oldest third-party materials testing, NDT and asset integrity company. NABL ISO/IEC 17025, NADCAP AC7101, BIS, IBR, BMC and CIDCO approved.",
+    "optimized_description": "India's oldest third-party materials testing, NDT and asset integrity company. NABL ISO/IEC 17025, NADCAP AC7101, BIS, IBR, BMC and CIDCO approved.",
+    "desc_length": "147",
+    "hardened_robots": "# RankIntel Hardened AI Robots.txt Policy\n# 1. Allow AI Search & Citation Bots (Essential for ChatGPT Search, Google, Perplexity, Claude)\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Claude-SearchBot\nAllow: /\n\nUser-agent: Googlebot\nAllow: /\n\nUser-agent: Applebot\nAllow: /\n\n# 2. Optional: Disallow AI Model Pre-Training Scrapers (If preserving intellectual property)\n# User-agent: GPTBot\n# Disallow: /\n# User-agent: ClaudeBot\n# Disallow: /\n# User-agent: Google-Extended\n# Disallow: /\n\n# 3. Standard Crawler Settings\nUser-agent: *\nAllow: /\n"
+  }
+}

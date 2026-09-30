@@ -15,25 +15,49 @@ import pytest
 from pathlib import Path
 
 FIXTURES_DIR = Path(__file__).parent / "fixtures"
+SITES_CONFIG_PATH = Path(__file__).parent / "sites.json"
+
+
+def load_sites_config() -> dict:
+    """Load centralized benchmark sites configuration."""
+    return json.loads(SITES_CONFIG_PATH.read_text(encoding="utf-8"))
 
 
 def load_fixtures():
-    """Load all benchmark fixture JSON files."""
+    """Load all benchmark fixture JSON files mapped from sites.json."""
+    config = load_sites_config()
+    expected_domains = {s["domain"] for s in config["sites"]}
     fixtures = []
     for p in sorted(FIXTURES_DIR.glob("*.json")):
         try:
             data = json.loads(p.read_text(encoding="utf-8"))
-            fixtures.append((p.stem, data))
+            domain_clean = data.get("domain", "").replace("www.", "")
+            if domain_clean in expected_domains:
+                fixtures.append((p.stem, data))
         except Exception as e:
             pytest.fail(f"Failed to parse fixture {p.name}: {e}")
     return fixtures
 
 
+SITES_CONFIG = load_sites_config()
 ALL_FIXTURES = load_fixtures()
 
 if not ALL_FIXTURES:
-    pytest.skip("No benchmark fixtures found. Run: rankintel audit <url> --format json --output-dir benchmarks/fixtures/",
+    pytest.skip("No benchmark fixtures found. Run: python benchmarks/score_snapshot_tool.py --all --confirm",
                 allow_module_level=True)
+
+
+# ---------------------------------------------------------------------------
+# Centralized suite completeness tests
+# ---------------------------------------------------------------------------
+
+def test_all_11_configured_sites_have_fixtures():
+    """Every site in benchmarks/sites.json (10 competitors + Sunrise) must have a captured fixture."""
+    expected_domains = {s["domain"] for s in SITES_CONFIG["sites"]}
+    assert len(expected_domains) == 11, f"Expected 11 benchmark sites in sites.json, got {len(expected_domains)}"
+    captured_domains = {data.get("domain", "").replace("www.", "") for _, data in ALL_FIXTURES}
+    missing = expected_domains - captured_domains
+    assert not missing, f"Missing benchmark fixtures for configured sites: {sorted(missing)}"
 
 
 # ---------------------------------------------------------------------------
