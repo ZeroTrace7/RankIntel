@@ -1,0 +1,1451 @@
+{
+  "url": "https://www.uniquemeasurement.com/",
+  "domain": "www.uniquemeasurement.com",
+  "timestamp": "2026-10-01",
+  "overall_health_score": 32,
+  "geo_readiness_score": 30,
+  "technical_health_score": 20,
+  "trust_score": 32,
+  "performance_score": 65,
+  "keyword_score": 0,
+  "site_health_score": 0,
+  "score_formula_mode": "4_engine",
+  "engines_executed": [
+    "advertools_seo",
+    "browser_engine",
+    "rankintel_geo",
+    "performance_engine"
+  ],
+  "conflicts_detected": [],
+  "prioritized_actions": [
+    {
+      "level": "HIGH",
+      "title": "Optimize Title Tag Length & CTR Hook",
+      "finding": "Current title is 0 characters.",
+      "rationale": "Titles over 60 chars are truncated in SERPs with ellipses. Target 50-60 chars with primary keyword front-loaded.",
+      "engine_confidence": "HIGH (Deterministic measurement)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Rewrite Meta Description with Active Call-to-Action",
+      "finding": "Current description is 74 characters.",
+      "rationale": "Descriptions over 160 chars are clipped. Overly short descriptions fail to compel searcher clicks.",
+      "engine_confidence": "HIGH (Deterministic measurement)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Consolidate Multiple H1 Headings into Single Logical H1",
+      "finding": "Found 2 H1 tags on page.",
+      "rationale": "Multiple H1 tags dilute topical focus. Best practice is a single clear H1 reflecting page intent.",
+      "engine_confidence": "HIGH",
+      "fix_snippet": null
+    },
+    {
+      "level": "CRITICAL",
+      "title": "Deploy JSON-LD Structured Data",
+      "finding": "Zero Schema.org types detected on page.",
+      "rationale": "Structured data is required for rich snippets and assists generative AI models in entity disambiguation.",
+      "engine_confidence": "HIGH (Verified by both static and browser engines)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Harden Technical Trust & Security Headers",
+      "finding": "HSTS Header Missing, X-Frame-Options Header Missing",
+      "rationale": "HSTS and Content-Security-Policy prevent security downgrades and satisfy AI agent reliability gates.",
+      "engine_confidence": "HIGH (Header telemetry)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Add Organization Schema & Entity Anchors",
+      "finding": "No Organization / LocalBusiness entity defined in structured data.",
+      "rationale": "Essential for establishing E-E-A-T and anchoring your entity in Google's Knowledge Graph.",
+      "engine_confidence": "HIGH",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Reduce Server Latency (TTFB)",
+      "finding": "Time to First Byte is 1599ms (threshold is 800ms).",
+      "rationale": "High TTFB delays page hydration, crawler budget efficiency, and hurts user interaction metrics.",
+      "engine_confidence": "HIGH",
+      "fix_snippet": null
+    },
+    {
+      "level": "GEO_WIN",
+      "title": "Publish Standard /llms.txt AI Agent Manifest",
+      "finding": "/llms.txt is missing from root domain.",
+      "rationale": "Provides AI assistants (ChatGPT, Claude, Perplexity) with clean, curated markdown documentation.",
+      "engine_confidence": "HIGH",
+      "fix_snippet": null
+    }
+  ],
+  "provenance": [
+    {
+      "finding": "Applebot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Applebot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Applebot-Extended: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Applebot-Extended -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bingbot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Bingbot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bytespider: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Bytespider -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "CCBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: CCBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Claude-SearchBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Claude-SearchBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "ClaudeBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: ClaudeBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "FacebookBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: FacebookBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "GPTBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: GPTBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Google-Extended: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Google-Extended -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Googlebot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Googlebot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "OAI-SearchBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: OAI-SearchBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "PerplexityBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: PerplexityBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "cohere-ai: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: cohere-ai -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Page Title (26 chars): 'Unique Measurement Service...'",
+      "source_file": "<title> tag",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "TTFB Latency: 1599ms",
+      "source_file": "HTTP response probe",
+      "engine": "performance_engine",
+      "evidence_snippet": "Telemetry Source: local_probe",
+      "confidence": "medium",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "/llms.txt: MISSING",
+      "source_file": "/llms.txt HTTP check",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Princeton GEO Citability: 30/100",
+      "source_file": "DOM content passages",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    }
+  ],
+  "unified_on_page": {
+    "url": "https://www.uniquemeasurement.com/",
+    "status_code": 200,
+    "response_time_sec": 4.67,
+    "title": "",
+    "title_length": 0,
+    "meta_description": "Unique Measurement Service | Advanced Measuring Solution Provider in India",
+    "meta_desc_length": 74,
+    "h1_count": 2,
+    "h1_text": [
+      "Our Services",
+      "🤖 UMS Assistant"
+    ],
+    "h2_count": 11,
+    "h2_text": [
+      "OUR VISION",
+      "OUR FACILITIES",
+      "OUR MOTTO",
+      "Welcome to  UNIQUE MEASUREMENT SERVICE",
+      "INDUSTRIES",
+      "Check our services",
+      "APPLICATIONS",
+      "Subscribe to Our Newsletter",
+      "Unique Measurement Service",
+      "Quick Link",
+      "Contact Us"
+    ],
+    "h3_count": 7,
+    "h3_text": [
+      "THE LARGEST MEASUREMENT, CALIBRATION, TESTING & SCANNING SERVICE PROVIDER IN INDIA",
+      "NABL ACCREDITED LABORATORY ISO/IEC 17025:2017",
+      "Who We Are",
+      "Our Trusted Partners",
+      "Get a Call Back",
+      "Subscribed!",
+      "🍪 Cookie Consent"
+    ],
+    "total_images": 30,
+    "images_with_alt": 4,
+    "word_count": 922,
+    "canonical_url": null,
+    "is_redirect": false,
+    "response_headers": {
+      "Date": "Wed, 30 Sep 2026 20:05:59 GMT",
+      "Server": "Apache",
+      "X-Powered-By": "PHP/7.4.33",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate",
+      "Pragma": "no-cache",
+      "Set-Cookie": "PHPSESSID=79445a3f96f625d6144fb895e072fbce; path=/",
+      "Content-Security-Policy": "upgrade-insecure-requests;",
+      "Upgrade": "h2,h2c",
+      "Connection": "Upgrade, close",
+      "Vary": "Accept-Encoding",
+      "Content-Encoding": "br",
+      "Content-Length": "27642",
+      "Content-Type": "text/html; charset=UTF-8"
+    },
+    "internal_links": [
+      "https://www.uniquemeasurement.com/contact.php",
+      "https://www.uniquemeasurement.com/hardness.php",
+      "https://www.uniquemeasurement.com/gear-measurement.php",
+      "https://www.uniquemeasurement.com/pressure-cali.php",
+      "https://www.uniquemeasurement.com/profile-measure.php",
+      "https://www.uniquemeasurement.com/video-measure.php",
+      "https://www.uniquemeasurement.com/dimensional-cali.php",
+      "https://www.uniquemeasurement.com/torque.php",
+      "https://www.uniquemeasurement.com/electro-tech.php",
+      "https://www.uniquemeasurement.com/services.php",
+      "https://www.uniquemeasurement.com/laser-tracker.php",
+      "https://www.uniquemeasurement.com/third-party.php",
+      "https://www.uniquemeasurement.com/rotary-cali.php",
+      "https://www.uniquemeasurement.com/mobile-force.php",
+      "https://www.uniquemeasurement.com/special-equ.php",
+      "https://www.uniquemeasurement.com/applications.php",
+      "https://www.uniquemeasurement.com/login.php",
+      "https://www.uniquemeasurement.com/durometer.php",
+      "https://www.uniquemeasurement.com/cmm-programmer.php",
+      "https://www.uniquemeasurement.com/3d-cmm.php",
+      "https://www.uniquemeasurement.com/metal-3d-printing.php",
+      "https://www.uniquemeasurement.com/density-viscocity.php",
+      "https://www.uniquemeasurement.com/on-site.php",
+      "https://www.uniquemeasurement.com/reverse-engin.php",
+      "https://www.uniquemeasurement.com/gallery.php",
+      "https://www.uniquemeasurement.com/images/2023-catalogue.pdf",
+      "https://www.uniquemeasurement.com/portable-cmm.php",
+      "https://www.uniquemeasurement.com/long-range.php",
+      "https://www.uniquemeasurement.com/cmm-training.php",
+      "https://www.uniquemeasurement.com/index.php",
+      "https://www.uniquemeasurement.com/mass-volume.php",
+      "https://www.uniquemeasurement.com/laser-cali.php",
+      "https://www.uniquemeasurement.com/contour-tester.php",
+      "https://www.uniquemeasurement.com/civil-con.php",
+      "https://www.uniquemeasurement.com/acoustic.php",
+      "https://www.uniquemeasurement.com/bluelight-scanning.php",
+      "https://www.uniquemeasurement.com/plastic-3d-printing.php",
+      "https://www.uniquemeasurement.com/contact_us.php",
+      "https://www.uniquemeasurement.com/images/scope-unique.pdf",
+      "https://www.uniquemeasurement.com/3d-scanning.php",
+      "https://www.uniquemeasurement.com/thermal-cali.php",
+      "https://www.uniquemeasurement.com/handy-3d.php",
+      "https://www.uniquemeasurement.com/gom-scanning.php",
+      "https://www.uniquemeasurement.com/manpower.php",
+      "https://www.uniquemeasurement.com/hospital-equ.php",
+      "https://www.uniquemeasurement.com/machine-tool.php",
+      "https://www.uniquemeasurement.com/metrology.php",
+      "https://www.uniquemeasurement.com/fluid.php",
+      "https://www.uniquemeasurement.com/impact.php",
+      "https://www.uniquemeasurement.com/optical.php",
+      "https://www.uniquemeasurement.com/offline-program.php",
+      "https://www.uniquemeasurement.com/careers.php",
+      "https://www.uniquemeasurement.com/energy-dispersive.php",
+      "https://www.uniquemeasurement.com/signup.php",
+      "https://www.uniquemeasurement.com/scanning-reverse.php",
+      "https://www.uniquemeasurement.com/about_us.php",
+      "https://www.uniquemeasurement.com/surface-rough.php",
+      "https://www.uniquemeasurement.com/accelerations.php",
+      "https://www.uniquemeasurement.com/force.php",
+      "https://www.uniquemeasurement.com/industrial-scanning.php",
+      "https://www.uniquemeasurement.com/ball-bar.php",
+      "https://www.uniquemeasurement.com/blog.php"
+    ],
+    "external_links": [
+      "https://www.youtube.com/@uniquemeasurementservice2254",
+      "https://www.linkedin.com/company/unique-measurement-service-largest-measurement-scanning-and-calibration-service-provider/",
+      "https://www.facebook.com/uniquemeasurementservice/",
+      "https://twitter.com/UniqueMeasurem1",
+      "https://www.facebook.com/uniquemeasurementservice/",
+      "https://twitter.com/UniqueMeasurem1",
+      "https://www.youtube.com/@uniquemeasurementservice2254",
+      " https://www.linkedin.com/company/unique-measurement-service-largest-measurement-scanning-and-calibration-service-provider/",
+      "index.php",
+      "index.php",
+      "about_us.php",
+      "javascript:void(0)",
+      "javascript:void(0)",
+      "dimensional-cali.php",
+      "pressure-cali.php",
+      "acoustic.php",
+      "accelerations.php",
+      "impact.php",
+      "mobile-force.php",
+      "thermal-cali.php",
+      "mass-volume.php",
+      "density-viscocity.php",
+      "special-equ.php",
+      "torque.php",
+      "electro-tech.php",
+      "optical.php",
+      "force.php",
+      "hardness.php",
+      "durometer.php",
+      "hospital-equ.php",
+      "civil-con.php",
+      "fluid.php",
+      "images/scope-unique.pdf",
+      "javascript:void(0)",
+      "ball-bar.php",
+      "laser-cali.php",
+      "rotary-cali.php",
+      "javascript:void(0)",
+      "3d-cmm.php",
+      "surface-rough.php",
+      "profile-measure.php",
+      "on-site.php",
+      "offline-program.php",
+      "video-measure.php",
+      "contour-tester.php",
+      "gear-measurement.php",
+      "javascript:void(0)",
+      "portable-cmm.php",
+      "laser-tracker.php",
+      "javascript:void(0)",
+      "3d-scanning.php",
+      "bluelight-scanning.php",
+      "handy-3d.php",
+      "reverse-engin.php",
+      "gom-scanning.php",
+      "long-range.php",
+      "javascript:void(0)",
+      "plastic-3d-printing.php",
+      "metal-3d-printing.php",
+      "javascript:void(0)",
+      "industrial-scanning.php",
+      "energy-dispersive.php",
+      "javascript:void(0)",
+      "cmm-training.php",
+      "third-party.php",
+      "cmm-programmer.php",
+      "manpower.php",
+      "metrology.php",
+      "applications.php",
+      "careers.php",
+      "gallery.php",
+      "blog.php",
+      "contact.php",
+      "images/2023-catalogue.pdf",
+      "login.php",
+      "signup.php",
+      "about_us.php",
+      "services.php",
+      "services.php",
+      "3d-cmm.php",
+      "services.php",
+      "machine-tool.php",
+      "scanning-reverse.php",
+      "portable-cmm.php",
+      "laser-tracker.php",
+      "reverse-engin.php",
+      "long-range.php",
+      "industrial-scanning.php",
+      "metal-3d-printing.php",
+      "plastic-3d-printing.php",
+      "energy-dispersive.php",
+      "surface-rough.php",
+      "contour-tester.php",
+      "video-measure.php",
+      "manpower.php",
+      "metrology.php",
+      "cmm-programmer.php",
+      "services.php",
+      "index.php",
+      "about_us.php",
+      "javascript:void(0)",
+      "careers.php",
+      "contact.php",
+      "tel:044 - 45050301",
+      "tel:+99652 51951 ",
+      "tel:+99652 51951 ",
+      "contact_us.php",
+      "#"
+    ],
+    "engine_source": "httpx_static_fallback"
+  },
+  "unified_robots": {
+    "found": true,
+    "robots_url": "https://www.uniquemeasurement.com/robots.txt",
+    "bot_access": {
+      "Applebot": {
+        "bot": "Applebot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Apple Intelligence & Siri",
+        "role_or_purpose": "Apple Intelligence search & Safari citations",
+        "via_wildcard": false
+      },
+      "Applebot-Extended": {
+        "bot": "Applebot-Extended",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Apple",
+        "role_or_purpose": "Apple Foundation model training",
+        "via_wildcard": false
+      },
+      "Bingbot": {
+        "bot": "Bingbot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Microsoft Copilot & Bing",
+        "role_or_purpose": "Microsoft AI search indexer",
+        "via_wildcard": false
+      },
+      "Bytespider": {
+        "bot": "Bytespider",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "ByteDance",
+        "role_or_purpose": "ByteDance AI training",
+        "via_wildcard": false
+      },
+      "CCBot": {
+        "bot": "CCBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Common Crawl",
+        "role_or_purpose": "Open web dataset scraped for AI foundation training",
+        "via_wildcard": false
+      },
+      "Claude-SearchBot": {
+        "bot": "Claude-SearchBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Claude Search",
+        "role_or_purpose": "Anthropic search indexer (NOT ClaudeBot)",
+        "via_wildcard": false
+      },
+      "ClaudeBot": {
+        "bot": "ClaudeBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Anthropic",
+        "role_or_purpose": "Model training data collection (Claude base models)",
+        "via_wildcard": false
+      },
+      "FacebookBot": {
+        "bot": "FacebookBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Meta",
+        "role_or_purpose": "Llama & Meta AI model training",
+        "via_wildcard": false
+      },
+      "GPTBot": {
+        "bot": "GPTBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "OpenAI",
+        "role_or_purpose": "Model training data collection (ChatGPT base models)",
+        "via_wildcard": false
+      },
+      "Google-Extended": {
+        "bot": "Google-Extended",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Google",
+        "role_or_purpose": "Gemini & Vertex AI model training (Separate from Googlebot)",
+        "via_wildcard": false
+      },
+      "Googlebot": {
+        "bot": "Googlebot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Google Search & AI Overviews",
+        "role_or_purpose": "Primary web indexer driving Google SGE/AI Overviews",
+        "via_wildcard": false
+      },
+      "OAI-SearchBot": {
+        "bot": "OAI-SearchBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "ChatGPT Search",
+        "role_or_purpose": "Search indexer & live web citation retriever (NOT GPTBot)",
+        "via_wildcard": false
+      },
+      "PerplexityBot": {
+        "bot": "PerplexityBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Perplexity AI",
+        "role_or_purpose": "Live answer engine citation crawler",
+        "via_wildcard": false
+      },
+      "cohere-ai": {
+        "bot": "cohere-ai",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Cohere",
+        "role_or_purpose": "Enterprise LLM training",
+        "via_wildcard": false
+      }
+    },
+    "sitemaps": [
+      "https://www.uniquemeasurement.com/sitemap.xml"
+    ],
+    "crawl_delay": null,
+    "discovered_urls": [
+      "https://www.uniquemeasurement.com/",
+      "https://www.uniquemeasurement.com/about_us.php",
+      "https://www.uniquemeasurement.com/services.php",
+      "https://www.uniquemeasurement.com/applications.php",
+      "https://www.uniquemeasurement.com/careers.php",
+      "https://www.uniquemeasurement.com/gallery.php",
+      "https://www.uniquemeasurement.com/blog.php",
+      "https://www.uniquemeasurement.com/contact.php",
+      "https://www.uniquemeasurement.com/contact_us.php",
+      "https://www.uniquemeasurement.com/images/scope-unique.pdf",
+      "https://www.uniquemeasurement.com/images/2023-catalogue.pdf",
+      "https://www.uniquemeasurement.com/dimensional-cali.php",
+      "https://www.uniquemeasurement.com/pressure-cali.php",
+      "https://www.uniquemeasurement.com/acoustic.php",
+      "https://www.uniquemeasurement.com/accelerations.php",
+      "https://www.uniquemeasurement.com/impact.php",
+      "https://www.uniquemeasurement.com/mobile-force.php",
+      "https://www.uniquemeasurement.com/thermal-cali.php",
+      "https://www.uniquemeasurement.com/mass-volume.php",
+      "https://www.uniquemeasurement.com/density-viscocity.php",
+      "https://www.uniquemeasurement.com/special-equ.php",
+      "https://www.uniquemeasurement.com/torque.php",
+      "https://www.uniquemeasurement.com/electro-tech.php",
+      "https://www.uniquemeasurement.com/optical.php",
+      "https://www.uniquemeasurement.com/force.php"
+    ],
+    "engine_source": "advertools_rfc"
+  },
+  "unified_schema": {
+    "detected_types": [],
+    "deprecated_types_detected": [],
+    "blocks_count": 0,
+    "is_injected_via_js": false,
+    "validation_issues": [],
+    "sameas_urls": [],
+    "has_organization": false,
+    "has_author": false,
+    "engine_source": "triangulated_union"
+  },
+  "unified_geo": {
+    "overall_citability_score": 30,
+    "answer_first_ratio": 0.36,
+    "passage_density_ratio": 0.0,
+    "statistical_density_per_1000": 0.0,
+    "outbound_citations_count": 0,
+    "authoritative_citations_count": 0,
+    "llms_txt_found": false,
+    "llms_txt_warnings": [],
+    "llms_full_found": false,
+    "question_h2s": [],
+    "methods": [
+      {
+        "name": "quotation_addition",
+        "label": "Quotation Addition",
+        "detected": false,
+        "score": 0,
+        "max_score": 6,
+        "impact": "+41%",
+        "details": {
+          "blockquotes": 0,
+          "q_tags": 0,
+          "attributed_quotes": 0,
+          "pull_quotes": 0
+        }
+      },
+      {
+        "name": "statistics_addition",
+        "label": "Statistics Addition",
+        "detected": false,
+        "score": 2,
+        "max_score": 6,
+        "impact": "+33%",
+        "details": {
+          "stat_matches": 1,
+          "density_per_1000_words": 1.08,
+          "tables_with_data": 0
+        }
+      },
+      {
+        "name": "fluency_optimization",
+        "label": "Fluency Optimization",
+        "detected": false,
+        "score": 1,
+        "max_score": 6,
+        "impact": "+29%",
+        "details": {
+          "avg_paragraph_words": 10.6,
+          "connective_count": 0,
+          "paragraphs": 42,
+          "list_items": 102
+        }
+      },
+      {
+        "name": "cite_sources",
+        "label": "Cite Sources",
+        "detected": false,
+        "score": 3,
+        "max_score": 6,
+        "impact": "+27%",
+        "details": {
+          "authoritative_links": 0,
+          "external_links": 3,
+          "cite_tags": 0,
+          "has_reference_section": false
+        }
+      },
+      {
+        "name": "answer_first",
+        "label": "Answer-First Structure",
+        "detected": true,
+        "score": 2,
+        "max_score": 5,
+        "impact": "+25%",
+        "details": {
+          "h2_count": 11,
+          "answer_first_count": 4,
+          "ratio": 0.36
+        }
+      },
+      {
+        "name": "passage_density",
+        "label": "Passage Density",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+23%",
+        "details": {
+          "total_paragraphs": 13,
+          "dense_paragraphs": 0,
+          "ratio": 0.0
+        }
+      },
+      {
+        "name": "technical_terms",
+        "label": "Technical Terms",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+18%",
+        "details": {
+          "tech_matches": 84,
+          "density_per_1000": 91.11,
+          "code_blocks": 0,
+          "abbr_tags": 0
+        }
+      },
+      {
+        "name": "authoritative_tone",
+        "label": "Authoritative Tone",
+        "detected": false,
+        "score": 1,
+        "max_score": 5,
+        "impact": "+16%",
+        "details": {
+          "authority_markers": 1,
+          "hedge_markers": 0,
+          "has_author_bio": false,
+          "credentials": [],
+          "has_author_meta": false
+        }
+      },
+      {
+        "name": "easy_to_understand",
+        "label": "Easy-to-Understand",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+14%",
+        "details": {
+          "avg_sentence_length": 11.0,
+          "h2_count": 11,
+          "h3_count": 7,
+          "faq_sections": 1
+        }
+      },
+      {
+        "name": "unique_words",
+        "label": "Unique Words",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+7%",
+        "details": {
+          "ttr": 0.64,
+          "total_words": 653,
+          "unique_count": 325
+        }
+      },
+      {
+        "name": "keyword_stuffing",
+        "label": "No Keyword Stuffing",
+        "detected": true,
+        "score": 0,
+        "max_score": 6,
+        "impact": "-9%",
+        "details": {
+          "suspicious_keywords": {
+            "service": 3.8,
+            "more": 3.0,
+            "services": 2.7,
+            "read": 2.6
+          },
+          "stuffing_severity": "high",
+          "repeated_phrases": 0,
+          "front_loading_detected": false
+        }
+      },
+      {
+        "name": "readability",
+        "label": "Readability Score",
+        "detected": false,
+        "score": 0,
+        "max_score": 8,
+        "impact": "+15%",
+        "details": {
+          "flesch_kincaid_grade": 23.6,
+          "avg_words_per_sentence": 36.9,
+          "avg_syllables_per_word": 2.11,
+          "optimal_sections": 0,
+          "total_sections": 14
+        }
+      },
+      {
+        "name": "faq_in_content",
+        "label": "FAQ-in-Content",
+        "detected": false,
+        "score": 0,
+        "max_score": 6,
+        "impact": "+12%",
+        "details": {
+          "faq_patterns_found": 0
+        }
+      },
+      {
+        "name": "image_alt_quality",
+        "label": "Image Alt Quality",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+8%",
+        "details": {
+          "total_images": 30,
+          "with_alt": 4,
+          "descriptive_alt": 4,
+          "generic_alt": 0,
+          "missing_alt": 26
+        }
+      },
+      {
+        "name": "content_freshness",
+        "label": "Content Freshness",
+        "detected": false,
+        "score": 1,
+        "max_score": 6,
+        "impact": "+10%",
+        "details": {
+          "date_modified": null,
+          "date_published": null,
+          "is_fresh": false,
+          "freshness_level": "stale",
+          "months_old": null,
+          "year_references": {
+            "2017": 2,
+            "2015": 3,
+            "2023": 1
+          },
+          "warnings": [
+            "No date signal (dateModified/datePublished) found",
+            "References to past years without recent update date"
+          ]
+        }
+      },
+      {
+        "name": "citability_density",
+        "label": "Citability Density",
+        "detected": true,
+        "score": 5,
+        "max_score": 7,
+        "impact": "+15%",
+        "details": {
+          "total_paragraphs": 13,
+          "dense_paragraphs": 5,
+          "density_ratio": 0.38,
+          "total_citable_facts": 27
+        }
+      },
+      {
+        "name": "definition_patterns",
+        "label": "Definition Patterns",
+        "detected": true,
+        "score": 2,
+        "max_score": 5,
+        "impact": "+10%",
+        "details": {
+          "definitions_found": 1,
+          "total_headings": 13,
+          "ratio": 0.08
+        }
+      },
+      {
+        "name": "format_mix",
+        "label": "Response Format Mix",
+        "detected": true,
+        "score": 2,
+        "max_score": 5,
+        "impact": "+8%",
+        "details": {
+          "has_paragraphs": true,
+          "has_lists": true,
+          "has_tables": false,
+          "has_code": false,
+          "has_blockquote": false,
+          "format_count": 2
+        }
+      },
+      {
+        "name": "attribution_completeness",
+        "label": "Attribution Completeness",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+12%",
+        "details": {
+          "inline_attributions": 0,
+          "footnotes": 11,
+          "inline_link_citations": 0
+        }
+      },
+      {
+        "name": "no_negative_signals",
+        "label": "No Negative Signals",
+        "detected": true,
+        "score": 2,
+        "max_score": 5,
+        "impact": "-15%",
+        "details": {
+          "cta_count": 5,
+          "is_thin_content": false,
+          "has_author": false,
+          "repeated_phrases": 0,
+          "total_penalties": 3
+        }
+      },
+      {
+        "name": "comparison_content",
+        "label": "Comparison Content",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "vs_headings": 0,
+          "pro_con_sections": 0,
+          "comparison_tables": 0,
+          "large_tables": 0
+        }
+      },
+      {
+        "name": "eeat_signals",
+        "label": "E-E-A-T Signals",
+        "detected": true,
+        "score": 2,
+        "max_score": 7,
+        "impact": "+15%",
+        "details": {
+          "trust_links": {
+            "privacy": false,
+            "terms": false,
+            "about": true,
+            "contact": true
+          },
+          "trust_link_count": 2,
+          "has_detailed_bio": false,
+          "has_structured_author": false,
+          "has_verified_author": false,
+          "is_https": false
+        }
+      },
+      {
+        "name": "no_content_decay",
+        "label": "No Content Decay",
+        "detected": true,
+        "score": 2,
+        "max_score": 5,
+        "impact": "-10%",
+        "details": {
+          "old_year_references": [
+            2017,
+            2023,
+            2015
+          ],
+          "is_recently_modified": false,
+          "stale_update_patterns": 0,
+          "external_links_count": 3,
+          "total_penalties": 3
+        }
+      },
+      {
+        "name": "boilerplate_ratio",
+        "label": "Content-to-Boilerplate Ratio",
+        "detected": true,
+        "score": 4,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "content_length": 4978,
+          "total_length": 6479,
+          "ratio": 0.77,
+          "method": "heuristic"
+        }
+      },
+      {
+        "name": "nuance_signals",
+        "label": "Nuance/Honesty Signals",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "nuance_patterns": 0,
+          "nuance_headings": 0,
+          "total_signals": 0
+        }
+      },
+      {
+        "name": "snippet_ready",
+        "label": "Snippet-Ready Content",
+        "detected": true,
+        "score": 1,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "snippet_ready_sections": 1,
+          "total_headings": 18,
+          "ratio": 0.06
+        }
+      },
+      {
+        "name": "chunk_quotability",
+        "label": "Chunk Quotability",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "candidate_paragraphs": 0,
+          "quotable_paragraphs": 0,
+          "ratio": 0
+        }
+      },
+      {
+        "name": "blog_structure",
+        "label": "Blog Structure",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "has_article_schema": false
+        }
+      },
+      {
+        "name": "shopping_readiness",
+        "label": "AI Shopping Readiness",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_product_schema": false
+        }
+      },
+      {
+        "name": "chatgpt_shopping",
+        "label": "ChatGPT Shopping Feed",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_product_schema": false
+        }
+      },
+      {
+        "name": "voice_search_ready",
+        "label": "Voice/Conversational Search",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "question_headings": 0,
+          "concise_answers": 0,
+          "has_speakable_schema": false
+        }
+      },
+      {
+        "name": "multi_platform",
+        "label": "Multi-Platform Presence",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "platforms_found": [],
+          "platform_count": 0
+        }
+      },
+      {
+        "name": "entity_disambiguation",
+        "label": "Entity Disambiguation",
+        "detected": false,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "names_found": [
+            "unique measurement service"
+          ],
+          "names_consistent": true,
+          "sameas_count": 0
+        }
+      },
+      {
+        "name": "first_party_data",
+        "label": "First-Party Data",
+        "detected": false,
+        "score": 1,
+        "max_score": 4,
+        "impact": "+12%",
+        "details": {
+          "first_party_patterns": 0,
+          "own_data_signals": 1,
+          "has_methodology_section": false
+        }
+      },
+      {
+        "name": "no_stale_data",
+        "label": "No Stale Data",
+        "detected": true,
+        "score": 3,
+        "max_score": 4,
+        "impact": "-10%",
+        "details": {
+          "old_copyright_in_footer": false,
+          "stale_year_references": [
+            2015
+          ],
+          "penalties": 1
+        }
+      },
+      {
+        "name": "social_proof",
+        "label": "Social Proof",
+        "detected": true,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_testimonial": false,
+          "has_aggregate_rating": false,
+          "has_trust_badges": true
+        }
+      },
+      {
+        "name": "accessibility_signals",
+        "label": "Accessibility Signals",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "semantic_tags": [],
+          "aria_landmarks": [],
+          "has_skip_link": false
+        }
+      },
+      {
+        "name": "conversion_funnel",
+        "label": "AI Conversion Funnel",
+        "detected": true,
+        "score": 2,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_cta": true,
+          "has_pricing_link": false,
+          "has_contact": true
+        }
+      },
+      {
+        "name": "temporal_coherence",
+        "label": "Temporal Signal Coherence",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "dates_found": {},
+          "date_count": 0,
+          "max_diff_days": 0,
+          "is_coherent": false,
+          "is_incoherent": false
+        }
+      },
+      {
+        "name": "anchor_text_quality",
+        "label": "Anchor Text Quality",
+        "detected": false,
+        "score": 2,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "total_internal_links": 95,
+          "generic_count": 20,
+          "descriptive_count": 75,
+          "descriptive_ratio": 0.79
+        }
+      },
+      {
+        "name": "international_geo",
+        "label": "International GEO",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "html_lang": "",
+          "hreflang_count": 0,
+          "hreflang_langs": [],
+          "schema_inLanguage": null,
+          "is_multilingual": false
+        }
+      },
+      {
+        "name": "crawl_budget",
+        "label": "AI Crawl Budget",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "has_noindex": false,
+          "has_nofollow": false,
+          "has_sitemap_link": false,
+          "penalties": []
+        }
+      },
+      {
+        "name": "answer_capsule",
+        "label": "Answer Capsule Detection",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+12%",
+        "details": {
+          "capsule_count": 0,
+          "total_candidates": 5,
+          "ratio": 0.0
+        }
+      },
+      {
+        "name": "token_efficiency",
+        "label": "Token Efficiency",
+        "detected": false,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "total_words": 922,
+          "content_words": 429,
+          "noise_words": 493,
+          "ratio": 0.47
+        }
+      },
+      {
+        "name": "entity_resolution",
+        "label": "Entity Resolution Friendliness",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "has_schema_entity": false,
+          "has_sameas": false,
+          "has_definition": false,
+          "entity_types": []
+        }
+      },
+      {
+        "name": "kg_density",
+        "label": "Knowledge Graph Density",
+        "detected": false,
+        "score": 1,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "relation_count": 2,
+          "density_per_500w": 1.1,
+          "schema_relations": 0,
+          "word_count": 922
+        }
+      },
+      {
+        "name": "retrieval_triggers",
+        "label": "Retrieval Trigger Patterns",
+        "detected": false,
+        "score": 1,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "trigger_count": 0,
+          "unique_triggers": 0,
+          "density_per_500w": 0.0,
+          "question_headings": 1
+        }
+      }
+    ],
+    "engine_source": "geo_optimizer_skill"
+  },
+  "unified_trust": {
+    "overall_score": 32,
+    "raw_score": 8,
+    "grade": "F",
+    "layers": {
+      "technical": {
+        "name": "technical",
+        "label": "Technical & Infrastructure Trust",
+        "score": 3,
+        "max_score": 5,
+        "signals_found": [
+          "HTTPS Protocol Active (+2)",
+          "Content-Security-Policy (CSP)"
+        ],
+        "signals_missing": [
+          "HSTS Header Missing",
+          "X-Frame-Options Header Missing"
+        ]
+      },
+      "identity": {
+        "name": "identity",
+        "label": "Entity & Identity Trust",
+        "score": 2,
+        "max_score": 5,
+        "signals_found": [
+          "About Page Link",
+          "Contact / Support Page Link"
+        ],
+        "signals_missing": [
+          "No Organization/Business Schema in JSON-LD",
+          "No Author Attribution in Meta or Schema",
+          "Weak or Inconsistent Brand Signature"
+        ]
+      },
+      "social": {
+        "name": "social",
+        "label": "Social Proof & Reputation Trust",
+        "score": 1,
+        "max_score": 5,
+        "signals_found": [
+          "Linked Social Profiles (youtube.com, linkedin.com, facebook.com)"
+        ],
+        "signals_missing": [
+          "No sameAs Links in Schema.org",
+          "Fewer than 3 verified sameAs profiles",
+          "No Reviews or Testimonials Detected",
+          "No Knowledge Graph Pillar Link (Wikidata/Wikipedia)"
+        ]
+      },
+      "academic": {
+        "name": "academic",
+        "label": "Academic & Authority Trust",
+        "score": 1,
+        "max_score": 5,
+        "signals_found": [
+          "External Source Citations (100 non-social links)"
+        ],
+        "signals_missing": [
+          "Sparse Quantitative Data / Statistics",
+          "No Links to Recognized Authoritative Sources (.gov, .edu, DOI, PubMed)",
+          "No Dedicated References or Sources Section",
+          "Few Formal Statistical Patterns (Percentages / Research Citations)"
+        ]
+      },
+      "consistency": {
+        "name": "consistency",
+        "label": "Consistency & Compliance Trust",
+        "score": 1,
+        "max_score": 5,
+        "signals_found": [
+          "Dated Copyright Notice"
+        ],
+        "signals_missing": [
+          "No Privacy Policy Link Detected",
+          "No Terms of Service Link Detected",
+          "Missing Canonical Tag",
+          "No Machine-Readable Publication/Modification Timestamps"
+        ]
+      }
+    },
+    "summary": "Trust Grade: F (32/100, Raw 8/25). Strongest layer: Technical & Infrastructure Trust. Weakest layer: Social Proof & Reputation Trust."
+  },
+  "unified_performance": {
+    "source": "local_probe",
+    "overall_performance_score": 65,
+    "ttfb_ms": 1599.0,
+    "fcp_ms": null,
+    "lcp_ms": null,
+    "cls": null,
+    "inp_ms": null,
+    "metrics": [
+      {
+        "name": "TTFB",
+        "value": 1.599,
+        "unit": "s",
+        "status": "NEEDS_IMPROVEMENT",
+        "threshold_good": 0.8,
+        "threshold_poor": 1.8
+      }
+    ],
+    "passed_audit": false,
+    "notes": [
+      "Local high-precision TTFB probe (set PAGESPEED_API_KEY for CrUX real-user telemetry).",
+      "RankIntel performance bands: 90–100=Pass, 50–89=Needs Improvement, <50=Poor (based on Lighthouse scale)."
+    ]
+  },
+  "cloud_intelligence": {
+    "available": false,
+    "keywords": null,
+    "backlinks": null,
+    "ai_visibility_score": 0,
+    "notes": []
+  },
+  "site_crawl": null,
+  "fixes": {
+    "current_title": "",
+    "optimized_title": "Our Services | Uniquemeasurement",
+    "title_length": "32",
+    "current_description": "Unique Measurement Service | Advanced Measuring Solution Provider in India",
+    "optimized_description": "Discover comprehensive services with Uniquemeasurement. Leading technical expertise, certified quality, and dedicated support. Contact our specialists today.",
+    "desc_length": "157",
+    "jsonld_schema": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"Organization\",\n      \"@id\": \"https://www.uniquemeasurement.com/#organization\",\n      \"name\": \"Uniquemeasurement\",\n      \"url\": \"https://www.uniquemeasurement.com\",\n      \"description\": \"Unique Measurement Service | Advanced Measuring Solution Provider in India\"\n    },\n    {\n      \"@type\": \"WebSite\",\n      \"@id\": \"https://www.uniquemeasurement.com/#website\",\n      \"url\": \"https://www.uniquemeasurement.com\",\n      \"name\": \"Uniquemeasurement\",\n      \"publisher\": {\n        \"@id\": \"https://www.uniquemeasurement.com/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://www.uniquemeasurement.com/#webpage\",\n      \"url\": \"https://www.uniquemeasurement.com/\",\n      \"name\": \"Uniquemeasurement\",\n      \"isPartOf\": {\n        \"@id\": \"https://www.uniquemeasurement.com/#website\"\n      },\n      \"about\": {\n        \"@id\": \"https://www.uniquemeasurement.com/#organization\"\n      },\n      \"description\": \"Unique Measurement Service | Advanced Measuring Solution Provider in India\"\n    }\n  ]\n}\n</script>",
+    "llms_txt": "# Uniquemeasurement\n\n> Unique Measurement Service | Advanced Measuring Solution Provider in India\n\n## Core Services & Knowledge Base\n- [Homepage](https://www.uniquemeasurement.com/): Primary portal and overview.\n\n## Optional & Detailed Documentation\n- [/llms-full.txt](https://www.uniquemeasurement.com/llms-full.txt): Comprehensive documentation for deeper context.",
+    "hardened_robots": "# RankIntel Hardened AI Robots.txt Policy\n# 1. Allow AI Search & Citation Bots (Essential for ChatGPT Search, Google, Perplexity, Claude)\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Claude-SearchBot\nAllow: /\n\nUser-agent: Googlebot\nAllow: /\n\nUser-agent: Applebot\nAllow: /\n\n# 2. Optional: Disallow AI Model Pre-Training Scrapers (If preserving intellectual property)\n# User-agent: GPTBot\n# Disallow: /\n# User-agent: ClaudeBot\n# Disallow: /\n# User-agent: Google-Extended\n# Disallow: /\n\n# 3. Standard Crawler Settings\nUser-agent: *\nAllow: /\n"
+  }
+}

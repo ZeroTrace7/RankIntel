@@ -1,0 +1,1548 @@
+{
+  "url": "https://www.standphillindia.in/",
+  "domain": "www.standphillindia.in",
+  "timestamp": "2026-10-01",
+  "overall_health_score": 56,
+  "geo_readiness_score": 50,
+  "technical_health_score": 50,
+  "trust_score": 56,
+  "performance_score": 85,
+  "keyword_score": 0,
+  "site_health_score": 0,
+  "score_formula_mode": "4_engine",
+  "engines_executed": [
+    "advertools_seo",
+    "browser_engine",
+    "rankintel_geo",
+    "performance_engine"
+  ],
+  "conflicts_detected": [],
+  "prioritized_actions": [
+    {
+      "level": "HIGH",
+      "title": "Optimize Title Tag Length & CTR Hook",
+      "finding": "Current title is 0 characters.",
+      "rationale": "Titles over 60 chars are truncated in SERPs with ellipses. Target 50-60 chars with primary keyword front-loaded.",
+      "engine_confidence": "HIGH (Deterministic measurement)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Rewrite Meta Description with Active Call-to-Action",
+      "finding": "Current description is 186 characters.",
+      "rationale": "Descriptions over 160 chars are clipped. Overly short descriptions fail to compel searcher clicks.",
+      "engine_confidence": "HIGH (Deterministic measurement)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Consolidate Multiple H1 Headings into Single Logical H1",
+      "finding": "Found 3 H1 tags on page.",
+      "rationale": "Multiple H1 tags dilute topical focus. Best practice is a single clear H1 reflecting page intent.",
+      "engine_confidence": "HIGH",
+      "fix_snippet": null
+    },
+    {
+      "level": "GEO_WIN",
+      "title": "Implement Answer-First H2 Structure",
+      "finding": "Only 25% of H2 sections open with direct factual answers.",
+      "rationale": "AutoGEO research proves AI models prioritize passages providing concrete numbers/facts in the first 150 characters.",
+      "engine_confidence": "MEDIUM (Heuristic NLP)",
+      "fix_snippet": null
+    }
+  ],
+  "provenance": [
+    {
+      "finding": "Applebot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Applebot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Applebot-Extended: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Applebot-Extended -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bingbot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Bingbot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bytespider: BLOCKED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Bytespider -> BLOCKED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "CCBot: BLOCKED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: CCBot -> BLOCKED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Claude-SearchBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Claude-SearchBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "ClaudeBot: BLOCKED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: ClaudeBot -> BLOCKED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "FacebookBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: FacebookBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "GPTBot: BLOCKED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: GPTBot -> BLOCKED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Google-Extended: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Google-Extended -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Googlebot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Googlebot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "OAI-SearchBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: OAI-SearchBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "PerplexityBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: PerplexityBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "cohere-ai: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: cohere-ai -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'FAQPage' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'Organization' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'WebSite' detected",
+      "source_file": "application/ld+json",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Page Title (56 chars): 'BIS Certification Consultant in India - Stand...'",
+      "source_file": "<title> tag",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "TTFB Latency: 172ms",
+      "source_file": "HTTP response probe",
+      "engine": "performance_engine",
+      "evidence_snippet": "Telemetry Source: local_probe",
+      "confidence": "medium",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "/llms.txt: PRESENT",
+      "source_file": "/llms.txt HTTP check",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Princeton GEO Citability: 50/100",
+      "source_file": "DOM content passages",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    }
+  ],
+  "unified_on_page": {
+    "url": "https://www.standphillindia.in/",
+    "status_code": 200,
+    "response_time_sec": 2.28,
+    "title": "",
+    "title_length": 0,
+    "meta_description": "Standphill India is a leading BIS certification consultant in India, offering a single window for ISI Mark, FMCS, CRS, BEE, EPR, WPC-ETA, LMPC, TEC, third-party inspection and many more.",
+    "meta_desc_length": 186,
+    "h1_count": 3,
+    "h1_text": [
+      "India's Trusted \nBIS Certification Experts",
+      "Get BIS Certification\r\n                        in 20-25 Days",
+      "Instant Service to the \nGLOBAL MANUFACTURES"
+    ],
+    "h2_count": 12,
+    "h2_text": [
+      "Standphill India                        - The house of Standards",
+      "OUR SERVICES",
+      "Standphill India - The Best BIS Certification Consultant in India",
+      "OUR ACHIEVEMENTS",
+      "OUR GLOBAL PRESENCE",
+      "OUR VIDEOS",
+      "AUDITS & PARTICIPATION",
+      "Testimonials",
+      "Our Team",
+      "Frequently Asked Questions",
+      "Our Clients",
+      "Get Expert BIS Certification Support for Your Business"
+    ],
+    "h3_count": 11,
+    "h3_text": [
+      "Get Free Consultation",
+      "Get Free Consultation",
+      "Get Free Consultation",
+      "Certified Excellence",
+      "20+ Years of Expertise in BIS Certification & Compliance",
+      "Get Expert BIS Consultation",
+      "Request Free Consultation",
+      "Get Expert Consultation",
+      "Need help with BIS Certification, CRS Registration or WPC Approval?",
+      "Request a Call",
+      "Chat with us on WhatsApp"
+    ],
+    "total_images": 113,
+    "images_with_alt": 109,
+    "word_count": 1789,
+    "canonical_url": null,
+    "is_redirect": false,
+    "response_headers": {
+      "Date": "Wed, 30 Sep 2026 20:06:38 GMT",
+      "Content-Type": "text/html; charset=UTF-8",
+      "Transfer-Encoding": "chunked",
+      "Connection": "keep-alive",
+      "X-Powered-By": "PHP/8.0.30",
+      "Content-Encoding": "br",
+      "platform": "hostinger",
+      "panel": "hpanel",
+      "Content-Security-Policy": "upgrade-insecure-requests",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Content-Type-Options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Vary": "Accept-Encoding",
+      "Server": "hcdn",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "x-hcdn-request-id": "f47a15fd5b9a2fa3271d33b8a202ab18-mum-edge9",
+      "x-hcdn-cache-status": "BYPASS",
+      "x-hcdn-upstream-rt": "0.010"
+    },
+    "internal_links": [
+      "https://www.standphillindia.in/standardization.php",
+      "https://www.standphillindia.in/epr-plastic-waste-management-registration-in-delhi-india.php",
+      "https://www.standphillindia.in/make-in-india-consultants-service-in-delhi-india.php",
+      "https://www.standphillindia.in/wpc-eta-certification-consultants-in-delhi-india.php",
+      "https://www.standphillindia.in/",
+      "https://www.standphillindia.in/compulsory-registration-scheme-crs.php",
+      "https://www.standphillindia.in/brand-consultants-in-delhi-india.php",
+      "https://www.standphillindia.in/tec-mtcte-approval-in-india.php",
+      "https://www.standphillindia.in/privacy-and-policy.php",
+      "https://www.standphillindia.in/bis-certification-for-furniture.php",
+      "https://www.standphillindia.in/our-gallery.php",
+      "https://www.standphillindia.in/our-services.php",
+      "https://www.standphillindia.in/term-and-condition.php",
+      "https://www.standphillindia.in/third-party-inspection-and-monitoring-service.php",
+      "https://www.standphillindia.in/about-us.php",
+      "https://www.standphillindia.in/bee-certification-consultants-in-delhi-india.php",
+      "https://www.standphillindia.in/youtube-gallery.php",
+      "https://www.standphillindia.in/ag-mark-licence-registration-service-in-delhi-india.php",
+      "https://www.standphillindia.in/ul-certification-registration-service-in-delhi-india.php",
+      "https://www.standphillindia.in/wpc-eta-approval.php",
+      "https://www.standphillindia.in/trademark-registration-service-in-delhi-india.php",
+      "https://www.standphillindia.in/e-waste-epr-management-system-registration-in-delhi-india.php",
+      "https://www.standphillindia.in/drug-licence-registration-consultants-in-delhi-india.php",
+      "https://www.standphillindia.in/blog/",
+      "https://www.standphillindia.in/our-team.php",
+      "https://www.standphillindia.in/bis-coc-certification-consultants-in-delhi-india.php",
+      "https://www.standphillindia.in/foreign-manufacturers-certification-scheme-fmcs.php",
+      "https://www.standphillindia.in/bee-certification.php",
+      "https://www.standphillindia.in/peso-certificate.php",
+      "https://www.standphillindia.in/epr-battery-waste--management-registration-in-delhi-india.php",
+      "https://www.standphillindia.in/rohs-licence-registration-service-in-delhi-india.php",
+      "https://www.standphillindia.in/projects/",
+      "https://www.standphillindia.in/ce-certification-registration-service-in-delhi-india.php",
+      "https://www.standphillindia.in/iso-certificate-registration-service-in-delhi-india.php",
+      "https://www.standphillindia.in/epr-registration-consultant-for-used-oil.php",
+      "https://www.standphillindia.in/bis-hallmarking-certification-consultants-in-delhi-india.php",
+      "https://www.standphillindia.in/cdsco-license-registration-and-certificate.php",
+      "https://www.standphillindia.in/qco/bis-qco-for-cross-recessed-screws-quality-control-order-2025",
+      "https://www.standphillindia.in/laboratory-setup-service-in-delhi-india.php",
+      "https://www.standphillindia.in/local-service/",
+      "https://www.standphillindia.in/qco/bis-qco-for-aluminium-and-aluminium-alloy-products-quality-control-order-2025",
+      "https://www.standphillindia.in/bis-certification-for-indian-manufacturers.php",
+      "https://www.standphillindia.in/bis-certification-for-toys.php",
+      "https://www.standphillindia.in/epr-registration.php",
+      "https://www.standphillindia.in/contact.php",
+      "https://www.standphillindia.in/our-company-gallery.php/",
+      "https://www.standphillindia.in/eco-mark-certification-consultants-in-delhi-india.php",
+      "https://www.standphillindia.in/lmpc-registration.php",
+      "https://www.standphillindia.in/legal-metrology-lmpc-certificate.php",
+      "https://www.standphillindia.in/fssai-certificate-registration-service-in-delhi-india.php",
+      "https://www.standphillindia.in/bis-tac-licence-for-automobiles-registration-in-delhi-india.php",
+      "https://www.standphillindia.in/qco/bis-qco-for-furniture-general-purpose-chairs-stools-work-chairs-tables-beds-storage-units",
+      "https://www.standphillindia.in/qco/",
+      "https://www.standphillindia.in/import-export-licence-registration-consultants-in-delhi-india.php",
+      "https://www.standphillindia.in/msme-ssi-nsic.php",
+      "https://www.standphillindia.in/qco/bis-qco-for-safety-of-toys-is-9873-is-15644-toys-quality-control-order-2020",
+      "https://www.standphillindia.in/bis-certification-for-footwear.php"
+    ],
+    "external_links": [
+      "https://www.youtube.com/watch?v=LfXMar66AEE",
+      "https://www.youtube.com/watch?v=FKhO-zs81zI",
+      "https://www.youtube.com/watch?v=ynwjYhi7ht0",
+      "https://www.linkedin.com/company/standphill-india/",
+      "https://x.com/StandPhill",
+      "https://www.youtube.com/watch?v=_TTrYeCZgHo",
+      "https://www.youtube.com/watch?v=qauYnqE6E3k",
+      "https://www.instagram.com/standphill.india/",
+      "https://www.youtube.com/watch?v=CVImNHvYLiM",
+      "https://wa.me/919667674225",
+      "https://www.youtube.com/watch?v=rH_KqqqtdEE",
+      "https://www.youtube.com/watch?v=Jd-T-8D24ZI",
+      "https://www.facebook.com/standphillindia1/",
+      "tel:+919667674225",
+      "tel:+919667674225",
+      "mailto:info@standphillindia.in",
+      "https://www.standphillindia.in/contact.php",
+      "https://www.standphillindia.in/",
+      "https://www.standphillindia.in/",
+      "#",
+      "https://www.standphillindia.in/about-us.php",
+      "https://www.standphillindia.in/our-team.php",
+      "https://www.standphillindia.in/projects/",
+      "https://www.standphillindia.in/qco/",
+      "https://www.standphillindia.in/our-company-gallery.php/",
+      "https://www.standphillindia.in/our-gallery.php",
+      "https://www.standphillindia.in/youtube-gallery.php",
+      "#",
+      "https://www.standphillindia.in/bis-certification-for-indian-manufacturers.php",
+      "https://www.standphillindia.in/foreign-manufacturers-certification-scheme-fmcs.php",
+      "https://www.standphillindia.in/bis-certification-for-furniture.php",
+      "https://www.standphillindia.in/bis-certification-for-toys.php",
+      "https://www.standphillindia.in/bis-hallmarking-certification-consultants-in-delhi-india.php",
+      "https://www.standphillindia.in/eco-mark-certification-consultants-in-delhi-india.php",
+      "https://www.standphillindia.in/bis-tac-licence-for-automobiles-registration-in-delhi-india.php",
+      "https://www.standphillindia.in/drug-licence-registration-consultants-in-delhi-india.php",
+      "https://www.standphillindia.in/peso-certificate.php",
+      "https://www.standphillindia.in/lmpc-registration.php",
+      "https://www.standphillindia.in/bis-certification-for-footwear.php",
+      "https://www.standphillindia.in/compulsory-registration-scheme-crs.php",
+      "https://www.standphillindia.in/wpc-eta-approval.php",
+      "https://www.standphillindia.in/bee-certification.php",
+      "https://www.standphillindia.in/epr-registration.php",
+      "https://www.standphillindia.in/epr-plastic-waste-management-registration-in-delhi-india.php",
+      "https://www.standphillindia.in/epr-registration-consultant-for-used-oil.php",
+      "https://www.standphillindia.in/epr-battery-waste--management-registration-in-delhi-india.php",
+      "https://www.standphillindia.in/ce-certification-registration-service-in-delhi-india.php",
+      "https://www.standphillindia.in/ul-certification-registration-service-in-delhi-india.php",
+      "https://www.standphillindia.in/tec-mtcte-approval-in-india.php",
+      "https://www.standphillindia.in/rohs-licence-registration-service-in-delhi-india.php",
+      "https://www.standphillindia.in/standardization.php",
+      "https://www.standphillindia.in/import-export-licence-registration-consultants-in-delhi-india.php",
+      "https://www.standphillindia.in/fssai-certificate-registration-service-in-delhi-india.php",
+      "https://www.standphillindia.in/msme-ssi-nsic.php",
+      "https://www.standphillindia.in/iso-certificate-registration-service-in-delhi-india.php",
+      "https://www.standphillindia.in/brand-consultants-in-delhi-india.php",
+      "https://www.standphillindia.in/laboratory-setup-service-in-delhi-india.php",
+      "https://www.standphillindia.in/trademark-registration-service-in-delhi-india.php",
+      "https://www.standphillindia.in/make-in-india-consultants-service-in-delhi-india.php",
+      "https://www.standphillindia.in/ag-mark-licence-registration-service-in-delhi-india.php",
+      "https://www.standphillindia.in/third-party-inspection-and-monitoring-service.php",
+      "https://www.standphillindia.in/local-service/",
+      "https://www.standphillindia.in/blog/",
+      "https://www.standphillindia.in/contact.php",
+      "https://www.standphillindia.in/contact.php",
+      "https://wa.me/919667674225",
+      "https://www.standphillindia.in/contact.php",
+      "https://wa.me/919667674225",
+      "https://www.standphillindia.in/bis-certification-for-indian-manufacturers.php",
+      "https://www.standphillindia.in/compulsory-registration-scheme-crs.php",
+      "https://www.standphillindia.in/foreign-manufacturers-certification-scheme-fmcs.php",
+      "https://www.standphillindia.in/e-waste-epr-management-system-registration-in-delhi-india.php",
+      "https://www.standphillindia.in/legal-metrology-lmpc-certificate.php",
+      "https://www.standphillindia.in/bis-certification-for-indian-manufacturers.php",
+      "https://www.standphillindia.in/compulsory-registration-scheme-crs.php",
+      "https://www.standphillindia.in/foreign-manufacturers-certification-scheme-fmcs.php",
+      "https://www.standphillindia.in/fssai-certificate-registration-service-in-delhi-india.php",
+      "https://www.standphillindia.in/wpc-eta-certification-consultants-in-delhi-india.php",
+      "https://www.standphillindia.in/bee-certification-consultants-in-delhi-india.php",
+      "https://www.standphillindia.in/ce-certification-registration-service-in-delhi-india.php",
+      "https://www.standphillindia.in/e-waste-epr-management-system-registration-in-delhi-india.php",
+      "https://www.standphillindia.in/tec-mtcte-approval-in-india.php",
+      "https://www.standphillindia.in/standardization.php",
+      "https://www.standphillindia.in/qco/bis-qco-for-aluminium-and-aluminium-alloy-products-quality-control-order-2025",
+      "https://www.standphillindia.in/qco/bis-qco-for-cross-recessed-screws-quality-control-order-2025",
+      "https://www.standphillindia.in/qco/bis-qco-for-furniture-general-purpose-chairs-stools-work-chairs-tables-beds-storage-units",
+      "https://www.standphillindia.in/qco/bis-qco-for-safety-of-toys-is-9873-is-15644-toys-quality-control-order-2020",
+      "https://www.standphillindia.in/qco/",
+      "https://www.standphillindia.in/qco/bis-qco-for-aluminium-and-aluminium-alloy-products-quality-control-order-2025",
+      "https://www.standphillindia.in/qco/bis-qco-for-cross-recessed-screws-quality-control-order-2025",
+      "https://www.standphillindia.in/qco/bis-qco-for-furniture-general-purpose-chairs-stools-work-chairs-tables-beds-storage-units",
+      "https://www.standphillindia.in/qco/bis-qco-for-safety-of-toys-is-9873-is-15644-toys-quality-control-order-2020",
+      "https://www.standphillindia.in/qco/",
+      "contact.php",
+      "our-services.php",
+      "https://www.standphillindia.in/bis-certification-for-indian-manufacturers.php",
+      "https://www.standphillindia.in/fssai-certificate-registration-service-in-delhi-india.php",
+      "https://www.standphillindia.in/compulsory-registration-scheme-crs.php",
+      "https://www.standphillindia.in/foreign-manufacturers-certification-scheme-fmcs.php",
+      "https://www.standphillindia.in/bis-certification-for-furniture.php",
+      "https://www.standphillindia.in/peso-certificate.php",
+      "https://www.standphillindia.in/bis-certification-for-toys.php",
+      "#tab1",
+      "#tab2",
+      "#tab3",
+      "foreign-manufacturers-certification-scheme-fmcs.php",
+      "bis-certification-for-indian-manufacturers.php",
+      "eco-mark-certification-consultants-in-delhi-india.php",
+      "bis-tac-licence-for-automobiles-registration-in-delhi-india.php",
+      "lmpc-registration.php",
+      "cdsco-license-registration-and-certificate.php",
+      "drug-licence-registration-consultants-in-delhi-india.php",
+      "bis-hallmarking-certification-consultants-in-delhi-india.php",
+      "laboratory-setup-service-in-delhi-india.php",
+      "https://www.standphillindia.in/peso-certificate.php",
+      "compulsory-registration-scheme-crs.php",
+      "wpc-eta-approval.php",
+      "bee-certification.php",
+      "epr-registration.php",
+      "ul-certification-registration-service-in-delhi-india.php",
+      "cdsco-license-registration-and-certificate.php",
+      "https://www.standphillindia.in/tec-mtcte-approval-in-india.php",
+      "ce-certification-registration-service-in-delhi-india.php",
+      "ce-certification-registration-service-in-delhi-india.php",
+      "fssai-certificate-registration-service-in-delhi-india.php",
+      "brand-consultants-in-delhi-india.php",
+      "make-in-india-consultants-service-in-delhi-india.php",
+      "iso-certificate-registration-service-in-delhi-india.php",
+      "standardization.php",
+      "our-services.php",
+      "import-export-licence-registration-consultants-in-delhi-india.php",
+      "trademark-registration-service-in-delhi-india.php",
+      "msme-ssi-nsic.php",
+      "laboratory-setup-service-in-delhi-india.php",
+      "foreign-manufacturers-certification-scheme-fmcs.php",
+      "compulsory-registration-scheme-crs.php",
+      "wpc-eta-approval.php",
+      "bee-certification.php",
+      "epr-registration.php",
+      "https://www.standphillindia.in/tec-mtcte-approval-in-india.php",
+      "contact.php",
+      "https://www.youtube.com/watch?v=FKhO-zs81zI",
+      "https://www.youtube.com/watch?v=rH_KqqqtdEE",
+      "https://www.youtube.com/watch?v=qauYnqE6E3k",
+      "https://www.youtube.com/watch?v=_TTrYeCZgHo",
+      "https://www.youtube.com/watch?v=CVImNHvYLiM",
+      "https://www.youtube.com/watch?v=Jd-T-8D24ZI",
+      "https://www.youtube.com/watch?v=LfXMar66AEE",
+      "https://www.youtube.com/watch?v=ynwjYhi7ht0",
+      "contact.php",
+      "tel:+919667674225",
+      "https://wa.me/919667674225",
+      "mailto:info@standphillindia.in",
+      "https://www.linkedin.com/company/standphill-india/",
+      "https://www.standphillindia.in/",
+      "https://www.standphillindia.in/bis-certification-for-indian-manufacturers.php",
+      "https://www.standphillindia.in/foreign-manufacturers-certification-scheme-fmcs.php",
+      "https://www.standphillindia.in/bis-coc-certification-consultants-in-delhi-india.php",
+      "https://www.standphillindia.in/bis-certification-for-furniture.php",
+      "https://www.standphillindia.in/bis-certification-for-toys.php",
+      "https://www.standphillindia.in/peso-certificate.php",
+      "https://www.standphillindia.in/bis-tac-licence-for-automobiles-registration-in-delhi-india.php",
+      "https://www.standphillindia.in/lmpc-registration.php",
+      "https://www.standphillindia.in/compulsory-registration-scheme-crs.php",
+      "https://www.standphillindia.in/wpc-eta-approval.php",
+      "https://www.standphillindia.in/bee-certification.php",
+      "https://www.standphillindia.in/epr-registration.php",
+      "https://www.standphillindia.in/epr-plastic-waste-management-registration-in-delhi-india.php",
+      "https://www.standphillindia.in/epr-battery-waste--management-registration-in-delhi-india.php",
+      "https://www.standphillindia.in/ce-certification-registration-service-in-delhi-india.php",
+      "https://www.standphillindia.in/ul-certification-registration-service-in-delhi-india.php",
+      "https://www.standphillindia.in/trademark-registration-service-in-delhi-india.php",
+      "https://www.standphillindia.in/import-export-licence-registration-consultants-in-delhi-india.php",
+      "https://www.standphillindia.in/fssai-certificate-registration-service-in-delhi-india.php",
+      "https://www.standphillindia.in/msme-ssi-nsic.php",
+      "https://www.standphillindia.in/iso-certificate-registration-service-in-delhi-india.php",
+      "https://www.standphillindia.in/brand-consultants-in-delhi-india.php",
+      "tel:+919667674225",
+      "mailto:info@standphillindia.in",
+      "https://www.standphillindia.in/contact.php",
+      "https://www.facebook.com/standphillindia1/",
+      "https://www.instagram.com/standphill.india/",
+      "https://x.com/StandPhill",
+      "https://www.linkedin.com/company/standphill-india/",
+      "https://www.standphillindia.in/privacy-and-policy.php",
+      "https://www.standphillindia.in/term-and-condition.php",
+      "https://www.standphillindia.in/contact.php",
+      "tel:+919667674225",
+      "https://wa.me/919667674225"
+    ],
+    "engine_source": "httpx_static_fallback"
+  },
+  "unified_robots": {
+    "found": true,
+    "robots_url": "https://www.standphillindia.in/robots.txt",
+    "bot_access": {
+      "Applebot": {
+        "bot": "Applebot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Apple Intelligence & Siri",
+        "role_or_purpose": "Apple Intelligence search & Safari citations",
+        "via_wildcard": false
+      },
+      "Applebot-Extended": {
+        "bot": "Applebot-Extended",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Apple",
+        "role_or_purpose": "Apple Foundation model training",
+        "via_wildcard": false
+      },
+      "Bingbot": {
+        "bot": "Bingbot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Microsoft Copilot & Bing",
+        "role_or_purpose": "Microsoft AI search indexer",
+        "via_wildcard": false
+      },
+      "Bytespider": {
+        "bot": "Bytespider",
+        "status": "BLOCKED",
+        "category": "training",
+        "engine": "ByteDance",
+        "role_or_purpose": "ByteDance AI training",
+        "via_wildcard": false
+      },
+      "CCBot": {
+        "bot": "CCBot",
+        "status": "BLOCKED",
+        "category": "training",
+        "engine": "Common Crawl",
+        "role_or_purpose": "Open web dataset scraped for AI foundation training",
+        "via_wildcard": false
+      },
+      "Claude-SearchBot": {
+        "bot": "Claude-SearchBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Claude Search",
+        "role_or_purpose": "Anthropic search indexer (NOT ClaudeBot)",
+        "via_wildcard": false
+      },
+      "ClaudeBot": {
+        "bot": "ClaudeBot",
+        "status": "BLOCKED",
+        "category": "training",
+        "engine": "Anthropic",
+        "role_or_purpose": "Model training data collection (Claude base models)",
+        "via_wildcard": false
+      },
+      "FacebookBot": {
+        "bot": "FacebookBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Meta",
+        "role_or_purpose": "Llama & Meta AI model training",
+        "via_wildcard": false
+      },
+      "GPTBot": {
+        "bot": "GPTBot",
+        "status": "BLOCKED",
+        "category": "training",
+        "engine": "OpenAI",
+        "role_or_purpose": "Model training data collection (ChatGPT base models)",
+        "via_wildcard": false
+      },
+      "Google-Extended": {
+        "bot": "Google-Extended",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Google",
+        "role_or_purpose": "Gemini & Vertex AI model training (Separate from Googlebot)",
+        "via_wildcard": false
+      },
+      "Googlebot": {
+        "bot": "Googlebot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Google Search & AI Overviews",
+        "role_or_purpose": "Primary web indexer driving Google SGE/AI Overviews",
+        "via_wildcard": false
+      },
+      "OAI-SearchBot": {
+        "bot": "OAI-SearchBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "ChatGPT Search",
+        "role_or_purpose": "Search indexer & live web citation retriever (NOT GPTBot)",
+        "via_wildcard": false
+      },
+      "PerplexityBot": {
+        "bot": "PerplexityBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Perplexity AI",
+        "role_or_purpose": "Live answer engine citation crawler",
+        "via_wildcard": false
+      },
+      "cohere-ai": {
+        "bot": "cohere-ai",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Cohere",
+        "role_or_purpose": "Enterprise LLM training",
+        "via_wildcard": false
+      }
+    },
+    "sitemaps": [
+      "https://www.standphillindia.in/sitemap.xml"
+    ],
+    "crawl_delay": null,
+    "discovered_urls": [
+      "https://www.standphillindia.in/",
+      "https://www.standphillindia.in/contact.php",
+      "https://www.standphillindia.in/about-us.php",
+      "https://www.standphillindia.in/our-team.php",
+      "https://www.standphillindia.in/projects/",
+      "https://www.standphillindia.in/qco/",
+      "https://www.standphillindia.in/our-company-gallery.php/",
+      "https://www.standphillindia.in/our-gallery.php",
+      "https://www.standphillindia.in/youtube-gallery.php",
+      "https://www.standphillindia.in/bis-certification-for-indian-manufacturers.php",
+      "https://www.standphillindia.in/foreign-manufacturers-certification-scheme-fmcs.php",
+      "https://www.standphillindia.in/bis-certification-for-furniture.php",
+      "https://www.standphillindia.in/bis-certification-for-toys.php",
+      "https://www.standphillindia.in/bis-hallmarking-certification-consultants-in-delhi-india.php",
+      "https://www.standphillindia.in/eco-mark-certification-consultants-in-delhi-india.php",
+      "https://www.standphillindia.in/bis-tac-licence-for-automobiles-registration-in-delhi-india.php",
+      "https://www.standphillindia.in/drug-licence-registration-consultants-in-delhi-india.php",
+      "https://www.standphillindia.in/peso-certificate.php",
+      "https://www.standphillindia.in/legal-metrology-lmpc-certificate.php",
+      "https://www.standphillindia.in/bis-certification-for-footwear.php",
+      "https://www.standphillindia.in/compulsory-registration-scheme-crs.php",
+      "https://www.standphillindia.in/wpc-eta-approval.php",
+      "https://www.standphillindia.in/bee-certification.php",
+      "https://www.standphillindia.in/epr-registration.php",
+      "https://www.standphillindia.in/epr-plastic-waste-management-registration-in-delhi-india.php"
+    ],
+    "engine_source": "advertools_rfc"
+  },
+  "unified_schema": {
+    "detected_types": [
+      "WebSite",
+      "FAQPage",
+      "Organization"
+    ],
+    "deprecated_types_detected": [
+      "FAQPage"
+    ],
+    "blocks_count": 3,
+    "is_injected_via_js": false,
+    "validation_issues": [],
+    "sameas_urls": [],
+    "has_organization": true,
+    "has_author": false,
+    "engine_source": "triangulated_union"
+  },
+  "unified_geo": {
+    "overall_citability_score": 50,
+    "answer_first_ratio": 0.25,
+    "passage_density_ratio": 0.09,
+    "statistical_density_per_1000": 0.0,
+    "outbound_citations_count": 0,
+    "authoritative_citations_count": 0,
+    "llms_txt_found": true,
+    "llms_txt_warnings": [],
+    "llms_full_found": false,
+    "question_h2s": [],
+    "methods": [
+      {
+        "name": "quotation_addition",
+        "label": "Quotation Addition",
+        "detected": true,
+        "score": 4,
+        "max_score": 6,
+        "impact": "+41%",
+        "details": {
+          "blockquotes": 0,
+          "q_tags": 0,
+          "attributed_quotes": 0,
+          "pull_quotes": 2
+        }
+      },
+      {
+        "name": "statistics_addition",
+        "label": "Statistics Addition",
+        "detected": true,
+        "score": 6,
+        "max_score": 6,
+        "impact": "+33%",
+        "details": {
+          "stat_matches": 8,
+          "density_per_1000_words": 4.5,
+          "tables_with_data": 0
+        }
+      },
+      {
+        "name": "fluency_optimization",
+        "label": "Fluency Optimization",
+        "detected": false,
+        "score": 2,
+        "max_score": 6,
+        "impact": "+29%",
+        "details": {
+          "avg_paragraph_words": 29.4,
+          "connective_count": 0,
+          "paragraphs": 39,
+          "list_items": 80
+        }
+      },
+      {
+        "name": "cite_sources",
+        "label": "Cite Sources",
+        "detected": false,
+        "score": 6,
+        "max_score": 6,
+        "impact": "+27%",
+        "details": {
+          "authoritative_links": 0,
+          "external_links": 17,
+          "cite_tags": 0,
+          "has_reference_section": false
+        }
+      },
+      {
+        "name": "answer_first",
+        "label": "Answer-First Structure",
+        "detected": false,
+        "score": 2,
+        "max_score": 5,
+        "impact": "+25%",
+        "details": {
+          "h2_count": 12,
+          "answer_first_count": 3,
+          "ratio": 0.25
+        }
+      },
+      {
+        "name": "passage_density",
+        "label": "Passage Density",
+        "detected": true,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+23%",
+        "details": {
+          "total_paragraphs": 34,
+          "dense_paragraphs": 3,
+          "ratio": 0.09
+        }
+      },
+      {
+        "name": "technical_terms",
+        "label": "Technical Terms",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+18%",
+        "details": {
+          "tech_matches": 191,
+          "density_per_1000": 107.42,
+          "code_blocks": 0,
+          "abbr_tags": 0
+        }
+      },
+      {
+        "name": "authoritative_tone",
+        "label": "Authoritative Tone",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+16%",
+        "details": {
+          "authority_markers": 0,
+          "hedge_markers": 0,
+          "has_author_bio": true,
+          "credentials": [
+            "Dr"
+          ],
+          "has_author_meta": true
+        }
+      },
+      {
+        "name": "easy_to_understand",
+        "label": "Easy-to-Understand",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+14%",
+        "details": {
+          "avg_sentence_length": 16.0,
+          "h2_count": 12,
+          "h3_count": 11,
+          "faq_sections": 1
+        }
+      },
+      {
+        "name": "unique_words",
+        "label": "Unique Words",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+7%",
+        "details": {
+          "ttr": 0.608,
+          "total_words": 1131,
+          "unique_count": 438
+        }
+      },
+      {
+        "name": "keyword_stuffing",
+        "label": "No Keyword Stuffing",
+        "detected": true,
+        "score": 2,
+        "max_score": 6,
+        "impact": "-9%",
+        "details": {
+          "suspicious_keywords": {
+            "bis": 3.5,
+            "certification": 3.1
+          },
+          "stuffing_severity": "medium",
+          "repeated_phrases": 0,
+          "front_loading_detected": false
+        }
+      },
+      {
+        "name": "readability",
+        "label": "Readability Score",
+        "detected": false,
+        "score": 0,
+        "max_score": 8,
+        "impact": "+15%",
+        "details": {
+          "flesch_kincaid_grade": 16.6,
+          "avg_words_per_sentence": 22.5,
+          "avg_syllables_per_word": 1.98,
+          "optimal_sections": 0,
+          "total_sections": 13
+        }
+      },
+      {
+        "name": "faq_in_content",
+        "label": "FAQ-in-Content",
+        "detected": true,
+        "score": 2,
+        "max_score": 6,
+        "impact": "+12%",
+        "details": {
+          "faq_patterns_found": 1
+        }
+      },
+      {
+        "name": "image_alt_quality",
+        "label": "Image Alt Quality",
+        "detected": true,
+        "score": 3,
+        "max_score": 5,
+        "impact": "+8%",
+        "details": {
+          "total_images": 113,
+          "with_alt": 109,
+          "descriptive_alt": 90,
+          "generic_alt": 19,
+          "missing_alt": 4
+        }
+      },
+      {
+        "name": "content_freshness",
+        "label": "Content Freshness",
+        "detected": false,
+        "score": 1,
+        "max_score": 6,
+        "impact": "+10%",
+        "details": {
+          "date_modified": null,
+          "date_published": null,
+          "is_fresh": false,
+          "freshness_level": "stale",
+          "months_old": null,
+          "year_references": {
+            "2022": 2
+          },
+          "warnings": [
+            "No date signal (dateModified/datePublished) found",
+            "References to past years without recent update date"
+          ]
+        }
+      },
+      {
+        "name": "citability_density",
+        "label": "Citability Density",
+        "detected": true,
+        "score": 5,
+        "max_score": 7,
+        "impact": "+15%",
+        "details": {
+          "total_paragraphs": 34,
+          "dense_paragraphs": 11,
+          "density_ratio": 0.32,
+          "total_citable_facts": 30
+        }
+      },
+      {
+        "name": "definition_patterns",
+        "label": "Definition Patterns",
+        "detected": true,
+        "score": 2,
+        "max_score": 5,
+        "impact": "+10%",
+        "details": {
+          "definitions_found": 2,
+          "total_headings": 15,
+          "ratio": 0.13
+        }
+      },
+      {
+        "name": "format_mix",
+        "label": "Response Format Mix",
+        "detected": true,
+        "score": 2,
+        "max_score": 5,
+        "impact": "+8%",
+        "details": {
+          "has_paragraphs": true,
+          "has_lists": true,
+          "has_tables": false,
+          "has_code": false,
+          "has_blockquote": false,
+          "format_count": 2
+        }
+      },
+      {
+        "name": "attribution_completeness",
+        "label": "Attribution Completeness",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+12%",
+        "details": {
+          "inline_attributions": 0,
+          "footnotes": 5,
+          "inline_link_citations": 0
+        }
+      },
+      {
+        "name": "no_negative_signals",
+        "label": "No Negative Signals",
+        "detected": false,
+        "score": 5,
+        "max_score": 5,
+        "impact": "-15%",
+        "details": {
+          "cta_count": 0,
+          "is_thin_content": false,
+          "has_author": true,
+          "repeated_phrases": 0,
+          "total_penalties": 0
+        }
+      },
+      {
+        "name": "comparison_content",
+        "label": "Comparison Content",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "vs_headings": 0,
+          "pro_con_sections": 0,
+          "comparison_tables": 0,
+          "large_tables": 0
+        }
+      },
+      {
+        "name": "eeat_signals",
+        "label": "E-E-A-T Signals",
+        "detected": true,
+        "score": 4,
+        "max_score": 7,
+        "impact": "+15%",
+        "details": {
+          "trust_links": {
+            "privacy": true,
+            "terms": true,
+            "about": true,
+            "contact": true
+          },
+          "trust_link_count": 4,
+          "has_detailed_bio": false,
+          "has_structured_author": false,
+          "has_verified_author": false,
+          "is_https": true
+        }
+      },
+      {
+        "name": "no_content_decay",
+        "label": "No Content Decay",
+        "detected": false,
+        "score": 4,
+        "max_score": 5,
+        "impact": "-10%",
+        "details": {
+          "old_year_references": [
+            2022
+          ],
+          "is_recently_modified": false,
+          "stale_update_patterns": 0,
+          "external_links_count": 127,
+          "total_penalties": 1
+        }
+      },
+      {
+        "name": "boilerplate_ratio",
+        "label": "Content-to-Boilerplate Ratio",
+        "detected": true,
+        "score": 4,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "content_length": 12651,
+          "total_length": 15019,
+          "ratio": 0.84,
+          "method": "heuristic"
+        }
+      },
+      {
+        "name": "nuance_signals",
+        "label": "Nuance/Honesty Signals",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "nuance_patterns": 0,
+          "nuance_headings": 0,
+          "total_signals": 0
+        }
+      },
+      {
+        "name": "snippet_ready",
+        "label": "Snippet-Ready Content",
+        "detected": true,
+        "score": 1,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "snippet_ready_sections": 3,
+          "total_headings": 40,
+          "ratio": 0.07
+        }
+      },
+      {
+        "name": "chunk_quotability",
+        "label": "Chunk Quotability",
+        "detected": true,
+        "score": 1,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "candidate_paragraphs": 8,
+          "quotable_paragraphs": 1,
+          "ratio": 0.12
+        }
+      },
+      {
+        "name": "blog_structure",
+        "label": "Blog Structure",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "has_article_schema": false
+        }
+      },
+      {
+        "name": "shopping_readiness",
+        "label": "AI Shopping Readiness",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_product_schema": false
+        }
+      },
+      {
+        "name": "chatgpt_shopping",
+        "label": "ChatGPT Shopping Feed",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_product_schema": false
+        }
+      },
+      {
+        "name": "voice_search_ready",
+        "label": "Voice/Conversational Search",
+        "detected": false,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "question_headings": 1,
+          "concise_answers": 1,
+          "has_speakable_schema": false
+        }
+      },
+      {
+        "name": "multi_platform",
+        "label": "Multi-Platform Presence",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "platforms_found": [],
+          "platform_count": 0
+        }
+      },
+      {
+        "name": "entity_disambiguation",
+        "label": "Entity Disambiguation",
+        "detected": true,
+        "score": 2,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "names_found": [
+            "bis certification consultant in india",
+            "standphill india",
+            "bis certification consultant in india",
+            "standphill india",
+            "standphill india",
+            "standphill india"
+          ],
+          "names_consistent": true,
+          "sameas_count": 4
+        }
+      },
+      {
+        "name": "first_party_data",
+        "label": "First-Party Data",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+12%",
+        "details": {
+          "first_party_patterns": 0,
+          "own_data_signals": 0,
+          "has_methodology_section": false
+        }
+      },
+      {
+        "name": "no_stale_data",
+        "label": "No Stale Data",
+        "detected": false,
+        "score": 4,
+        "max_score": 4,
+        "impact": "-10%",
+        "details": {
+          "old_copyright_in_footer": false,
+          "stale_year_references": [],
+          "penalties": 0
+        }
+      },
+      {
+        "name": "social_proof",
+        "label": "Social Proof",
+        "detected": true,
+        "score": 2,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_testimonial": true,
+          "has_aggregate_rating": false,
+          "has_trust_badges": true
+        }
+      },
+      {
+        "name": "accessibility_signals",
+        "label": "Accessibility Signals",
+        "detected": true,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "semantic_tags": [
+            "footer",
+            "header",
+            "nav"
+          ],
+          "aria_landmarks": [],
+          "has_skip_link": false
+        }
+      },
+      {
+        "name": "conversion_funnel",
+        "label": "AI Conversion Funnel",
+        "detected": true,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_cta": false,
+          "has_pricing_link": false,
+          "has_contact": true
+        }
+      },
+      {
+        "name": "temporal_coherence",
+        "label": "Temporal Signal Coherence",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "dates_found": {},
+          "date_count": 0,
+          "max_diff_days": 0,
+          "is_coherent": false,
+          "is_incoherent": false
+        }
+      },
+      {
+        "name": "anchor_text_quality",
+        "label": "Anchor Text Quality",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "total_internal_links": 144,
+          "generic_count": 0,
+          "descriptive_count": 144,
+          "descriptive_ratio": 1.0
+        }
+      },
+      {
+        "name": "international_geo",
+        "label": "International GEO",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "html_lang": "en",
+          "hreflang_count": 0,
+          "hreflang_langs": [],
+          "schema_inLanguage": null,
+          "is_multilingual": false
+        }
+      },
+      {
+        "name": "crawl_budget",
+        "label": "AI Crawl Budget",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "has_noindex": false,
+          "has_nofollow": false,
+          "has_sitemap_link": false,
+          "penalties": []
+        }
+      },
+      {
+        "name": "answer_capsule",
+        "label": "Answer Capsule Detection",
+        "detected": false,
+        "score": 1,
+        "max_score": 4,
+        "impact": "+12%",
+        "details": {
+          "capsule_count": 1,
+          "total_candidates": 16,
+          "ratio": 0.06
+        }
+      },
+      {
+        "name": "token_efficiency",
+        "label": "Token Efficiency",
+        "detected": false,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "total_words": 2073,
+          "content_words": 1133,
+          "noise_words": 940,
+          "ratio": 0.55
+        }
+      },
+      {
+        "name": "entity_resolution",
+        "label": "Entity Resolution Friendliness",
+        "detected": true,
+        "score": 3,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "has_schema_entity": true,
+          "has_sameas": true,
+          "has_definition": false,
+          "entity_types": [
+            "Organization",
+            "WebSite"
+          ]
+        }
+      },
+      {
+        "name": "kg_density",
+        "label": "Knowledge Graph Density",
+        "detected": true,
+        "score": 2,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "relation_count": 8,
+          "density_per_500w": 2.2,
+          "schema_relations": 3,
+          "word_count": 1778
+        }
+      },
+      {
+        "name": "retrieval_triggers",
+        "label": "Retrieval Trigger Patterns",
+        "detected": true,
+        "score": 2,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "trigger_count": 4,
+          "unique_triggers": 3,
+          "density_per_500w": 1.1,
+          "question_headings": 1
+        }
+      }
+    ],
+    "engine_source": "geo_optimizer_skill"
+  },
+  "unified_trust": {
+    "overall_score": 56,
+    "raw_score": 14,
+    "grade": "C",
+    "layers": {
+      "technical": {
+        "name": "technical",
+        "label": "Technical & Infrastructure Trust",
+        "score": 5,
+        "max_score": 5,
+        "signals_found": [
+          "HTTPS Protocol Active (+2)",
+          "Strict-Transport-Security (HSTS)",
+          "Content-Security-Policy (CSP)",
+          "Clickjacking Protection (X-Frame-Options/frame-ancestors)"
+        ],
+        "signals_missing": []
+      },
+      "identity": {
+        "name": "identity",
+        "label": "Entity & Identity Trust",
+        "score": 4,
+        "max_score": 5,
+        "signals_found": [
+          "Organization / LocalBusiness Structured Data",
+          "Identified Author / Person Entity",
+          "About Page Link",
+          "Contact / Support Page Link"
+        ],
+        "signals_missing": [
+          "Weak or Inconsistent Brand Signature"
+        ]
+      },
+      "social": {
+        "name": "social",
+        "label": "Social Proof & Reputation Trust",
+        "score": 2,
+        "max_score": 5,
+        "signals_found": [
+          "Linked Social Profiles (facebook.com, youtube.com, instagram.com)",
+          "Customer Reviews / Testimonials Evidence"
+        ],
+        "signals_missing": [
+          "No sameAs Links in Schema.org",
+          "Fewer than 3 verified sameAs profiles",
+          "No Knowledge Graph Pillar Link (Wikidata/Wikipedia)"
+        ]
+      },
+      "academic": {
+        "name": "academic",
+        "label": "Academic & Authority Trust",
+        "score": 1,
+        "max_score": 5,
+        "signals_found": [
+          "External Source Citations (164 non-social links)"
+        ],
+        "signals_missing": [
+          "Sparse Quantitative Data / Statistics",
+          "No Links to Recognized Authoritative Sources (.gov, .edu, DOI, PubMed)",
+          "No Dedicated References or Sources Section",
+          "Few Formal Statistical Patterns (Percentages / Research Citations)"
+        ]
+      },
+      "consistency": {
+        "name": "consistency",
+        "label": "Consistency & Compliance Trust",
+        "score": 2,
+        "max_score": 5,
+        "signals_found": [
+          "Privacy Policy Documented",
+          "Dated Copyright Notice"
+        ],
+        "signals_missing": [
+          "No Terms of Service Link Detected",
+          "Missing Canonical Tag",
+          "No Machine-Readable Publication/Modification Timestamps"
+        ]
+      }
+    },
+    "summary": "Trust Grade: C (56/100, Raw 14/25). Strongest layer: Technical & Infrastructure Trust. Weakest layer: Academic & Authority Trust."
+  },
+  "unified_performance": {
+    "source": "local_probe",
+    "overall_performance_score": 85,
+    "ttfb_ms": 171.6,
+    "fcp_ms": null,
+    "lcp_ms": null,
+    "cls": null,
+    "inp_ms": null,
+    "metrics": [
+      {
+        "name": "TTFB",
+        "value": 0.172,
+        "unit": "s",
+        "status": "GOOD",
+        "threshold_good": 0.8,
+        "threshold_poor": 1.8
+      }
+    ],
+    "passed_audit": false,
+    "notes": [
+      "Local high-precision TTFB probe (set PAGESPEED_API_KEY for CrUX real-user telemetry).",
+      "RankIntel performance bands: 90–100=Pass, 50–89=Needs Improvement, <50=Poor (based on Lighthouse scale)."
+    ]
+  },
+  "cloud_intelligence": {
+    "available": false,
+    "keywords": null,
+    "backlinks": null,
+    "ai_visibility_score": 0,
+    "notes": []
+  },
+  "site_crawl": null,
+  "fixes": {
+    "current_title": "",
+    "optimized_title": "India's Trusted \nBIS Certification ... | Standphillindia",
+    "title_length": "56",
+    "current_description": "Standphill India is a leading BIS certification consultant in India, offering a single window for ISI Mark, FMCS, CRS, BEE, EPR, WPC-ETA, LMPC, TEC, third-party inspection and many more.",
+    "optimized_description": "Standphill India is a leading BIS certification consultant in India, offering a single window for ISI Mark, FMCS, CRS, BEE, EPR,. Get a quote today.",
+    "desc_length": "148",
+    "hardened_robots": "# RankIntel Hardened AI Robots.txt Policy\n# 1. Allow AI Search & Citation Bots (Essential for ChatGPT Search, Google, Perplexity, Claude)\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Claude-SearchBot\nAllow: /\n\nUser-agent: Googlebot\nAllow: /\n\nUser-agent: Applebot\nAllow: /\n\n# 2. Optional: Disallow AI Model Pre-Training Scrapers (If preserving intellectual property)\n# User-agent: GPTBot\n# Disallow: /\n# User-agent: ClaudeBot\n# Disallow: /\n# User-agent: Google-Extended\n# Disallow: /\n\n# 3. Standard Crawler Settings\nUser-agent: *\nAllow: /\n"
+  }
+}
