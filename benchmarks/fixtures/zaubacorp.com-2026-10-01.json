@@ -1,0 +1,1310 @@
+{
+  "url": "https://www.zaubacorp.com/",
+  "domain": "www.zaubacorp.com",
+  "timestamp": "2026-10-01",
+  "overall_health_score": 51,
+  "geo_readiness_score": 31,
+  "technical_health_score": 55,
+  "trust_score": 48,
+  "performance_score": 85,
+  "keyword_score": 0,
+  "site_health_score": 0,
+  "score_formula_mode": "4_engine",
+  "engines_executed": [
+    "advertools_seo",
+    "browser_engine",
+    "rankintel_geo",
+    "performance_engine"
+  ],
+  "conflicts_detected": [],
+  "prioritized_actions": [
+    {
+      "level": "HIGH",
+      "title": "Optimize Title Tag Length & CTR Hook",
+      "finding": "Current title is 0 characters.",
+      "rationale": "Titles over 60 chars are truncated in SERPs with ellipses. Target 50-60 chars with primary keyword front-loaded.",
+      "engine_confidence": "HIGH (Deterministic measurement)",
+      "fix_snippet": null
+    },
+    {
+      "level": "CRITICAL",
+      "title": "Deploy JSON-LD Structured Data",
+      "finding": "Zero Schema.org types detected on page.",
+      "rationale": "Structured data is required for rich snippets and assists generative AI models in entity disambiguation.",
+      "engine_confidence": "HIGH (Verified by both static and browser engines)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Add Organization Schema & Entity Anchors",
+      "finding": "No Organization / LocalBusiness entity defined in structured data.",
+      "rationale": "Essential for establishing E-E-A-T and anchoring your entity in Google's Knowledge Graph.",
+      "engine_confidence": "HIGH",
+      "fix_snippet": null
+    },
+    {
+      "level": "GEO_WIN",
+      "title": "Publish Standard /llms.txt AI Agent Manifest",
+      "finding": "/llms.txt is missing from root domain.",
+      "rationale": "Provides AI assistants (ChatGPT, Claude, Perplexity) with clean, curated markdown documentation.",
+      "engine_confidence": "HIGH",
+      "fix_snippet": null
+    }
+  ],
+  "provenance": [
+    {
+      "finding": "Applebot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Applebot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Applebot-Extended: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Applebot-Extended -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bingbot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Bingbot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bytespider: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Bytespider -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "CCBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: CCBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Claude-SearchBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Claude-SearchBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "ClaudeBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: ClaudeBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "FacebookBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: FacebookBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "GPTBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: GPTBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Google-Extended: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Google-Extended -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Googlebot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Googlebot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "OAI-SearchBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: OAI-SearchBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "PerplexityBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: PerplexityBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "cohere-ai: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: cohere-ai -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Page Title (54 chars): 'ZaubaCorp - India's largest business research...'",
+      "source_file": "<title> tag",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "TTFB Latency: 72ms",
+      "source_file": "HTTP response probe",
+      "engine": "performance_engine",
+      "evidence_snippet": "Telemetry Source: local_probe",
+      "confidence": "medium",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "/llms.txt: MISSING",
+      "source_file": "/llms.txt HTTP check",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Princeton GEO Citability: 31/100",
+      "source_file": "DOM content passages",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    }
+  ],
+  "unified_on_page": {
+    "url": "https://www.zaubacorp.com/",
+    "status_code": 200,
+    "response_time_sec": 2.3,
+    "title": "",
+    "title_length": 0,
+    "meta_description": "Search Indian companies and directors — financials, filings, charges and business insights from official records, powered by AI.",
+    "meta_desc_length": 128,
+    "h1_count": 1,
+    "h1_text": [
+      "State of the Art AI Research Platform for\n                            \nFinancial Due Diligence\nMarket Research\nTransfer Pricing\nSales Lead Generation\nCompetitor Analysis\nCompliance Audit"
+    ],
+    "h2_count": 10,
+    "h2_text": [
+      "ZaubaCorp Prime Research: Your state of the art assistant for all your needs",
+      "Research deep. Analyze sharp. Discover smartly.",
+      "Sales growth starts with smarter client discovery.",
+      "Understand companies like an Expert",
+      "Reviews that reflect Trust, Impact, and Value.",
+      "Enterprise user? Let’s talk solutions.",
+      "Purchase Company Reports",
+      "Purchase Company Report",
+      "Purchase Company Report",
+      "Purchase Company Report"
+    ],
+    "h3_count": 7,
+    "h3_text": [
+      "Prospect sales leads with precision",
+      "All-in-one solution that empowers strategic, confident business\n                                    decisions.",
+      "Understand companies like never before",
+      "800K+",
+      "5M+",
+      "3M+",
+      "100%*"
+    ],
+    "total_images": 29,
+    "images_with_alt": 25,
+    "word_count": 794,
+    "canonical_url": null,
+    "is_redirect": false,
+    "response_headers": {
+      "Date": "Wed, 30 Sep 2026 20:05:36 GMT",
+      "Content-Type": "text/html",
+      "Transfer-Encoding": "chunked",
+      "Connection": "keep-alive",
+      "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=kOx%2Ff0%2F6IseTUaKbMg6mmkW%2BCEx4k93080ryl%2F4JwqSKYUW2TgehGRGav2nnEIqWjPAyi3wYwAYqekfdt%2FwBRMBdZWF%2Fge%2FIV73pwOxv9yvpGk32l0cPCS1STeuJmlH9XmzWKQhsU9YCKIUIxnvQ\"}]}",
+      "content-security-policy": "object-src 'none'; base-uri 'self'",
+      "content-security-policy-report-only": "default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.googletagservices.com https://adservice.google.com https://www.gstatic.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://fundingchoicesmessages.google.com https://www.googletagmanager.com https://www.google-analytics.com https://js.stripe.com https://checkout.razorpay.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob: https:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://api.stripe.com https://m.stripe.network https://api.razorpay.com https://lumberjack.razorpay.com; frame-src 'self' https://www.google.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://js.stripe.com https://hooks.stripe.com https://api.razorpay.com https://checkout.razorpay.com; form-action 'self' https://api.razorpay.com; object-src 'none'; base-uri 'self'",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "Set-Cookie": "ZCSESSID=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiIiwiYW5vbnltb3VzX3V1aWQiOiJmOGUxYWI4Zi1kYjFiLTQ4ZmItOWQzZC1kNjA2NTE3MmU1YmEiLCJleHAiOjE3OTE0MDM1MzZ9.RyMvh55763K2p932hEdWjmnhOCBZlYXgCsH6oGMfwNk; Path=/; Domain=zaubacorp.com; Max-Age=604800; HttpOnly; Secure; SameSite=Lax",
+      "strict-transport-security": "max-age=31536000",
+      "vary": "Accept-Encoding",
+      "x-content-type-options": "nosniff",
+      "x-frame-options": "DENY",
+      "cf-cache-status": "DYNAMIC",
+      "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+      "Content-Encoding": "br",
+      "Server": "cloudflare",
+      "CF-RAY": "a435d7e6eeac8ae4-MAA"
+    },
+    "internal_links": [
+      "https://www.zaubacorp.com/solutions/consultant",
+      "https://www.zaubacorp.com/careers",
+      "https://www.zaubacorp.com/solutions/vc",
+      "https://www.zaubacorp.com/buy-credits",
+      "https://www.zaubacorp.com/contact-us",
+      "https://www.zaubacorp.com/sales-prospecting",
+      "https://www.zaubacorp.com/solutions/legal-firms",
+      "https://www.zaubacorp.com/terms",
+      "https://www.zaubacorp.com/faq",
+      "https://www.zaubacorp.com/solutions/ca-auditors",
+      "https://www.zaubacorp.com/solutions/investigation-research",
+      "https://www.zaubacorp.com/refunds-cancellation",
+      "https://www.zaubacorp.com/solutions/procurement",
+      "https://www.zaubacorp.com/company-reports",
+      "https://www.zaubacorp.com/solutions/sales",
+      "https://www.zaubacorp.com/companies-list",
+      "https://www.zaubacorp.com/signin",
+      "https://www.zaubacorp.com/solutions/banks",
+      "https://www.zaubacorp.com/company-research",
+      "https://www.zaubacorp.com/solutions/regulatory",
+      "https://www.zaubacorp.com/solutions/pe-firms",
+      "https://www.zaubacorp.com/privacy-policy",
+      "https://www.zaubacorp.com/get-started?plan=enterprise",
+      "https://www.zaubacorp.com/company-reports#report-pricing",
+      "https://www.zaubacorp.com/pricing",
+      "https://www.zaubacorp.com/signup",
+      "https://www.zaubacorp.com/about-us",
+      "https://www.zaubacorp.com/deep-research",
+      "https://www.zaubacorp.com/"
+    ],
+    "external_links": [
+      "/",
+      "/",
+      "/deep-research",
+      "/deep-research",
+      "/company-research",
+      "/sales-prospecting",
+      "#",
+      "/solutions/banks",
+      "/solutions/pe-firms",
+      "/solutions/vc",
+      "/solutions/legal-firms",
+      "/solutions/ca-auditors",
+      "/solutions/consultant",
+      "/solutions/investigation-research",
+      "/solutions/sales",
+      "/solutions/procurement",
+      "/solutions/regulatory",
+      "/pricing",
+      "/pricing",
+      "/buy-credits",
+      "/company-reports#report-pricing",
+      "/signin",
+      "/signup",
+      "#",
+      "#",
+      "#",
+      "/deep-research",
+      "#",
+      "#",
+      "#",
+      "/companies-list",
+      "/sales-prospecting",
+      "/deep-research",
+      "/company-research",
+      "/deep-research",
+      "/sales-prospecting",
+      "/company-research",
+      "/get-started?plan=enterprise",
+      "/about-us",
+      "/companies-list",
+      "/pricing",
+      "/company-reports",
+      "/careers",
+      "/faq",
+      "/contact-us",
+      "/solutions/banks",
+      "/solutions/pe-firms",
+      "/solutions/vc",
+      "/solutions/legal-firms",
+      "/solutions/ca-auditors",
+      "/solutions/consultant",
+      "/solutions/investigation-research",
+      "/solutions/sales",
+      "/solutions/procurement",
+      "/solutions/regulatory",
+      "/",
+      "/privacy-policy",
+      "/terms",
+      "/refunds-cancellation"
+    ],
+    "engine_source": "httpx_static_fallback"
+  },
+  "unified_robots": {
+    "found": true,
+    "robots_url": "https://www.zaubacorp.com/robots.txt",
+    "bot_access": {
+      "Applebot": {
+        "bot": "Applebot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Apple Intelligence & Siri",
+        "role_or_purpose": "Apple Intelligence search & Safari citations",
+        "via_wildcard": false
+      },
+      "Applebot-Extended": {
+        "bot": "Applebot-Extended",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Apple",
+        "role_or_purpose": "Apple Foundation model training",
+        "via_wildcard": false
+      },
+      "Bingbot": {
+        "bot": "Bingbot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Microsoft Copilot & Bing",
+        "role_or_purpose": "Microsoft AI search indexer",
+        "via_wildcard": false
+      },
+      "Bytespider": {
+        "bot": "Bytespider",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "ByteDance",
+        "role_or_purpose": "ByteDance AI training",
+        "via_wildcard": false
+      },
+      "CCBot": {
+        "bot": "CCBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Common Crawl",
+        "role_or_purpose": "Open web dataset scraped for AI foundation training",
+        "via_wildcard": false
+      },
+      "Claude-SearchBot": {
+        "bot": "Claude-SearchBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Claude Search",
+        "role_or_purpose": "Anthropic search indexer (NOT ClaudeBot)",
+        "via_wildcard": false
+      },
+      "ClaudeBot": {
+        "bot": "ClaudeBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Anthropic",
+        "role_or_purpose": "Model training data collection (Claude base models)",
+        "via_wildcard": false
+      },
+      "FacebookBot": {
+        "bot": "FacebookBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Meta",
+        "role_or_purpose": "Llama & Meta AI model training",
+        "via_wildcard": false
+      },
+      "GPTBot": {
+        "bot": "GPTBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "OpenAI",
+        "role_or_purpose": "Model training data collection (ChatGPT base models)",
+        "via_wildcard": false
+      },
+      "Google-Extended": {
+        "bot": "Google-Extended",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Google",
+        "role_or_purpose": "Gemini & Vertex AI model training (Separate from Googlebot)",
+        "via_wildcard": false
+      },
+      "Googlebot": {
+        "bot": "Googlebot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Google Search & AI Overviews",
+        "role_or_purpose": "Primary web indexer driving Google SGE/AI Overviews",
+        "via_wildcard": false
+      },
+      "OAI-SearchBot": {
+        "bot": "OAI-SearchBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "ChatGPT Search",
+        "role_or_purpose": "Search indexer & live web citation retriever (NOT GPTBot)",
+        "via_wildcard": false
+      },
+      "PerplexityBot": {
+        "bot": "PerplexityBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Perplexity AI",
+        "role_or_purpose": "Live answer engine citation crawler",
+        "via_wildcard": false
+      },
+      "cohere-ai": {
+        "bot": "cohere-ai",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Cohere",
+        "role_or_purpose": "Enterprise LLM training",
+        "via_wildcard": false
+      }
+    },
+    "sitemaps": [
+      "https://www.zaubacorp.com/sitemap.xml"
+    ],
+    "crawl_delay": null,
+    "discovered_urls": [],
+    "engine_source": "advertools_rfc"
+  },
+  "unified_schema": {
+    "detected_types": [],
+    "deprecated_types_detected": [],
+    "blocks_count": 0,
+    "is_injected_via_js": false,
+    "validation_issues": [],
+    "sameas_urls": [],
+    "has_organization": false,
+    "has_author": false,
+    "engine_source": "triangulated_union"
+  },
+  "unified_geo": {
+    "overall_citability_score": 31,
+    "answer_first_ratio": 0.4,
+    "passage_density_ratio": 0.0,
+    "statistical_density_per_1000": 0.0,
+    "outbound_citations_count": 0,
+    "authoritative_citations_count": 0,
+    "llms_txt_found": false,
+    "llms_txt_warnings": [],
+    "llms_full_found": false,
+    "question_h2s": [],
+    "methods": [
+      {
+        "name": "quotation_addition",
+        "label": "Quotation Addition",
+        "detected": false,
+        "score": 0,
+        "max_score": 6,
+        "impact": "+41%",
+        "details": {
+          "blockquotes": 0,
+          "q_tags": 0,
+          "attributed_quotes": 0,
+          "pull_quotes": 0
+        }
+      },
+      {
+        "name": "statistics_addition",
+        "label": "Statistics Addition",
+        "detected": false,
+        "score": 5,
+        "max_score": 6,
+        "impact": "+33%",
+        "details": {
+          "stat_matches": 2,
+          "density_per_1000_words": 2.53,
+          "tables_with_data": 0
+        }
+      },
+      {
+        "name": "fluency_optimization",
+        "label": "Fluency Optimization",
+        "detected": false,
+        "score": 1,
+        "max_score": 6,
+        "impact": "+29%",
+        "details": {
+          "avg_paragraph_words": 14.2,
+          "connective_count": 0,
+          "paragraphs": 38,
+          "list_items": 52
+        }
+      },
+      {
+        "name": "cite_sources",
+        "label": "Cite Sources",
+        "detected": false,
+        "score": 0,
+        "max_score": 6,
+        "impact": "+27%",
+        "details": {
+          "authoritative_links": 0,
+          "external_links": 0,
+          "cite_tags": 0,
+          "has_reference_section": false
+        }
+      },
+      {
+        "name": "answer_first",
+        "label": "Answer-First Structure",
+        "detected": true,
+        "score": 3,
+        "max_score": 5,
+        "impact": "+25%",
+        "details": {
+          "h2_count": 10,
+          "answer_first_count": 4,
+          "ratio": 0.4
+        }
+      },
+      {
+        "name": "passage_density",
+        "label": "Passage Density",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+23%",
+        "details": {
+          "total_paragraphs": 24,
+          "dense_paragraphs": 0,
+          "ratio": 0.0
+        }
+      },
+      {
+        "name": "technical_terms",
+        "label": "Technical Terms",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+18%",
+        "details": {
+          "tech_matches": 12,
+          "density_per_1000": 15.19,
+          "code_blocks": 0,
+          "abbr_tags": 0
+        }
+      },
+      {
+        "name": "authoritative_tone",
+        "label": "Authoritative Tone",
+        "detected": false,
+        "score": 1,
+        "max_score": 5,
+        "impact": "+16%",
+        "details": {
+          "authority_markers": 0,
+          "hedge_markers": 0,
+          "has_author_bio": false,
+          "credentials": [
+            "CEO"
+          ],
+          "has_author_meta": false
+        }
+      },
+      {
+        "name": "easy_to_understand",
+        "label": "Easy-to-Understand",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+14%",
+        "details": {
+          "avg_sentence_length": 14.2,
+          "h2_count": 10,
+          "h3_count": 7,
+          "faq_sections": 0
+        }
+      },
+      {
+        "name": "unique_words",
+        "label": "Unique Words",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+7%",
+        "details": {
+          "ttr": 0.673,
+          "total_words": 526,
+          "unique_count": 262
+        }
+      },
+      {
+        "name": "keyword_stuffing",
+        "label": "No Keyword Stuffing",
+        "detected": true,
+        "score": 2,
+        "max_score": 6,
+        "impact": "-9%",
+        "details": {
+          "suspicious_keywords": {
+            "your": 2.9,
+            "research": 2.8,
+            "companies": 2.8
+          },
+          "stuffing_severity": "medium",
+          "repeated_phrases": 0,
+          "front_loading_detected": false
+        }
+      },
+      {
+        "name": "readability",
+        "label": "Readability Score",
+        "detected": false,
+        "score": 0,
+        "max_score": 8,
+        "impact": "+15%",
+        "details": {
+          "flesch_kincaid_grade": 12.5,
+          "avg_words_per_sentence": 15.5,
+          "avg_syllables_per_word": 1.87,
+          "optimal_sections": 0,
+          "total_sections": 7
+        }
+      },
+      {
+        "name": "faq_in_content",
+        "label": "FAQ-in-Content",
+        "detected": false,
+        "score": 0,
+        "max_score": 6,
+        "impact": "+12%",
+        "details": {
+          "faq_patterns_found": 0
+        }
+      },
+      {
+        "name": "image_alt_quality",
+        "label": "Image Alt Quality",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+8%",
+        "details": {
+          "total_images": 29,
+          "with_alt": 25,
+          "descriptive_alt": 4,
+          "generic_alt": 21,
+          "missing_alt": 4
+        }
+      },
+      {
+        "name": "content_freshness",
+        "label": "Content Freshness",
+        "detected": false,
+        "score": 1,
+        "max_score": 6,
+        "impact": "+10%",
+        "details": {
+          "date_modified": null,
+          "date_published": null,
+          "is_fresh": false,
+          "freshness_level": "stale",
+          "months_old": null,
+          "year_references": {},
+          "warnings": [
+            "No date signal (dateModified/datePublished) found"
+          ]
+        }
+      },
+      {
+        "name": "citability_density",
+        "label": "Citability Density",
+        "detected": false,
+        "score": 0,
+        "max_score": 7,
+        "impact": "+15%",
+        "details": {
+          "total_paragraphs": 24,
+          "dense_paragraphs": 0,
+          "density_ratio": 0.0,
+          "total_citable_facts": 5
+        }
+      },
+      {
+        "name": "definition_patterns",
+        "label": "Definition Patterns",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+10%",
+        "details": {
+          "definitions_found": 0,
+          "total_headings": 11,
+          "ratio": 0.0
+        }
+      },
+      {
+        "name": "format_mix",
+        "label": "Response Format Mix",
+        "detected": true,
+        "score": 2,
+        "max_score": 5,
+        "impact": "+8%",
+        "details": {
+          "has_paragraphs": true,
+          "has_lists": true,
+          "has_tables": false,
+          "has_code": false,
+          "has_blockquote": false,
+          "format_count": 2
+        }
+      },
+      {
+        "name": "attribution_completeness",
+        "label": "Attribution Completeness",
+        "detected": true,
+        "score": 2,
+        "max_score": 5,
+        "impact": "+12%",
+        "details": {
+          "inline_attributions": 0,
+          "footnotes": 2,
+          "inline_link_citations": 0
+        }
+      },
+      {
+        "name": "no_negative_signals",
+        "label": "No Negative Signals",
+        "detected": false,
+        "score": 4,
+        "max_score": 5,
+        "impact": "-15%",
+        "details": {
+          "cta_count": 1,
+          "is_thin_content": false,
+          "has_author": false,
+          "repeated_phrases": 0,
+          "total_penalties": 1
+        }
+      },
+      {
+        "name": "comparison_content",
+        "label": "Comparison Content",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "vs_headings": 0,
+          "pro_con_sections": 0,
+          "comparison_tables": 0,
+          "large_tables": 0
+        }
+      },
+      {
+        "name": "eeat_signals",
+        "label": "E-E-A-T Signals",
+        "detected": true,
+        "score": 4,
+        "max_score": 7,
+        "impact": "+15%",
+        "details": {
+          "trust_links": {
+            "privacy": true,
+            "terms": true,
+            "about": true,
+            "contact": true
+          },
+          "trust_link_count": 4,
+          "has_detailed_bio": false,
+          "has_structured_author": false,
+          "has_verified_author": false,
+          "is_https": true
+        }
+      },
+      {
+        "name": "no_content_decay",
+        "label": "No Content Decay",
+        "detected": false,
+        "score": 5,
+        "max_score": 5,
+        "impact": "-10%",
+        "details": {
+          "old_year_references": [],
+          "is_recently_modified": false,
+          "stale_update_patterns": 0,
+          "external_links_count": 0,
+          "total_penalties": 0
+        }
+      },
+      {
+        "name": "boilerplate_ratio",
+        "label": "Content-to-Boilerplate Ratio",
+        "detected": true,
+        "score": 4,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "content_length": 4007,
+          "total_length": 6291,
+          "ratio": 0.64,
+          "method": "main_tag"
+        }
+      },
+      {
+        "name": "nuance_signals",
+        "label": "Nuance/Honesty Signals",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "nuance_patterns": 0,
+          "nuance_headings": 0,
+          "total_signals": 0
+        }
+      },
+      {
+        "name": "snippet_ready",
+        "label": "Snippet-Ready Content",
+        "detected": true,
+        "score": 1,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "snippet_ready_sections": 1,
+          "total_headings": 19,
+          "ratio": 0.05
+        }
+      },
+      {
+        "name": "chunk_quotability",
+        "label": "Chunk Quotability",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "candidate_paragraphs": 0,
+          "quotable_paragraphs": 0,
+          "ratio": 0
+        }
+      },
+      {
+        "name": "blog_structure",
+        "label": "Blog Structure",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "has_article_schema": false
+        }
+      },
+      {
+        "name": "shopping_readiness",
+        "label": "AI Shopping Readiness",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_product_schema": false
+        }
+      },
+      {
+        "name": "chatgpt_shopping",
+        "label": "ChatGPT Shopping Feed",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_product_schema": false
+        }
+      },
+      {
+        "name": "voice_search_ready",
+        "label": "Voice/Conversational Search",
+        "detected": false,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "question_headings": 1,
+          "concise_answers": 1,
+          "has_speakable_schema": false
+        }
+      },
+      {
+        "name": "multi_platform",
+        "label": "Multi-Platform Presence",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "platforms_found": [],
+          "platform_count": 0
+        }
+      },
+      {
+        "name": "entity_disambiguation",
+        "label": "Entity Disambiguation",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "names_found": [
+            "zaubacorp",
+            "india's largest business research platform",
+            "zaubacorp",
+            "india's largest business research platform"
+          ],
+          "names_consistent": false,
+          "sameas_count": 0
+        }
+      },
+      {
+        "name": "first_party_data",
+        "label": "First-Party Data",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+12%",
+        "details": {
+          "first_party_patterns": 0,
+          "own_data_signals": 0,
+          "has_methodology_section": false
+        }
+      },
+      {
+        "name": "no_stale_data",
+        "label": "No Stale Data",
+        "detected": false,
+        "score": 4,
+        "max_score": 4,
+        "impact": "-10%",
+        "details": {
+          "old_copyright_in_footer": false,
+          "stale_year_references": [],
+          "penalties": 0
+        }
+      },
+      {
+        "name": "social_proof",
+        "label": "Social Proof",
+        "detected": true,
+        "score": 2,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_testimonial": true,
+          "has_aggregate_rating": false,
+          "has_trust_badges": true
+        }
+      },
+      {
+        "name": "accessibility_signals",
+        "label": "Accessibility Signals",
+        "detected": true,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "semantic_tags": [
+            "footer",
+            "header",
+            "main",
+            "nav"
+          ],
+          "aria_landmarks": [],
+          "has_skip_link": false
+        }
+      },
+      {
+        "name": "conversion_funnel",
+        "label": "AI Conversion Funnel",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_cta": true,
+          "has_pricing_link": true,
+          "has_contact": true
+        }
+      },
+      {
+        "name": "temporal_coherence",
+        "label": "Temporal Signal Coherence",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "dates_found": {},
+          "date_count": 0,
+          "max_diff_days": 0,
+          "is_coherent": false,
+          "is_incoherent": false
+        }
+      },
+      {
+        "name": "anchor_text_quality",
+        "label": "Anchor Text Quality",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "total_internal_links": 50,
+          "generic_count": 5,
+          "descriptive_count": 45,
+          "descriptive_ratio": 0.9
+        }
+      },
+      {
+        "name": "international_geo",
+        "label": "International GEO",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "html_lang": "en",
+          "hreflang_count": 0,
+          "hreflang_langs": [],
+          "schema_inLanguage": null,
+          "is_multilingual": false
+        }
+      },
+      {
+        "name": "crawl_budget",
+        "label": "AI Crawl Budget",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "has_noindex": false,
+          "has_nofollow": false,
+          "has_sitemap_link": false,
+          "penalties": []
+        }
+      },
+      {
+        "name": "answer_capsule",
+        "label": "Answer Capsule Detection",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+12%",
+        "details": {
+          "capsule_count": 0,
+          "total_candidates": 0,
+          "ratio": 0
+        }
+      },
+      {
+        "name": "token_efficiency",
+        "label": "Token Efficiency",
+        "detected": false,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "total_words": 893,
+          "content_words": 532,
+          "noise_words": 361,
+          "ratio": 0.6
+        }
+      },
+      {
+        "name": "entity_resolution",
+        "label": "Entity Resolution Friendliness",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "has_schema_entity": false,
+          "has_sameas": false,
+          "has_definition": false,
+          "entity_types": []
+        }
+      },
+      {
+        "name": "kg_density",
+        "label": "Knowledge Graph Density",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "relation_count": 0,
+          "density_per_500w": 0.0,
+          "schema_relations": 0,
+          "word_count": 790
+        }
+      },
+      {
+        "name": "retrieval_triggers",
+        "label": "Retrieval Trigger Patterns",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "trigger_count": 0,
+          "unique_triggers": 0,
+          "density_per_500w": 0.0,
+          "question_headings": 0
+        }
+      }
+    ],
+    "engine_source": "geo_optimizer_skill"
+  },
+  "unified_trust": {
+    "overall_score": 48,
+    "raw_score": 12,
+    "grade": "D",
+    "layers": {
+      "technical": {
+        "name": "technical",
+        "label": "Technical & Infrastructure Trust",
+        "score": 5,
+        "max_score": 5,
+        "signals_found": [
+          "HTTPS Protocol Active (+2)",
+          "Strict-Transport-Security (HSTS)",
+          "Content-Security-Policy (CSP)",
+          "Clickjacking Protection (X-Frame-Options/frame-ancestors)"
+        ],
+        "signals_missing": []
+      },
+      "identity": {
+        "name": "identity",
+        "label": "Entity & Identity Trust",
+        "score": 2,
+        "max_score": 5,
+        "signals_found": [
+          "About Page Link",
+          "Contact / Support Page Link"
+        ],
+        "signals_missing": [
+          "No Organization/Business Schema in JSON-LD",
+          "No Author Attribution in Meta or Schema",
+          "Weak or Inconsistent Brand Signature"
+        ]
+      },
+      "social": {
+        "name": "social",
+        "label": "Social Proof & Reputation Trust",
+        "score": 1,
+        "max_score": 5,
+        "signals_found": [
+          "Customer Reviews / Testimonials Evidence"
+        ],
+        "signals_missing": [
+          "No sameAs Links in Schema.org",
+          "Fewer than 3 verified sameAs profiles",
+          "No Outbound Social Media Profile Links",
+          "No Knowledge Graph Pillar Link (Wikidata/Wikipedia)"
+        ]
+      },
+      "academic": {
+        "name": "academic",
+        "label": "Academic & Authority Trust",
+        "score": 1,
+        "max_score": 5,
+        "signals_found": [
+          "External Source Citations (59 non-social links)"
+        ],
+        "signals_missing": [
+          "Sparse Quantitative Data / Statistics",
+          "No Links to Recognized Authoritative Sources (.gov, .edu, DOI, PubMed)",
+          "No Dedicated References or Sources Section",
+          "Few Formal Statistical Patterns (Percentages / Research Citations)"
+        ]
+      },
+      "consistency": {
+        "name": "consistency",
+        "label": "Consistency & Compliance Trust",
+        "score": 3,
+        "max_score": 5,
+        "signals_found": [
+          "Privacy Policy Documented",
+          "Terms of Service / Terms of Use Documented",
+          "Dated Copyright Notice"
+        ],
+        "signals_missing": [
+          "Missing Canonical Tag",
+          "No Machine-Readable Publication/Modification Timestamps"
+        ]
+      }
+    },
+    "summary": "Trust Grade: D (48/100, Raw 12/25). Strongest layer: Technical & Infrastructure Trust. Weakest layer: Social Proof & Reputation Trust."
+  },
+  "unified_performance": {
+    "source": "local_probe",
+    "overall_performance_score": 85,
+    "ttfb_ms": 72.1,
+    "fcp_ms": null,
+    "lcp_ms": null,
+    "cls": null,
+    "inp_ms": null,
+    "metrics": [
+      {
+        "name": "TTFB",
+        "value": 0.072,
+        "unit": "s",
+        "status": "GOOD",
+        "threshold_good": 0.8,
+        "threshold_poor": 1.8
+      }
+    ],
+    "passed_audit": false,
+    "notes": [
+      "Local high-precision TTFB probe (set PAGESPEED_API_KEY for CrUX real-user telemetry).",
+      "RankIntel performance bands: 90–100=Pass, 50–89=Needs Improvement, <50=Poor (based on Lighthouse scale)."
+    ]
+  },
+  "cloud_intelligence": {
+    "available": false,
+    "keywords": null,
+    "backlinks": null,
+    "ai_visibility_score": 0,
+    "notes": []
+  },
+  "site_crawl": null,
+  "fixes": {
+    "current_title": "",
+    "optimized_title": "State of the Art AI Research Platfo... | Zaubacorp",
+    "title_length": "50",
+    "current_description": "Search Indian companies and directors — financials, filings, charges and business insights from official records, powered by AI.",
+    "optimized_description": "Search Indian companies and directors — financials, filings, charges and business insights from official records, powered by AI.",
+    "desc_length": "128",
+    "jsonld_schema": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"Organization\",\n      \"@id\": \"https://www.zaubacorp.com/#organization\",\n      \"name\": \"Zaubacorp\",\n      \"url\": \"https://www.zaubacorp.com\",\n      \"description\": \"Search Indian companies and directors — financials, filings, charges and business insights from official records, powered by AI.\"\n    },\n    {\n      \"@type\": \"WebSite\",\n      \"@id\": \"https://www.zaubacorp.com/#website\",\n      \"url\": \"https://www.zaubacorp.com\",\n      \"name\": \"Zaubacorp\",\n      \"publisher\": {\n        \"@id\": \"https://www.zaubacorp.com/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://www.zaubacorp.com/#webpage\",\n      \"url\": \"https://www.zaubacorp.com/\",\n      \"name\": \"Zaubacorp\",\n      \"isPartOf\": {\n        \"@id\": \"https://www.zaubacorp.com/#website\"\n      },\n      \"about\": {\n        \"@id\": \"https://www.zaubacorp.com/#organization\"\n      },\n      \"description\": \"Search Indian companies and directors — financials, filings, charges and business insights from official records, powered by AI.\"\n    }\n  ]\n}\n</script>",
+    "llms_txt": "# Zaubacorp\n\n> Search Indian companies and directors — financials, filings, charges and business insights from official records, powered by AI.\n\n## Core Services & Knowledge Base\n- [Homepage](https://www.zaubacorp.com/): Primary portal and overview.\n\n## Optional & Detailed Documentation\n- [/llms-full.txt](https://www.zaubacorp.com/llms-full.txt): Comprehensive documentation for deeper context.",
+    "hardened_robots": "# RankIntel Hardened AI Robots.txt Policy\n# 1. Allow AI Search & Citation Bots (Essential for ChatGPT Search, Google, Perplexity, Claude)\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Claude-SearchBot\nAllow: /\n\nUser-agent: Googlebot\nAllow: /\n\nUser-agent: Applebot\nAllow: /\n\n# 2. Optional: Disallow AI Model Pre-Training Scrapers (If preserving intellectual property)\n# User-agent: GPTBot\n# Disallow: /\n# User-agent: ClaudeBot\n# Disallow: /\n# User-agent: Google-Extended\n# Disallow: /\n\n# 3. Standard Crawler Settings\nUser-agent: *\nAllow: /\n"
+  }
+}
