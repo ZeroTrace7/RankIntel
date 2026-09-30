@@ -1,0 +1,72 @@
+{
+  "benchmark_version": "5.0",
+  "description": "Permanent RankIntel benchmark suite: 10 competitors + Sunrise",
+  "sites": [
+    {
+      "name": "Aleph India",
+      "domain": "alephindia.in",
+      "url": "https://alephindia.in/",
+      "role": "competitor"
+    },
+    {
+      "name": "TCR Engineering",
+      "domain": "tcreng.com",
+      "url": "https://www.tcreng.com/",
+      "role": "competitor"
+    },
+    {
+      "name": "Zauba Corp",
+      "domain": "zaubacorp.com",
+      "url": "https://www.zaubacorp.com/",
+      "role": "competitor"
+    },
+    {
+      "name": "Yadav Measurements",
+      "domain": "yadavmeasurements.com",
+      "url": "https://www.yadavmeasurements.com/",
+      "role": "competitor"
+    },
+    {
+      "name": "Unique Measurement",
+      "domain": "uniquemeasurement.com",
+      "url": "https://www.uniquemeasurement.com/",
+      "role": "competitor"
+    },
+    {
+      "name": "Quality International",
+      "domain": "qualityinternational.org",
+      "url": "https://qualityinternational.org/",
+      "role": "competitor"
+    },
+    {
+      "name": "ASC Group",
+      "domain": "ascgroup.in",
+      "url": "https://www.ascgroup.in/",
+      "role": "competitor"
+    },
+    {
+      "name": "Standphill India",
+      "domain": "standphillindia.in",
+      "url": "https://www.standphillindia.in/",
+      "role": "competitor"
+    },
+    {
+      "name": "UMS PCS",
+      "domain": "umspcs.in",
+      "url": "https://umspcs.in/",
+      "role": "competitor"
+    },
+    {
+      "name": "SQC Certification",
+      "domain": "sqccertification.com",
+      "url": "https://sqccertification.com/",
+      "role": "competitor"
+    },
+    {
+      "name": "Sunrise Testing",
+      "domain": "sunrisetesting.vercel.app",
+      "url": "https://sunrisetesting.vercel.app/",
+      "role": "sunrise"
+    }
+  ]
+}
