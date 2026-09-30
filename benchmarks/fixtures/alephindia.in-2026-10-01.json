@@ -1,0 +1,1707 @@
+{
+  "url": "https://alephindia.in/",
+  "domain": "alephindia.in",
+  "timestamp": "2026-10-01",
+  "overall_health_score": 48,
+  "geo_readiness_score": 38,
+  "technical_health_score": 45,
+  "trust_score": 40,
+  "performance_score": 85,
+  "keyword_score": 0,
+  "site_health_score": 0,
+  "score_formula_mode": "4_engine",
+  "engines_executed": [
+    "advertools_seo",
+    "browser_engine",
+    "rankintel_geo",
+    "performance_engine"
+  ],
+  "conflicts_detected": [],
+  "prioritized_actions": [
+    {
+      "level": "HIGH",
+      "title": "Optimize Title Tag Length & CTR Hook",
+      "finding": "Current title is 0 characters.",
+      "rationale": "Titles over 60 chars are truncated in SERPs with ellipses. Target 50-60 chars with primary keyword front-loaded.",
+      "engine_confidence": "HIGH (Deterministic measurement)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Rewrite Meta Description with Active Call-to-Action",
+      "finding": "Current description is 298 characters.",
+      "rationale": "Descriptions over 160 chars are clipped. Overly short descriptions fail to compel searcher clicks.",
+      "engine_confidence": "HIGH (Deterministic measurement)",
+      "fix_snippet": null
+    },
+    {
+      "level": "CRITICAL",
+      "title": "Deploy JSON-LD Structured Data",
+      "finding": "Zero Schema.org types detected on page.",
+      "rationale": "Structured data is required for rich snippets and assists generative AI models in entity disambiguation.",
+      "engine_confidence": "HIGH (Verified by both static and browser engines)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Harden Technical Trust & Security Headers",
+      "finding": "HSTS Header Missing, Content-Security-Policy Header Missing, X-Frame-Options Header Missing",
+      "rationale": "HSTS and Content-Security-Policy prevent security downgrades and satisfy AI agent reliability gates.",
+      "engine_confidence": "HIGH (Header telemetry)",
+      "fix_snippet": null
+    },
+    {
+      "level": "HIGH",
+      "title": "Add Organization Schema & Entity Anchors",
+      "finding": "No Organization / LocalBusiness entity defined in structured data.",
+      "rationale": "Essential for establishing E-E-A-T and anchoring your entity in Google's Knowledge Graph.",
+      "engine_confidence": "HIGH",
+      "fix_snippet": null
+    },
+    {
+      "level": "GEO_WIN",
+      "title": "Publish Standard /llms.txt AI Agent Manifest",
+      "finding": "/llms.txt is missing from root domain.",
+      "rationale": "Provides AI assistants (ChatGPT, Claude, Perplexity) with clean, curated markdown documentation.",
+      "engine_confidence": "HIGH",
+      "fix_snippet": null
+    },
+    {
+      "level": "GEO_WIN",
+      "title": "Implement Answer-First H2 Structure",
+      "finding": "Only 11% of H2 sections open with direct factual answers.",
+      "rationale": "AutoGEO research proves AI models prioritize passages providing concrete numbers/facts in the first 150 characters.",
+      "engine_confidence": "MEDIUM (Heuristic NLP)",
+      "fix_snippet": null
+    }
+  ],
+  "provenance": [
+    {
+      "finding": "Applebot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Applebot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Applebot-Extended: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Applebot-Extended -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bingbot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Bingbot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bytespider: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Bytespider -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "CCBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: CCBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Claude-SearchBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Claude-SearchBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "ClaudeBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: ClaudeBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "FacebookBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: FacebookBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "GPTBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: GPTBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Google-Extended: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Google-Extended -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Googlebot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: Googlebot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "OAI-SearchBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: OAI-SearchBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "PerplexityBot: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: PerplexityBot -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "cohere-ai: ALLOWED",
+      "source_file": "robots.txt",
+      "engine": "seo_engine",
+      "evidence_snippet": "User-agent: cohere-ai -> ALLOWED",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Page Title (63 chars): 'BIS Certification Consultants | ISI Mark, FMC...'",
+      "source_file": "<title> tag",
+      "engine": "seo_engine",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "TTFB Latency: 466ms",
+      "source_file": "HTTP response probe",
+      "engine": "performance_engine",
+      "evidence_snippet": "Telemetry Source: local_probe",
+      "confidence": "medium",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "/llms.txt: MISSING",
+      "source_file": "/llms.txt HTTP check",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Princeton GEO Citability: 38/100",
+      "source_file": "DOM content passages",
+      "engine": "rankintel_geo",
+      "evidence_snippet": "",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    }
+  ],
+  "unified_on_page": {
+    "url": "https://alephindia.in/",
+    "status_code": 200,
+    "response_time_sec": 2.75,
+    "title": "",
+    "title_length": 0,
+    "meta_description": "Aleph INDIA® is an expert BIS Registration Consultant in Delhi - India, providing a single window for all kinds of Technical Certification & Regulatory Compliances. We offer consulting services for BIS Registration, ISI Certification, WPC Approval, EPR Registration, BIS Hallmarking, and many more.",
+    "meta_desc_length": 298,
+    "h1_count": 1,
+    "h1_text": [
+      "Your Trusted Partner \n\n                    Aleph INDIA Group"
+    ],
+    "h2_count": 9,
+    "h2_text": [
+      "Testing\n                Inspection & Certification Services  for Indian & Global  Markets",
+      "Recognitions That Reflect\n                Our Commitment to Excellence.",
+      "Industry expertise\n                    Across Diverse Sectors",
+      "Compliance Insights\n\n\n\n\n                Videos",
+      "Stay Ahead with the Latest\n                Regulatory Updates",
+      "Our Esteemed Clients",
+      "Where Compliance\nMeets Global Confidence.",
+      "Request for services",
+      "Product Certification?"
+    ],
+    "h3_count": 42,
+    "h3_text": [
+      "Latest Regulatory Updates",
+      "Upcoming Industry Events",
+      "Indian Regulatory Certifications",
+      "International Approvals & Licencing",
+      "Product Testing",
+      "Laboratory Setup & Infrastructure",
+      "Training & Capacity Building",
+      "Third-Party Audit & Inspection Service",
+      "Standards Development & Policy Advisory",
+      "Market Research",
+      "All India Furnace Association Certificate",
+      "BIS Registration Certificate",
+      "BIS Registration Certificate II",
+      "BIS Registration Certificate III",
+      "BIS Certification",
+      "CII Membership Certificate",
+      "CII Certificate",
+      "FICCI Certificate",
+      "FOSG Membership",
+      "FOSG Certificate",
+      "Government of India Recognition",
+      "IFCOMA Certificate",
+      "Indian Standards of Glass",
+      "ISDA Certificate",
+      "ISO 9001 Certification",
+      "Registrar of Companies Certificate",
+      "Cement",
+      "Household Electrical goods",
+      "Batteries",
+      "Food & Related Products",
+      "Feeding Bottles",
+      "Automobile Accessories",
+      "Major Relief: BIS Revokes Product-Specific Restrictions for Key Markets",
+      "Major Policy Shift: India Tightens EPR Rules for Plastic Packaging Waste Management",
+      "INDIA–South Korea Trade Deal: A Roadmap to $50 Billion by 2030",
+      "Telecom Equipment Manufacturers: TEC Issues Important Advisory on Multiple MTCTE Applications for Same Equipment Model",
+      "BIS Certification for Respiratory Protective Devices",
+      "BIS Registration for Chemicals | Certification Process",
+      "Why Industries Trust Aleph INDIA",
+      "Get Expert Assistance",
+      "Send us your requirement",
+      "Choose Your Newsletter Categories"
+    ],
+    "total_images": 78,
+    "images_with_alt": 77,
+    "word_count": 1673,
+    "canonical_url": null,
+    "is_redirect": false,
+    "response_headers": {
+      "Date": "Wed, 30 Sep 2026 20:05:15 GMT",
+      "Content-Type": "text/html; charset=UTF-8",
+      "Transfer-Encoding": "chunked",
+      "Connection": "keep-alive",
+      "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+      "x-powered-by": "PHP/8.2.33",
+      "cache-control": "no-store, max-age=0, no-cache",
+      "set-cookie": "csrf_cookie_name=ee3152923af66d40d74c3675acf0f22a; expires=Wed, 30 Sep 2026 22:05:15 GMT; Max-Age=7200; path=/; HttpOnly; SameSite=Lax; secure",
+      "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=PKIlNOPMADZCf%2FDozCsPXlUK5Q6Xr%2B9YDs%2Bhu%2Bl9lP89Sg%2FxSI2m2NmfHXUZmyRX%2BC7nM0s7YF1KYHhY2RFEljwU7u%2FBu1JMo46TRv962eirYN1aC6%2BAdAua6959MeaZjdMGalcruC9U65lM\"}]}",
+      "vary": "Accept-Encoding",
+      "server": "cloudflare",
+      "x-turbo-charged-by": "LiteSpeed",
+      "cf-cache-status": "DYNAMIC",
+      "content-encoding": "zstd",
+      "CF-RAY": "a435d7611a8b7f76-MAA",
+      "alt-svc": "h3=\":443\"; ma=86400"
+    },
+    "internal_links": [
+      "https://alephindia.in/cdn-cgi/l/email-protection#0c65626a634c6d60697c64656268656d226562",
+      "https://alephindia.in/Services.html",
+      "https://alephindia.in/bis-certification-scheme-x-machinery-and-electrical-equipment.php",
+      "https://alephindia.in/iso-registration.php",
+      "https://alephindia.in/copyright-policy.php",
+      "https://alephindia.in/achievement-award.php",
+      "https://alephindia.in/upcoming.php",
+      "https://alephindia.in/trading-of-laboratory-equipment.php",
+      "https://alephindia.in/epr-plastic-india-tightens-epr-rules-no-more-eol-certificates-for-recycling-targets.php",
+      "https://alephindia.in/message-from-management-desk.php",
+      "https://alephindia.in/about-us.php",
+      "https://alephindia.in/bee-certification.php",
+      "https://alephindia.in/peso-certificate.php",
+      "https://alephindia.in/hyperlink-policy.php",
+      "https://alephindia.in/complain.php",
+      "https://alephindia.in/laboratory.php",
+      "https://alephindia.in/epr-registration-for-e-waste.php",
+      "https://alephindia.in/msme-ssi-nsic-registration.php",
+      "https://alephindia.in/latest-notifications.php",
+      "https://alephindia.in/careers.php",
+      "https://alephindia.in/epr-registration-for-plastic-packaging.php",
+      "https://alephindia.in/make-in-india-support.php",
+      "https://alephindia.in/bis-registration-certification.php",
+      "https://alephindia.in/upcoming-events.php",
+      "https://alephindia.in/vehicle-identification-number-world-manufacturer-identifier.php",
+      "https://alephindia.in/chemical-management-and-safety-rules.php",
+      "https://alephindia.in/our-media-presence.php",
+      "https://alephindia.in/hallmarking.php",
+      "https://alephindia.in/foreign-manufacturers-certification-scheme-fmcs.php",
+      "https://alephindia.in/fssai-certification.php",
+      "https://alephindia.in/bis-certification-isi-mark.php",
+      "https://alephindia.in/",
+      "https://alephindia.in/agriculture-mark.php",
+      "https://alephindia.in/terms-of-use.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/vendor-registration/",
+      "https://alephindia.in/gallery.php",
+      "https://alephindia.in/blog/bis-certification-for-respiratory-protective-devices.php",
+      "https://alephindia.in/privacy-policy.php",
+      "https://alephindia.in/clientlogin.php?tab=client",
+      "https://alephindia.in/epr-registration-for-battery-waste-management.php",
+      "https://alephindia.in/drone-registration-in-india.php",
+      "https://alephindia.in/wpc-approval.php",
+      "https://alephindia.in/clientele.php",
+      "https://alephindia.in/third-party-inspection-agency/",
+      "https://alephindia.in/bis-lifts-product-specific-restrictions-for-key-international-markets.php",
+      "https://alephindia.in/newsletter.php",
+      "https://alephindia.in/code-of-conduct.php",
+      "https://alephindia.in/contact-us.php#request-for-services",
+      "https://alephindia.in/international-audit.php",
+      "https://alephindia.in/bis-certificate-of-conformity.php",
+      "https://alephindia.in/restriction-of-hazardous-substance.php",
+      "https://alephindia.in/tac-approval-for-automobile.php",
+      "https://alephindia.in/standardization-scientific-division.php",
+      "https://alephindia.in/crm.php?tab=crm",
+      "https://alephindia.in/blogs.php",
+      "https://alephindia.in/tec-mtcte-approval-process-document-fees.php",
+      "https://alephindia.in/import-and-export-permission-for-hazardous-wastes.php",
+      "https://alephindia.in/blog/india-south-korea-trade-deal-a-roadmap-to-50-billion-by-2030.php",
+      "https://alephindia.in/clientlogin.php",
+      "https://alephindia.in/news-and-updates.php",
+      "https://alephindia.in/cdn-cgi/l/email-protection#5831363a37201839343d283031363c3139763136",
+      "https://alephindia.in/ce-certification.php",
+      "https://alephindia.in/legal-metrology.php",
+      "https://alephindia.in/trademark-registration.php",
+      "https://alephindia.in/sitemap.php",
+      "https://alephindia.in/import-export-licence.php",
+      "https://alephindia.in/cdsco-license-registration-and-certificate-process.php",
+      "https://alephindia.in/payment.php",
+      "https://alephindia.in/associations.php",
+      "https://alephindia.in/video-tutorials.php",
+      "https://alephindia.in/cdn-cgi/l/email-protection#acc5c2cec3d4eccdc0c9dcc4c5c2c8c5cd82c5c2",
+      "https://alephindia.in/brand-representation.php",
+      "https://alephindia.in/event_calendar.php",
+      "https://alephindia.in/our-team.php",
+      "https://alephindia.in/saso-certification-process-documents-validity.php",
+      "https://alephindia.in/ul-certification.php",
+      "https://alephindia.in/contact-us.php",
+      "https://alephindia.in/epr-registration-for-used-oil.php",
+      "https://alephindia.in/qco-orders-and-implementation-dates.php",
+      "https://alephindia.in/cdn-cgi/l/email-protection#2b42454d446b4a474e5b4342454f424a054245",
+      "https://alephindia.in/blog/bis-registration-for-chemicals.php",
+      "https://alephindia.in/telecom-equipment-manufacturers-tec-advisory-on-multiple-mtcte-applications.php",
+      "https://alephindia.in/ecomark.php",
+      "https://alephindia.in/training-services-national-international-level.php"
+    ],
+    "external_links": [
+      "https://twitter.com/inaleph?lang=en",
+      "https://www.youtube.com/@aleph-india/videos",
+      "https://maps.app.goo.gl/3xf35ytP5ZfVpygaA",
+      "https://bis.alephindia.in/",
+      "https://www.youtube.com/@aleph-india",
+      "https://www.linkedin.com/company/inaleph/",
+      "https://www.instagram.com/aleph_india/",
+      "https://www.youtube.com/channel/UCXjeA_EDSQCqHR4Lb0JYGRA",
+      "https://www.facebook.com/InAleph/",
+      "/cdn-cgi/l/email-protection#046d6a666b7c44656861746c6d6a606d652a6d6a",
+      "tel:+911234567890",
+      "https://www.linkedin.com/company/inaleph/",
+      "https://twitter.com/inaleph?lang=en",
+      "/",
+      "/",
+      "#",
+      "/about-us.php",
+      "/message-from-management-desk.php",
+      "/our-team.php",
+      "/associations.php",
+      "/achievement-award.php",
+      "/our-media-presence.php",
+      "#",
+      "/foreign-manufacturers-certification-scheme-fmcs.php",
+      "/bis-certification-isi-mark.php",
+      "/bis-certification-scheme-x-machinery-and-electrical-equipment.php",
+      "/bis-certificate-of-conformity.php",
+      "/hallmarking.php",
+      "/laboratory.php",
+      "/vehicle-identification-number-world-manufacturer-identifier.php",
+      "/ecomark.php",
+      "/tac-approval-for-automobile.php",
+      "/iso-registration.php",
+      "/cdsco-license-registration-and-certificate-process.php",
+      "/bis-registration-certification.php",
+      "/wpc-approval.php",
+      "/bee-certification.php",
+      "/epr-registration-for-e-waste.php",
+      "/epr-registration-for-plastic-packaging.php",
+      "/epr-registration-for-battery-waste-management.php",
+      "/epr-registration-for-used-oil.php",
+      "/legal-metrology.php",
+      "/tec-mtcte-approval-process-document-fees.php",
+      "/restriction-of-hazardous-substance.php",
+      "/drone-registration-in-india.php",
+      "/import-and-export-permission-for-hazardous-wastes.php",
+      "/standardization-scientific-division.php",
+      "/import-export-licence.php",
+      "/fssai-certification.php",
+      "/msme-ssi-nsic-registration.php",
+      "/brand-representation.php",
+      "/trademark-registration.php",
+      "/make-in-india-support.php",
+      "/agriculture-mark.php",
+      "/ce-certification.php",
+      "/ul-certification.php",
+      "/saso-certification-process-documents-validity.php",
+      "/chemical-management-and-safety-rules.php",
+      "/peso-certificate.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/trading-of-laboratory-equipment.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/training-services-national-international-level.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/third-party-inspection-agency/",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "#",
+      "/clientele.php",
+      "/international-audit.php",
+      "/gallery.php",
+      "/video-tutorials.php",
+      "#",
+      "/latest-notifications.php",
+      "/news-and-updates.php",
+      "/newsletter.php",
+      "/event_calendar.php",
+      "/upcoming-events.php",
+      "/qco-orders-and-implementation-dates.php",
+      "https://bis.alephindia.in/",
+      "/careers.php",
+      "#",
+      "/contact-us.php",
+      "/complain.php",
+      "#",
+      "/crm.php?tab=crm",
+      "/clientlogin.php?tab=client",
+      "/payment.php",
+      "/vendor-registration/",
+      "/contact-us.php#request-for-services",
+      "/",
+      "/about-us.php",
+      "/message-from-management-desk.php",
+      "/our-team.php",
+      "/associations.php",
+      "/achievement-award.php",
+      "/our-media-presence.php",
+      "/foreign-manufacturers-certification-scheme-fmcs.php",
+      "/bis-certification-isi-mark.php",
+      "/bis-certification-scheme-x-machinery-and-electrical-equipment.php",
+      "/bis-certificate-of-conformity.php",
+      "/hallmarking.php",
+      "/laboratory.php",
+      "/vehicle-identification-number-world-manufacturer-identifier.php",
+      "/ecomark.php",
+      "/tac-approval-for-automobile.php",
+      "/iso-registration.php",
+      "/cdsco-license-registration-and-certificate-process.php",
+      "/bis-registration-certification.php",
+      "/wpc-approval.php",
+      "/bee-certification.php",
+      "/epr-registration-for-e-waste.php",
+      "/epr-registration-for-plastic-packaging.php",
+      "/epr-registration-for-battery-waste-management.php",
+      "/epr-registration-for-used-oil.php",
+      "/legal-metrology.php",
+      "/tec-mtcte-approval-process-document-fees.php",
+      "/restriction-of-hazardous-substance.php",
+      "/drone-registration-in-india.php",
+      "/import-and-export-permission-for-hazardous-wastes.php",
+      "/standardization-scientific-division.php",
+      "/import-export-licence.php",
+      "/fssai-certification.php",
+      "/msme-ssi-nsic-registration.php",
+      "/brand-representation.php",
+      "/trademark-registration.php",
+      "/make-in-india-support.php",
+      "/agriculture-mark.php",
+      "/ce-certification.php",
+      "/ul-certification.php",
+      "/saso-certification-process-documents-validity.php",
+      "/chemical-management-and-safety-rules.php",
+      "/peso-certificate.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/trading-of-laboratory-equipment.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/training-services-national-international-level.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/third-party-inspection-agency/",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/upcoming.php",
+      "/clientele.php",
+      "/international-audit.php",
+      "/gallery.php",
+      "/video-tutorials.php",
+      "/latest-notifications.php",
+      "/news-and-updates.php",
+      "/newsletter.php",
+      "/event_calendar.php",
+      "/upcoming-events.php",
+      "/qco-orders-and-implementation-dates.php",
+      "https://bis.alephindia.in/",
+      "/careers.php",
+      "/contact-us.php",
+      "/complain.php",
+      "/crm.php?tab=crm",
+      "/clientlogin.php?tab=client",
+      "/payment.php",
+      "/vendor-registration/",
+      "/contact-us.php#request-for-services",
+      "/cdn-cgi/l/email-protection#aac3c4ccc5eacbc6cfdac2c3c4cec3cb84c3c4",
+      "tel:+911234567890",
+      "/clientlogin.php",
+      "https://twitter.com/inaleph?lang=en",
+      "https://www.facebook.com/InAleph/",
+      "https://www.linkedin.com/company/inaleph/",
+      "https://www.instagram.com/aleph_india/",
+      "https://alephindia.in/ourservices.php",
+      "#",
+      "#",
+      "#",
+      "https://alephindia.in/foreign-manufacturers-certification-scheme-fmcs.php",
+      "#",
+      "https://alephindia.in/saso-certification-process-documents-validity.php",
+      "#",
+      "https://alephindia.in/foreign-manufacturers-certification-scheme-fmcs.php",
+      "#",
+      "https://alephindia.in/trading-of-laboratory-equipment.php",
+      "#",
+      "https://alephindia.in/",
+      "#",
+      "https://alephindia.in/",
+      "#",
+      "https://alephindia.in/",
+      "#",
+      "https://alephindia.in/",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/clientele.php",
+      "https://www.youtube.com/@aleph-india/videos",
+      "https://www.youtube.com/@aleph-india",
+      "#",
+      "#",
+      "#",
+      "#",
+      "#",
+      "https://alephindia.in/news-and-updates.php",
+      "https://alephindia.in/blogs.php",
+      "https://alephindia.in/bis-lifts-product-specific-restrictions-for-key-international-markets.php",
+      "https://alephindia.in/epr-plastic-india-tightens-epr-rules-no-more-eol-certificates-for-recycling-targets.php",
+      "https://alephindia.in/blog/india-south-korea-trade-deal-a-roadmap-to-50-billion-by-2030.php",
+      "https://alephindia.in/telecom-equipment-manufacturers-tec-advisory-on-multiple-mtcte-applications.php",
+      "https://alephindia.in/blog/bis-certification-for-respiratory-protective-devices.php",
+      "https://alephindia.in/blog/bis-registration-for-chemicals.php",
+      "https://maps.app.goo.gl/3xf35ytP5ZfVpygaA",
+      "#",
+      "#",
+      "Services.html",
+      "Services.html",
+      "Services.html",
+      "Services.html",
+      "https://alephindia.in/",
+      "https://alephindia.in/achievement-award.php",
+      "https://alephindia.in/associations.php",
+      "https://alephindia.in/associations.php",
+      "https://alephindia.in/associations.php",
+      "https://alephindia.in/associations.php",
+      "#",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/ourservices.php",
+      "https://alephindia.in/about-us.php",
+      "https://alephindia.in/clientele.php",
+      "https://alephindia.in/upcoming-events.php",
+      "https://alephindia.in/contact-us.php",
+      "https://alephindia.in/sitemap.php",
+      "https://alephindia.in/international-audit.php",
+      "/cdn-cgi/l/email-protection#7a13141c153a1b161f0a1213141e131b541314",
+      "/cdn-cgi/l/email-protection#036a6d616c7b43626f66736b6a6d676a622d6a6d",
+      "https://www.linkedin.com/company/inaleph/",
+      "https://twitter.com/inaleph?lang=en",
+      "https://www.facebook.com/InAleph/",
+      "https://www.youtube.com/channel/UCXjeA_EDSQCqHR4Lb0JYGRA",
+      "https://alephindia.in/privacy-policy.php",
+      "https://alephindia.in/terms-of-use.php",
+      "https://alephindia.in/sitemap.php",
+      "https://alephindia.in/copyright-policy.php",
+      "https://alephindia.in/code-of-conduct.php",
+      "https://alephindia.in/hyperlink-policy.php",
+      "https://alephindia.in/contact-us.php"
+    ],
+    "engine_source": "httpx_static_fallback"
+  },
+  "unified_robots": {
+    "found": true,
+    "robots_url": "https://alephindia.in/robots.txt",
+    "bot_access": {
+      "Applebot": {
+        "bot": "Applebot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Apple Intelligence & Siri",
+        "role_or_purpose": "Apple Intelligence search & Safari citations",
+        "via_wildcard": false
+      },
+      "Applebot-Extended": {
+        "bot": "Applebot-Extended",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Apple",
+        "role_or_purpose": "Apple Foundation model training",
+        "via_wildcard": false
+      },
+      "Bingbot": {
+        "bot": "Bingbot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Microsoft Copilot & Bing",
+        "role_or_purpose": "Microsoft AI search indexer",
+        "via_wildcard": false
+      },
+      "Bytespider": {
+        "bot": "Bytespider",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "ByteDance",
+        "role_or_purpose": "ByteDance AI training",
+        "via_wildcard": false
+      },
+      "CCBot": {
+        "bot": "CCBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Common Crawl",
+        "role_or_purpose": "Open web dataset scraped for AI foundation training",
+        "via_wildcard": false
+      },
+      "Claude-SearchBot": {
+        "bot": "Claude-SearchBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Claude Search",
+        "role_or_purpose": "Anthropic search indexer (NOT ClaudeBot)",
+        "via_wildcard": false
+      },
+      "ClaudeBot": {
+        "bot": "ClaudeBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Anthropic",
+        "role_or_purpose": "Model training data collection (Claude base models)",
+        "via_wildcard": false
+      },
+      "FacebookBot": {
+        "bot": "FacebookBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Meta",
+        "role_or_purpose": "Llama & Meta AI model training",
+        "via_wildcard": false
+      },
+      "GPTBot": {
+        "bot": "GPTBot",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "OpenAI",
+        "role_or_purpose": "Model training data collection (ChatGPT base models)",
+        "via_wildcard": false
+      },
+      "Google-Extended": {
+        "bot": "Google-Extended",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Google",
+        "role_or_purpose": "Gemini & Vertex AI model training (Separate from Googlebot)",
+        "via_wildcard": false
+      },
+      "Googlebot": {
+        "bot": "Googlebot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Google Search & AI Overviews",
+        "role_or_purpose": "Primary web indexer driving Google SGE/AI Overviews",
+        "via_wildcard": false
+      },
+      "OAI-SearchBot": {
+        "bot": "OAI-SearchBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "ChatGPT Search",
+        "role_or_purpose": "Search indexer & live web citation retriever (NOT GPTBot)",
+        "via_wildcard": false
+      },
+      "PerplexityBot": {
+        "bot": "PerplexityBot",
+        "status": "ALLOWED",
+        "category": "search",
+        "engine": "Perplexity AI",
+        "role_or_purpose": "Live answer engine citation crawler",
+        "via_wildcard": false
+      },
+      "cohere-ai": {
+        "bot": "cohere-ai",
+        "status": "ALLOWED",
+        "category": "training",
+        "engine": "Cohere",
+        "role_or_purpose": "Enterprise LLM training",
+        "via_wildcard": false
+      }
+    },
+    "sitemaps": [
+      "https://alephindia.in/sitemap.xml"
+    ],
+    "crawl_delay": null,
+    "discovered_urls": [
+      "https://alephindia.in/page-sitemap.xml",
+      "https://alephindia.in/product-sitemap.xml",
+      "https://alephindia.in/isi-product-sitemap.xml",
+      "https://alephindia.in/qco-sitemap.xml",
+      "https://alephindia.in/service-sitemap.xml",
+      "https://alephindia.in/news-sitemap.xml",
+      "https://alephindia.in/blog-sitemap.xml"
+    ],
+    "engine_source": "advertools_rfc"
+  },
+  "unified_schema": {
+    "detected_types": [],
+    "deprecated_types_detected": [],
+    "blocks_count": 0,
+    "is_injected_via_js": false,
+    "validation_issues": [],
+    "sameas_urls": [],
+    "has_organization": false,
+    "has_author": false,
+    "engine_source": "triangulated_union"
+  },
+  "unified_geo": {
+    "overall_citability_score": 38,
+    "answer_first_ratio": 0.11,
+    "passage_density_ratio": 0.0,
+    "statistical_density_per_1000": 0.0,
+    "outbound_citations_count": 0,
+    "authoritative_citations_count": 0,
+    "llms_txt_found": false,
+    "llms_txt_warnings": [],
+    "llms_full_found": false,
+    "question_h2s": [],
+    "methods": [
+      {
+        "name": "quotation_addition",
+        "label": "Quotation Addition",
+        "detected": true,
+        "score": 6,
+        "max_score": 6,
+        "impact": "+41%",
+        "details": {
+          "blockquotes": 0,
+          "q_tags": 0,
+          "attributed_quotes": 0,
+          "pull_quotes": 27
+        }
+      },
+      {
+        "name": "statistics_addition",
+        "label": "Statistics Addition",
+        "detected": true,
+        "score": 6,
+        "max_score": 6,
+        "impact": "+33%",
+        "details": {
+          "stat_matches": 5,
+          "density_per_1000_words": 3.05,
+          "tables_with_data": 0
+        }
+      },
+      {
+        "name": "fluency_optimization",
+        "label": "Fluency Optimization",
+        "detected": false,
+        "score": 2,
+        "max_score": 6,
+        "impact": "+29%",
+        "details": {
+          "avg_paragraph_words": 8.7,
+          "connective_count": 0,
+          "paragraphs": 112,
+          "list_items": 40
+        }
+      },
+      {
+        "name": "cite_sources",
+        "label": "Cite Sources",
+        "detected": false,
+        "score": 6,
+        "max_score": 6,
+        "impact": "+27%",
+        "details": {
+          "authoritative_links": 0,
+          "external_links": 15,
+          "cite_tags": 0,
+          "has_reference_section": false
+        }
+      },
+      {
+        "name": "answer_first",
+        "label": "Answer-First Structure",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+25%",
+        "details": {
+          "h2_count": 9,
+          "answer_first_count": 1,
+          "ratio": 0.11
+        }
+      },
+      {
+        "name": "passage_density",
+        "label": "Passage Density",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+23%",
+        "details": {
+          "total_paragraphs": 43,
+          "dense_paragraphs": 0,
+          "ratio": 0.0
+        }
+      },
+      {
+        "name": "technical_terms",
+        "label": "Technical Terms",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+18%",
+        "details": {
+          "tech_matches": 149,
+          "density_per_1000": 90.85,
+          "code_blocks": 0,
+          "abbr_tags": 0
+        }
+      },
+      {
+        "name": "authoritative_tone",
+        "label": "Authoritative Tone",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+16%",
+        "details": {
+          "authority_markers": 1,
+          "hedge_markers": 0,
+          "has_author_bio": true,
+          "credentials": [],
+          "has_author_meta": true
+        }
+      },
+      {
+        "name": "easy_to_understand",
+        "label": "Easy-to-Understand",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+14%",
+        "details": {}
+      },
+      {
+        "name": "unique_words",
+        "label": "Unique Words",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+7%",
+        "details": {
+          "ttr": 0.608,
+          "total_words": 1114,
+          "unique_count": 456
+        }
+      },
+      {
+        "name": "keyword_stuffing",
+        "label": "No Keyword Stuffing",
+        "detected": false,
+        "score": 6,
+        "max_score": 6,
+        "impact": "-9%",
+        "details": {
+          "suspicious_keywords": {},
+          "stuffing_severity": "none",
+          "repeated_phrases": 0,
+          "front_loading_detected": false
+        }
+      },
+      {
+        "name": "readability",
+        "label": "Readability Score",
+        "detected": false,
+        "score": 0,
+        "max_score": 8,
+        "impact": "+15%",
+        "details": {
+          "flesch_kincaid_grade": 17.9,
+          "avg_words_per_sentence": 21.3,
+          "avg_syllables_per_word": 2.14,
+          "optimal_sections": 0,
+          "total_sections": 30
+        }
+      },
+      {
+        "name": "faq_in_content",
+        "label": "FAQ-in-Content",
+        "detected": false,
+        "score": 0,
+        "max_score": 6,
+        "impact": "+12%",
+        "details": {
+          "faq_patterns_found": 0
+        }
+      },
+      {
+        "name": "image_alt_quality",
+        "label": "Image Alt Quality",
+        "detected": true,
+        "score": 5,
+        "max_score": 5,
+        "impact": "+8%",
+        "details": {
+          "total_images": 78,
+          "with_alt": 77,
+          "descriptive_alt": 72,
+          "generic_alt": 5,
+          "missing_alt": 1
+        }
+      },
+      {
+        "name": "content_freshness",
+        "label": "Content Freshness",
+        "detected": true,
+        "score": 3,
+        "max_score": 6,
+        "impact": "+10%",
+        "details": {
+          "date_modified": null,
+          "date_published": null,
+          "is_fresh": false,
+          "freshness_level": "stale",
+          "months_old": null,
+          "year_references": {
+            "2026": 12,
+            "2024": 1,
+            "2025": 1,
+            "2022": 1
+          },
+          "warnings": [
+            "No date signal (dateModified/datePublished) found"
+          ]
+        }
+      },
+      {
+        "name": "citability_density",
+        "label": "Citability Density",
+        "detected": true,
+        "score": 1,
+        "max_score": 7,
+        "impact": "+15%",
+        "details": {
+          "total_paragraphs": 43,
+          "dense_paragraphs": 5,
+          "density_ratio": 0.12,
+          "total_citable_facts": 20
+        }
+      },
+      {
+        "name": "definition_patterns",
+        "label": "Definition Patterns",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+10%",
+        "details": {
+          "definitions_found": 0,
+          "total_headings": 10,
+          "ratio": 0.0
+        }
+      },
+      {
+        "name": "format_mix",
+        "label": "Response Format Mix",
+        "detected": true,
+        "score": 2,
+        "max_score": 5,
+        "impact": "+8%",
+        "details": {
+          "has_paragraphs": true,
+          "has_lists": true,
+          "has_tables": false,
+          "has_code": false,
+          "has_blockquote": false,
+          "format_count": 2
+        }
+      },
+      {
+        "name": "attribution_completeness",
+        "label": "Attribution Completeness",
+        "detected": false,
+        "score": 0,
+        "max_score": 5,
+        "impact": "+12%",
+        "details": {
+          "inline_attributions": 0,
+          "footnotes": 0,
+          "inline_link_citations": 0
+        }
+      },
+      {
+        "name": "no_negative_signals",
+        "label": "No Negative Signals",
+        "detected": false,
+        "score": 5,
+        "max_score": 5,
+        "impact": "-15%",
+        "details": {
+          "cta_count": 1,
+          "is_thin_content": false,
+          "has_author": true,
+          "repeated_phrases": 0,
+          "total_penalties": 0
+        }
+      },
+      {
+        "name": "comparison_content",
+        "label": "Comparison Content",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "vs_headings": 0,
+          "pro_con_sections": 0,
+          "comparison_tables": 0,
+          "large_tables": 0
+        }
+      },
+      {
+        "name": "eeat_signals",
+        "label": "E-E-A-T Signals",
+        "detected": true,
+        "score": 4,
+        "max_score": 7,
+        "impact": "+15%",
+        "details": {
+          "trust_links": {
+            "privacy": true,
+            "terms": true,
+            "about": true,
+            "contact": true
+          },
+          "trust_link_count": 4,
+          "has_detailed_bio": false,
+          "has_structured_author": false,
+          "has_verified_author": false,
+          "is_https": true
+        }
+      },
+      {
+        "name": "no_content_decay",
+        "label": "No Content Decay",
+        "detected": false,
+        "score": 5,
+        "max_score": 5,
+        "impact": "-10%",
+        "details": {
+          "old_year_references": [
+            2024,
+            2022
+          ],
+          "is_recently_modified": false,
+          "stale_update_patterns": 0,
+          "external_links_count": 83,
+          "total_penalties": 0
+        }
+      },
+      {
+        "name": "boilerplate_ratio",
+        "label": "Content-to-Boilerplate Ratio",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "content_length": 122,
+          "total_length": 20242,
+          "ratio": 0.01,
+          "method": "main_tag"
+        }
+      },
+      {
+        "name": "nuance_signals",
+        "label": "Nuance/Honesty Signals",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "nuance_patterns": 0,
+          "nuance_headings": 0,
+          "total_signals": 0
+        }
+      },
+      {
+        "name": "snippet_ready",
+        "label": "Snippet-Ready Content",
+        "detected": true,
+        "score": 1,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "snippet_ready_sections": 2,
+          "total_headings": 67,
+          "ratio": 0.03
+        }
+      },
+      {
+        "name": "chunk_quotability",
+        "label": "Chunk Quotability",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "candidate_paragraphs": 0,
+          "quotable_paragraphs": 0,
+          "ratio": 0
+        }
+      },
+      {
+        "name": "blog_structure",
+        "label": "Blog Structure",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "has_article_schema": false
+        }
+      },
+      {
+        "name": "shopping_readiness",
+        "label": "AI Shopping Readiness",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_product_schema": false
+        }
+      },
+      {
+        "name": "chatgpt_shopping",
+        "label": "ChatGPT Shopping Feed",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_product_schema": false
+        }
+      },
+      {
+        "name": "voice_search_ready",
+        "label": "Voice/Conversational Search",
+        "detected": false,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "question_headings": 1,
+          "concise_answers": 1,
+          "has_speakable_schema": false
+        }
+      },
+      {
+        "name": "multi_platform",
+        "label": "Multi-Platform Presence",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "platforms_found": [],
+          "platform_count": 0
+        }
+      },
+      {
+        "name": "entity_disambiguation",
+        "label": "Entity Disambiguation",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "names_found": [
+            "bis certification consultants",
+            "isi mark, fmcs, crs certificate",
+            "bis certification consultants",
+            "isi mark, fmcs, crs certificate"
+          ],
+          "names_consistent": false,
+          "sameas_count": 0
+        }
+      },
+      {
+        "name": "first_party_data",
+        "label": "First-Party Data",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+12%",
+        "details": {
+          "first_party_patterns": 0,
+          "own_data_signals": 0,
+          "has_methodology_section": false
+        }
+      },
+      {
+        "name": "no_stale_data",
+        "label": "No Stale Data",
+        "detected": false,
+        "score": 4,
+        "max_score": 4,
+        "impact": "-10%",
+        "details": {
+          "old_copyright_in_footer": false,
+          "stale_year_references": [],
+          "penalties": 0
+        }
+      },
+      {
+        "name": "social_proof",
+        "label": "Social Proof",
+        "detected": true,
+        "score": 2,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_testimonial": true,
+          "has_aggregate_rating": false,
+          "has_trust_badges": true
+        }
+      },
+      {
+        "name": "accessibility_signals",
+        "label": "Accessibility Signals",
+        "detected": true,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "semantic_tags": [
+            "footer",
+            "header",
+            "nav"
+          ],
+          "aria_landmarks": [],
+          "has_skip_link": false
+        }
+      },
+      {
+        "name": "conversion_funnel",
+        "label": "AI Conversion Funnel",
+        "detected": true,
+        "score": 1,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "has_cta": false,
+          "has_pricing_link": false,
+          "has_contact": true
+        }
+      },
+      {
+        "name": "temporal_coherence",
+        "label": "Temporal Signal Coherence",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+8%",
+        "details": {
+          "dates_found": {},
+          "date_count": 0,
+          "max_diff_days": 0,
+          "is_coherent": false,
+          "is_incoherent": false
+        }
+      },
+      {
+        "name": "anchor_text_quality",
+        "label": "Anchor Text Quality",
+        "detected": true,
+        "score": 3,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "total_internal_links": 279,
+          "generic_count": 8,
+          "descriptive_count": 271,
+          "descriptive_ratio": 0.97
+        }
+      },
+      {
+        "name": "international_geo",
+        "label": "International GEO",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "html_lang": "en",
+          "hreflang_count": 0,
+          "hreflang_langs": [],
+          "schema_inLanguage": null,
+          "is_multilingual": false
+        }
+      },
+      {
+        "name": "crawl_budget",
+        "label": "AI Crawl Budget",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+5%",
+        "details": {
+          "has_noindex": true,
+          "has_nofollow": true,
+          "has_sitemap_link": false,
+          "penalties": [
+            "meta robots noindex",
+            "meta robots nofollow"
+          ]
+        }
+      },
+      {
+        "name": "answer_capsule",
+        "label": "Answer Capsule Detection",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+12%",
+        "details": {
+          "capsule_count": 0,
+          "total_candidates": 1,
+          "ratio": 0.0
+        }
+      },
+      {
+        "name": "token_efficiency",
+        "label": "Token Efficiency",
+        "detected": false,
+        "score": 0,
+        "max_score": 3,
+        "impact": "+8%",
+        "details": {
+          "total_words": 2692,
+          "content_words": 16,
+          "noise_words": 2676,
+          "ratio": 0.01
+        }
+      },
+      {
+        "name": "entity_resolution",
+        "label": "Entity Resolution Friendliness",
+        "detected": false,
+        "score": 0,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "has_schema_entity": false,
+          "has_sameas": false,
+          "has_definition": false,
+          "entity_types": []
+        }
+      },
+      {
+        "name": "kg_density",
+        "label": "Knowledge Graph Density",
+        "detected": false,
+        "score": 1,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "relation_count": 8,
+          "density_per_500w": 2.4,
+          "schema_relations": 0,
+          "word_count": 1640
+        }
+      },
+      {
+        "name": "retrieval_triggers",
+        "label": "Retrieval Trigger Patterns",
+        "detected": false,
+        "score": 1,
+        "max_score": 4,
+        "impact": "+10%",
+        "details": {
+          "trigger_count": 0,
+          "unique_triggers": 0,
+          "density_per_500w": 0.0,
+          "question_headings": 3
+        }
+      }
+    ],
+    "engine_source": "geo_optimizer_skill"
+  },
+  "unified_trust": {
+    "overall_score": 40,
+    "raw_score": 10,
+    "grade": "D",
+    "layers": {
+      "technical": {
+        "name": "technical",
+        "label": "Technical & Infrastructure Trust",
+        "score": 2,
+        "max_score": 5,
+        "signals_found": [
+          "HTTPS Protocol Active (+2)"
+        ],
+        "signals_missing": [
+          "HSTS Header Missing",
+          "Content-Security-Policy Header Missing",
+          "X-Frame-Options Header Missing"
+        ]
+      },
+      "identity": {
+        "name": "identity",
+        "label": "Entity & Identity Trust",
+        "score": 3,
+        "max_score": 5,
+        "signals_found": [
+          "Identified Author / Person Entity",
+          "About Page Link",
+          "Contact / Support Page Link"
+        ],
+        "signals_missing": [
+          "No Organization/Business Schema in JSON-LD",
+          "Weak or Inconsistent Brand Signature"
+        ]
+      },
+      "social": {
+        "name": "social",
+        "label": "Social Proof & Reputation Trust",
+        "score": 2,
+        "max_score": 5,
+        "signals_found": [
+          "Linked Social Profiles (youtube.com, facebook.com, twitter.com)",
+          "Customer Reviews / Testimonials Evidence"
+        ],
+        "signals_missing": [
+          "No sameAs Links in Schema.org",
+          "Fewer than 3 verified sameAs profiles",
+          "No Knowledge Graph Pillar Link (Wikidata/Wikipedia)"
+        ]
+      },
+      "academic": {
+        "name": "academic",
+        "label": "Academic & Authority Trust",
+        "score": 1,
+        "max_score": 5,
+        "signals_found": [
+          "External Source Citations (317 non-social links)"
+        ],
+        "signals_missing": [
+          "Sparse Quantitative Data / Statistics",
+          "No Links to Recognized Authoritative Sources (.gov, .edu, DOI, PubMed)",
+          "No Dedicated References or Sources Section",
+          "Few Formal Statistical Patterns (Percentages / Research Citations)"
+        ]
+      },
+      "consistency": {
+        "name": "consistency",
+        "label": "Consistency & Compliance Trust",
+        "score": 2,
+        "max_score": 5,
+        "signals_found": [
+          "Privacy Policy Documented",
+          "Terms of Service / Terms of Use Documented"
+        ],
+        "signals_missing": [
+          "Missing or Undated Copyright Notice",
+          "Missing Canonical Tag",
+          "No Machine-Readable Publication/Modification Timestamps"
+        ]
+      }
+    },
+    "summary": "Trust Grade: D (40/100, Raw 10/25). Strongest layer: Entity & Identity Trust. Weakest layer: Academic & Authority Trust."
+  },
+  "unified_performance": {
+    "source": "local_probe",
+    "overall_performance_score": 85,
+    "ttfb_ms": 465.8,
+    "fcp_ms": null,
+    "lcp_ms": null,
+    "cls": null,
+    "inp_ms": null,
+    "metrics": [
+      {
+        "name": "TTFB",
+        "value": 0.466,
+        "unit": "s",
+        "status": "GOOD",
+        "threshold_good": 0.8,
+        "threshold_poor": 1.8
+      }
+    ],
+    "passed_audit": false,
+    "notes": [
+      "Local high-precision TTFB probe (set PAGESPEED_API_KEY for CrUX real-user telemetry).",
+      "RankIntel performance bands: 90–100=Pass, 50–89=Needs Improvement, <50=Poor (based on Lighthouse scale)."
+    ]
+  },
+  "cloud_intelligence": {
+    "available": false,
+    "keywords": null,
+    "backlinks": null,
+    "ai_visibility_score": 0,
+    "notes": []
+  },
+  "site_crawl": null,
+  "fixes": {
+    "current_title": "",
+    "optimized_title": "Your Trusted Partner \n\n            ... | Alephindia",
+    "title_length": "51",
+    "current_description": "Aleph INDIA® is an expert BIS Registration Consultant in Delhi - India, providing a single window for all kinds of Technical Certification & Regulatory Compliances. We offer consulting services for BIS Registration, ISI Certification, WPC Approval, EPR Registration, BIS Hallmarking, and many more.",
+    "optimized_description": "Aleph INDIA® is an expert BIS Registration Consultant in Delhi - India, providing a single window for all kinds of Technical. Get a quote today.",
+    "desc_length": "144",
+    "jsonld_schema": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"Organization\",\n      \"@id\": \"https://alephindia.in/#organization\",\n      \"name\": \"Alephindia\",\n      \"url\": \"https://alephindia.in\",\n      \"description\": \"Aleph INDIA® is an expert BIS Registration Consultant in Delhi - India, providing a single window for all kinds of Technical Certification & Regulatory Compliances. We offer consulting services for BIS Registration, ISI Certification, WPC Approval, EPR Registration, BIS Hallmarking, and many more.\"\n    },\n    {\n      \"@type\": \"WebSite\",\n      \"@id\": \"https://alephindia.in/#website\",\n      \"url\": \"https://alephindia.in\",\n      \"name\": \"Alephindia\",\n      \"publisher\": {\n        \"@id\": \"https://alephindia.in/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://alephindia.in/#webpage\",\n      \"url\": \"https://alephindia.in/\",\n      \"name\": \"Alephindia\",\n      \"isPartOf\": {\n        \"@id\": \"https://alephindia.in/#website\"\n      },\n      \"about\": {\n        \"@id\": \"https://alephindia.in/#organization\"\n      },\n      \"description\": \"Aleph INDIA® is an expert BIS Registration Consultant in Delhi - India, providing a single window for all kinds of Technical Certification & Regulatory Compliances. We offer consulting services for BIS Registration, ISI Certification, WPC Approval, EPR Registration, BIS Hallmarking, and many more.\"\n    }\n  ]\n}\n</script>",
+    "llms_txt": "# Alephindia\n\n> Aleph INDIA® is an expert BIS Registration Consultant in Delhi - India, providing a single window for all kinds of Technical Certification & Regulatory Compliances. We offer consulting services for BIS Registration, ISI Certification, WPC Approval, EPR Registration, BIS Hallmarking, and many more.\n\n## Core Services & Knowledge Base\n- [Homepage](https://alephindia.in/): Primary portal and overview.\n\n## Optional & Detailed Documentation\n- [/llms-full.txt](https://alephindia.in/llms-full.txt): Comprehensive documentation for deeper context.",
+    "hardened_robots": "# RankIntel Hardened AI Robots.txt Policy\n# 1. Allow AI Search & Citation Bots (Essential for ChatGPT Search, Google, Perplexity, Claude)\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Claude-SearchBot\nAllow: /\n\nUser-agent: Googlebot\nAllow: /\n\nUser-agent: Applebot\nAllow: /\n\n# 2. Optional: Disallow AI Model Pre-Training Scrapers (If preserving intellectual property)\n# User-agent: GPTBot\n# Disallow: /\n# User-agent: ClaudeBot\n# Disallow: /\n# User-agent: Google-Extended\n# Disallow: /\n\n# 3. Standard Crawler Settings\nUser-agent: *\nAllow: /\n"
+  }
+}
