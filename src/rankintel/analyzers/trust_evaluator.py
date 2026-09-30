@@ -159,7 +159,9 @@ class TrustEvaluator:
         missing = []
 
         # 1. Organization Schema (+1)
-        has_org = schema.has_organization or any("Organization" in t or "Corporation" in t or "LocalBusiness" in t for t in schema.detected_types)
+        has_org = schema.has_organization or any(
+            o in t for t in schema.detected_types for o in ("Organization", "Corporation", "LocalBusiness", "ProfessionalService")
+        )
         if has_org:
             score += 1
             found.append("Organization / LocalBusiness Structured Data")

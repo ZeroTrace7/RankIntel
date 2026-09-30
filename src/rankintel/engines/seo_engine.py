@@ -255,7 +255,7 @@ class SeoEngine:
 
                         # Check Organization / Person
                         type_str = str(t)
-                        if any(o in type_str for o in ["Organization", "Corporation", "LocalBusiness"]):
+                        if any(o in type_str for o in ["Organization", "Corporation", "LocalBusiness", "ProfessionalService"]):
                             has_org = True
                         if any(p in type_str for p in ["Person", "Author"]):
                             has_author = True

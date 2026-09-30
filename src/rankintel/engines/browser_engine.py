@@ -133,6 +133,9 @@ class BrowserEngine:
     ) -> OnPageEvidence:
         on_page = OnPageEvidence(url=url, status_code=200, response_time_sec=dur)
 
+        if not title:
+            t_tag = soup.find("title")
+            title = t_tag.get_text().strip() if t_tag else ""
         on_page.title = title
         on_page.title_length = len(title)
 
@@ -140,6 +143,10 @@ class BrowserEngine:
         m_desc = m_tag["content"].strip() if m_tag and m_tag.get("content") else ""
         on_page.meta_description = m_desc
         on_page.meta_desc_length = len(m_desc)
+
+        c_tag = soup.find("link", attrs={"rel": lambda v: v and "canonical" in (v if isinstance(v, list) else [str(v).lower()])})
+        if c_tag and c_tag.get("href"):
+            on_page.canonical_url = c_tag["href"].strip()
 
         on_page.h1_text = [h.get_text().strip() for h in soup.find_all("h1") if h.get_text().strip()]
         on_page.h1_count = len(on_page.h1_text)
@@ -168,6 +175,10 @@ class BrowserEngine:
         schema_ev.blocks_count = len(schema_tags)
 
         detected = []
+        sameas_urls = []
+        has_org = False
+        has_author = False
+
         for tag in schema_tags:
             try:
                 c = tag.string if tag.string else tag.text
@@ -178,13 +189,33 @@ class BrowserEngine:
                 if isinstance(data, list):
                     items = data
                 elif isinstance(data, dict):
-                    items = data.get("@graph", [data]) if "@graph" in data else [data]
+                    items = data.get("@graph", [data]) if "@graph" in data and isinstance(data["@graph"], list) else [data]
                 for item in items:
+                    if not isinstance(item, dict):
+                        continue
                     t = item.get("@type")
                     if t:
                         detected.extend([str(t)] if isinstance(t, str) else [str(x) for x in t])
+
+                    type_str = str(t)
+                    if any(o in type_str for o in ["Organization", "Corporation", "LocalBusiness", "ProfessionalService"]):
+                        has_org = True
+                    if any(p in type_str for p in ["Person", "Author"]):
+                        has_author = True
+
+                    sameas = item.get("sameAs")
+                    if sameas:
+                        if isinstance(sameas, list):
+                            for s_u in sameas:
+                                if isinstance(s_u, str) and s_u.startswith("http"):
+                                    sameas_urls.append(s_u)
+                        elif isinstance(sameas, str) and sameas.startswith("http"):
+                            sameas_urls.append(sameas)
             except Exception as e:
                 schema_ev.validation_issues.append(str(e))
 
         schema_ev.detected_types = list(set(detected))
+        schema_ev.sameas_urls = list(set(sameas_urls))
+        schema_ev.has_organization = has_org
+        schema_ev.has_author = has_author
         return schema_ev

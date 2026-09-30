@@ -54,8 +54,16 @@ class IntelligenceSynthesizer:
         # 1. OnPage Reconciliation
         if browser_res and browser_res.on_page and browser_res.on_page.status_code == 200:
             unified_on_page = browser_res.on_page
-            # Merge response headers and links if static SEO had them
+            # Merge response headers, links, title, description, and canonical if static SEO had them
             if seo_res and seo_res.on_page:
+                if not unified_on_page.title and seo_res.on_page.title:
+                    unified_on_page.title = seo_res.on_page.title
+                    unified_on_page.title_length = seo_res.on_page.title_length
+                if not unified_on_page.meta_description and seo_res.on_page.meta_description:
+                    unified_on_page.meta_description = seo_res.on_page.meta_description
+                    unified_on_page.meta_desc_length = seo_res.on_page.meta_desc_length
+                if not unified_on_page.canonical_url and seo_res.on_page.canonical_url:
+                    unified_on_page.canonical_url = seo_res.on_page.canonical_url
                 if not unified_on_page.response_headers and seo_res.on_page.response_headers:
                     unified_on_page.response_headers = seo_res.on_page.response_headers
                 if not unified_on_page.internal_links and seo_res.on_page.internal_links:
