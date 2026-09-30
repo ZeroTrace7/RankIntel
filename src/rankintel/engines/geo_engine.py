@@ -59,9 +59,11 @@ class GeoEngine:
 
         try:
             r = requests.get(llms_url, headers=self.headers, timeout=6)
-            if r.status_code == 200:
+            ct = r.headers.get("Content-Type", "").lower()
+            content = r.text.lstrip("\ufeff")
+            is_html = "text/html" in ct or content.lstrip().lower().startswith(("<!doctype html", "<html"))
+            if r.status_code == 200 and not is_html:
                 found = True
-                content = r.text.lstrip("\ufeff")
                 lines = content.splitlines()
 
                 # Must have H1 title

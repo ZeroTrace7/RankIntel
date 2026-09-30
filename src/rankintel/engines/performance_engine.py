@@ -152,7 +152,20 @@ class PerformanceEngine:
             except Exception as e:
                 notes.append(f"Network probe warning: {e}")
 
-        avg_ttfb_sec = sum(timings) / len(timings) if timings else 0.8
+        if not timings:
+            return PerformanceEvidence(
+                source="unavailable",
+                overall_performance_score=0,
+                ttfb_ms=0.0,
+                lcp_ms=None,
+                cls=None,
+                inp_ms=None,
+                metrics=[],
+                passed_audit=False,
+                notes=notes + ["Local TTFB probe failed — score excluded from holistic formula."],
+            )
+
+        avg_ttfb_sec = sum(timings) / len(timings)
         ttfb_ms = avg_ttfb_sec * 1000.0
 
         # Heuristic scoring based on official Google thresholds

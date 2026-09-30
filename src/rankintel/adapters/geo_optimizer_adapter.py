@@ -114,9 +114,16 @@ class GeoOptimizerAdapter:
         # llms.txt always checks its own URL (separate endpoint)
         try:
             llms = audit_llms_txt(url)
-            llms_found = llms.found
-            llms_warnings = list(llms.validation_warnings or [])
-            llms_full = llms.has_full
+            has_markdown_structure = bool(
+                getattr(llms, "has_h1", False)
+                or getattr(llms, "has_links", False)
+                or getattr(llms, "has_sections", False)
+                or getattr(llms, "has_blockquote", False)
+                or getattr(llms, "has_description", False)
+            )
+            llms_found = bool(llms.found and has_markdown_structure)
+            llms_warnings = list(llms.validation_warnings or []) if llms_found else []
+            llms_full = bool(llms.has_full and llms_found)
         except Exception:
             llms_found = False
             llms_warnings = []
