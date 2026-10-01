@@ -2,9 +2,9 @@
   "url": "https://sunrisetesting.vercel.app/",
   "domain": "sunrisetesting.vercel.app",
   "timestamp": "2026-10-01",
-  "overall_health_score": 43,
+  "overall_health_score": 48,
   "geo_readiness_score": 35,
-  "technical_health_score": 45,
+  "technical_health_score": 60,
   "trust_score": 20,
   "performance_score": 85,
   "keyword_score": 0,
@@ -21,7 +21,7 @@
     {
       "level": "HIGH",
       "title": "Optimize Title Tag Length & CTR Hook",
-      "finding": "Current title is 0 characters.",
+      "finding": "Current title is 81 characters.",
       "rationale": "Titles over 60 chars are truncated in SERPs with ellipses. Target 50-60 chars with primary keyword front-loaded.",
       "engine_confidence": "HIGH (Deterministic measurement)",
       "fix_snippet": null
@@ -74,11 +74,13 @@
       "engine": "seo_engine",
       "evidence_snippet": "",
       "confidence": "high",
-      "confirmed_by": [],
+      "confirmed_by": [
+        "browser_engine"
+      ],
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 159ms",
+      "finding": "TTFB Latency: 94ms",
       "source_file": "HTTP response probe",
       "engine": "performance_engine",
       "evidence_snippet": "Telemetry Source: local_probe",
@@ -108,9 +110,9 @@
   "unified_on_page": {
     "url": "https://sunrisetesting.vercel.app/",
     "status_code": 200,
-    "response_time_sec": 2.2,
-    "title": "",
-    "title_length": 0,
+    "response_time_sec": 1.99,
+    "title": "Sunrise Testing & Calibration Centre | Testing, Calibration & Inspection Services",
+    "title_length": 81,
     "meta_description": "Sunrise Testing & Calibration Centre — Testing, Calibration, Inspection and Certification Support services across Raipur, Nagpur, Madhya Pradesh, Uttar Pradesh, Jharkhand and Bihar.",
     "meta_desc_length": 181,
     "h1_count": 1,
@@ -163,18 +165,18 @@
     "is_redirect": false,
     "response_headers": {
       "Access-Control-Allow-Origin": "*",
-      "Age": "5734",
+      "Age": "81808",
       "Cache-Control": "public, max-age=0, must-revalidate",
       "Content-Disposition": "inline",
       "Content-Encoding": "br",
       "Content-Type": "text/html; charset=utf-8",
-      "Date": "Wed, 30 Sep 2026 20:07:12 GMT",
+      "Date": "Thu, 01 Oct 2026 17:15:06 GMT",
       "Etag": "W/\"02b86f963f47140aed134e4d31c13011\"",
       "Last-Modified": "Wed, 30 Sep 2026 18:31:37 GMT",
       "Server": "Vercel",
       "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
       "X-Vercel-Cache": "HIT",
-      "X-Vercel-Id": "bom1::dhnzb-1790798831844-df4bbe1144bc",
+      "X-Vercel-Id": "bom1::fhvmz-1790874906049-1dca175cfd6d",
       "Transfer-Encoding": "chunked"
     },
     "internal_links": [
@@ -1005,7 +1007,7 @@
   "unified_performance": {
     "source": "local_probe",
     "overall_performance_score": 85,
-    "ttfb_ms": 159.2,
+    "ttfb_ms": 94.4,
     "fcp_ms": null,
     "lcp_ms": null,
     "cls": null,
@@ -1013,7 +1015,7 @@
     "metrics": [
       {
         "name": "TTFB",
-        "value": 0.159,
+        "value": 0.094,
         "unit": "s",
         "status": "GOOD",
         "threshold_good": 0.8,
@@ -1035,14 +1037,14 @@
   },
   "site_crawl": null,
   "fixes": {
-    "current_title": "",
+    "current_title": "Sunrise Testing & Calibration Centre | Testing, Calibration & Inspection Services",
     "optimized_title": "Precision Instrumentsfor Accurate R... | Sunrisetesting",
     "title_length": "55",
     "current_description": "Sunrise Testing & Calibration Centre — Testing, Calibration, Inspection and Certification Support services across Raipur, Nagpur, Madhya Pradesh, Uttar Pradesh, Jharkhand and Bihar.",
     "optimized_description": "Sunrise Testing & Calibration Centre — Testing, Calibration, Inspection and Certification Support services across Raipur, Nagpur,. Get a quote today.",
     "desc_length": "149",
-    "jsonld_schema": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"Organization\",\n      \"@id\": \"https://sunrisetesting.vercel.app/#organization\",\n      \"name\": \"Sunrisetesting\",\n      \"url\": \"https://sunrisetesting.vercel.app\",\n      \"description\": \"Sunrise Testing & Calibration Centre — Testing, Calibration, Inspection and Certification Support services across Raipur, Nagpur, Madhya Pradesh, Uttar Pradesh, Jharkhand and Bihar.\"\n    },\n    {\n      \"@type\": \"WebSite\",\n      \"@id\": \"https://sunrisetesting.vercel.app/#website\",\n      \"url\": \"https://sunrisetesting.vercel.app\",\n      \"name\": \"Sunrisetesting\",\n      \"publisher\": {\n        \"@id\": \"https://sunrisetesting.vercel.app/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://sunrisetesting.vercel.app/#webpage\",\n      \"url\": \"https://sunrisetesting.vercel.app/\",\n      \"name\": \"Sunrisetesting\",\n      \"isPartOf\": {\n        \"@id\": \"https://sunrisetesting.vercel.app/#website\"\n      },\n      \"about\": {\n        \"@id\": \"https://sunrisetesting.vercel.app/#organization\"\n      },\n      \"description\": \"Sunrise Testing & Calibration Centre — Testing, Calibration, Inspection and Certification Support services across Raipur, Nagpur, Madhya Pradesh, Uttar Pradesh, Jharkhand and Bihar.\"\n    }\n  ]\n}\n</script>",
-    "llms_txt": "# Sunrisetesting\n\n> Sunrise Testing & Calibration Centre — Testing, Calibration, Inspection and Certification Support services across Raipur, Nagpur, Madhya Pradesh, Uttar Pradesh, Jharkhand and Bihar.\n\n## Core Services & Knowledge Base\n- [Homepage](https://sunrisetesting.vercel.app/): Primary portal and overview.\n\n## Optional & Detailed Documentation\n- [/llms-full.txt](https://sunrisetesting.vercel.app/llms-full.txt): Comprehensive documentation for deeper context.",
+    "jsonld_schema": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"Organization\",\n      \"@id\": \"https://sunrisetesting.vercel.app/#organization\",\n      \"name\": \"Sunrisetesting\",\n      \"url\": \"https://sunrisetesting.vercel.app\",\n      \"description\": \"Sunrise Testing & Calibration Centre — Testing, Calibration, Inspection and Certification Support services across Raipur, Nagpur, Madhya Pradesh, Uttar Pradesh, Jharkhand and Bihar.\"\n    },\n    {\n      \"@type\": \"WebSite\",\n      \"@id\": \"https://sunrisetesting.vercel.app/#website\",\n      \"url\": \"https://sunrisetesting.vercel.app\",\n      \"name\": \"Sunrisetesting\",\n      \"publisher\": {\n        \"@id\": \"https://sunrisetesting.vercel.app/#organization\"\n      }\n    },\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://sunrisetesting.vercel.app/#webpage\",\n      \"url\": \"https://sunrisetesting.vercel.app/\",\n      \"name\": \"Sunrise Testing & Calibration Centre | Testing, Calibration & Inspection Services\",\n      \"isPartOf\": {\n        \"@id\": \"https://sunrisetesting.vercel.app/#website\"\n      },\n      \"about\": {\n        \"@id\": \"https://sunrisetesting.vercel.app/#organization\"\n      },\n      \"description\": \"Sunrise Testing & Calibration Centre — Testing, Calibration, Inspection and Certification Support services across Raipur, Nagpur, Madhya Pradesh, Uttar Pradesh, Jharkhand and Bihar.\"\n    }\n  ]\n}\n</script>",
+    "llms_txt": "# Sunrisetesting\n\n> Sunrise Testing & Calibration Centre — Testing, Calibration, Inspection and Certification Support services across Raipur, Nagpur, Madhya Pradesh, Uttar Pradesh, Jharkhand and Bihar.\n\n## Core Services & Knowledge Base\n- [Sunrise Testing & Calibration Centre | Testing, Calibration & Inspection Services](https://sunrisetesting.vercel.app/): Primary portal and overview.\n\n## Optional & Detailed Documentation\n- [/llms-full.txt](https://sunrisetesting.vercel.app/llms-full.txt): Comprehensive documentation for deeper context.",
     "hardened_robots": "# RankIntel Hardened AI Robots.txt Policy\n# 1. Allow AI Search & Citation Bots (Essential for ChatGPT Search, Google, Perplexity, Claude)\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Claude-SearchBot\nAllow: /\n\nUser-agent: Googlebot\nAllow: /\n\nUser-agent: Applebot\nAllow: /\n\n# 2. Optional: Disallow AI Model Pre-Training Scrapers (If preserving intellectual property)\n# User-agent: GPTBot\n# Disallow: /\n# User-agent: ClaudeBot\n# Disallow: /\n# User-agent: Google-Extended\n# Disallow: /\n\n# 3. Standard Crawler Settings\nUser-agent: *\nAllow: /\n"
   }
 }
