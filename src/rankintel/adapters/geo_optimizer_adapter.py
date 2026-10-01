@@ -24,6 +24,8 @@ try:
     HAS_GEO_OPTIMIZER = True
 except ImportError:
     HAS_GEO_OPTIMIZER = False
+    audit_citability = None  # type: ignore
+    audit_llms_txt = None  # type: ignore
 
 
 class GeoOptimizerAdapter:
