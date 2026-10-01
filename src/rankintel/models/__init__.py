@@ -25,6 +25,9 @@ from rankintel.models.schema import (
     CloudIntelligenceEvidence,
     PageSummary,
     SiteCrawlResult,
+    CrawlStatus,
+    CrawlConfig,
+    CrawlRecord,
 )
 
 __all__ = [
@@ -51,4 +54,7 @@ __all__ = [
     "CloudIntelligenceEvidence",
     "PageSummary",
     "SiteCrawlResult",
+    "CrawlStatus",
+    "CrawlConfig",
+    "CrawlRecord",
 ]

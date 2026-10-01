@@ -2,6 +2,7 @@
 RankIntel Data Models for Multi-Engine Evidence & Synthesis.
 """
 from __future__ import annotations
+from enum import Enum
 from typing import Dict, List, Optional, Any
 from pydantic import BaseModel, Field
 
@@ -149,6 +150,42 @@ class CloudIntelligenceEvidence(BaseModel):
     ai_visibility_score: int = 0
     notes: List[str] = Field(default_factory=list)
 
+class CrawlStatus(str, Enum):
+    QUEUED = "QUEUED"
+    FETCHED = "FETCHED"
+    SKIPPED = "SKIPPED"
+    BLOCKED = "BLOCKED"
+    FAILED = "FAILED"
+    REDIRECTED = "REDIRECTED"
+    DUPLICATE = "DUPLICATE"
+
+class CrawlConfig(BaseModel):
+    max_pages: int = Field(default=50, ge=1, le=500)
+    max_depth: int = Field(default=3, ge=1, le=10)
+    concurrency: int = Field(default=5, ge=1, le=20)
+    crawl_delay: float = Field(default=0.1, ge=0.0, le=5.0)
+    timeout_sec: float = Field(default=15.0, ge=1.0, le=60.0)
+    respect_robots_txt: bool = True
+    allowed_subdomains: bool = False
+    user_agent: str = "RankIntel/2.0 (+https://github.com/ZeroTrace7/RankIntel)"
+
+class CrawlRecord(BaseModel):
+    url: str
+    normalized_url: str
+    identity_url: str
+    crawl_status: CrawlStatus
+    depth: int
+    parent_url: Optional[str] = None
+    discovery_source: str = "internal_link"  # seed, internal_link, sitemap
+    status_code: int = 0
+    content_type: str = ""
+    response_bytes: int = 0
+    fetch_time_sec: float = 0.0
+    retry_count: int = 0
+    failure_reason: Optional[str] = None
+    raw_html: Optional[str] = None
+    discovered_links: List[str] = Field(default_factory=list)
+
 class PageSummary(BaseModel):
     """Summary of a single crawled page for site-wide analysis."""
     url: str
@@ -167,6 +204,9 @@ class SiteCrawlResult(BaseModel):
     pages_crawled: int = 0
     pages_with_issues: int = 0
     crawl_depth: int = 2
+    crawl_duration_sec: float = 0.0
+    status_counts: Dict[str, int] = Field(default_factory=dict)
+    crawl_records: List[CrawlRecord] = Field(default_factory=list)
     pages: List[PageSummary] = Field(default_factory=list)
     site_wide_issues: List[str] = Field(default_factory=list)
     orphan_pages: List[str] = Field(default_factory=list)
