@@ -7,7 +7,20 @@ from typing import Dict, Any, Optional
 try:
     from fastmcp import FastMCP
 except ImportError:
-    from mcp.server.fastmcp import FastMCP
+    try:
+        from mcp.server.fastmcp import FastMCP
+    except ImportError:
+        class FastMCP:  # type: ignore
+            def __init__(self, name: str = "rankintel", *args, **kwargs):
+                self.name = name
+
+            def tool(self, func=None):
+                if func is None:
+                    return lambda f: f
+                return func
+
+            def run(self, *args, **kwargs):
+                pass
 
 from rankintel.evidence.collector import EvidenceCollector
 from rankintel.intelligence.synthesizer import IntelligenceSynthesizer
