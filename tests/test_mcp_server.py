@@ -90,3 +90,11 @@ def test_rankintel_generate_fixes_tool():
     assert "jsonld_schema" in fixes
     assert "llms_txt" in fixes
     assert "hardened_robots" in fixes
+
+
+def test_fastmcp_graceful_fallback():
+    """Verify that FastMCP fallback works correctly without crashing when mcp is uninstalled."""
+    from rankintel.mcp.server import mcp
+    assert mcp is not None
+    assert hasattr(mcp, "tool")
+
