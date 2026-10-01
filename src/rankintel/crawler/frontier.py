@@ -141,6 +141,10 @@ class CrawlFrontier:
         """Check whether page limit budget has not been exceeded."""
         return self.fetched_count < self.config.max_pages
 
+    def has_work(self) -> bool:
+        """Check whether there are enqueued URLs waiting and crawl budget is remaining."""
+        return not self.queue.empty() and self.fetched_count < self.config.max_pages
+
     def build_result(self, duration_sec: float) -> SiteCrawlResult:
         """Build structured SiteCrawlResult from all crawl records."""
         status_counts: Dict[str, int] = {}
