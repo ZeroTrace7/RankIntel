@@ -7,8 +7,8 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10+" />
   <img src="https://img.shields.io/badge/Protocol-Model_Context_Protocol_(MCP)-8A2BE2?style=for-the-badge" alt="MCP" />
-  <img src="https://img.shields.io/badge/Architecture-Dual--Engine-00C853?style=for-the-badge" alt="Dual Engine" />
-  <img src="https://img.shields.io/badge/Data_Source-DataForSEO_|_OpenSEO-FF6F00?style=for-the-badge" alt="DataForSEO" />
+  <img src="https://img.shields.io/badge/Architecture-Multi--Engine-00C853?style=for-the-badge" alt="Multi Engine" />
+  <img src="https://img.shields.io/badge/Tests-60%2B%20Passing-brightgreen?style=for-the-badge" alt="Tests" />
   <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="License" />
 </p>
 
