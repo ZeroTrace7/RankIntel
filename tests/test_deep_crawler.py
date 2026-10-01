@@ -73,98 +73,109 @@ def mock_transport_handler(request: httpx.Request) -> httpx.Response:
     return httpx.Response(404, text="Not Found")
 
 
-@pytest.mark.asyncio
-async def test_crawler_full_site_discovery_and_depth():
+import asyncio
+
+
+def test_crawler_full_site_discovery_and_depth():
     """Verify crawler discovers site hierarchy, records depth, and respects boundaries."""
-    transport = httpx.MockTransport(mock_transport_handler)
-    config = CrawlConfig(
-        max_pages=20,
-        max_depth=3,
-        concurrency=3,
-        crawl_delay=0.0,
-        respect_robots_txt=False,
-    )
-    crawler = AsyncDeepCrawler(config=config, transport=transport)
+    async def _run():
+        transport = httpx.MockTransport(mock_transport_handler)
+        config = CrawlConfig(
+            max_pages=20,
+            max_depth=3,
+            concurrency=3,
+            crawl_delay=0.0,
+            respect_robots_txt=False,
+        )
+        crawler = AsyncDeepCrawler(config=config, transport=transport)
 
-    result = await crawler.crawl("https://example.com")
+        result = await crawler.crawl("https://example.com")
 
-    # Should discover all internal pages up to depth 2
-    assert result.pages_crawled >= 5
+        # Should discover all internal pages up to depth 2
+        assert result.pages_crawled >= 5
 
-    # Check CrawlRecord telemetry
-    crawled_urls = {r.normalized_url for r in result.crawl_records if r.crawl_status == CrawlStatus.FETCHED}
-    assert "https://example.com" in crawled_urls or "https://example.com/" in crawled_urls
-    assert "https://example.com/about" in crawled_urls
-    assert "https://example.com/services" in crawled_urls
+        # Check CrawlRecord telemetry
+        crawled_urls = {r.normalized_url for r in result.crawl_records if r.crawl_status == CrawlStatus.FETCHED}
+        assert "https://example.com" in crawled_urls or "https://example.com/" in crawled_urls
+        assert "https://example.com/about" in crawled_urls
+        assert "https://example.com/services" in crawled_urls
 
-    # External domain must NOT be crawled
-    assert not any("external-competitor.com" in r.url for r in result.crawl_records)
+        # External domain must NOT be crawled
+        assert not any("external-competitor.com" in r.url for r in result.crawl_records)
 
-    # PDF asset must NOT be crawled
-    assert not any("manual.pdf" in r.url for r in result.crawl_records)
+        # PDF asset must NOT be crawled
+        assert not any("manual.pdf" in r.url for r in result.crawl_records)
 
-    # Status counts must track fetched
-    assert result.status_counts.get("FETCHED", 0) >= 5
+        # Status counts must track fetched
+        assert result.status_counts.get("FETCHED", 0) >= 5
+
+    asyncio.run(_run())
 
 
-@pytest.mark.asyncio
-async def test_crawler_respects_max_pages_ceiling():
+def test_crawler_respects_max_pages_ceiling():
     """Verify crawler halts popping when max_pages ceiling is reached."""
-    transport = httpx.MockTransport(mock_transport_handler)
-    config = CrawlConfig(
-        max_pages=3,
-        max_depth=5,
-        concurrency=1,
-        crawl_delay=0.0,
-        respect_robots_txt=False,
-    )
-    crawler = AsyncDeepCrawler(config=config, transport=transport)
+    async def _run():
+        transport = httpx.MockTransport(mock_transport_handler)
+        config = CrawlConfig(
+            max_pages=3,
+            max_depth=5,
+            concurrency=1,
+            crawl_delay=0.0,
+            respect_robots_txt=False,
+        )
+        crawler = AsyncDeepCrawler(config=config, transport=transport)
 
-    result = await crawler.crawl("https://example.com")
+        result = await crawler.crawl("https://example.com")
 
-    assert result.pages_crawled <= 3
+        assert result.pages_crawled <= 3
+
+    asyncio.run(_run())
 
 
-@pytest.mark.asyncio
-async def test_crawler_respects_max_depth_ceiling():
+def test_crawler_respects_max_depth_ceiling():
     """Verify crawler does not enqueue or fetch links deeper than max_depth."""
-    transport = httpx.MockTransport(mock_transport_handler)
-    config = CrawlConfig(
-        max_pages=20,
-        max_depth=1,  # Root (depth 0) and depth 1 only
-        concurrency=2,
-        crawl_delay=0.0,
-        respect_robots_txt=False,
-    )
-    crawler = AsyncDeepCrawler(config=config, transport=transport)
+    async def _run():
+        transport = httpx.MockTransport(mock_transport_handler)
+        config = CrawlConfig(
+            max_pages=20,
+            max_depth=1,  # Root (depth 0) and depth 1 only
+            concurrency=2,
+            crawl_delay=0.0,
+            respect_robots_txt=False,
+        )
+        crawler = AsyncDeepCrawler(config=config, transport=transport)
 
-    result = await crawler.crawl("https://example.com")
+        result = await crawler.crawl("https://example.com")
 
-    fetched_records = [r for r in result.crawl_records if r.crawl_status == CrawlStatus.FETCHED]
-    for r in fetched_records:
-        assert r.depth <= 1, f"Fetched record at depth {r.depth} exceeds max_depth 1: {r.url}"
+        fetched_records = [r for r in result.crawl_records if r.crawl_status == CrawlStatus.FETCHED]
+        for r in fetched_records:
+            assert r.depth <= 1, f"Fetched record at depth {r.depth} exceeds max_depth 1: {r.url}"
+
+    asyncio.run(_run())
 
 
-@pytest.mark.asyncio
-async def test_crawler_handles_redirects_and_errors():
+def test_crawler_handles_redirects_and_errors():
     """Verify 3xx redirects are marked REDIRECTED and 4xx/5xx are marked FAILED."""
-    transport = httpx.MockTransport(mock_transport_handler)
-    config = CrawlConfig(
-        max_pages=10,
-        max_depth=2,
-        concurrency=1,
-        crawl_delay=0.0,
-        respect_robots_txt=False,
-    )
-    crawler = AsyncDeepCrawler(config=config, transport=transport)
+    async def _run():
+        transport = httpx.MockTransport(mock_transport_handler)
+        config = CrawlConfig(
+            max_pages=10,
+            max_depth=2,
+            concurrency=1,
+            crawl_delay=0.0,
+            respect_robots_txt=False,
+        )
+        crawler = AsyncDeepCrawler(config=config, transport=transport)
 
-    # Crawl starting from redirect source
-    result = await crawler.crawl("https://example.com/redirect-source")
+        # Crawl starting from redirect source
+        result = await crawler.crawl("https://example.com/redirect-source")
 
-    redirect_records = [r for r in result.crawl_records if r.crawl_status == CrawlStatus.REDIRECTED]
-    assert len(redirect_records) >= 1
-    assert redirect_records[0].status_code == 301
-    assert "Redirected to https://example.com/about" in redirect_records[0].failure_reason
+        redirect_records = [r for r in result.crawl_records if r.crawl_status == CrawlStatus.REDIRECTED]
+        assert len(redirect_records) >= 1
+        assert redirect_records[0].status_code == 301
+        assert "Redirected to https://example.com/about" in redirect_records[0].failure_reason
+
+    asyncio.run(_run())
 
 
 def test_crawler_sync_wrapper_runs_cleanly():
