@@ -26,3 +26,6 @@ Whenever asked to `audit <url>`:
 ## 5. Resilience Rules
 - **Silent Fallbacks**: If MCP fails/no credits, fallback to local `rankintel audit <url>` without prompting the user.
 - **Bot Protection**: If 403/blocked, document the firewall as a technical finding.
+
+## 6. Git Configuration
+- **Author Email**: All commits for this project must strictly use `shreyashgupta999@gmail.com` and username `ZeroTrace7` to ensure proper contribution tracking on GitHub. Local git config is set, but agents must verify this if environment resets occur.
