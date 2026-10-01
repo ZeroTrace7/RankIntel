@@ -45,6 +45,7 @@ geo = [
 ]
 mcp = [
     "mcp[cli]>=1.0.0",
+    "fastmcp>=0.1.0",
 ]
 all = [
     "rankintel[advertools,browser,geo,mcp]",
