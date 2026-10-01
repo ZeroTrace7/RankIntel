@@ -157,17 +157,40 @@ class AsyncDeepCrawler:
             frontier.mark_blocked(norm_url, "Disallowed by robots.txt")
             return
 
-        if self.config.crawl_delay > 0:
-            await asyncio.sleep(self.config.crawl_delay)
+        retries = 0
+        resp = None
+        fetch_dur = 0.0
 
-        async with sem:
-            t_fetch_start = time.time()
-            try:
-                resp = await client.get(norm_url)
-                fetch_dur = time.time() - t_fetch_start
-            except Exception as e:
-                frontier.mark_failed(norm_url, str(e), status_code=0)
-                return
+        while True:
+            if self.config.crawl_delay > 0:
+                await asyncio.sleep(self.config.crawl_delay)
+
+            async with sem:
+                t_fetch_start = time.time()
+                try:
+                    resp = await client.get(norm_url)
+                    fetch_dur = time.time() - t_fetch_start
+                except (httpx.RequestError, asyncio.TimeoutError) as e:
+                    fetch_dur = time.time() - t_fetch_start
+                    if retries < self.config.max_retries:
+                        retries += 1
+                        backoff = self.config.retry_backoff_sec * (2 ** (retries - 1))
+                        await asyncio.sleep(backoff)
+                        continue
+                    frontier.mark_failed(norm_url, str(e), status_code=0, retry_count=retries)
+                    return
+
+            # Handle transient rate limiting (429) or temporary server unavailability (503)
+            if resp.status_code in (429, 503) and retries < self.config.max_retries:
+                retries += 1
+                retry_after_str = resp.headers.get("retry-after")
+                backoff = self.config.retry_backoff_sec * (2 ** (retries - 1))
+                if retry_after_str and retry_after_str.isdigit():
+                    backoff = min(float(retry_after_str), 5.0)
+                await asyncio.sleep(backoff)
+                continue
+
+            break
 
         # Handle Redirects (3xx)
         if resp.status_code in (301, 302, 303, 307, 308):
@@ -184,12 +207,12 @@ class AsyncDeepCrawler:
                         discovery_source="redirect"
                     )
             else:
-                frontier.mark_failed(norm_url, f"Redirect {resp.status_code} missing Location header", status_code=resp.status_code)
+                frontier.mark_failed(norm_url, f"Redirect {resp.status_code} missing Location header", status_code=resp.status_code, retry_count=retries)
             return
 
         # Handle Errors (4xx, 5xx)
         if resp.status_code >= 400:
-            frontier.mark_failed(norm_url, f"HTTP {resp.status_code}", status_code=resp.status_code)
+            frontier.mark_failed(norm_url, f"HTTP {resp.status_code}", status_code=resp.status_code, retry_count=retries)
             return
 
         # Handle 200 OK
@@ -225,4 +248,5 @@ class AsyncDeepCrawler:
             fetch_time_sec=fetch_dur,
             discovered_links=discovered_links,
             raw_html=raw_html,
+            retry_count=retries,
         )

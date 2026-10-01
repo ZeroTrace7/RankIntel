@@ -26,6 +26,7 @@ class CrawlFrontier:
         self.queue: asyncio.Queue[Tuple[str, int, Optional[str], str]] = asyncio.Queue()
         self.records: Dict[str, CrawlRecord] = {}
         self.fetched_count: int = 0
+        self.duplicate_count: int = 0
 
     def add_url(
         self,
@@ -59,6 +60,7 @@ class CrawlFrontier:
 
         # Deduplication
         if norm_url in self.enqueued or norm_url in self.visited:
+            self.duplicate_count += 1
             return False
 
         # Stop enqueueing if we have already far exceeded the crawl page budget
@@ -87,7 +89,8 @@ class CrawlFrontier:
         response_bytes: int,
         fetch_time_sec: float,
         discovered_links: List[str],
-        raw_html: Optional[str] = None
+        raw_html: Optional[str] = None,
+        retry_count: int = 0
     ) -> None:
         """Record successful or finalized HTTP response."""
         self.visited.add(norm_url)
@@ -101,6 +104,7 @@ class CrawlFrontier:
             record.fetch_time_sec = round(fetch_time_sec, 3)
             record.discovered_links = discovered_links
             record.raw_html = raw_html
+            record.retry_count = retry_count
 
     def mark_blocked(self, norm_url: str, reason: str = "robots.txt disallow") -> None:
         """Record URL blocked by robots.txt."""
@@ -110,7 +114,7 @@ class CrawlFrontier:
             record.crawl_status = CrawlStatus.BLOCKED
             record.failure_reason = reason
 
-    def mark_failed(self, norm_url: str, error: str, status_code: int = 0) -> None:
+    def mark_failed(self, norm_url: str, error: str, status_code: int = 0, retry_count: int = 0) -> None:
         """Record URL network failure or exception."""
         self.visited.add(norm_url)
         record = self.records.get(norm_url)
@@ -118,6 +122,7 @@ class CrawlFrontier:
             record.crawl_status = CrawlStatus.FAILED
             record.status_code = status_code
             record.failure_reason = error
+            record.retry_count = retry_count
 
     def mark_skipped(self, norm_url: str, reason: str) -> None:
         """Record URL skipped due to policy or limit."""
@@ -221,6 +226,9 @@ class CrawlFrontier:
                     word_count=word_count,
                     issues=issues,
                 ))
+
+        if self.duplicate_count > 0:
+            status_counts[CrawlStatus.DUPLICATE.value] = self.duplicate_count
 
         duplicate_titles = [t for t, c in title_counts.items() if c > 1 and t]
 

@@ -1,13 +1,16 @@
 """
 Integration tests for AsyncDeepCrawler using mock HTTP transport.
 Validates async queue, depth tracking, max_pages ceilings, domain boundary guards,
-redirect handling, and CrawlState tracking without live network calls.
+redirect handling, transient 429/503 retries, robots.txt blocking,
+duplicate discovery, and CrawlState tracking without live network calls.
 """
-import pytest
+import asyncio
 import httpx
+from unittest.mock import MagicMock
 
 from rankintel.crawler.deep_crawler import AsyncDeepCrawler
 from rankintel.models.schema import CrawlConfig, CrawlStatus
+from rankintel.engines.seo_engine import SeoEngine
 
 MOCK_PAGES = {
     "https://example.com": """<!DOCTYPE html>
@@ -34,12 +37,14 @@ MOCK_PAGES = {
             <h1>About Us</h1>
             <a href="/team">Meet the Team</a>
             <a href="/contact">Contact Us</a>
+            <a href="/services">Services Link from About</a>
         </body></html>""",
     "https://example.com/services": """<!DOCTYPE html>
         <html><head><title>Services</title></head>
         <body>
             <h1>Services</h1>
             <a href="/services/calibration">Calibration</a>
+            <a href="/about">About Link from Services</a>
         </body></html>""",
     "https://example.com/team": """<!DOCTYPE html>
         <html><head><title>Team</title></head>
@@ -53,17 +58,39 @@ MOCK_PAGES = {
     "https://example.com/services/calibration": """<!DOCTYPE html>
         <html><head><title>Calibration</title></head>
         <body><h1>Calibration Testing</h1></body></html>""",
+    "https://example.com/admin": """<!DOCTYPE html>
+        <html><head><title>Admin Portal</title></head>
+        <body><h1>Admin Only</h1></body></html>""",
 }
+
+# State counter for transient rate-limit tests
+rate_limit_attempts = 0
 
 
 def mock_transport_handler(request: httpx.Request) -> httpx.Response:
+    global rate_limit_attempts
     url_str = str(request.url)
-    if url_str == "https://example.com/redirect-source":
+
+    if url_str == "https://example.com/robots.txt":
+        return httpx.Response(
+            200,
+            text="User-agent: *\nDisallow: /admin\n"
+        )
+    elif url_str == "https://example.com/redirect-source":
         return httpx.Response(301, headers={"Location": "https://example.com/about"})
     elif url_str == "https://example.com/broken-404":
         return httpx.Response(404, text="Not Found")
     elif url_str == "https://example.com/error-500":
         return httpx.Response(500, text="Internal Server Error")
+    elif url_str == "https://example.com/transient-429":
+        rate_limit_attempts += 1
+        if rate_limit_attempts == 1:
+            return httpx.Response(429, headers={"Retry-After": "0"}, text="Rate limit exceeded")
+        return httpx.Response(200, headers={"Content-Type": "text/html"}, text="<html><body>Recovered</body></html>")
+    elif url_str == "https://example.com/always-503":
+        return httpx.Response(503, headers={"Retry-After": "0"}, text="Service Unavailable")
+    elif url_str == "https://example.com/api/data.json":
+        return httpx.Response(200, headers={"Content-Type": "application/json"}, text='{"key": "value"}')
     elif url_str in MOCK_PAGES:
         return httpx.Response(
             200,
@@ -71,9 +98,6 @@ def mock_transport_handler(request: httpx.Request) -> httpx.Response:
             text=MOCK_PAGES[url_str]
         )
     return httpx.Response(404, text="Not Found")
-
-
-import asyncio
 
 
 def test_crawler_full_site_discovery_and_depth():
@@ -178,6 +202,134 @@ def test_crawler_handles_redirects_and_errors():
     asyncio.run(_run())
 
 
+def test_crawler_handles_transient_429_retry():
+    """Verify crawler retries on HTTP 429 and succeeds on subsequent attempt."""
+    global rate_limit_attempts
+    rate_limit_attempts = 0
+
+    async def _run():
+        transport = httpx.MockTransport(mock_transport_handler)
+        config = CrawlConfig(
+            max_pages=2,
+            max_depth=1,
+            concurrency=1,
+            crawl_delay=0.0,
+            max_retries=2,
+            retry_backoff_sec=0.01,
+            respect_robots_txt=False,
+        )
+        crawler = AsyncDeepCrawler(config=config, transport=transport)
+
+        result = await crawler.crawl("https://example.com/transient-429")
+
+        assert result.pages_crawled == 1
+        record = result.crawl_records[0]
+        assert record.crawl_status == CrawlStatus.FETCHED
+        assert record.status_code == 200
+        assert record.retry_count == 1
+
+    asyncio.run(_run())
+
+
+def test_crawler_eventual_503_failure_records_retry_count():
+    """Verify crawler exhausts retries on permanent 503 and records failure."""
+    async def _run():
+        transport = httpx.MockTransport(mock_transport_handler)
+        config = CrawlConfig(
+            max_pages=2,
+            max_depth=1,
+            concurrency=1,
+            crawl_delay=0.0,
+            max_retries=2,
+            retry_backoff_sec=0.01,
+            respect_robots_txt=False,
+        )
+        crawler = AsyncDeepCrawler(config=config, transport=transport)
+
+        result = await crawler.crawl("https://example.com/always-503")
+
+        record = result.crawl_records[0]
+        assert record.crawl_status == CrawlStatus.FAILED
+        assert record.status_code == 503
+        assert record.retry_count == 2
+
+    asyncio.run(_run())
+
+
+def test_crawler_duplicate_discovery_tracking():
+    """Verify that multiple links to the same URL increment duplicate counts."""
+    async def _run():
+        transport = httpx.MockTransport(mock_transport_handler)
+        config = CrawlConfig(
+            max_pages=10,
+            max_depth=3,
+            concurrency=1,
+            crawl_delay=0.0,
+            respect_robots_txt=False,
+        )
+        crawler = AsyncDeepCrawler(config=config, transport=transport)
+
+        result = await crawler.crawl("https://example.com")
+
+        # In MOCK_PAGES, /about links to /services, and /services links to /about
+        # Creating cross-link duplicates
+        assert result.status_counts.get("DUPLICATE", 0) > 0
+
+    asyncio.run(_run())
+
+
+def test_crawler_robots_txt_blocking():
+    """Verify that URLs disallowed by robots.txt are marked BLOCKED and not fetched."""
+    from urllib.robotparser import RobotFileParser
+    rp = RobotFileParser()
+    rp.parse(["User-agent: *", "Disallow: /admin"])
+
+    async def _run():
+        transport = httpx.MockTransport(mock_transport_handler)
+        config = CrawlConfig(
+            max_pages=5,
+            max_depth=1,
+            concurrency=1,
+            crawl_delay=0.0,
+            respect_robots_txt=True,
+        )
+        crawler = AsyncDeepCrawler(config=config, transport=transport)
+        crawler._robots_parser = rp
+        crawler._robots_loaded = True
+
+        result = await crawler.crawl("https://example.com/admin")
+
+        assert len(result.crawl_records) == 1
+        record = result.crawl_records[0]
+        assert record.crawl_status == CrawlStatus.BLOCKED
+        assert "Disallowed by robots.txt" in record.failure_reason
+
+    asyncio.run(_run())
+
+
+def test_crawler_non_html_mime_not_parsed():
+    """Verify non-HTML content-type (e.g. JSON) is fetched but not parsed for links."""
+    async def _run():
+        transport = httpx.MockTransport(mock_transport_handler)
+        config = CrawlConfig(
+            max_pages=2,
+            max_depth=1,
+            concurrency=1,
+            crawl_delay=0.0,
+            respect_robots_txt=False,
+        )
+        crawler = AsyncDeepCrawler(config=config, transport=transport)
+
+        result = await crawler.crawl("https://example.com/api/data.json")
+
+        record = result.crawl_records[0]
+        assert record.crawl_status == CrawlStatus.FETCHED
+        assert "application/json" in record.content_type
+        assert len(record.discovered_links) == 0
+
+    asyncio.run(_run())
+
+
 def test_crawler_sync_wrapper_runs_cleanly():
     """Verify crawl_sync executes synchronously without errors."""
     transport = httpx.MockTransport(mock_transport_handler)
@@ -193,3 +345,21 @@ def test_crawler_sync_wrapper_runs_cleanly():
     result = crawler.crawl_sync("https://example.com")
     assert result.pages_crawled >= 1
     assert result.crawl_duration_sec >= 0.0
+
+
+def test_single_page_backward_compatibility():
+    """Verify single-page audit behavior and data models are completely intact."""
+    engine = SeoEngine()
+    mock_resp = MagicMock()
+    mock_resp.status_code = 200
+    mock_resp.text = "<html><head><title>Test Title</title></head><body><h1>Heading</h1><p>Body</p></body></html>"
+    mock_resp.headers = {"Content-Type": "text/html"}
+    mock_resp.history = []
+
+    from unittest.mock import patch
+    with patch("requests.get", return_value=mock_resp):
+        on_page, schema = engine.audit_static_page("https://example.com")
+
+    assert on_page.status_code == 200
+    assert on_page.title == "Test Title"
+    assert on_page.h1_count == 1

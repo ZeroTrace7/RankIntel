@@ -4,7 +4,7 @@ RankIntel Data Models for Multi-Engine Evidence & Synthesis.
 from __future__ import annotations
 from enum import Enum
 from typing import Dict, List, Optional, Any
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 class BotStatus(BaseModel):
     bot: str
@@ -167,7 +167,28 @@ class CrawlConfig(BaseModel):
     timeout_sec: float = Field(default=15.0, ge=1.0, le=60.0)
     respect_robots_txt: bool = True
     allowed_subdomains: bool = False
+    max_retries: int = Field(default=2, ge=0, le=5)
+    retry_backoff_sec: float = Field(default=0.5, ge=0.0, le=10.0)
+    strip_tracking_params: bool = True
     user_agent: str = "RankIntel/2.0 (+https://github.com/ZeroTrace7/RankIntel)"
+
+    @model_validator(mode="before")
+    @classmethod
+    def handle_aliases(cls, data: Any) -> Any:
+        if isinstance(data, dict):
+            if "timeout" in data and "timeout_sec" not in data:
+                data["timeout_sec"] = data.pop("timeout")
+            if "respect_robots" in data and "respect_robots_txt" not in data:
+                data["respect_robots_txt"] = data.pop("respect_robots")
+        return data
+
+    @property
+    def timeout(self) -> float:
+        return self.timeout_sec
+
+    @property
+    def respect_robots(self) -> bool:
+        return self.respect_robots_txt
 
 class CrawlRecord(BaseModel):
     url: str
