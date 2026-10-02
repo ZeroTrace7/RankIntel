@@ -153,6 +153,12 @@ class UrlHygieneDetector:
         if url_a.strip() == url_b.strip():
             return None
 
+        # Ignore fragment-only differences (HTML in-page anchors are not hygiene anomalies)
+        pa = urlsplit(url_a.strip())
+        pb = urlsplit(url_b.strip())
+        if pa._replace(fragment="") == pb._replace(fragment=""):
+            return None
+
         anomaly_type = cls.classify_anomaly_type(url_a, url_b)
         evidence_notes: List[str] = []
 
@@ -336,10 +342,12 @@ class UrlHygieneDetector:
 
         for rec in site_crawl.crawl_records:
             if rec.url:
-                all_urls.add(rec.url.strip())
+                clean_u = urlsplit(rec.url.strip())._replace(fragment="").geturl()
+                all_urls.add(clean_u)
             for link in rec.discovered_links:
                 if link and (link.startswith("http://") or link.startswith("https://")):
-                    all_urls.add(link.strip())
+                    clean_l = urlsplit(link.strip())._replace(fragment="").geturl()
+                    all_urls.add(clean_l)
 
         # Group URLs by hygiene key
         buckets: Dict[str, List[str]] = {}

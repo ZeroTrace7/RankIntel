@@ -657,3 +657,25 @@ def test_p03_markdown_reporter_rendering():
     md = MarkdownReporter.render(report)
     assert "Redirect Chains Tracked:" in md
     assert "Canonical Relationships:" in md
+
+
+def test_fragment_only_links_do_not_produce_hygiene_anomalies():
+    """In-page anchor fragments must not trigger false positive TRAILING_SLASH hygiene anomalies."""
+    from rankintel.analyzers.hygiene_detector import UrlHygieneDetector
+
+    # Test pair directly
+    anomaly = UrlHygieneDetector.analyze_pair(
+        "https://example.com/page#section1",
+        "https://example.com/page"
+    )
+    assert anomaly is None
+
+    # Test across crawl result
+    rec1 = make_record("https://example.com/page", status_code=200, discovered_links=[
+        "https://example.com/page#overview",
+        "https://example.com/page#pricing",
+    ])
+    sc = SiteCrawlResult(pages_crawled=1, crawl_records=[rec1])
+    anomalies = UrlHygieneDetector.detect_site_hygiene(sc)
+    assert len(anomalies) == 0
+
