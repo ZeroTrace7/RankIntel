@@ -269,6 +269,45 @@ class MarkdownReporter:
                 lines.append(f"| **{bot}** | {info.category.upper()} | {icon} {info.status} | {info.role_or_purpose or info.engine} |")
             lines.append("")
 
+        # Security & Web Best Practices
+        sec = report.unified_security
+        if sec and (sec.headers_evaluated or sec.findings):
+            lines.append("## 🛡️ SECURITY & WEB BEST PRACTICES")
+            lines.append(f"- **Security Posture Score:** {sec.score}/100 (Grade: {sec.grade})")
+            lines.append(f"- **HTTPS Enforced:** {'🟢 YES' if sec.is_https else '🔴 NO (Insecure HTTP)'}")
+            if sec.tls_details:
+                tls = sec.tls_details
+                if tls.is_valid:
+                    exp_info = f"({tls.days_until_expiration} days remaining)" if tls.days_until_expiration is not None else ""
+                    lines.append(f"- **TLS Certificate:** 🟢 Valid {tls.protocol_version or ''} {exp_info}")
+                else:
+                    lines.append(f"- **TLS Certificate:** 🔴 Invalid ({tls.error_message or 'Verification failed'})")
+
+            hsts_status = "🟢 Enabled" if sec.hsts_present else "🔴 Missing"
+            if sec.hsts_preload:
+                hsts_status += " (Preload ready)"
+            lines.append(f"- **HSTS (Strict-Transport-Security):** {hsts_status}")
+            lines.append(f"- **Content-Security-Policy (CSP):** {'🟢 Configured' if sec.csp_present else '🔴 Missing'}")
+            lines.append(f"- **Clickjacking Defense (X-Frame-Options):** {sec.x_frame_options or '🔴 Missing'}")
+            lines.append(f"- **MIME Protection (X-Content-Type-Options):** {sec.x_content_type_options or '🔴 Missing'}")
+            lines.append(f"- **Referrer-Policy:** {sec.referrer_policy or '⚠️ Missing'}")
+
+            if sec.mixed_content_resources:
+                lines.append(f"- **Mixed Content Insecure Assets:** ⚠️ {len(sec.mixed_content_resources)} resources loaded over HTTP")
+
+            if sec.server_leakage:
+                lines.append(f"- **Server Information Leakage:** ⚠️ {', '.join(sec.server_leakage)}")
+
+            if sec.findings:
+                lines.append("\n### 🚨 Security & Best Practice Findings:")
+                lines.append("| Severity | Category | Finding | Recommendation |")
+                lines.append("|---|---|---|---|")
+                for f in sec.findings:
+                    sev_icon = "🔴" if f.severity in ("CRITICAL", "HIGH") else ("🟡" if f.severity == "MEDIUM" else "ℹ️")
+                    cat_label = f.category.value.replace("_", " ").title()
+                    lines.append(f"| {sev_icon} {f.severity.value} | {cat_label} | {f.title} | {f.recommendation} |")
+                lines.append("")
+
         # GEO Citability
         g = report.unified_geo
         lines.append("## 🧠 GENERATIVE ENGINE OPTIMIZATION (GEO / AEO)")

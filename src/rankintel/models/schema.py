@@ -149,6 +149,68 @@ class PerformanceEvidence(BaseModel):
     passed_audit: bool = True
     notes: List[str] = Field(default_factory=list)
 
+class SecurityFindingCategory(str, Enum):
+    SEO_PROBLEM = "seo_problem"
+    SECURITY_VULNERABILITY = "security_vulnerability"
+    BEST_PRACTICE = "best_practice"
+
+class SecuritySeverity(str, Enum):
+    CRITICAL = "CRITICAL"
+    HIGH = "HIGH"
+    MEDIUM = "MEDIUM"
+    LOW = "LOW"
+    INFO = "INFO"
+
+class SecurityFinding(BaseModel):
+    code: str
+    title: str
+    category: SecurityFindingCategory
+    severity: SecuritySeverity
+    description: str
+    recommendation: str
+    header_name: Optional[str] = None
+    header_value: Optional[str] = None
+
+class TlsCertificateDetails(BaseModel):
+    is_valid: bool = False
+    issuer: Dict[str, str] = Field(default_factory=dict)
+    subject: Dict[str, str] = Field(default_factory=dict)
+    expires_at: Optional[str] = None
+    days_until_expiration: Optional[int] = None
+    protocol_version: Optional[str] = None
+    cipher: Optional[str] = None
+    error_message: Optional[str] = None
+
+class CookieSecurityDetails(BaseModel):
+    name: str
+    secure: bool = False
+    httponly: bool = False
+    samesite: Optional[str] = None
+    issues: List[str] = Field(default_factory=list)
+
+class SecurityEvidence(BaseModel):
+    url: str = ""
+    is_https: bool = True
+    score: int = 100
+    grade: str = "A"
+    headers_evaluated: Dict[str, str] = Field(default_factory=dict)
+    hsts_present: bool = False
+    hsts_include_subdomains: bool = False
+    hsts_preload: bool = False
+    hsts_max_age: Optional[int] = None
+    csp_present: bool = False
+    csp_directives: List[str] = Field(default_factory=list)
+    x_frame_options: Optional[str] = None
+    x_content_type_options: Optional[str] = None
+    referrer_policy: Optional[str] = None
+    permissions_policy_present: bool = False
+    server_leakage: List[str] = Field(default_factory=list)
+    mixed_content_resources: List[str] = Field(default_factory=list)
+    tls_details: Optional[TlsCertificateDetails] = None
+    cookies: List[CookieSecurityDetails] = Field(default_factory=list)
+    findings: List[SecurityFinding] = Field(default_factory=list)
+    recommendations: List[str] = Field(default_factory=list)
+
 class EvidenceProvenanceTag(BaseModel):
     """Tracks which engine produced a specific finding, with confidence rating."""
     finding: str
@@ -570,6 +632,7 @@ class EngineResult(BaseModel):
     geo_aeo: Optional[GeoAeoEvidence] = None
     trust_stack: Optional[TrustStackResult] = None
     performance: Optional[PerformanceEvidence] = None
+    security: Optional[SecurityEvidence] = None
     cloud_intelligence: Optional[CloudIntelligenceEvidence] = None
     raw_html: Optional[str] = None  # Post-JS rendered HTML from crawl4ai; used by TrustEvaluator and GeoEngine
 
@@ -599,6 +662,7 @@ class SynthesisReport(BaseModel):
     technical_health_score: int = 0
     trust_score: int = 0
     performance_score: int = 0
+    security_score: int = 0
     keyword_score: int = 0
     site_health_score: int = 0
     score_formula_mode: str = "4_engine"  # "3_engine", "4_engine", "5_engine"
@@ -614,6 +678,7 @@ class SynthesisReport(BaseModel):
     unified_geo: GeoAeoEvidence = Field(default_factory=GeoAeoEvidence)
     unified_trust: TrustStackResult = Field(default_factory=TrustStackResult)
     unified_performance: PerformanceEvidence = Field(default_factory=PerformanceEvidence)
+    unified_security: SecurityEvidence = Field(default_factory=SecurityEvidence)
     cloud_intelligence: CloudIntelligenceEvidence = Field(default_factory=CloudIntelligenceEvidence)
     site_crawl: Optional[SiteCrawlResult] = None
     
