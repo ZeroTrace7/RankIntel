@@ -10,3 +10,6 @@ reports/*.json
 build/
 dist/
 .pytest_cache/
+*.log
+benchmarks/logs/
+benchmarks/benchmark_results_*.json

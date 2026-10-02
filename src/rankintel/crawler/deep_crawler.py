@@ -6,10 +6,54 @@ from __future__ import annotations
 import asyncio
 import time
 from urllib.parse import urlparse, urljoin
-from typing import Dict, List, Optional, Set
+from typing import Dict, List, Optional, Set, Any
 from bs4 import BeautifulSoup
 
 import httpx
+import logging
+
+logger = logging.getLogger(__name__)
+
+# Module-level browser availability cache
+_browser_available: Optional[bool] = None
+
+def _check_browser_availability() -> bool:
+    """Pre-flight check: verify Chromium is launchable. Cached after first call."""
+    global _browser_available
+    if _browser_available is not None:
+        return _browser_available
+    try:
+        from crawl4ai import AsyncWebCrawler, BrowserConfig
+        import asyncio
+        
+        async def _probe():
+            config = BrowserConfig(headless=True)
+            async with AsyncWebCrawler(config=config) as crawler:
+                pass  # Successfully launched and closed browser
+            return True
+        
+        try:
+            loop = asyncio.get_running_loop()
+        except RuntimeError:
+            loop = None
+        
+        if loop and loop.is_running():
+            # Can't probe synchronously inside a running loop — assume available
+            # The actual crawl will reveal if it's not
+            _browser_available = True
+        else:
+            _browser_available = asyncio.run(_probe())
+        
+        if _browser_available:
+            logger.info("BROWSER_AVAILABLE: Chromium pre-flight check passed")
+        return _browser_available
+    except Exception as e:
+        _browser_available = False
+        logger.warning(
+            "BROWSER_UNAVAILABLE: Chromium pre-flight check failed: %s. "
+            "Install with: playwright install chromium", e
+        )
+        return False
 
 from rankintel.models.schema import (
     CrawlConfig,
@@ -54,6 +98,56 @@ class AsyncDeepCrawler:
 
         self._robots_loaded = True
 
+    async def _discover_and_enqueue_sitemaps(
+        self,
+        start_url: str,
+        frontier: CrawlFrontier,
+    ) -> None:
+        """Discover and enqueue sitemap URLs into the frontier before main crawl.
+        
+        Uses the async SitemapFetcher to avoid blocking the event loop.
+        Failures produce explicit telemetry rather than silent fallbacks.
+        """
+        try:
+            from rankintel.sitemaps.discovery import SitemapDiscovery
+            from rankintel.sitemaps.fetcher import SitemapFetcher
+
+            sitemap_candidates = SitemapDiscovery.discover_sitemap_urls(
+                base_url=start_url,
+                fallback_to_standard_paths=True,
+            )
+            if not sitemap_candidates:
+                logger.debug("SITEMAP_DISCOVERY: No sitemap candidates found for %s", start_url)
+                return
+
+            fetcher = SitemapFetcher(transport=self.transport)
+            # Use the ASYNC method — no blocking inside the async crawl path
+            docs, sitemap_urls = await fetcher.fetch_sitemaps(sitemap_candidates)
+
+            enqueued_count = 0
+            for identity_url, url_record in sitemap_urls.items():
+                added = frontier.add_url(
+                    url_record.loc,
+                    depth=1,
+                    parent_url=start_url,
+                    discovery_source="sitemap",
+                )
+                if added:
+                    enqueued_count += 1
+
+            logger.info(
+                "SITEMAP_DISCOVERY_COMPLETE: %s — found %d sitemap doc(s), "
+                "%d URL(s), enqueued %d new URL(s) into frontier",
+                start_url, len(docs), len(sitemap_urls), enqueued_count,
+            )
+        except ImportError as e:
+            logger.warning("SITEMAP_DISCOVERY_FAILED: Import error — %s", e)
+        except Exception as e:
+            logger.warning(
+                "SITEMAP_DISCOVERY_FAILED: Exception during sitemap discovery for %s: %s",
+                start_url, e,
+            )
+
     def is_allowed_by_robots(self, url: str) -> bool:
         """Check whether URL is permitted under robots.txt."""
         if not self.config.respect_robots_txt or not self._robots_parser:
@@ -91,6 +185,10 @@ class AsyncDeepCrawler:
 
         # Enqueue seed URL
         frontier.add_url(start_url, depth=0, parent_url=None, discovery_source="seed")
+
+        # Early sitemap discovery: feed sitemap URLs into frontier
+        if getattr(self.config, "enable_sitemap_analysis", False):
+            await self._discover_and_enqueue_sitemaps(start_url, frontier)
 
         sem = asyncio.Semaphore(self.config.concurrency)
         headers = {
@@ -254,19 +352,33 @@ class AsyncDeepCrawler:
                     pass
 
             if needs_render:
-                try:
-                    from rankintel.engines.browser_engine import BrowserEngine
-                    b_engine = BrowserEngine(headless=True)
-                    t_browser_start = time.time()
-                    b_res = await b_engine._execute_async(norm_url, t_browser_start)
-                    if b_res.status == "success" and b_res.raw_html:
-                        raw_html = b_res.raw_html
-                        content_type += "; rendered=true"
-                        body_bytes = len(raw_html)
-                        fetch_dur += b_res.execution_time_sec
-                        rendered = True
-                except Exception:
-                    pass
+                if not _check_browser_availability():
+                    logger.debug(
+                        "RENDERED_DISCOVERY_UNAVAILABLE: Skipping browser render for %s "
+                        "(Chromium not installed)", norm_url
+                    )
+                else:
+                    try:
+                        from rankintel.engines.browser_engine import BrowserEngine
+                        b_engine = BrowserEngine(headless=True)
+                        t_browser_start = time.time()
+                        b_res = await b_engine._execute_async(norm_url, t_browser_start)
+                        if b_res.status == "success" and b_res.raw_html:
+                            raw_html = b_res.raw_html
+                            content_type += "; rendered=true"
+                            body_bytes = len(raw_html)
+                            fetch_dur += b_res.execution_time_sec
+                            rendered = True
+                        else:
+                            logger.debug(
+                                "BROWSER_RENDER_FAILED: %s returned status=%s",
+                                norm_url, b_res.status
+                            )
+                    except Exception as e:
+                        logger.warning(
+                            "BROWSER_RENDER_ERROR: Exception rendering %s: %s",
+                            norm_url, e
+                        )
 
         discovered_links: List[str] = []
         if "text/html" in content_type or "application/xhtml" in content_type or not content_type:
