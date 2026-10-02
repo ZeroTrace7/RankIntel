@@ -75,5 +75,9 @@ Whenever the user asks RankIntel to perform an "analysis", "audit", "validation"
 - **Python Environment**: Always use the virtual environment for execution and testing (`venv\Scripts\python.exe` on Windows). Do not use the global system python.
 - **Testing**: Run the full test suite using `venv\Scripts\python.exe -m pytest tests/ -v`.
 - **Concurrent Benchmarking**: When running benchmarks across multiple real-world sites (like the 11-site benchmark), always use `asyncio.gather` or `asyncio.as_completed` to execute the sites concurrently. Do not run them sequentially in a simple `for` loop, as this wastes significant time.
-- **Crawler API**: The core engine is `AsyncDeepCrawler(config: CrawlConfig)`. It supports comprehensive telemetry, JS rendering (via `crawl4ai`), and multi-source URL discovery.
+- **Crawler API**: The core engine is `AsyncDeepCrawler(config: CrawlConfig)`. It supports comprehensive telemetry, JS rendering (via `crawl4ai`), multi-source URL discovery, and robust crawl-trap protection (path-based limits).
 - **Async Execution**: Ensure all asynchronous crawler invocations are properly wrapped, typically within an `async def main():` block executed via `asyncio.run(main())`.
+
+## 9. Architectural Constraints & Reporting (Phase 6+)
+- **Preserve Core Systems**: Do not reinvent or replace existing core systems. Extend them incrementally. Do NOT replace `NetworkX` for graph structures. Do NOT replace `AsyncDeepCrawler` for crawling. Do NOT create a second browser subsystem; reuse the existing `crawl4ai` integrations inside `BrowserEngine`.
+- **Milestone Reporting**: When completing a Phase or Milestone, generate the final report as an Antigravity Artifact (saved to the artifact directory) rather than checking markdown reports directly into the repository unless explicitly requested by the user.
