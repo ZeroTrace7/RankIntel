@@ -258,6 +258,39 @@ class ImageSeoEvidence(BaseModel):
     findings: List[ImageFinding] = Field(default_factory=list)
     recommendations: List[str] = Field(default_factory=list)
 
+class A11yViolationSeverity(str, Enum):
+    CRITICAL = "CRITICAL"
+    SERIOUS = "SERIOUS"
+    MODERATE = "MODERATE"
+    MINOR = "MINOR"
+
+class A11yViolation(BaseModel):
+    rule_id: str
+    wcag_tags: List[str] = Field(default_factory=list)
+    severity: A11yViolationSeverity
+    description: str
+    help_url: str = ""
+    selector_or_html: Optional[str] = None
+    recommendation: str
+
+class A11yAuditEvidence(BaseModel):
+    url: str = ""
+    engine_source: str = "static_dom_evaluator"  # "axe_core_playwright", "static_dom_evaluator"
+    score: int = 100
+    grade: str = "A"
+    critical_count: int = 0
+    serious_count: int = 0
+    moderate_count: int = 0
+    minor_count: int = 0
+    total_violations: int = 0
+    has_lang: bool = True
+    has_title: bool = True
+    has_main_landmark: bool = True
+    heading_hierarchy_valid: bool = True
+    violations: List[A11yViolation] = Field(default_factory=list)
+    passes: List[str] = Field(default_factory=list)
+    recommendations: List[str] = Field(default_factory=list)
+
 class EvidenceProvenanceTag(BaseModel):
     """Tracks which engine produced a specific finding, with confidence rating."""
     finding: str
@@ -681,6 +714,7 @@ class EngineResult(BaseModel):
     performance: Optional[PerformanceEvidence] = None
     security: Optional[SecurityEvidence] = None
     image_seo: Optional[ImageSeoEvidence] = None
+    accessibility: Optional[A11yAuditEvidence] = None
     cloud_intelligence: Optional[CloudIntelligenceEvidence] = None
     raw_html: Optional[str] = None  # Post-JS rendered HTML from crawl4ai; used by TrustEvaluator and GeoEngine
 
@@ -712,6 +746,7 @@ class SynthesisReport(BaseModel):
     performance_score: int = 0
     security_score: int = 0
     image_seo_score: int = 0
+    accessibility_score: int = 0
     keyword_score: int = 0
     site_health_score: int = 0
     score_formula_mode: str = "4_engine"  # "3_engine", "4_engine", "5_engine"
@@ -729,6 +764,7 @@ class SynthesisReport(BaseModel):
     unified_performance: PerformanceEvidence = Field(default_factory=PerformanceEvidence)
     unified_security: SecurityEvidence = Field(default_factory=SecurityEvidence)
     unified_image_seo: ImageSeoEvidence = Field(default_factory=ImageSeoEvidence)
+    unified_accessibility: A11yAuditEvidence = Field(default_factory=A11yAuditEvidence)
     cloud_intelligence: CloudIntelligenceEvidence = Field(default_factory=CloudIntelligenceEvidence)
     site_crawl: Optional[SiteCrawlResult] = None
     
