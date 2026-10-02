@@ -206,7 +206,13 @@ class AsyncDeepCrawler:
             location = resp.headers.get("location", "")
             if location:
                 abs_location = urljoin(norm_url, location)
-                frontier.mark_redirected(norm_url, resp.status_code, abs_location, response_headers=resp_headers)
+                frontier.mark_redirected(
+                    norm_url,
+                    resp.status_code,
+                    abs_location,
+                    response_headers=resp_headers,
+                    fetch_time_sec=fetch_dur,
+                )
                 # Enqueue redirect target if within boundaries
                 if depth <= self.config.max_depth:
                     frontier.add_url(

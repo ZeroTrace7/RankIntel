@@ -33,6 +33,14 @@ from rankintel.models.schema import (
     CanonicalizationSignal,
     IndexConfirmationStatus,
     SearchEligibilityRecord,
+    RedirectHop,
+    RedirectChainStatus,
+    RedirectChainRecord,
+    CanonicalChainStatus,
+    CanonicalChainRecord,
+    HygieneAnomalyType,
+    HygieneEvidenceType,
+    HygieneAnomaly,
 )
 
 __all__ = [
@@ -67,4 +75,12 @@ __all__ = [
     "CanonicalizationSignal",
     "IndexConfirmationStatus",
     "SearchEligibilityRecord",
+    "RedirectHop",
+    "RedirectChainStatus",
+    "RedirectChainRecord",
+    "CanonicalChainStatus",
+    "CanonicalChainRecord",
+    "HygieneAnomalyType",
+    "HygieneEvidenceType",
+    "HygieneAnomaly",
 ]

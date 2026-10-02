@@ -150,6 +150,7 @@ class CrawlFrontier:
         status_code: int,
         location: str,
         response_headers: Optional[Dict[str, Any]] = None,
+        fetch_time_sec: float = 0.0,
     ) -> None:
         """Record URL returned a redirect."""
         self.visited.add(norm_url)
@@ -159,6 +160,8 @@ class CrawlFrontier:
             record.crawl_status = CrawlStatus.REDIRECTED
             record.status_code = status_code
             record.failure_reason = f"Redirected to {location}"
+            record.redirect_url = location
+            record.fetch_time_sec = round(fetch_time_sec, 3)
             if response_headers:
                 record.response_headers = response_headers
 
