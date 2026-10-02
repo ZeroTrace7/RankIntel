@@ -35,26 +35,32 @@ def format_row(site, res, error=""):
     
     return f"| {site} | {discovered} | {crawled} | {sitemap} | {rendered} | {blocked} | {errors} | {unfetched} | {coverage} | {status} |"
 
+async def crawl_site(site: str) -> str:
+    config = CrawlConfig(
+        max_pages=50,
+        max_depth=3,
+        concurrency=3,
+        crawl_delay=0.2,
+        timeout_sec=15.0,
+        enable_sitemap_analysis=True,
+        enable_browser_rendering=True
+    )
+    crawler = AsyncDeepCrawler(config=config)
+    try:
+        res = await crawler.crawl(site)
+        return format_row(site, res)
+    except Exception as e:
+        return format_row(site, None, str(e))
+
 async def main():
     print("| Site | Discovered | Crawled | Sitemap | Rendered-only | Blocked | Errors | Unfetched | Recall/coverage evidence | Status |", flush=True)
     print("|---|---:|---:|---:|---:|---:|---:|---:|---|---|", flush=True)
     
-    for site in SITES:
-        config = CrawlConfig(
-            max_pages=50,
-            max_depth=3,
-            concurrency=3,
-            crawl_delay=0.2,
-            timeout_sec=15.0,
-            enable_sitemap_analysis=True,
-            enable_browser_rendering=True
-        )
-        crawler = AsyncDeepCrawler(config=config)
-        try:
-            res = await crawler.crawl(site)
-            print(format_row(site, res), flush=True)
-        except Exception as e:
-            print(format_row(site, None, str(e)), flush=True)
+    tasks = [asyncio.create_task(crawl_site(site)) for site in SITES]
+    
+    for completed in asyncio.as_completed(tasks):
+        row = await completed
+        print(row, flush=True)
 
 if __name__ == "__main__":
     asyncio.run(main())

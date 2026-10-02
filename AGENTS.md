@@ -71,3 +71,9 @@ Whenever the user asks RankIntel to perform an "analysis", "audit", "validation"
 - **Verification Cycle**: After a fix, rerun the affected test(s), full regression tests, and the relevant real-world benchmark.
 - **Phase 6.7 Precision**: Do not describe crawler accuracy using a numerical percentage unless a defined ground-truth methodology supports that measurement.
 
+## 8. Operational & Development Guidelines
+- **Python Environment**: Always use the virtual environment for execution and testing (`venv\Scripts\python.exe` on Windows). Do not use the global system python.
+- **Testing**: Run the full test suite using `venv\Scripts\python.exe -m pytest tests/ -v`.
+- **Concurrent Benchmarking**: When running benchmarks across multiple real-world sites (like the 11-site benchmark), always use `asyncio.gather` or `asyncio.as_completed` to execute the sites concurrently. Do not run them sequentially in a simple `for` loop, as this wastes significant time.
+- **Crawler API**: The core engine is `AsyncDeepCrawler(config: CrawlConfig)`. It supports comprehensive telemetry, JS rendering (via `crawl4ai`), and multi-source URL discovery.
+- **Async Execution**: Ensure all asynchronous crawler invocations are properly wrapped, typically within an `async def main():` block executed via `asyncio.run(main())`.
