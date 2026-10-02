@@ -29,3 +29,44 @@ Whenever asked to `audit <url>`:
 
 ## 6. Git Configuration
 - **Author Email**: All commits for this project must strictly use `shreyashgupta999@gmail.com` and username `ZeroTrace7` to ensure proper contribution tracking on GitHub. Local git config is set, but agents must verify this if environment resets occur.
+
+## 7. Real Analysis / Audit Rule
+Whenever the user asks RankIntel to perform an "analysis", "audit", "validation", "review", "benchmark", "investigation", or similar evaluation of real websites:
+
+- **Empirical Execution**: Do NOT treat "tests passed" as proof that the analysis is correct. "An automated test pass demonstrates implementation behavior against test fixtures; it does not by itself establish correctness against real websites."
+- **Live Execution**: Actually execute the relevant RankIntel engine against the requested real websites.
+- **Evidence Inspection**: Inspect the resulting evidence and findings.
+- **Observable Validation**: Validate important findings against observable website evidence.
+- **Comprehensive Case Coverage**: Test positive cases, negative cases, edge cases, and unavailable/blocked cases where applicable.
+- **Classification Standard**: Distinguish:
+  - `CORRECT`
+  - `QUESTIONABLE`
+  - `INCORRECT`
+  - `UNKNOWN`
+- **Zero Fabrication**: Never fabricate evidence.
+- **No Silent Conversions**: Never silently convert unavailable evidence into a passing result.
+- **Provenance Preservation**: Preserve provenance for findings.
+- **Attribution Clarity**: Clearly distinguish RankIntel-generated analysis from third-party measurements.
+- **Permanent 11-Site Benchmark**: Use the permanent 11-site benchmark whenever a benchmark/regression audit is requested unless the user explicitly specifies a different population:
+  1. `https://alephindia.in/`
+  2. `https://www.tcreng.com/`
+  3. `https://www.zaubacorp.com/`
+  4. `https://www.yadavmeasurements.com/`
+  5. `https://www.uniquemeasurement.com/`
+  6. `https://qualityinternational.org/`
+  7. `https://www.ascgroup.in/`
+  8. `https://www.standphillindia.in/`
+  9. `https://umspcs.in/`
+  10. `https://sqccertification.com/`
+  11. `https://sunrisetesting.vercel.app/`
+- **Functional Exercise**: When new functionality is added, the real-world benchmark must exercise that functionality before declaring it validated.
+- **Root-Cause Triage**: If a finding appears incorrect, reproduce it and identify whether the problem is:
+  1. source evidence,
+  2. extraction,
+  3. analyzer logic,
+  4. integration,
+  5. reporting,
+  6. fallback/default behavior.
+- **Discipline**: Do not modify implementation merely because a finding looks unusual. Fix only confirmed bugs.
+- **Verification Cycle**: After a fix, rerun the affected test(s), full regression tests, and the relevant real-world benchmark.
+
