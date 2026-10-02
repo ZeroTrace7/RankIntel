@@ -638,3 +638,32 @@ def test_robots_parser_in_memory_allowed_and_blocked():
     assert blocked_st == CrawlabilityStatus.BLOCKED
     assert "disallows crawling" in blocked_note
 
+
+def test_queued_and_blocked_records_evaluate_to_unknown_indexability():
+    """Queued and robots-blocked records must evaluate to UNKNOWN indexability, not ERROR."""
+    rec_queued = CrawlRecord(
+        url="https://example.com/queued-page",
+        normalized_url="https://example.com/queued-page",
+        identity_url="https://example.com/queued-page",
+        crawl_status=CrawlStatus.QUEUED,
+        depth=2,
+        status_code=0,
+    )
+    res_queued = IndexabilityEngine.evaluate_record(rec_queued)
+    assert res_queued.indexability == IndexabilityStatus.UNKNOWN
+    assert any("not crawled" in n for n in res_queued.evaluation_notes)
+
+    rec_blocked = CrawlRecord(
+        url="https://example.com/blocked-page",
+        normalized_url="https://example.com/blocked-page",
+        identity_url="https://example.com/blocked-page",
+        crawl_status=CrawlStatus.BLOCKED,
+        depth=1,
+        status_code=0,
+    )
+    res_blocked = IndexabilityEngine.evaluate_record(rec_blocked)
+    assert res_blocked.crawlability == CrawlabilityStatus.BLOCKED
+    assert res_blocked.indexability == IndexabilityStatus.UNKNOWN
+    assert any("blocked by robots.txt" in n for n in res_blocked.evaluation_notes)
+
+

@@ -337,13 +337,20 @@ class IndexabilityEngine:
             all_notes.append(f"X-Robots-Tag: {', '.join(x_robots_directives)}")
 
         # 3. HTTP / Indexability
-        has_content = bool(record.raw_html and record.raw_html.strip())
-        indexability, idx_notes = cls.evaluate_indexability(
-            http_status=record.status_code,
-            meta_directives=meta_directives,
-            x_robots_directives=x_robots_directives,
-            has_content=has_content,
-        )
+        if record.crawl_status in (CrawlStatus.QUEUED, CrawlStatus.SKIPPED):
+            indexability = IndexabilityStatus.UNKNOWN
+            idx_notes = ["URL not crawled (queued/unvisited) — indexability unknown"]
+        elif record.crawl_status == CrawlStatus.BLOCKED and not (record.raw_html and record.status_code):
+            indexability = IndexabilityStatus.UNKNOWN
+            idx_notes = ["Crawling blocked by robots.txt — indexability cannot be evaluated from document content"]
+        else:
+            has_content = bool(record.raw_html and record.raw_html.strip())
+            indexability, idx_notes = cls.evaluate_indexability(
+                http_status=record.status_code,
+                meta_directives=meta_directives,
+                x_robots_directives=x_robots_directives,
+                has_content=has_content,
+            )
         all_notes.extend(idx_notes)
 
         # 4. Canonicalization
