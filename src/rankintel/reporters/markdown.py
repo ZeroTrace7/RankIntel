@@ -116,6 +116,16 @@ class MarkdownReporter:
             lines.append(f"- **Pages Missing H1:** {len(sc.missing_h1_pages)}")
             lines.append(f"- **Thin Content Pages (<300 words):** {len(sc.thin_content_pages)}")
             lines.append(f"- **Duplicate Title Tags Detected:** {len(sc.duplicate_titles)}")
+            if sc.redirect_chains:
+                multi_hops = [c for c in sc.redirect_chains.values() if c.total_hops > 1]
+                loops = [c for c in sc.redirect_chains.values() if c.has_loop]
+                lines.append(f"- **Redirect Chains Tracked:** {len(sc.redirect_chains)} ({len(multi_hops)} multi-hop, {len(loops)} loops)")
+            if sc.canonical_chains:
+                c_chains = [c for c in sc.canonical_chains.values() if c.total_hops > 1]
+                c_redirects = [c for c in sc.canonical_chains.values() if c.points_to_redirect]
+                lines.append(f"- **Canonical Relationships:** {len(sc.canonical_chains)} ({len(c_chains)} chains, {len(c_redirects)} pointing to redirects)")
+            if sc.hygiene_anomalies:
+                lines.append(f"- **URL Hygiene Anomalies:** {len(sc.hygiene_anomalies)} representation discrepancies detected")
             if sc.site_wide_issues:
                 lines.append("\n### 🔴 Site-Wide Structural Findings:")
                 for issue in sc.site_wide_issues:
