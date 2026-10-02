@@ -334,6 +334,69 @@ class PageSummary(BaseModel):
     schema_types: List[str] = Field(default_factory=list)
     issues: List[str] = Field(default_factory=list)
 
+class LinkClassification(str, Enum):
+    INTERNAL = "INTERNAL"
+    EXTERNAL = "EXTERNAL"
+    SPECIAL = "SPECIAL"  # mailto, tel, javascript, data, etc.
+
+class NodeOrphanStatus(str, Enum):
+    ROOT = "ROOT"
+    CONNECTED = "CONNECTED"
+    POTENTIAL_ORPHAN = "POTENTIAL_ORPHAN"
+
+class NodeCrawlState(str, Enum):
+    CRAWLED = "CRAWLED"
+    DISCOVERED_UNCRAWLED = "DISCOVERED_UNCRAWLED"
+
+class ReachabilityInGraph(str, Enum):
+    REACHABLE_FROM_ROOT = "REACHABLE_FROM_ROOT"
+    UNREACHABLE_IN_OBSERVED_GRAPH = "UNREACHABLE_IN_OBSERVED_GRAPH"
+
+class LinkGraphNode(BaseModel):
+    url: str
+    identity_url: str
+    crawl_state: NodeCrawlState = NodeCrawlState.CRAWLED
+    orphan_status: NodeOrphanStatus = NodeOrphanStatus.CONNECTED
+    reachability: ReachabilityInGraph = ReachabilityInGraph.REACHABLE_FROM_ROOT
+    status_code: Optional[int] = None
+    click_depth: Optional[int] = None           # Shortest path from root; None if unreachable in observed graph
+    inbound_internal_count: int = 0             # Unique internal referring pages (excl. self)
+    outbound_internal_count: int = 0            # Unique internal target pages (excl. self)
+    total_inbound_links: int = 0                # Total observed inbound links (including duplicates)
+    total_outbound_links: int = 0               # Total observed outbound links (including duplicates)
+    self_links_count: int = 0                   # Observed self-referencing links
+    external_outbound_count: int = 0            # Outgoing links to external domains
+    internal_equity_score: float = 0.0          # Internal PageRank score (sums to ~1.0)
+    equity_percentile: float = 0.0              # 0.0 - 100.0% relative rank in graph
+    is_dead_end: bool = False                   # True if outbound_internal_count == 0
+
+class LinkGraphEdge(BaseModel):
+    source_url: str
+    target_url: str
+    link_count: int = 1
+
+class InternalLinkGraphSummary(BaseModel):
+    root_url: str
+    total_nodes: int = 0
+    crawled_nodes_count: int = 0
+    discovered_uncrawled_count: int = 0
+    total_internal_edges: int = 0
+    total_external_links_found: int = 0
+    strongly_connected_components: int = 0
+    weakly_connected_components: int = 0
+    max_click_depth: int = 0
+    deep_pages_count: int = 0                   # Click depth > 3
+    potential_orphan_count: int = 0
+    unreachable_in_observed_graph_count: int = 0
+    dead_ends_count: int = 0
+    nodes: Dict[str, LinkGraphNode] = Field(default_factory=dict)
+    potential_orphans: List[str] = Field(default_factory=list)
+    unreachable_in_observed_graph: List[str] = Field(default_factory=list)
+    deep_pages: List[str] = Field(default_factory=list)
+    dead_ends: List[str] = Field(default_factory=list)
+    top_equity_pages: List[str] = Field(default_factory=list)
+    lowest_equity_pages: List[str] = Field(default_factory=list)
+
 class SiteCrawlResult(BaseModel):
     """Aggregated multi-page crawl intelligence."""
     pages_crawled: int = 0
@@ -354,6 +417,7 @@ class SiteCrawlResult(BaseModel):
     redirect_chains: Dict[str, RedirectChainRecord] = Field(default_factory=dict)
     canonical_chains: Dict[str, CanonicalChainRecord] = Field(default_factory=dict)
     hygiene_anomalies: List[HygieneAnomaly] = Field(default_factory=list)
+    link_graph: Optional[InternalLinkGraphSummary] = None
 
 class EngineResult(BaseModel):
     engine_name: str
