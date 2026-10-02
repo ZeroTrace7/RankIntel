@@ -211,6 +211,53 @@ class SecurityEvidence(BaseModel):
     findings: List[SecurityFinding] = Field(default_factory=list)
     recommendations: List[str] = Field(default_factory=list)
 
+class ImageFindingSeverity(str, Enum):
+    CRITICAL = "CRITICAL"
+    HIGH = "HIGH"
+    MEDIUM = "MEDIUM"
+    LOW = "LOW"
+    INFO = "INFO"
+
+class ImageFinding(BaseModel):
+    code: str
+    severity: ImageFindingSeverity
+    src: str
+    description: str
+    recommendation: str
+
+class ImageDetail(BaseModel):
+    src: str
+    alt: Optional[str] = None
+    has_alt: bool = False
+    is_decorative: bool = False
+    alt_quality: str = "good"  # "good", "missing", "generic", "decorative"
+    width: Optional[int] = None
+    height: Optional[int] = None
+    has_dimensions: bool = False
+    format: str = ""
+    is_modern_format: bool = False
+    loading: Optional[str] = None
+    fetchpriority: Optional[str] = None
+    has_srcset: bool = False
+    is_in_picture_tag: bool = False
+    filename: str = ""
+    is_descriptive_filename: bool = True
+    issues: List[str] = Field(default_factory=list)
+
+class ImageSeoEvidence(BaseModel):
+    total_images: int = 0
+    images_with_alt: int = 0
+    decorative_images: int = 0
+    images_with_dimensions: int = 0
+    modern_format_count: int = 0
+    lazy_loaded_count: int = 0
+    hero_or_lcp_candidate: Optional[str] = None
+    score: int = 100
+    grade: str = "A"
+    images: List[ImageDetail] = Field(default_factory=list)
+    findings: List[ImageFinding] = Field(default_factory=list)
+    recommendations: List[str] = Field(default_factory=list)
+
 class EvidenceProvenanceTag(BaseModel):
     """Tracks which engine produced a specific finding, with confidence rating."""
     finding: str
@@ -633,6 +680,7 @@ class EngineResult(BaseModel):
     trust_stack: Optional[TrustStackResult] = None
     performance: Optional[PerformanceEvidence] = None
     security: Optional[SecurityEvidence] = None
+    image_seo: Optional[ImageSeoEvidence] = None
     cloud_intelligence: Optional[CloudIntelligenceEvidence] = None
     raw_html: Optional[str] = None  # Post-JS rendered HTML from crawl4ai; used by TrustEvaluator and GeoEngine
 
@@ -663,6 +711,7 @@ class SynthesisReport(BaseModel):
     trust_score: int = 0
     performance_score: int = 0
     security_score: int = 0
+    image_seo_score: int = 0
     keyword_score: int = 0
     site_health_score: int = 0
     score_formula_mode: str = "4_engine"  # "3_engine", "4_engine", "5_engine"
@@ -679,6 +728,7 @@ class SynthesisReport(BaseModel):
     unified_trust: TrustStackResult = Field(default_factory=TrustStackResult)
     unified_performance: PerformanceEvidence = Field(default_factory=PerformanceEvidence)
     unified_security: SecurityEvidence = Field(default_factory=SecurityEvidence)
+    unified_image_seo: ImageSeoEvidence = Field(default_factory=ImageSeoEvidence)
     cloud_intelligence: CloudIntelligenceEvidence = Field(default_factory=CloudIntelligenceEvidence)
     site_crawl: Optional[SiteCrawlResult] = None
     

@@ -308,6 +308,27 @@ class MarkdownReporter:
                     lines.append(f"| {sev_icon} {f.severity.value} | {cat_label} | {f.title} | {f.recommendation} |")
                 lines.append("")
 
+        # Image SEO
+        img = report.unified_image_seo
+        if img and img.total_images > 0:
+            lines.append("## 🖼️ IMAGE SEO & VISUAL SEARCH INTELLIGENCE")
+            lines.append(f"- **Image Optimization Score:** {img.score}/100 (Grade: {img.grade})")
+            lines.append(f"- **Total Images Detected:** {img.total_images}")
+            lines.append(f"- **Alt Attribute Coverage:** {img.images_with_alt}/{img.total_images} (Decorative: {img.decorative_images})")
+            lines.append(f"- **Layout Stability (Explicit Dimensions):** {img.images_with_dimensions}/{img.total_images} images declared width/height (CLS safe)")
+            lines.append(f"- **Modern Format Delivery (WebP/AVIF):** {img.modern_format_count}/{img.total_images} images")
+            lines.append(f"- **Lazy Loaded Below-Fold:** {img.lazy_loaded_count} images")
+            if img.hero_or_lcp_candidate:
+                lines.append(f"- **Hero LCP Candidate:** `{img.hero_or_lcp_candidate}`")
+            if img.findings:
+                lines.append("\n### 🚨 Image SEO Diagnostic Findings:")
+                lines.append("| Severity | Finding | Recommendation |")
+                lines.append("|---|---|---|")
+                for f in img.findings:
+                    sev_icon = "🔴" if f.severity in ("CRITICAL", "HIGH") else ("🟡" if f.severity == "MEDIUM" else "ℹ️")
+                    lines.append(f"| {sev_icon} {f.severity.value} | {f.description} | {f.recommendation} |")
+                lines.append("")
+
         # GEO Citability
         g = report.unified_geo
         lines.append("## 🧠 GENERATIVE ENGINE OPTIMIZATION (GEO / AEO)")

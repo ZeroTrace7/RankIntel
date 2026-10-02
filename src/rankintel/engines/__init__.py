@@ -8,6 +8,7 @@ from rankintel.engines.performance_engine import PerformanceEngine
 from rankintel.engines.mcp_engine import McpEngine
 from rankintel.engines.bot_matrix_engine import BotMatrixEngine
 from rankintel.engines.security_engine import SecurityEngine
+from rankintel.engines.image_engine import ImageEngine
 
 __all__ = [
     "SeoEngine",
@@ -17,4 +18,5 @@ __all__ = [
     "McpEngine",
     "BotMatrixEngine",
     "SecurityEngine",
+    "ImageEngine",
 ]
