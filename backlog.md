@@ -747,21 +747,21 @@ Phase 14: Real-World Enterprise Validation & Production Rollout
 
 ---
 
-### Phase 6 — Crawl & Index Intelligence (Highest Priority)
-- [ ] **6.1 Deep Multi-Page Crawler**: Build recursive async crawler in `src/rankintel/crawler/deep_crawler.py` supporting `--max-depth` and `--max-pages`.
-- [ ] **6.2 Sitemap Ingestion Engine**: Parse nested XML sitemaps and compare against crawled URLs to flag unlinked/orphan pages.
-- [ ] **6.3 Redirect & Canonical Chain Resolver**: Trace full 3xx redirect chains and cross-check canonical target URLs.
-- [ ] **6.4 IndexabilityEngine**: Implement dedicated `src/rankintel/engines/indexability_engine.py` with the 10-gate Search Eligibility Matrix.
-- [ ] **6.5 Bot Access Matrix**: Implement `src/rankintel/engines/bot_matrix_engine.py` parsing rules for 12+ search and AI user-agents.
+### Phase 6 — Crawl & Index Intelligence (Complete)
+- [x] **6.1 Deep Multi-Page Crawler**: Build recursive async crawler in `src/rankintel/crawler/deep_crawler.py` supporting `--max-depth` and `--max-pages`.
+- [x] **6.2 Sitemap Ingestion Engine**: Parse nested XML sitemaps and compare against crawled URLs to flag unlinked/orphan pages.
+- [x] **6.3 Redirect & Canonical Chain Resolver**: Trace full 3xx redirect chains and cross-check canonical target URLs.
+- [x] **6.4 IndexabilityEngine**: Implement dedicated `src/rankintel/engines/indexability_engine.py` with the 10-gate Search Eligibility Matrix.
+- [x] **6.5 Bot Access Matrix**: Implement `src/rankintel/engines/bot_matrix_engine.py` parsing rules for 12+ search and AI user-agents.
 
-### Phase 7 — Technical + Accessibility + Security
+### Phase 7 — Technical + Accessibility + Security (In Progress)
 - [ ] **7.1 AccessibilityEngine (`axe-core`)**: Integrate `axe-core` in headless Playwright to audit WCAG 2.1/2.2 AA violations.
-- [ ] **7.2 Security & Headers Engine**: Implement `src/rankintel/engines/security_engine.py` checking HSTS, CSP, X-Frame-Options, TLS cert validity, and cookie flags.
+- [x] **7.2 Security & Headers Engine**: Implement `src/rankintel/engines/security_engine.py` checking HSTS, CSP, X-Frame-Options, TLS cert validity, and cookie flags.
 - [ ] **7.3 Image SEO Engine**: Audit missing/empty alt attributes, dimensions, WebP/AVIF format, lazy loading, and CLS risk in `src/rankintel/engines/image_engine.py`.
-- [ ] **7.4 URL Hygiene Normalizer**: Detect trailing-slash variations, casing duplication, HTTP/HTTPS and www/non-www discrepancies.
+- [x] **7.4 URL Hygiene Normalizer**: Detect trailing-slash variations, casing duplication, HTTP/HTTPS and www/non-www discrepancies.
 
 ### Phase 8 — Content + Entity + Internal-Link Intelligence
-- [ ] **8.1 Internal Link Graph Engine**: Implement `networkx` directed graph computing in/out degrees, click depth from root, and simulated internal PageRank.
+- [x] **8.1 Internal Link Graph Engine**: Implement `networkx` directed graph computing in/out degrees, click depth from root, and simulated internal PageRank.
 - [ ] **8.2 Content Quality Engine**: Implement semantic analysis measuring heading-to-content coherence, answer-first density, and near-duplicate detection.
 - [ ] **8.3 Entity / Knowledge Graph Engine**: Extract organizational entities (WHO, WHAT, WHERE, accreditations) and verify consistency between Schema and DOM.
 - [ ] **8.4 Local SEO Engine**: Triangulate Name, Address, and Phone (NAP) across Footer, Contact Page, and `LocalBusiness` schema.
