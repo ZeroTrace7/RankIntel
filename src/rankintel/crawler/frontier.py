@@ -18,9 +18,15 @@ from rankintel.crawler.normalizer import UrlNormalizer
 class CrawlFrontier:
     """Thread-safe, depth-aware crawl frontier for async multi-page spidering."""
 
-    def __init__(self, base_url: str, config: Optional[CrawlConfig] = None):
+    def __init__(
+        self,
+        base_url: str,
+        config: Optional[CrawlConfig] = None,
+        transport: Optional[Any] = None,
+    ):
         self.base_url = base_url
         self.config = config or CrawlConfig()
+        self.transport = transport
         self.visited: Set[str] = set()
         self.enqueued: Set[str] = set()
         self.queue: asyncio.Queue[Tuple[str, int, Optional[str], str]] = asyncio.Queue()
@@ -292,5 +298,27 @@ class CrawlFrontier:
             )
         except Exception:
             pass
+
+        if getattr(self.config, "enable_sitemap_analysis", False):
+            try:
+                from rankintel.sitemaps.discovery import SitemapDiscovery
+                from rankintel.sitemaps.fetcher import SitemapFetcher
+                from rankintel.analyzers.sitemap_reconciler import SitemapReconciler
+
+                sitemap_candidates = SitemapDiscovery.discover_sitemap_urls(
+                    base_url=self.base_url,
+                    fallback_to_standard_paths=True,
+                )
+                if sitemap_candidates:
+                    fetcher = SitemapFetcher(transport=self.transport)
+                    docs, urls = fetcher.fetch_sitemaps_sync(sitemap_candidates)
+                    SitemapReconciler.reconcile(
+                        site_crawl=result,
+                        sitemap_documents=docs,
+                        sitemap_urls=urls,
+                        user_agent=self.config.user_agent,
+                    )
+            except Exception:
+                pass
 
         return result

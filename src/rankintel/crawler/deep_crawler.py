@@ -87,7 +87,7 @@ class AsyncDeepCrawler:
             start_url = "https://" + start_url
 
         self._init_robots(start_url)
-        frontier = CrawlFrontier(base_url=start_url, config=self.config)
+        frontier = CrawlFrontier(base_url=start_url, config=self.config, transport=self.transport)
 
         # Enqueue seed URL
         frontier.add_url(start_url, depth=0, parent_url=None, discovery_source="seed")

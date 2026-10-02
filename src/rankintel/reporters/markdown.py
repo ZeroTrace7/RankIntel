@@ -156,6 +156,42 @@ class MarkdownReporter:
                         if node:
                             d_str = str(node.click_depth) if node.click_depth is not None else "Unreachable"
                             lines.append(f"| `{node.identity_url}` | {node.internal_equity_score:.4f} | {node.equity_percentile}% | {d_str} | {node.inbound_internal_count} | {node.outbound_internal_count} |")
+            if sc.sitemap_reconciliation:
+                sr = sc.sitemap_reconciliation
+                lines.append("\n### 🗺️ XML Sitemap Reconciliation & Cross-Signal Triangulation")
+                lines.append(f"- **Sitemaps Traversed:** {sr.total_sitemaps_discovered} ({sr.total_sitemaps_parsed} parsed)")
+                lines.append(f"- **Sitemap URLs Tracked:** {sr.total_unique_sitemap_urls} unique URLs ({sr.crawled_sitemap_urls_count} crawled, {sr.uncrawled_sitemap_urls_count} uncrawled in budget)")
+                lines.append(f"- **Internal URLs Missing from Sitemap:** {sr.internal_urls_missing_from_sitemap_count} (coverage discrepancy)")
+                lines.append(f"- **Cross-Signal Conflicts Identified:** {len(sr.conflicts)}")
+
+                if sr.sitemap_documents:
+                    lines.append("\n#### Sitemap Documents:")
+                    lines.append("| Document URL | Status | Format | URLs Found | Fetch Time |")
+                    lines.append("|---|---|---|---|---|")
+                    for doc in sr.sitemap_documents:
+                        lines.append(f"| `{doc.url}` | {doc.status.value} | {doc.format.value} | {doc.urls_found_count} | {doc.fetch_time_sec:.3f}s |")
+
+                if sr.conflicts:
+                    lines.append("\n#### Cross-Signal Conflict Matrix:")
+                    lines.append("| Affected URL | Conflict Type | Diagnostic Priority | Signal A (Sitemap) | Signal B (Empirical) | Evidence Nature | Recommended Remediation |")
+                    lines.append("|---|---|---|---|---|---|---|")
+                    for c in sr.conflicts:
+                        lines.append(f"| `{c.url}` | {c.conflict_type.value} | {c.severity.value} | `{c.signal_a_state}` | `{c.signal_b_state}` | {c.evidence_nature.value} | {c.recommended_reconciliation} |")
+
+                if sr.internal_urls_missing_from_sitemap:
+                    lines.append("\n#### Internal URLs Omitted from Sitemap (Coverage Discrepancies):")
+                    for m_url in sr.internal_urls_missing_from_sitemap[:10]:
+                        lines.append(f"- `{m_url}`")
+                    if len(sr.internal_urls_missing_from_sitemap) > 10:
+                        lines.append(f"- *... and {len(sr.internal_urls_missing_from_sitemap) - 10} more*")
+
+                if sr.uncrawled_sitemap_urls:
+                    lines.append("\n#### Uncrawled Sitemap URLs (Discovery Evidence Only — Status UNKNOWN):")
+                    for u_url in sr.uncrawled_sitemap_urls[:10]:
+                        lines.append(f"- `{u_url}`")
+                    if len(sr.uncrawled_sitemap_urls) > 10:
+                        lines.append(f"- *... and {len(sr.uncrawled_sitemap_urls) - 10} more*")
+
             if sc.site_wide_issues:
                 lines.append("\n### 🔴 Site-Wide Structural Findings:")
                 for issue in sc.site_wide_issues:
