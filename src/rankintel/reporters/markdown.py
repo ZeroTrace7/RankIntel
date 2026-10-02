@@ -126,6 +126,36 @@ class MarkdownReporter:
                 lines.append(f"- **Canonical Relationships:** {len(sc.canonical_chains)} ({len(c_chains)} chains, {len(c_redirects)} pointing to redirects)")
             if sc.hygiene_anomalies:
                 lines.append(f"- **URL Hygiene Anomalies:** {len(sc.hygiene_anomalies)} representation discrepancies detected")
+            if sc.link_graph:
+                lg = sc.link_graph
+                lines.append("\n### 🔗 Internal Link Graph & Equity Intelligence")
+                lines.append(f"- **Total Graph Nodes:** {lg.total_nodes} ({lg.crawled_nodes_count} crawled, {lg.discovered_uncrawled_count} discovered uncrawled)")
+                lines.append(f"- **Internal Hyperlink Edges:** {lg.total_internal_edges}")
+                lines.append(f"- **External Outbound Links Discovered:** {lg.total_external_links_found}")
+                lines.append(f"- **Max Click Depth from Root:** {lg.max_click_depth} clicks")
+                if lg.deep_pages:
+                    lines.append(f"- **Deep Pages (>3 Clicks from Root):** ⚠️ {len(lg.deep_pages)} pages")
+                if lg.potential_orphans:
+                    lines.append(f"- **Potential Orphans (0 Internal Inbound Links in Crawl):** ⚠️ {len(lg.potential_orphans)} crawled pages")
+                if lg.unreachable_in_observed_graph:
+                    lines.append(f"- **Unreachable in Observed Graph:** {len(lg.unreachable_in_observed_graph)} pages (no observed directed path from root)")
+                if lg.dead_ends:
+                    lines.append(f"- **Dead Ends (0 Outbound Internal Links):** {len(lg.dead_ends)} pages")
+
+                if lg.weakly_connected_components > 1:
+                    lines.append(f"- **Graph Connectivity:** ⚠️ {lg.weakly_connected_components} disconnected components detected")
+                else:
+                    lines.append("- **Graph Connectivity:** 🟢 Fully connected internal graph")
+
+                if lg.top_equity_pages and lg.nodes:
+                    lines.append("\n#### Top Pages by Internal Link Equity (Internal PageRank):")
+                    lines.append("| URL | Internal Equity | Equity Percentile | Click Depth | Inbound Links | Outbound Links |")
+                    lines.append("|---|---|---|---|---|---|")
+                    for node_url in lg.top_equity_pages[:5]:
+                        node = lg.nodes.get(node_url)
+                        if node:
+                            d_str = str(node.click_depth) if node.click_depth is not None else "Unreachable"
+                            lines.append(f"| `{node.identity_url}` | {node.internal_equity_score:.4f} | {node.equity_percentile}% | {d_str} | {node.inbound_internal_count} | {node.outbound_internal_count} |")
             if sc.site_wide_issues:
                 lines.append("\n### 🔴 Site-Wide Structural Findings:")
                 for issue in sc.site_wide_issues:
