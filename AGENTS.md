@@ -69,4 +69,5 @@ Whenever the user asks RankIntel to perform an "analysis", "audit", "validation"
   6. fallback/default behavior.
 - **Discipline**: Do not modify implementation merely because a finding looks unusual. Fix only confirmed bugs.
 - **Verification Cycle**: After a fix, rerun the affected test(s), full regression tests, and the relevant real-world benchmark.
+- **Phase 6.7 Precision**: Do not describe crawler accuracy using a numerical percentage unless a defined ground-truth methodology supports that measurement.
 

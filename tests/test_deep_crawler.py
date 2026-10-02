@@ -132,6 +132,8 @@ def test_crawler_full_site_discovery_and_depth():
 
         # Status counts must track fetched
         assert result.status_counts.get("FETCHED", 0) >= 5
+        assert result.pages_discovered >= 5
+        assert result.completeness_status == "CRAWL_COMPLETE"
 
     asyncio.run(_run())
 
@@ -152,6 +154,7 @@ def test_crawler_respects_max_pages_ceiling():
         result = await crawler.crawl("https://example.com")
 
         assert result.pages_crawled <= 3
+        assert result.completeness_status == "CRAWL_LIMIT_REACHED"
 
     asyncio.run(_run())
 

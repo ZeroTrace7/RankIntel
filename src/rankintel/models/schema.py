@@ -243,6 +243,7 @@ class CrawlConfig(BaseModel):
     retry_backoff_sec: float = Field(default=0.5, ge=0.0, le=10.0)
     strip_tracking_params: bool = True
     enable_sitemap_analysis: bool = False
+    enable_browser_rendering: bool = False
     user_agent: str = "RankIntel/2.0 (+https://github.com/ZeroTrace7/RankIntel)"
 
     @model_validator(mode="before")
@@ -523,7 +524,20 @@ class SitemapReconciliationSummary(BaseModel):
 
 class SiteCrawlResult(BaseModel):
     """Aggregated multi-page crawl intelligence."""
+    completeness_status: str = "CRAWL_COMPLETE"
     pages_crawled: int = 0
+    pages_discovered: int = 0
+    pages_queued: int = 0
+    pages_blocked: int = 0
+    pages_skipped: int = 0
+    pages_failed: int = 0
+    pages_non_html: int = 0
+    pages_duplicate: int = 0
+    remaining_frontier: int = 0
+    sitemap_only_urls: int = 0
+    rendered_only_urls: int = 0
+    navigation_only_urls: int = 0
+    
     pages_with_issues: int = 0
     crawl_depth: int = 2
     crawl_duration_sec: float = 0.0

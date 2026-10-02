@@ -235,6 +235,39 @@ class AsyncDeepCrawler:
         body_bytes = len(resp.content)
         raw_html = resp.text
 
+        rendered = False
+        if ("text/html" in content_type or "application/xhtml" in content_type) and resp.status_code == 200:
+            needs_render = self.config.enable_browser_rendering
+            if not needs_render:
+                try:
+                    soup = BeautifulSoup(raw_html, "html.parser")
+                    if soup.find("div", id=["app", "root", "__next", "nuxt", "gatsby-focus-wrapper"]):
+                        needs_render = True
+                    else:
+                        clone = BeautifulSoup(raw_html, "html.parser")
+                        for tag in clone(["script", "style", "nav", "footer"]):
+                            tag.extract()
+                        words = clone.get_text(separator=" ").split()
+                        if len(words) < 50 and len(soup.find_all("script")) > 0:
+                            needs_render = True
+                except Exception:
+                    pass
+
+            if needs_render:
+                try:
+                    from rankintel.engines.browser_engine import BrowserEngine
+                    b_engine = BrowserEngine(headless=True)
+                    t_browser_start = time.time()
+                    b_res = await b_engine._execute_async(norm_url, t_browser_start)
+                    if b_res.status == "success" and b_res.raw_html:
+                        raw_html = b_res.raw_html
+                        content_type += "; rendered=true"
+                        body_bytes = len(raw_html)
+                        fetch_dur += b_res.execution_time_sec
+                        rendered = True
+                except Exception:
+                    pass
+
         discovered_links: List[str] = []
         if "text/html" in content_type or "application/xhtml" in content_type or not content_type:
             try:
@@ -250,8 +283,34 @@ class AsyncDeepCrawler:
                             full_link,
                             depth=depth + 1,
                             parent_url=norm_url,
-                            discovery_source="internal_link"
+                            discovery_source="rendered_dom_link" if rendered else "internal_link"
                         )
+                
+                # Canonical links
+                c_tag = soup.find("link", attrs={"rel": lambda v: v and "canonical" in (v if isinstance(v, list) else [str(v).lower()])})
+                if c_tag and c_tag.get("href"):
+                    full_canonical = urljoin(norm_url, c_tag["href"].strip())
+                    discovered_links.append(full_canonical)
+                    if depth + 1 <= self.config.max_depth:
+                        frontier.add_url(
+                            full_canonical,
+                            depth=depth + 1,
+                            parent_url=norm_url,
+                            discovery_source="canonical"
+                        )
+                
+                # Hreflang links
+                for h_tag in soup.find_all("link", attrs={"rel": lambda v: v and "alternate" in (v if isinstance(v, list) else [str(v).lower()]), "hreflang": True}):
+                    if h_tag.get("href"):
+                        full_hreflang = urljoin(norm_url, h_tag["href"].strip())
+                        discovered_links.append(full_hreflang)
+                        if depth + 1 <= self.config.max_depth:
+                            frontier.add_url(
+                                full_hreflang,
+                                depth=depth + 1,
+                                parent_url=norm_url,
+                                discovery_source="hreflang"
+                            )
             except Exception:
                 pass
 

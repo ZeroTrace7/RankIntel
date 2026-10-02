@@ -4,7 +4,8 @@ Maintains the queue, visited sets, depth constraints, page ceilings, and CrawlSt
 """
 from __future__ import annotations
 import asyncio
-from typing import Dict, List, Optional, Set, Tuple
+from typing import Dict, List, Optional, Set, Tuple, Any
+from urllib.parse import urlparse
 from rankintel.models.schema import (
     CrawlStatus,
     CrawlConfig,
@@ -33,6 +34,9 @@ class CrawlFrontier:
         self.records: Dict[str, CrawlRecord] = {}
         self.fetched_count: int = 0
         self.duplicate_count: int = 0
+        self.non_html_count: int = 0
+        self.out_of_domain_count: int = 0
+        self.pages_discovered: int = 0
 
     def add_url(
         self,
@@ -48,12 +52,16 @@ class CrawlFrontier:
         if not url:
             return False
 
+        self.pages_discovered += 1
+
         # Reject non-HTML mime types (images, pdfs, archives)
         if not UrlNormalizer.is_crawlable_mime(url):
+            self.non_html_count += 1
             return False
 
         # Reject out-of-domain targets
         if not UrlNormalizer.is_same_domain(url, self.base_url, self.config.allowed_subdomains):
+            self.out_of_domain_count += 1
             return False
 
         # Depth ceiling
@@ -68,6 +76,19 @@ class CrawlFrontier:
         if norm_url in self.enqueued or norm_url in self.visited:
             self.duplicate_count += 1
             return False
+
+        # Crawl-trap protection: Limit max URLs per path (e.g., infinite faceted nav)
+        parsed_norm = urlparse(norm_url)
+        path_only = parsed_norm.path
+        if not hasattr(self, "path_counts"):
+            self.path_counts: Dict[str, int] = {}
+        
+        # Allow at most 20 distinct query variations per path
+        if parsed_norm.query:
+            current_count = self.path_counts.get(path_only, 0)
+            if current_count >= 20:
+                return False
+            self.path_counts[path_only] = current_count + 1
 
         # Stop enqueueing if we have already far exceeded the crawl page budget
         if self.fetched_count >= self.config.max_pages:
@@ -189,9 +210,20 @@ class CrawlFrontier:
         no_meta_desc: List[str] = []
         title_counts: Dict[str, int] = {}
 
+        rendered_only = 0
+        sitemap_only = 0
+        navigation_only = 0
+
         for rec in self.records.values():
             s_name = rec.crawl_status.value
             status_counts[s_name] = status_counts.get(s_name, 0) + 1
+            
+            if rec.discovery_source == "rendered_dom_link":
+                rendered_only += 1
+            elif rec.discovery_source == "sitemap":
+                sitemap_only += 1
+            elif rec.discovery_source in ("internal_link", "seed"):
+                navigation_only += 1
 
             if rec.status_code >= 400 or rec.crawl_status == CrawlStatus.FAILED:
                 broken_links.append(rec.url)
@@ -273,8 +305,26 @@ class CrawlFrontier:
         if no_meta_desc:
             site_wide_issues.append(f"{len(no_meta_desc)} pages without a meta description")
 
+        completeness = "CRAWL_COMPLETE"
+        if not self.queue.empty():
+            completeness = "CRAWL_LIMIT_REACHED"
+        elif status_counts.get("FAILED", 0) > 0 and self.fetched_count == 0:
+            completeness = "CRAWL_FAILED"
+
         result = SiteCrawlResult(
+            completeness_status=completeness,
             pages_crawled=self.fetched_count,
+            pages_discovered=self.pages_discovered,
+            pages_queued=status_counts.get("QUEUED", 0),
+            pages_blocked=status_counts.get("BLOCKED", 0),
+            pages_skipped=status_counts.get("SKIPPED", 0),
+            pages_failed=status_counts.get("FAILED", 0),
+            pages_non_html=self.non_html_count,
+            pages_duplicate=self.duplicate_count,
+            remaining_frontier=self.queue.qsize(),
+            sitemap_only_urls=sitemap_only,
+            rendered_only_urls=rendered_only,
+            navigation_only_urls=navigation_only,
             pages_with_issues=len([p for p in pages if p.issues]),
             crawl_depth=self.config.max_depth,
             crawl_duration_sec=round(duration_sec, 2),
