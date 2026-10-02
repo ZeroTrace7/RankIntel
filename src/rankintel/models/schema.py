@@ -229,6 +229,79 @@ class CrawlConfig(BaseModel):
     def respect_robots(self) -> bool:
         return self.respect_robots_txt
 
+class RedirectHop(BaseModel):
+    url: str
+    status_code: int
+    location: str
+    latency_ms: Optional[float] = None
+
+class RedirectChainStatus(str, Enum):
+    RESOLVED = "RESOLVED"
+    MULTI_HOP = "MULTI_HOP"
+    LOOP = "LOOP"
+    BROKEN_TARGET = "BROKEN_TARGET"
+    EXCEEDED_MAX_HOPS = "EXCEEDED_MAX_HOPS"
+    MISSING_LOCATION = "MISSING_LOCATION"
+    UNVERIFIED_TARGET = "UNVERIFIED_TARGET"
+
+class RedirectChainRecord(BaseModel):
+    initial_url: str
+    final_url: str
+    total_hops: int = 0
+    hops: List[RedirectHop] = Field(default_factory=list)
+    has_loop: bool = False
+    status: RedirectChainStatus = RedirectChainStatus.RESOLVED
+    total_latency_ms: Optional[float] = None
+    notes: List[str] = Field(default_factory=list)
+
+class CanonicalChainStatus(str, Enum):
+    SELF_REFERENCING = "SELF_REFERENCING"
+    RESOLVED = "RESOLVED"
+    CHAIN = "CHAIN"
+    LOOP = "LOOP"
+    POINTS_TO_REDIRECT = "POINTS_TO_REDIRECT"
+    POINTS_TO_DEAD_URL = "POINTS_TO_DEAD_URL"
+    UNVERIFIED_TARGET = "UNVERIFIED_TARGET"
+    MISSING = "MISSING"
+    INVALID_TARGET = "INVALID_TARGET"
+
+class CanonicalChainRecord(BaseModel):
+    source_url: str
+    declared_canonical: Optional[str] = None
+    final_canonical: Optional[str] = None
+    total_hops: int = 0
+    has_loop: bool = False
+    points_to_redirect: bool = False
+    points_to_dead_url: bool = False
+    status: CanonicalChainStatus = CanonicalChainStatus.RESOLVED
+    hops: List[str] = Field(default_factory=list)
+    notes: List[str] = Field(default_factory=list)
+
+class HygieneAnomalyType(str, Enum):
+    TRAILING_SLASH = "TRAILING_SLASH"
+    PROTOCOL_HTTP_HTTPS = "PROTOCOL_HTTP_HTTPS"
+    WWW_SUBDOMAIN = "WWW_SUBDOMAIN"
+    PATH_CASING = "PATH_CASING"
+    QUERY_PARAM_ORDER = "QUERY_PARAM_ORDER"
+    TRACKING_PARAMETERS = "TRACKING_PARAMETERS"
+    MULTIPLE_SLASHES = "MULTIPLE_SLASHES"
+
+class HygieneEvidenceType(str, Enum):
+    IDENTICAL_EXTRACTED_TEXT = "IDENTICAL_EXTRACTED_TEXT"
+    ACTUAL_DUPLICATE_CONTENT = "IDENTICAL_EXTRACTED_TEXT"
+    REDIRECT_EQUIVALENT = "REDIRECT_EQUIVALENT"
+    CANONICAL_EQUIVALENT = "CANONICAL_EQUIVALENT"
+    POTENTIAL_DUPLICATE_REPRESENTATION = "POTENTIAL_DUPLICATE_REPRESENTATION"
+    DISTINCT_CONTENT_VARIANT = "DISTINCT_CONTENT_VARIANT"
+
+class HygieneAnomaly(BaseModel):
+    anomaly_type: HygieneAnomalyType
+    primary_url: str
+    duplicate_url: str
+    recommendation: str
+    evidence_type: HygieneEvidenceType = HygieneEvidenceType.POTENTIAL_DUPLICATE_REPRESENTATION
+    evidence_notes: List[str] = Field(default_factory=list)
+
 class CrawlRecord(BaseModel):
     url: str
     normalized_url: str
@@ -246,6 +319,7 @@ class CrawlRecord(BaseModel):
     raw_html: Optional[str] = None
     discovered_links: List[str] = Field(default_factory=list)
     response_headers: Dict[str, Any] = Field(default_factory=dict)
+    redirect_url: Optional[str] = None
 
 class PageSummary(BaseModel):
     """Summary of a single crawled page for site-wide analysis."""
@@ -277,6 +351,9 @@ class SiteCrawlResult(BaseModel):
     thin_content_pages: List[str] = Field(default_factory=list)
     pages_without_meta_desc: List[str] = Field(default_factory=list)
     search_eligibility: Dict[str, SearchEligibilityRecord] = Field(default_factory=dict)
+    redirect_chains: Dict[str, RedirectChainRecord] = Field(default_factory=dict)
+    canonical_chains: Dict[str, CanonicalChainRecord] = Field(default_factory=dict)
+    hygiene_anomalies: List[HygieneAnomaly] = Field(default_factory=list)
 
 class EngineResult(BaseModel):
     engine_name: str
