@@ -8,6 +8,7 @@ from rankintel.analyzers.redirect_resolver import RedirectResolver
 from rankintel.analyzers.canonical_resolver import CanonicalResolver
 from rankintel.analyzers.hygiene_detector import UrlHygieneDetector
 from rankintel.analyzers.hygiene_engine import UrlHygieneEngine
+from rankintel.analyzers.link_graph_engine import InternalLinkGraphEngine
 
 __all__ = [
     "TrustEvaluator",
@@ -17,4 +18,5 @@ __all__ = [
     "CanonicalResolver",
     "UrlHygieneDetector",
     "UrlHygieneEngine",
+    "InternalLinkGraphEngine",
 ]

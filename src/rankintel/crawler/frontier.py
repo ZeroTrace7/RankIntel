@@ -267,7 +267,7 @@ class CrawlFrontier:
         if no_meta_desc:
             site_wide_issues.append(f"{len(no_meta_desc)} pages without a meta description")
 
-        return SiteCrawlResult(
+        result = SiteCrawlResult(
             pages_crawled=self.fetched_count,
             pages_with_issues=len([p for p in pages if p.issues]),
             crawl_depth=self.config.max_depth,
@@ -282,3 +282,15 @@ class CrawlFrontier:
             thin_content_pages=thin_content,
             pages_without_meta_desc=no_meta_desc,
         )
+
+        try:
+            from rankintel.analyzers.link_graph_engine import InternalLinkGraphEngine
+            InternalLinkGraphEngine.analyze_site(
+                result,
+                root_url=self.base_url,
+                allow_subdomains=self.config.allowed_subdomains,
+            )
+        except Exception:
+            pass
+
+        return result

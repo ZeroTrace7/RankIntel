@@ -41,6 +41,13 @@ from rankintel.models.schema import (
     HygieneAnomalyType,
     HygieneEvidenceType,
     HygieneAnomaly,
+    LinkClassification,
+    NodeOrphanStatus,
+    NodeCrawlState,
+    ReachabilityInGraph,
+    LinkGraphNode,
+    LinkGraphEdge,
+    InternalLinkGraphSummary,
 )
 
 __all__ = [
@@ -83,4 +90,11 @@ __all__ = [
     "HygieneAnomalyType",
     "HygieneEvidenceType",
     "HygieneAnomaly",
+    "LinkClassification",
+    "NodeOrphanStatus",
+    "NodeCrawlState",
+    "ReachabilityInGraph",
+    "LinkGraphNode",
+    "LinkGraphEdge",
+    "InternalLinkGraphSummary",
 ]
