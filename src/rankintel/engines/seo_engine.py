@@ -393,7 +393,14 @@ class SeoEngine:
 
                 result.pages_with_issues = len([page for page in result.pages if page.issues])
         except Exception as e:
-            result.site_wide_issues.append(f"Crawl error encountered: {e}")
+            # Fallback to AsyncDeepCrawler when advertools crawl fails (e.g. Scrapy binary missing on Windows)
+            try:
+                from rankintel.crawler.deep_crawler import AsyncDeepCrawler
+                from rankintel.models.schema import CrawlConfig
+                config = CrawlConfig(max_pages=max_pages, max_depth=depth, enable_sitemap_analysis=True)
+                return AsyncDeepCrawler(config=config).crawl_sync(start_url)
+            except Exception:
+                result.site_wide_issues.append(f"Crawl error encountered: {e}")
         finally:
             try:
                 if os.path.exists(tmp_path):
