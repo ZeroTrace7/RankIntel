@@ -192,12 +192,21 @@ class AsyncDeepCrawler:
 
             break
 
+        # Extract response headers, preserving multiple X-Robots-Tag if present
+        resp_headers: Dict[str, Any] = dict(resp.headers)
+        if hasattr(resp.headers, "get_list"):
+            x_robots = resp.headers.get_list("x-robots-tag")
+            if len(x_robots) > 1:
+                resp_headers["x-robots-tag"] = x_robots
+            elif len(x_robots) == 1:
+                resp_headers["x-robots-tag"] = x_robots[0]
+
         # Handle Redirects (3xx)
         if resp.status_code in (301, 302, 303, 307, 308):
             location = resp.headers.get("location", "")
             if location:
                 abs_location = urljoin(norm_url, location)
-                frontier.mark_redirected(norm_url, resp.status_code, abs_location)
+                frontier.mark_redirected(norm_url, resp.status_code, abs_location, response_headers=resp_headers)
                 # Enqueue redirect target if within boundaries
                 if depth <= self.config.max_depth:
                     frontier.add_url(
@@ -207,12 +216,12 @@ class AsyncDeepCrawler:
                         discovery_source="redirect"
                     )
             else:
-                frontier.mark_failed(norm_url, f"Redirect {resp.status_code} missing Location header", status_code=resp.status_code, retry_count=retries)
+                frontier.mark_failed(norm_url, f"Redirect {resp.status_code} missing Location header", status_code=resp.status_code, retry_count=retries, response_headers=resp_headers)
             return
 
         # Handle Errors (4xx, 5xx)
         if resp.status_code >= 400:
-            frontier.mark_failed(norm_url, f"HTTP {resp.status_code}", status_code=resp.status_code, retry_count=retries)
+            frontier.mark_failed(norm_url, f"HTTP {resp.status_code}", status_code=resp.status_code, retry_count=retries, response_headers=resp_headers)
             return
 
         # Handle 200 OK
@@ -249,4 +258,5 @@ class AsyncDeepCrawler:
             discovered_links=discovered_links,
             raw_html=raw_html,
             retry_count=retries,
+            response_headers=resp_headers,
         )

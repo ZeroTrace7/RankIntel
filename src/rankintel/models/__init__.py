@@ -28,6 +28,11 @@ from rankintel.models.schema import (
     CrawlStatus,
     CrawlConfig,
     CrawlRecord,
+    CrawlabilityStatus,
+    IndexabilityStatus,
+    CanonicalizationSignal,
+    IndexConfirmationStatus,
+    SearchEligibilityRecord,
 )
 
 __all__ = [
@@ -57,4 +62,9 @@ __all__ = [
     "CrawlStatus",
     "CrawlConfig",
     "CrawlRecord",
+    "CrawlabilityStatus",
+    "IndexabilityStatus",
+    "CanonicalizationSignal",
+    "IndexConfirmationStatus",
+    "SearchEligibilityRecord",
 ]

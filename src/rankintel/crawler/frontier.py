@@ -90,7 +90,8 @@ class CrawlFrontier:
         fetch_time_sec: float,
         discovered_links: List[str],
         raw_html: Optional[str] = None,
-        retry_count: int = 0
+        retry_count: int = 0,
+        response_headers: Optional[Dict[str, Any]] = None,
     ) -> None:
         """Record successful or finalized HTTP response."""
         self.visited.add(norm_url)
@@ -105,6 +106,8 @@ class CrawlFrontier:
             record.discovered_links = discovered_links
             record.raw_html = raw_html
             record.retry_count = retry_count
+            if response_headers:
+                record.response_headers = response_headers
 
     def mark_blocked(self, norm_url: str, reason: str = "robots.txt disallow") -> None:
         """Record URL blocked by robots.txt."""
@@ -114,7 +117,14 @@ class CrawlFrontier:
             record.crawl_status = CrawlStatus.BLOCKED
             record.failure_reason = reason
 
-    def mark_failed(self, norm_url: str, error: str, status_code: int = 0, retry_count: int = 0) -> None:
+    def mark_failed(
+        self,
+        norm_url: str,
+        error: str,
+        status_code: int = 0,
+        retry_count: int = 0,
+        response_headers: Optional[Dict[str, Any]] = None,
+    ) -> None:
         """Record URL network failure or exception."""
         self.visited.add(norm_url)
         record = self.records.get(norm_url)
@@ -123,6 +133,8 @@ class CrawlFrontier:
             record.status_code = status_code
             record.failure_reason = error
             record.retry_count = retry_count
+            if response_headers:
+                record.response_headers = response_headers
 
     def mark_skipped(self, norm_url: str, reason: str) -> None:
         """Record URL skipped due to policy or limit."""
@@ -132,7 +144,13 @@ class CrawlFrontier:
             record.crawl_status = CrawlStatus.SKIPPED
             record.failure_reason = reason
 
-    def mark_redirected(self, norm_url: str, status_code: int, location: str) -> None:
+    def mark_redirected(
+        self,
+        norm_url: str,
+        status_code: int,
+        location: str,
+        response_headers: Optional[Dict[str, Any]] = None,
+    ) -> None:
         """Record URL returned a redirect."""
         self.visited.add(norm_url)
         self.fetched_count += 1
@@ -141,6 +159,8 @@ class CrawlFrontier:
             record.crawl_status = CrawlStatus.REDIRECTED
             record.status_code = status_code
             record.failure_reason = f"Redirected to {location}"
+            if response_headers:
+                record.response_headers = response_headers
 
     def can_fetch_more(self) -> bool:
         """Check whether page limit budget has not been exceeded."""

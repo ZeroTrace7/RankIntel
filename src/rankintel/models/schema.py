@@ -159,6 +159,45 @@ class CrawlStatus(str, Enum):
     REDIRECTED = "REDIRECTED"
     DUPLICATE = "DUPLICATE"
 
+class CrawlabilityStatus(str, Enum):
+    ALLOWED = "ALLOWED"
+    BLOCKED = "BLOCKED"
+    UNKNOWN = "UNKNOWN"
+
+class IndexabilityStatus(str, Enum):
+    INDEXABLE = "INDEXABLE"
+    NOINDEX = "NOINDEX"
+    REDIRECT = "REDIRECT"
+    ERROR = "ERROR"
+    UNKNOWN = "UNKNOWN"
+
+class CanonicalizationSignal(str, Enum):
+    SELF_REFERENCING = "SELF_REFERENCING"
+    CANONICALIZED_ELSEWHERE = "CANONICALIZED_ELSEWHERE"
+    CROSS_DOMAIN = "CROSS_DOMAIN"
+    MISSING = "MISSING"
+    INVALID_TARGET = "INVALID_TARGET"
+
+class IndexConfirmationStatus(str, Enum):
+    CONFIRMED_INDEXED = "CONFIRMED_INDEXED"
+    CONFIRMED_NOT_INDEXED = "CONFIRMED_NOT_INDEXED"
+    UNKNOWN = "UNKNOWN"
+
+class SearchEligibilityRecord(BaseModel):
+    url: str
+    crawlability: CrawlabilityStatus = CrawlabilityStatus.UNKNOWN
+    indexability: IndexabilityStatus = IndexabilityStatus.UNKNOWN
+    canonicalization: CanonicalizationSignal = CanonicalizationSignal.MISSING
+    confirmation: IndexConfirmationStatus = IndexConfirmationStatus.UNKNOWN
+    canonical_target: Optional[str] = None
+    http_status: int = 0
+    meta_robots_directives: List[str] = Field(default_factory=list)
+    x_robots_tag_directives: List[str] = Field(default_factory=list)
+    in_sitemap: bool = False
+    inbound_links_count: int = 0
+    requires_js_to_render: bool = False
+    evaluation_notes: List[str] = Field(default_factory=list)
+
 class CrawlConfig(BaseModel):
     max_pages: int = Field(default=50, ge=1, le=500)
     max_depth: int = Field(default=3, ge=1, le=10)
@@ -206,6 +245,7 @@ class CrawlRecord(BaseModel):
     failure_reason: Optional[str] = None
     raw_html: Optional[str] = None
     discovered_links: List[str] = Field(default_factory=list)
+    response_headers: Dict[str, Any] = Field(default_factory=dict)
 
 class PageSummary(BaseModel):
     """Summary of a single crawled page for site-wide analysis."""
@@ -236,6 +276,7 @@ class SiteCrawlResult(BaseModel):
     missing_h1_pages: List[str] = Field(default_factory=list)
     thin_content_pages: List[str] = Field(default_factory=list)
     pages_without_meta_desc: List[str] = Field(default_factory=list)
+    search_eligibility: Dict[str, SearchEligibilityRecord] = Field(default_factory=dict)
 
 class EngineResult(BaseModel):
     engine_name: str
