@@ -290,6 +290,18 @@ class CrawlFrontier:
         )
 
         try:
+            from rankintel.analyzers.indexability_engine import IndexabilityEngine
+            IndexabilityEngine.evaluate_site(result)
+        except Exception:
+            pass
+
+        try:
+            from rankintel.analyzers.hygiene_engine import UrlHygieneEngine
+            UrlHygieneEngine.evaluate_site(result)
+        except Exception:
+            pass
+
+        try:
             from rankintel.analyzers.link_graph_engine import InternalLinkGraphEngine
             InternalLinkGraphEngine.analyze_site(
                 result,

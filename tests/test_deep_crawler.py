@@ -363,3 +363,22 @@ def test_single_page_backward_compatibility():
     assert on_page.status_code == 200
     assert on_page.title == "Test Title"
     assert on_page.h1_count == 1
+
+
+def test_crawler_integrates_indexability_and_hygiene_in_result():
+    """Verify crawler automatically populates search_eligibility and chains."""
+    transport = httpx.MockTransport(mock_transport_handler)
+    config = CrawlConfig(
+        max_pages=3,
+        max_depth=1,
+        concurrency=1,
+        crawl_delay=0.0,
+        respect_robots_txt=False,
+    )
+    crawler = AsyncDeepCrawler(config=config, transport=transport)
+    result = crawler.crawl_sync("https://example.com")
+
+    assert len(result.search_eligibility) > 0
+    assert "https://example.com" in result.search_eligibility
+    assert len(result.canonical_chains) > 0
+
