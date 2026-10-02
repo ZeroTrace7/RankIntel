@@ -209,6 +209,7 @@ class CrawlConfig(BaseModel):
     max_retries: int = Field(default=2, ge=0, le=5)
     retry_backoff_sec: float = Field(default=0.5, ge=0.0, le=10.0)
     strip_tracking_params: bool = True
+    enable_sitemap_analysis: bool = False
     user_agent: str = "RankIntel/2.0 (+https://github.com/ZeroTrace7/RankIntel)"
 
     @model_validator(mode="before")
@@ -397,6 +398,96 @@ class InternalLinkGraphSummary(BaseModel):
     top_equity_pages: List[str] = Field(default_factory=list)
     lowest_equity_pages: List[str] = Field(default_factory=list)
 
+class SitemapFormat(str, Enum):
+    URLSET = "URLSET"
+    SITEMAPINDEX = "SITEMAPINDEX"
+    MALFORMED = "MALFORMED"
+    HTML_ERROR_PAGE = "HTML_ERROR_PAGE"
+    UNKNOWN = "UNKNOWN"
+
+class SitemapFetchStatus(str, Enum):
+    SUCCESS = "SUCCESS"
+    HTTP_ERROR = "HTTP_ERROR"
+    CONNECTION_FAILED = "CONNECTION_FAILED"
+    MALFORMED_CONTENT = "MALFORMED_CONTENT"
+    LOOP_DETECTED = "LOOP_DETECTED"
+    MAX_DEPTH_EXCEEDED = "MAX_DEPTH_EXCEEDED"
+    MAX_SIZE_EXCEEDED = "MAX_SIZE_EXCEEDED"
+    BLOCKED_BY_ROBOTS = "BLOCKED_BY_ROBOTS"
+
+class SitemapDocumentRecord(BaseModel):
+    url: str
+    status: SitemapFetchStatus
+    format: SitemapFormat = SitemapFormat.UNKNOWN
+    status_code: Optional[int] = None
+    fetch_time_sec: float = 0.0
+    urls_found_count: int = 0
+    child_sitemaps_count: int = 0
+    child_sitemaps: List[str] = Field(default_factory=list)
+    error_message: Optional[str] = None
+    depth: int = 0
+
+class SitemapUrlRecord(BaseModel):
+    loc: str
+    identity_url: str
+    source_sitemap: str
+    lastmod: Optional[str] = None
+    changefreq: Optional[str] = None
+    priority: Optional[float] = None
+
+class CrossSignalConflictType(str, Enum):
+    SITEMAP_ROBOTS_BLOCKED = "SITEMAP_ROBOTS_BLOCKED"
+    SITEMAP_NOINDEX_CONFLICT = "SITEMAP_NOINDEX_CONFLICT"
+    SITEMAP_REDIRECT_CONFLICT = "SITEMAP_REDIRECT_CONFLICT"
+    SITEMAP_ERROR_CONFLICT = "SITEMAP_ERROR_CONFLICT"
+    SITEMAP_CANONICAL_ELSEWHERE = "SITEMAP_CANONICAL_ELSEWHERE"
+    CANONICAL_TARGET_REDIRECT = "CANONICAL_TARGET_REDIRECT"
+    CANONICAL_TARGET_DEAD = "CANONICAL_TARGET_DEAD"
+    SITEMAP_ORPHAN_CANDIDATE = "SITEMAP_ORPHAN_CANDIDATE"
+    SITEMAP_URL_UNCRAWLED = "SITEMAP_URL_UNCRAWLED"
+    INTERNAL_URL_NOT_IN_SITEMAP = "INTERNAL_URL_NOT_IN_SITEMAP"
+
+class CrossSignalConflictSeverity(str, Enum):
+    """RankIntel diagnostic investigation priority (not an industry-standard penalty)."""
+    CRITICAL = "CRITICAL"
+    HIGH = "HIGH"
+    MEDIUM = "MEDIUM"
+    LOW = "LOW"
+    INFO = "INFO"
+
+class EvidenceNature(str, Enum):
+    OBSERVED = "OBSERVED"
+    INFERRED = "INFERRED"
+    UNAVAILABLE = "UNAVAILABLE"
+
+class CrossSignalConflictRecord(BaseModel):
+    url: str
+    conflict_type: CrossSignalConflictType
+    severity: CrossSignalConflictSeverity
+    signal_a_source: str
+    signal_a_state: str
+    signal_b_source: str
+    signal_b_state: str
+    evidence_nature: EvidenceNature = EvidenceNature.OBSERVED
+    summary: str
+    recommended_reconciliation: str
+
+class SitemapReconciliationSummary(BaseModel):
+    total_sitemaps_discovered: int = 0
+    total_sitemaps_parsed: int = 0
+    total_sitemap_urls_discovered: int = 0
+    total_unique_sitemap_urls: int = 0
+    crawled_sitemap_urls_count: int = 0
+    uncrawled_sitemap_urls_count: int = 0
+    internal_urls_missing_from_sitemap_count: int = 0
+    conflicts_count_by_type: Dict[str, int] = Field(default_factory=dict)
+    conflicts_count_by_severity: Dict[str, int] = Field(default_factory=dict)
+    sitemap_documents: List[SitemapDocumentRecord] = Field(default_factory=list)
+    sitemap_urls: Dict[str, SitemapUrlRecord] = Field(default_factory=dict)
+    conflicts: List[CrossSignalConflictRecord] = Field(default_factory=list)
+    uncrawled_sitemap_urls: List[str] = Field(default_factory=list)
+    internal_urls_missing_from_sitemap: List[str] = Field(default_factory=list)
+
 class SiteCrawlResult(BaseModel):
     """Aggregated multi-page crawl intelligence."""
     pages_crawled: int = 0
@@ -418,6 +509,7 @@ class SiteCrawlResult(BaseModel):
     canonical_chains: Dict[str, CanonicalChainRecord] = Field(default_factory=dict)
     hygiene_anomalies: List[HygieneAnomaly] = Field(default_factory=list)
     link_graph: Optional[InternalLinkGraphSummary] = None
+    sitemap_reconciliation: Optional[SitemapReconciliationSummary] = None
 
 class EngineResult(BaseModel):
     engine_name: str
