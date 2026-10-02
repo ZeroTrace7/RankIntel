@@ -236,14 +236,38 @@ class MarkdownReporter:
 
         # AI Bot Matrix
         r = report.unified_robots
-        lines.append("## 🤖 AI CRAWLER ACCESS MATRIX")
-        lines.append("*(Triangulated against RFC-compliant robots.txt rules)*\n")
-        lines.append("| Bot Name | Category | Status | Target Engine / Role |")
-        lines.append("|---|---|---|---|")
-        for bot, info in r.bot_access.items():
-            icon = "🟢" if info.status == "ALLOWED" else ("🔴" if info.status == "BLOCKED" else "⚪")
-            lines.append(f"| **{bot}** | {info.category.upper()} | {icon} {info.status} | {info.role_or_purpose or info.engine} |")
-        lines.append("")
+        lines.append("## 🤖 AI & SEARCH CRAWLER ACCESS MATRIX (RFC 9309)")
+        lines.append("*(Triangulated against RFC 9309 rules across 18+ indexers and foundation scrapers)*\n")
+
+        if r.bot_matrix and r.bot_matrix.entries:
+            bm = r.bot_matrix
+            lines.append(f"- **Robots.txt Status:** {'🟢 Found & Parsed' if r.found else '⚠️ Missing / Default Allow'}")
+            lines.append(f"- **Search Indexers Allowed:** {bm.search_allowed_count}")
+            lines.append(f"- **AI Search Agents Allowed:** {bm.ai_search_allowed_count}")
+            lines.append(f"- **AI Training Scrapers Blocked:** {bm.ai_training_blocked_count} / {sum(1 for e in bm.entries if e.category == 'AI Model Training')}")
+            lines.append("")
+            lines.append("| Bot Name | Category | Engine / Company | Status | Match Source | Business Impact |")
+            lines.append("|---|---|---|---|---|---|")
+            for entry in bm.entries:
+                status_icon = "🟢" if entry.status == "ALLOWED" else "⛔"
+                source_label = entry.rule_source.replace("_", " ").title()
+                if entry.matched_directive:
+                    source_label += f" (`{entry.matched_directive}`)"
+                lines.append(f"| **{entry.bot_name}** | {entry.category} | {entry.company_or_engine} | {status_icon} {entry.status} | {source_label} | {entry.business_impact} |")
+            lines.append("")
+
+            if bm.recommendations:
+                lines.append("### 💡 Crawler Access Recommendations:")
+                for rec in bm.recommendations:
+                    lines.append(f"- {rec}")
+                lines.append("")
+        else:
+            lines.append("| Bot Name | Category | Status | Target Engine / Role |")
+            lines.append("|---|---|---|---|")
+            for bot, info in r.bot_access.items():
+                icon = "🟢" if info.status == "ALLOWED" else ("🔴" if info.status in ("BLOCKED", "DISALLOWED") else "⚪")
+                lines.append(f"| **{bot}** | {info.category.upper()} | {icon} {info.status} | {info.role_or_purpose or info.engine} |")
+            lines.append("")
 
         # GEO Citability
         g = report.unified_geo

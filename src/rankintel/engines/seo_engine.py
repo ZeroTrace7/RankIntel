@@ -19,8 +19,11 @@ from rankintel.models.schema import (
     SchemaEvidence,
     EngineResult,
     PageSummary,
-    SiteCrawlResult
+    SiteCrawlResult,
+    BotMatrixReport,
+    BotMatrixEntry
 )
+from rankintel.engines.bot_matrix_engine import BotMatrixEngine
 
 try:
     import advertools as adv
@@ -44,10 +47,15 @@ class SeoEngine:
         all_bots = {**AI_SEARCH_BOTS, **AI_TRAINING_BOTS}
         bot_names = list(all_bots.keys())
 
+        matrix_engine = BotMatrixEngine()
+
         try:
             resp = requests.get(robots_url, headers=self.headers, timeout=10)
             if resp.status_code != 200:
                 evidence.found = False
+                evidence.bot_matrix = matrix_engine.evaluate_robots_content(
+                    "", target_path="/", robots_url=robots_url, robots_found=False
+                )
                 return evidence
 
             evidence.found = True
@@ -60,54 +68,22 @@ class SeoEngine:
                     if s_url and s_url not in evidence.sitemaps:
                         evidence.sitemaps.append(s_url)
 
-            # Test using advertools if available
-            if HAS_ADVERTOOLS:
-                try:
-                    df = adv.robotstxt_test(
-                        robotstxt_url=robots_url,
-                        user_agents=bot_names,
-                        urls=["/"]
-                    )
-                    for _, row in df.iterrows():
-                        bot = str(row["user_agent"])
-                        can_fetch = bool(row["can_fetch"])
-                        category = "search" if bot in AI_SEARCH_BOTS else "training"
-                        info = all_bots.get(bot, {})
-                        role = info.get("role") if category == "search" else info.get("purpose", "")
+            # Evaluate 18+ bot access matrix across Search, AI Search, Training, Platform
+            bot_report = matrix_engine.evaluate_robots_content(
+                content, target_path="/", robots_url=robots_url, robots_found=True
+            )
+            evidence.bot_matrix = bot_report
 
-                        evidence.bot_access[bot] = BotStatus(
-                            bot=bot,
-                            status="ALLOWED" if can_fetch else "BLOCKED",
-                            category=category,
-                            engine=info.get("engine", info.get("company", "")),
-                            role_or_purpose=role,
-                            via_wildcard=False
-                        )
-                    
-                    # Extract sample URLs from sitemap if available
-                    if evidence.sitemaps:
-                        evidence.discovered_urls = self.extract_sitemap_urls(evidence.sitemaps[0], max_urls=25)
-                    return evidence
-                except Exception:
-                    pass  # Fallback to urllib.robotparser
-
-            # Fallback to standard library RobotFileParser
-            from urllib.robotparser import RobotFileParser
-            rp = RobotFileParser()
-            rp.parse(content.splitlines())
-
-            for bot, info in all_bots.items():
-                can_fetch = rp.can_fetch(bot, "/")
-                category = "search" if bot in AI_SEARCH_BOTS else "training"
-                role = info.get("role") if category == "search" else info.get("purpose", "")
-
-                evidence.bot_access[bot] = BotStatus(
-                    bot=bot,
-                    status="ALLOWED" if can_fetch else "BLOCKED",
-                    category=category,
-                    engine=info.get("engine", info.get("company", "")),
-                    role_or_purpose=role,
-                    via_wildcard=False
+            # Synchronize bot_access with enriched findings
+            for entry in bot_report.entries:
+                cat = "search" if entry.category in ("Search Engine", "AI Search Agent") else "training"
+                evidence.bot_access[entry.bot_name] = BotStatus(
+                    bot=entry.bot_name,
+                    status=entry.status,
+                    category=cat,
+                    engine=entry.company_or_engine,
+                    role_or_purpose=entry.business_impact,
+                    via_wildcard=(entry.rule_source == "wildcard")
                 )
 
             if evidence.sitemaps:
@@ -115,6 +91,9 @@ class SeoEngine:
 
         except Exception:
             evidence.found = False
+            evidence.bot_matrix = matrix_engine.evaluate_robots_content(
+                "", target_path="/", robots_url=robots_url, robots_found=False
+            )
 
         return evidence
 

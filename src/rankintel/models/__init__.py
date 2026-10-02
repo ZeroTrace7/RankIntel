@@ -2,6 +2,10 @@
 RankIntel Data Models.
 """
 from rankintel.models.schema import (
+    BotCategory,
+    BotAccessStatus,
+    BotMatrixEntry,
+    BotMatrixReport,
     BotStatus,
     RobotsEvidence,
     OnPageEvidence,
@@ -51,6 +55,10 @@ from rankintel.models.schema import (
 )
 
 __all__ = [
+    "BotCategory",
+    "BotAccessStatus",
+    "BotMatrixEntry",
+    "BotMatrixReport",
     "BotStatus",
     "RobotsEvidence",
     "OnPageEvidence",

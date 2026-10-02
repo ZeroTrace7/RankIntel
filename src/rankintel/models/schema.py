@@ -6,6 +6,38 @@ from enum import Enum
 from typing import Dict, List, Optional, Any
 from pydantic import BaseModel, Field, model_validator
 
+class BotCategory(str, Enum):
+    SEARCH_ENGINE = "search_engine"
+    AI_SEARCH = "ai_search"
+    AI_TRAINING = "ai_training"
+    PLATFORM = "platform"
+
+class BotAccessStatus(str, Enum):
+    ALLOWED = "ALLOWED"
+    DISALLOWED = "DISALLOWED"
+
+class BotMatrixEntry(BaseModel):
+    bot_name: str
+    category: str  # "Search Engine", "AI Search Agent", "AI Model Training", "Platform Bot"
+    company_or_engine: str
+    status: str  # "ALLOWED", "DISALLOWED"
+    rule_source: str  # "explicit", "wildcard", "default_allow"
+    business_impact: str
+    matched_directive: Optional[str] = None
+    line_number: Optional[int] = None
+    raw_pattern: Optional[str] = None
+
+class BotMatrixReport(BaseModel):
+    url: str = ""
+    robots_url: str = ""
+    robots_found: bool = True
+    total_bots_evaluated: int = 0
+    search_allowed_count: int = 0
+    ai_search_allowed_count: int = 0
+    ai_training_blocked_count: int = 0
+    entries: List[BotMatrixEntry] = Field(default_factory=list)
+    recommendations: List[str] = Field(default_factory=list)
+
 class BotStatus(BaseModel):
     bot: str
     status: str  # ALLOWED, BLOCKED, MISSING, PARTIAL
@@ -22,6 +54,7 @@ class RobotsEvidence(BaseModel):
     crawl_delay: Optional[int] = None
     discovered_urls: List[str] = Field(default_factory=list)
     engine_source: str = ""
+    bot_matrix: Optional[BotMatrixReport] = None
 
 class OnPageEvidence(BaseModel):
     url: str = ""
@@ -510,6 +543,7 @@ class SiteCrawlResult(BaseModel):
     hygiene_anomalies: List[HygieneAnomaly] = Field(default_factory=list)
     link_graph: Optional[InternalLinkGraphSummary] = None
     sitemap_reconciliation: Optional[SitemapReconciliationSummary] = None
+    bot_matrix: Optional[BotMatrixReport] = None
 
 class EngineResult(BaseModel):
     engine_name: str
