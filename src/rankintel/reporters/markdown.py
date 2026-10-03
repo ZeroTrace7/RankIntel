@@ -349,6 +349,39 @@ class MarkdownReporter:
                     for an in ti.analyses:
                         lines.append(f"- **ANALYSIS:** {an}")
 
+            if getattr(sc, "query_page_intelligence", None):
+                qpi = sc.query_page_intelligence
+                lines.append("\n### 🗺️ Site-Wide Query–Page Concept Mapping (Layer A)")
+                lines.append("> *Scope Note: Strictly deterministic mapping between observable on-site concepts and crawled pages. External search volume, rankings, CTR, and search console queries are excluded (Layer A boundary).*")
+                if qpi.is_partial_crawl:
+                    lines.append(f"> ⚠️ **Coverage Notice:** {qpi.completeness_disclaimer}")
+                lines.append(f"- **Total Pages Evaluated:** {qpi.total_pages_evaluated}")
+                lines.append(f"- **Total Concepts Mapped:** {qpi.total_concepts_mapped}")
+                lines.append(f"- **Multi-Page Topic Overlaps:** {qpi.multi_page_overlap_count}")
+
+                if qpi.concept_relationships:
+                    lines.append("\n#### Concept-to-Pages Evidence Mapping:")
+                    lines.append("| Observed Concept | Nature | Pages Count | Direct Pages | Title/H1 Pages | Locations | Overlap Status |")
+                    lines.append("|---|---|---|---|---|---|---|")
+                    for rel in qpi.concept_relationships[:12]:
+                        ov_tag = f"`{rel.overlap_status}`" if rel.overlap_status else "Single/Dispersed"
+                        locs_str = ", ".join(rel.evidence_locations[:3])
+                        lines.append(f"| **{rel.concept}** | `{rel.concept_nature}` | {rel.pages_count} | {len(rel.direct_pages)} | {len(rel.title_or_h1_pages)} | `{locs_str}` | {ov_tag} |")
+
+                if qpi.overlaps:
+                    lines.append("\n#### ⚠️ Potential Multi-Page Topic Overlaps (Neutral Coverage):")
+                    lines.append("| Concept | Overlapping Pages Count | Direct Pages | Rationale |")
+                    lines.append("|---|---|---|---|")
+                    for ov in qpi.overlaps[:8]:
+                        lines.append(f"| **{ov.concept}** | {ov.pages_count} pages | {len(ov.direct_pages)} | {ov.overlap_rationale} |")
+
+                if qpi.facts or qpi.analyses:
+                    lines.append("\n#### Query-Page Telemetry Observations:")
+                    for fact in qpi.facts:
+                        lines.append(f"- **FACT:** {fact}")
+                    for an in qpi.analyses:
+                        lines.append(f"- **ANALYSIS:** {an}")
+
             if sc.site_wide_issues:
                 lines.append("\n### 🔴 Site-Wide Structural Findings:")
                 for issue in sc.site_wide_issues:
@@ -683,6 +716,34 @@ class MarkdownReporter:
                 for fact in top_intel.facts:
                     lines.append(f"- **FACT:** {fact}")
                 for analysis in top_intel.analyses:
+                    lines.append(f"- **ANALYSIS:** {analysis}")
+            lines.append("")
+
+        # Query-Page Mapping (Phase 9.3 - Layer A)
+        qp_intel = getattr(report, "unified_query_page", None)
+        if qp_intel and (qp_intel.total_concepts_mapped > 0 or qp_intel.facts):
+            lines.append("## 🗺️ QUERY–PAGE CONCEPT MAPPING (Layer A: On-Site Concept Evidence)")
+            lines.append("> *Scope Note: Strictly deterministic mapping between observable on-site concepts and this page. External search queries, rankings, and volume data are excluded (Layer A boundary).*")
+            lines.append(f"- **Total Concepts Mapped:** {qp_intel.total_concepts_mapped}")
+            lines.append(f"- **Evidence Strength Breakdown:** {qp_intel.direct_concepts_count} DIRECT, {qp_intel.supported_concepts_count} SUPPORTED, {qp_intel.weak_concepts_count} WEAK")
+
+            if qp_intel.mapped_concepts:
+                lines.append("\n### 📍 Page-Level Evidenced Concepts:")
+                lines.append("| Concept / Topic | Evidence Strength | Title/H1 | Mentions | Locations | Supporting Snippet |")
+                lines.append("|---|---|---|---|---|---|")
+                for c_item in qp_intel.mapped_concepts[:12]:
+                    th1_mark = "✅ Yes" if c_item.has_title_or_h1 else "No"
+                    locs_str = ", ".join(c_item.evidence_locations[:3])
+                    snip = c_item.supporting_snippets[0] if c_item.supporting_snippets else "On-page structural evidence"
+                    if len(snip) > 60:
+                        snip = snip[:57] + "..."
+                    lines.append(f"| **{c_item.concept}** | `{c_item.evidence_strength.value}` | {th1_mark} | {c_item.occurrences_count} | `{locs_str}` | {snip} |")
+
+            if qp_intel.facts or qp_intel.analyses:
+                lines.append("\n### 📑 Query-Page Observations & Analyses:")
+                for fact in qp_intel.facts:
+                    lines.append(f"- **FACT:** {fact}")
+                for analysis in qp_intel.analyses:
                     lines.append(f"- **ANALYSIS:** {analysis}")
             lines.append("")
 
