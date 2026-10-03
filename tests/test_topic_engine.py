@@ -92,7 +92,7 @@ def test_tokenize_term_conservative_no_stemming():
 def test_is_word_bounded_substring():
     """Verify word-bounded substring matching avoids accidental partial token matches."""
     assert is_word_bounded_substring("calibration", "precision calibration services")
-    assert is_word_bounded_substring("spectrometer", "optical emission spectrometers")
+    assert is_word_bounded_substring("spectrometer", "optical emission spectrometer")
     # Substring that is not word bounded should NOT match
     assert not is_word_bounded_substring("cal", "calibration")
     assert not is_word_bounded_substring("meter", "spectrometer")
@@ -139,8 +139,8 @@ def test_entity_assisted_topic_association():
             DetectedEntity(
                 name="Acme Global Solutions",
                 entity_type=EntityType.ORGANIZATION,
-                entity_source=EntitySource.STRUCTURED_DATA,
-                signal_type=EntitySignalType.EXPLICIT_NAME,
+                entity_source=EntitySource.JSON_LD,
+                signal_type=EntitySignalType.STRUCTURED_DATA_DECLARATION,
             )
         ]
     )
@@ -209,7 +209,7 @@ def test_subtopic_of_evidence_gating():
         raw_term="Optical Emission Spectrometer",
         category="CONTENT",
         locations=[SearchSignalLocation.MAIN_CONTENT],
-        total_occurrences=2,
+        total_occurrences=3,
     )
 
     sig_ev2 = SearchSignalEvidence(

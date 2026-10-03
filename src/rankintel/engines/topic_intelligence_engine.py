@@ -102,38 +102,58 @@ class TopicIntelligenceEngine:
                             ent.entity_type.value if hasattr(ent.entity_type, "value") else str(ent.entity_type)
                         )
 
-            # Map term -> cluster key (canonical topic name)
+            # Determine candidate topic anchors deterministically:
+            # 1. Entity names from structured data or content
+            # 2. Terms in Title or H1
+            # 3. Terms in H2 with occurrences >= 2
+            # 4. Recurring terms with occurrences >= 3
+            anchor_candidates: Set[str] = set()
+
+            for ent_name in entity_names:
+                anchor_candidates.add(ent_name)
+
+            for s in signals:
+                t = s.term
+                if not t or len(t) < 3:
+                    continue
+                has_title_or_h1 = any(loc in {SearchSignalLocation.TITLE, SearchSignalLocation.H1} for loc in s.locations)
+                has_h2 = SearchSignalLocation.H2 in s.locations
+                if has_title_or_h1:
+                    anchor_candidates.add(t)
+                elif has_h2 and s.total_occurrences >= 2:
+                    anchor_candidates.add(t)
+                elif s.total_occurrences >= 3:
+                    anchor_candidates.add(t)
+
+            # If no anchors qualify, select top signals by occurrences
+            if not anchor_candidates:
+                top_sorted = sorted(signals, key=lambda s: (-s.total_occurrences, len(s.term)))
+                for s in top_sorted[:5]:
+                    if s.term and len(s.term) >= 3:
+                        anchor_candidates.add(s.term)
+
+            # Build cluster structures: anchor -> list of (term, membership_type)
             cluster_terms: Dict[str, List[Tuple[str, TopicMembershipType]]] = defaultdict(list)
             term_to_cluster: Dict[str, str] = {}
 
-            # Sort signals deterministically:
-            # 1. Title/H1 prominence first
-            # 2. Total occurrences descending
-            # 3. Term length ascending (shorter terms form broader anchors)
-            # 4. Alphabetical tie-breaker
-            def signal_sort_key(s: SearchSignalItem):
-                has_prom = any(
-                    loc in {SearchSignalLocation.TITLE, SearchSignalLocation.H1} for loc in s.locations
-                )
-                return (-1 if has_prom else 0, -s.total_occurrences, len(s.term), s.term)
+            # Initialize each anchor with appropriate membership
+            for anchor in sorted(list(anchor_candidates)):
+                m_type = TopicMembershipType.ENTITY_MEMBER if anchor in entity_names else TopicMembershipType.EXACT
+                cluster_terms[anchor].append((anchor, m_type))
+                term_to_cluster[anchor] = anchor
 
-            sorted_signals = sorted(signals, key=signal_sort_key)
+            # Sort remaining signals to assign to anchors
+            remaining_signals = [s for s in signals if s.term and s.term not in anchor_candidates]
+            remaining_signals.sort(key=lambda s: (-s.total_occurrences, len(s.term)))
 
-            # 1. Entity seeding
-            for ent_name in sorted(list(entity_names)):
-                if ent_name in signal_by_term:
-                    cluster_terms[ent_name].append((ent_name, TopicMembershipType.ENTITY_MEMBER))
-                    term_to_cluster[ent_name] = ent_name
-
-            # 2. Assign remaining signals to clusters
-            for s in sorted_signals:
+            for s in remaining_signals:
                 t = s.term
-                if not t or len(t) < 3 or t in term_to_cluster:
+                if not t or len(t) < 3:
                     continue
 
                 assigned = False
 
-                # A. Check against existing entity seeds (phrase containment or entity match)
+                # A. Entity match / containment
                 for ent_name in sorted(list(entity_names)):
                     if ent_name in cluster_terms:
                         if is_word_bounded_substring(ent_name, t) or is_word_bounded_substring(t, ent_name):
@@ -144,35 +164,20 @@ class TopicIntelligenceEngine:
                 if assigned:
                     continue
 
-                # B. Phrase containment with already established cluster anchors
-                for anchor in sorted(list(cluster_terms.keys())):
-                    if is_word_bounded_substring(anchor, t):
+                # B. Phrase containment with topic anchors
+                for anchor in sorted(list(anchor_candidates), key=lambda a: -len(a)):
+                    if is_word_bounded_substring(anchor, t) or is_word_bounded_substring(t, anchor):
                         cluster_terms[anchor].append((t, TopicMembershipType.PHRASE_CONTAINMENT))
                         term_to_cluster[t] = anchor
-                        assigned = True
-                        break
-                    elif is_word_bounded_substring(t, anchor):
-                        # The new term is shorter and contained inside existing anchor;
-                        # Merge under the shorter foundational anchor
-                        existing_members = cluster_terms.pop(anchor)
-                        cluster_terms[t].append((t, TopicMembershipType.EXACT))
-                        cluster_terms[t].append((anchor, TopicMembershipType.PHRASE_CONTAINMENT))
-                        for m_term, m_type in existing_members:
-                            if m_term != anchor and m_term != t:
-                                cluster_terms[t].append((m_term, m_type))
-                            term_to_cluster[m_term] = t
-                        term_to_cluster[anchor] = t
-                        term_to_cluster[t] = t
                         assigned = True
                         break
                 if assigned:
                     continue
 
-                # C. Conservative exact token overlap (NO stemming)
-                # Two multi-word phrases sharing >= 2 significant content words or Jaccard >= 0.6
+                # C. Conservative exact token overlap (NO linguistic stemming)
                 t_tokens = set(tokenize_term(t))
                 if len(t_tokens) >= 2:
-                    for anchor in sorted(list(cluster_terms.keys())):
+                    for anchor in sorted(list(anchor_candidates)):
                         a_tokens = set(tokenize_term(anchor))
                         if len(a_tokens) >= 2:
                             inter = t_tokens.intersection(a_tokens)
@@ -186,17 +191,12 @@ class TopicIntelligenceEngine:
                 if assigned:
                     continue
 
-                # D. Establish new cluster if term has sufficient structural prominence
-                has_structural = any(
-                    loc in {
-                        SearchSignalLocation.TITLE,
-                        SearchSignalLocation.H1,
-                        SearchSignalLocation.H2,
-                        SearchSignalLocation.META_DESCRIPTION,
-                    }
+                # D. If unassigned and has structural presence (H2/H3/Meta), establish new topic
+                has_subhead = any(
+                    loc in {SearchSignalLocation.H2, SearchSignalLocation.H3, SearchSignalLocation.META_DESCRIPTION}
                     for loc in s.locations
                 )
-                if has_structural or s.total_occurrences >= 2:
+                if has_subhead or s.total_occurrences >= 2:
                     cluster_terms[t].append((t, TopicMembershipType.EXACT))
                     term_to_cluster[t] = t
 
@@ -206,7 +206,6 @@ class TopicIntelligenceEngine:
                 if not members:
                     continue
 
-                # Deduplicate members while preserving membership type
                 seen_member_terms = set()
                 term_memberships: List[TopicTermMembership] = []
                 total_topic_occurrences = 0
@@ -257,8 +256,6 @@ class TopicIntelligenceEngine:
                         )
                     )
 
-                # Canonical topic display name:
-                # Prefer entity name, or title/H1 term, or anchor
                 display_name = anchor
                 matching_sig = signal_by_term.get(anchor)
                 if matching_sig and matching_sig.raw_term:
@@ -282,7 +279,7 @@ class TopicIntelligenceEngine:
                     )
                 )
 
-            # Sort derived topics deterministically by:
+            # Sort derived topics deterministically:
             # 1. title_or_h1_presence (True first)
             # 2. occurrences_count descending
             # 3. structural_presence_count descending
