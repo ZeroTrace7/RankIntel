@@ -11,6 +11,7 @@ from rankintel.analyzers.hygiene_engine import UrlHygieneEngine
 from rankintel.analyzers.link_graph_engine import InternalLinkGraphEngine
 from rankintel.analyzers.sitemap_reconciler import SitemapReconciler
 from rankintel.analyzers.content_analyzer import SiteContentAnalyzer
+from rankintel.analyzers.entity_analyzer import SiteEntityAnalyzer
 
 __all__ = [
     "TrustEvaluator",
@@ -23,4 +24,5 @@ __all__ = [
     "InternalLinkGraphEngine",
     "SitemapReconciler",
     "SiteContentAnalyzer",
+    "SiteEntityAnalyzer",
 ]

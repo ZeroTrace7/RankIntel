@@ -17,6 +17,7 @@ from rankintel.engines.image_engine import ImageEngine
 from rankintel.engines.accessibility_engine import AccessibilityEngine
 from rankintel.engines.security_engine import SecurityEngine
 from rankintel.engines.content_engine import ContentEngine
+from rankintel.engines.entity_engine import EntityEngine
 from rankintel.models.schema import (
     EngineResult,
     SecurityStatus,
@@ -25,6 +26,7 @@ from rankintel.models.schema import (
     AccessibilityEvidence,
     ImageSEOEvidence,
     ContentEvidence,
+    EntityEvidence,
 )
 import asyncio
 import concurrent.futures
