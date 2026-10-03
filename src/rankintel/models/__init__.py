@@ -101,6 +101,8 @@ from rankintel.models.schema import (
     LinkConcentrationTelemetry,
     SiteAnchorIntelligence,
     InternalLinkEvidence,
+    OutlinkDiscoveryStatus,
+    PageLinkAnalysisRecord,
     SiteInternalLinkIntelligence,
 )
 
@@ -204,5 +206,7 @@ __all__ = [
     "LinkConcentrationTelemetry",
     "SiteAnchorIntelligence",
     "InternalLinkEvidence",
+    "OutlinkDiscoveryStatus",
+    "PageLinkAnalysisRecord",
     "SiteInternalLinkIntelligence",
 ]

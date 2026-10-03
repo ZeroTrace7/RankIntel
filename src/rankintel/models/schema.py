@@ -955,6 +955,29 @@ class InternalLinkEvidence(BaseModel):
     facts: List[str] = Field(default_factory=list)
     observations: List[str] = Field(default_factory=list)
 
+class OutlinkDiscoveryStatus(str, Enum):
+    NO_DISCOVERED_OUTLINKS = "NO_DISCOVERED_OUTLINKS"
+    HAS_DISCOVERED_OUTLINKS = "HAS_DISCOVERED_OUTLINKS"
+    UNVERIFIED = "UNVERIFIED"
+
+class PageLinkAnalysisRecord(BaseModel):
+    """Normalized observable link data per page for benchmarking & link analysis comparison.
+    Aligned with overlapping observable dimensions commonly benchmarked in link-analysis audits:
+    crawl_depth, inlinks_count, unique_inlinks_count, outlinks_count, unique_outlinks_count,
+    outlink_discovery_status, sample_inlink_sources, sample_outlink_targets, sample_inlink_anchors.
+    Preserves strict partial-crawl semantics (NO_DISCOVERED_OUTLINKS vs HAS_DISCOVERED_OUTLINKS vs UNVERIFIED).
+    """
+    url: str
+    crawl_depth: Optional[int] = None
+    inlinks_count: int = 0
+    unique_inlinks_count: int = 0
+    outlinks_count: int = 0
+    unique_outlinks_count: int = 0
+    outlink_discovery_status: OutlinkDiscoveryStatus = OutlinkDiscoveryStatus.UNVERIFIED
+    sample_inlink_sources: List[str] = Field(default_factory=list)
+    sample_outlink_targets: List[str] = Field(default_factory=list)
+    sample_inlink_anchors: List[str] = Field(default_factory=list)
+
 class SiteInternalLinkIntelligence(BaseModel):
     """Site-wide multi-page internal link intelligence."""
     total_pages_evaluated: int = 0
@@ -975,6 +998,7 @@ class SiteInternalLinkIntelligence(BaseModel):
     outlink_counts_by_page: Dict[str, int] = Field(default_factory=dict)
     crawl_depth_by_page: Dict[str, Optional[int]] = Field(default_factory=dict)
     page_internal_link_evidence: Dict[str, InternalLinkEvidence] = Field(default_factory=dict)
+    page_link_records: Dict[str, PageLinkAnalysisRecord] = Field(default_factory=dict)
 
 
 class SitemapFormat(str, Enum):

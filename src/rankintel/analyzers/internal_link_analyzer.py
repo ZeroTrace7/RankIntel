@@ -22,6 +22,8 @@ from rankintel.models.schema import (
     LinkConcentrationTelemetry,
     SiteAnchorIntelligence,
     InternalLinkEvidence,
+    OutlinkDiscoveryStatus,
+    PageLinkAnalysisRecord,
     SiteInternalLinkIntelligence,
     EvidenceNature,
 )
@@ -94,6 +96,11 @@ class SiteInternalLinkAnalyzer:
         empty_anchor_sources: Set[str] = set()
         generic_counts: Dict[Tuple[str, str], int] = defaultdict(int)
 
+        # Overlapping observable link analysis tracking (for benchmarking & comparison)
+        total_inlinks_by_target: Dict[str, int] = defaultdict(int)
+        total_outlinks_by_source: Dict[str, int] = defaultdict(int)
+        inlink_anchors_by_target: Dict[str, List[str]] = defaultdict(list)
+
         broken_links_list: List[BrokenInternalLinkItem] = []
         broken_link_keys: Set[Tuple[str, str]] = set()
 
@@ -154,6 +161,10 @@ class SiteInternalLinkAnalyzer:
                 if item.link_classification == LinkClassification.INTERNAL:
                     all_internal_links.append(item)
                     target_id = item.target_identity_url
+                    total_inlinks_by_target[target_id] += 1
+                    total_outlinks_by_source[source_id] += 1
+                    if item.anchor_text and not item.is_empty_anchor:
+                        inlink_anchors_by_target[target_id].append(item.anchor_text.strip())
 
                     # Check for broken internal link targets
                     matched_rec = crawled_record_map.get(target_id) or crawled_record_map.get(item.target_url)
@@ -339,6 +350,39 @@ class SiteInternalLinkAnalyzer:
             top_5_concentration_pct=top_5_concentration,
         )
 
+        # Step 6: Build normalized PageLinkAnalysisRecord for observable link analysis comparison
+        page_link_records: Dict[str, PageLinkAnalysisRecord] = {}
+        for node_id in G.nodes():
+            node_model = graph_summary.nodes.get(node_id)
+            crawled_rec = crawled_record_map.get(node_id)
+            is_crawled = bool(
+                (node_model and node_model.crawl_state.value == "CRAWLED")
+                or (crawled_rec and crawled_rec.crawl_status == CrawlStatus.FETCHED)
+            )
+
+            # Determine outlink discovery status respecting strict partial-crawl semantics
+            if not is_crawled:
+                discovery_status = OutlinkDiscoveryStatus.UNVERIFIED
+            elif outlink_counts.get(node_id, 0) == 0:
+                discovery_status = OutlinkDiscoveryStatus.NO_DISCOVERED_OUTLINKS
+            else:
+                discovery_status = OutlinkDiscoveryStatus.HAS_DISCOVERED_OUTLINKS
+
+            sample_anchors = sorted(list({a for a in inlink_anchors_by_target.get(node_id, []) if a}))[:5]
+
+            page_link_records[node_id] = PageLinkAnalysisRecord(
+                url=node_id,
+                crawl_depth=crawl_depth_map.get(node_id),
+                inlinks_count=total_inlinks_by_target.get(node_id, inlink_counts.get(node_id, 0)),
+                unique_inlinks_count=inlink_counts.get(node_id, 0),
+                outlinks_count=total_outlinks_by_source.get(node_id, outlink_counts.get(node_id, 0)),
+                unique_outlinks_count=outlink_counts.get(node_id, 0),
+                outlink_discovery_status=discovery_status,
+                sample_inlink_sources=inlink_sources.get(node_id, [])[:5],
+                sample_outlink_targets=outlink_targets.get(node_id, [])[:5],
+                sample_inlink_anchors=sample_anchors,
+            )
+
         intel = SiteInternalLinkIntelligence(
             total_pages_evaluated=len(site_crawl.crawl_records),
             total_internal_links_discovered=total_internal_links_count,
@@ -358,6 +402,7 @@ class SiteInternalLinkAnalyzer:
             outlink_counts_by_page=outlink_counts,
             crawl_depth_by_page=crawl_depth_map,
             page_internal_link_evidence=page_evidence,
+            page_link_records=page_link_records,
         )
 
         site_crawl.internal_link_intelligence = intel
