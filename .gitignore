@@ -13,3 +13,4 @@ dist/
 *.log
 benchmarks/logs/
 benchmarks/benchmark_results_*.json
+scratch/
