@@ -271,7 +271,7 @@ class MarkdownReporter:
 
         # Security & Web Best Practices
         sec = report.unified_security
-        if sec and (sec.headers_evaluated or sec.findings):
+        if sec and (sec.headers_evaluated or sec.findings or sec.tls_details or sec.overall_status not in (SecurityStatus.UNKNOWN, SecurityStatus.UNAVAILABLE)):
             lines.append("## 🛡️ SECURITY & WEB BEST PRACTICES")
             lines.append(f"- **Overall Status:** {sec.overall_status.name}")
             lines.append(f"- **HTTPS Enforced:** {'🟢 YES' if sec.is_https else '🔴 NO (Insecure HTTP)'}")
