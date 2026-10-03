@@ -308,26 +308,55 @@ class MarkdownReporter:
                     lines.append(f"| {sev_icon} {f.severity.value} | {cat_label} | {f.title} | {f.recommendation} |")
                 lines.append("")
 
-        # Image SEO
+        # Image SEO & Layout Stability
         img = report.unified_image_seo
         if img and img.total_images > 0:
-            lines.append("## 🖼️ IMAGE SEO & VISUAL SEARCH INTELLIGENCE")
-            lines.append(f"- **Image Optimization Score:** {img.score}/100 (Grade: {img.grade})")
+            lines.append("## 🖼️ IMAGE SEO & VISUAL ASSET INTELLIGENCE")
             lines.append(f"- **Total Images Detected:** {img.total_images}")
-            lines.append(f"- **Alt Attribute Coverage:** {img.images_with_alt}/{img.total_images} (Decorative: {img.decorative_images})")
-            lines.append(f"- **Layout Stability (Explicit Dimensions):** {img.images_with_dimensions}/{img.total_images} images declared width/height (CLS safe)")
-            lines.append(f"- **Modern Format Delivery (WebP/AVIF):** {img.modern_format_count}/{img.total_images} images")
-            lines.append(f"- **Lazy Loaded Below-Fold:** {img.lazy_loaded_count} images")
-            if img.hero_or_lcp_candidate:
-                lines.append(f"- **Hero LCP Candidate:** `{img.hero_or_lcp_candidate}`")
-            if img.findings:
-                lines.append("\n### 🚨 Image SEO Diagnostic Findings:")
-                lines.append("| Severity | Finding | Recommendation |")
-                lines.append("|---|---|---|")
-                for f in img.findings:
-                    sev_icon = "🔴" if f.severity in ("CRITICAL", "HIGH") else ("🟡" if f.severity == "MEDIUM" else "ℹ️")
-                    lines.append(f"| {sev_icon} {f.severity.value} | {f.description} | {f.recommendation} |")
+            lines.append(f"- **Alt Attribute Coverage:** {img.images_with_alt}/{img.total_images} images declared alt text ({img.missing_alt_count} missing, {img.generic_alt_count} generic, {img.decorative_alt_count} decorative)")
+            dim_declared = max(0, img.total_images - img.missing_dimensions_count)
+            lines.append(f"- **Layout Stability (Explicit Dimensions):** {dim_declared}/{img.total_images} images declared width/height ({img.missing_dimensions_count} layout shift risks; static heuristic, not measured CLS)")
+            lines.append(f"- **Modern Format Delivery (WebP/AVIF/SVG):** {img.modern_format_count}/{img.total_images} images ({img.legacy_format_count} legacy formats)")
+            lines.append(f"- **Lazy Loading Below Fold:** {img.lazy_loaded_count} images ({img.early_lazy_lcp_risks_count} early lazy loading LCP risks)")
+
+            if img.head_audit:
+                head = img.head_audit
+                lines.append("\n### 📐 HTML Head & Document Architecture:")
+                lines.append(f"- **Viewport Tag:** {'🟢 Configured' if head.viewport_present else '🔴 Missing'} (`{head.viewport_configuration or 'None'}`)")
+                lines.append(f"- **Document Language:** {'🟢 Declared' if head.lang_present else '🔴 Missing'} (`{head.lang_code or 'None'}`)")
+                lines.append(f"- **Character Set:** {'🟢 Declared' if head.charset_present else '🔴 Missing'} (`{head.charset_declared or 'None'}`)")
+                lines.append(f"- **Heading Hierarchy:** {'🟢 Valid' if head.heading_hierarchy_valid else '⚠️ Skips Detected'}")
+                if head.heading_skips:
+                    for skip in head.heading_skips:
+                        lines.append(f"  • {skip}")
+                if head.insecure_resource_urls:
+                    lines.append(f"- **Insecure HTTP Assets:** ⚠️ {len(head.insecure_resource_urls)} assets loaded over plain HTTP")
+            lines.append("")
+
+        # Accessibility (WCAG 2.1/2.2 AA Automated Checks)
+        a11y = report.unified_accessibility
+        if a11y and (a11y.violations or a11y.total_violations > 0 or a11y.wcag_aa_status.value not in ("UNKNOWN", "UNAVAILABLE") or a11y.notes):
+            lines.append("## ♿ ACCESSIBILITY (WCAG 2.1/2.2 AA Automated Checks)")
+            lines.append(f"- **Automated WCAG Status:** {a11y.wcag_aa_status.value}")
+            source_desc = "Browser-Rendered DOM (axe-core)" if a11y.browser_evaluated else "Static HTML AST Auditor"
+            lines.append(f"- **Evaluation Tier:** `{a11y.engine_source}` ({source_desc})")
+            lines.append(f"- **Total Violations Detected:** {a11y.total_violations} (Critical: {a11y.critical_count}, Serious: {a11y.serious_count}, Moderate: {a11y.moderate_count}, Minor: {a11y.minor_count})")
+            if a11y.rules_evaluated_count > 0:
+                lines.append(f"- **Automated Rules Checked:** {a11y.rules_evaluated_count} ({a11y.rules_passed_count} passed)")
+            if a11y.notes:
+                for note in a11y.notes:
+                    lines.append(f"- *Note:* {note}")
+            if a11y.violations:
+                lines.append("\n### 🚨 Accessibility Violations:")
+                lines.append("| Severity | Rule ID | WCAG SC | Level | Description | Failure Summary |")
+                lines.append("|---|---|---|---|---|---|")
+                for v in a11y.violations:
+                    sev_val = v.severity.value if hasattr(v.severity, "value") else str(v.severity)
+                    level_val = v.level.value if hasattr(v.level, "value") else str(v.level)
+                    sev_icon = "🔴" if sev_val in ("CRITICAL", "SERIOUS") else ("🟡" if sev_val == "MODERATE" else "ℹ️")
+                    lines.append(f"| {sev_icon} {sev_val} | `{v.rule_id}` | {v.wcag_sc or 'N/A'} | {level_val} | {v.description} | {v.failure_summary} |")
                 lines.append("")
+            lines.append("*Disclaimer: Automated checks evaluate a subset of WCAG 2.1/2.2 AA criteria and do not constitute complete manual accessibility certification.*\n")
 
         # GEO Citability
         g = report.unified_geo
