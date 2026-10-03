@@ -128,6 +128,30 @@ def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_p
             f"{report.site_crawl.pages_crawled} pages audited ({report.site_crawl.pages_with_issues} issues)",
             "advertools multi-page spider"
         )
+    if report.unified_security and (report.unified_security.overall_status.value not in ("UNKNOWN", "UNAVAILABLE") or report.unified_security.total_findings > 0):
+        sec = report.unified_security
+        sec_color = "green" if sec.overall_status.value == "PASS" else ("yellow" if sec.overall_status.value == "PARTIAL" else "red")
+        table.add_row(
+            "Transport & Web Security",
+            f"[{sec_color}]{sec.overall_status.value}[/{sec_color}] ({sec.total_findings} findings)",
+            "TLS + headers + mixed content"
+        )
+    if report.unified_image_seo and report.unified_image_seo.total_images > 0:
+        img = report.unified_image_seo
+        dim_declared = max(0, img.total_images - img.missing_dimensions_count)
+        table.add_row(
+            "Image SEO & Layout Stability",
+            f"{img.total_images} images ({dim_declared} dims, {img.modern_format_count} modern)",
+            f"{img.missing_dimensions_count} shift risks (unrendered; not measured CLS)"
+        )
+    if report.unified_accessibility and (report.unified_accessibility.total_violations > 0 or report.unified_accessibility.wcag_aa_status.value not in ("UNKNOWN", "UNAVAILABLE")):
+        a11y = report.unified_accessibility
+        a11y_color = "green" if a11y.wcag_aa_status.value == "PASS" else ("yellow" if a11y.wcag_aa_status.value == "PARTIAL" else "red")
+        table.add_row(
+            "Automated Accessibility",
+            f"[{a11y_color}]{a11y.wcag_aa_status.value}[/{a11y_color}] ({a11y.total_violations} issues)",
+            f"{a11y.engine_source} (automated WCAG 2.1/2.2 AA)"
+        )
 
     console.print(table)
 
