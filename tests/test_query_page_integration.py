@@ -93,7 +93,7 @@ def test_site_query_page_analyzer_multi_page_and_overlap():
         url="https://example.com/services",
         depth=1,
         status_code=200,
-        status=CrawlStatus.SUCCESS,
+        status=CrawlStatus.FETCHED,
         raw_html=HTML_PAGE_1,
         title="Precision Calibration Services | Acme Labs",
     )
@@ -101,7 +101,7 @@ def test_site_query_page_analyzer_multi_page_and_overlap():
         url="https://example.com/products",
         depth=1,
         status_code=200,
-        status=CrawlStatus.SUCCESS,
+        status=CrawlStatus.FETCHED,
         raw_html=HTML_PAGE_2,
         title="Calibration Equipment & Standards | Acme Labs",
     )
@@ -148,7 +148,7 @@ def test_partial_crawl_completeness_disclaimer():
         url="https://example.com/page1",
         depth=1,
         status_code=200,
-        status=CrawlStatus.SUCCESS,
+        status=CrawlStatus.FETCHED,
         raw_html=HTML_PAGE_1,
     )
     # Simulate a partial crawl with remaining frontier
@@ -330,7 +330,7 @@ def test_markdown_and_json_reporters():
     rec = CrawlRecord(
         url="https://example.com/lab",
         status_code=200,
-        status=CrawlStatus.SUCCESS,
+        status=CrawlStatus.FETCHED,
         raw_html=HTML_PAGE_1,
     )
     site_crawl = SiteCrawlResult(
@@ -390,10 +390,8 @@ def test_markdown_and_json_reporters():
 
 def test_mcp_tool_query_page_fields():
     """Verify MCP server exposes query_page telemetry in rankintel_audit output."""
-    with patch("rankintel.mcp.server.EvidenceCollector") as MockCollector, \
-         patch("rankintel.mcp.server.IntelligenceSynthesizer") as MockSynthesizer, \
-         patch("rankintel.mcp.server.MarkdownReporter") as MockMd, \
-         patch("rankintel.mcp.server.JsonReporter") as MockJson:
+    with patch("rankintel.mcp.server.EvidenceCollector"), \
+         patch("rankintel.mcp.server.IntelligenceSynthesizer") as MockSynthesizer:
 
         mock_report = MagicMock()
         mock_report.url = "https://example.com/test"
@@ -429,8 +427,6 @@ def test_mcp_tool_query_page_fields():
         mock_report.site_crawl = mock_site_crawl
 
         MockSynthesizer.return_value.synthesize.return_value = mock_report
-        MockMd.save.return_value = "audits/example.com-2026-10-04.md"
-        MockJson.save_audit.return_value = "audits/example.com-2026-10-04.json"
 
         res = rankintel_audit("https://example.com/test")
 
