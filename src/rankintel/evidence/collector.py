@@ -18,6 +18,7 @@ from rankintel.engines.accessibility_engine import AccessibilityEngine
 from rankintel.engines.security_engine import SecurityEngine
 from rankintel.engines.content_engine import ContentEngine
 from rankintel.engines.entity_engine import EntityEngine
+from rankintel.engines.internal_link_engine import InternalLinkEngine
 from rankintel.models.schema import (
     EngineResult,
     SecurityStatus,
@@ -27,6 +28,7 @@ from rankintel.models.schema import (
     ImageSEOEvidence,
     ContentEvidence,
     EntityEvidence,
+    InternalLinkEvidence,
 )
 import asyncio
 import concurrent.futures
@@ -47,6 +49,7 @@ class EvidenceCollector:
         self.security_engine = SecurityEngine()
         self.content_engine = ContentEngine()
         self.entity_engine = EntityEngine()
+        self.internal_link_engine = InternalLinkEngine()
 
     def _run_async(self, coro):
         """Helper to run async coroutines safely from synchronous context."""
@@ -318,6 +321,36 @@ class EvidenceCollector:
                 engine_name="entity_engine",
                 status="error",
                 error_message=f"Entity engine failed: {e}",
+            )
+
+        # 11. Internal Link Engine (Phase 8.3) — Reuses already-observed raw_html (zero duplicate HTTP requests)
+        try:
+            if browser_html:
+                link_ev = self.internal_link_engine.evaluate(
+                    raw_html=browser_html,
+                    url=url,
+                )
+                results["internal_link_engine"] = EngineResult(
+                    engine_name="internal_link_engine",
+                    status="success",
+                    internal_link=link_ev,
+                )
+            else:
+                link_ev = self.internal_link_engine.evaluate(
+                    raw_html=None,
+                    url=url,
+                )
+                results["internal_link_engine"] = EngineResult(
+                    engine_name="internal_link_engine",
+                    status="skipped",
+                    error_message="No HTML available for internal link analysis",
+                    internal_link=link_ev,
+                )
+        except Exception as e:
+            results["internal_link_engine"] = EngineResult(
+                engine_name="internal_link_engine",
+                status="error",
+                error_message=f"Internal link engine failed: {e}",
             )
 
         return results

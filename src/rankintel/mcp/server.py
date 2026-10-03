@@ -69,7 +69,11 @@ def rankintel_audit(url: str, deep_crawl: bool = False, max_pages: int = 25) -> 
         "accessibility_status": report.unified_accessibility.wcag_aa_status.value if report.unified_accessibility else "UNKNOWN",
         "accessibility_violations_count": report.unified_accessibility.total_violations if report.unified_accessibility else 0,
         "image_seo_total_images": report.unified_image_seo.total_images if report.unified_image_seo else 0,
-        "image_seo_missing_alt": report.unified_image_seo.missing_alt_count if report.unified_image_seo else 0
+        "image_seo_missing_alt": report.unified_image_seo.missing_alt_count if report.unified_image_seo else 0,
+        "internal_links_total": report.unified_internal_link.internal_links_count if report.unified_internal_link else 0,
+        "internal_links_unique": report.unified_internal_link.unique_internal_outlinks_count if report.unified_internal_link else 0,
+        "internal_links_empty_anchors": report.unified_internal_link.empty_anchor_count if report.unified_internal_link else 0,
+        "internal_links_generic_anchors": report.unified_internal_link.generic_anchor_count if report.unified_internal_link else 0,
     }
 
 @mcp.tool

@@ -373,6 +373,16 @@ class CrawlFrontier:
         except Exception:
             pass
 
+        try:
+            from rankintel.analyzers.internal_link_analyzer import SiteInternalLinkAnalyzer
+            SiteInternalLinkAnalyzer.analyze_site(
+                result,
+                root_url=self.base_url,
+                allow_subdomains=self.config.allowed_subdomains,
+            )
+        except Exception:
+            pass
+
         if getattr(self.config, "enable_sitemap_analysis", False):
             try:
                 from rankintel.sitemaps.discovery import SitemapDiscovery

@@ -92,6 +92,16 @@ from rankintel.models.schema import (
     EntityInconsistency,
     PrimaryOrganizationCandidate,
     SiteEntityIntelligence,
+    DiscoveredLinkItem,
+    GenericAnchorOccurrence,
+    AnchorAmbiguityFinding,
+    BrokenInternalLinkItem,
+    LinkStructuralFindingType,
+    LinkStructuralFinding,
+    LinkConcentrationTelemetry,
+    SiteAnchorIntelligence,
+    InternalLinkEvidence,
+    SiteInternalLinkIntelligence,
 )
 
 __all__ = [
@@ -185,4 +195,14 @@ __all__ = [
     "EntityInconsistency",
     "PrimaryOrganizationCandidate",
     "SiteEntityIntelligence",
+    "DiscoveredLinkItem",
+    "GenericAnchorOccurrence",
+    "AnchorAmbiguityFinding",
+    "BrokenInternalLinkItem",
+    "LinkStructuralFindingType",
+    "LinkStructuralFinding",
+    "LinkConcentrationTelemetry",
+    "SiteAnchorIntelligence",
+    "InternalLinkEvidence",
+    "SiteInternalLinkIntelligence",
 ]

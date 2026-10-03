@@ -249,6 +249,54 @@ class MarkdownReporter:
                         sample_urls = "<br>".join([f"`{u}`" for u in list({url for u_list in inc.conflicting_values.values() for url in u_list})[:3]])
                         lines.append(f"| **{inc.entity_name}** | `{inc.attribute}` | {vals_str} | {sample_urls} |")
 
+            if getattr(sc, "internal_link_intelligence", None):
+                ili = sc.internal_link_intelligence
+                lines.append("\n### 🔗 Site-Wide Internal-Link Intelligence & Structure")
+                lines.append(f"- **Total Pages Evaluated:** {ili.total_pages_evaluated}")
+                lines.append(f"- **Internal Hyperlinks Discovered:** {ili.total_internal_links_discovered} ({ili.total_unique_internal_edges} unique directed edges)")
+                lines.append(f"- **Pages with 0 Discovered Inlinks (Analyzed Crawl):** {len(ili.pages_with_zero_inlinks)}")
+                lines.append(f"- **Pages with Limited Connectivity (1 Discovered Inlink):** {len(ili.pages_with_weak_inlinks)}")
+                lines.append(f"- **Terminal / Dead-End Pages (0 Outgoing Internal Links):** {len(ili.dead_end_pages)}")
+                lines.append(f"- **Pages Observed at Depth > 3:** {len(ili.deep_pages)}")
+                lines.append(f"- **Broken Internal Link Targets:** {ili.broken_internal_links_count}")
+                lines.append(f"- **Top-5 Concentration:** {ili.link_concentration.top_5_concentration_pct}% of observed internal links point to top 5 pages")
+
+                if ili.broken_internal_links:
+                    lines.append("\n#### Broken Internal Link Targets (Observed in Crawl Evidence):")
+                    lines.append("| Source Page | Target URL | Anchor Text | Crawl Observation |")
+                    lines.append("|---|---|---|---|")
+                    for b in ili.broken_internal_links[:10]:
+                        lines.append(f"| `{b.source_url}` | `{b.target_url}` | '{b.anchor_text or '(empty)'}' | `{b.failure_reason or 'HTTP error'}` |")
+
+                if ili.anchor_intelligence and ili.anchor_intelligence.top_anchor_texts:
+                    lines.append("\n#### Top Internal Anchor Texts:")
+                    lines.append("| Anchor Phrase | Frequency |")
+                    lines.append("|---|---|")
+                    for text, count in ili.anchor_intelligence.top_anchor_texts[:8]:
+                        lines.append(f"| '{text}' | {count} |")
+
+                if ili.anchor_intelligence and ili.anchor_intelligence.conflicting_anchors:
+                    lines.append("\n#### Ambiguous Anchor Texts (Same Anchor -> Distinct Destinations):")
+                    lines.append("| Anchor Phrase | Occurrences | Distinct Destinations | Sample Targets |")
+                    lines.append("|---|---|---|---|")
+                    for amb in ili.anchor_intelligence.conflicting_anchors[:5]:
+                        sample_targets = "<br>".join([f"`{t}`" for t in amb.target_urls[:3]])
+                        lines.append(f"| '{amb.anchor_text}' | {amb.total_occurrences} | {len(amb.target_urls)} destinations | {sample_targets} |")
+
+                if ili.anchor_intelligence and ili.anchor_intelligence.generic_anchor_occurrences:
+                    lines.append("\n#### Generic Anchor Text Occurrences:")
+                    lines.append("| Generic Phrase | Frequency | Sample Target |")
+                    lines.append("|---|---|---|")
+                    for g in ili.anchor_intelligence.generic_anchor_occurrences[:5]:
+                        lines.append(f"| '{g.anchor_text}' | {g.count} | `{g.target_url}` |")
+
+                if ili.link_concentration and ili.link_concentration.top_linked_pages:
+                    lines.append("\n#### Top Linked Internal Pages (Incoming Link Concentration):")
+                    lines.append("| Target URL | Unique Inlinks |")
+                    lines.append("|---|---|")
+                    for url_node, in_count in ili.link_concentration.top_linked_pages[:5]:
+                        lines.append(f"| `{url_node}` | {in_count} |")
+
             if sc.site_wide_issues:
                 lines.append("\n### 🔴 Site-Wide Structural Findings:")
                 for issue in sc.site_wide_issues:
@@ -491,6 +539,31 @@ class MarkdownReporter:
                 for comp in ent.structured_vs_visible:
                     status_icon = "🟢" if comp.alignment_status.value in ("EXACT_MATCH", "NORMALIZED_MATCH") else ("🟡" if comp.alignment_status.value == "PARTIAL_MATCH" else "ℹ️")
                     lines.append(f"| `{comp.attribute_name}` | {comp.structured_value or '—'} | {comp.visible_value or '—'} | {status_icon} `{comp.alignment_status.value}` | {comp.notes} |")
+            lines.append("")
+
+        # Internal Link & Anchor Intelligence (Phase 8.3)
+        lnk = getattr(report, "unified_internal_link", None)
+        if lnk and (lnk.total_links_found > 0 or lnk.facts):
+            lines.append("## 🔗 INTERNAL LINK & ANCHOR INTELLIGENCE")
+            lines.append(f"- **Total Links Observed on Page:** {lnk.total_links_found}")
+            lines.append(f"- **Internal Hyperlinks:** {lnk.internal_links_count} ({lnk.unique_internal_outlinks_count} unique destinations)")
+            lines.append(f"- **External Outbound Links:** {lnk.external_links_count} ({lnk.unique_external_outlinks_count} unique external destinations)")
+            lines.append(f"- **Special / Fragment Links:** {lnk.special_links_count}")
+            lines.append(f"- **Nofollow Links Declared:** {lnk.nofollow_links_count}")
+            lines.append(f"- **Empty / Unlabeled Internal Anchors:** {lnk.empty_anchor_count}")
+            lines.append(f"- **Generic Anchor Occurrences:** {lnk.generic_anchor_count}")
+            if lnk.facts:
+                for f in lnk.facts:
+                    lines.append(f"- *Observation:* {f}")
+            if lnk.observations:
+                for obs in lnk.observations:
+                    lines.append(f"- *Opportunity:* {obs}")
+            if lnk.generic_anchors:
+                lines.append("\n### 🏷️ Generic Anchor Text Observed:")
+                lines.append("| Anchor Phrase | Target Destination | Frequency |")
+                lines.append("|---|---|---|")
+                for g in lnk.generic_anchors[:5]:
+                    lines.append(f"| `{g.anchor_text}` | `{g.target_url}` | {g.count} |")
             lines.append("")
 
         # GEO Citability

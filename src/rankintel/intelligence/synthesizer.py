@@ -24,6 +24,7 @@ from rankintel.models.schema import (
     SecurityEvidence,
     ContentEvidence,
     EntityEvidence,
+    InternalLinkEvidence,
     SecurityStatus,
     WcagStatus,
     SecuritySeverity,
@@ -256,6 +257,14 @@ class IntelligenceSynthesizer:
             else EntityEvidence(url=url)
         )
 
+        # 11. Internal Link Intelligence Reconciliation (Phase 8.3)
+        link_res = engine_results.get("internal_link_engine")
+        unified_internal_link = (
+            link_res.internal_link
+            if (link_res and link_res.internal_link)
+            else InternalLinkEvidence(url=url)
+        )
+
         # Build Prioritized Actions
         actions = self._build_prioritized_actions(
             unified_on_page,
@@ -270,6 +279,7 @@ class IntelligenceSynthesizer:
             image_seo=unified_image_seo,
             content=unified_content,
             entity=unified_entity,
+            internal_link=unified_internal_link,
         )
 
         # Generate Production Fixes — only when genuinely needed
@@ -312,6 +322,7 @@ class IntelligenceSynthesizer:
             unified_security=unified_security,
             unified_content=unified_content,
             unified_entity=unified_entity,
+            unified_internal_link=unified_internal_link,
             cloud_intelligence=cloud_intelligence,
             fixes=fixes
         )
@@ -364,6 +375,7 @@ class IntelligenceSynthesizer:
         image_seo: Optional[ImageSEOEvidence] = None,
         content: Optional[ContentEvidence] = None,
         entity: Optional[EntityEvidence] = None,
+        internal_link: Optional[InternalLinkEvidence] = None,
     ) -> List[PrioritizedAction]:
         actions: List[PrioritizedAction] = []
 
@@ -541,5 +553,25 @@ class IntelligenceSynthesizer:
                         engine_confidence="MEDIUM (Contextual identity comparison)"
                     ))
                     break
+
+        # Internal Link Engine deterministic findings (evidence-gated opportunities)
+        if internal_link:
+            if internal_link.empty_anchor_count > 0:
+                actions.append(PrioritizedAction(
+                    level="MEDIUM",
+                    title="Descriptive Anchor Text Opportunity",
+                    finding=f"Observed {internal_link.empty_anchor_count} internal hyperlink(s) with empty anchor text and no image alt or ARIA label.",
+                    rationale="Anchor text provides search crawlers and assistive technologies essential semantic context about target page content. Review whether descriptive text or labels can be added.",
+                    engine_confidence="HIGH (Deterministic DOM inspection)"
+                ))
+            if internal_link.generic_anchor_count >= 5:
+                sample_anchors = ", ".join([f"'{g.anchor_text}'" for g in internal_link.generic_anchors[:3]])
+                actions.append(PrioritizedAction(
+                    level="MEDIUM",
+                    title="Generic Anchor Text Optimization Opportunity",
+                    finding=f"Observed {internal_link.generic_anchor_count} internal link(s) using generic anchor patterns (e.g. {sample_anchors}).",
+                    rationale="Generic anchor usage was observed across multiple internal links. Review whether important navigation links can incorporate more descriptive, topic-specific anchor text.",
+                    engine_confidence="HIGH (Deterministic anchor pattern matching)"
+                ))
 
         return actions

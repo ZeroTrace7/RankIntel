@@ -226,4 +226,24 @@ class ProvenanceTagger:
                         confidence="high"
                     ))
 
+        # 12. Internal link findings (Phase 8.3)
+        link_res = engine_results.get("internal_link_engine")
+        if link_res and link_res.internal_link and link_res.status == "success":
+            lnk_ev = link_res.internal_link
+            tags.append(EvidenceProvenanceTag(
+                finding=f"Internal Link Topology: {lnk_ev.internal_links_count} internal links ({lnk_ev.unique_internal_outlinks_count} unique destinations)",
+                source_file="HTML DOM",
+                engine="internal_link_engine",
+                evidence_snippet=f"Total: {lnk_ev.total_links_found}, Nofollow: {lnk_ev.nofollow_links_count}, Empty Anchors: {lnk_ev.empty_anchor_count}",
+                confidence="high"
+            ))
+            if lnk_ev.generic_anchor_count > 0:
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"Generic Anchor Text: {lnk_ev.generic_anchor_count} generic anchor links observed",
+                    source_file="HTML DOM",
+                    engine="internal_link_engine",
+                    evidence_snippet=f"Generic anchors: {', '.join([g.anchor_text for g in lnk_ev.generic_anchors[:3]])}",
+                    confidence="high"
+                ))
+
         return tags

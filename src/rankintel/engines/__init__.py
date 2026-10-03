@@ -12,6 +12,7 @@ from rankintel.engines.image_engine import ImageEngine
 from rankintel.engines.accessibility_engine import AccessibilityEngine
 from rankintel.engines.content_engine import ContentEngine
 from rankintel.engines.entity_engine import EntityEngine
+from rankintel.engines.internal_link_engine import InternalLinkEngine
 
 __all__ = [
     "SeoEngine",
@@ -25,4 +26,5 @@ __all__ = [
     "AccessibilityEngine",
     "ContentEngine",
     "EntityEngine",
+    "InternalLinkEngine",
 ]

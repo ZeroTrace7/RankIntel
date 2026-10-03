@@ -3,7 +3,7 @@ RankIntel Data Models for Multi-Engine Evidence & Synthesis.
 """
 from __future__ import annotations
 from enum import Enum
-from typing import Dict, List, Optional, Any
+from typing import Dict, List, Optional, Any, Tuple
 from pydantic import BaseModel, Field, model_validator
 
 class BotCategory(str, Enum):
@@ -856,6 +856,127 @@ class InternalLinkGraphSummary(BaseModel):
     top_equity_pages: List[str] = Field(default_factory=list)
     lowest_equity_pages: List[str] = Field(default_factory=list)
 
+# ==============================================================================
+# Phase 8.3 — Internal-Link Intelligence Models
+# ==============================================================================
+
+class DiscoveredLinkItem(BaseModel):
+    """Individual link extracted from page DOM with attributes and anchor text."""
+    source_url: str
+    target_url: str
+    target_identity_url: str
+    anchor_text: str = ""
+    is_empty_anchor: bool = False
+    is_image_link: bool = False
+    image_alt: Optional[str] = None
+    rel_attributes: List[str] = Field(default_factory=list)
+    is_nofollow: bool = False
+    is_sponsored: bool = False
+    is_ugc: bool = False
+    target_attribute: Optional[str] = None
+    link_classification: LinkClassification = LinkClassification.INTERNAL
+
+class GenericAnchorOccurrence(BaseModel):
+    """Occurrence of generic or non-descriptive anchor text."""
+    anchor_text: str
+    target_url: str
+    count: int = 1
+
+class AnchorAmbiguityFinding(BaseModel):
+    """Identical anchor text pointing to multiple distinct internal destinations."""
+    anchor_text: str
+    target_urls: List[str] = Field(default_factory=list)
+    source_pages: List[str] = Field(default_factory=list)
+    total_occurrences: int = 0
+    observation: str = ""
+
+class BrokenInternalLinkItem(BaseModel):
+    """Internal link pointing to a failed or HTTP 4xx/5xx destination observed in crawl records."""
+    source_url: str
+    target_url: str
+    anchor_text: str = ""
+    status_code: Optional[int] = None
+    failure_reason: Optional[str] = None
+
+class LinkStructuralFindingType(str, Enum):
+    NO_DISCOVERED_INCOMING_LINKS = "NO_DISCOVERED_INCOMING_LINKS"
+    LIMITED_CONNECTIVITY = "LIMITED_CONNECTIVITY"
+    ZERO_OUTLINKS = "ZERO_OUTLINKS"
+    DEEP_CLICK_DEPTH = "DEEP_CLICK_DEPTH"
+    BROKEN_TARGET = "BROKEN_TARGET"
+    GENERIC_ANCHOR_USAGE = "GENERIC_ANCHOR_USAGE"
+    AMBIGUOUS_ANCHOR = "AMBIGUOUS_ANCHOR"
+
+class LinkStructuralFinding(BaseModel):
+    """Evidence-backed structural finding or opportunity."""
+    finding_type: LinkStructuralFindingType
+    affected_url: str
+    evidence: str
+    observation: str
+    recommendation: str
+
+class LinkConcentrationTelemetry(BaseModel):
+    """Link distribution and equity concentration telemetry."""
+    total_internal_links: int = 0
+    unique_internal_edges: int = 0
+    top_linked_pages: List[Tuple[str, int]] = Field(default_factory=list)
+    top_5_concentration_pct: float = 0.0
+
+class SiteAnchorIntelligence(BaseModel):
+    """Site-wide anchor text statistics and anomalies."""
+    total_anchors_observed: int = 0
+    unique_anchor_texts_count: int = 0
+    empty_anchors_count: int = 0
+    empty_anchor_sources: List[str] = Field(default_factory=list)
+    generic_anchors_count: int = 0
+    generic_anchor_occurrences: List[GenericAnchorOccurrence] = Field(default_factory=list)
+    conflicting_anchors_count: int = 0
+    conflicting_anchors: List[AnchorAmbiguityFinding] = Field(default_factory=list)
+    top_anchor_texts: List[Tuple[str, int]] = Field(default_factory=list)
+
+class InternalLinkEvidence(BaseModel):
+    """Single-page internal link evidence."""
+    url: str = ""
+    status: EvidenceNature = EvidenceNature.OBSERVED
+    total_links_found: int = 0
+    internal_links_count: int = 0
+    external_links_count: int = 0
+    special_links_count: int = 0
+    unique_internal_outlinks_count: int = 0
+    unique_external_outlinks_count: int = 0
+    nofollow_links_count: int = 0
+    empty_anchor_count: int = 0
+    generic_anchor_count: int = 0
+    generic_anchors: List[GenericAnchorOccurrence] = Field(default_factory=list)
+    sample_internal_links: List[DiscoveredLinkItem] = Field(default_factory=list)
+    sample_external_links: List[DiscoveredLinkItem] = Field(default_factory=list)
+    crawl_depth: Optional[int] = None
+    inbound_internal_count: Optional[int] = None
+    facts: List[str] = Field(default_factory=list)
+    observations: List[str] = Field(default_factory=list)
+
+class SiteInternalLinkIntelligence(BaseModel):
+    """Site-wide multi-page internal link intelligence."""
+    total_pages_evaluated: int = 0
+    total_internal_links_discovered: int = 0
+    total_unique_internal_edges: int = 0
+    pages_with_zero_inlinks: List[str] = Field(default_factory=list)
+    pages_with_weak_inlinks: List[str] = Field(default_factory=list)
+    dead_end_pages: List[str] = Field(default_factory=list)
+    deep_pages: List[str] = Field(default_factory=list)
+    broken_internal_links_count: int = 0
+    broken_internal_links: List[BrokenInternalLinkItem] = Field(default_factory=list)
+    anchor_intelligence: SiteAnchorIntelligence = Field(default_factory=SiteAnchorIntelligence)
+    link_concentration: LinkConcentrationTelemetry = Field(default_factory=LinkConcentrationTelemetry)
+    structural_findings: List[LinkStructuralFinding] = Field(default_factory=list)
+    inlink_sources_by_page: Dict[str, List[str]] = Field(default_factory=dict)
+    outlink_targets_by_page: Dict[str, List[str]] = Field(default_factory=dict)
+    inlink_counts_by_page: Dict[str, int] = Field(default_factory=dict)
+    outlink_counts_by_page: Dict[str, int] = Field(default_factory=dict)
+    crawl_depth_by_page: Dict[str, Optional[int]] = Field(default_factory=dict)
+    page_internal_link_evidence: Dict[str, InternalLinkEvidence] = Field(default_factory=dict)
+
+
 class SitemapFormat(str, Enum):
     URLSET = "URLSET"
     SITEMAPINDEX = "SITEMAPINDEX"
@@ -979,6 +1100,7 @@ class SiteCrawlResult(BaseModel):
     bot_matrix: Optional[BotMatrixReport] = None
     content_intelligence: Optional[SiteContentIntelligence] = None
     entity_intelligence: Optional[SiteEntityIntelligence] = None
+    internal_link_intelligence: Optional[SiteInternalLinkIntelligence] = None
 
 class EngineResult(BaseModel):
     engine_name: str
@@ -996,6 +1118,7 @@ class EngineResult(BaseModel):
     accessibility: Optional[AccessibilityEvidence] = None
     content: Optional[ContentEvidence] = None
     entity: Optional[EntityEvidence] = None
+    internal_link: Optional[InternalLinkEvidence] = None
     cloud_intelligence: Optional[CloudIntelligenceEvidence] = None
     raw_html: Optional[str] = None  # Post-JS rendered HTML from crawl4ai; used by TrustEvaluator and GeoEngine
 
@@ -1048,6 +1171,7 @@ class SynthesisReport(BaseModel):
     unified_accessibility: AccessibilityEvidence = Field(default_factory=AccessibilityEvidence)
     unified_content: ContentEvidence = Field(default_factory=ContentEvidence)
     unified_entity: EntityEvidence = Field(default_factory=EntityEvidence)
+    unified_internal_link: InternalLinkEvidence = Field(default_factory=InternalLinkEvidence)
     cloud_intelligence: CloudIntelligenceEvidence = Field(default_factory=CloudIntelligenceEvidence)
     site_crawl: Optional[SiteCrawlResult] = None
     
