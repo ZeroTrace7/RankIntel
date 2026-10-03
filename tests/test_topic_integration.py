@@ -140,11 +140,10 @@ def _collect_with_html(html: str, url: str = "https://example.com"):
     mock_geo = EngineResult(engine_name="geo_engine", status="success", geo_aeo=GeoAeoEvidence(url=url))
     mock_perf = EngineResult(engine_name="performance_engine", status="success", performance=PerformanceEvidence(url=url))
 
-    with patch.object(collector.seo_engine, "execute", return_value=mock_seo), \
-         patch.object(collector.browser_engine, "crawl", return_value=mock_browser), \
-         patch.object(collector.geo_engine, "optimize", return_value=mock_geo.geo_aeo), \
-         patch.object(collector.performance_engine, "audit_url", return_value=mock_perf.performance), \
-         patch.object(collector.mcp_engine, "get_keyword_gap", return_value=None):
+    with patch.object(collector.browser_engine, "execute_sync", return_value=mock_browser), \
+         patch.object(collector.seo_engine, "execute", return_value=mock_seo), \
+         patch.object(collector.geo_engine, "execute", return_value=EngineResult(engine_name="rankintel_geo", status="success")), \
+         patch.object(collector.performance_engine, "execute", return_value=EngineResult(engine_name="performance_engine", status="skipped")):
         return collector.collect(url)
 
 

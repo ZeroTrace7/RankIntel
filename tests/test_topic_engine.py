@@ -154,8 +154,9 @@ def test_entity_assisted_topic_association():
     # Acme Global Solutions should be represented as a concept topic
     acme_topics = [t for t in topic_intel.topics if "acme" in t.normalized_name]
     assert len(acme_topics) >= 1
-    acme_top = acme_topics[0]
-    assert any(m.membership_type == TopicMembershipType.ENTITY_MEMBER for m in acme_top.supporting_terms)
+    # Verify entity topic has ENTITY_MEMBER membership
+    entity_topic = next(t for t in acme_topics if t.normalized_name == "acme global solutions")
+    assert any(m.membership_type == TopicMembershipType.ENTITY_MEMBER for m in entity_topic.supporting_terms)
 
 
 def test_subtopic_of_evidence_gating():
