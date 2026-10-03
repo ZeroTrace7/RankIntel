@@ -361,6 +361,12 @@ class CrawlFrontier:
         except Exception:
             pass
 
+        try:
+            from rankintel.analyzers.content_analyzer import SiteContentAnalyzer
+            SiteContentAnalyzer.analyze_site(result)
+        except Exception:
+            pass
+
         if getattr(self.config, "enable_sitemap_analysis", False):
             try:
                 from rankintel.sitemaps.discovery import SitemapDiscovery

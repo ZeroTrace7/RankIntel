@@ -164,4 +164,24 @@ class ConflictDetector:
                 severity="HIGH"
             ))
 
+        # 6. Check Client-Side Rendered Content Divergence (Static vs Browser/Content Engine)
+        cnt_res = engine_results.get("content_engine")
+        if seo_res and seo_res.on_page and cnt_res and cnt_res.content:
+            static_words = seo_res.on_page.word_count
+            main_words = cnt_res.content.main_content_word_count
+            if static_words < 50 and main_words >= 250:
+                conflicts.append(ConflictFinding(
+                    category="CLIENT_RENDERED_CONTENT",
+                    feature="JavaScript-Rendered Main Content",
+                    description=f"Static HTML contains only {static_words} words, while rendered DOM contains {main_words} editorial words.",
+                    engine_a_finding=f"advertools_seo (Static): {static_words} words extracted from raw HTML",
+                    engine_b_finding=f"content_engine (DOM): {main_words} words extracted from rendered DOM",
+                    interpretation=(
+                        "Core editorial body content depends on client-side JavaScript hydration. "
+                        "Crawlers lacking headless JavaScript rendering pipelines (such as many AI search scrapers) "
+                        "will perceive the page as thin or empty."
+                    ),
+                    severity="HIGH"
+                ))
+
         return conflicts

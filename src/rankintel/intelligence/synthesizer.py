@@ -22,6 +22,7 @@ from rankintel.models.schema import (
     ImageSEOEvidence,
     AccessibilityEvidence,
     SecurityEvidence,
+    ContentEvidence,
     SecurityStatus,
     WcagStatus,
     SecuritySeverity,
@@ -238,6 +239,14 @@ class IntelligenceSynthesizer:
             else SecurityEvidence(url=url, overall_status=SecurityStatus.UNKNOWN)
         )
 
+        # 9. Content Intelligence Reconciliation (Phase 8.1)
+        cnt_res = engine_results.get("content_engine")
+        unified_content = (
+            cnt_res.content
+            if (cnt_res and cnt_res.content)
+            else ContentEvidence(url=url)
+        )
+
         # Build Prioritized Actions
         actions = self._build_prioritized_actions(
             unified_on_page,
@@ -250,6 +259,7 @@ class IntelligenceSynthesizer:
             security=unified_security,
             accessibility=unified_accessibility,
             image_seo=unified_image_seo,
+            content=unified_content,
         )
 
         # Generate Production Fixes — only when genuinely needed
@@ -290,6 +300,7 @@ class IntelligenceSynthesizer:
             unified_image_seo=unified_image_seo,
             unified_accessibility=unified_accessibility,
             unified_security=unified_security,
+            unified_content=unified_content,
             cloud_intelligence=cloud_intelligence,
             fixes=fixes
         )
@@ -340,6 +351,7 @@ class IntelligenceSynthesizer:
         security: Optional[SecurityEvidence] = None,
         accessibility: Optional[AccessibilityEvidence] = None,
         image_seo: Optional[ImageSEOEvidence] = None,
+        content: Optional[ContentEvidence] = None,
     ) -> List[PrioritizedAction]:
         actions: List[PrioritizedAction] = []
 
@@ -485,5 +497,24 @@ class IntelligenceSynthesizer:
                         rationale="Critical WCAG barriers completely block assistive technology users from accessing content or controls.",
                         engine_confidence="HIGH (Deterministic AST/axe check)"
                     ))
+
+        # Content Engine deterministic findings (Empty body on 200 OK or placeholder copy only)
+        if content and on_page.status_code == 200:
+            if content.thin_content.is_empty_or_whitespace:
+                actions.append(PrioritizedAction(
+                    level="HIGH",
+                    title="Empty Editorial Body Content Detected",
+                    finding="Page returned HTTP 200 but contains 0 extracted main content words.",
+                    rationale="Search engines indexing an empty content container risk treating the page as a soft 404 or indexation anomaly.",
+                    engine_confidence="HIGH (Content engine DOM extraction)"
+                ))
+            elif content.thin_content.placeholder_text_detected:
+                actions.append(PrioritizedAction(
+                    level="MEDIUM",
+                    title="Placeholder Copy Detected in Body",
+                    finding=f"Page body contains placeholder patterns: {', '.join(content.thin_content.placeholder_snippets)}.",
+                    rationale="Template placeholder text should be replaced with genuine content prior to search engine indexing.",
+                    engine_confidence="HIGH (Content engine pattern matching)"
+                ))
 
         return actions

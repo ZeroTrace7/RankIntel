@@ -192,6 +192,39 @@ class MarkdownReporter:
                     if len(sr.uncrawled_sitemap_urls) > 10:
                         lines.append(f"- *... and {len(sr.uncrawled_sitemap_urls) - 10} more*")
 
+            if getattr(sc, "content_intelligence", None):
+                ci = sc.content_intelligence
+                lines.append("\n### 📑 Site-Wide Content & Duplicate Intelligence")
+                lines.append(f"- **Pages Evaluated:** {ci.total_pages_evaluated}")
+                lines.append(f"- **Exact Duplicate Main-Content Clusters:** {ci.exact_duplicate_clusters_count}")
+                lines.append(f"- **Near-Duplicate Page Pairs (SimHash + Shingling):** {ci.near_duplicate_pairs_count}")
+                lines.append(f"- **Repeated Boilerplate Blocks (Shared across pages):** {ci.repeated_boilerplate_blocks_count}")
+
+                if ci.exact_duplicate_clusters:
+                    lines.append("\n#### Exact Duplicate Main-Content Clusters:")
+                    lines.append("| Cluster ID | Main-Content SHA-256 | Word Count | Duplicate URLs |")
+                    lines.append("|---|---|---|---|")
+                    for cluster in ci.exact_duplicate_clusters:
+                        urls_str = "<br>".join([f"`{u}`" for u in cluster.urls[:5]])
+                        if len(cluster.urls) > 5:
+                            urls_str += f"<br>*...and {len(cluster.urls) - 5} more*"
+                        lines.append(f"| **{cluster.cluster_id}** | `{cluster.content_hash[:16]}...` | {cluster.word_count} | {urls_str} |")
+
+                if ci.near_duplicate_pairs:
+                    lines.append("\n#### Near-Duplicate Page Pairs:")
+                    lines.append("| URL A | URL B | Shingle Similarity | SimHash Distance | Method |")
+                    lines.append("|---|---|---|---|---|")
+                    for pair in ci.near_duplicate_pairs[:10]:
+                        lines.append(f"| `{pair.url_a}` | `{pair.url_b}` | {pair.similarity_percentage}% | {pair.hamming_distance} bits | `{pair.method}` |")
+
+                if ci.repeated_boilerplate_blocks:
+                    lines.append("\n#### Repeated Boilerplate Text Blocks:")
+                    lines.append("| Text Snippet | Word Count | Page Count | Sample Pages |")
+                    lines.append("|---|---|---|---|")
+                    for b in ci.repeated_boilerplate_blocks[:5]:
+                        sample_pages = ", ".join([f"`{p}`" for p in b.pages[:3]])
+                        lines.append(f"| {b.text_snippet} | {b.word_count} words | {b.page_count} pages | {sample_pages} |")
+
             if sc.site_wide_issues:
                 lines.append("\n### 🔴 Site-Wide Structural Findings:")
                 for issue in sc.site_wide_issues:
@@ -357,6 +390,39 @@ class MarkdownReporter:
                     lines.append(f"| {sev_icon} {sev_val} | `{v.rule_id}` | {v.wcag_sc or 'N/A'} | {level_val} | {v.description} | {v.failure_summary} |")
                 lines.append("")
             lines.append("*Disclaimer: Automated checks evaluate a subset of WCAG 2.1/2.2 AA criteria and do not constitute complete manual accessibility certification.*\n")
+
+        # Content Intelligence & Structure (Phase 8.1)
+        cnt = report.unified_content
+        if cnt and (cnt.main_content_word_count > 0 or (cnt.extraction_method and cnt.extraction_method.value != "UNAVAILABLE")):
+            lines.append("## 📑 CONTENT INTELLIGENCE & STRUCTURE")
+            lines.append(f"- **Main Editorial Content:** {cnt.main_content_word_count} words ({cnt.main_content_char_count} chars, {cnt.paragraph_count} paragraphs)")
+            lines.append(f"- **Extraction Method:** `{cnt.extraction_method.value}`")
+            lines.append(f"- **Total Body Words / Content Ratio:** {cnt.total_body_word_count} body words ({int(cnt.content_to_boilerplate_ratio * 100)}% editorial)")
+            lines.append(f"- **Content Telemetry Bucket:** `{cnt.thin_content.word_count_tier.value}` (descriptive measurement range, not a quality grade)")
+            if cnt.thin_content.placeholder_text_detected:
+                lines.append(f"- **Placeholder Copy Detected:** ⚠️ {', '.join(cnt.thin_content.placeholder_snippets)}")
+            lines.append(f"- **Exact Main-Content SHA-256:** `{cnt.exact_content_hash}`")
+            lines.append(f"- **Full HTML SHA-256:** `{cnt.html_hash}`")
+            lines.append(f"- **Deterministic SimHash (64-bit):** `{cnt.simhash}`")
+
+            t_rel = cnt.title_h1_relationship
+            if t_rel and t_rel.alignment_status.value != "UNAVAILABLE":
+                lines.append("\n### 🎯 Title ↔ H1 ↔ Content Relationship:")
+                lines.append(f"- **Title Tag:** {t_rel.title_text or '⚪ Missing'}")
+                lines.append(f"- **Primary H1:** {t_rel.h1_text or '⚪ Missing'}")
+                lines.append(f"- **Alignment Observation:** `{t_rel.alignment_status.value}` (Token overlap: {t_rel.token_overlap_ratio * 100:.1f}%)")
+                lines.append(f"- **Title/H1 Key Terms in Lead 200 Words:** {t_rel.lead_content_keyword_ratio * 100:.1f}%")
+
+            h = cnt.heading_structure
+            if h and h.total_headings > 0:
+                lines.append("\n### 📐 Heading Hierarchy & Content Outline:")
+                lines.append(f"- **Heading Counts:** H1: {h.h1_count} | H2: {h.h2_count} | H3: {h.h3_count} | H4: {h.h4_count} | H5: {h.h5_count} | H6: {h.h6_count} (Total: {h.total_headings})")
+                lines.append(f"- **Hierarchy Status:** {'🟢 Valid (no skips)' if h.heading_hierarchy_valid else '⚠️ Skips detected'}")
+                if h.heading_skips:
+                    for skip in h.heading_skips:
+                        lines.append(f"  • {skip}")
+                lines.append(f"- **Average Words per Heading Section:** {h.average_words_per_section:.1f} words ({h.empty_sections_count} empty sections)")
+            lines.append("")
 
         # GEO Citability
         g = report.unified_geo

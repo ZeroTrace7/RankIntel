@@ -181,4 +181,26 @@ class ProvenanceTagger:
                     confidence="high"
                 ))
 
+        # 10. Content findings (Phase 8.1)
+        cnt_res = engine_results.get("content_engine")
+        if cnt_res and cnt_res.content and cnt_res.status == "success":
+            cnt = cnt_res.content
+            tags.append(EvidenceProvenanceTag(
+                finding=f"Main Content Extraction: {cnt.main_content_word_count} words ({cnt.extraction_method.value})",
+                source_file="HTML DOM",
+                engine="content_engine",
+                evidence_snippet=f"Exact Hash: {cnt.exact_content_hash[:12]}..., SimHash: {cnt.simhash[:8]}...",
+                confidence="high"
+            ))
+            if cnt.heading_structure:
+                h = cnt.heading_structure
+                status_str = "Valid hierarchy" if h.heading_hierarchy_valid else f"{len(h.heading_skips)} skips"
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"Heading Structure: {h.total_headings} headings ({status_str})",
+                    source_file="HTML Headings",
+                    engine="content_engine",
+                    evidence_snippet=f"H1: {h.h1_count}, H2: {h.h2_count}, H3: {h.h3_count}",
+                    confidence="high"
+                ))
+
         return tags

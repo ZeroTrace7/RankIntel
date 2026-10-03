@@ -357,6 +357,132 @@ class CloudIntelligenceEvidence(BaseModel):
     ai_visibility_score: int = 0
     notes: List[str] = Field(default_factory=list)
 
+class ContentExtractionMethod(str, Enum):
+    SEMANTIC_MAIN = "SEMANTIC_MAIN"
+    SEMANTIC_ARTICLE = "SEMANTIC_ARTICLE"
+    ROLE_MAIN = "ROLE_MAIN"
+    HEURISTIC_PRUNED_BODY = "HEURISTIC_PRUNED_BODY"
+    RAW_BODY_FALLBACK = "RAW_BODY_FALLBACK"
+    UNAVAILABLE = "UNAVAILABLE"
+
+class WordCountTier(str, Enum):
+    """Descriptive telemetry measurement buckets (configuration-dependent, not universal SEO value judgments)."""
+    EMPTY = "EMPTY"             # 0 words
+    VERY_LOW = "VERY_LOW"       # 1 - 99 words
+    LOW = "LOW"                 # 100 - 199 words (Screaming Frog default low-content filter is <200)
+    MODERATE = "MODERATE"       # 200 - 599 words
+    SUBSTANTIVE = "SUBSTANTIVE" # 600+ words measurement bucket
+    UNAVAILABLE = "UNAVAILABLE"
+
+class TitleH1AlignmentStatus(str, Enum):
+    STRONG_ALIGNMENT = "STRONG_ALIGNMENT"
+    MODERATE_ALIGNMENT = "MODERATE_ALIGNMENT"
+    WEAK_ALIGNMENT = "WEAK_ALIGNMENT"
+    MISALIGNED = "MISALIGNED"
+    UNAVAILABLE = "UNAVAILABLE"
+
+class ThinContentEvidence(BaseModel):
+    """Factual telemetry regarding main content density and placeholder copy."""
+    word_count_tier: WordCountTier = WordCountTier.UNAVAILABLE
+    has_substantive_content: bool = False
+    is_empty_or_whitespace: bool = False
+    placeholder_text_detected: bool = False
+    placeholder_snippets: List[str] = Field(default_factory=list)
+    boilerplate_dominated: bool = False
+    facts: List[str] = Field(default_factory=list)
+    recommendations: List[str] = Field(default_factory=list)
+
+class TitleH1RelationshipEvidence(BaseModel):
+    """Observed relationship between Title, H1, and main content keywords."""
+    title_text: Optional[str] = None
+    h1_text: Optional[str] = None
+    title_h1_exact_match: bool = False
+    title_in_h1: bool = False
+    h1_in_title: bool = False
+    token_overlap_ratio: float = 0.0
+    lead_content_keyword_ratio: float = 0.0
+    full_content_keyword_ratio: float = 0.0
+    alignment_status: TitleH1AlignmentStatus = TitleH1AlignmentStatus.UNAVAILABLE
+    notes: List[str] = Field(default_factory=list)
+
+class HeadingSectionDetail(BaseModel):
+    heading_tag: str
+    heading_text: str
+    word_count: int
+
+class HeadingStructureEvidence(BaseModel):
+    """Observed heading hierarchy, sequence, and section distribution."""
+    total_headings: int = 0
+    h1_count: int = 0
+    h2_count: int = 0
+    h3_count: int = 0
+    h4_count: int = 0
+    h5_count: int = 0
+    h6_count: int = 0
+    heading_hierarchy_valid: bool = True
+    heading_skips: List[str] = Field(default_factory=list)
+    multiple_h1_detected: bool = False
+    h1_texts: List[str] = Field(default_factory=list)
+    empty_headings_count: int = 0
+    empty_headings: List[str] = Field(default_factory=list)
+    empty_sections_count: int = 0
+    average_words_per_section: float = 0.0
+    sections: List[HeadingSectionDetail] = Field(default_factory=list)
+    anomalies: List[str] = Field(default_factory=list)
+
+class ContentEvidence(BaseModel):
+    """Comprehensive single-page Content Intelligence evidence."""
+    url: str = ""
+    engine_source: str = "content_engine"
+    extraction_method: ContentExtractionMethod = ContentExtractionMethod.UNAVAILABLE
+    main_content_text_preview: str = ""
+    main_content_word_count: int = 0
+    main_content_char_count: int = 0
+    total_body_word_count: int = 0
+    content_to_boilerplate_ratio: float = 0.0
+    paragraph_count: int = 0
+    sentence_count: int = 0
+    exact_content_hash: str = ""  # SHA-256 of normalized main-content text (exact duplicate main-content detection)
+    html_hash: str = ""           # SHA-256 of normalized full body HTML (exact full-page HTML duplicate detection)
+    simhash: str = ""             # 64-bit SimHash hex fingerprint of main content
+    thin_content: ThinContentEvidence = Field(default_factory=ThinContentEvidence)
+    title_h1_relationship: TitleH1RelationshipEvidence = Field(default_factory=TitleH1RelationshipEvidence)
+    heading_structure: HeadingStructureEvidence = Field(default_factory=HeadingStructureEvidence)
+    facts: List[str] = Field(default_factory=list)
+
+class ExactDuplicateCluster(BaseModel):
+    cluster_id: str
+    content_hash: str
+    word_count: int
+    urls: List[str] = Field(default_factory=list)
+
+class NearDuplicatePair(BaseModel):
+    url_a: str
+    url_b: str
+    similarity_percentage: float
+    hamming_distance: int
+    method: str = "simhash_shingle_jaccard"
+
+class RepeatedBoilerplateBlock(BaseModel):
+    text_snippet: str
+    word_count: int
+    page_count: int
+    pages: List[str] = Field(default_factory=list)
+
+class SiteContentIntelligence(BaseModel):
+    """Site-wide multi-page content analysis (duplicates, near-duplicates, boilerplate)."""
+    total_pages_evaluated: int = 0
+    exact_duplicate_clusters_count: int = 0
+    exact_duplicate_clusters: List[ExactDuplicateCluster] = Field(default_factory=list)
+    near_duplicate_pairs_count: int = 0
+    near_duplicate_pairs: List[NearDuplicatePair] = Field(default_factory=list)
+    repeated_boilerplate_blocks_count: int = 0
+    repeated_boilerplate_blocks: List[RepeatedBoilerplateBlock] = Field(default_factory=list)
+    thin_content_urls: List[str] = Field(default_factory=list)
+    heading_skip_urls: List[str] = Field(default_factory=list)
+    title_h1_mismatch_urls: List[str] = Field(default_factory=list)
+    page_content_evidence: Dict[str, ContentEvidence] = Field(default_factory=dict)
+
 class CrawlStatus(str, Enum):
     QUEUED = "QUEUED"
     FETCHED = "FETCHED"
@@ -732,6 +858,7 @@ class SiteCrawlResult(BaseModel):
     link_graph: Optional[InternalLinkGraphSummary] = None
     sitemap_reconciliation: Optional[SitemapReconciliationSummary] = None
     bot_matrix: Optional[BotMatrixReport] = None
+    content_intelligence: Optional[SiteContentIntelligence] = None
 
 class EngineResult(BaseModel):
     engine_name: str
@@ -747,6 +874,7 @@ class EngineResult(BaseModel):
     security: Optional[SecurityEvidence] = None
     image_seo: Optional[ImageSEOEvidence] = None
     accessibility: Optional[AccessibilityEvidence] = None
+    content: Optional[ContentEvidence] = None
     cloud_intelligence: Optional[CloudIntelligenceEvidence] = None
     raw_html: Optional[str] = None  # Post-JS rendered HTML from crawl4ai; used by TrustEvaluator and GeoEngine
 
@@ -797,6 +925,7 @@ class SynthesisReport(BaseModel):
     unified_security: SecurityEvidence = Field(default_factory=SecurityEvidence)
     unified_image_seo: ImageSEOEvidence = Field(default_factory=ImageSEOEvidence)
     unified_accessibility: AccessibilityEvidence = Field(default_factory=AccessibilityEvidence)
+    unified_content: ContentEvidence = Field(default_factory=ContentEvidence)
     cloud_intelligence: CloudIntelligenceEvidence = Field(default_factory=CloudIntelligenceEvidence)
     site_crawl: Optional[SiteCrawlResult] = None
     

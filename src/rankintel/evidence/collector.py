@@ -16,13 +16,15 @@ from rankintel.engines.mcp_engine import McpEngine
 from rankintel.engines.image_engine import ImageEngine
 from rankintel.engines.accessibility_engine import AccessibilityEngine
 from rankintel.engines.security_engine import SecurityEngine
+from rankintel.engines.content_engine import ContentEngine
 from rankintel.models.schema import (
     EngineResult,
     SecurityStatus,
     WcagStatus,
     SecurityEvidence,
     AccessibilityEvidence,
-    ImageSEOEvidence
+    ImageSEOEvidence,
+    ContentEvidence,
 )
 import asyncio
 import concurrent.futures
@@ -41,6 +43,7 @@ class EvidenceCollector:
         self.image_engine = ImageEngine()
         self.accessibility_engine = AccessibilityEngine()
         self.security_engine = SecurityEngine()
+        self.content_engine = ContentEngine()
 
     def _run_async(self, coro):
         """Helper to run async coroutines safely from synchronous context."""
@@ -230,6 +233,50 @@ class EvidenceCollector:
                 engine_name="security_engine",
                 status="error",
                 error_message=f"Security engine failed: {e}",
+            )
+
+        # 9. Content Engine (Phase 8.1) — Reuses already-observed raw_html (zero duplicate HTTP requests)
+        try:
+            seo_res = results.get("advertools_seo")
+            title = None
+            h1_list = None
+            if browser_res and browser_res.on_page:
+                title = browser_res.on_page.title
+                h1_list = browser_res.on_page.h1_text
+            elif seo_res and seo_res.on_page:
+                title = seo_res.on_page.title
+                h1_list = seo_res.on_page.h1_text
+
+            if browser_html:
+                content_ev = self.content_engine.evaluate(
+                    raw_html=browser_html,
+                    url=url,
+                    title=title,
+                    h1_list=h1_list,
+                )
+                results["content_engine"] = EngineResult(
+                    engine_name="content_engine",
+                    status="success",
+                    content=content_ev,
+                )
+            else:
+                content_ev = self.content_engine.evaluate(
+                    raw_html=None,
+                    url=url,
+                    title=title,
+                    h1_list=h1_list,
+                )
+                results["content_engine"] = EngineResult(
+                    engine_name="content_engine",
+                    status="skipped",
+                    error_message="No HTML available for content analysis",
+                    content=content_ev,
+                )
+        except Exception as e:
+            results["content_engine"] = EngineResult(
+                engine_name="content_engine",
+                status="error",
+                error_message=f"Content engine failed: {e}",
             )
 
         return results

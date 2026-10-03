@@ -10,6 +10,7 @@ from rankintel.analyzers.hygiene_detector import UrlHygieneDetector
 from rankintel.analyzers.hygiene_engine import UrlHygieneEngine
 from rankintel.analyzers.link_graph_engine import InternalLinkGraphEngine
 from rankintel.analyzers.sitemap_reconciler import SitemapReconciler
+from rankintel.analyzers.content_analyzer import SiteContentAnalyzer
 
 __all__ = [
     "TrustEvaluator",
@@ -21,4 +22,5 @@ __all__ = [
     "UrlHygieneEngine",
     "InternalLinkGraphEngine",
     "SitemapReconciler",
+    "SiteContentAnalyzer",
 ]
