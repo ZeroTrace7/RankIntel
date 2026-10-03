@@ -168,6 +168,20 @@ def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_p
             f"{top_intel.total_topics_derived} derived concepts{sample_str}",
             "deterministic concept grouping (Layer A)"
         )
+    if report.unified_query_page and report.unified_query_page.total_concepts_mapped > 0:
+        qp = report.unified_query_page
+        table.add_row(
+            "Query–Page Concept Mapping",
+            f"{qp.total_concepts_mapped} concepts mapped ({qp.direct_concepts_count} direct, {qp.supported_concepts_count} supported)",
+            "deterministic on-site triangulation (Layer A)"
+        )
+    elif report.site_crawl and report.site_crawl.query_page_intelligence and report.site_crawl.query_page_intelligence.total_concepts_mapped > 0:
+        qpi = report.site_crawl.query_page_intelligence
+        table.add_row(
+            "Query–Page Concept Mapping",
+            f"{qpi.total_concepts_mapped} site concepts ({qpi.multi_page_overlap_count} overlaps)",
+            "deterministic on-site triangulation (Layer A)"
+        )
 
     console.print(table)
 
