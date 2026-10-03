@@ -20,6 +20,7 @@ from rankintel.engines.content_engine import ContentEngine
 from rankintel.engines.entity_engine import EntityEngine
 from rankintel.engines.internal_link_engine import InternalLinkEngine
 from rankintel.engines.search_signal_engine import SearchSignalEngine
+from rankintel.engines.topic_intelligence_engine import TopicIntelligenceEngine
 from rankintel.models.schema import (
     EngineResult,
     SecurityStatus,
@@ -31,6 +32,7 @@ from rankintel.models.schema import (
     EntityEvidence,
     InternalLinkEvidence,
     SearchSignalEvidence,
+    PageTopicIntelligence,
 )
 import asyncio
 import concurrent.futures
@@ -53,6 +55,7 @@ class EvidenceCollector:
         self.entity_engine = EntityEngine()
         self.internal_link_engine = InternalLinkEngine()
         self.search_signal_engine = SearchSignalEngine()
+        self.topic_intelligence_engine = TopicIntelligenceEngine()
 
     def _run_async(self, coro):
         """Helper to run async coroutines safely from synchronous context."""
@@ -400,6 +403,45 @@ class EvidenceCollector:
                 engine_name="search_signal_engine",
                 status="error",
                 error_message=f"Search signal engine failed: {e}",
+            )
+
+        # 13. Topic Intelligence Engine (Phase 9.2 - Layer A) — Reuses already-observed evidence (zero duplicate HTTP requests)
+        try:
+            sig_ev_res = results.get("search_signal_engine")
+            content_ev_res = results.get("content_engine")
+            entity_ev_res = results.get("entity_engine")
+
+            sig_data = sig_ev_res.search_signal if (sig_ev_res and sig_ev_res.search_signal) else None
+            cnt_data = content_ev_res.content if (content_ev_res and content_ev_res.content) else None
+            ent_data = entity_ev_res.entity if (entity_ev_res and entity_ev_res.entity) else None
+
+            topic_ev = self.topic_intelligence_engine.evaluate(
+                search_signal_ev=sig_data,
+                content_ev=cnt_data,
+                entity_ev=ent_data,
+                url=url,
+            )
+
+            status = "success" if (browser_html and sig_data and sig_data.signals) else "skipped"
+            err_msg = None if browser_html else "No HTML available for topic intelligence"
+
+            results["topic_intelligence_engine"] = EngineResult(
+                engine_name="topic_intelligence_engine",
+                status=status,
+                error_message=err_msg,
+                topic_intelligence=topic_ev,
+            )
+        except Exception as e:
+            results["topic_intelligence_engine"] = EngineResult(
+                engine_name="topic_intelligence_engine",
+                status="error",
+                error_message=f"Topic intelligence engine failed: {e}",
+                topic_intelligence=PageTopicIntelligence(
+                    url=url,
+                    engine_source="topic_intelligence_engine",
+                    status="error",
+                    error_message=str(e),
+                ),
             )
 
         return results

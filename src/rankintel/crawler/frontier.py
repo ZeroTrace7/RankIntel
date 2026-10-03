@@ -389,6 +389,18 @@ class CrawlFrontier:
         except Exception:
             pass
 
+        try:
+            from rankintel.analyzers.topic_analyzer import SiteTopicAnalyzer
+            SiteTopicAnalyzer.analyze_site(result)
+        except Exception as e:
+            from rankintel.models.schema import SiteTopicIntelligence
+            result.topic_intelligence = SiteTopicIntelligence(
+                status="error",
+                error_message=f"Site topic analysis failed during crawl aggregation: {e}",
+                completeness_disclaimer="Topic intelligence unavailable due to an aggregation error.",
+                analyses=[f"Site topic analyzer encountered an error: {e}"],
+            )
+
         if getattr(self.config, "enable_sitemap_analysis", False):
             try:
                 from rankintel.sitemaps.discovery import SitemapDiscovery
