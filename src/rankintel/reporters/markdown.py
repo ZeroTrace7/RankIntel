@@ -107,7 +107,7 @@ class MarkdownReporter:
         lines.append("")
 
         # Multi-page site crawl
-        if report.site_crawl and report.site_crawl.pages_crawled > 0:
+        if report.site_crawl and (report.site_crawl.pages_crawled > 0 or len(report.site_crawl.crawl_records) > 0):
             sc = report.site_crawl
             lines.append("## 🕸️ SITE-WIDE MULTI-PAGE ANALYSIS")
             lines.append(f"- **Pages Crawled:** {sc.pages_crawled} (Depth: {sc.crawl_depth})")
