@@ -79,6 +79,9 @@ def rankintel_audit(url: str, deep_crawl: bool = False, max_pages: int = 25) -> 
         "search_signals_total": report.unified_search_signal.total_signals_detected if report.unified_search_signal else 0,
         "search_signal_top_terms": [s.term for s in report.unified_search_signal.signals[:5]] if (report.unified_search_signal and report.unified_search_signal.signals) else [],
         "site_recurring_concepts_count": report.site_crawl.search_signal_intelligence.recurring_concepts_count if (report.site_crawl and report.site_crawl.search_signal_intelligence) else 0,
+        "topics_derived_count": report.unified_topic.total_topics_derived if report.unified_topic else 0,
+        "top_topics": [t.topic_name for t in report.unified_topic.topics[:5]] if (report.unified_topic and report.unified_topic.topics) else [],
+        "site_recurring_topics_count": report.site_crawl.topic_intelligence.recurring_topics_count if (report.site_crawl and report.site_crawl.topic_intelligence) else 0,
     }
 
 @mcp.tool

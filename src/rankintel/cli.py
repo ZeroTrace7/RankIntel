@@ -159,6 +159,15 @@ def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_p
             f"{sig.total_signals_detected} evidenced terms ({len(sig.title_terms)} title, {len(sig.heading_terms)} headings)",
             "on-site structural triangulation (Layer A)"
         )
+    if report.unified_topic and report.unified_topic.total_topics_derived > 0:
+        top_intel = report.unified_topic
+        top_names = [t.topic_name for t in top_intel.topics[:2]]
+        sample_str = f" ({', '.join(top_names)})" if top_names else ""
+        table.add_row(
+            "Topic Intelligence",
+            f"{top_intel.total_topics_derived} derived concepts{sample_str}",
+            "deterministic concept grouping (Layer A)"
+        )
 
     console.print(table)
 
