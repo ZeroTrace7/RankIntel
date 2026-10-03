@@ -18,7 +18,14 @@ from rankintel.models.schema import (
     GeoAeoEvidence,
     TrustStackResult,
     PerformanceEvidence,
-    CloudIntelligenceEvidence
+    CloudIntelligenceEvidence,
+    ImageSEOEvidence,
+    AccessibilityEvidence,
+    SecurityEvidence,
+    SecurityStatus,
+    WcagStatus,
+    SecuritySeverity,
+    AccessibilitySeverity
 )
 from rankintel.evidence.conflicts import ConflictDetector
 from rankintel.evidence.provenance import ProvenanceTagger
