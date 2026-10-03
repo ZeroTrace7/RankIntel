@@ -747,6 +747,62 @@ class MarkdownReporter:
                     lines.append(f"- **ANALYSIS:** {analysis}")
             lines.append("")
 
+        # Search Intent & Topic Coverage (Phase 9.4 - Layer A)
+        intent_ev = getattr(report, "unified_search_intent", None)
+        crawl_coverage = (
+            report.site_crawl.topic_coverage_intelligence
+            if (report.site_crawl and report.site_crawl.topic_coverage_intelligence)
+            else None
+        )
+        if intent_ev and (intent_ev.evidence_items or intent_ev.facts or crawl_coverage):
+            lines.append("## 🎯 SEARCH INTENT & TOPIC COVERAGE (Layer A: On-Site Intent Signals)")
+            lines.append("> *Scope Note: Strictly deterministic inference of observable search-intent signals and topic coverage derived from on-site content. External search volume, CTR, rankings, and user search queries are excluded (Layer A boundary).*")
+            pri_val = (
+                intent_ev.primary_observed_intent_signal.value
+                if hasattr(intent_ev.primary_observed_intent_signal, "value")
+                else str(intent_ev.primary_observed_intent_signal)
+            )
+            sec_str = (
+                ", ".join([s.value if hasattr(s, "value") else str(s) for s in intent_ev.secondary_observed_intent_signals])
+                if intent_ev.secondary_observed_intent_signals
+                else "None"
+            )
+            lines.append(f"- **Primary Observed Intent Signal:** `{pri_val.upper()}`")
+            lines.append(f"- **Secondary Observed Intent Signal(s):** `{sec_str.upper()}`")
+            lines.append(f"- **Total Observable Intent Evidence Items:** {len(intent_ev.evidence_items)}")
+
+            if intent_ev.evidence_items:
+                lines.append("\n### 📍 Observable Intent Evidence:")
+                lines.append("| Intent Category | Signal Type | Location | Confidence | Supporting Snippet |")
+                lines.append("|---|---|---|---|---|")
+                for it in intent_ev.evidence_items[:12]:
+                    cat_val = it.intent_category.value if hasattr(it.intent_category, "value") else str(it.intent_category)
+                    conf_val = it.confidence.value if hasattr(it.confidence, "value") else str(it.confidence)
+                    snip = it.supporting_snippet
+                    if len(snip) > 60:
+                        snip = snip[:57] + "..."
+                    lines.append(f"| **{cat_val.upper()}** | `{it.signal_type}` | `{it.evidence_location}` | `{conf_val}` | {snip} |")
+
+            # Topic coverage if multi-page crawl was executed
+            if crawl_coverage and crawl_coverage.covered_topics:
+                lines.append("\n### 🌐 Site Topic Coverage & Dominant Intent:")
+                if crawl_coverage.completeness_disclaimer:
+                    lines.append(f"> *{crawl_coverage.completeness_disclaimer}*")
+                lines.append("| Topic / Concept | Crawled Pages | Observed Dominant Intent | Intent Breakdown |")
+                lines.append("|---|---|---|---|")
+                for ct in crawl_coverage.covered_topics[:12]:
+                    dom_val = ct.observed_dominant_intent.value if hasattr(ct.observed_dominant_intent, "value") else str(ct.observed_dominant_intent)
+                    b_down = ", ".join([f"{k}: {v}" for k, v in ct.intent_breakdown.items() if v > 0])
+                    lines.append(f"| **{ct.topic_name}** | {ct.pages_count} | `{dom_val.upper()}` | {b_down} |")
+
+            if intent_ev.facts or intent_ev.analyses:
+                lines.append("\n### 📑 Intent Observations & Structural Analyses:")
+                for fact in intent_ev.facts:
+                    lines.append(f"- **FACT:** {fact}")
+                for analysis in intent_ev.analyses:
+                    lines.append(f"- **ANALYSIS:** {analysis}")
+            lines.append("")
+
         # GEO Citability
         g = report.unified_geo
         lines.append("## 🧠 GENERATIVE ENGINE OPTIMIZATION (GEO / AEO)")
