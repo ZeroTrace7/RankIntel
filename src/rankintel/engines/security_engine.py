@@ -598,11 +598,13 @@ class SecurityEngine:
                     recommendation="Ensure the web server is listening and DNS records resolve correctly."
                 )
             ]
+            from rankintel.models.schema import SecurityStatus
             return SecurityEvidence(
                 url=url,
                 is_https=is_https,
-                score=0,
-                grade="F",
+                overall_status=SecurityStatus.UNAVAILABLE,
+                total_findings=1,
+                critical_count=1,
                 findings=findings,
                 tls_details=tls_details
             )
@@ -656,11 +658,13 @@ class SecurityEngine:
                     recommendation="Ensure the web server is reachable."
                 )
             ]
+            from rankintel.models.schema import SecurityStatus
             return SecurityEvidence(
                 url=url,
                 is_https=is_https,
-                score=0,
-                grade="F",
+                overall_status=SecurityStatus.UNAVAILABLE,
+                total_findings=1,
+                critical_count=1,
                 findings=findings,
                 tls_details=tls_details
             )
