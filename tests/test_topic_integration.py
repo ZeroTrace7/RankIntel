@@ -336,13 +336,13 @@ def test_markdown_and_json_reporters_render_topics():
     report.site_crawl = site_crawl
 
     # Test Markdown rendering
-    md_output = MarkdownReporter.generate_markdown(report)
+    md_output = MarkdownReporter.render(report)
     assert "## 🧭 TOPIC INTELLIGENCE (Layer A: On-Site Concept Grouping)" in md_output
     assert "Site-Wide Topic Intelligence & Concept Clustering" in md_output
     assert "Recurring Observed Concepts" in md_output
 
     # Test JSON serialization
-    json_output = JsonReporter.generate_json(report)
+    json_output = JsonReporter.render_audit(report)
     assert "unified_topic" in json_output
     assert "topic_intelligence" in json_output
 
