@@ -337,4 +337,33 @@ class ProvenanceTagger:
                     confidence="high"
                 ))
 
+        # 17. Cannibalization & Search Gap findings (Phase 9.5 - Layer A)
+        cann_res = engine_results.get("cannibalization_analyzer")
+        if cann_res and cann_res.cannibalization and cann_res.status == "success":
+            cann_ev = cann_res.cannibalization
+            if cann_ev.potential_signals:
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"Cannibalization Intelligence: {len(cann_ev.potential_signals)} potential cannibalization signal(s) flagged",
+                    source_file="Multi-Dimensional Signal Gate",
+                    engine="cannibalization_analyzer",
+                    evidence_snippet=f"Competing topics: {', '.join([s.topic for s in cann_ev.potential_signals[:3]])}",
+                    confidence="high"
+                ))
+            if cann_ev.observable_gaps:
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"Search Gap Intelligence: {len(cann_ev.observable_gaps)} observable on-site topic gap(s) identified",
+                    source_file="Observable Coverage Matrix",
+                    engine="search_gap_analyzer",
+                    evidence_snippet=f"Gap topics: {', '.join([g.topic for g in cann_ev.observable_gaps[:3]])}",
+                    confidence="high"
+                ))
+            if cann_ev.analyses:
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"Cannibalization & Gap Observations: {cann_ev.analyses[0]}",
+                    source_file="On-Site Evidence Triangulation",
+                    engine="cannibalization_analyzer",
+                    evidence_snippet=cann_ev.analyses[0],
+                    confidence="high"
+                ))
+
         return tags

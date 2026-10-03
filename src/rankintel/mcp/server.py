@@ -88,6 +88,8 @@ def rankintel_audit(url: str, deep_crawl: bool = False, max_pages: int = 25) -> 
         "search_intent_primary": report.unified_search_intent.primary_observed_intent_signal.value if report.unified_search_intent else "unspecified",
         "search_intent_signals_count": len(report.unified_search_intent.evidence_items) if report.unified_search_intent else 0,
         "site_topics_covered_count": report.site_crawl.topic_coverage_intelligence.total_topics_covered if (report.site_crawl and report.site_crawl.topic_coverage_intelligence) else 0,
+        "potential_cannibalization_signals_count": len(report.site_crawl.cannibalization_intelligence.potential_cannibalization_signals) if (report.site_crawl and report.site_crawl.cannibalization_intelligence) else (len(report.unified_cannibalization.potential_signals) if report.unified_cannibalization else 0),
+        "observable_topic_gaps_count": len(report.site_crawl.cannibalization_intelligence.observable_topic_gaps) if (report.site_crawl and report.site_crawl.cannibalization_intelligence) else (len(report.unified_cannibalization.observable_gaps) if report.unified_cannibalization else 0),
     }
 
 @mcp.tool

@@ -1397,6 +1397,87 @@ class SiteTopicCoverageIntelligence(BaseModel):
     facts: List[str] = Field(default_factory=list)
     analyses: List[str] = Field(default_factory=list)
 
+# ==============================================================================
+# Phase 9.5 - Cannibalization & Search Gaps Models (Layer A: On-Site Overlap & Gap Intelligence)
+# ==============================================================================
+
+class CannibalizationSignalType(str, Enum):
+    POTENTIAL_CANNIBALIZATION_SIGNAL = "POTENTIAL_CANNIBALIZATION_SIGNAL"
+    OBSERVED_TOPIC_OVERLAP = "OBSERVED_TOPIC_OVERLAP"
+    OBSERVED_INTENT_OVERLAP = "OBSERVED_INTENT_OVERLAP"
+
+class TopicGapType(str, Enum):
+    OBSERVED_TOPIC_GAP = "OBSERVED_TOPIC_GAP"
+    CONTENT_DEPTH_ASYMMETRY = "CONTENT_DEPTH_ASYMMETRY"
+    STRUCTURAL_HEADING_GAP = "STRUCTURAL_HEADING_GAP"
+
+class PotentialCannibalizationItem(BaseModel):
+    """Observable on-site multi-page competition signal supported by multiple independent evidence dimensions."""
+    topic: str
+    normalized_topic: str
+    competing_urls: List[str] = Field(default_factory=list)  # >= 2 pages
+    signal_type: CannibalizationSignalType = CannibalizationSignalType.POTENTIAL_CANNIBALIZATION_SIGNAL
+    evidence_strength: SearchSignalConfidence = SearchSignalConfidence.SUPPORTED
+    shared_intent: SearchIntentCategory = SearchIntentCategory.UNSPECIFIED
+    title_overlap_ratio: float = 0.0
+    h1_overlap_ratio: float = 0.0
+    shared_concepts: List[str] = Field(default_factory=list)  # Bounded to max 8
+    title_h1_snippets: Dict[str, str] = Field(default_factory=dict)  # url -> title/H1 summary
+    rationale: str = ""
+    recommendation: str = ""  # Explicitly includes REQUIRES_EXTERNAL_SEARCH_VALIDATION
+    provenance: str = "cannibalization_analyzer"
+
+class ObservableTopicGapItem(BaseModel):
+    """Deterministic on-site coverage or structural asymmetry between related pages or topics."""
+    topic: str
+    normalized_topic: str
+    source_url: str = ""
+    related_url: str = ""
+    gap_type: TopicGapType = TopicGapType.OBSERVED_TOPIC_GAP
+    covered_concepts: List[str] = Field(default_factory=list)  # Bounded to max 6
+    missing_concepts: List[str] = Field(default_factory=list)  # Bounded to max 6
+    gap_nature: str = "OBSERVED_TOPIC_GAP"
+    rationale: str = ""
+    recommendation: str = ""  # Explicitly includes REQUIRES_EXTERNAL_SEARCH_VALIDATION
+    provenance: str = "search_gap_analyzer"
+
+class PageCannibalizationEvidence(BaseModel):
+    """Observable cannibalization signals and topic gaps relevant to a single page."""
+    url: str = ""
+    engine_source: str = "cannibalization_analyzer"
+    status: str = "success"  # success, error, skipped
+    error_message: Optional[str] = None
+    potential_signals: List[PotentialCannibalizationItem] = Field(default_factory=list)
+    observable_gaps: List[ObservableTopicGapItem] = Field(default_factory=list)
+    terminology_nature: str = "OBSERVED_WEBSITE_EVIDENCE"
+    facts: List[str] = Field(default_factory=list)
+    analyses: List[str] = Field(default_factory=list)
+    recommendations: List[str] = Field(default_factory=list)
+
+class SiteCannibalizationIntelligence(BaseModel):
+    """Site-wide cannibalization and search gap intelligence across crawled pages."""
+    status: str = "success"  # success, error, partial
+    error_message: Optional[str] = None
+    total_pages_evaluated: int = 0
+    is_partial_crawl: bool = False
+    completeness_disclaimer: str = ""
+    potential_cannibalization_signals: List[PotentialCannibalizationItem] = Field(default_factory=list)
+    observable_topic_gaps: List[ObservableTopicGapItem] = Field(default_factory=list)
+    competing_topics_count: int = 0
+    total_gaps_identified: int = 0
+    terminology_nature: str = "OBSERVED_WEBSITE_EVIDENCE"
+    facts: List[str] = Field(default_factory=list)
+    analyses: List[str] = Field(default_factory=list)
+    recommendations: List[str] = Field(default_factory=list)
+
+    @property
+    def potential_signals(self) -> List[PotentialCannibalizationItem]:
+        return self.potential_cannibalization_signals
+
+    @property
+    def observable_gaps(self) -> List[ObservableTopicGapItem]:
+        return self.observable_topic_gaps
+
 class SiteCrawlResult(BaseModel):
     """Aggregated multi-page crawl intelligence."""
     completeness_status: str = "CRAWL_COMPLETE"
@@ -1440,6 +1521,7 @@ class SiteCrawlResult(BaseModel):
     topic_intelligence: Optional[SiteTopicIntelligence] = None
     query_page_intelligence: Optional[SiteQueryPageIntelligence] = None
     topic_coverage_intelligence: Optional[SiteTopicCoverageIntelligence] = None
+    cannibalization_intelligence: Optional[SiteCannibalizationIntelligence] = None
 
 class EngineResult(BaseModel):
     engine_name: str
@@ -1462,6 +1544,7 @@ class EngineResult(BaseModel):
     topic_intelligence: Optional[PageTopicIntelligence] = None
     query_page: Optional[PageQueryEvidence] = None
     search_intent: Optional[PageIntentEvidence] = None
+    cannibalization: Optional[PageCannibalizationEvidence] = None
     cloud_intelligence: Optional[CloudIntelligenceEvidence] = None
     raw_html: Optional[str] = None  # Post-JS rendered HTML from crawl4ai; used by TrustEvaluator and GeoEngine
 
@@ -1519,6 +1602,7 @@ class SynthesisReport(BaseModel):
     unified_topic: PageTopicIntelligence = Field(default_factory=PageTopicIntelligence)
     unified_query_page: PageQueryEvidence = Field(default_factory=PageQueryEvidence)
     unified_search_intent: PageIntentEvidence = Field(default_factory=PageIntentEvidence)
+    unified_cannibalization: PageCannibalizationEvidence = Field(default_factory=PageCannibalizationEvidence)
     cloud_intelligence: CloudIntelligenceEvidence = Field(default_factory=CloudIntelligenceEvidence)
     site_crawl: Optional[SiteCrawlResult] = None
     

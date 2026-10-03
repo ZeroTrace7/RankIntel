@@ -29,6 +29,7 @@ from rankintel.models.schema import (
     PageTopicIntelligence,
     PageQueryEvidence,
     PageIntentEvidence,
+    PageCannibalizationEvidence,
     SecurityStatus,
     WcagStatus,
     SecuritySeverity,
@@ -301,6 +302,14 @@ class IntelligenceSynthesizer:
             else PageIntentEvidence(url=url)
         )
 
+        # 16. Cannibalization & Search Gap Reconciliation (Phase 9.5 - Layer A)
+        cann_res = engine_results.get("cannibalization_analyzer")
+        unified_cannibalization = (
+            cann_res.cannibalization
+            if (cann_res and cann_res.cannibalization)
+            else PageCannibalizationEvidence(url=url)
+        )
+
         # Build Prioritized Actions
         actions = self._build_prioritized_actions(
             unified_on_page,
@@ -363,6 +372,7 @@ class IntelligenceSynthesizer:
             unified_topic=unified_topic,
             unified_query_page=unified_query_page,
             unified_search_intent=unified_search_intent,
+            unified_cannibalization=unified_cannibalization,
             cloud_intelligence=cloud_intelligence,
             fixes=fixes
         )

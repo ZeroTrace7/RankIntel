@@ -23,6 +23,7 @@ from rankintel.engines.search_signal_engine import SearchSignalEngine
 from rankintel.engines.topic_intelligence_engine import TopicIntelligenceEngine
 from rankintel.engines.query_page_mapping_engine import QueryPageMappingEngine
 from rankintel.engines.search_intent_engine import SearchIntentEngine
+from rankintel.analyzers.cannibalization_analyzer import CannibalizationAnalyzer
 from rankintel.models.schema import (
     EngineResult,
     SecurityStatus,
@@ -37,6 +38,7 @@ from rankintel.models.schema import (
     PageTopicIntelligence,
     PageQueryEvidence,
     PageIntentEvidence,
+    PageCannibalizationEvidence,
 )
 import asyncio
 import concurrent.futures
@@ -529,6 +531,31 @@ class EvidenceCollector:
                 search_intent=PageIntentEvidence(
                     url=url,
                     engine_source="search_intent_engine",
+                    status="error",
+                    error_message=str(e),
+                ),
+            )
+
+        # 16. Cannibalization & Search Gap Analyzer (Phase 9.5 - Layer A) — Single-page baseline (zero duplicate HTTP requests)
+        try:
+            cann_ev = CannibalizationAnalyzer.evaluate_page(
+                url=url,
+                query_page_ev=qp_ev if 'qp_ev' in locals() else None,
+                intent_ev=intent_ev if 'intent_ev' in locals() else None,
+            )
+            results["cannibalization_analyzer"] = EngineResult(
+                engine_name="cannibalization_analyzer",
+                status="success",
+                cannibalization=cann_ev,
+            )
+        except Exception as e:
+            results["cannibalization_analyzer"] = EngineResult(
+                engine_name="cannibalization_analyzer",
+                status="error",
+                error_message=f"Cannibalization analyzer failed: {e}",
+                cannibalization=PageCannibalizationEvidence(
+                    url=url,
+                    engine_source="cannibalization_analyzer",
                     status="error",
                     error_message=str(e),
                 ),

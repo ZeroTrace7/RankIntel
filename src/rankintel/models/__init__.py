@@ -128,6 +128,12 @@ from rankintel.models.schema import (
     PageIntentEvidence,
     TopicCoverageEvidence,
     SiteTopicCoverageIntelligence,
+    CannibalizationSignalType,
+    TopicGapType,
+    PotentialCannibalizationItem,
+    ObservableTopicGapItem,
+    PageCannibalizationEvidence,
+    SiteCannibalizationIntelligence,
 )
 
 __all__ = [
@@ -257,4 +263,10 @@ __all__ = [
     "PageIntentEvidence",
     "TopicCoverageEvidence",
     "SiteTopicCoverageIntelligence",
+    "CannibalizationSignalType",
+    "TopicGapType",
+    "PotentialCannibalizationItem",
+    "ObservableTopicGapItem",
+    "PageCannibalizationEvidence",
+    "SiteCannibalizationIntelligence",
 ]

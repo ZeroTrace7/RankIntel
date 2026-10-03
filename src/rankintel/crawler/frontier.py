@@ -425,6 +425,22 @@ class CrawlFrontier:
                 analyses=[f"Site topic coverage analyzer encountered an error: {e}"],
             )
 
+        try:
+            from rankintel.analyzers.cannibalization_analyzer import CannibalizationAnalyzer
+            from rankintel.analyzers.search_gap_analyzer import SearchGapAnalyzer
+            CannibalizationAnalyzer.analyze_site(result)
+            SearchGapAnalyzer.analyze_site(result)
+        except Exception as e:
+            from rankintel.models.schema import SiteCannibalizationIntelligence
+            result.cannibalization_intelligence = SiteCannibalizationIntelligence(
+                status="error",
+                error_message=f"Site cannibalization and search gap analysis failed during crawl aggregation: {e}",
+                completeness_disclaimer="Cannibalization and search gap intelligence unavailable due to an aggregation error.",
+                facts=[f"Error during crawl aggregation: {e}"],
+                analyses=[f"Cannibalization and search gap analyzer encountered an error: {e}"],
+                recommendations=["Check crawl telemetry and record validity."],
+            )
+
         if getattr(self.config, "enable_sitemap_analysis", False):
             try:
                 from rankintel.sitemaps.discovery import SitemapDiscovery

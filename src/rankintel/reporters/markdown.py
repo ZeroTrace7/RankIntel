@@ -803,6 +803,74 @@ class MarkdownReporter:
                     lines.append(f"- **ANALYSIS:** {analysis}")
             lines.append("")
 
+        # Cannibalization & Search Gaps (Phase 9.5 - Layer A)
+        cann_ev = getattr(report, "unified_cannibalization", None)
+        crawl_cann = (
+            report.site_crawl.cannibalization_intelligence
+            if (report.site_crawl and report.site_crawl.cannibalization_intelligence)
+            else None
+        )
+        signals = (
+            crawl_cann.potential_cannibalization_signals
+            if crawl_cann and crawl_cann.potential_cannibalization_signals
+            else (cann_ev.potential_signals if cann_ev else [])
+        )
+        gaps = (
+            crawl_cann.observable_topic_gaps
+            if crawl_cann and crawl_cann.observable_topic_gaps
+            else (cann_ev.observable_gaps if cann_ev else [])
+        )
+        has_cann_data = bool(signals or gaps or (crawl_cann and (crawl_cann.facts or crawl_cann.analyses)))
+
+        if has_cann_data or (cann_ev and (cann_ev.potential_signals or cann_ev.observable_gaps)):
+            lines.append("## 🔀 CANNIBALIZATION & SEARCH GAPS (Layer A: On-Site Overlap & Gap Intelligence)")
+            lines.append("> *Scope Note: Strictly deterministic identification of potential cross-page topic competition and observable content coverage gaps. External search rankings, Google Search Console, SERP clicks, search volume, and ranking cannibalization claims are excluded (Layer A boundary).*")
+            lines.append(f"- **Potential Cannibalization Signals Flagged:** {len(signals)}")
+            lines.append(f"- **Observable Topic & Coverage Gaps Identified:** {len(gaps)}")
+
+            if crawl_cann and crawl_cann.completeness_disclaimer:
+                lines.append(f"> *{crawl_cann.completeness_disclaimer}*")
+
+            if signals:
+                lines.append("\n### ⚔️ Potential Cannibalization Signals (Multi-Dimensional Gate):")
+                lines.append("| Topic / Concept | Competing URLs | Observed Intent | Title / H1 Overlap | Shared Concepts | Action / Investigation |")
+                lines.append("|---|---|---|---|---|---|")
+                for item in signals[:12]:
+                    urls_str = "<br>".join([f"`{u}`" for u in item.competing_urls[:2]])
+                    intent_str = item.shared_intent.value if hasattr(item.shared_intent, "value") else str(item.shared_intent)
+                    overlap_str = f"Title: {item.title_overlap_ratio:.0%}<br>H1: {item.h1_overlap_ratio:.0%}"
+                    shared_str = ", ".join(item.shared_concepts[:3]) if item.shared_concepts else "Direct query match"
+                    rec_snippet = item.recommendation
+                    if len(rec_snippet) > 85:
+                        rec_snippet = rec_snippet[:82] + "..."
+                    lines.append(f"| **{item.topic}** | {urls_str} | `{intent_str.upper()}` | {overlap_str} | {shared_str} | {rec_snippet} |")
+
+            if gaps:
+                lines.append("\n### 🧩 Observable Topic & Content Coverage Gaps:")
+                lines.append("| Topic / Concept | Source URL (With Gap) | Related URL | Gap Type | Missing On-Site Concepts | Investigation Recommendation |")
+                lines.append("|---|---|---|---|---|---|")
+                for g_item in gaps[:12]:
+                    gap_type_str = g_item.gap_type.value if hasattr(g_item.gap_type, "value") else str(g_item.gap_type)
+                    missing_str = ", ".join(g_item.missing_concepts[:3]) if g_item.missing_concepts else "Heading depth"
+                    rec_snip = g_item.recommendation
+                    if len(rec_snip) > 85:
+                        rec_snip = rec_snip[:82] + "..."
+                    lines.append(f"| **{g_item.topic}** | `{g_item.source_url}` | `{g_item.related_url}` | `{gap_type_str}` | {missing_str} | {rec_snip} |")
+
+            facts = crawl_cann.facts if (crawl_cann and crawl_cann.facts) else (cann_ev.facts if cann_ev else [])
+            analyses = crawl_cann.analyses if (crawl_cann and crawl_cann.analyses) else (cann_ev.analyses if cann_ev else [])
+            recs = crawl_cann.recommendations if (crawl_cann and crawl_cann.recommendations) else (cann_ev.recommendations if cann_ev else [])
+
+            if facts or analyses or recs:
+                lines.append("\n### 📑 Observations, Analyses & External Validation Requirements:")
+                for fact in facts:
+                    lines.append(f"- **FACT:** {fact}")
+                for analysis in analyses:
+                    lines.append(f"- **ANALYSIS:** {analysis}")
+                for rec in recs:
+                    lines.append(f"- **RECOMMENDATION:** {rec}")
+            lines.append("")
+
         # GEO Citability
         g = report.unified_geo
         lines.append("## 🧠 GENERATIVE ENGINE OPTIMIZATION (GEO / AEO)")

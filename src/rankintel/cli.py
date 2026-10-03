@@ -202,6 +202,18 @@ def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_p
             "deterministic on-site aggregation (Layer A)"
         )
 
+    crawl_cann = report.site_crawl.cannibalization_intelligence if (report.site_crawl and report.site_crawl.cannibalization_intelligence) else None
+    cann_ev = getattr(report, "unified_cannibalization", None)
+    signals_count = len(crawl_cann.potential_cannibalization_signals) if crawl_cann else (len(cann_ev.potential_signals) if cann_ev else 0)
+    gaps_count = len(crawl_cann.observable_topic_gaps) if crawl_cann else (len(cann_ev.observable_gaps) if cann_ev else 0)
+
+    if signals_count > 0 or gaps_count > 0:
+        table.add_row(
+            "Cannibalization & Search Gaps",
+            f"{signals_count} potential signal(s), {gaps_count} gap(s)",
+            "on-site multi-dimensional gate (Layer A)"
+        )
+
     console.print(table)
 
     if report.conflicts_detected:

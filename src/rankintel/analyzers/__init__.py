@@ -17,6 +17,8 @@ from rankintel.analyzers.search_signal_analyzer import SiteSearchSignalAnalyzer
 from rankintel.analyzers.topic_analyzer import SiteTopicAnalyzer
 from rankintel.analyzers.query_page_analyzer import SiteQueryPageAnalyzer
 from rankintel.analyzers.topic_coverage_analyzer import SiteTopicCoverageAnalyzer
+from rankintel.analyzers.cannibalization_analyzer import CannibalizationAnalyzer
+from rankintel.analyzers.search_gap_analyzer import SearchGapAnalyzer
 
 __all__ = [
     "TrustEvaluator",
@@ -35,4 +37,6 @@ __all__ = [
     "SiteTopicAnalyzer",
     "SiteQueryPageAnalyzer",
     "SiteTopicCoverageAnalyzer",
+    "CannibalizationAnalyzer",
+    "SearchGapAnalyzer",
 ]
