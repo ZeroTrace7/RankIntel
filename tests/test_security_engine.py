@@ -260,7 +260,7 @@ class TestMarkdownReporterSecurityIntegration:
         md = reporter.render(report)
 
         assert "SECURITY & WEB BEST PRACTICES" in md
-        assert "Security Posture Score" in md
+        assert "Overall Status" in md
         assert "Strict-Transport-Security" in md
         assert "Content-Security-Policy" in md
         assert "TLS Certificate" in md
