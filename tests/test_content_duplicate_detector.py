@@ -161,9 +161,10 @@ def test_site_wide_content_telemetry_aggregation():
         "https://example.com/mismatch",
         "<html><head><title>Alpha Gamma</title></head><body><main><h1>Zeta Theta</h1><p>Content text</p></main></body></html>"
     )
+    clean_text = " ".join(["editorial testing standards certification compliance"] * 50)
     rec_clean = make_record(
         "https://example.com/clean",
-        "<html><head><title>Testing Standards</title></head><body><main><h1>Testing Standards</h1><p>Substantive text</p><h2>Section</h2><p>Body</p></main></body></html>"
+        f"<html><head><title>Testing Standards</title></head><body><main><h1>Testing Standards</h1><p>{clean_text}</p><h2>Section</h2><p>{clean_text}</p></main></body></html>"
     )
 
     site_crawl = SiteCrawlResult(crawl_records=[rec_thin, rec_skips, rec_mismatch, rec_clean])

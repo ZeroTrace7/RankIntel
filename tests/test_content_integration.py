@@ -223,8 +223,8 @@ def test_markdown_and_json_reporters_render_content_sections():
 
 def test_crawl_frontier_build_result_runs_content_analyzer():
     frontier = CrawlFrontier(base_url="https://example.com", config=CrawlConfig(max_pages=5))
-    html_a = "<html><body><main><h1>Page A</h1><p>Shared product description for duplicate test.</p></main></body></html>"
-    html_b = "<html><body><main><h1>Page B</h1><p>Shared product description for duplicate test.</p></main></body></html>"
+    html_a = "<html><body><main><h1>Product Title</h1><p>Shared product description for duplicate test.</p></main></body></html>"
+    html_b = "<html><body><main><h1>Product Title</h1><p>Shared product description for duplicate test.</p></main></body></html>"
 
     frontier.add_url("https://example.com/a", depth=0, parent_url=None)
     frontier.add_url("https://example.com/b", depth=1, parent_url="https://example.com/a")
