@@ -132,8 +132,9 @@ class SiteContentAnalyzer:
                 simhash_b = ev_b.simhash if ev_b else ""
                 ham_dist = ContentEngine.calculate_simhash_hamming(simhash_a, simhash_b)
 
-                # Pre-filter using SimHash Hamming distance <= 6 for candidates
-                if ham_dist <= 6 or (ev_a and ev_b and min(ev_a.main_content_word_count, ev_b.main_content_word_count) < 20):
+                # Pre-filter candidate pairs using SimHash Hamming distance or similar length
+                wc_diff = abs((ev_a.main_content_word_count if ev_a else 0) - (ev_b.main_content_word_count if ev_b else 0))
+                if ham_dist <= 12 or wc_diff <= 30:
                     text_a = clean_text_by_url.get(url_a, "")
                     text_b = clean_text_by_url.get(url_b, "")
                     jaccard = ContentEngine.calculate_shingle_jaccard(text_a, text_b, k=3)
