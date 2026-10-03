@@ -273,7 +273,7 @@ class MarkdownReporter:
         sec = report.unified_security
         if sec and (sec.headers_evaluated or sec.findings):
             lines.append("## 🛡️ SECURITY & WEB BEST PRACTICES")
-            lines.append(f"- **Security Posture Score:** {sec.score}/100 (Grade: {sec.grade})")
+            lines.append(f"- **Security Posture Score:** {sec.overall_status.name}")
             lines.append(f"- **HTTPS Enforced:** {'🟢 YES' if sec.is_https else '🔴 NO (Insecure HTTP)'}")
             if sec.tls_details:
                 tls = sec.tls_details
