@@ -46,6 +46,7 @@ class EvidenceCollector:
         self.accessibility_engine = AccessibilityEngine()
         self.security_engine = SecurityEngine()
         self.content_engine = ContentEngine()
+        self.entity_engine = EntityEngine()
 
     def _run_async(self, coro):
         """Helper to run async coroutines safely from synchronous context."""
@@ -279,6 +280,44 @@ class EvidenceCollector:
                 engine_name="content_engine",
                 status="error",
                 error_message=f"Content engine failed: {e}",
+            )
+
+        # 10. Entity Engine (Phase 8.2) — Reuses already-observed raw_html (zero duplicate HTTP requests)
+        try:
+            on_page_data = None
+            if browser_res and browser_res.on_page:
+                on_page_data = browser_res.on_page
+            elif seo_res and seo_res.on_page:
+                on_page_data = seo_res.on_page
+
+            if browser_html:
+                entity_ev = self.entity_engine.evaluate(
+                    raw_html=browser_html,
+                    url=url,
+                    on_page=on_page_data,
+                )
+                results["entity_engine"] = EngineResult(
+                    engine_name="entity_engine",
+                    status="success",
+                    entity=entity_ev,
+                )
+            else:
+                entity_ev = self.entity_engine.evaluate(
+                    raw_html=None,
+                    url=url,
+                    on_page=on_page_data,
+                )
+                results["entity_engine"] = EngineResult(
+                    engine_name="entity_engine",
+                    status="skipped",
+                    error_message="No HTML available for entity analysis",
+                    entity=entity_ev,
+                )
+        except Exception as e:
+            results["entity_engine"] = EngineResult(
+                engine_name="entity_engine",
+                status="error",
+                error_message=f"Entity engine failed: {e}",
             )
 
         return results
