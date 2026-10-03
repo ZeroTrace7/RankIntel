@@ -1176,6 +1176,86 @@ class SiteSearchSignalIntelligence(BaseModel):
     facts: List[str] = Field(default_factory=list)
     analyses: List[str] = Field(default_factory=list)
 
+# ==============================================================================
+# Phase 9.2 - Keyword & Topic Intelligence Models (Layer A: On-Site Concept Grouping)
+# ==============================================================================
+
+class TopicMembershipType(str, Enum):
+    EXACT = "EXACT"
+    PHRASE_CONTAINMENT = "PHRASE_CONTAINMENT"
+    TOKEN_OVERLAP = "TOKEN_OVERLAP"
+    STRUCTURAL_CO_OCCURRENCE = "STRUCTURAL_CO_OCCURRENCE"
+    ENTITY_MEMBER = "ENTITY_MEMBER"
+
+class TopicRelationshipType(str, Enum):
+    LEXICAL_OVERLAP = "LEXICAL_OVERLAP"
+    CO_OCCURRENCE = "CO_OCCURRENCE"
+    SHARED_ENTITY = "SHARED_ENTITY"
+    SUBTOPIC_OF = "SUBTOPIC_OF"
+
+class TopicTermMembership(BaseModel):
+    """Association between an observed term and a derived concept topic."""
+    term: str
+    normalized_term: str
+    membership_type: TopicMembershipType = TopicMembershipType.EXACT
+    occurrences_count: int = 1
+    structural_locations: List[str] = Field(default_factory=list)
+    confidence: str = "SUPPORTED"
+    provenance: str = "search_signal_engine"
+
+class TopicRelationship(BaseModel):
+    """Deterministic relationship between two derived concept topics."""
+    topic_a: str
+    topic_b: str
+    relationship_type: TopicRelationshipType = TopicRelationshipType.LEXICAL_OVERLAP
+    evidence_nature: str = "ANALYSIS"
+    co_occurrence_pages_count: int = 0
+    supporting_evidence: List[str] = Field(default_factory=list)
+
+class TopicEvidence(BaseModel):
+    """Deterministic derived concept topic supported by observable on-site terms and telemetry."""
+    topic_name: str
+    normalized_name: str
+    topic_nature: str = "DERIVED_CONCEPT_GROUP"
+    evidence_nature: str = "ANALYSIS"
+    supporting_terms: List[TopicTermMembership] = Field(default_factory=list)
+    pages_count: int = 1
+    page_urls: List[str] = Field(default_factory=list)
+    occurrences_count: int = 0
+    structural_presence_count: int = 0
+    title_or_h1_presence: bool = False
+    observed_locations: List[str] = Field(default_factory=list)
+    associated_entities: List[str] = Field(default_factory=list)
+    provenance: str = "topic_intelligence_engine"
+
+class PageTopicIntelligence(BaseModel):
+    """Page-level Topic Intelligence containing derived concepts, memberships, and relationships."""
+    url: str = ""
+    engine_source: str = "topic_intelligence_engine"
+    status: str = "success"  # success, error, skipped, unavailable
+    error_message: Optional[str] = None
+    total_topics_derived: int = 0
+    total_terms_mapped: int = 0
+    topics: List[TopicEvidence] = Field(default_factory=list)
+    relationships: List[TopicRelationship] = Field(default_factory=list)
+    facts: List[str] = Field(default_factory=list)
+    analyses: List[str] = Field(default_factory=list)
+
+class SiteTopicIntelligence(BaseModel):
+    """Site-wide Topic Intelligence aggregating recurring observed concepts across crawled pages."""
+    status: str = "success"  # success, error, partial
+    error_message: Optional[str] = None
+    total_pages_evaluated: int = 0
+    is_partial_crawl: bool = False
+    completeness_disclaimer: str = ""
+    total_topics_count: int = 0
+    recurring_topics_count: int = 0
+    topics: List[TopicEvidence] = Field(default_factory=list)
+    relationships: List[TopicRelationship] = Field(default_factory=list)
+    page_topic_intelligence: Dict[str, PageTopicIntelligence] = Field(default_factory=dict)
+    facts: List[str] = Field(default_factory=list)
+    analyses: List[str] = Field(default_factory=list)
+
 class SiteCrawlResult(BaseModel):
     """Aggregated multi-page crawl intelligence."""
     completeness_status: str = "CRAWL_COMPLETE"
@@ -1216,6 +1296,7 @@ class SiteCrawlResult(BaseModel):
     entity_intelligence: Optional[SiteEntityIntelligence] = None
     internal_link_intelligence: Optional[SiteInternalLinkIntelligence] = None
     search_signal_intelligence: Optional[SiteSearchSignalIntelligence] = None
+    topic_intelligence: Optional[SiteTopicIntelligence] = None
 
 class EngineResult(BaseModel):
     engine_name: str
@@ -1235,6 +1316,7 @@ class EngineResult(BaseModel):
     entity: Optional[EntityEvidence] = None
     internal_link: Optional[InternalLinkEvidence] = None
     search_signal: Optional[SearchSignalEvidence] = None
+    topic_intelligence: Optional[PageTopicIntelligence] = None
     cloud_intelligence: Optional[CloudIntelligenceEvidence] = None
     raw_html: Optional[str] = None  # Post-JS rendered HTML from crawl4ai; used by TrustEvaluator and GeoEngine
 
@@ -1289,6 +1371,7 @@ class SynthesisReport(BaseModel):
     unified_entity: EntityEvidence = Field(default_factory=EntityEvidence)
     unified_internal_link: InternalLinkEvidence = Field(default_factory=InternalLinkEvidence)
     unified_search_signal: SearchSignalEvidence = Field(default_factory=SearchSignalEvidence)
+    unified_topic: PageTopicIntelligence = Field(default_factory=PageTopicIntelligence)
     cloud_intelligence: CloudIntelligenceEvidence = Field(default_factory=CloudIntelligenceEvidence)
     site_crawl: Optional[SiteCrawlResult] = None
     
