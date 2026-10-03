@@ -350,17 +350,16 @@ class ContentEngine:
         if not words:
             return "0000000000000000"
 
-        # Generate 3-word shingles (or 1-word if fewer than 3 words)
-        if len(words) >= 3:
-            shingles = [" ".join(words[i:i+3]) for i in range(len(words) - 2)]
-        else:
-            shingles = words
+        # Use unigrams and bigrams for robust fingerprinting across both short and long texts
+        tokens = list(words)
+        if len(words) >= 2:
+            tokens.extend([" ".join(words[i:i+2]) for i in range(len(words) - 1)])
 
         # 64-dimensional bit accumulator
         v = [0] * 64
-        for shingle in shingles:
+        for token in tokens:
             # 64-bit integer hash from MD5 digest
-            h = int(hashlib.md5(shingle.encode("utf-8")).hexdigest()[:16], 16)
+            h = int(hashlib.md5(token.encode("utf-8")).hexdigest()[:16], 16)
             for i in range(64):
                 bit = (h >> i) & 1
                 if bit == 1:
@@ -459,22 +458,23 @@ class ContentEngine:
         lead_token_set = set(w.lower() for w in lead_words if w.lower() not in STOPWORDS)
         full_token_set = set(w.lower() for w in re.sub(r"[^\w\s]", "", main_text).split() if w.lower() not in STOPWORDS)
 
-        combined_key_tokens = title_tokens | h1_tokens
-        if combined_key_tokens:
-            lead_present = len(combined_key_tokens & lead_token_set)
-            full_present = len(combined_key_tokens & full_token_set)
-            lead_ratio = round(lead_present / len(combined_key_tokens), 3)
-            full_ratio = round(full_present / len(combined_key_tokens), 3)
-        else:
-            lead_ratio = 0.0
-            full_ratio = 0.0
+        # Exclude H1 tokens from editorial tokens to avoid self-fulfilling matches when H1 is inside <main>
+        editorial_tokens = full_token_set - h1_tokens
+
+        title_lead_present = len(title_tokens & lead_token_set)
+        title_full_present = len(title_tokens & editorial_tokens)
+        h1_lead_present = len(h1_tokens & lead_token_set)
+        h1_full_present = len(h1_tokens & editorial_tokens)
+
+        lead_ratio = round((title_lead_present + h1_lead_present) / max(1, len(title_tokens | h1_tokens)), 3)
+        full_ratio = round((title_full_present + h1_full_present) / max(1, len(title_tokens | h1_tokens)), 3)
 
         # Alignment status determination
-        if exact_match or overlap_ratio >= 0.60 or (title_in_h1 and overlap_ratio >= 0.40) or (h1_in_title and overlap_ratio >= 0.40):
+        if exact_match or overlap_ratio >= 0.50 or (title_in_h1 and overlap_ratio >= 0.30) or (h1_in_title and overlap_ratio >= 0.30):
             alignment_status = TitleH1AlignmentStatus.STRONG_ALIGNMENT
-        elif overlap_ratio >= 0.25 or (lead_ratio >= 0.50):
+        elif overlap_ratio >= 0.20 or (overlap_ratio > 0.0 and lead_ratio >= 0.30):
             alignment_status = TitleH1AlignmentStatus.MODERATE_ALIGNMENT
-        elif overlap_ratio > 0.0 or full_ratio >= 0.30:
+        elif overlap_ratio > 0.0 or (title_full_present > 0 and h1_full_present > 0):
             alignment_status = TitleH1AlignmentStatus.WEAK_ALIGNMENT
         else:
             alignment_status = TitleH1AlignmentStatus.MISALIGNED
