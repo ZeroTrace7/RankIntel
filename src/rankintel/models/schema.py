@@ -483,6 +483,124 @@ class SiteContentIntelligence(BaseModel):
     title_h1_mismatch_urls: List[str] = Field(default_factory=list)
     page_content_evidence: Dict[str, ContentEvidence] = Field(default_factory=dict)
 
+# ==============================================================================
+# Phase 8.2 — Entity Intelligence Models
+# ==============================================================================
+
+class EntityType(str, Enum):
+    ORGANIZATION = "ORGANIZATION"
+    LOCAL_BUSINESS = "LOCAL_BUSINESS"
+    PERSON = "PERSON"
+    PRODUCT = "PRODUCT"
+    SERVICE = "SERVICE"
+    PLACE = "PLACE"
+    OTHER = "OTHER"
+
+class EntitySource(str, Enum):
+    JSON_LD = "JSON_LD"
+    META_TAG = "META_TAG"
+    VISIBLE_HTML = "VISIBLE_HTML"
+    MICRODATA = "MICRODATA"
+    UNAVAILABLE = "UNAVAILABLE"
+
+class EntitySignalType(str, Enum):
+    STRUCTURED_DATA_DECLARATION = "structured_data_declaration"
+    BRAND_OR_SITE_NAME_SIGNAL = "brand_or_site_name_signal"
+    CONTACT_SIGNAL = "contact_signal"
+    COPYRIGHT_SIGNAL = "copyright_signal"
+    AUTHOR_BYLINE_SIGNAL = "author_byline_signal"
+
+class EntityAlignmentStatus(str, Enum):
+    EXACT_MATCH = "EXACT_MATCH"
+    NORMALIZED_MATCH = "NORMALIZED_MATCH"
+    PARTIAL_MATCH = "PARTIAL_MATCH"
+    DIVERGENT_IDENTITY_SUSPECTED = "DIVERGENT_IDENTITY_SUSPECTED"
+    UNAVAILABLE = "UNAVAILABLE"
+    NOT_APPLICABLE = "NOT_APPLICABLE"
+
+class EntityRelationshipType(str, Enum):
+    ORGANIZATION_TO_WEBSITE = "organization_to_website"
+    ORGANIZATION_TO_LOCATION = "organization_to_location"
+    ORGANIZATION_TO_SOCIAL_PROFILE = "organization_to_social_profile"
+    PRODUCT_TO_ORGANIZATION = "product_to_organization"
+    SERVICE_TO_ORGANIZATION = "service_to_organization"
+    PERSON_TO_ORGANIZATION = "person_to_organization"
+    OTHER = "other"
+
+class DetectedEntity(BaseModel):
+    """Observable entity identified from structured data or visible page signals."""
+    entity_type: EntityType = EntityType.OTHER
+    name: str
+    normalized_name: str = ""
+    source: EntitySource = EntitySource.UNAVAILABLE
+    signal_type: EntitySignalType = EntitySignalType.STRUCTURED_DATA_DECLARATION
+    url: str = ""
+    structured_data_type: Optional[str] = None
+    description: Optional[str] = None
+    telephone: Optional[str] = None
+    email: Optional[str] = None
+    address: Optional[str] = None
+    same_as: List[str] = Field(default_factory=list)
+    identifiers: Dict[str, str] = Field(default_factory=dict)
+    raw_context: Optional[str] = None
+    confidence_nature: EvidenceNature = EvidenceNature.OBSERVED
+
+class EntityRelationship(BaseModel):
+    """Simple observable relationship between entities or entity and property."""
+    subject_name: str
+    subject_type: EntityType
+    relation: EntityRelationshipType
+    object_name: str
+    object_type: str
+    source: str = ""
+    evidence_text: Optional[str] = None
+
+class VisibleStructuredComparison(BaseModel):
+    """Contextual comparison between structured data declarations and visible brand/text signals."""
+    entity_type: EntityType
+    attribute_name: str  # "name", "address", "telephone", etc.
+    structured_value: Optional[str] = None
+    visible_value: Optional[str] = None
+    alignment_status: EntityAlignmentStatus = EntityAlignmentStatus.UNAVAILABLE
+    notes: str = ""
+
+class EntityEvidence(BaseModel):
+    """Comprehensive single-page Entity Intelligence evidence."""
+    url: str = ""
+    engine_source: str = "entity_engine"
+    total_entities_detected: int = 0
+    detected_entities: List[DetectedEntity] = Field(default_factory=list)
+    relationships: List[EntityRelationship] = Field(default_factory=list)
+    structured_vs_visible: List[VisibleStructuredComparison] = Field(default_factory=list)
+    facts: List[str] = Field(default_factory=list)
+
+class EntityInconsistency(BaseModel):
+    """Observable cross-page attribute variation/conflict for an apparent entity."""
+    entity_type: EntityType
+    entity_name: str
+    attribute: str  # "name", "address", "telephone", "url", "sameAs"
+    conflicting_values: Dict[str, List[str]] = Field(default_factory=dict)  # value -> list of URLs
+    details: str = ""
+
+class PrimaryOrganizationCandidate(BaseModel):
+    """Candidate primary organization identified by observable evidence (not definitive identity)."""
+    candidate_name: Optional[str] = None
+    selection_reasons: List[str] = Field(default_factory=list)
+    evidence_sources: List[str] = Field(default_factory=list)
+    confidence_nature: EvidenceNature = EvidenceNature.OBSERVED
+
+class SiteEntityIntelligence(BaseModel):
+    """Site-wide multi-page entity intelligence and consistency tracking."""
+    total_pages_evaluated: int = 0
+    total_entities_detected: int = 0
+    unique_entities_count: int = 0
+    primary_organization_candidate: Optional[PrimaryOrganizationCandidate] = None
+    inconsistencies_count: int = 0
+    inconsistencies: List[EntityInconsistency] = Field(default_factory=list)
+    all_entities: List[DetectedEntity] = Field(default_factory=list)
+    all_relationships: List[EntityRelationship] = Field(default_factory=list)
+    page_entity_evidence: Dict[str, EntityEvidence] = Field(default_factory=dict)
+
 class CrawlStatus(str, Enum):
     QUEUED = "QUEUED"
     FETCHED = "FETCHED"
@@ -859,6 +977,7 @@ class SiteCrawlResult(BaseModel):
     sitemap_reconciliation: Optional[SitemapReconciliationSummary] = None
     bot_matrix: Optional[BotMatrixReport] = None
     content_intelligence: Optional[SiteContentIntelligence] = None
+    entity_intelligence: Optional[SiteEntityIntelligence] = None
 
 class EngineResult(BaseModel):
     engine_name: str
@@ -875,6 +994,7 @@ class EngineResult(BaseModel):
     image_seo: Optional[ImageSEOEvidence] = None
     accessibility: Optional[AccessibilityEvidence] = None
     content: Optional[ContentEvidence] = None
+    entity: Optional[EntityEvidence] = None
     cloud_intelligence: Optional[CloudIntelligenceEvidence] = None
     raw_html: Optional[str] = None  # Post-JS rendered HTML from crawl4ai; used by TrustEvaluator and GeoEngine
 
@@ -926,6 +1046,7 @@ class SynthesisReport(BaseModel):
     unified_image_seo: ImageSEOEvidence = Field(default_factory=ImageSEOEvidence)
     unified_accessibility: AccessibilityEvidence = Field(default_factory=AccessibilityEvidence)
     unified_content: ContentEvidence = Field(default_factory=ContentEvidence)
+    unified_entity: EntityEvidence = Field(default_factory=EntityEvidence)
     cloud_intelligence: CloudIntelligenceEvidence = Field(default_factory=CloudIntelligenceEvidence)
     site_crawl: Optional[SiteCrawlResult] = None
     
