@@ -126,4 +126,59 @@ class ProvenanceTagger:
                     confidence="high"
                 ))
 
+        # 7. Image SEO findings (Phase 7.1)
+        img_res = engine_results.get("image_engine")
+        if img_res and img_res.image_seo and img_res.status == "success":
+            img = img_res.image_seo
+            tags.append(EvidenceProvenanceTag(
+                finding=f"Image Optimization: {img.total_images} images detected ({img.missing_alt_count} missing alt)",
+                source_file="HTML DOM",
+                engine="image_engine",
+                evidence_snippet=f"{img.modern_format_count} modern formats, {img.missing_dimensions_count} layout shift risks",
+                confidence="high"
+            ))
+            if img.head_audit:
+                head = img.head_audit
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"HTML Head Audit: Viewport {'Present' if head.viewport_present else 'Missing'}, Lang {'Present' if head.lang_present else 'Missing'}",
+                    source_file="<head> HTML",
+                    engine="image_engine",
+                    evidence_snippet=f"Heading valid: {head.heading_hierarchy_valid}",
+                    confidence="high"
+                ))
+
+        # 8. Accessibility findings (Phase 7.2)
+        a11y_res = engine_results.get("accessibility_engine")
+        if a11y_res and a11y_res.accessibility and a11y_res.status == "success":
+            a11y = a11y_res.accessibility
+            tags.append(EvidenceProvenanceTag(
+                finding=f"WCAG AA Automated Status: {a11y.wcag_aa_status.value} ({a11y.total_violations} violations)",
+                source_file="HTML DOM",
+                engine=a11y.engine_source or "accessibility_engine",
+                evidence_snippet=f"Critical: {a11y.critical_count}, Serious: {a11y.serious_count}, Moderate: {a11y.moderate_count}",
+                confidence="high" if a11y.browser_evaluated else "medium"
+            ))
+
+        # 9. Security findings (Phase 7.3)
+        sec_res = engine_results.get("security_engine")
+        if sec_res and sec_res.security and sec_res.status == "success":
+            sec = sec_res.security
+            tags.append(EvidenceProvenanceTag(
+                finding=f"Security Posture Status: {sec.overall_status.value} ({sec.total_findings} findings)",
+                source_file="HTTP Headers / TLS",
+                engine="security_engine",
+                evidence_snippet=f"HSTS: {'Yes' if sec.hsts_present else 'No'}, CSP: {'Yes' if sec.csp_present else 'No'}",
+                confidence="high"
+            ))
+            if sec.tls_details and sec.tls_details.is_valid:
+                tls = sec.tls_details
+                days = f"{tls.days_until_expiration} days left" if tls.days_until_expiration is not None else "valid"
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"TLS Certificate: Valid ({days})",
+                    source_file="TLS Handshake",
+                    engine="security_engine",
+                    evidence_snippet=f"Protocol: {tls.protocol_version or 'N/A'}",
+                    confidence="high"
+                ))
+
         return tags
