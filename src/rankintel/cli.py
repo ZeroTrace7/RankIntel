@@ -152,6 +152,13 @@ def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_p
             f"[{a11y_color}]{a11y.wcag_aa_status.value}[/{a11y_color}] ({a11y.total_violations} issues)",
             f"{a11y.engine_source} (automated WCAG 2.1/2.2 AA)"
         )
+    if report.unified_search_signal and report.unified_search_signal.total_signals_detected > 0:
+        sig = report.unified_search_signal
+        table.add_row(
+            "Search Signal Intelligence",
+            f"{sig.total_signals_detected} evidenced terms ({len(sig.title_terms)} title, {len(sig.heading_terms)} headings)",
+            "on-site structural triangulation (Layer A)"
+        )
 
     console.print(table)
 

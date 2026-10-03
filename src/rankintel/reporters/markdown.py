@@ -297,6 +297,23 @@ class MarkdownReporter:
                     for url_node, in_count in ili.link_concentration.top_linked_pages[:5]:
                         lines.append(f"| `{url_node}` | {in_count} |")
 
+            if getattr(sc, "search_signal_intelligence", None):
+                ssi = sc.search_signal_intelligence
+                lines.append("\n### 📡 Site-Wide Recurring Search Concepts & Terminology (Layer A)")
+                lines.append("> *Scope Note: Strictly observed on-site website terminology across crawled pages. External search query volume and rankings are not available in Layer A.*")
+                lines.append(f"- **Total Pages Evaluated:** {ssi.total_pages_evaluated}")
+                lines.append(f"- **Unique Evidenced Terms Discovered:** {ssi.total_unique_concepts}")
+                lines.append(f"- **Recurring Cross-Page Concepts:** {ssi.recurring_concepts_count}")
+
+                if ssi.recurring_concepts:
+                    lines.append("\n#### Top Recurring On-Site Concepts:")
+                    lines.append("| Concept / Term | Pages Count | Total Mentions | Concept Nature | Sample Observed Locations |")
+                    lines.append("|---|---|---|---|---|")
+                    for rc in ssi.recurring_concepts[:12]:
+                        kind = f"Entity ({rc.entity_type})" if rc.is_entity else "Content/Heading"
+                        locs = ", ".join(rc.observed_locations[:3])
+                        lines.append(f"| **{rc.concept}** | {rc.pages_count} pages | {rc.total_occurrences} | `{kind}` | {locs} |")
+
             if sc.site_wide_issues:
                 lines.append("\n### 🔴 Site-Wide Structural Findings:")
                 for issue in sc.site_wide_issues:
@@ -564,6 +581,39 @@ class MarkdownReporter:
                 lines.append("|---|---|---|")
                 for g in lnk.generic_anchors[:5]:
                     lines.append(f"| `{g.anchor_text}` | `{g.target_url}` | {g.count} |")
+            lines.append("")
+
+        # Search Signal Intelligence (Phase 9.1 - Layer A)
+        sig = getattr(report, "unified_search_signal", None)
+        if sig and (sig.total_signals_detected > 0 or sig.facts):
+            lines.append("## 📡 SEARCH SIGNAL INTELLIGENCE (Layer A: On-Site Evidenced Signals)")
+            lines.append("> *Evidence Boundary: Contains strictly observed on-site terminology, structural concepts, and entity signals. External Google SERP positions, search volume, CTR, and search intent are excluded (Layer A boundary).*")
+            lines.append(f"- **Total Evidenced Signal Terms:** {sig.total_signals_detected}")
+            lines.append(f"- **Unique Evidenced Concepts:** {sig.unique_terms_count}")
+            if sig.title_terms:
+                lines.append(f"- **Title Evidenced Terms:** {', '.join(sig.title_terms[:8])}")
+            if sig.heading_terms:
+                lines.append(f"- **Heading Terms (H1–H3):** {', '.join(sig.heading_terms[:8])}")
+            if sig.meta_description_terms:
+                lines.append(f"- **Meta Description Terms:** {', '.join(sig.meta_description_terms[:8])}")
+            if sig.url_path_terms:
+                lines.append(f"- **URL Path Terms:** {', '.join(sig.url_path_terms[:8])}")
+
+            if sig.signals:
+                lines.append("\n### 🔍 Prominent Evidenced Terms & Structural Placements:")
+                lines.append("| Term / Concept | Evidence Level | Structural Locations | Mentions | Prominence |")
+                lines.append("|---|---|---|---|---|")
+                for s_item in sig.signals[:15]:
+                    loc_names = ", ".join([loc.value for loc in s_item.locations[:3]])
+                    prom_names = ", ".join(s_item.prominence_locations) if s_item.prominence_locations else "body/path"
+                    lines.append(f"| **{s_item.term}** | `{s_item.confidence.value}` | {loc_names} | {s_item.total_occurrences} | `{prom_names}` |")
+
+            if sig.facts or sig.analyses:
+                lines.append("\n### 📑 Observations & Structural Analyses:")
+                for fact in sig.facts:
+                    lines.append(f"- **FACT:** {fact}")
+                for analysis in sig.analyses:
+                    lines.append(f"- **ANALYSIS:** {analysis}")
             lines.append("")
 
         # GEO Citability

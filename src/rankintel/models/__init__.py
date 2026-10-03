@@ -104,6 +104,14 @@ from rankintel.models.schema import (
     OutlinkDiscoveryStatus,
     PageLinkAnalysisRecord,
     SiteInternalLinkIntelligence,
+    SearchSignalStatementType,
+    SearchSignalConfidence,
+    SearchSignalLocation,
+    SearchSignalOccurrence,
+    SearchSignalItem,
+    SearchSignalEvidence,
+    RecurringConceptItem,
+    SiteSearchSignalIntelligence,
 )
 
 __all__ = [
@@ -209,4 +217,12 @@ __all__ = [
     "OutlinkDiscoveryStatus",
     "PageLinkAnalysisRecord",
     "SiteInternalLinkIntelligence",
+    "SearchSignalStatementType",
+    "SearchSignalConfidence",
+    "SearchSignalLocation",
+    "SearchSignalOccurrence",
+    "SearchSignalItem",
+    "SearchSignalEvidence",
+    "RecurringConceptItem",
+    "SiteSearchSignalIntelligence",
 ]

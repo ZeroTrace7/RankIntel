@@ -13,6 +13,7 @@ from rankintel.engines.accessibility_engine import AccessibilityEngine
 from rankintel.engines.content_engine import ContentEngine
 from rankintel.engines.entity_engine import EntityEngine
 from rankintel.engines.internal_link_engine import InternalLinkEngine
+from rankintel.engines.search_signal_engine import SearchSignalEngine, normalize_term
 
 __all__ = [
     "SeoEngine",
@@ -27,4 +28,6 @@ __all__ = [
     "ContentEngine",
     "EntityEngine",
     "InternalLinkEngine",
+    "SearchSignalEngine",
+    "normalize_term",
 ]

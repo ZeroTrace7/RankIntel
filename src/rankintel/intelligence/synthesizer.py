@@ -25,6 +25,7 @@ from rankintel.models.schema import (
     ContentEvidence,
     EntityEvidence,
     InternalLinkEvidence,
+    SearchSignalEvidence,
     SecurityStatus,
     WcagStatus,
     SecuritySeverity,
@@ -265,6 +266,14 @@ class IntelligenceSynthesizer:
             else InternalLinkEvidence(url=url)
         )
 
+        # 12. Search Signal Intelligence Reconciliation (Phase 9.1 - Layer A)
+        sig_res = engine_results.get("search_signal_engine")
+        unified_search_signal = (
+            sig_res.search_signal
+            if (sig_res and sig_res.search_signal)
+            else SearchSignalEvidence(url=url)
+        )
+
         # Build Prioritized Actions
         actions = self._build_prioritized_actions(
             unified_on_page,
@@ -323,6 +332,7 @@ class IntelligenceSynthesizer:
             unified_content=unified_content,
             unified_entity=unified_entity,
             unified_internal_link=unified_internal_link,
+            unified_search_signal=unified_search_signal,
             cloud_intelligence=cloud_intelligence,
             fixes=fixes
         )

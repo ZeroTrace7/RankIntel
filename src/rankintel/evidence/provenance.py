@@ -246,4 +246,26 @@ class ProvenanceTagger:
                     confidence="high"
                 ))
 
+        # 13. Search Signal findings (Phase 9.1 - Layer A)
+        sig_res = engine_results.get("search_signal_engine")
+        if sig_res and sig_res.search_signal and sig_res.status == "success":
+            sig_ev = sig_res.search_signal
+            if sig_ev.signals:
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"Search Signal Evidence: {sig_ev.total_signals_detected} on-site search-relevant signal terms evidenced",
+                    source_file="HTML DOM & Metadata",
+                    engine="search_signal_engine",
+                    evidence_snippet=f"Top terms: {', '.join([s.term for s in sig_ev.signals[:5]])}",
+                    confidence="high"
+                ))
+            if sig_ev.analyses:
+                for an in sig_ev.analyses[:2]:
+                    tags.append(EvidenceProvenanceTag(
+                        finding=f"Search Signal Structure: {an}",
+                        source_file="Structural Tag Correlation",
+                        engine="search_signal_engine",
+                        evidence_snippet=an,
+                        confidence="high"
+                    ))
+
         return tags

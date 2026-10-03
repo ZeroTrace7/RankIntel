@@ -19,6 +19,7 @@ from rankintel.engines.security_engine import SecurityEngine
 from rankintel.engines.content_engine import ContentEngine
 from rankintel.engines.entity_engine import EntityEngine
 from rankintel.engines.internal_link_engine import InternalLinkEngine
+from rankintel.engines.search_signal_engine import SearchSignalEngine
 from rankintel.models.schema import (
     EngineResult,
     SecurityStatus,
@@ -29,6 +30,7 @@ from rankintel.models.schema import (
     ContentEvidence,
     EntityEvidence,
     InternalLinkEvidence,
+    SearchSignalEvidence,
 )
 import asyncio
 import concurrent.futures
@@ -50,6 +52,7 @@ class EvidenceCollector:
         self.content_engine = ContentEngine()
         self.entity_engine = EntityEngine()
         self.internal_link_engine = InternalLinkEngine()
+        self.search_signal_engine = SearchSignalEngine()
 
     def _run_async(self, coro):
         """Helper to run async coroutines safely from synchronous context."""
@@ -351,6 +354,52 @@ class EvidenceCollector:
                 engine_name="internal_link_engine",
                 status="error",
                 error_message=f"Internal link engine failed: {e}",
+            )
+
+        # 12. Search Signal Engine (Phase 9.1 - Layer A) — Reuses already-observed raw_html & evidence (zero duplicate HTTP requests)
+        try:
+            content_ev_res = results.get("content_engine")
+            entity_ev_res = results.get("entity_engine")
+            img_ev_res = results.get("image_seo_engine")
+
+            cnt_data = content_ev_res.content if (content_ev_res and content_ev_res.content) else None
+            ent_data = entity_ev_res.entity if (entity_ev_res and entity_ev_res.entity) else None
+            img_data = img_ev_res.image_seo if (img_ev_res and img_ev_res.image_seo) else None
+
+            if browser_html:
+                sig_ev = self.search_signal_engine.evaluate(
+                    raw_html=browser_html,
+                    url=url,
+                    on_page=on_page_data,
+                    content_ev=cnt_data,
+                    entity_ev=ent_data,
+                    image_seo_ev=img_data,
+                )
+                results["search_signal_engine"] = EngineResult(
+                    engine_name="search_signal_engine",
+                    status="success",
+                    search_signal=sig_ev,
+                )
+            else:
+                sig_ev = self.search_signal_engine.evaluate(
+                    raw_html=None,
+                    url=url,
+                    on_page=on_page_data,
+                    content_ev=cnt_data,
+                    entity_ev=ent_data,
+                    image_seo_ev=img_data,
+                )
+                results["search_signal_engine"] = EngineResult(
+                    engine_name="search_signal_engine",
+                    status="skipped",
+                    error_message="No HTML available for search signal analysis",
+                    search_signal=sig_ev,
+                )
+        except Exception as e:
+            results["search_signal_engine"] = EngineResult(
+                engine_name="search_signal_engine",
+                status="error",
+                error_message=f"Search signal engine failed: {e}",
             )
 
         return results

@@ -1086,6 +1086,96 @@ class SitemapReconciliationSummary(BaseModel):
     uncrawled_sitemap_urls: List[str] = Field(default_factory=list)
     internal_urls_missing_from_sitemap: List[str] = Field(default_factory=list)
 
+# ==============================================================================
+# Phase 9.1 - Search Signal Intelligence Models (Layer A: On-Site Evidenced Signals)
+# ==============================================================================
+
+class SearchSignalStatementType(str, Enum):
+    FACT = "FACT"
+    ANALYSIS = "ANALYSIS"
+
+class SearchSignalConfidence(str, Enum):
+    DIRECT = "DIRECT"        # Directly observed in primary structural elements (Title, H1, Meta, Schema, Entity)
+    SUPPORTED = "SUPPORTED"  # Observed across multiple structural locations or repeated in main editorial content
+    WEAK = "WEAK"            # Isolated peripheral mention (e.g. single occurrence in URL or alt text only)
+
+class SearchSignalLocation(str, Enum):
+    TITLE = "TITLE"
+    META_DESCRIPTION = "META_DESCRIPTION"
+    H1 = "H1"
+    H2 = "H2"
+    H3 = "H3"
+    MAIN_CONTENT = "MAIN_CONTENT"
+    URL_PATH = "URL_PATH"
+    IMAGE_ALT = "IMAGE_ALT"
+    STRUCTURED_DATA = "STRUCTURED_DATA"
+    ENTITY = "ENTITY"
+
+class SearchSignalOccurrence(BaseModel):
+    location: SearchSignalLocation
+    raw_text: str
+    count: int = 1
+    attribute_or_tag: Optional[str] = None
+
+class SearchSignalItem(BaseModel):
+    term: str
+    raw_term: str
+    signal_type: SearchSignalStatementType = SearchSignalStatementType.FACT
+    category: str
+    locations: List[SearchSignalLocation] = Field(default_factory=list)
+    occurrences: List[SearchSignalOccurrence] = Field(default_factory=list)
+    total_occurrences: int = 1
+    prominence_locations: List[str] = Field(default_factory=list)
+    is_entity: bool = False
+    entity_type: Optional[str] = None
+    confidence: SearchSignalConfidence = SearchSignalConfidence.SUPPORTED
+    provenance: str = "search_signal_engine"
+
+class SearchSignalEvidence(BaseModel):
+    """Comprehensive single-page Search Signal Intelligence evidence (Layer A)."""
+    url: str = ""
+    engine_source: str = "search_signal_engine"
+    status: str = "success"
+    total_signals_detected: int = 0
+    unique_terms_count: int = 0
+    signals: List[SearchSignalItem] = Field(default_factory=list)
+    title_terms: List[str] = Field(default_factory=list)
+    meta_description_terms: List[str] = Field(default_factory=list)
+    heading_terms: List[str] = Field(default_factory=list)
+    main_content_top_terms: List[Dict[str, Any]] = Field(default_factory=list)
+    entity_terms: List[Dict[str, Any]] = Field(default_factory=list)
+    url_path_terms: List[str] = Field(default_factory=list)
+    image_alt_terms: List[str] = Field(default_factory=list)
+    structured_data_terms: List[str] = Field(default_factory=list)
+    facts: List[str] = Field(default_factory=list)
+    analyses: List[str] = Field(default_factory=list)
+
+class RecurringConceptItem(BaseModel):
+    """Site-wide recurring concept observed across crawled pages."""
+    concept: str
+    normalized_concept: str
+    pages_count: int = 0
+    page_urls: List[str] = Field(default_factory=list)
+    prominent_pages: List[str] = Field(default_factory=list)
+    total_occurrences: int = 0
+    observed_locations: List[str] = Field(default_factory=list)
+    is_entity: bool = False
+    entity_type: Optional[str] = None
+    signal_nature: SearchSignalStatementType = SearchSignalStatementType.ANALYSIS
+
+class SiteSearchSignalIntelligence(BaseModel):
+    """Site-wide search signal intelligence aggregating recurring evidenced concepts."""
+    total_pages_evaluated: int = 0
+    total_unique_concepts: int = 0
+    recurring_concepts_count: int = 0
+    recurring_concepts: List[RecurringConceptItem] = Field(default_factory=list)
+    site_top_evidenced_terms: List[Dict[str, Any]] = Field(default_factory=list)
+    page_signal_evidence: Dict[str, SearchSignalEvidence] = Field(default_factory=dict)
+    terminology_nature: str = "OBSERVED_WEBSITE_TERMINOLOGY"
+    external_query_data_status: str = "NOT_AVAILABLE_LAYER_A"
+    facts: List[str] = Field(default_factory=list)
+    analyses: List[str] = Field(default_factory=list)
+
 class SiteCrawlResult(BaseModel):
     """Aggregated multi-page crawl intelligence."""
     completeness_status: str = "CRAWL_COMPLETE"
@@ -1125,6 +1215,7 @@ class SiteCrawlResult(BaseModel):
     content_intelligence: Optional[SiteContentIntelligence] = None
     entity_intelligence: Optional[SiteEntityIntelligence] = None
     internal_link_intelligence: Optional[SiteInternalLinkIntelligence] = None
+    search_signal_intelligence: Optional[SiteSearchSignalIntelligence] = None
 
 class EngineResult(BaseModel):
     engine_name: str
@@ -1143,6 +1234,7 @@ class EngineResult(BaseModel):
     content: Optional[ContentEvidence] = None
     entity: Optional[EntityEvidence] = None
     internal_link: Optional[InternalLinkEvidence] = None
+    search_signal: Optional[SearchSignalEvidence] = None
     cloud_intelligence: Optional[CloudIntelligenceEvidence] = None
     raw_html: Optional[str] = None  # Post-JS rendered HTML from crawl4ai; used by TrustEvaluator and GeoEngine
 
@@ -1196,6 +1288,7 @@ class SynthesisReport(BaseModel):
     unified_content: ContentEvidence = Field(default_factory=ContentEvidence)
     unified_entity: EntityEvidence = Field(default_factory=EntityEvidence)
     unified_internal_link: InternalLinkEvidence = Field(default_factory=InternalLinkEvidence)
+    unified_search_signal: SearchSignalEvidence = Field(default_factory=SearchSignalEvidence)
     cloud_intelligence: CloudIntelligenceEvidence = Field(default_factory=CloudIntelligenceEvidence)
     site_crawl: Optional[SiteCrawlResult] = None
     
