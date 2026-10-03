@@ -225,6 +225,30 @@ class MarkdownReporter:
                         sample_pages = ", ".join([f"`{p}`" for p in b.pages[:3]])
                         lines.append(f"| {b.text_snippet} | {b.word_count} words | {b.page_count} pages | {sample_pages} |")
 
+            if getattr(sc, "entity_intelligence", None):
+                ei = sc.entity_intelligence
+                lines.append("\n### 🏛️ Site-Wide Entity Intelligence & Consistency")
+                lines.append(f"- **Total Pages Evaluated:** {ei.total_pages_evaluated}")
+                lines.append(f"- **Total Entities Detected:** {ei.total_entities_detected} ({ei.unique_entities_count} unique names)")
+                lines.append(f"- **Cross-Page Attribute Inconsistencies:** {ei.inconsistencies_count}")
+
+                if ei.primary_organization_candidate and ei.primary_organization_candidate.candidate_name:
+                    poc = ei.primary_organization_candidate
+                    lines.append(f"- **Primary Organization Candidate:** **{poc.candidate_name}** *(identified based on observable evidence; not definitive identity)*")
+                    if poc.selection_reasons:
+                        lines.append(f"  • *Selection Reasons:* {'; '.join(poc.selection_reasons)}")
+                    if poc.evidence_sources:
+                        lines.append(f"  • *Evidence Sources:* {', '.join(poc.evidence_sources)}")
+
+                if ei.inconsistencies:
+                    lines.append("\n#### Observable Cross-Page Attribute Inconsistencies:")
+                    lines.append("| Entity Name | Attribute | Conflicting Values Observed | URLs Exhibiting Values |")
+                    lines.append("|---|---|---|---|")
+                    for inc in ei.inconsistencies:
+                        vals_str = "<br>".join([f"`{v}` ({len(u)} pages)" for v, u in inc.conflicting_values.items()])
+                        sample_urls = "<br>".join([f"`{u}`" for u in list({url for u_list in inc.conflicting_values.values() for url in u_list})[:3]])
+                        lines.append(f"| **{inc.entity_name}** | `{inc.attribute}` | {vals_str} | {sample_urls} |")
+
             if sc.site_wide_issues:
                 lines.append("\n### 🔴 Site-Wide Structural Findings:")
                 for issue in sc.site_wide_issues:
@@ -422,6 +446,51 @@ class MarkdownReporter:
                     for skip in h.heading_skips:
                         lines.append(f"  • {skip}")
                 lines.append(f"- **Average Words per Heading Section:** {h.average_words_per_section:.1f} words ({h.empty_sections_count} empty sections)")
+            lines.append("")
+
+        # Entity Intelligence & Reconciliation (Phase 8.2)
+        ent = getattr(report, "unified_entity", None)
+        if ent and (ent.detected_entities or ent.relationships or ent.structured_vs_visible):
+            lines.append("## 🏛️ ENTITY INTELLIGENCE & RECONCILIATION")
+            lines.append(f"- **Total Entity Signals Detected:** {ent.total_entities_detected}")
+            if ent.facts:
+                for fact in ent.facts:
+                    lines.append(f"- *Observation:* {fact}")
+
+            if ent.detected_entities:
+                lines.append("\n### 🏷️ Detected Observable Entities & Signals:")
+                lines.append("| Entity Type | Name / Signal | Signal Source | Evidence Type | Key Attributes |")
+                lines.append("|---|---|---|---|---|")
+                for e in ent.detected_entities[:15]:
+                    attrs = []
+                    if e.telephone:
+                        attrs.append(f"Tel: {e.telephone}")
+                    if e.address:
+                        short_addr = e.address[:40] + ("..." if len(e.address) > 40 else "")
+                        attrs.append(f"Addr: {short_addr}")
+                    if e.email:
+                        attrs.append(f"Email: {e.email}")
+                    if e.same_as:
+                        attrs.append(f"{len(e.same_as)} sameAs")
+                    if e.structured_data_type:
+                        attrs.append(f"Schema: `{e.structured_data_type}`")
+                    attr_str = ", ".join(attrs) if attrs else "—"
+                    lines.append(f"| `{e.entity_type.value}` | **{e.name}** | `{e.source.value}` | `{e.signal_type.value}` | {attr_str} |")
+
+            if ent.relationships:
+                lines.append("\n### 🔗 Observable Entity Relationships:")
+                lines.append("| Subject | Relationship | Object | Context / Source |")
+                lines.append("|---|---|---|---|")
+                for r in ent.relationships[:10]:
+                    lines.append(f"| **{r.subject_name}** (`{r.subject_type.value}`) | `{r.relation.value}` | **{r.object_name}** (`{r.object_type}`) | {r.evidence_text or r.source} |")
+
+            if ent.structured_vs_visible:
+                lines.append("\n### ⚖️ Structured Data ↔ Visible Content Alignment:")
+                lines.append("| Attribute | Structured Value | Visible Signal | Alignment Status | Notes |")
+                lines.append("|---|---|---|---|---|")
+                for comp in ent.structured_vs_visible:
+                    status_icon = "🟢" if comp.alignment_status.value in ("EXACT_MATCH", "NORMALIZED_MATCH") else ("🟡" if comp.alignment_status.value == "PARTIAL_MATCH" else "ℹ️")
+                    lines.append(f"| `{comp.attribute_name}` | {comp.structured_value or '—'} | {comp.visible_value or '—'} | {status_icon} `{comp.alignment_status.value}` | {comp.notes} |")
             lines.append("")
 
         # GEO Citability

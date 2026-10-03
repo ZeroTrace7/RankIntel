@@ -483,6 +483,11 @@ class SiteContentIntelligence(BaseModel):
     title_h1_mismatch_urls: List[str] = Field(default_factory=list)
     page_content_evidence: Dict[str, ContentEvidence] = Field(default_factory=dict)
 
+class EvidenceNature(str, Enum):
+    OBSERVED = "OBSERVED"
+    INFERRED = "INFERRED"
+    UNAVAILABLE = "UNAVAILABLE"
+
 # ==============================================================================
 # Phase 8.2 — Entity Intelligence Models
 # ==============================================================================
@@ -906,11 +911,6 @@ class CrossSignalConflictSeverity(str, Enum):
     MEDIUM = "MEDIUM"
     LOW = "LOW"
     INFO = "INFO"
-
-class EvidenceNature(str, Enum):
-    OBSERVED = "OBSERVED"
-    INFERRED = "INFERRED"
-    UNAVAILABLE = "UNAVAILABLE"
 
 class CrossSignalConflictRecord(BaseModel):
     url: str
