@@ -124,4 +124,44 @@ class ConflictDetector:
                     severity="LOW"
                 ))
 
+        # 5. Check Insecure Asset References on HTTPS Origin (Image / Head vs Security)
+        img_res = engine_results.get("image_engine")
+        sec_res = engine_results.get("security_engine")
+
+        insecure_assets = []
+        if img_res and img_res.image_seo:
+            if img_res.image_seo.head_audit and img_res.image_seo.head_audit.insecure_resource_urls:
+                insecure_assets.extend(img_res.image_seo.head_audit.insecure_resource_urls)
+            for img in img_res.image_seo.images:
+                if img.src.startswith("http://") and img.src not in insecure_assets:
+                    insecure_assets.append(img.src)
+
+        has_sec_mixed = False
+        sec_finding_desc = ""
+        if sec_res and sec_res.security and sec_res.security.is_https:
+            if sec_res.security.mixed_content_resources:
+                has_sec_mixed = True
+                sec_finding_desc = f"{len(sec_res.security.mixed_content_resources)} mixed content resources detected by SecurityEngine"
+            else:
+                for f in sec_res.security.findings:
+                    if f.code in ("SEC_ACTIVE_MIXED_CONTENT", "SEC_PASSIVE_MIXED_CONTENT"):
+                        has_sec_mixed = True
+                        sec_finding_desc = f.description
+                        break
+
+        if insecure_assets and has_sec_mixed:
+            conflicts.append(ConflictFinding(
+                category="MIXED_CONTENT_SECURITY",
+                feature="Insecure Assets on HTTPS Origin",
+                description=f"Detected {len(insecure_assets)} insecure asset references (HTTP) on an HTTPS page triggering mixed content security warnings.",
+                engine_a_finding=f"image_engine / head_audit: Observed {len(insecure_assets)} plaintext http:// URLs ({insecure_assets[0][:60]}...)",
+                engine_b_finding=f"security_engine: {sec_finding_desc}",
+                interpretation=(
+                    "Insecure asset references (HTTP) within an HTTPS page trigger browser mixed-content blocking "
+                    "and 'Not Secure' padlock warnings. Browsers block active scripts/styles and suppress or flag insecure "
+                    "images, degrading both user trust and search engine visual indexation."
+                ),
+                severity="HIGH"
+            ))
+
         return conflicts
