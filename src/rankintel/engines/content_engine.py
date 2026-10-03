@@ -72,15 +72,20 @@ class ContentEngine:
         Evaluate page content for extraction, density, fingerprints, alignment, and heading structure.
         """
         if not raw_html or not raw_html.strip():
-            evidence = ContentEvidence(
+            thin_ev = ThinContentEvidence(
+                word_count_tier=WordCountTier.UNAVAILABLE,
+                is_empty_or_whitespace=True,
+                facts=["Page has no HTML body to inspect."],
+                recommendations=["Inspect page rendering: editorial content area contains 0 extracted words."]
+            )
+            return ContentEvidence(
                 url=url,
                 extraction_method=ContentExtractionMethod.UNAVAILABLE,
-                facts=["No HTML content was provided or response body was empty."]
+                thin_content=thin_ev,
+                facts=["No HTML content was provided or response body was empty."],
+                heading_structure=HeadingStructureEvidence(anomalies=["No headings found (empty document)."]),
+                title_h1_relationship=TitleH1RelationshipEvidence(notes=["Title and H1 relationship unavailable due to empty HTML."]),
             )
-            evidence.thin_content.facts = ["Page has no HTML body to inspect."]
-            evidence.heading_structure.anomalies = ["No headings found (empty document)."]
-            evidence.title_h1_relationship.notes = ["Title and H1 relationship unavailable due to empty HTML."]
-            return evidence
 
         soup = BeautifulSoup(raw_html, "html.parser")
 
