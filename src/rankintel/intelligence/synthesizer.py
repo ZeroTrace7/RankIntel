@@ -529,4 +529,17 @@ class IntelligenceSynthesizer:
                     engine_confidence="HIGH (Content engine pattern matching)"
                 ))
 
+        # Entity Engine deterministic findings (Contextual identity divergence suspected)
+        if entity and entity.structured_vs_visible:
+            for comp in entity.structured_vs_visible:
+                if comp.alignment_status.value == "DIVERGENT_IDENTITY_SUSPECTED" and comp.attribute_name == "organization_name":
+                    actions.append(PrioritizedAction(
+                        level="MEDIUM",
+                        title="Review Structured vs Visible Organization Alignment",
+                        finding=f"Structured organization '{comp.structured_value}' differs from visible branding '{comp.visible_value}'.",
+                        rationale="Significant brand name divergence between structured data and observable page branding may confuse entity disambiguation in search engines. Verify intentionality.",
+                        engine_confidence="MEDIUM (Contextual identity comparison)"
+                    ))
+                    break
+
         return actions

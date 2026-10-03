@@ -184,4 +184,24 @@ class ConflictDetector:
                     severity="HIGH"
                 ))
 
+        # 7. Check Structured vs Visible Entity Divergence (Entity Engine)
+        ent_res = engine_results.get("entity_engine")
+        if ent_res and ent_res.entity and ent_res.entity.structured_vs_visible:
+            for comp in ent_res.entity.structured_vs_visible:
+                if comp.alignment_status.value == "DIVERGENT_IDENTITY_SUSPECTED" and comp.attribute_name == "organization_name":
+                    conflicts.append(ConflictFinding(
+                        category="DIVERGENT_ORGANIZATION_IDENTITY",
+                        feature="Structured vs Visible Entity Branding",
+                        description=f"Structured Organization '{comp.structured_value}' differs from visible branding '{comp.visible_value}'.",
+                        engine_a_finding=f"Structured Data (JSON-LD): Declares '{comp.structured_value}'",
+                        engine_b_finding=f"Visible Signals (DOM): Declares '{comp.visible_value}'",
+                        interpretation=(
+                            "The organization declared in structured data and the organization observed in visible page branding "
+                            "share no common brand tokens. This may represent white-labeling, third-party template reuse, "
+                            "or an entity disambiguation discrepancy in search engine knowledge graphs."
+                        ),
+                        severity="MEDIUM"
+                    ))
+                    break
+
         return conflicts

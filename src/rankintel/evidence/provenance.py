@@ -203,4 +203,27 @@ class ProvenanceTagger:
                     confidence="high"
                 ))
 
+        # 11. Entity findings (Phase 8.2)
+        ent_res = engine_results.get("entity_engine")
+        if ent_res and ent_res.entity and ent_res.status == "success":
+            ent_ev = ent_res.entity
+            if ent_ev.detected_entities:
+                org_count = sum(1 for e in ent_ev.detected_entities if e.entity_type.value in ("ORGANIZATION", "LOCAL_BUSINESS"))
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"Entity Detection: {len(ent_ev.detected_entities)} entity signals ({org_count} organization/business)",
+                    source_file="JSON-LD & HTML DOM",
+                    engine="entity_engine",
+                    evidence_snippet=f"Entities: {', '.join([e.name for e in ent_ev.detected_entities[:3]])}...",
+                    confidence="high"
+                ))
+            if ent_ev.structured_vs_visible:
+                for comp in ent_ev.structured_vs_visible:
+                    tags.append(EvidenceProvenanceTag(
+                        finding=f"Entity Alignment ({comp.attribute_name}): {comp.alignment_status.value}",
+                        source_file="JSON-LD vs DOM Signals",
+                        engine="entity_engine",
+                        evidence_snippet=f"Structured: '{comp.structured_value}' vs Visible: '{comp.visible_value}'",
+                        confidence="high"
+                    ))
+
         return tags
