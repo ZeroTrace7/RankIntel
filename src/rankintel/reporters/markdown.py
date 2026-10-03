@@ -335,7 +335,7 @@ class MarkdownReporter:
 
         # Accessibility (WCAG 2.1/2.2 AA Automated Checks)
         a11y = report.unified_accessibility
-        if a11y and (a11y.violations or a11y.total_violations > 0 or a11y.wcag_aa_status.value not in ("UNKNOWN", "UNAVAILABLE") or a11y.notes):
+        if a11y and (a11y.violations or a11y.total_violations > 0 or a11y.rules_evaluated_count > 0 or a11y.notes or "accessibility_engine" in report.engines_executed or a11y.wcag_aa_status not in (WcagStatus.UNKNOWN, WcagStatus.UNAVAILABLE)):
             lines.append("## ♿ ACCESSIBILITY (WCAG 2.1/2.2 AA Automated Checks)")
             lines.append(f"- **Automated WCAG Status:** {a11y.wcag_aa_status.value}")
             source_desc = "Browser-Rendered DOM (axe-core)" if a11y.browser_evaluated else "Static HTML AST Auditor"
