@@ -291,4 +291,25 @@ class ProvenanceTagger:
                     confidence="high"
                 ))
 
+        # 15. Query-Page Mapping findings (Phase 9.3 - Layer A)
+        qp_res = engine_results.get("query_page_mapping_engine")
+        if qp_res and qp_res.query_page and qp_res.status == "success":
+            qp_ev = qp_res.query_page
+            if qp_ev.mapped_concepts:
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"Query-Page Mapping: {qp_ev.total_concepts_mapped} observed concepts mapped to page ({qp_ev.direct_concepts_count} DIRECT, {qp_ev.supported_concepts_count} SUPPORTED)",
+                    source_file="On-Site Evidence Triangulation",
+                    engine="query_page_mapping_engine",
+                    evidence_snippet=f"Primary concepts: {', '.join(qp_ev.primary_concepts[:4]) if qp_ev.primary_concepts else 'None'}",
+                    confidence="high"
+                ))
+            if qp_ev.analyses:
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"Query-Page Evidence Distribution: {qp_ev.analyses[0]}",
+                    source_file="Structural Evidence Matrix",
+                    engine="query_page_mapping_engine",
+                    evidence_snippet=qp_ev.analyses[0],
+                    confidence="high"
+                ))
+
         return tags

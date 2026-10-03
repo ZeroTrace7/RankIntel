@@ -401,6 +401,18 @@ class CrawlFrontier:
                 analyses=[f"Site topic analyzer encountered an error: {e}"],
             )
 
+        try:
+            from rankintel.analyzers.query_page_analyzer import SiteQueryPageAnalyzer
+            SiteQueryPageAnalyzer.analyze_site(result)
+        except Exception as e:
+            from rankintel.models.schema import SiteQueryPageIntelligence
+            result.query_page_intelligence = SiteQueryPageIntelligence(
+                status="error",
+                error_message=f"Site query-page analysis failed during crawl aggregation: {e}",
+                completeness_disclaimer="Query-page intelligence unavailable due to an aggregation error.",
+                analyses=[f"Site query-page analyzer encountered an error: {e}"],
+            )
+
         if getattr(self.config, "enable_sitemap_analysis", False):
             try:
                 from rankintel.sitemaps.discovery import SitemapDiscovery

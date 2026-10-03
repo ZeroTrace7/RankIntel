@@ -21,6 +21,7 @@ from rankintel.engines.entity_engine import EntityEngine
 from rankintel.engines.internal_link_engine import InternalLinkEngine
 from rankintel.engines.search_signal_engine import SearchSignalEngine
 from rankintel.engines.topic_intelligence_engine import TopicIntelligenceEngine
+from rankintel.engines.query_page_mapping_engine import QueryPageMappingEngine
 from rankintel.models.schema import (
     EngineResult,
     SecurityStatus,
@@ -33,6 +34,7 @@ from rankintel.models.schema import (
     InternalLinkEvidence,
     SearchSignalEvidence,
     PageTopicIntelligence,
+    PageQueryEvidence,
 )
 import asyncio
 import concurrent.futures
@@ -56,6 +58,7 @@ class EvidenceCollector:
         self.internal_link_engine = InternalLinkEngine()
         self.search_signal_engine = SearchSignalEngine()
         self.topic_intelligence_engine = TopicIntelligenceEngine()
+        self.query_page_mapping_engine = QueryPageMappingEngine()
 
     def _run_async(self, coro):
         """Helper to run async coroutines safely from synchronous context."""
@@ -439,6 +442,51 @@ class EvidenceCollector:
                 topic_intelligence=PageTopicIntelligence(
                     url=url,
                     engine_source="topic_intelligence_engine",
+                    status="error",
+                    error_message=str(e),
+                ),
+            )
+
+        # 14. Query-Page Mapping Engine (Phase 9.3 - Layer A) — Reuses already-observed evidence (zero duplicate HTTP requests)
+        try:
+            sig_ev_res = results.get("search_signal_engine")
+            topic_ev_res = results.get("topic_intelligence_engine")
+            cnt_ev_res = results.get("content_engine")
+            ent_ev_res = results.get("entity_engine")
+            seo_res = results.get("advertools_seo")
+
+            sig_data = sig_ev_res.search_signal if (sig_ev_res and sig_ev_res.search_signal) else None
+            topic_data = topic_ev_res.topic_intelligence if (topic_ev_res and topic_ev_res.topic_intelligence) else None
+            cnt_data = cnt_ev_res.content if (cnt_ev_res and cnt_ev_res.content) else None
+            ent_data = ent_ev_res.entity if (ent_ev_res and ent_ev_res.entity) else None
+            on_page_data = seo_res.on_page if (seo_res and seo_res.on_page) else None
+
+            qp_ev = self.query_page_mapping_engine.evaluate(
+                url=url,
+                on_page=on_page_data,
+                search_signal_ev=sig_data,
+                topic_intel_ev=topic_data,
+                content_ev=cnt_data,
+                entity_ev=ent_data,
+            )
+
+            status = "success" if (browser_html and qp_ev.total_concepts_mapped > 0) else ("skipped" if not browser_html else "success")
+            err_msg = None if browser_html else "No HTML available for query-page mapping"
+
+            results["query_page_mapping_engine"] = EngineResult(
+                engine_name="query_page_mapping_engine",
+                status=status,
+                error_message=err_msg,
+                query_page=qp_ev,
+            )
+        except Exception as e:
+            results["query_page_mapping_engine"] = EngineResult(
+                engine_name="query_page_mapping_engine",
+                status="error",
+                error_message=f"Query-page mapping engine failed: {e}",
+                query_page=PageQueryEvidence(
+                    url=url,
+                    engine_source="query_page_mapping_engine",
                     status="error",
                     error_message=str(e),
                 ),

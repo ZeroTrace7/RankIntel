@@ -27,6 +27,7 @@ from rankintel.models.schema import (
     InternalLinkEvidence,
     SearchSignalEvidence,
     PageTopicIntelligence,
+    PageQueryEvidence,
     SecurityStatus,
     WcagStatus,
     SecuritySeverity,
@@ -283,6 +284,14 @@ class IntelligenceSynthesizer:
             else PageTopicIntelligence(url=url)
         )
 
+        # 14. Query-Page Mapping Reconciliation (Phase 9.3 - Layer A)
+        qp_res = engine_results.get("query_page_mapping_engine")
+        unified_query_page = (
+            qp_res.query_page
+            if (qp_res and qp_res.query_page)
+            else PageQueryEvidence(url=url)
+        )
+
         # Build Prioritized Actions
         actions = self._build_prioritized_actions(
             unified_on_page,
@@ -343,6 +352,7 @@ class IntelligenceSynthesizer:
             unified_internal_link=unified_internal_link,
             unified_search_signal=unified_search_signal,
             unified_topic=unified_topic,
+            unified_query_page=unified_query_page,
             cloud_intelligence=cloud_intelligence,
             fixes=fixes
         )
