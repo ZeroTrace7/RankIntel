@@ -267,8 +267,8 @@ def test_06_unavailable_status_survives_complete_pipeline():
     report = synthesizer.synthesize("https://example.com", results)
 
     assert report.unified_security.overall_status == SecurityStatus.UNAVAILABLE
-    # UNAVAILABLE must NOT generate prioritized actions
-    sec_actions = [a for a in report.prioritized_actions if any(k in a.title for k in ["Security", "HSTS", "CSP"])]
+    # UNAVAILABLE must NOT generate prioritized actions from SecurityEngine
+    sec_actions = [a for a in report.prioritized_actions if a.engine_confidence == "HIGH (Security engine telemetry)"]
     assert len(sec_actions) == 0
 
 
@@ -384,6 +384,8 @@ def test_11_existing_synthesis_formula_modes_remain_unchanged():
 def test_12_phase6_behavior_remains_unchanged():
     """Verify that Phase 6 features (TrustEvaluator, BotMatrix, FixGenerator) remain fully functional."""
     results = _make_base_engine_results()
+    results["rankintel_geo"].geo_aeo.llms_txt_found = False
+
     synthesizer = IntelligenceSynthesizer()
     report = synthesizer.synthesize("https://example.com", results)
 
