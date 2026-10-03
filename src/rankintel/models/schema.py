@@ -1328,6 +1328,75 @@ class SiteQueryPageIntelligence(BaseModel):
     facts: List[str] = Field(default_factory=list)
     analyses: List[str] = Field(default_factory=list)
 
+# ==============================================================================
+# Phase 9.4 - Search Intent & Topic Coverage Models (Layer A: On-Site Intent Signals)
+# ==============================================================================
+
+class SearchIntentCategory(str, Enum):
+    INFORMATIONAL = "informational"
+    COMMERCIAL = "commercial"
+    TRANSACTIONAL = "transactional"
+    NAVIGATIONAL = "navigational"
+    LOCAL = "local"
+    MIXED = "mixed"
+    UNSPECIFIED = "unspecified"
+
+class IntentEvidenceItem(BaseModel):
+    """Observable structural or textual evidence item supporting an intent hypothesis."""
+    intent_category: SearchIntentCategory
+    signal_type: str  # e.g. "EXPLANATORY_HEADING", "FAQ_STRUCTURE", "PRICING_TABLE", "CALL_TO_ACTION", "TRANSACTION_FORM", "POSTAL_ADDRESS", "LOCAL_PHONE"
+    evidence_term: str
+    evidence_location: str  # e.g. "TITLE", "H1", "H2", "H3", "CTA_ELEMENT", "SCHEMA", "URL_PATH", "BODY_CONTENT", "FOOTER"
+    supporting_snippet: str
+    confidence: SearchSignalConfidence = SearchSignalConfidence.SUPPORTED
+    provenance: str = "search_intent_engine"
+
+class PageIntentEvidence(BaseModel):
+    """Inferred search intent signals supported by observable on-site single-page content."""
+    url: str = ""
+    engine_source: str = "search_intent_engine"
+    status: str = "success"  # success, error, skipped
+    error_message: Optional[str] = None
+    primary_observed_intent_signal: SearchIntentCategory = SearchIntentCategory.UNSPECIFIED
+    secondary_observed_intent_signals: List[SearchIntentCategory] = Field(default_factory=list)
+    intent_counts: Dict[str, int] = Field(default_factory=dict)
+    evidence_items: List[IntentEvidenceItem] = Field(default_factory=list)
+    associated_topics: List[str] = Field(default_factory=list)
+    corroboration_notes: List[str] = Field(default_factory=list)
+    terminology_nature: str = "INFERRED_FROM_ON_SITE_EVIDENCE"
+    facts: List[str] = Field(default_factory=list)
+    analyses: List[str] = Field(default_factory=list)
+
+class TopicCoverageEvidence(BaseModel):
+    """Deterministic topic coverage aggregated across crawled pages with intent alignment."""
+    topic_name: str
+    normalized_name: str
+    coverage_nature: str = "OBSERVED_TOPIC_COVERAGE"
+    pages_count: int = 0
+    page_urls: List[str] = Field(default_factory=list)
+    primary_pages: List[str] = Field(default_factory=list)
+    intent_breakdown: Dict[str, int] = Field(default_factory=dict)
+    observed_dominant_intent: SearchIntentCategory = SearchIntentCategory.UNSPECIFIED
+    associated_entities: List[str] = Field(default_factory=list)
+    supporting_evidence: List[str] = Field(default_factory=list)
+    provenance: str = "site_topic_coverage_analyzer"
+
+class SiteTopicCoverageIntelligence(BaseModel):
+    """Site-wide topic coverage intelligence across crawled pages."""
+    status: str = "success"  # success, error, partial
+    error_message: Optional[str] = None
+    total_pages_evaluated: int = 0
+    is_partial_crawl: bool = False
+    completeness_disclaimer: str = ""
+    total_topics_covered: int = 0
+    covered_topics: List[TopicCoverageEvidence] = Field(default_factory=list)
+    intent_distribution: Dict[str, int] = Field(default_factory=dict)
+    page_intent_evidence: Dict[str, PageIntentEvidence] = Field(default_factory=dict)
+    multi_intent_topics: List[str] = Field(default_factory=list)
+    terminology_nature: str = "OBSERVED_WEBSITE_EVIDENCE"
+    facts: List[str] = Field(default_factory=list)
+    analyses: List[str] = Field(default_factory=list)
+
 class SiteCrawlResult(BaseModel):
     """Aggregated multi-page crawl intelligence."""
     completeness_status: str = "CRAWL_COMPLETE"
@@ -1370,6 +1439,7 @@ class SiteCrawlResult(BaseModel):
     search_signal_intelligence: Optional[SiteSearchSignalIntelligence] = None
     topic_intelligence: Optional[SiteTopicIntelligence] = None
     query_page_intelligence: Optional[SiteQueryPageIntelligence] = None
+    topic_coverage_intelligence: Optional[SiteTopicCoverageIntelligence] = None
 
 class EngineResult(BaseModel):
     engine_name: str
@@ -1391,6 +1461,7 @@ class EngineResult(BaseModel):
     search_signal: Optional[SearchSignalEvidence] = None
     topic_intelligence: Optional[PageTopicIntelligence] = None
     query_page: Optional[PageQueryEvidence] = None
+    search_intent: Optional[PageIntentEvidence] = None
     cloud_intelligence: Optional[CloudIntelligenceEvidence] = None
     raw_html: Optional[str] = None  # Post-JS rendered HTML from crawl4ai; used by TrustEvaluator and GeoEngine
 
@@ -1447,6 +1518,7 @@ class SynthesisReport(BaseModel):
     unified_search_signal: SearchSignalEvidence = Field(default_factory=SearchSignalEvidence)
     unified_topic: PageTopicIntelligence = Field(default_factory=PageTopicIntelligence)
     unified_query_page: PageQueryEvidence = Field(default_factory=PageQueryEvidence)
+    unified_search_intent: PageIntentEvidence = Field(default_factory=PageIntentEvidence)
     cloud_intelligence: CloudIntelligenceEvidence = Field(default_factory=CloudIntelligenceEvidence)
     site_crawl: Optional[SiteCrawlResult] = None
     

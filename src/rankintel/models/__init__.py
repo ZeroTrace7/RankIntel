@@ -123,6 +123,11 @@ from rankintel.models.schema import (
     PageQueryEvidence,
     QueryPageRelationship,
     SiteQueryPageIntelligence,
+    SearchIntentCategory,
+    IntentEvidenceItem,
+    PageIntentEvidence,
+    TopicCoverageEvidence,
+    SiteTopicCoverageIntelligence,
 )
 
 __all__ = [
@@ -247,4 +252,9 @@ __all__ = [
     "PageQueryEvidence",
     "QueryPageRelationship",
     "SiteQueryPageIntelligence",
+    "SearchIntentCategory",
+    "IntentEvidenceItem",
+    "PageIntentEvidence",
+    "TopicCoverageEvidence",
+    "SiteTopicCoverageIntelligence",
 ]
