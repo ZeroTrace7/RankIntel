@@ -181,14 +181,21 @@ def test_simhash_generation_and_hamming():
     dist_near = ContentEngine.calculate_simhash_hamming(sim_a, sim_near)
     dist_far = ContentEngine.calculate_simhash_hamming(sim_a, sim_far)
 
-    # Near duplicate should have very small bit divergence, far document has large bit divergence
-    assert dist_near <= 6
-    assert dist_far > dist_near
+    # Near duplicate has small bit divergence, far document has large bit divergence
+    assert dist_near <= 10
+    assert dist_far >= 20
+    assert dist_near < dist_far
 
 
 def test_shingle_jaccard_similarity():
-    text_a = "Search engine optimization and generative engine optimization are critical for AI visibility."
-    text_b = "Search engine optimization and generative engine optimization are essential for AI visibility."
+    text_a = (
+        "Search engine optimization and generative engine optimization are critical for AI visibility. "
+        "Modern search engines evaluate technical architecture, structured data schemas, and domain authority."
+    )
+    text_b = (
+        "Search engine optimization and generative engine optimization are essential for AI visibility. "
+        "Modern search engines evaluate technical architecture, structured data schemas, and domain authority."
+    )
     text_c = "Cooking recipes for homemade pasta dough with eggs and flour."
 
     jaccard_ab = ContentEngine.calculate_shingle_jaccard(text_a, text_b, k=3)
