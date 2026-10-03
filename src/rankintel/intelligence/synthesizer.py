@@ -216,9 +216,40 @@ class IntelligenceSynthesizer:
                 (tech_score * 0.44) + (geo_score * 0.37) + (trust_score * 0.19)
             ))
 
+        # 8. Phase 7 Reconciliations (Image SEO, Accessibility, Security)
+        img_res = engine_results.get("image_engine")
+        unified_image_seo = (
+            img_res.image_seo
+            if (img_res and img_res.image_seo)
+            else ImageSEOEvidence()
+        )
+
+        a11y_res = engine_results.get("accessibility_engine")
+        unified_accessibility = (
+            a11y_res.accessibility
+            if (a11y_res and a11y_res.accessibility)
+            else AccessibilityEvidence(url=url, wcag_aa_status=WcagStatus.UNKNOWN)
+        )
+
+        sec_res = engine_results.get("security_engine")
+        unified_security = (
+            sec_res.security
+            if (sec_res and sec_res.security)
+            else SecurityEvidence(url=url, overall_status=SecurityStatus.UNKNOWN)
+        )
+
         # Build Prioritized Actions
         actions = self._build_prioritized_actions(
-            unified_on_page, unified_robots, unified_schema, unified_geo, unified_trust, unified_performance, conflicts
+            unified_on_page,
+            unified_robots,
+            unified_schema,
+            unified_geo,
+            unified_trust,
+            unified_performance,
+            conflicts,
+            security=unified_security,
+            accessibility=unified_accessibility,
+            image_seo=unified_image_seo,
         )
 
         # Generate Production Fixes — only when genuinely needed
@@ -256,6 +287,9 @@ class IntelligenceSynthesizer:
             unified_geo=unified_geo,
             unified_trust=unified_trust,
             unified_performance=unified_performance,
+            unified_image_seo=unified_image_seo,
+            unified_accessibility=unified_accessibility,
+            unified_security=unified_security,
             cloud_intelligence=cloud_intelligence,
             fixes=fixes
         )
