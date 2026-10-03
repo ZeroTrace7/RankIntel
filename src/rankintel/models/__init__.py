@@ -112,6 +112,13 @@ from rankintel.models.schema import (
     SearchSignalEvidence,
     RecurringConceptItem,
     SiteSearchSignalIntelligence,
+    TopicMembershipType,
+    TopicRelationshipType,
+    TopicTermMembership,
+    TopicRelationship,
+    TopicEvidence,
+    PageTopicIntelligence,
+    SiteTopicIntelligence,
 )
 
 __all__ = [
@@ -225,4 +232,11 @@ __all__ = [
     "SearchSignalEvidence",
     "RecurringConceptItem",
     "SiteSearchSignalIntelligence",
+    "TopicMembershipType",
+    "TopicRelationshipType",
+    "TopicTermMembership",
+    "TopicRelationship",
+    "TopicEvidence",
+    "PageTopicIntelligence",
+    "SiteTopicIntelligence",
 ]
