@@ -4,7 +4,7 @@ into copy-paste ready, executive-grade Markdown audits.
 """
 from __future__ import annotations
 import os
-from rankintel.models.schema import SynthesisReport, SecurityStatus
+from rankintel.models.schema import SynthesisReport, SecurityStatus, WcagStatus
 
 class MarkdownReporter:
     """Generates comprehensive, beautifully formatted Markdown audits."""
