@@ -201,7 +201,7 @@ def test_site_wide_topic_analyzer_aggregation():
         url="https://example.com/page-a",
         normalized_url="https://example.com/page-a",
         identity_url="https://example.com/page-a",
-        crawl_status=CrawlStatus.SUCCESS,
+        crawl_status=CrawlStatus.FETCHED,
         depth=0,
         status_code=200,
         raw_html=HTML_PAGE_A,
@@ -210,7 +210,7 @@ def test_site_wide_topic_analyzer_aggregation():
         url="https://example.com/page-b",
         normalized_url="https://example.com/page-b",
         identity_url="https://example.com/page-b",
-        crawl_status=CrawlStatus.SUCCESS,
+        crawl_status=CrawlStatus.FETCHED,
         depth=1,
         status_code=200,
         raw_html=HTML_PAGE_B,
@@ -245,17 +245,27 @@ def test_site_wide_topic_analyzer_aggregation():
 
 def test_explicit_error_handling_no_silent_pass():
     """Verify SiteTopicAnalyzer records error status and never silently swallows exceptions."""
+    rec_a = CrawlRecord(
+        url="https://example.com/page-a",
+        normalized_url="https://example.com/page-a",
+        identity_url="https://example.com/page-a",
+        crawl_status=CrawlStatus.FETCHED,
+        depth=0,
+        status_code=200,
+        raw_html=HTML_PAGE_A,
+    )
     site_crawl = SiteCrawlResult(
         completeness_status="CRAWL_COMPLETE",
         pages_crawled=1,
-        crawl_records=[None],  # Corrupt record to force an exception
+        crawl_records=[rec_a],
     )
 
-    ti = SiteTopicAnalyzer.analyze_site(site_crawl)
-    assert ti.status == "error"
-    assert ti.error_message is not None
-    assert "failed" in ti.error_message.lower()
-    assert site_crawl.topic_intelligence.status == "error"
+    with patch("rankintel.analyzers.topic_analyzer.TopicIntelligenceEngine.evaluate", side_effect=RuntimeError("Simulated internal exception")):
+        ti = SiteTopicAnalyzer.analyze_site(site_crawl)
+        assert ti.status == "error"
+        assert ti.error_message is not None
+        assert "failed" in ti.error_message.lower()
+        assert site_crawl.topic_intelligence.status == "error"
 
 
 def test_partial_crawl_disclaimer_behavior():
@@ -264,7 +274,7 @@ def test_partial_crawl_disclaimer_behavior():
         url="https://example.com/page-a",
         normalized_url="https://example.com/page-a",
         identity_url="https://example.com/page-a",
-        crawl_status=CrawlStatus.SUCCESS,
+        crawl_status=CrawlStatus.FETCHED,
         depth=0,
         status_code=200,
         raw_html=HTML_PAGE_A,
@@ -297,7 +307,7 @@ def test_zero_duplicate_http_requests_instrumented():
 def test_cross_engine_provenance_attribution():
     """Verify EvidenceProvenanceTag generated for topic_intelligence_engine."""
     results = _collect_with_html(HTML_PAGE_A, "https://example.com")
-    tags = ProvenanceTagger.tag_provenance(results)
+    tags = ProvenanceTagger.tag(results)
 
     topic_tags = [t for t in tags if t.engine == "topic_intelligence_engine"]
     assert len(topic_tags) >= 1
@@ -315,7 +325,7 @@ def test_markdown_and_json_reporters_render_topics():
         url="https://example.com",
         normalized_url="https://example.com",
         identity_url="https://example.com",
-        crawl_status=CrawlStatus.SUCCESS,
+        crawl_status=CrawlStatus.FETCHED,
         depth=0,
         status_code=200,
         raw_html=HTML_PAGE_A,
