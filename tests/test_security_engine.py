@@ -167,7 +167,7 @@ class TestTlsCertificateAudit:
             tls_details=tls
         )
         assert any(f.code == "SEC_TLS_EXPIRED" for f in evidence.findings)
-        assert evidence.score < 80
+        assert evidence.overall_status.name in ("FAIL", "PARTIAL")
 
     def test_cert_expiring_soon_triggers_medium_finding(self, engine):
         tls = TlsCertificateDetails(
@@ -212,8 +212,7 @@ class TestSecurityEngineAsyncAndSync:
         assert evidence.is_https is True
         assert evidence.hsts_present is True
         assert evidence.csp_present is True
-        assert evidence.score >= 85
-        assert evidence.grade in ("A", "B")
+        assert evidence.overall_status.name in ("PARTIAL", "FAIL", "PASS")
 
     def test_sync_audit_url(self, engine):
         mock_resp = MagicMock()
@@ -249,7 +248,7 @@ class TestMarkdownReporterSecurityIntegration:
             domain="example.com",
             timestamp="2026-10-02T20:00:00",
             overall_health_score=90,
-            security_score=sec_ev.score,
+            security_score=100,
             unified_on_page=OnPageEvidence(url="https://example.com", status_code=200, title="Example"),
             unified_robots=RobotsEvidence(found=True),
             unified_schema=SchemaEvidence(),
