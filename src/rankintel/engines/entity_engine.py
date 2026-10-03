@@ -337,6 +337,8 @@ class EntityEngine:
             if item.get(id_key):
                 identifiers[id_key] = str(item[id_key]).strip()
 
+        declared_url = item.get("url") if isinstance(item.get("url"), str) and item.get("url").strip() else None
+
         ent = DetectedEntity(
             entity_type=matched_entity_type or EntityType.OTHER,
             name=name,
@@ -344,6 +346,7 @@ class EntityEngine:
             source=EntitySource.JSON_LD,
             signal_type=EntitySignalType.STRUCTURED_DATA_DECLARATION,
             url=page_url,
+            declared_url=declared_url,
             structured_data_type=matched_type_name,
             description=description,
             telephone=str(telephone).strip() if telephone else None,

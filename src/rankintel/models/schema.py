@@ -540,6 +540,7 @@ class DetectedEntity(BaseModel):
     source: EntitySource = EntitySource.UNAVAILABLE
     signal_type: EntitySignalType = EntitySignalType.STRUCTURED_DATA_DECLARATION
     url: str = ""
+    declared_url: Optional[str] = None
     structured_data_type: Optional[str] = None
     description: Optional[str] = None
     telephone: Optional[str] = None

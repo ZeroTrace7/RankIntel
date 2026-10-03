@@ -4,6 +4,7 @@ Performs primary organization candidate identification (with explicit selection 
 tracks site-wide entity aggregation, and surfaces observable attribute inconsistencies across pages.
 """
 from __future__ import annotations
+import re
 from typing import Dict, List, Set, Optional, Tuple
 from collections import defaultdict
 from urllib.parse import urlparse
@@ -111,8 +112,8 @@ class SiteEntityAnalyzer:
                     if ent.telephone:
                         clean_p = normalize_phone_number(ent.telephone)
                         profile["phones"][clean_p].append(url)
-                    if ent.url:
-                        profile["urls"][ent.url].append(url)
+                    if ent.declared_url:
+                        profile["urls"][ent.declared_url].append(url)
                     for s_link in ent.same_as:
                         profile["sameas"][s_link].append(url)
 
@@ -226,9 +227,7 @@ class SiteEntityAnalyzer:
             # D. Conflicting URLs / Domains declared in Structured Data
             if len(prof["urls"]) > 1:
                 distinct_urls = list(prof["urls"].keys())
-                # Compare hostnames / protocols
-                hosts = {urlparse(u).netloc.lower() for u in distinct_urls if u}
-                if len(hosts) > 1:
+                if len(set(distinct_urls)) > 1:
                     conflicts_dict = {u: prof["urls"][u] for u in distinct_urls}
                     inconsistencies.append(EntityInconsistency(
                         entity_type=EntityType.ORGANIZATION,
@@ -236,7 +235,7 @@ class SiteEntityAnalyzer:
                         attribute="url",
                         conflicting_values=conflicts_dict,
                         details=(
-                            f"Structured data entity url references different domains: "
+                            f"Structured data entity url references different values: "
                             f"{', '.join(f'{u} ({len(pages)} pages)' for u, pages in conflicts_dict.items())}."
                         ),
                     ))
