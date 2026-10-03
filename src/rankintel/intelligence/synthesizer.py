@@ -336,7 +336,10 @@ class IntelligenceSynthesizer:
         geo: GeoAeoEvidence,
         trust: TrustStackResult,
         perf: PerformanceEvidence,
-        conflicts: List[ConflictFinding]
+        conflicts: List[ConflictFinding],
+        security: Optional[SecurityEvidence] = None,
+        accessibility: Optional[AccessibilityEvidence] = None,
+        image_seo: Optional[ImageSEOEvidence] = None,
     ) -> List[PrioritizedAction]:
         actions: List[PrioritizedAction] = []
 
