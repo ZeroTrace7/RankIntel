@@ -1,164 +1,165 @@
-"""
-Unit & Integration Tests for Image SEO & Visual Search Engine (Phase 7.3).
-"""
 import pytest
-from unittest.mock import patch, MagicMock
-import httpx
-
+from bs4 import BeautifulSoup
 from rankintel.engines.image_engine import ImageEngine
-from rankintel.models.schema import (
-    ImageFindingSeverity,
-    ImageSeoEvidence,
-    ImageDetail,
-    SynthesisReport,
-    OnPageEvidence,
-    RobotsEvidence,
-    SchemaEvidence,
-    GeoAeoEvidence,
-)
-from rankintel.reporters.markdown import MarkdownReporter
 
-
-SAMPLE_HTML_MIXED_IMAGES = """
-<!DOCTYPE html>
-<html>
-<head><title>Test Page</title></head>
-<body>
-    <header>
-        <!-- Hero image with loading="lazy" (defect) and missing width/height -->
-        <img src="/images/hero-banner.jpg" alt="Company Hero Banner" loading="lazy">
-    </header>
-    <main>
-        <!-- Missing alt and legacy format -->
-        <img src="/images/IMG_5921.png">
-        
-        <!-- Generic alt -->
-        <img src="/images/logo.png" alt="logo" width="200" height="50">
-        
-        <!-- Decorative alt (valid) -->
-        <img src="/images/divider.svg" alt="" width="800" height="2">
-        
-        <!-- Modern format, responsive picture, good alt, explicit dimensions -->
-        <picture>
-            <source srcset="/images/pressure-gauge.avif" type="image/avif">
-            <img src="/images/pressure-gauge.webp" alt="High Precision Pressure Gauge Calibration" width="600" height="400" loading="lazy">
-        </picture>
-    </main>
-</body>
-</html>
-"""
-
-
-class TestImageEngine:
-    @pytest.fixture
-    def engine(self):
-        return ImageEngine()
-
-    def test_evaluate_individual_images(self, engine):
-        evidence = engine.audit_html(SAMPLE_HTML_MIXED_IMAGES, base_url="https://example.com")
-        assert evidence.total_images == 5
-
-        # 1. Hero image check
-        hero = evidence.images[0]
-        assert hero.src == "https://example.com/images/hero-banner.jpg"
-        assert hero.loading == "lazy"
-        assert hero.has_dimensions is False
-        assert any(f.code == "IMG_LAZY_HERO_CONFLICT" for f in evidence.findings)
-
-        # 2. Missing alt check
-        img2 = evidence.images[1]
-        assert img2.alt_quality == "missing"
-        assert img2.has_alt is False
-        assert any(f.code == "IMG_MISSING_ALT" for f in evidence.findings)
-
-        # 3. Generic alt check
-        img3 = evidence.images[2]
-        assert img3.alt_quality == "generic"
-        assert img3.has_dimensions is True
-        assert any(f.code == "IMG_GENERIC_ALT" for f in evidence.findings)
-
-        # 4. Decorative alt check
-        img4 = evidence.images[3]
-        assert img4.is_decorative is True
-        assert img4.alt_quality == "decorative"
-
-        # 5. Modern format & responsive check
-        img5 = evidence.images[4]
-        assert img5.is_modern_format is True
-        assert img5.is_in_picture_tag is True
-        assert img5.alt_quality == "good"
-        assert img5.has_dimensions is True
-
-    def test_clean_modern_images_score_high(self, engine):
-        clean_html = """
-        <html>
+def test_missing_alt_vs_empty_vs_generic():
+    html = """
+    <html>
         <body>
-            <img src="/img/cal-lab.webp" alt="NABL Calibration Laboratory Facility" width="800" height="600" fetchpriority="high">
-            <img src="/img/meter.avif" alt="Digital Multimeter Testing Bench" width="400" height="300" loading="lazy">
+            <img src="missing.jpg" />
+            <img src="empty.jpg" alt="" />
+            <img src="generic.jpg" alt="image" />
+            <img src="photo1.jpg" alt="photo.jpg" />
+            <img src="optimal.jpg" alt="A beautiful sunset" />
         </body>
-        </html>
-        """
-        evidence = engine.audit_html(clean_html, base_url="https://example.com")
-        assert evidence.total_images == 2
-        assert evidence.images_with_alt == 2
-        assert evidence.images_with_dimensions == 2
-        assert evidence.modern_format_count == 2
-        assert evidence.score >= 90
-        assert evidence.grade == "A"
-        assert len(evidence.findings) == 0
+    </html>
+    """
+    evidence = ImageEngine.evaluate(html, "https://example.com")
+    
+    assert evidence.total_images == 5
+    assert evidence.missing_alt_count == 1
+    assert evidence.decorative_alt_count == 1
+    assert evidence.generic_alt_count == 2
+    
+    images = evidence.images
+    assert images[0].alt_status == "MISSING"
+    assert images[1].alt_status == "EMPTY_DECORATIVE"
+    assert images[2].alt_status == "GENERIC_FILENAME"
+    assert images[3].alt_status == "GENERIC_FILENAME"
+    assert images[4].alt_status == "OPTIMAL"
 
-    def test_empty_html_returns_defaults(self, engine):
-        evidence = engine.audit_html("")
-        assert evidence.total_images == 0
-        assert evidence.score == 100
-        assert evidence.grade == "A"
+def test_decorative_alt_inside_anchor_flagged_as_empty_link():
+    html = """
+    <html>
+        <body>
+            <a href="/home"><img src="icon.png" alt="" /></a>
+        </body>
+    </html>
+    """
+    evidence = ImageEngine.evaluate(html, "https://example.com")
+    assert evidence.total_images == 1
+    assert evidence.images[0].alt_status == "MISSING" # Because it's an empty link
 
-    @pytest.mark.anyio
-    async def test_async_audit_url_with_mock(self, engine):
-        async def handler(request: httpx.Request):
-            return httpx.Response(200, headers={"Content-Type": "text/html"}, text=SAMPLE_HTML_MIXED_IMAGES)
+def test_missing_dimensions_potential_layout_shift_risk():
+    html = """
+    <html>
+        <body>
+            <img src="nodims.jpg" />
+            <img src="dims.jpg" width="100" height="100" />
+            <img src="aspect.jpg" style="aspect-ratio: 16/9;" />
+        </body>
+    </html>
+    """
+    evidence = ImageEngine.evaluate(html, "https://example.com")
+    assert evidence.missing_dimensions_count == 1
+    assert evidence.images[0].potential_layout_shift_risk is True
+    assert evidence.images[1].potential_layout_shift_risk is False
+    assert evidence.images[2].potential_layout_shift_risk is False
 
-        transport = httpx.MockTransport(handler)
-        async with httpx.AsyncClient(transport=transport) as client:
-            evidence = await engine.audit_url("https://example.com", client=client)
+def test_declared_format_classification():
+    html = """
+    <html>
+        <body>
+            <img src="img.webp" />
+            <picture>
+                <source type="image/avif" srcset="img.avif">
+                <img src="img.jpg" />
+            </picture>
+            <img src="img.png" />
+            <img src="img.jpg?q=80" />
+            <img src="/api/image/1" />
+        </body>
+    </html>
+    """
+    evidence = ImageEngine.evaluate(html, "https://example.com")
+    images = evidence.images
+    
+    assert images[0].format_evidence.declared_format == "webp"
+    assert images[0].format_evidence.is_modern_format is True
+    
+    assert images[1].format_evidence.declared_format == "avif"
+    assert images[1].format_evidence.is_modern_format is True
+    
+    assert images[2].format_evidence.declared_format == "png"
+    assert images[2].format_evidence.is_modern_format is False
+    
+    assert images[3].format_evidence.declared_format == "jpg"
+    assert images[3].format_evidence.is_modern_format is False
+    
+    assert images[4].format_evidence.declared_format == "UNKNOWN"
+    assert images[4].format_evidence.observed_mime_type == "UNKNOWN"
 
-        assert evidence.total_images == 5
-        assert evidence.images_with_alt >= 3
+def test_early_image_lazy_loading_heuristic_lcp_warning():
+    html = """
+    <html>
+        <body>
+            <header>
+                <img src="logo.png" loading="lazy" />
+            </header>
+            <img src="hero.jpg" loading="lazy" />
+            <img src="img3.jpg" loading="lazy" />
+            <img src="img4.jpg" loading="lazy" />
+        </body>
+    </html>
+    """
+    evidence = ImageEngine.evaluate(html, "https://example.com")
+    images = evidence.images
+    
+    # Logo in header is early
+    assert images[0].potential_lcp_risk is True
+    # Hero is index 1, also early
+    assert images[1].potential_lcp_risk is True
+    # Img3 is index 2, not early, not in header
+    assert images[2].potential_lcp_risk is False
+    
+    assert evidence.early_lazy_lcp_risks_count == 2
+    assert evidence.lazy_loaded_count == 4
 
-    def test_sync_audit_url_mock(self, engine):
-        mock_resp = MagicMock()
-        mock_resp.status_code = 200
-        mock_resp.text = SAMPLE_HTML_MIXED_IMAGES
+def test_viewport_configuration_parsing():
+    html = """
+    <html>
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
+        <body></body>
+    </html>
+    """
+    evidence = ImageEngine.evaluate(html, "https://example.com")
+    head_audit = evidence.head_audit
+    
+    assert head_audit.viewport_present is True
+    assert head_audit.viewport_configuration == "width=device-width, initial-scale=1.0"
+    assert head_audit.responsive_behavior == "UNKNOWN"
 
-        with patch("httpx.Client.get", return_value=mock_resp):
-            evidence = engine.audit_url_sync("https://example.com")
+def test_heading_skip_detection():
+    html = """
+    <html>
+        <body>
+            <h1>Main Title</h1>
+            <h3>Subtitle (Skip H2)</h3>
+        </body>
+    </html>
+    """
+    evidence = ImageEngine.evaluate(html, "https://example.com")
+    head_audit = evidence.head_audit
+    
+    assert head_audit.heading_hierarchy_valid is False
+    assert any("Skipped from H1 to H3" in s for s in head_audit.heading_skips)
 
-        assert evidence.total_images == 5
-
-
-class TestMarkdownReporterImageSeoIntegration:
-    def test_reporter_renders_image_seo_section(self):
-        engine = ImageEngine()
-        img_evidence = engine.audit_html(SAMPLE_HTML_MIXED_IMAGES, base_url="https://example.com")
-
-        report = SynthesisReport(
-            url="https://example.com",
-            domain="example.com",
-            timestamp="2026-10-02T20:00:00",
-            overall_health_score=85,
-            image_seo_score=img_evidence.score,
-            unified_on_page=OnPageEvidence(url="https://example.com", status_code=200, title="Example"),
-            unified_robots=RobotsEvidence(found=True),
-            unified_schema=SchemaEvidence(),
-            unified_geo=GeoAeoEvidence(),
-            unified_image_seo=img_evidence,
-        )
-
-        reporter = MarkdownReporter()
-        md = reporter.render(report)
-
-        assert "IMAGE SEO & VISUAL SEARCH INTELLIGENCE" in md
-        assert "Image Optimization Score" in md
-        assert "Alt Attribute Coverage" in md
-        assert "Layout Stability" in md
-        assert "Modern Format Delivery" in md
+def test_insecure_asset_url_extraction():
+    html = """
+    <html>
+        <body>
+            <img src="http://insecure.com/img.jpg" />
+            <script src="http://insecure.com/script.js"></script>
+            <link href="https://secure.com/style.css" />
+        </body>
+    </html>
+    """
+    evidence = ImageEngine.evaluate(html, "https://example.com")
+    head_audit = evidence.head_audit
+    
+    assert "http://insecure.com/img.jpg" in head_audit.insecure_resource_urls
+    assert "http://insecure.com/script.js" in head_audit.insecure_resource_urls
+    assert "https://secure.com/style.css" not in head_audit.insecure_resource_urls
+    assert len(head_audit.insecure_resource_urls) == 2

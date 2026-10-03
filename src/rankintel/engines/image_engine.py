@@ -1,331 +1,243 @@
-"""
-Image SEO & Visual Search Engine (Phase 7.3).
-
-Audits visual assets for:
-- Alt text intelligence (missing alt, decorative alt="", generic low-quality alt)
-- Layout stability & CLS prevention (explicit width/height attributes, aspect-ratio)
-- Modern image compression formats (WebP, AVIF vs uncompressed PNG/JPEG/GIF)
-- Responsive markup (<picture>, srcset, sizes)
-- Performance & LCP hero prioritization (loading="lazy" vs fetchpriority="high")
-- Filename semantics (descriptive slugs vs raw camera files)
-"""
-from __future__ import annotations
-import os
 import re
-from typing import Dict, List, Optional, Tuple
-from urllib.parse import urljoin, urlparse
-
+from urllib.parse import urlparse
+from typing import List, Optional
 from bs4 import BeautifulSoup
-import httpx
 
 from rankintel.models.schema import (
-    ImageFindingSeverity,
-    ImageFinding,
-    ImageDetail,
-    ImageSeoEvidence,
+    ImageSEOEvidence, ImageDetail, ImageFormatEvidence, HtmlHeadEvidence
 )
-
-GENERIC_ALT_PATTERNS = {
-    "image", "img", "photo", "picture", "logo", "banner", "icon", "placeholder",
-    "thumbnail", "graphic", "screenshot", "untitled", "avatar", "temp", "header"
-}
-
-GENERIC_FILENAME_RE = re.compile(
-    r"^(img|dsc|photo|image|screenshot|untitled|pic|asset|capture|frame)[-_]?\d*$",
-    re.IGNORECASE
-)
-
 
 class ImageEngine:
-    """Specialized engine for on-page image SEO, visual search, and Core Web Vitals layout stability."""
+    """
+    Evaluates visual assets for search, layout stability (CLS), and modern responsive delivery
+    without redundant network fetches. Also performs HTML Head technical validation.
+    """
+    
+    # Generic alt terms to flag
+    GENERIC_TERMS = {"image", "logo", "banner", "photo", "picture", "icon", "img", "thumbnail"}
+    # Camera prefixes
+    CAMERA_PREFIXES = re.compile(r"^(IMG|DSC|DCIM)_[0-9]+", re.IGNORECASE)
+    # Filename-like alt (e.g., photo.jpg, image.png)
+    FILENAME_PATTERN = re.compile(r".*\.(jpg|jpeg|png|webp|avif|gif|svg)$", re.IGNORECASE)
 
-    def __init__(self, timeout_sec: float = 10.0):
-        self.timeout_sec = timeout_sec
+    @classmethod
+    def evaluate(cls, raw_html: str, url: str) -> ImageSEOEvidence:
+        """
+        Parses raw HTML to evaluate image SEO and HTML head elements.
+        """
+        soup = BeautifulSoup(raw_html, "lxml")
+        
+        evidence = ImageSEOEvidence()
+        evidence.images = cls._evaluate_images(soup, url, evidence)
+        evidence.head_audit = cls._evaluate_head(soup, url)
+        
+        return evidence
 
-    def evaluate_image(
-        self,
-        img_tag: Any,
-        index: int,
-        base_url: str = ""
-    ) -> ImageDetail:
-        """Evaluates single <img> tag from HTML DOM."""
-        raw_src = img_tag.get("src", "").strip()
-        full_src = urljoin(base_url, raw_src) if base_url and raw_src else raw_src
-
-        # Filename & Format
-        parsed_src = urlparse(full_src)
-        basename = os.path.basename(parsed_src.path)
-        ext = os.path.splitext(basename)[1].lower().lstrip(".")
-        img_format = ext if ext else "unknown"
-
-        # Modern format check
-        modern_formats = {"webp", "avif", "svg"}
-        is_modern = img_format in modern_formats
-
-        # Filename semantics
-        name_without_ext = os.path.splitext(basename)[0]
-        is_descriptive = bool(name_without_ext and not GENERIC_FILENAME_RE.match(name_without_ext) and len(name_without_ext) > 3)
-
-        # Alt text analysis
-        alt_attr = img_tag.get("alt")
-        has_alt = False
-        is_decorative = False
-        alt_quality = "good"
-
-        if alt_attr is None:
-            has_alt = False
-            alt_quality = "missing"
-        elif alt_attr.strip() == "":
-            has_alt = True
-            is_decorative = True
-            alt_quality = "decorative"
-        else:
-            has_alt = True
-            alt_clean = alt_attr.strip().lower()
-            # Check if alt is merely filename or generic word
-            if alt_clean in GENERIC_ALT_PATTERNS or alt_clean == basename.lower() or alt_clean.endswith(f".{ext}"):
-                alt_quality = "generic"
+    @classmethod
+    def _evaluate_images(cls, soup: BeautifulSoup, page_url: str, evidence: ImageSEOEvidence) -> List[ImageDetail]:
+        images_found = soup.find_all("img")
+        evidence.total_images = len(images_found)
+        
+        details = []
+        is_https_page = urlparse(page_url).scheme.lower() == "https"
+        
+        for idx, img in enumerate(images_found):
+            src = img.get("src", "")
+            if not src:
+                # Try data-src or similar if lazy loaded, but for basic img tag src is required
+                src = img.get("data-src", "")
+                if not src:
+                    continue # Ignore empty image tags
+            
+            detail = ImageDetail(src=src)
+            
+            # Alt Text Semantics
+            alt = img.get("alt")
+            if alt is None:
+                detail.alt_status = "MISSING"
+                evidence.missing_alt_count += 1
             else:
-                alt_quality = "good"
+                alt_stripped = alt.strip()
+                detail.alt = alt_stripped
+                evidence.images_with_alt += 1
+                
+                if alt_stripped == "":
+                    # Check if it's wrapped in an anchor
+                    parent_a = img.find_parent("a")
+                    # If inside an anchor tag with no other text, it's problematic
+                    if parent_a and not parent_a.get_text(strip=True):
+                        detail.alt_status = "MISSING" # Acts as empty link text
+                        evidence.missing_alt_count += 1
+                    else:
+                        detail.alt_status = "EMPTY_DECORATIVE"
+                        evidence.decorative_alt_count += 1
+                else:
+                    alt_lower = alt_stripped.lower()
+                    if (alt_lower in cls.GENERIC_TERMS or 
+                        cls.CAMERA_PREFIXES.match(alt_stripped) or 
+                        cls.FILENAME_PATTERN.match(alt_stripped)):
+                        detail.alt_status = "GENERIC_FILENAME"
+                        evidence.generic_alt_count += 1
+                    else:
+                        detail.alt_status = "OPTIMAL"
+            
+            # Layout Shift Risk
+            width = img.get("width")
+            height = img.get("height")
+            style = img.get("style", "").lower()
+            has_inline_aspect_ratio = "aspect-ratio" in style
+            
+            if width and str(width).isdigit():
+                detail.width = int(width)
+            if height and str(height).isdigit():
+                detail.height = int(height)
+                
+            detail.has_dimensions = bool(detail.width and detail.height)
+            
+            if not detail.has_dimensions and not has_inline_aspect_ratio:
+                detail.potential_layout_shift_risk = True
+                evidence.missing_dimensions_count += 1
+                
+            # LCP Risk Heuristic
+            loading = img.get("loading", "")
+            if isinstance(loading, list):
+                loading = loading[0] if loading else ""
+            loading = str(loading).lower()
+            
+            detail.is_lazy = (loading == "lazy")
+            
+            # Simple heuristic: top 2 images or inside header/nav
+            is_early = idx < 2 or bool(img.find_parent(["header", "nav", "div[role='banner']"]) or (img.has_attr("role") and img["role"] == "banner"))
+            
+            if detail.is_lazy and is_early:
+                detail.potential_lcp_risk = True
+                evidence.early_lazy_lcp_risks_count += 1
+                
+            # Fetch priority
+            fetchpriority = img.get("fetchpriority", "")
+            if isinstance(fetchpriority, list):
+                fetchpriority = fetchpriority[0] if fetchpriority else ""
+            fetchpriority = str(fetchpriority).lower()
+            
+            detail.is_fetchpriority_high = (fetchpriority == "high")
+            
+            # Responsiveness
+            srcset = img.get("srcset")
+            sizes = img.get("sizes")
+            is_in_picture = bool(img.find_parent("picture"))
+            detail.is_responsive = bool(srcset or sizes or is_in_picture)
+            
+            if detail.is_lazy:
+                evidence.lazy_loaded_count += 1
+                
+            # Format Classification
+            detail.format_evidence = cls._classify_format(img, src)
+            if detail.format_evidence.is_modern_format:
+                evidence.modern_format_count += 1
+            elif detail.format_evidence.declared_format in ["jpg", "jpeg", "png", "gif"]:
+                evidence.legacy_format_count += 1
+                
+            details.append(detail)
+            
+        return details
 
-        # Dimensions & CLS prevention
-        width_attr = img_tag.get("width")
-        height_attr = img_tag.get("height")
-        width_val: Optional[int] = None
-        height_val: Optional[int] = None
+    @classmethod
+    def _classify_format(cls, img, src: str) -> ImageFormatEvidence:
+        format_evidence = ImageFormatEvidence(observed_mime_type="UNKNOWN")
+        
+        # Check source tags if in picture
+        picture = img.find_parent("picture")
+        if picture:
+            source = picture.find("source")
+            if source:
+                source_type = source.get("type", "")
+                if source_type:
+                    source_type_lower = source_type.lower()
+                    if "webp" in source_type_lower:
+                        format_evidence.declared_format = "webp"
+                    elif "avif" in source_type_lower:
+                        format_evidence.declared_format = "avif"
+                    elif "svg" in source_type_lower:
+                        format_evidence.declared_format = "svg"
+                    elif "jpeg" in source_type_lower or "jpg" in source_type_lower:
+                        format_evidence.declared_format = "jpeg"
+                    elif "png" in source_type_lower:
+                        format_evidence.declared_format = "png"
+        
+        if format_evidence.declared_format == "UNKNOWN":
+            # Fallback to extension
+            ext_match = re.search(r'\.(webp|avif|svg|jpg|jpeg|png|gif)(?:[?#]|$)', src, re.IGNORECASE)
+            if ext_match:
+                format_evidence.declared_format = ext_match.group(1).lower()
+                
+        format_evidence.is_modern_format = format_evidence.declared_format in ["webp", "avif", "svg"]
+        
+        return format_evidence
 
-        try:
-            if width_attr and str(width_attr).replace("px", "").isdigit():
-                width_val = int(str(width_attr).replace("px", ""))
-        except Exception:
-            pass
+    @classmethod
+    def _evaluate_head(cls, soup: BeautifulSoup, page_url: str) -> HtmlHeadEvidence:
+        head_audit = HtmlHeadEvidence()
+        is_https_page = urlparse(page_url).scheme.lower() == "https"
+        
+        # Viewport
+        viewport_meta = soup.find("meta", attrs={"name": re.compile(r"^viewport$", re.I)})
+        if viewport_meta:
+            head_audit.viewport_present = True
+            content = viewport_meta.get("content")
+            if isinstance(content, list):
+                content = content[0] if content else ""
+            head_audit.viewport_configuration = content
+            
+        # Lang
+        html_tag = soup.find("html")
+        if html_tag and html_tag.get("lang"):
+            head_audit.lang_present = True
+            lang = html_tag.get("lang")
+            if isinstance(lang, list):
+                lang = lang[0] if lang else ""
+            head_audit.lang_code = lang
+            
+        # Charset
+        charset_meta = soup.find("meta", charset=True)
+        if not charset_meta:
+            charset_meta = soup.find("meta", attrs={"http-equiv": re.compile(r"^Content-Type$", re.I)})
+        if charset_meta:
+            head_audit.charset_present = True
+            charset = charset_meta.get("charset") or charset_meta.get("content")
+            if isinstance(charset, list):
+                charset = charset[0] if charset else ""
+            head_audit.charset_declared = charset
+            
+        # Heading hierarchy
+        headings = soup.find_all(re.compile(r"^h[1-6]$", re.I))
+        h1s = [h for h in headings if h.name.lower() == "h1"]
+        
+        if len(h1s) != 1:
+            head_audit.heading_hierarchy_valid = False
+            head_audit.heading_skips.append(f"Found {len(h1s)} H1 tags, expected exactly 1.")
+            
+        current_level = 0
+        for h in headings:
+            level = int(h.name[1])
+            if current_level != 0 and level > current_level + 1:
+                head_audit.heading_skips.append(f"Skipped from H{current_level} to H{level}.")
+                head_audit.heading_hierarchy_valid = False
+            current_level = level
+            
+        # Insecure asset URL extraction
+        if is_https_page:
+            # Check for http:// resources
+            for tag, attr in [("img", "src"), ("script", "src"), ("link", "href"), ("iframe", "src"), ("source", "src"), ("source", "srcset")]:
+                for el in soup.find_all(tag):
+                    val = el.get(attr, "")
+                    if isinstance(val, str) and val.startswith("http://"):
+                        head_audit.insecure_resource_urls.append(val)
+                    elif isinstance(val, list):
+                        for v in val:
+                            if isinstance(v, str) and v.startswith("http://"):
+                                head_audit.insecure_resource_urls.append(v)
+            
+            # Deduplicate
+            head_audit.insecure_resource_urls = list(dict.fromkeys(head_audit.insecure_resource_urls))
 
-        try:
-            if height_attr and str(height_attr).replace("px", "").isdigit():
-                height_val = int(str(height_attr).replace("px", ""))
-        except Exception:
-            pass
-
-        style = img_tag.get("style", "").lower()
-        has_aspect_ratio = "aspect-ratio" in style or (width_val is not None and height_val is not None)
-
-        # Loading & Prioritization
-        loading_attr = img_tag.get("loading", "").lower() or None
-        fetchpriority_attr = img_tag.get("fetchpriority", "").lower() or None
-
-        # Responsive attributes
-        has_srcset = bool(img_tag.get("srcset"))
-        parent = img_tag.parent
-        is_in_picture = bool(parent and parent.name == "picture")
-
-        issues: List[str] = []
-        if alt_quality == "missing":
-            issues.append("Missing alt attribute")
-        elif alt_quality == "generic":
-            issues.append(f"Generic/low-quality alt text: '{alt_attr}'")
-
-        if not has_aspect_ratio:
-            issues.append("Missing explicit width and height attributes (CLS risk)")
-
-        if not is_modern and img_format in ("png", "jpg", "jpeg", "bmp"):
-            issues.append(f"Legacy image format '{img_format}' (recommend WebP or AVIF)")
-
-        if index == 0 and loading_attr == "lazy":
-            issues.append("LCP hero image configured with loading='lazy' (delays paint)")
-
-        return ImageDetail(
-            src=full_src,
-            alt=alt_attr,
-            has_alt=has_alt,
-            is_decorative=is_decorative,
-            alt_quality=alt_quality,
-            width=width_val,
-            height=height_val,
-            has_dimensions=has_aspect_ratio,
-            format=img_format,
-            is_modern_format=is_modern,
-            loading=loading_attr,
-            fetchpriority=fetchpriority_attr,
-            has_srcset=has_srcset,
-            is_in_picture_tag=is_in_picture,
-            filename=basename,
-            is_descriptive_filename=is_descriptive,
-            issues=issues
-        )
-
-    def audit_html(self, html: str, base_url: str = "") -> ImageSeoEvidence:
-        """Audits all images in an HTML page string."""
-        if not html:
-            return ImageSeoEvidence(score=100, grade="A")
-
-        soup = BeautifulSoup(html, "html.parser")
-        img_tags = soup.find_all("img")
-
-        images: List[ImageDetail] = []
-        findings: List[ImageFinding] = []
-
-        total = len(img_tags)
-        with_alt_count = 0
-        decorative_count = 0
-        with_dims_count = 0
-        modern_count = 0
-        lazy_count = 0
-        hero_candidate: Optional[str] = None
-
-        for idx, tag in enumerate(img_tags):
-            detail = self.evaluate_image(tag, index=idx, base_url=base_url)
-            images.append(detail)
-
-            if detail.has_alt:
-                with_alt_count += 1
-            if detail.is_decorative:
-                decorative_count += 1
-            if detail.has_dimensions:
-                with_dims_count += 1
-            if detail.is_modern_format:
-                modern_count += 1
-            if detail.loading == "lazy":
-                lazy_count += 1
-
-            if idx == 0 and detail.src:
-                hero_candidate = detail.src
-
-        # Aggregate findings
-        missing_alts = [img for img in images if img.alt_quality == "missing"]
-        if missing_alts:
-            findings.append(
-                ImageFinding(
-                    code="IMG_MISSING_ALT",
-                    severity=ImageFindingSeverity.HIGH,
-                    src=missing_alts[0].src,
-                    description=f"{len(missing_alts)} of {total} images lack an alt attribute entirely. Screen readers and search indexers cannot parse image content.",
-                    recommendation="Add descriptive, keyword-aligned alt attributes to informative images, or alt='' to purely decorative icons."
-                )
-            )
-
-        generic_alts = [img for img in images if img.alt_quality == "generic"]
-        if generic_alts:
-            findings.append(
-                ImageFinding(
-                    code="IMG_GENERIC_ALT",
-                    severity=ImageFindingSeverity.MEDIUM,
-                    src=generic_alts[0].src,
-                    description=f"{len(generic_alts)} images use generic alt text (e.g. 'logo', 'image', or raw filenames) providing zero semantic search context.",
-                    recommendation="Replace generic alt text with context-rich descriptions (e.g., 'Sunrise Quality Testing NABL Calibration Laboratory in Nagpur')."
-                )
-            )
-
-        missing_dims = [img for img in images if not img.has_dimensions]
-        if missing_dims:
-            findings.append(
-                ImageFinding(
-                    code="IMG_MISSING_DIMENSIONS_CLS",
-                    severity=ImageFindingSeverity.MEDIUM,
-                    src=missing_dims[0].src,
-                    description=f"{len(missing_dims)} of {total} images lack explicit width/height dimensions. Browsers cannot allocate layout space before download, triggering Cumulative Layout Shift (CLS).",
-                    recommendation="Declare width and height attributes or CSS aspect-ratio on all <img> elements."
-                )
-            )
-
-        legacy_images = [img for img in images if not img.is_modern_format and img.format in ("png", "jpg", "jpeg", "bmp")]
-        if legacy_images and total > 0:
-            pct_legacy = round(len(legacy_images) / total * 100)
-            if pct_legacy > 50:
-                findings.append(
-                    ImageFinding(
-                        code="IMG_LEGACY_FORMAT",
-                        severity=ImageFindingSeverity.LOW,
-                        src=legacy_images[0].src,
-                        description=f"{len(legacy_images)} images ({pct_legacy}%) use legacy uncompressed image formats (JPEG/PNG).",
-                        recommendation="Convert images to modern WebP or AVIF formats to reduce payload by 30-50%."
-                    )
-                )
-
-        if images and images[0].loading == "lazy":
-            findings.append(
-                ImageFinding(
-                    code="IMG_LAZY_HERO_CONFLICT",
-                    severity=ImageFindingSeverity.HIGH,
-                    src=images[0].src,
-                    description="The first above-the-fold hero image is marked with loading='lazy'. Browsers defer loading, directly degrading Largest Contentful Paint (LCP).",
-                    recommendation="Remove loading='lazy' from above-the-fold hero images and add fetchpriority='high'."
-                )
-            )
-
-        # Calculate score and grade
-        score = 100
-        if total > 0:
-            alt_ratio = (with_alt_count / total)
-            dims_ratio = (with_dims_count / total)
-
-            # Penalties
-            if alt_ratio < 1.0:
-                score -= int((1.0 - alt_ratio) * 35)
-            if dims_ratio < 1.0:
-                score -= int((1.0 - dims_ratio) * 25)
-            if modern_count == 0 and total > 2:
-                score -= 10
-            if images and images[0].loading == "lazy":
-                score -= 15
-
-        score = max(0, min(100, score))
-
-        if score >= 90:
-            grade = "A"
-        elif score >= 80:
-            grade = "B"
-        elif score >= 70:
-            grade = "C"
-        elif score >= 60:
-            grade = "D"
-        else:
-            grade = "F"
-
-        recommendations = [f.recommendation for f in findings]
-
-        return ImageSeoEvidence(
-            total_images=total,
-            images_with_alt=with_alt_count,
-            decorative_images=decorative_count,
-            images_with_dimensions=with_dims_count,
-            modern_format_count=modern_count,
-            lazy_loaded_count=lazy_count,
-            hero_or_lcp_candidate=hero_candidate,
-            score=score,
-            grade=grade,
-            images=images,
-            findings=findings,
-            recommendations=recommendations,
-        )
-
-    async def audit_url(
-        self,
-        url: str,
-        client: Optional[httpx.AsyncClient] = None
-    ) -> ImageSeoEvidence:
-        """Fetches page asynchronously and audits images."""
-        try:
-            if client is not None:
-                resp = await client.get(url, follow_redirects=True, timeout=self.timeout_sec)
-            else:
-                async with httpx.AsyncClient(timeout=self.timeout_sec, follow_redirects=True) as local_client:
-                    resp = await local_client.get(url)
-
-            if resp.status_code == 200:
-                return self.audit_html(resp.text, base_url=url)
-        except Exception:
-            pass
-
-        return ImageSeoEvidence()
-
-    def audit_url_sync(self, url: str) -> ImageSeoEvidence:
-        """Fetches page synchronously and audits images."""
-        try:
-            with httpx.Client(timeout=self.timeout_sec, follow_redirects=True) as client:
-                resp = client.get(url)
-                if resp.status_code == 200:
-                    return self.audit_html(resp.text, base_url=url)
-        except Exception:
-            pass
-
-        return ImageSeoEvidence()
+        return head_audit

@@ -211,85 +211,101 @@ class SecurityEvidence(BaseModel):
     findings: List[SecurityFinding] = Field(default_factory=list)
     recommendations: List[str] = Field(default_factory=list)
 
-class ImageFindingSeverity(str, Enum):
-    CRITICAL = "CRITICAL"
-    HIGH = "HIGH"
-    MEDIUM = "MEDIUM"
-    LOW = "LOW"
-    INFO = "INFO"
-
-class ImageFinding(BaseModel):
-    code: str
-    severity: ImageFindingSeverity
-    src: str
-    description: str
-    recommendation: str
+class ImageFormatEvidence(BaseModel):
+    declared_format: str = "UNKNOWN"     # Extracted from URL extension or type attribute
+    observed_mime_type: str = "UNKNOWN"  # Populated only if image response was observed
+    is_modern_format: bool = False       # True for webp, avif, svg
 
 class ImageDetail(BaseModel):
     src: str
     alt: Optional[str] = None
-    has_alt: bool = False
-    is_decorative: bool = False
-    alt_quality: str = "good"  # "good", "missing", "generic", "decorative"
+    alt_status: str = "MISSING"          # "OPTIMAL", "MISSING", "EMPTY_DECORATIVE", "GENERIC_FILENAME"
+    has_dimensions: bool = False
     width: Optional[int] = None
     height: Optional[int] = None
-    has_dimensions: bool = False
-    format: str = ""
-    is_modern_format: bool = False
-    loading: Optional[str] = None
-    fetchpriority: Optional[str] = None
-    has_srcset: bool = False
-    is_in_picture_tag: bool = False
-    filename: str = ""
-    is_descriptive_filename: bool = True
-    issues: List[str] = Field(default_factory=list)
+    is_responsive: bool = False          # Has srcset, sizes, or nested in <picture>
+    is_lazy: bool = False
+    is_fetchpriority_high: bool = False
+    format_evidence: ImageFormatEvidence = Field(default_factory=ImageFormatEvidence)
+    potential_layout_shift_risk: bool = False # Missing dimensions without inline aspect-ratio style
+    potential_lcp_risk: bool = False     # Heuristic flag: early/above-fold image is lazy-loaded
 
-class ImageSeoEvidence(BaseModel):
+class HtmlHeadEvidence(BaseModel):
+    viewport_present: bool = False
+    viewport_configuration: Optional[str] = None
+    responsive_behavior: str = "UNKNOWN" # UNKNOWN unless verified via browser rendering
+    lang_present: bool = False
+    lang_code: Optional[str] = None
+    charset_present: bool = False
+    charset_declared: Optional[str] = None
+    heading_hierarchy_valid: bool = True
+    heading_skips: List[str] = Field(default_factory=list)
+    insecure_resource_urls: List[str] = Field(default_factory=list)
+
+class ImageSEOEvidence(BaseModel):
     total_images: int = 0
     images_with_alt: int = 0
-    decorative_images: int = 0
-    images_with_dimensions: int = 0
+    missing_alt_count: int = 0
+    generic_alt_count: int = 0
+    decorative_alt_count: int = 0
+    missing_dimensions_count: int = 0
     modern_format_count: int = 0
+    legacy_format_count: int = 0
     lazy_loaded_count: int = 0
-    hero_or_lcp_candidate: Optional[str] = None
-    score: int = 100
-    grade: str = "A"
+    early_lazy_lcp_risks_count: int = 0
     images: List[ImageDetail] = Field(default_factory=list)
-    findings: List[ImageFinding] = Field(default_factory=list)
-    recommendations: List[str] = Field(default_factory=list)
+    head_audit: Optional[HtmlHeadEvidence] = None
 
-class A11yViolationSeverity(str, Enum):
+class AccessibilitySeverity(str, Enum):
     CRITICAL = "CRITICAL"
     SERIOUS = "SERIOUS"
     MODERATE = "MODERATE"
     MINOR = "MINOR"
+    UNKNOWN = "UNKNOWN"
 
-class A11yViolation(BaseModel):
+class WcagLevel(str, Enum):
+    A = "A"
+    AA = "AA"
+    AAA = "AAA"
+    UNKNOWN = "UNKNOWN"
+
+class WcagStatus(str, Enum):
+    PASS = "PASS"
+    FAIL = "FAIL"
+    PARTIAL = "PARTIAL"
+    UNKNOWN = "UNKNOWN"
+    UNAVAILABLE = "UNAVAILABLE"
+    NOT_APPLICABLE = "NOT_APPLICABLE"
+
+class AccessibilityViolation(BaseModel):
     rule_id: str
-    wcag_tags: List[str] = Field(default_factory=list)
-    severity: A11yViolationSeverity
+    wcag_sc: str = ""
+    level: WcagLevel = WcagLevel.UNKNOWN
+    severity: AccessibilitySeverity = AccessibilitySeverity.UNKNOWN
     description: str
     help_url: str = ""
-    selector_or_html: Optional[str] = None
-    recommendation: str
+    selector: Optional[str] = None
+    html_snippet: Optional[str] = None
+    failure_summary: str = ""
+    tier: str = "static" # "static" or "axe_rendered"
 
-class A11yAuditEvidence(BaseModel):
+class AccessibilityEvidence(BaseModel):
     url: str = ""
-    engine_source: str = "static_dom_evaluator"  # "axe_core_playwright", "static_dom_evaluator"
-    score: int = 100
-    grade: str = "A"
+    engine_source: str = "static_ast_auditor" 
+    browser_evaluated: bool = False
+    wcag_aa_status: WcagStatus = WcagStatus.UNKNOWN
+    total_violations: int = 0
     critical_count: int = 0
     serious_count: int = 0
     moderate_count: int = 0
     minor_count: int = 0
-    total_violations: int = 0
-    has_lang: bool = True
-    has_title: bool = True
-    has_main_landmark: bool = True
-    heading_hierarchy_valid: bool = True
-    violations: List[A11yViolation] = Field(default_factory=list)
-    passes: List[str] = Field(default_factory=list)
+    rules_evaluated_count: int = 0
+    rules_passed_count: int = 0
+    violations: List[AccessibilityViolation] = Field(default_factory=list)
+    visual_contrast_status: WcagStatus = WcagStatus.UNKNOWN
+    touch_target_status: WcagStatus = WcagStatus.UNKNOWN
     recommendations: List[str] = Field(default_factory=list)
+    notes: List[str] = Field(default_factory=list)
 
 class EvidenceProvenanceTag(BaseModel):
     """Tracks which engine produced a specific finding, with confidence rating."""
@@ -713,8 +729,8 @@ class EngineResult(BaseModel):
     trust_stack: Optional[TrustStackResult] = None
     performance: Optional[PerformanceEvidence] = None
     security: Optional[SecurityEvidence] = None
-    image_seo: Optional[ImageSeoEvidence] = None
-    accessibility: Optional[A11yAuditEvidence] = None
+    image_seo: Optional[ImageSEOEvidence] = None
+    accessibility: Optional[AccessibilityEvidence] = None
     cloud_intelligence: Optional[CloudIntelligenceEvidence] = None
     raw_html: Optional[str] = None  # Post-JS rendered HTML from crawl4ai; used by TrustEvaluator and GeoEngine
 
@@ -763,8 +779,8 @@ class SynthesisReport(BaseModel):
     unified_trust: TrustStackResult = Field(default_factory=TrustStackResult)
     unified_performance: PerformanceEvidence = Field(default_factory=PerformanceEvidence)
     unified_security: SecurityEvidence = Field(default_factory=SecurityEvidence)
-    unified_image_seo: ImageSeoEvidence = Field(default_factory=ImageSeoEvidence)
-    unified_accessibility: A11yAuditEvidence = Field(default_factory=A11yAuditEvidence)
+    unified_image_seo: ImageSEOEvidence = Field(default_factory=ImageSEOEvidence)
+    unified_accessibility: AccessibilityEvidence = Field(default_factory=AccessibilityEvidence)
     cloud_intelligence: CloudIntelligenceEvidence = Field(default_factory=CloudIntelligenceEvidence)
     site_crawl: Optional[SiteCrawlResult] = None
     
