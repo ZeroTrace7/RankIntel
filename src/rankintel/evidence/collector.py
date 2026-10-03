@@ -13,7 +13,20 @@ from rankintel.adapters.geo_optimizer_adapter import GeoOptimizerAdapter
 from rankintel.engines.browser_engine import BrowserEngine
 from rankintel.engines.performance_engine import PerformanceEngine
 from rankintel.engines.mcp_engine import McpEngine
-from rankintel.models.schema import EngineResult
+from rankintel.engines.image_engine import ImageEngine
+from rankintel.engines.accessibility_engine import AccessibilityEngine
+from rankintel.engines.security_engine import SecurityEngine
+from rankintel.models.schema import (
+    EngineResult,
+    SecurityStatus,
+    WcagStatus,
+    SecurityEvidence,
+    AccessibilityEvidence,
+    ImageSEOEvidence
+)
+import asyncio
+import concurrent.futures
+from urllib.parse import urlparse
 
 
 class EvidenceCollector:
@@ -25,6 +38,21 @@ class EvidenceCollector:
         self.browser_engine = BrowserEngine()
         self.performance_engine = PerformanceEngine()
         self.mcp_engine = McpEngine()
+        self.image_engine = ImageEngine()
+        self.accessibility_engine = AccessibilityEngine()
+        self.security_engine = SecurityEngine()
+
+    def _run_async(self, coro):
+        """Helper to run async coroutines safely from synchronous context."""
+        try:
+            loop = asyncio.get_running_loop()
+        except RuntimeError:
+            loop = None
+        if loop and loop.is_running():
+            with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
+                return pool.submit(asyncio.run, coro).result()
+        else:
+            return asyncio.run(coro)
 
     def collect(self, url: str) -> Dict[str, EngineResult]:
         """Run all engines on the target URL and collect raw evidence."""
@@ -51,7 +79,14 @@ class EvidenceCollector:
             )
 
         # 3. GEO Engine — pass raw_html from browser engine to avoid a second HTTP request
-        browser_html = (results.get("browser_engine") or EngineResult(engine_name="x")).raw_html
+        browser_res = results.get("browser_engine")
+        browser_html = browser_res.raw_html if browser_res else None
+        # Fallback to static HTML if browser engine produced none
+        if not browser_html:
+            seo_res_check = results.get("advertools_seo")
+            if seo_res_check and seo_res_check.on_page and hasattr(seo_res_check.on_page, "raw_html"):
+                browser_html = getattr(seo_res_check.on_page, "raw_html", None)
+
         try:
             results["rankintel_geo"] = self.geo_engine.execute(url, raw_html=browser_html)
         except Exception as e:
@@ -79,6 +114,122 @@ class EvidenceCollector:
                 engine_name="mcp_cloud",
                 status="skipped",
                 error_message=f"Cloud intelligence skipped: {e}",
+            )
+
+        # 6. Image Engine (Phase 7.1) — Reuses already-observed raw_html (zero extra HTTP requests)
+        try:
+            if browser_html:
+                img_evidence = ImageEngine.evaluate(browser_html, url)
+                results["image_engine"] = EngineResult(
+                    engine_name="image_engine",
+                    status="success",
+                    image_seo=img_evidence,
+                )
+            else:
+                results["image_engine"] = EngineResult(
+                    engine_name="image_engine",
+                    status="skipped",
+                    error_message="No HTML available for image analysis",
+                    image_seo=ImageSEOEvidence(),
+                )
+        except Exception as e:
+            results["image_engine"] = EngineResult(
+                engine_name="image_engine",
+                status="error",
+                error_message=f"Image engine failed: {e}",
+            )
+
+        # 7. Accessibility Engine (Phase 7.2) — Preserves both static AST and axe/browser tiers
+        try:
+            if browser_html:
+                # If browser engine performed full browser rendering, invoke axe/browser evaluation tier
+                browser_rendered = (
+                    browser_res is not None
+                    and browser_res.on_page is not None
+                    and browser_res.on_page.engine_source == "crawl4ai_browser_dom"
+                )
+                if browser_rendered:
+                    try:
+                        a11y_evidence = self._run_async(
+                            AccessibilityEngine.evaluate_async(url, browser_html)
+                        )
+                    except Exception:
+                        a11y_evidence = AccessibilityEngine.evaluate_static(browser_html, url)
+                else:
+                    a11y_evidence = AccessibilityEngine.evaluate_static(browser_html, url)
+
+                results["accessibility_engine"] = EngineResult(
+                    engine_name="accessibility_engine",
+                    status="success",
+                    accessibility=a11y_evidence,
+                )
+            else:
+                a11y_evidence = AccessibilityEvidence(
+                    url=url,
+                    wcag_aa_status=WcagStatus.UNAVAILABLE,
+                    notes=["No HTML available for accessibility analysis."],
+                )
+                results["accessibility_engine"] = EngineResult(
+                    engine_name="accessibility_engine",
+                    status="skipped",
+                    error_message="No HTML available for accessibility analysis",
+                    accessibility=a11y_evidence,
+                )
+        except Exception as e:
+            results["accessibility_engine"] = EngineResult(
+                engine_name="accessibility_engine",
+                status="error",
+                error_message=f"Accessibility engine failed: {e}",
+            )
+
+        # 8. Security Engine (Phase 7.3) — Reuses response headers & raw_html (zero duplicate HTTP page requests)
+        try:
+            seo_res = results.get("advertools_seo")
+            headers = seo_res.on_page.response_headers if (seo_res and seo_res.on_page) else {}
+            parsed_u = urlparse(url)
+            is_https = parsed_u.scheme.lower() == "https"
+
+            tls_details = None
+            if is_https and parsed_u.hostname:
+                try:
+                    tls_details = self.security_engine.check_tls_certificate(
+                        parsed_u.hostname, parsed_u.port or 443
+                    )
+                except Exception:
+                    pass
+
+            if headers:
+                sec_evidence = self.security_engine.audit_headers_and_html(
+                    url=url,
+                    headers=headers,
+                    raw_html=browser_html,
+                    tls_details=tls_details,
+                )
+                results["security_engine"] = EngineResult(
+                    engine_name="security_engine",
+                    status="success",
+                    security=sec_evidence,
+                )
+            else:
+                # Do NOT trigger an extra HTTP page request if headers are unavailable; preserve UNAVAILABLE semantics
+                sec_evidence = SecurityEvidence(
+                    url=url,
+                    is_https=is_https,
+                    overall_status=SecurityStatus.UNAVAILABLE,
+                    tls_details=tls_details,
+                    recommendations=["Response headers were unavailable from collection pass."],
+                )
+                results["security_engine"] = EngineResult(
+                    engine_name="security_engine",
+                    status="skipped",
+                    error_message="Response headers unavailable from collection pass",
+                    security=sec_evidence,
+                )
+        except Exception as e:
+            results["security_engine"] = EngineResult(
+                engine_name="security_engine",
+                status="error",
+                error_message=f"Security engine failed: {e}",
             )
 
         return results
