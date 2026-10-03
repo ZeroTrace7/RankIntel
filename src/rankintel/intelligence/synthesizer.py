@@ -28,6 +28,7 @@ from rankintel.models.schema import (
     SearchSignalEvidence,
     PageTopicIntelligence,
     PageQueryEvidence,
+    PageIntentEvidence,
     SecurityStatus,
     WcagStatus,
     SecuritySeverity,
@@ -292,6 +293,14 @@ class IntelligenceSynthesizer:
             else PageQueryEvidence(url=url)
         )
 
+        # 15. Search Intent Reconciliation (Phase 9.4 - Layer A)
+        intent_res = engine_results.get("search_intent_engine")
+        unified_search_intent = (
+            intent_res.search_intent
+            if (intent_res and intent_res.search_intent)
+            else PageIntentEvidence(url=url)
+        )
+
         # Build Prioritized Actions
         actions = self._build_prioritized_actions(
             unified_on_page,
@@ -353,6 +362,7 @@ class IntelligenceSynthesizer:
             unified_search_signal=unified_search_signal,
             unified_topic=unified_topic,
             unified_query_page=unified_query_page,
+            unified_search_intent=unified_search_intent,
             cloud_intelligence=cloud_intelligence,
             fixes=fixes
         )
