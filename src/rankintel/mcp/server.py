@@ -85,6 +85,9 @@ def rankintel_audit(url: str, deep_crawl: bool = False, max_pages: int = 25) -> 
         "query_page_concepts_mapped_count": report.unified_query_page.total_concepts_mapped if report.unified_query_page else 0,
         "query_page_direct_concepts_count": report.unified_query_page.direct_concepts_count if report.unified_query_page else 0,
         "site_multi_page_overlaps_count": report.site_crawl.query_page_intelligence.multi_page_overlap_count if (report.site_crawl and report.site_crawl.query_page_intelligence) else 0,
+        "search_intent_primary": report.unified_search_intent.primary_observed_intent_signal.value if report.unified_search_intent else "unspecified",
+        "search_intent_signals_count": len(report.unified_search_intent.evidence_items) if report.unified_search_intent else 0,
+        "site_topics_covered_count": report.site_crawl.topic_coverage_intelligence.total_topics_covered if (report.site_crawl and report.site_crawl.topic_coverage_intelligence) else 0,
     }
 
 @mcp.tool

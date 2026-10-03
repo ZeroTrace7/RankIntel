@@ -182,6 +182,25 @@ def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_p
             f"{qpi.total_concepts_mapped} site concepts ({qpi.multi_page_overlap_count} overlaps)",
             "deterministic on-site triangulation (Layer A)"
         )
+    if report.unified_search_intent and report.unified_search_intent.evidence_items:
+        s_int = report.unified_search_intent
+        pri_name = (
+            s_int.primary_observed_intent_signal.value
+            if hasattr(s_int.primary_observed_intent_signal, "value")
+            else str(s_int.primary_observed_intent_signal)
+        )
+        table.add_row(
+            "Search Intent Signals",
+            f"Primary: {pri_name.upper()} ({len(s_int.evidence_items)} evidence items)",
+            "on-site structural heuristics (Layer A)"
+        )
+    elif report.site_crawl and report.site_crawl.topic_coverage_intelligence and report.site_crawl.topic_coverage_intelligence.total_topics_covered > 0:
+        cov = report.site_crawl.topic_coverage_intelligence
+        table.add_row(
+            "Search Intent & Coverage",
+            f"{cov.total_topics_covered} topics covered ({len(cov.multi_intent_topics)} multi-intent)",
+            "deterministic on-site aggregation (Layer A)"
+        )
 
     console.print(table)
 
