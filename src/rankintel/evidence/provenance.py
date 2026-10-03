@@ -312,4 +312,29 @@ class ProvenanceTagger:
                     confidence="high"
                 ))
 
+        # 16. Search Intent findings (Phase 9.4 - Layer A)
+        intent_res = engine_results.get("search_intent_engine")
+        if intent_res and intent_res.search_intent and intent_res.status == "success":
+            intent_ev = intent_res.search_intent
+            pri_val = (
+                intent_ev.primary_observed_intent_signal.value
+                if hasattr(intent_ev.primary_observed_intent_signal, "value")
+                else str(intent_ev.primary_observed_intent_signal)
+            )
+            tags.append(EvidenceProvenanceTag(
+                finding=f"Search Intent Signals: Primary observed intent signal is '{pri_val}' ({len(intent_ev.evidence_items)} observable evidence items)",
+                source_file="On-Site Structural Intent Heuristics",
+                engine="search_intent_engine",
+                evidence_snippet=f"Counts: {intent_ev.intent_counts}",
+                confidence="high" if pri_val != "unspecified" else "medium"
+            ))
+            if intent_ev.analyses:
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"Search Intent Corroboration: {intent_ev.analyses[0]}",
+                    source_file="Multi-Signal Corroboration Engine",
+                    engine="search_intent_engine",
+                    evidence_snippet=intent_ev.analyses[0],
+                    confidence="high"
+                ))
+
         return tags

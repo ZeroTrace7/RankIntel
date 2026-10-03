@@ -22,6 +22,7 @@ from rankintel.engines.internal_link_engine import InternalLinkEngine
 from rankintel.engines.search_signal_engine import SearchSignalEngine
 from rankintel.engines.topic_intelligence_engine import TopicIntelligenceEngine
 from rankintel.engines.query_page_mapping_engine import QueryPageMappingEngine
+from rankintel.engines.search_intent_engine import SearchIntentEngine
 from rankintel.models.schema import (
     EngineResult,
     SecurityStatus,
@@ -35,6 +36,7 @@ from rankintel.models.schema import (
     SearchSignalEvidence,
     PageTopicIntelligence,
     PageQueryEvidence,
+    PageIntentEvidence,
 )
 import asyncio
 import concurrent.futures
@@ -59,6 +61,7 @@ class EvidenceCollector:
         self.search_signal_engine = SearchSignalEngine()
         self.topic_intelligence_engine = TopicIntelligenceEngine()
         self.query_page_mapping_engine = QueryPageMappingEngine()
+        self.search_intent_engine = SearchIntentEngine()
 
     def _run_async(self, coro):
         """Helper to run async coroutines safely from synchronous context."""
@@ -487,6 +490,45 @@ class EvidenceCollector:
                 query_page=PageQueryEvidence(
                     url=url,
                     engine_source="query_page_mapping_engine",
+                    status="error",
+                    error_message=str(e),
+                ),
+            )
+
+        # 15. Search Intent Engine (Phase 9.4 - Layer A) — Reuses already-observed evidence (zero duplicate HTTP requests)
+        try:
+            browser_res = results.get("crawl4ai_browser")
+            schema_data = browser_res.schema_data if (browser_res and browser_res.schema_data) else None
+
+            intent_ev = self.search_intent_engine.evaluate(
+                url=url,
+                raw_html=browser_html,
+                on_page=on_page_data,
+                search_signal_ev=sig_data,
+                topic_intel_ev=topic_data,
+                query_page_ev=qp_ev if 'qp_ev' in locals() else None,
+                content_ev=cnt_data,
+                entity_ev=ent_data,
+                schema_ev=schema_data,
+            )
+
+            status = "success" if browser_html else "skipped"
+            err_msg = None if browser_html else "No HTML available for search intent analysis"
+
+            results["search_intent_engine"] = EngineResult(
+                engine_name="search_intent_engine",
+                status=status,
+                error_message=err_msg,
+                search_intent=intent_ev,
+            )
+        except Exception as e:
+            results["search_intent_engine"] = EngineResult(
+                engine_name="search_intent_engine",
+                status="error",
+                error_message=f"Search intent engine failed: {e}",
+                search_intent=PageIntentEvidence(
+                    url=url,
+                    engine_source="search_intent_engine",
                     status="error",
                     error_message=str(e),
                 ),

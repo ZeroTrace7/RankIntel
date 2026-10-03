@@ -413,6 +413,18 @@ class CrawlFrontier:
                 analyses=[f"Site query-page analyzer encountered an error: {e}"],
             )
 
+        try:
+            from rankintel.analyzers.topic_coverage_analyzer import SiteTopicCoverageAnalyzer
+            SiteTopicCoverageAnalyzer.analyze_site(result)
+        except Exception as e:
+            from rankintel.models.schema import SiteTopicCoverageIntelligence
+            result.topic_coverage_intelligence = SiteTopicCoverageIntelligence(
+                status="error",
+                error_message=f"Site topic coverage analysis failed during crawl aggregation: {e}",
+                completeness_disclaimer="Topic coverage intelligence unavailable due to an aggregation error.",
+                analyses=[f"Site topic coverage analyzer encountered an error: {e}"],
+            )
+
         if getattr(self.config, "enable_sitemap_analysis", False):
             try:
                 from rankintel.sitemaps.discovery import SitemapDiscovery
