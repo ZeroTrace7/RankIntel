@@ -425,46 +425,39 @@ def test_mcp_and_cli_audit_output():
         covered_topics=[cov_item],
     )
 
-    mock_report = MagicMock()
-    mock_report.unified_search_intent = PageIntentEvidence(
-        url=url,
-        primary_observed_intent_signal=SearchIntentCategory.INFORMATIONAL,
-        evidence_items=[
-            IntentEvidenceItem(
-                intent_category=SearchIntentCategory.INFORMATIONAL,
-                signal_type="EXPLANATORY_HEADING",
-                evidence_term="What is Hardness?",
-                evidence_location="H2",
-                supporting_snippet="Snipped content",
-            )
-        ],
-    )
-    mock_report.site_crawl = MagicMock(topic_coverage_intelligence=site_cov)
-    mock_report.unified_seo = None
-    mock_report.unified_robots = None
-    mock_report.unified_schema = None
-    mock_report.unified_geo = None
-    mock_report.unified_trust = None
-    mock_report.unified_performance = None
-    mock_report.unified_security = None
-    mock_report.unified_accessibility = None
-    mock_report.unified_image_seo = None
-    mock_report.unified_content = None
-    mock_report.unified_entity = None
-    mock_report.unified_internal_link = None
-    mock_report.unified_search_signal = None
-    mock_report.unified_topic = None
-    mock_report.unified_query_page = None
-    mock_report.cloud_intelligence = None
-    mock_report.overall_health_score = 85
-    mock_report.geo_readiness_score = 80
-    mock_report.technical_health_score = 90
-    mock_report.trust_score = 85
-    mock_report.performance_score = 80
-    mock_report.conflicts_detected = []
-    mock_report.prioritized_actions = []
+    synthesizer = IntelligenceSynthesizer()
+    results = {
+        "advertools_seo": EngineResult(
+            engine_name="advertools_seo",
+            status="success",
+            on_page=OnPageEvidence(title="Hardness Guide", title_length=14),
+        ),
+        "search_intent_engine": EngineResult(
+            engine_name="search_intent_engine",
+            status="success",
+            search_intent=PageIntentEvidence(
+                url=url,
+                primary_observed_intent_signal=SearchIntentCategory.INFORMATIONAL,
+                evidence_items=[
+                    IntentEvidenceItem(
+                        intent_category=SearchIntentCategory.INFORMATIONAL,
+                        signal_type="EXPLANATORY_HEADING",
+                        evidence_term="What is Hardness?",
+                        evidence_location="H2",
+                        supporting_snippet="Snipped content",
+                    )
+                ],
+            ),
+        ),
+    }
 
-    with patch("rankintel.mcp.server.EvidenceCollector") as mock_col_cls, \
+    mock_report = synthesizer.synthesize(url, results)
+    mock_report.site_crawl = SiteCrawlResult(
+        completeness_status="CRAWL_COMPLETE",
+        topic_coverage_intelligence=site_cov,
+    )
+
+    with patch("rankintel.mcp.server.EvidenceCollector"), \
          patch("rankintel.mcp.server.IntelligenceSynthesizer") as mock_syn_cls:
         mock_syn_cls.return_value.synthesize.return_value = mock_report
         res = rankintel_audit(url)
@@ -475,7 +468,7 @@ def test_mcp_and_cli_audit_output():
 
     # Verify CLI execution
     runner = CliRunner()
-    with patch("rankintel.cli.EvidenceCollector") as mock_cli_col, \
+    with patch("rankintel.cli.EvidenceCollector"), \
          patch("rankintel.cli.IntelligenceSynthesizer") as mock_cli_syn, \
          patch("rankintel.reporters.markdown.MarkdownReporter.save", return_value="audits/test.md"):
         mock_cli_syn.return_value.synthesize.return_value = mock_report
