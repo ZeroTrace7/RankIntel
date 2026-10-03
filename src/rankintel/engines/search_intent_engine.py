@@ -375,10 +375,10 @@ class SearchIntentEngine:
         # 4. Local Geographic Signals
         # ----------------------------------------------------------------------
         body_text = ""
-        if content_ev and content_ev.lead_content_snippet:
-            body_text = content_ev.lead_content_snippet
-        elif soup:
+        if soup:
             body_text = soup.get_text(" ", strip=True)
+        elif content_ev and getattr(content_ev, "main_content_text_preview", None):
+            body_text = content_ev.main_content_text_preview
 
         # Check Map Embeds
         if soup and soup.find("iframe", src=re.compile(r"google\.com/maps|openstreetmap", re.IGNORECASE)):
