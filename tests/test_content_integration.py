@@ -226,6 +226,8 @@ def test_crawl_frontier_build_result_runs_content_analyzer():
     html_a = "<html><body><main><h1>Page A</h1><p>Shared product description for duplicate test.</p></main></body></html>"
     html_b = "<html><body><main><h1>Page B</h1><p>Shared product description for duplicate test.</p></main></body></html>"
 
+    frontier.add_url("https://example.com/a", depth=0, parent_url=None)
+    frontier.add_url("https://example.com/b", depth=1, parent_url="https://example.com/a")
     frontier.mark_fetched("https://example.com/a", 200, "text/html", 100, 0.1, [], raw_html=html_a)
     frontier.mark_fetched("https://example.com/b", 200, "text/html", 100, 0.1, [], raw_html=html_b)
 

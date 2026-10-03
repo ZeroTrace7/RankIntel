@@ -12,6 +12,18 @@ from rankintel.models.schema import (
 from rankintel.analyzers.content_analyzer import SiteContentAnalyzer
 
 
+def make_record(url: str, raw_html: str, status_code: int = 200) -> CrawlRecord:
+    return CrawlRecord(
+        url=url,
+        normalized_url=url,
+        identity_url=url,
+        crawl_status=CrawlStatus.FETCHED,
+        depth=1,
+        status_code=status_code,
+        raw_html=raw_html,
+    )
+
+
 def test_exact_duplicate_clustering():
     html_shared = """
     <!DOCTYPE html>
@@ -29,13 +41,12 @@ def test_exact_duplicate_clustering():
     """
 
     records = [
-        CrawlRecord(url="https://example.com/widget-a", status_code=200, raw_html=html_shared),
-        CrawlRecord(url="https://example.com/widget-b", status_code=200, raw_html=html_shared),
-        CrawlRecord(url="https://example.com/widget-c", status_code=200, raw_html=html_shared),
-        CrawlRecord(
-            url="https://example.com/distinct-product",
-            status_code=200,
-            raw_html="<html><body><main><h1>Distinct Tool</h1><p>A completely different pneumatic torque wrench for aviation maintenance.</p></main></body></html>"
+        make_record("https://example.com/widget-a", html_shared),
+        make_record("https://example.com/widget-b", html_shared),
+        make_record("https://example.com/widget-c", html_shared),
+        make_record(
+            "https://example.com/distinct-product",
+            "<html><body><main><h1>Distinct Tool</h1><p>A completely different pneumatic torque wrench for aviation maintenance.</p></main></body></html>"
         ),
     ]
 
@@ -89,9 +100,9 @@ def test_near_duplicate_detection():
     """
 
     records = [
-        CrawlRecord(url="https://example.com/uk/audit", status_code=200, raw_html=page_uk),
-        CrawlRecord(url="https://example.com/eu/audit", status_code=200, raw_html=page_eu),
-        CrawlRecord(url="https://example.com/careers", status_code=200, raw_html=page_unrelated),
+        make_record("https://example.com/uk/audit", page_uk),
+        make_record("https://example.com/eu/audit", page_eu),
+        make_record("https://example.com/careers", page_unrelated),
     ]
 
     site_crawl = SiteCrawlResult(crawl_records=records)
@@ -125,7 +136,7 @@ def test_repeated_boilerplate_blocks_detection():
             <div class="legal-notice"><p>{shared_disclaimer}</p></div>
         </body></html>
         """
-        records.append(CrawlRecord(url=f"https://example.com/page-{i}", status_code=200, raw_html=html))
+        records.append(make_record(f"https://example.com/page-{i}", html))
 
     site_crawl = SiteCrawlResult(crawl_records=records)
     summary = SiteContentAnalyzer.analyze_site(site_crawl)
@@ -138,25 +149,21 @@ def test_repeated_boilerplate_blocks_detection():
 
 def test_site_wide_content_telemetry_aggregation():
     # 1 thin page, 1 heading skip page, 1 title-H1 mismatch page, 1 clean page
-    rec_thin = CrawlRecord(
-        url="https://example.com/thin",
-        status_code=200,
-        raw_html="<html><body><main><h1>Thin</h1><p>One word.</p></main></body></html>"
+    rec_thin = make_record(
+        "https://example.com/thin",
+        "<html><body><main><h1>Thin</h1><p>One word.</p></main></body></html>"
     )
-    rec_skips = CrawlRecord(
-        url="https://example.com/skips",
-        status_code=200,
-        raw_html="<html><body><main><h1>Root</h1><h3>Skipped to H3</h3><p>Content text</p></main></body></html>"
+    rec_skips = make_record(
+        "https://example.com/skips",
+        "<html><body><main><h1>Root</h1><h3>Skipped to H3</h3><p>Content text</p></main></body></html>"
     )
-    rec_mismatch = CrawlRecord(
-        url="https://example.com/mismatch",
-        status_code=200,
-        raw_html="<html><head><title>Alpha Gamma</title></head><body><main><h1>Zeta Theta</h1><p>Content text</p></main></body></html>"
+    rec_mismatch = make_record(
+        "https://example.com/mismatch",
+        "<html><head><title>Alpha Gamma</title></head><body><main><h1>Zeta Theta</h1><p>Content text</p></main></body></html>"
     )
-    rec_clean = CrawlRecord(
-        url="https://example.com/clean",
-        status_code=200,
-        raw_html="<html><head><title>Testing Standards</title></head><body><main><h1>Testing Standards</h1><p>Substantive text</p><h2>Section</h2><p>Body</p></main></body></html>"
+    rec_clean = make_record(
+        "https://example.com/clean",
+        "<html><head><title>Testing Standards</title></head><body><main><h1>Testing Standards</h1><p>Substantive text</p><h2>Section</h2><p>Body</p></main></body></html>"
     )
 
     site_crawl = SiteCrawlResult(crawl_records=[rec_thin, rec_skips, rec_mismatch, rec_clean])
