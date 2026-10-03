@@ -454,4 +454,36 @@ class IntelligenceSynthesizer:
                 engine_confidence="MEDIUM (Heuristic NLP)"
             ))
 
+        # Security Engine deterministic findings (CRITICAL / HIGH only, no UNKNOWN/UNAVAILABLE)
+        if security and security.overall_status not in (SecurityStatus.UNKNOWN, SecurityStatus.UNAVAILABLE):
+            for f in security.findings:
+                if f.severity == SecuritySeverity.CRITICAL and f.recommendation:
+                    actions.append(PrioritizedAction(
+                        level="CRITICAL",
+                        title=f.title,
+                        finding=f.description,
+                        rationale=f.recommendation,
+                        engine_confidence="HIGH (Security engine telemetry)"
+                    ))
+                elif f.severity == SecuritySeverity.HIGH and f.recommendation:
+                    actions.append(PrioritizedAction(
+                        level="HIGH",
+                        title=f.title,
+                        finding=f.description,
+                        rationale=f.recommendation,
+                        engine_confidence="HIGH (Security engine telemetry)"
+                    ))
+
+        # Accessibility Engine deterministic findings (CRITICAL only, no UNKNOWN/UNAVAILABLE)
+        if accessibility and accessibility.wcag_aa_status not in (WcagStatus.UNKNOWN, WcagStatus.UNAVAILABLE):
+            for v in accessibility.violations:
+                if v.severity == AccessibilitySeverity.CRITICAL:
+                    actions.append(PrioritizedAction(
+                        level="CRITICAL",
+                        title=f"Resolve Critical Accessibility Barrier: {v.rule_id}",
+                        finding=v.failure_summary or v.description,
+                        rationale="Critical WCAG barriers completely block assistive technology users from accessing content or controls.",
+                        engine_confidence="HIGH (Deterministic AST/axe check)"
+                    ))
+
         return actions
