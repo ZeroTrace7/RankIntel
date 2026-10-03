@@ -91,17 +91,21 @@ def test_site_query_page_analyzer_multi_page_and_overlap():
     """
     rec1 = CrawlRecord(
         url="https://example.com/services",
-        depth=1,
+        normalized_url="https://example.com/services",
+        identity_url="https://example.com/services",
+        crawl_status=CrawlStatus.FETCHED,
+        depth=0,
         status_code=200,
-        status=CrawlStatus.FETCHED,
         raw_html=HTML_PAGE_1,
         title="Precision Calibration Services | Acme Labs",
     )
     rec2 = CrawlRecord(
         url="https://example.com/products",
+        normalized_url="https://example.com/products",
+        identity_url="https://example.com/products",
+        crawl_status=CrawlStatus.FETCHED,
         depth=1,
         status_code=200,
-        status=CrawlStatus.FETCHED,
         raw_html=HTML_PAGE_2,
         title="Calibration Equipment & Standards | Acme Labs",
     )
@@ -146,9 +150,11 @@ def test_partial_crawl_completeness_disclaimer():
     """Verify that partial crawls receive explicit disclaimer without treating absence as proof."""
     rec = CrawlRecord(
         url="https://example.com/page1",
-        depth=1,
+        normalized_url="https://example.com/page1",
+        identity_url="https://example.com/page1",
+        crawl_status=CrawlStatus.FETCHED,
+        depth=0,
         status_code=200,
-        status=CrawlStatus.FETCHED,
         raw_html=HTML_PAGE_1,
     )
     # Simulate a partial crawl with remaining frontier
@@ -329,8 +335,11 @@ def test_markdown_and_json_reporters():
 
     rec = CrawlRecord(
         url="https://example.com/lab",
+        normalized_url="https://example.com/lab",
+        identity_url="https://example.com/lab",
+        crawl_status=CrawlStatus.FETCHED,
+        depth=0,
         status_code=200,
-        status=CrawlStatus.FETCHED,
         raw_html=HTML_PAGE_1,
     )
     site_crawl = SiteCrawlResult(
