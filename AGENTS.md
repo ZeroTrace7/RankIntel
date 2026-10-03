@@ -81,3 +81,16 @@ Whenever the user asks RankIntel to perform an "analysis", "audit", "validation"
 ## 9. Architectural Constraints & Reporting (Phase 6+)
 - **Preserve Core Systems**: Do not reinvent or replace existing core systems. Extend them incrementally. Do NOT replace `NetworkX` for graph structures. Do NOT replace `AsyncDeepCrawler` for crawling. Do NOT create a second browser subsystem; reuse the existing `crawl4ai` integrations inside `BrowserEngine`.
 - **Milestone Reporting**: When completing a Phase or Milestone, generate the final report as an Antigravity Artifact (saved to the artifact directory) rather than checking markdown reports directly into the repository unless explicitly requested by the user.
+
+## 10. Phase 7 — Technical, Accessibility & Security Intelligence
+- **Phase 7 Complete**: M7.1–M7.4 are fully implemented and integrated.
+- **ImageEngine**: Handles image SEO, alt semantics, intrinsic/rendered dimensions, modern formats (WebP/AVIF), layout-shift risk, and `<head>` observations.
+- **AccessibilityEngine**: Provides dual-tier static HTML AST checks and optional Playwright/axe-core automated WCAG 2.1/2.2 AA checks.
+- **SecurityEngine**: Performs passive HTTP header, cookie security, mixed-content, and transport-level TLS socket observations.
+- **Zero Redundant HTTP**: Phase 7 engines strictly reuse existing crawl/browser evidence (`raw_html`, `response_headers`, socket TLS) and must not introduce duplicate page fetches.
+- **Semantic State Preservation**: Accessibility and security states must preserve `PASS`, `FAIL`, `PARTIAL`, `UNKNOWN`, `UNAVAILABLE`, and `NOT_APPLICABLE` (never silently convert to PASS or FAIL).
+- **No Arbitrary Scoring**: Phase 7 does not introduce arbitrary letter grades, percentages, or numerical scores for security, accessibility, or image SEO.
+- **Non-Certification Scope**: Automated accessibility results are factual automated checks, not complete WCAG legal certification.
+- **Formula Invariance**: Phase 7 observations do not modify the existing `3_engine`, `4_engine`, or `5_engine` health-score formulas. They surface as distinct quality dimensions and evidence-gated prioritized actions.
+- **Provenance Preservation**: Phase 7 engine provenance must be strictly preserved through synthesis, conflict detection, and reporting.
+- **Maintenance Discipline**: Future agents should modify Phase 7 only when fixing a confirmed defect or extending functionality; do not redesign completed engines unnecessarily.
