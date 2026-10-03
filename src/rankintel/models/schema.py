@@ -1256,6 +1256,78 @@ class SiteTopicIntelligence(BaseModel):
     facts: List[str] = Field(default_factory=list)
     analyses: List[str] = Field(default_factory=list)
 
+# ==============================================================================
+# Phase 9.3 - Query-Page Mapping Models (Layer A: On-Site Concept to Page Mapping)
+# ==============================================================================
+
+class QueryPageEvidence(BaseModel):
+    """Deterministic single-page mapping for an observed on-site concept or evidenced topic."""
+    concept: str
+    normalized_concept: str
+    concept_nature: str = "OBSERVED_CONCEPT"  # "OBSERVED_CONCEPT" or "EVIDENCED_TOPIC"
+    url: str = ""
+    evidence_strength: SearchSignalConfidence = SearchSignalConfidence.SUPPORTED  # DIRECT, SUPPORTED, WEAK
+    evidence_locations: List[str] = Field(default_factory=list)  # TITLE, H1, H2, H3, MAIN_CONTENT, URL_PATH, STRUCTURED_DATA, ENTITY
+    occurrences_count: int = 1
+    has_title_or_h1: bool = False
+    is_exact_term_match: bool = False
+    is_topic_membership: bool = False
+    associated_entities: List[str] = Field(default_factory=list)
+    structured_data_types: List[str] = Field(default_factory=list)
+    url_path_match: bool = False
+    supporting_snippets: List[str] = Field(default_factory=list)  # Bounded to max 5 snippets
+    provenance: str = "query_page_mapping_engine"
+
+class PageQueryEvidence(BaseModel):
+    """Aggregated deterministic concept-to-page mappings for a single crawled page."""
+    url: str = ""
+    engine_source: str = "query_page_mapping_engine"
+    status: str = "success"  # success, error, skipped
+    error_message: Optional[str] = None
+    total_concepts_mapped: int = 0
+    direct_concepts_count: int = 0
+    supported_concepts_count: int = 0
+    weak_concepts_count: int = 0
+    mapped_concepts: List[QueryPageEvidence] = Field(default_factory=list)
+    primary_concepts: List[str] = Field(default_factory=list)
+    facts: List[str] = Field(default_factory=list)
+    analyses: List[str] = Field(default_factory=list)
+
+class QueryPageRelationship(BaseModel):
+    """Deterministic inverse mapping from an observed concept to its supporting crawled pages."""
+    concept: str
+    normalized_concept: str
+    concept_nature: str = "OBSERVED_CONCEPT"
+    pages_count: int = 0
+    page_urls: List[str] = Field(default_factory=list)
+    direct_pages: List[str] = Field(default_factory=list)
+    supported_pages: List[str] = Field(default_factory=list)
+    weak_pages: List[str] = Field(default_factory=list)
+    evidence_locations: List[str] = Field(default_factory=list)
+    total_occurrences: int = 0
+    title_or_h1_pages: List[str] = Field(default_factory=list)
+    associated_entities: List[str] = Field(default_factory=list)
+    supporting_pages: List[QueryPageEvidence] = Field(default_factory=list)  # Bounded to top 10 pages
+    overlap_status: Optional[str] = None  # "POTENTIAL_MULTI_PAGE_TOPIC_OVERLAP" if >=2 strong pages
+    overlap_rationale: Optional[str] = None
+    provenance: str = "query_page_mapping_engine"
+
+class SiteQueryPageIntelligence(BaseModel):
+    """Site-wide query-page intelligence aggregating concept-to-page and page-to-concept mappings."""
+    status: str = "success"  # success, error, partial
+    error_message: Optional[str] = None
+    total_pages_evaluated: int = 0
+    is_partial_crawl: bool = False
+    completeness_disclaimer: str = ""
+    total_concepts_mapped: int = 0
+    multi_page_overlap_count: int = 0
+    concept_relationships: List[QueryPageRelationship] = Field(default_factory=list)
+    page_query_evidence: Dict[str, PageQueryEvidence] = Field(default_factory=dict)
+    overlaps: List[QueryPageRelationship] = Field(default_factory=list)
+    terminology_nature: str = "OBSERVED_WEBSITE_EVIDENCE"
+    facts: List[str] = Field(default_factory=list)
+    analyses: List[str] = Field(default_factory=list)
+
 class SiteCrawlResult(BaseModel):
     """Aggregated multi-page crawl intelligence."""
     completeness_status: str = "CRAWL_COMPLETE"
@@ -1297,6 +1369,7 @@ class SiteCrawlResult(BaseModel):
     internal_link_intelligence: Optional[SiteInternalLinkIntelligence] = None
     search_signal_intelligence: Optional[SiteSearchSignalIntelligence] = None
     topic_intelligence: Optional[SiteTopicIntelligence] = None
+    query_page_intelligence: Optional[SiteQueryPageIntelligence] = None
 
 class EngineResult(BaseModel):
     engine_name: str
@@ -1317,6 +1390,7 @@ class EngineResult(BaseModel):
     internal_link: Optional[InternalLinkEvidence] = None
     search_signal: Optional[SearchSignalEvidence] = None
     topic_intelligence: Optional[PageTopicIntelligence] = None
+    query_page: Optional[PageQueryEvidence] = None
     cloud_intelligence: Optional[CloudIntelligenceEvidence] = None
     raw_html: Optional[str] = None  # Post-JS rendered HTML from crawl4ai; used by TrustEvaluator and GeoEngine
 
@@ -1372,6 +1446,7 @@ class SynthesisReport(BaseModel):
     unified_internal_link: InternalLinkEvidence = Field(default_factory=InternalLinkEvidence)
     unified_search_signal: SearchSignalEvidence = Field(default_factory=SearchSignalEvidence)
     unified_topic: PageTopicIntelligence = Field(default_factory=PageTopicIntelligence)
+    unified_query_page: PageQueryEvidence = Field(default_factory=PageQueryEvidence)
     cloud_intelligence: CloudIntelligenceEvidence = Field(default_factory=CloudIntelligenceEvidence)
     site_crawl: Optional[SiteCrawlResult] = None
     
