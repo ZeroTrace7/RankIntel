@@ -432,38 +432,6 @@ class SecurityEngine:
 
         return mixed_resources, findings
 
-    def calculate_score(self, findings: List[SecurityFinding], is_https: bool) -> Tuple[int, str]:
-        """
-        Calculates 0-100 Security Health Score and letter grade.
-        """
-        score = 100
-        if not is_https:
-            score -= 50
-
-        for f in findings:
-            if f.severity == SecuritySeverity.CRITICAL:
-                score -= 25
-            elif f.severity == SecuritySeverity.HIGH:
-                score -= 15
-            elif f.severity == SecuritySeverity.MEDIUM:
-                score -= 8
-            elif f.severity == SecuritySeverity.LOW:
-                score -= 3
-
-        score = max(0, min(100, score))
-
-        if score >= 90:
-            grade = "A"
-        elif score >= 80:
-            grade = "B"
-        elif score >= 70:
-            grade = "C"
-        elif score >= 60:
-            grade = "D"
-        else:
-            grade = "F"
-
-        return score, grade
 
     def audit_headers_and_html(
         self,
@@ -529,8 +497,26 @@ class SecurityEngine:
                         )
                     )
 
-        # Calculate score and grade
-        score, grade = self.calculate_score(findings, is_https)
+        from rankintel.models.schema import SecurityStatus
+        
+        # Calculate counts
+        critical_count = sum(1 for f in findings if f.severity == SecuritySeverity.CRITICAL)
+        high_count = sum(1 for f in findings if f.severity == SecuritySeverity.HIGH)
+        medium_count = sum(1 for f in findings if f.severity == SecuritySeverity.MEDIUM)
+        low_count = sum(1 for f in findings if f.severity == SecuritySeverity.LOW)
+        info_count = sum(1 for f in findings if f.severity == SecuritySeverity.INFO)
+        total_findings = len(findings)
+        
+        overall_status = SecurityStatus.UNKNOWN
+        if critical_count > 0 or high_count > 0 or not is_https:
+            overall_status = SecurityStatus.FAIL
+        elif medium_count > 0 or low_count > 0:
+            overall_status = SecurityStatus.PARTIAL
+        else:
+            if headers:
+                overall_status = SecurityStatus.PASS
+            else:
+                overall_status = SecurityStatus.UNAVAILABLE
 
         # Recommendations list
         recommendations = [f.recommendation for f in findings if f.recommendation]
@@ -538,8 +524,13 @@ class SecurityEngine:
         return SecurityEvidence(
             url=url,
             is_https=is_https,
-            score=score,
-            grade=grade,
+            overall_status=overall_status,
+            total_findings=total_findings,
+            critical_count=critical_count,
+            high_count=high_count,
+            medium_count=medium_count,
+            low_count=low_count,
+            info_count=info_count,
             headers_evaluated=headers,
             hsts_present=meta.get("hsts_present", False),
             hsts_include_subdomains=meta.get("hsts_include_subdomains", False),

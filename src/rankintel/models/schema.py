@@ -149,6 +149,14 @@ class PerformanceEvidence(BaseModel):
     passed_audit: bool = True
     notes: List[str] = Field(default_factory=list)
 
+class SecurityStatus(str, Enum):
+    PASS = "PASS"
+    FAIL = "FAIL"
+    PARTIAL = "PARTIAL"
+    UNKNOWN = "UNKNOWN"
+    UNAVAILABLE = "UNAVAILABLE"
+    NOT_APPLICABLE = "NOT_APPLICABLE"
+
 class SecurityFindingCategory(str, Enum):
     SEO_PROBLEM = "seo_problem"
     SECURITY_VULNERABILITY = "security_vulnerability"
@@ -160,6 +168,7 @@ class SecuritySeverity(str, Enum):
     MEDIUM = "MEDIUM"
     LOW = "LOW"
     INFO = "INFO"
+    UNKNOWN = "UNKNOWN"
 
 class SecurityFinding(BaseModel):
     code: str
@@ -180,6 +189,7 @@ class TlsCertificateDetails(BaseModel):
     protocol_version: Optional[str] = None
     cipher: Optional[str] = None
     error_message: Optional[str] = None
+    handshake_status: SecurityStatus = SecurityStatus.UNKNOWN
 
 class CookieSecurityDetails(BaseModel):
     name: str
@@ -191,8 +201,13 @@ class CookieSecurityDetails(BaseModel):
 class SecurityEvidence(BaseModel):
     url: str = ""
     is_https: bool = True
-    score: int = 100
-    grade: str = "A"
+    overall_status: SecurityStatus = SecurityStatus.UNKNOWN
+    total_findings: int = 0
+    critical_count: int = 0
+    high_count: int = 0
+    medium_count: int = 0
+    low_count: int = 0
+    info_count: int = 0
     headers_evaluated: Dict[str, str] = Field(default_factory=dict)
     hsts_present: bool = False
     hsts_include_subdomains: bool = False
@@ -210,6 +225,7 @@ class SecurityEvidence(BaseModel):
     cookies: List[CookieSecurityDetails] = Field(default_factory=list)
     findings: List[SecurityFinding] = Field(default_factory=list)
     recommendations: List[str] = Field(default_factory=list)
+
 
 class ImageFormatEvidence(BaseModel):
     declared_format: str = "UNKNOWN"     # Extracted from URL extension or type attribute
