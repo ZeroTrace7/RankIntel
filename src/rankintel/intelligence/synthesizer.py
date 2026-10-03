@@ -23,6 +23,7 @@ from rankintel.models.schema import (
     AccessibilityEvidence,
     SecurityEvidence,
     ContentEvidence,
+    EntityEvidence,
     SecurityStatus,
     WcagStatus,
     SecuritySeverity,
@@ -247,6 +248,14 @@ class IntelligenceSynthesizer:
             else ContentEvidence(url=url)
         )
 
+        # 10. Entity Intelligence Reconciliation (Phase 8.2)
+        ent_res = engine_results.get("entity_engine")
+        unified_entity = (
+            ent_res.entity
+            if (ent_res and ent_res.entity)
+            else EntityEvidence(url=url)
+        )
+
         # Build Prioritized Actions
         actions = self._build_prioritized_actions(
             unified_on_page,
@@ -260,6 +269,7 @@ class IntelligenceSynthesizer:
             accessibility=unified_accessibility,
             image_seo=unified_image_seo,
             content=unified_content,
+            entity=unified_entity,
         )
 
         # Generate Production Fixes — only when genuinely needed
@@ -301,6 +311,7 @@ class IntelligenceSynthesizer:
             unified_accessibility=unified_accessibility,
             unified_security=unified_security,
             unified_content=unified_content,
+            unified_entity=unified_entity,
             cloud_intelligence=cloud_intelligence,
             fixes=fixes
         )
@@ -352,6 +363,7 @@ class IntelligenceSynthesizer:
         accessibility: Optional[AccessibilityEvidence] = None,
         image_seo: Optional[ImageSEOEvidence] = None,
         content: Optional[ContentEvidence] = None,
+        entity: Optional[EntityEvidence] = None,
     ) -> List[PrioritizedAction]:
         actions: List[PrioritizedAction] = []
 
