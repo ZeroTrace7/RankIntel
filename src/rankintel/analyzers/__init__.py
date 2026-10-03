@@ -15,6 +15,7 @@ from rankintel.analyzers.entity_analyzer import SiteEntityAnalyzer
 from rankintel.analyzers.internal_link_analyzer import SiteInternalLinkAnalyzer
 from rankintel.analyzers.search_signal_analyzer import SiteSearchSignalAnalyzer
 from rankintel.analyzers.topic_analyzer import SiteTopicAnalyzer
+from rankintel.analyzers.query_page_analyzer import SiteQueryPageAnalyzer
 
 __all__ = [
     "TrustEvaluator",
@@ -31,4 +32,5 @@ __all__ = [
     "SiteInternalLinkAnalyzer",
     "SiteSearchSignalAnalyzer",
     "SiteTopicAnalyzer",
+    "SiteQueryPageAnalyzer",
 ]
