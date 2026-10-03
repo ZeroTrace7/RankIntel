@@ -101,6 +101,7 @@ def test_supported_and_weak_evidence_strength():
     sig_supported = SearchSignalItem(
         term="spectrometer analysis",
         raw_term="Spectrometer Analysis",
+        category="heading",
         locations=[SearchSignalLocation.H2, SearchSignalLocation.MAIN_CONTENT],
         total_occurrences=3,
         confidence=SearchSignalConfidence.SUPPORTED,
@@ -112,6 +113,7 @@ def test_supported_and_weak_evidence_strength():
     sig_weak = SearchSignalItem(
         term="testing manual",
         raw_term="Testing Manual",
+        category="image_alt",
         locations=[SearchSignalLocation.IMAGE_ALT],
         total_occurrences=1,
         confidence=SearchSignalConfidence.WEAK,
@@ -164,8 +166,8 @@ def test_topic_membership_and_entity_association():
     entity = DetectedEntity(
         name="Acme Labs",
         entity_type=EntityType.ORGANIZATION,
-        source=EntitySource.STRUCTURED_DATA,
-        signal_type=EntitySignalType.EXPLICIT_JSON_LD,
+        source=EntitySource.JSON_LD,
+        signal_type=EntitySignalType.STRUCTURED_DATA_DECLARATION,
     )
     entity_ev = EntityEvidence(
         url="https://example.com/metallurgy",
@@ -195,6 +197,7 @@ def test_url_path_evidence_and_bounded_snippets():
     sig = SearchSignalItem(
         term="chemical calibration",
         raw_term="Chemical Calibration",
+        category="heading",
         locations=[SearchSignalLocation.H2, SearchSignalLocation.MAIN_CONTENT],
         total_occurrences=6,
         confidence=SearchSignalConfidence.SUPPORTED,
@@ -226,6 +229,7 @@ def test_fact_analysis_separation():
     sig = SearchSignalItem(
         term="traceability standards",
         raw_term="Traceability Standards",
+        category="heading",
         locations=[SearchSignalLocation.TITLE, SearchSignalLocation.MAIN_CONTENT],
         total_occurrences=3,
         confidence=SearchSignalConfidence.DIRECT,
