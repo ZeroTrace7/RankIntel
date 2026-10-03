@@ -314,6 +314,41 @@ class MarkdownReporter:
                         locs = ", ".join(rc.observed_locations[:3])
                         lines.append(f"| **{rc.concept}** | {rc.pages_count} pages | {rc.total_occurrences} | `{kind}` | {locs} |")
 
+            if getattr(sc, "topic_intelligence", None):
+                ti = sc.topic_intelligence
+                lines.append("\n### 🧭 Site-Wide Topic Intelligence & Concept Clustering (Layer A)")
+                lines.append("> *Scope Note: Strictly observed deterministic concept grouping of on-site terminology. External search query volume, rankings, and keyword databases are excluded (Layer A boundary).*")
+                if ti.is_partial_crawl:
+                    lines.append(f"> ⚠️ **Coverage Notice:** {ti.completeness_disclaimer}")
+                lines.append(f"- **Total Pages Evaluated:** {ti.total_pages_evaluated}")
+                lines.append(f"- **Total Concept Groups Derived:** {ti.total_topics_count}")
+                lines.append(f"- **Recurring Observed Concepts:** {ti.recurring_topics_count}")
+
+                if ti.topics:
+                    lines.append("\n#### Recurring Observed Concepts (Telemetry):")
+                    lines.append("| Concept Topic | Pages Count | Total Mentions | Structural Locations | Title/H1 Presence | Supporting Terms Count |")
+                    lines.append("|---|---|---|---|---|---|")
+                    for top in ti.topics[:12]:
+                        th1_mark = "✅ Yes" if top.title_or_h1_presence else "No"
+                        locs_str = ", ".join(top.observed_locations[:3])
+                        lines.append(f"| **{top.topic_name}** | {top.pages_count} pages | {top.occurrences_count} | `{locs_str}` | {th1_mark} | {len(top.supporting_terms)} terms |")
+
+                if ti.relationships:
+                    lines.append("\n#### Inter-Topic Relationships:")
+                    lines.append("| Topic A | Relationship | Topic B | Supporting Evidence |")
+                    lines.append("|---|---|---|---|")
+                    for rel in ti.relationships[:8]:
+                        rel_name = rel.relationship_type.value if hasattr(rel.relationship_type, "value") else str(rel.relationship_type)
+                        supp_str = "; ".join(rel.supporting_evidence) if rel.supporting_evidence else "Observed structural alignment"
+                        lines.append(f"| **{rel.topic_a}** | `{rel_name}` | **{rel.topic_b}** | {supp_str} |")
+
+                if ti.facts or ti.analyses:
+                    lines.append("\n#### Topic Telemetry Observations:")
+                    for fact in ti.facts:
+                        lines.append(f"- **FACT:** {fact}")
+                    for an in ti.analyses:
+                        lines.append(f"- **ANALYSIS:** {an}")
+
             if sc.site_wide_issues:
                 lines.append("\n### 🔴 Site-Wide Structural Findings:")
                 for issue in sc.site_wide_issues:
@@ -613,6 +648,41 @@ class MarkdownReporter:
                 for fact in sig.facts:
                     lines.append(f"- **FACT:** {fact}")
                 for analysis in sig.analyses:
+                    lines.append(f"- **ANALYSIS:** {analysis}")
+            lines.append("")
+
+        # Topic Intelligence (Phase 9.2 - Layer A)
+        top_intel = getattr(report, "unified_topic", None)
+        if top_intel and (top_intel.total_topics_derived > 0 or top_intel.facts):
+            lines.append("## 🧭 TOPIC INTELLIGENCE (Layer A: On-Site Concept Grouping)")
+            lines.append("> *Scope Note: Strictly observed deterministic concept grouping of on-site terminology. External search queries, rankings, and volume data are excluded (Layer A boundary).*")
+            lines.append(f"- **Total Concept Topics Derived:** {top_intel.total_topics_derived}")
+            lines.append(f"- **Total Observed Terms Mapped:** {top_intel.total_terms_mapped}")
+
+            if top_intel.topics:
+                lines.append("\n### 🏷️ Derived Concept Topics & Telemetry:")
+                lines.append("| Topic / Concept | Title/H1 | Mentions | Locations | Supporting Terms |")
+                lines.append("|---|---|---|---|---|")
+                for t_item in top_intel.topics[:12]:
+                    th1_mark = "✅ Yes" if t_item.title_or_h1_presence else "No"
+                    locs_str = ", ".join(t_item.observed_locations[:3])
+                    terms_sample = ", ".join([m.term for m in t_item.supporting_terms[:3]])
+                    lines.append(f"| **{t_item.topic_name}** | {th1_mark} | {t_item.occurrences_count} | `{locs_str}` | {terms_sample} |")
+
+            if top_intel.relationships:
+                lines.append("\n### 🔗 Inter-Topic Relationships:")
+                lines.append("| Topic A | Relationship | Topic B | Supporting Evidence |")
+                lines.append("|---|---|---|---|")
+                for rel in top_intel.relationships[:6]:
+                    rel_name = rel.relationship_type.value if hasattr(rel.relationship_type, "value") else str(rel.relationship_type)
+                    supp_str = "; ".join(rel.supporting_evidence) if rel.supporting_evidence else "Observed structural alignment"
+                    lines.append(f"| **{rel.topic_a}** | `{rel_name}` | **{rel.topic_b}** | {supp_str} |")
+
+            if top_intel.facts or top_intel.analyses:
+                lines.append("\n### 📑 Concept Observations & Analyses:")
+                for fact in top_intel.facts:
+                    lines.append(f"- **FACT:** {fact}")
+                for analysis in top_intel.analyses:
                     lines.append(f"- **ANALYSIS:** {analysis}")
             lines.append("")
 

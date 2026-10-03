@@ -268,4 +268,27 @@ class ProvenanceTagger:
                         confidence="high"
                     ))
 
+        # 14. Topic Intelligence findings (Phase 9.2 - Layer A)
+        topic_res = engine_results.get("topic_intelligence_engine")
+        if topic_res and topic_res.topic_intelligence and topic_res.status == "success":
+            top_ev = topic_res.topic_intelligence
+            if top_ev.topics:
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"Topic Intelligence: {top_ev.total_topics_derived} deterministic concept groups derived from on-site evidence",
+                    source_file="Search Signal & Entity Evidence",
+                    engine="topic_intelligence_engine",
+                    evidence_snippet=f"Top topics: {', '.join([t.topic_name for t in top_ev.topics[:4]])}",
+                    confidence="high"
+                ))
+            if top_ev.relationships:
+                rel0 = top_ev.relationships[0]
+                rel0_type = rel0.relationship_type.value if hasattr(rel0.relationship_type, "value") else str(rel0.relationship_type)
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"Topic Relationships: {len(top_ev.relationships)} inter-topic relationships mapped",
+                    source_file="Deterministic Concept Clustering",
+                    engine="topic_intelligence_engine",
+                    evidence_snippet=f"Sample: {rel0.topic_a} -> {rel0_type} -> {rel0.topic_b}",
+                    confidence="high"
+                ))
+
         return tags
