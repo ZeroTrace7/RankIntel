@@ -63,7 +63,13 @@ def rankintel_audit(url: str, deep_crawl: bool = False, max_pages: int = 25) -> 
         "top_prioritized_actions": [a.model_dump() for a in report.prioritized_actions[:5]],
         "provenance_chain": [p.model_dump() for p in report.provenance],
         "production_fixes": report.fixes,
-        "site_crawl_summary": report.site_crawl.model_dump() if report.site_crawl else None
+        "site_crawl_summary": report.site_crawl.model_dump() if report.site_crawl else None,
+        "security_status": report.unified_security.overall_status.value if report.unified_security else "UNKNOWN",
+        "security_findings_count": report.unified_security.total_findings if report.unified_security else 0,
+        "accessibility_status": report.unified_accessibility.wcag_aa_status.value if report.unified_accessibility else "UNKNOWN",
+        "accessibility_violations_count": report.unified_accessibility.total_violations if report.unified_accessibility else 0,
+        "image_seo_total_images": report.unified_image_seo.total_images if report.unified_image_seo else 0,
+        "image_seo_missing_alt": report.unified_image_seo.missing_alt_count if report.unified_image_seo else 0
     }
 
 @mcp.tool
