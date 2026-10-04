@@ -255,7 +255,7 @@ class TestPhase10Refinements:
         # Topic is "BIS Certification" — not addressed on this page
         topic_intel = PageTopicIntelligence(
             url="https://example.com",
-            topics=[TopicEvidence(topic_name="BIS Certification")]
+            topics=[TopicEvidence(topic_name="BIS Certification", normalized_name="bis certification")]
         )
 
         ev = AnswerabilityEngine.evaluate_page(
@@ -272,7 +272,7 @@ class TestPhase10Refinements:
         """When an extracted unit genuinely addresses the topic, it is EXPLAINED."""
         topic_intel = PageTopicIntelligence(
             url="https://sunrisetesting.com",
-            topics=[TopicEvidence(topic_name="BIS Certification")]
+            topics=[TopicEvidence(topic_name="BIS Certification", normalized_name="bis certification")]
         )
         ev = AnswerabilityEngine.evaluate_page(
             url="https://sunrisetesting.com",
@@ -390,7 +390,7 @@ class TestSiteAnswerabilityAggregation:
                     url="https://example.com/page1",
                     normalized_url="https://example.com/page1",
                     identity_url="https://example.com/page1",
-                    crawl_status=CrawlStatus.SUCCESS,
+                    crawl_status=CrawlStatus.FETCHED,
                     depth=0,
                     raw_html=HTML_COMPREHENSIVE_SERVICES,
                 ),
@@ -398,7 +398,7 @@ class TestSiteAnswerabilityAggregation:
                     url="https://example.com/page2",
                     normalized_url="https://example.com/page2",
                     identity_url="https://example.com/page2",
-                    crawl_status=CrawlStatus.SUCCESS,
+                    crawl_status=CrawlStatus.FETCHED,
                     depth=1,
                     raw_html="<html><body><h1>About Us</h1><p>We are a testing firm established in 2010.</p></body></html>",
                 ),
