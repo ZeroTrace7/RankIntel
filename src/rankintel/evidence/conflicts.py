@@ -388,4 +388,28 @@ class ConflictDetector:
                                 ))
                                 break
 
+        # 12. Check Controlled External AI Visibility Conflicts (Phase 10.5)
+        ext_res = engine_results.get("external_visibility_engine")
+        if ext_res and ext_res.external_visibility and ext_res.status == "success":
+            ext_ev = ext_res.external_visibility
+            for obs in ext_ev.observations:
+                for cit in obs.citations:
+                    if cit.content_match_status.value == "MISMATCH":
+                        conflicts.append(ConflictFinding(
+                            category="EXTERNAL_CITATION_MATERIAL_MISMATCH",
+                            feature=f"External Citation Material Contradiction ({obs.provider.value})",
+                            description=(
+                                f"External observation citation '{cit.citation_url}' snippet materially conflicts "
+                                f"with observed crawled evidence on the site."
+                            ),
+                            engine_a_finding=f"External Provider Citation ({obs.provider.value}): '{cit.snippet[:80]}'",
+                            engine_b_finding="Crawled On-Site Evidence: Conflicting factual statements detected",
+                            interpretation=(
+                                "The external AI/search citation presents factual assertions that directly contradict "
+                                "the verifiable content found on the crawled target page."
+                            ),
+                            severity="HIGH"
+                        ))
+                        break
+
         return conflicts

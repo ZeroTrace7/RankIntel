@@ -668,6 +668,8 @@ class CrawlConfig(BaseModel):
     strip_tracking_params: bool = True
     enable_sitemap_analysis: bool = False
     enable_browser_rendering: bool = False
+    enable_external_visibility: bool = False
+    external_visibility_providers: Optional[List[str]] = None
     user_agent: str = "RankIntel/2.0 (+https://github.com/ZeroTrace7/RankIntel)"
 
     @model_validator(mode="before")

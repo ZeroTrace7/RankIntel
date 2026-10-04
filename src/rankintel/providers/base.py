@@ -119,9 +119,11 @@ class BaseExternalVisibilityAdapter(abc.ABC):
         except Exception as e:
             latency_ms = round((time.perf_counter() - t0) * 1000, 2)
             err_msg = str(e)
-            # Detect rate-limiting specifically
+            # Detect rate-limiting and service availability specifically
             if "429" in err_msg or "rate limit" in err_msg.lower() or "quota" in err_msg.lower():
                 status = ExternalVisibilityStatus.RATE_LIMITED
+            elif "503" in err_msg or "high demand" in err_msg.lower() or "overloaded" in err_msg.lower() or "unavailable" in err_msg.lower():
+                status = ExternalVisibilityStatus.UNAVAILABLE
             else:
                 status = ExternalVisibilityStatus.ERROR
 
@@ -160,7 +162,16 @@ class BaseExternalVisibilityAdapter(abc.ABC):
             c_snippet = item.get("snippet")
             
             c_domain = self._clean_domain(urlparse(c_url).netloc)
-            is_target_domain = bool(target_domain_clean and (c_domain == target_domain_clean or c_domain.endswith("." + target_domain_clean)))
+            effective_domain = c_domain
+            # Handle search grounding redirect URLs (e.g., Google Grounding returns vertex redirect URLs with domain in title)
+            if ("vertexai" in c_domain or "google" in c_domain) and c_title:
+                title_clean = self._clean_domain(c_title.strip().lower())
+                if "." in title_clean and " " not in title_clean:
+                    effective_domain = title_clean
+                elif target_domain_clean and target_domain_clean in c_title.lower():
+                    effective_domain = target_domain_clean
+
+            is_target_domain = bool(target_domain_clean and (effective_domain == target_domain_clean or effective_domain.endswith("." + target_domain_clean)))
             is_target_page = bool(is_target_domain and (self._normalize_url(c_url) == self._normalize_url(query.target_url)))
 
             if is_target_page:

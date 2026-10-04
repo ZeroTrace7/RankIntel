@@ -343,6 +343,14 @@ class IntelligenceSynthesizer:
             else None
         )
 
+        # 21. Controlled External AI Visibility Reconciliation (Phase 10.5)
+        ext_res = engine_results.get("external_visibility_engine")
+        unified_external_visibility = (
+            ext_res.external_visibility
+            if (ext_res and ext_res.external_visibility)
+            else None
+        )
+
         # Build Prioritized Actions
         actions = self._build_prioritized_actions(
             unified_on_page,
@@ -410,6 +418,7 @@ class IntelligenceSynthesizer:
             unified_answerability=unified_answerability,
             unified_claim_grounding=unified_claim_grounding,
             unified_multimodal_agent=unified_multimodal_agent,
+            unified_external_visibility=unified_external_visibility,
             cloud_intelligence=cloud_intelligence,
             fixes=fixes
         )

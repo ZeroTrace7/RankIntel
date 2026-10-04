@@ -441,9 +441,8 @@ class ExternalVisibilityEngine:
         entity_ev = getattr(site_crawl, "entity_intelligence", None)
         topic_ev = getattr(site_crawl, "topic_intelligence", None)
         answerability_ev = getattr(site_crawl, "answerability_intelligence", None)
-        claim_ev = getattr(site_crawl, "claim_grounding_intelligence", None)
-
-        engine = cls(enable_external_visibility=True)
+        providers = getattr(config, "external_visibility_providers", None)
+        engine = cls(enable_external_visibility=True, providers=providers)
         # Build query set
         queries = ControlledQueryGenerator.generate_queries(
             target_url=root_url,

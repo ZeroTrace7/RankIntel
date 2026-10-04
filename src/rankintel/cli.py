@@ -35,7 +35,9 @@ def main():
 @click.option("--format", "output_format", default="markdown", type=click.Choice(["markdown", "json"], case_sensitive=False), help="Output format: 'markdown' (default) or 'json'")
 @click.option("--deep-crawl", is_flag=True, default=False, help="Crawl internal pages for site-wide hygiene issues")
 @click.option("--max-pages", default=25, help="Maximum pages to crawl in deep mode")
-def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_pages: int):
+@click.option("--external-ai", is_flag=True, default=False, help="Enable controlled external AI visibility observations (Phase 10.5 opt-in)")
+@click.option("--external-providers", default=None, help="Comma-separated external visibility providers (e.g. 'gemini', 'mock')")
+def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_pages: int, external_ai: bool, external_providers: Optional[str] = None):
     """Run full multi-engine SEO, GEO, browser, and performance triangulation audit."""
     if not url.startswith("http://") and not url.startswith("https://"):
         url = "https://" + url
@@ -49,8 +51,12 @@ def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_p
         ))
 
     # Phase 1: Collect Evidence
+    providers_list = [p.strip() for p in external_providers.split(",")] if external_providers else None
     with console.status("[bold green]Executing multi-engine audit pass...[/bold green]", spinner="dots"):
-        collector = EvidenceCollector()
+        collector = EvidenceCollector(
+            enable_external_visibility=external_ai,
+            external_providers=providers_list,
+        )
         engine_results = collector.collect(url)
 
     # Phase 2: Synthesize Intelligence
@@ -273,6 +279,22 @@ def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_p
             "Site Multimodal & Agent Scope",
             f"{mmi.total_site_visual_assets} visual assets, {mmi.total_site_forms} forms across {mmi.total_pages_evaluated} pages ({mmi.total_visual_only_gaps} visual gaps)",
             "site-wide multimodal & agent interaction surfaces"
+        )
+
+    if getattr(report, "unified_external_visibility", None) and report.unified_external_visibility.status.value != "DISABLED":
+        evi = report.unified_external_visibility
+        evi_color = "green" if evi.target_domain_cited_count > 0 else ("yellow" if evi.successful_observations_count > 0 else "red")
+        table.add_row(
+            "External AI Visibility",
+            f"[{evi_color}]{evi.successful_observations_count}/{evi.queries_executed_count} obs[/{evi_color}] ({evi.target_domain_cited_count} cited, {evi.target_domain_mention_count} mentioned)",
+            "controlled provider observations (Phase 10.5)"
+        )
+    elif report.site_crawl and getattr(report.site_crawl, "external_visibility_intelligence", None) and report.site_crawl.external_visibility_intelligence.status != "disabled":
+        sevi = report.site_crawl.external_visibility_intelligence
+        table.add_row(
+            "Site External AI Visibility",
+            f"{sevi.total_observations_completed}/{sevi.total_queries_planned} queries ({sevi.total_target_citations} cited, {sevi.total_target_domain_mentions} mentions)",
+            "site-wide controlled provider observations"
         )
 
     console.print(table)

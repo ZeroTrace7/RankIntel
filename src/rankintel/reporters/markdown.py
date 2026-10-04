@@ -446,6 +446,21 @@ class MarkdownReporter:
                     for fact in mmi.facts:
                         lines.append(f"- **FACT:** {fact}")
 
+            if getattr(sc, "external_visibility_intelligence", None):
+                evi = sc.external_visibility_intelligence
+                lines.append("\n### 🌐 Site-Wide Controlled External AI Visibility Scope")
+                lines.append(f"- **Measurement Status:** `{evi.status.upper()}`")
+                lines.append(f"- **Providers Tested:** {', '.join(evi.providers_tested) if evi.providers_tested else 'None'}")
+                lines.append(f"- **Controlled Queries Planned:** {evi.total_queries_planned} ({evi.total_observations_completed} completed, {evi.total_observations_unavailable} unavailable)")
+                lines.append(f"- **Target Domain Mentions:** {evi.total_target_domain_mentions} observations")
+                lines.append(f"- **Target Domain Citations:** {evi.total_target_citations} observations")
+                if evi.citation_consistency_observations and evi.citation_consistency_observations.get("repeated_trials_evaluated"):
+                    lines.append(f"- **Multi-Trial Citation Consistency:** {int(evi.citation_consistency_observations.get('citation_consistency_ratio', 0) * 100)}%")
+                if evi.facts:
+                    lines.append("\n#### Site-Wide Visibility Observations:")
+                    for fact in evi.facts:
+                        lines.append(f"- **FACT:** {fact}")
+
             if sc.site_wide_issues:
                 lines.append("\n### 🔴 Site-Wide Structural Findings:")
                 for issue in sc.site_wide_issues:
@@ -750,6 +765,78 @@ class MarkdownReporter:
                 lines.append("### 📋 Multimodal & Agent Readiness Facts:")
                 for fact in mma.facts:
                     lines.append(f"- {fact}")
+                lines.append("")
+
+        # Controlled External AI Visibility Intelligence (Phase 10.5)
+        if getattr(report, "unified_external_visibility", None):
+            evi = report.unified_external_visibility
+            lines.append("## 🌐 CONTROLLED EXTERNAL AI VISIBILITY INTELLIGENCE")
+            lines.append("> **EXTERNAL OBSERVATION SCOPE & LIMITATION DISCLAIMER**")
+            lines.append("> *Scope Note: These records represent strictly controlled empirical observations of how specific external AI and search systems responded to explicit queries under specific API configurations at a specific timestamp. They do NOT establish universal AI search rankings, consumer product behavior, or causal relationships between on-site elements and external retrieval.*")
+            lines.append("")
+            lines.append(f"- **Measurement Status:** `{evi.status.value}`")
+            lines.append(f"- **Providers Evaluated:** {', '.join(evi.providers_evaluated) if evi.providers_evaluated else 'None'}")
+            lines.append(f"- **Controlled Queries Executed:** {evi.queries_executed_count} ({evi.successful_observations_count} successful, {evi.unavailable_observations_count} unavailable, {evi.failed_observations_count} failed)")
+            lines.append(f"- **Target Domain Mentions:** {evi.target_domain_mention_count}/{len(evi.observations)} observations detected target brand/entity mentions")
+            lines.append(f"- **Target Domain Citations:** {evi.target_domain_cited_count}/{len(evi.observations)} observations cited target domain ({evi.target_page_cited_count} cited exact audited URL)")
+            lines.append(f"- **Total External Citations Returned:** {evi.total_external_citations_returned} citations across all provider queries")
+            lines.append("")
+
+            # Query Results Table
+            if evi.observations:
+                lines.append("### 📋 Observable Query Results Matrix:")
+                lines.append("| Query ID | Information Need Category | Provider | Status | Mentioned | Target Cited | Target Citations | Latency |")
+                lines.append("|---|---|---|:---:|:---:|:---:|:---:|:---:|")
+                for obs in evi.observations[:10]:
+                    status_icon = "🟢" if obs.status.value == "SUCCESS" else ("⛔" if obs.status.value == "UNAVAILABLE" else "🔴")
+                    ment_icon = "✅ Yes" if (obs.mention_observation and obs.mention_observation.target_mentioned) else "No"
+                    cit_icon = "🟢 Cited" if obs.target_domain_cited else "Not Cited"
+                    lat_str = f"{obs.latency_ms:.0f}ms" if obs.latency_ms is not None else "—"
+                    lines.append(f"| `{obs.query.query_id}` | `{obs.query.category.value}` | `{obs.provider.value}` | {status_icon} `{obs.status.value}` | {ment_icon} | {cit_icon} | {obs.target_domain_citations_count} citations | {lat_str} |")
+                lines.append("")
+
+            # Citations Table
+            target_citations = [c for o in evi.observations for c in o.citations if c.is_target_domain]
+            if target_citations:
+                lines.append("### 🔗 External Citations & Target Domain Linkage:")
+                lines.append("| Citation URL | Position | Relationship | Content Match Assessment | Title / Context |")
+                lines.append("|---|:---:|---|:---:|---|")
+                for cit in target_citations[:8]:
+                    match_icon = "🟢" if cit.content_match_status.value == "MATCHES_PAGE_EVIDENCE" else ("🟡" if cit.content_match_status.value == "PARTIALLY_MATCHES" else ("🔴" if cit.content_match_status.value == "MISMATCH" else "⚪"))
+                    u_display = cit.citation_url
+                    if len(u_display) > 45:
+                        u_display = u_display[:42] + "..."
+                    t_display = cit.title or "—"
+                    if len(t_display) > 30:
+                        t_display = t_display[:27] + "..."
+                    lines.append(f"| `{u_display}` | #{cit.position} | `{cit.relationship.value}` | {match_icon} `{cit.content_match_status.value}` | {t_display} |")
+                lines.append("")
+
+            # Evidence Linkage Chain Table
+            if evi.evidence_linkages:
+                lines.append("### 🛤️ Website ↔ External Evidence Chain Linkages:")
+                lines.append("| Query ID | Information Need | Linked Topic / Unit / Claim | Observable Result |")
+                lines.append("|---|---|---|---|")
+                for link in evi.evidence_linkages[:8]:
+                    linked_subject = link.get("derived_from_claim_id") or link.get("derived_from_unit_id") or link.get("derived_from_topic") or link.get("derived_from_entity") or "On-Site Concept"
+                    cited_str = "🟢 Target Domain Cited" if link.get("target_domain_cited") else ("Mentioned Only" if link.get("target_mentioned") else "No Target Reference")
+                    lines.append(f"| `{link['query_id']}` | `{link['category']}` | **{linked_subject}** | {cited_str} ({link['citations_count']} total citations) |")
+                lines.append("")
+
+            # Facts and Analyses
+            if evi.facts:
+                lines.append("### 📋 External Visibility Factual Observations:")
+                for fact in evi.facts:
+                    lines.append(f"- **FACT:** {fact}")
+                for analysis in evi.analyses:
+                    lines.append(f"- **ANALYSIS:** {analysis}")
+                lines.append("")
+
+            # Limitations
+            if evi.limitations_and_disclaimers:
+                lines.append("### ⚠️ Scope & Methodological Limitations:")
+                for disc in evi.limitations_and_disclaimers:
+                    lines.append(f"- *Notice:* {disc}")
                 lines.append("")
 
         # Security & Web Best Practices

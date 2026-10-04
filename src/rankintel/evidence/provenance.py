@@ -479,4 +479,26 @@ class ProvenanceTagger:
                     confidence="high",
                 ))
 
+        # 22. Controlled External AI Visibility findings (Phase 10.5)
+        ext_res = engine_results.get("external_visibility_engine")
+        if ext_res and ext_res.external_visibility and ext_res.status == "success":
+            ext_ev = ext_res.external_visibility
+            tags.append(EvidenceProvenanceTag(
+                finding=f"Controlled External AI Visibility: {ext_ev.successful_observations_count} successful observation(s) across {len(ext_ev.providers_evaluated)} provider(s)",
+                source_file="External AI / Grounded Search Systems",
+                engine="external_visibility_engine",
+                evidence_snippet=f"Mentions: {ext_ev.target_domain_mention_count}, Target Citations: {ext_ev.target_domain_cited_count}/{ext_ev.total_external_citations_returned}",
+                confidence="high",
+            ))
+            if ext_ev.observations:
+                sample_obs = ext_ev.observations[0]
+                cited_str = "Cited" if sample_obs.target_domain_cited else "Not Cited"
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"Observable Query [{sample_obs.provider.value}]: {sample_obs.query.category.value} -> {cited_str}",
+                    source_file=f"{sample_obs.provider.value} ({sample_obs.model_version or 'API'})",
+                    engine="external_visibility_engine",
+                    evidence_snippet=f"Query: '{sample_obs.query.query_text[:50]}...'",
+                    confidence="high",
+                ))
+
         return tags

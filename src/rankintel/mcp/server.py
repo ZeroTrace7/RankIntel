@@ -121,6 +121,11 @@ def rankintel_audit(url: str, deep_crawl: bool = False, max_pages: int = 25) -> 
         "access_paths_total_count": len(report.unified_multimodal_agent.access_paths) if report.unified_multimodal_agent else 0,
         "access_paths_structured_sample": [p.model_dump() for p in report.unified_multimodal_agent.access_paths[:5]] if report.unified_multimodal_agent else [],
         "agent_interaction_surfaces_sample": [s.model_dump() for s in report.unified_multimodal_agent.agent_readiness.surfaces[:5]] if report.unified_multimodal_agent else [],
+        "external_visibility_status": report.unified_external_visibility.status.value if report.unified_external_visibility else "DISABLED",
+        "external_observations_completed": report.unified_external_visibility.successful_observations_count if report.unified_external_visibility else 0,
+        "external_target_domain_cited_count": report.unified_external_visibility.target_domain_cited_count if report.unified_external_visibility else 0,
+        "external_target_domain_mentioned_count": report.unified_external_visibility.target_domain_mention_count if report.unified_external_visibility else 0,
+        "external_observations_sample": [o.model_dump() for o in report.unified_external_visibility.observations[:3]] if report.unified_external_visibility else [],
     }
 
 @mcp.tool

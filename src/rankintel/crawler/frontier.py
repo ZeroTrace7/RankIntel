@@ -489,6 +489,18 @@ class CrawlFrontier:
                 analyses=[f"Multimodal agent engine encountered an error: {e}"],
             )
 
+        try:
+            from rankintel.engines.external_visibility_engine import ExternalVisibilityEngine
+            ExternalVisibilityEngine.evaluate_site(result, config=self.config)
+        except Exception as e:
+            from rankintel.models.schema import SiteExternalVisibilityIntelligence
+            result.external_visibility_intelligence = SiteExternalVisibilityIntelligence(
+                status="error",
+                limitations_and_disclaimers=[f"External visibility analysis failed during crawl aggregation: {e}"],
+                facts=[f"Error during crawl aggregation: {e}"],
+                analyses=[f"External visibility engine encountered an error: {e}"],
+            )
+
         if getattr(self.config, "enable_sitemap_analysis", False):
             try:
                 from rankintel.sitemaps.discovery import SitemapDiscovery

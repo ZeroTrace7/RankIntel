@@ -27,6 +27,7 @@ from rankintel.engines.retrieval_readiness_engine import RetrievalReadinessEngin
 from rankintel.engines.answerability_engine import AnswerabilityEngine
 from rankintel.engines.claim_grounding_engine import ClaimGroundingEngine
 from rankintel.engines.multimodal_agent_engine import MultimodalAgentEngine
+from rankintel.engines.external_visibility_engine import ExternalVisibilityEngine
 from rankintel.analyzers.cannibalization_analyzer import CannibalizationAnalyzer
 from rankintel.models.schema import (
     EngineResult,
@@ -47,6 +48,8 @@ from rankintel.models.schema import (
     AnswerabilityEvidence,
     ClaimGroundingEvidence,
     MultimodalAgentIntelligence,
+    ExternalVisibilityEvidence,
+    ExternalVisibilityStatus,
 )
 import asyncio
 import concurrent.futures
@@ -56,7 +59,11 @@ from urllib.parse import urlparse
 class EvidenceCollector:
     """Coordinates evidence collection across all specialized intelligence engines."""
 
-    def __init__(self):
+    def __init__(
+        self,
+        enable_external_visibility: bool = False,
+        external_providers: Optional[List[str]] = None,
+    ):
         self.seo_engine = SeoEngine()
         self.geo_engine = GeoOptimizerAdapter()  # wraps geo-optimizer-skill
         self.browser_engine = BrowserEngine()
@@ -76,6 +83,10 @@ class EvidenceCollector:
         self.answerability_engine = AnswerabilityEngine()
         self.claim_grounding_engine = ClaimGroundingEngine()
         self.multimodal_agent_engine = MultimodalAgentEngine()
+        self.external_visibility_engine = ExternalVisibilityEngine(
+            enable_external_visibility=enable_external_visibility,
+            providers=external_providers,
+        )
 
     def _run_async(self, coro):
         """Helper to run async coroutines safely from synchronous context."""
@@ -715,6 +726,55 @@ class EvidenceCollector:
                     url=url,
                     engine_source="multimodal_agent_engine",
                     facts=[f"Evaluation failed: {e}"],
+                ),
+            )
+
+        # 21. Controlled External AI Visibility Engine (Phase 10.5) — Strictly opt-in; zero network calls if disabled
+        if self.external_visibility_engine.enabled:
+            try:
+                top_ev = results.get("topic_intelligence_engine")
+                top_data = top_ev.topic_intelligence if (top_ev and top_ev.topic_intelligence) else None
+                ans_ev = results.get("answerability_engine")
+                ans_data = ans_ev.answerability if (ans_ev and ans_ev.answerability) else None
+                cg_ev = results.get("claim_grounding_engine")
+                cg_data = cg_ev.claim_grounding if (cg_ev and cg_ev.claim_grounding) else None
+                ent_ev = results.get("entity_engine")
+                ent_data = ent_ev.entity if (ent_ev and ent_ev.entity) else None
+
+                ext_vis_ev = self.external_visibility_engine.evaluate_page(
+                    url=url,
+                    on_page=on_page_data if 'on_page_data' in locals() else None,
+                    entity_evidence=ent_data,
+                    topic_evidence=top_data,
+                    answerability_evidence=ans_data,
+                    claim_evidence=cg_data,
+                )
+                results["external_visibility_engine"] = EngineResult(
+                    engine_name="external_visibility_engine",
+                    status="success" if ext_vis_ev.successful_observations_count > 0 else "skipped",
+                    external_visibility=ext_vis_ev,
+                )
+            except Exception as e:
+                results["external_visibility_engine"] = EngineResult(
+                    engine_name="external_visibility_engine",
+                    status="error",
+                    error_message=f"External visibility engine failed: {e}",
+                    external_visibility=ExternalVisibilityEvidence(
+                        url=url,
+                        engine_source="external_visibility_engine",
+                        status=ExternalVisibilityStatus.ERROR,
+                        facts=[f"Evaluation failed: {e}"],
+                    ),
+                )
+        else:
+            results["external_visibility_engine"] = EngineResult(
+                engine_name="external_visibility_engine",
+                status="skipped",
+                external_visibility=ExternalVisibilityEvidence(
+                    url=url,
+                    engine_source="external_visibility_engine",
+                    status=ExternalVisibilityStatus.DISABLED,
+                    facts=["External AI visibility measurement is disabled (opt-in via --external-ai)."],
                 ),
             )
 
