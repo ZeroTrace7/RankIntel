@@ -337,7 +337,7 @@ class ClaimGroundingEngine:
             body = soup.find("body") or soup
             for p in body.find_all(["p", "li"]):
                 p_text = " ".join(p.get_text().split())
-                if len(p_text) < 25 or len(p_text) > 400:
+                if len(p_text) < 15 or len(p_text) > 400:
                     continue
 
                 norm_key = re.sub(r"\s+", " ", p_text.lower())[:100]

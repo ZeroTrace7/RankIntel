@@ -150,7 +150,10 @@ class TestCollectorStep19Integration:
         )
 
         with patch.object(collector.seo_engine, "execute", return_value=mock_seo_res), \
-             patch.object(collector.browser_engine, "crawl_page", return_value=mock_browser_res):
+             patch.object(collector.browser_engine, "execute_sync", return_value=mock_browser_res), \
+             patch.object(collector.geo_engine, "execute", return_value=EngineResult(engine_name="rankintel_geo", status="success")), \
+             patch.object(collector.performance_engine, "execute", return_value=EngineResult(engine_name="performance_engine", status="success")), \
+             patch.object(collector.mcp_engine, "execute", return_value=EngineResult(engine_name="mcp_cloud", status="skipped")):
             results = collector.collect("https://example.com")
 
         assert "claim_grounding_engine" in results
@@ -165,7 +168,7 @@ class TestZeroDuplicateHttpRequests:
 
     def test_zero_network_calls_during_claim_grounding(self):
         collector = EvidenceCollector()
-        mock_html = "<html><body><h1>Acme Co</h1><p>Founded in 1999.</p></body></html>"
+        mock_html = "<html><body><h1>Acme Co</h1><p>Acme Co was founded in 1999 as an industrial supplier.</p></body></html>"
 
         with patch("urllib.request.urlopen") as mock_urllib, \
              patch("httpx.Client.get") as mock_httpx, \

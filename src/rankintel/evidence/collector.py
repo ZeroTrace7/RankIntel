@@ -22,6 +22,7 @@ from rankintel.engines.internal_link_engine import InternalLinkEngine
 from rankintel.engines.search_signal_engine import SearchSignalEngine
 from rankintel.engines.topic_intelligence_engine import TopicIntelligenceEngine
 from rankintel.engines.query_page_mapping_engine import QueryPageMappingEngine
+from rankintel.engines.search_intent_engine import SearchIntentEngine
 from rankintel.engines.retrieval_readiness_engine import RetrievalReadinessEngine
 from rankintel.engines.answerability_engine import AnswerabilityEngine
 from rankintel.engines.claim_grounding_engine import ClaimGroundingEngine
