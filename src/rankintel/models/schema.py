@@ -1823,6 +1823,7 @@ class SynthesisReport(BaseModel):
     unified_cannibalization: PageCannibalizationEvidence = Field(default_factory=PageCannibalizationEvidence)
     cloud_intelligence: CloudIntelligenceEvidence = Field(default_factory=CloudIntelligenceEvidence)
     unified_retrieval_readiness: Optional[RetrievalReadinessEvidence] = None
+    unified_answerability: Optional[AnswerabilityEvidence] = None
     site_crawl: Optional[SiteCrawlResult] = None
     
     # Generated fixes
