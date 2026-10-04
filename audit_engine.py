@@ -4,6 +4,7 @@ Backward compatible runner delegating to the RankIntel v2 Multi-Engine Platform.
 """
 import sys
 import os
+from typing import Optional, List
 from urllib.parse import urlparse
 
 if hasattr(sys.stdout, "reconfigure"):
@@ -26,9 +27,19 @@ from rich.table import Table
 
 console = Console(highlight=False)
 
-def run_audit(url: str, output_dir: str = "audits", output_format: str = "markdown", deep_crawl: bool = False, max_pages: int = 25):
+def run_audit(
+    url: str,
+    output_dir: str = "audits",
+    output_format: str = "markdown",
+    deep_crawl: bool = False,
+    max_pages: int = 25,
+    external_ai: bool = False,
+    external_providers: Optional[str] = None,
+):
     if not url.startswith("http://") and not url.startswith("https://"):
         url = "https://" + url
+
+    providers_list = [p.strip() for p in external_providers.split(",")] if external_providers else None
 
     if output_format == "markdown":
         console.print(Panel.fit(
@@ -40,8 +51,15 @@ def run_audit(url: str, output_dir: str = "audits", output_format: str = "markdo
 
     # Phase 1: Collect Evidence
     with console.status("[bold green]Executing multi-engine audit pass...[/bold green]", spinner="dots"):
-        collector = EvidenceCollector()
-        engine_results = collector.collect(url)
+        collector = EvidenceCollector(
+            enable_external_visibility=external_ai,
+            external_providers=providers_list,
+        )
+        engine_results = collector.collect(
+            url,
+            enable_external_visibility=external_ai,
+            external_providers=providers_list,
+        )
 
     # Phase 2: Synthesize Intelligence
     with console.status("[bold cyan]Reconciling evidence, provenance, and detecting cross-engine conflicts...[/bold cyan]", spinner="dots"):
@@ -112,6 +130,74 @@ def run_audit(url: str, output_dir: str = "audits", output_format: str = "markdo
             "AI Retrieval Readiness",
             f"{rr.search_index_allowed_count} search indexers permitted ({snip_str})",
             "robots + headers + directives (Phase 10.1)"
+        )
+    elif report.site_crawl and getattr(report.site_crawl, "retrieval_readiness_intelligence", None):
+        rri = report.site_crawl.retrieval_readiness_intelligence
+        table.add_row(
+            "Site AI Retrieval Scope",
+            f"{rri.total_pages_evaluated} pages ({len(rri.pages_with_waf_challenge)} blocked, {len(rri.pages_with_nosnippet)} nosnippet)",
+            "site-wide retrieval triangulation"
+        )
+
+    if getattr(report, "unified_answerability", None):
+        ans = report.unified_answerability
+        table.add_row(
+            "AI Answerability & Extraction",
+            f"{ans.total_units_detected} unit(s) ({ans.explained_topics_count} topic(s) explained)",
+            "structured units + clarity + topic linkage (Phase 10.2)"
+        )
+    elif report.site_crawl and getattr(report.site_crawl, "answerability_intelligence", None):
+        ai = report.site_crawl.answerability_intelligence
+        table.add_row(
+            "Site AI Answerability Scope",
+            f"{ai.total_site_units_detected} units across {ai.total_pages_evaluated} pages ({len(ai.pages_with_faq)} FAQ pages)",
+            "site-wide information answerability"
+        )
+
+    if getattr(report, "unified_claim_grounding", None):
+        cg = report.unified_claim_grounding
+        table.add_row(
+            "Claim Grounding & Consistency",
+            f"{cg.supported_claims_count}/{cg.total_claims_detected} claims supported ({cg.agreement_count} schema agreements)",
+            "on-site grounding + multi-surface alignment (Phase 10.3)"
+        )
+    elif report.site_crawl and getattr(report.site_crawl, "claim_grounding_intelligence", None):
+        cgi = report.site_crawl.claim_grounding_intelligence
+        table.add_row(
+            "Site Claim Grounding Scope",
+            f"{cgi.total_site_claims} claims ({cgi.total_supported_claims} supported) across {cgi.total_pages_evaluated} pages",
+            "site-wide claim corroboration"
+        )
+
+    if getattr(report, "unified_multimodal_agent", None):
+        mma = report.unified_multimodal_agent
+        table.add_row(
+            "Multimodal & Agent Readiness",
+            f"{mma.multimodal.total_visual_assets} asset(s) ({mma.multimodal.alt_represented_count} alt-repr), {mma.agent_readiness.total_forms_detected} form(s), {len(mma.access_paths)} path(s)",
+            "visual representations + forms/controls + access paths (Phase 10.4)"
+        )
+    elif report.site_crawl and getattr(report.site_crawl, "multimodal_agent_intelligence", None):
+        mmi = report.site_crawl.multimodal_agent_intelligence
+        table.add_row(
+            "Site Multimodal & Agent Scope",
+            f"{mmi.total_site_visual_assets} visual assets, {mmi.total_site_forms} forms across {mmi.total_pages_evaluated} pages ({mmi.total_visual_only_gaps} visual gaps)",
+            "site-wide multimodal & agent interaction surfaces"
+        )
+
+    if getattr(report, "unified_external_visibility", None) and report.unified_external_visibility.status.value != "DISABLED":
+        evi = report.unified_external_visibility
+        evi_color = "green" if evi.target_domain_cited_count > 0 else ("yellow" if evi.successful_observations_count > 0 else "red")
+        table.add_row(
+            "External AI Visibility",
+            f"[{evi_color}]{evi.successful_observations_count}/{evi.queries_executed_count} obs[/{evi_color}] ({evi.target_domain_cited_count} cited, {evi.target_domain_mention_count} mentioned)",
+            "controlled provider observations (Phase 10.5)"
+        )
+    elif report.site_crawl and getattr(report.site_crawl, "external_visibility_intelligence", None) and report.site_crawl.external_visibility_intelligence.status != "disabled":
+        sevi = report.site_crawl.external_visibility_intelligence
+        table.add_row(
+            "Site External AI Visibility",
+            f"{sevi.total_observations_completed}/{sevi.total_queries_planned} queries ({sevi.total_target_citations} cited, {sevi.total_target_domain_mentions} mentions)",
+            "site-wide controlled provider observations"
         )
 
     console.print(table)
@@ -187,13 +273,23 @@ def run_compare(url_a: str, url_b: str, output_dir: str = "reports", output_form
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        console.print("[bold red]Usage:[/bold red] python audit_engine.py <url> [--format json] [--deep-crawl] OR python audit_engine.py compare <url1> vs <url2> [--format json]")
+        console.print("[bold red]Usage:[/bold red] python audit_engine.py <url> [--format json] [--deep-crawl] [--external-ai] [--external-providers gemini,mock] OR python audit_engine.py compare <url1> vs <url2> [--format json]")
         sys.exit(1)
 
     fmt = "json" if "--format" in sys.argv and "json" in sys.argv else ("json" if "--json" in sys.argv else "markdown")
     deep = "--deep-crawl" in sys.argv
+    ext_ai = "--external-ai" in sys.argv
 
-    cleaned_args = [a for a in sys.argv[1:] if not a.startswith("--") and a not in ("json", "markdown")]
+    ext_prov = None
+    if "--external-providers" in sys.argv:
+        try:
+            prov_idx = sys.argv.index("--external-providers") + 1
+            if prov_idx < len(sys.argv) and not sys.argv[prov_idx].startswith("--"):
+                ext_prov = sys.argv[prov_idx]
+        except (ValueError, IndexError):
+            pass
+
+    cleaned_args = [a for a in sys.argv[1:] if not a.startswith("--") and a not in ("json", "markdown") and (ext_prov is None or a != ext_prov)]
 
     if cleaned_args and cleaned_args[0].lower() == "compare":
         if len(cleaned_args) < 3:
@@ -204,4 +300,10 @@ if __name__ == "__main__":
         run_compare(url1, url2, output_format=fmt)
     elif cleaned_args:
         target_url = cleaned_args[0]
-        run_audit(target_url, output_format=fmt, deep_crawl=deep)
+        run_audit(
+            target_url,
+            output_format=fmt,
+            deep_crawl=deep,
+            external_ai=ext_ai,
+            external_providers=ext_prov,
+        )
