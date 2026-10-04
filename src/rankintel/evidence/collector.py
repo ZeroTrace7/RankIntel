@@ -23,6 +23,7 @@ from rankintel.engines.search_signal_engine import SearchSignalEngine
 from rankintel.engines.topic_intelligence_engine import TopicIntelligenceEngine
 from rankintel.engines.query_page_mapping_engine import QueryPageMappingEngine
 from rankintel.engines.search_intent_engine import SearchIntentEngine
+from rankintel.engines.retrieval_readiness_engine import RetrievalReadinessEngine
 from rankintel.analyzers.cannibalization_analyzer import CannibalizationAnalyzer
 from rankintel.models.schema import (
     EngineResult,
@@ -39,6 +40,7 @@ from rankintel.models.schema import (
     PageQueryEvidence,
     PageIntentEvidence,
     PageCannibalizationEvidence,
+    RetrievalReadinessEvidence,
 )
 import asyncio
 import concurrent.futures
@@ -64,6 +66,7 @@ class EvidenceCollector:
         self.topic_intelligence_engine = TopicIntelligenceEngine()
         self.query_page_mapping_engine = QueryPageMappingEngine()
         self.search_intent_engine = SearchIntentEngine()
+        self.retrieval_readiness_engine = RetrievalReadinessEngine()
 
     def _run_async(self, coro):
         """Helper to run async coroutines safely from synchronous context."""
@@ -553,11 +556,41 @@ class EvidenceCollector:
                 engine_name="cannibalization_analyzer",
                 status="error",
                 error_message=f"Cannibalization analyzer failed: {e}",
-                cannibalization=PageCannibalizationEvidence(
+        # 17. AI Access & Retrieval Readiness Engine (Phase 10.1) — Reuses static HTML, browser DOM, headers, robots (zero extra HTTP requests)
+        try:
+            status_code = seo_res.on_page.status_code if (seo_res and seo_res.on_page) else (200 if browser_html else 0)
+            rendered_dom = (
+                browser_res.raw_html
+                if (browser_res and browser_res.on_page and browser_res.on_page.engine_source == "crawl4ai_browser_dom")
+                else None
+            )
+            bot_matrix_rep = seo_res.robots.bot_matrix if (seo_res and seo_res.robots) else None
+            robots_found = seo_res.robots.found if (seo_res and seo_res.robots) else False
+
+            retrieval_ev = self.retrieval_readiness_engine.evaluate_page(
+                url=url,
+                status_code=status_code,
+                raw_html=browser_html,
+                rendered_html=rendered_dom,
+                response_headers=headers if 'headers' in locals() else {},
+                robots_found=robots_found,
+                bot_matrix=bot_matrix_rep,
+                core_bots_only=True,
+            )
+            results["retrieval_readiness_engine"] = EngineResult(
+                engine_name="retrieval_readiness_engine",
+                status="success",
+                retrieval_readiness=retrieval_ev,
+            )
+        except Exception as e:
+            results["retrieval_readiness_engine"] = EngineResult(
+                engine_name="retrieval_readiness_engine",
+                status="error",
+                error_message=f"Retrieval readiness engine failed: {e}",
+                retrieval_readiness=RetrievalReadinessEvidence(
                     url=url,
-                    engine_source="cannibalization_analyzer",
-                    status="error",
-                    error_message=str(e),
+                    engine_source="retrieval_readiness_engine",
+                    facts=[f"Evaluation failed: {e}"],
                 ),
             )
 

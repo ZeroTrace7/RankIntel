@@ -362,8 +362,32 @@ class ProvenanceTagger:
                     finding=f"Cannibalization & Gap Observations: {cann_ev.analyses[0]}",
                     source_file="On-Site Evidence Triangulation",
                     engine="cannibalization_analyzer",
-                    evidence_snippet=cann_ev.analyses[0],
-                    confidence="high"
+        # 18. AI Access & Retrieval Readiness findings (Phase 10.1)
+        retrieval_res = engine_results.get("retrieval_readiness_engine")
+        if retrieval_res and retrieval_res.retrieval_readiness and retrieval_res.status == "success":
+            r_ev = retrieval_res.retrieval_readiness
+            tags.append(EvidenceProvenanceTag(
+                finding=f"AI Search Retrieval Access: {r_ev.search_index_allowed_count} indexers allowed, {r_ev.ai_training_allowed_count} training scrapers allowed",
+                source_file="robots.txt & HTTP Directives",
+                engine="retrieval_readiness_engine",
+                evidence_snippet=f"WAF status: {'BLOCKED' if r_ev.waf_challenge.is_blocked else 'ALLOWED'}, snippet status: {r_ev.snippet_controls.status.value}",
+                confidence="high",
+            ))
+            if r_ev.snippet_controls.has_nosnippet:
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"Snippet Suppression: nosnippet present ({', '.join(r_ev.snippet_controls.nosnippet_sources)})",
+                    source_file="Meta / X-Robots-Tag",
+                    engine="retrieval_readiness_engine",
+                    evidence_snippet="nosnippet directive",
+                    confidence="high",
+                ))
+            if r_ev.content_availability.significant_content_difference:
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"Content Availability Delta: +{r_ev.content_availability.word_count_delta} words in rendered DOM",
+                    source_file="DOM (hydration comparison)",
+                    engine="retrieval_readiness_engine",
+                    evidence_snippet=r_ev.content_availability.js_rendering_impact,
+                    confidence="high",
                 ))
 
         return tags
