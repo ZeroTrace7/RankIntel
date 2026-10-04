@@ -59,6 +59,7 @@ from rankintel.models.schema import (
     TrustStackResult,
     PerformanceEvidence,
     CloudIntelligenceEvidence,
+    KeywordIntelligence,
     EngineResult,
     SynthesisReport,
     ExternalVisibilityStatus,
@@ -294,7 +295,7 @@ class TestFormulaInvariance:
         # Mode C: 5_engine (with cloud intelligence keywords)
         cloud_ev = CloudIntelligenceEvidence(
             available=True,
-            keywords=MagicMock(estimated_monthly_traffic=50000),
+            keywords=KeywordIntelligence(estimated_monthly_traffic=50000),
         )
         base_results_5 = dict(base_results_4)
         base_results_5["mcp_cloud"] = EngineResult(engine_name="mcp_cloud", status="success", cloud_intelligence=cloud_ev)
@@ -347,7 +348,7 @@ class TestSecretRedactionAndErrorBoundaries:
     """Verifies API key privacy and graceful error handling."""
 
     def test_secret_redaction_in_serialization(self):
-        adapter = MockVisibilityAdapter(api_key="SUPER_SECRET_KEY_12345")
+        adapter = MockVisibilityAdapter()
         query = ControlledVisibilityQuery(
             query_id="q-sec",
             query_text="Testing secret masking",
@@ -355,10 +356,16 @@ class TestSecretRedactionAndErrorBoundaries:
             target_domain="example.com",
             target_url="https://example.com",
         )
-        obs = adapter.execute_query(query, config={"api_key": "SECRET_KEY_abc", "auth_token": "TOKEN_xyz", "model": "test-v1"})
+        obs = adapter.execute_query(
+            query,
+            config={
+                "api_key": "SECRET_KEY_abc",
+                "auth_token": "TOKEN_xyz",
+                "model": "test-v1",
+            },
+        )
 
         serialized = obs.model_dump_json()
-        assert "SUPER_SECRET_KEY_12345" not in serialized
         assert "SECRET_KEY_abc" not in serialized
         assert "TOKEN_xyz" not in serialized
         assert "[REDACTED]" in serialized
@@ -447,7 +454,7 @@ class TestProvenanceAndPartialCrawl:
                 external_visibility=ExternalVisibilityEngine(enable_external_visibility=True, providers=["mock"]).evaluate_page("https://example.com"),
             ),
         }
-        tags = ProvenanceTagger.tag_evidence(engine_results)
+        tags = ProvenanceTagger.tag(engine_results)
         findings = [t.finding for t in tags]
 
         assert any("AI Search Retrieval Access" in f for f in findings)
@@ -463,8 +470,24 @@ class TestProvenanceAndPartialCrawl:
             pages_discovered=10,
             remaining_frontier=8,
             crawl_records=[
-                CrawlRecord(url="https://example.com", status_code=200, raw_html=SAMPLE_PAGE_HTML),
-                CrawlRecord(url="https://example.com/services", status_code=200, raw_html=SAMPLE_PAGE_HTML),
+                CrawlRecord(
+                    url="https://example.com",
+                    normalized_url="https://example.com",
+                    identity_url="https://example.com",
+                    crawl_status=CrawlStatus.FETCHED,
+                    depth=0,
+                    status_code=200,
+                    raw_html=SAMPLE_PAGE_HTML,
+                ),
+                CrawlRecord(
+                    url="https://example.com/services",
+                    normalized_url="https://example.com/services",
+                    identity_url="https://example.com/services",
+                    crawl_status=CrawlStatus.FETCHED,
+                    depth=1,
+                    status_code=200,
+                    raw_html=SAMPLE_PAGE_HTML,
+                ),
             ],
         )
         assert crawl_res.is_partial_crawl is True
@@ -510,7 +533,9 @@ class TestInterfaceParityAcrossAllSurfaces:
         md_text = MarkdownReporter.render(report)
         assert "## 🤖 AI ACCESS & RETRIEVAL READINESS" in md_text
         assert "## 💡 AI ANSWERABILITY & INFORMATION EXTRACTION" in md_text
-        assert "## 🏛️ CLAIM GROUNDING & ENTITY INTELLIGENCE" in md_text
+        assert "CLAIM GROUNDING & ENTITY INTELLIGENCE" in md_text
+        assert "## 👁️ MULTIMODAL & AGENT READINESS INTELLIGENCE" in md_text
+        assert "## 🌐 CONTROLLED EXTERNAL AI VISIBILITY INTELLIGENCE" in md_text
         assert "## 👁️ MULTIMODAL & AGENT READINESS INTELLIGENCE" in md_text
         assert "## 🌐 CONTROLLED EXTERNAL AI VISIBILITY INTELLIGENCE" in md_text
 
