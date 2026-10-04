@@ -346,7 +346,8 @@ class TestCliAndMcpIntegration:
             mock_syn_cls.return_value.synthesize.return_value = mock_report
             result = runner.invoke(main, ["audit", "https://example.com"])
             assert result.exit_code == 0
-            assert "AI Answerability & Extraction" in result.output
+            assert "AI Answerability" in result.output
+            assert "2 unit(s)" in result.output
 
     def test_mcp_rankintel_audit_returns_answerability_fields(self):
         ans_ev = build_mock_answerability_evidence("https://example.com")
