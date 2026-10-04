@@ -335,6 +335,14 @@ class IntelligenceSynthesizer:
             else None
         )
 
+        # 20. Multimodal & Agent Readiness Reconciliation (Phase 10.4)
+        mma_res = engine_results.get("multimodal_agent_engine")
+        unified_multimodal_agent = (
+            mma_res.multimodal_agent
+            if (mma_res and mma_res.multimodal_agent)
+            else None
+        )
+
         # Build Prioritized Actions
         actions = self._build_prioritized_actions(
             unified_on_page,
@@ -401,6 +409,7 @@ class IntelligenceSynthesizer:
             unified_retrieval_readiness=unified_retrieval_readiness,
             unified_answerability=unified_answerability,
             unified_claim_grounding=unified_claim_grounding,
+            unified_multimodal_agent=unified_multimodal_agent,
             cloud_intelligence=cloud_intelligence,
             fixes=fixes
         )

@@ -477,6 +477,18 @@ class CrawlFrontier:
                 analyses=[f"Claim grounding engine encountered an error: {e}"],
             )
 
+        try:
+            from rankintel.engines.multimodal_agent_engine import MultimodalAgentEngine
+            MultimodalAgentEngine.evaluate_site(result)
+        except Exception as e:
+            from rankintel.models.schema import SiteMultimodalAgentIntelligence
+            result.multimodal_agent_intelligence = SiteMultimodalAgentIntelligence(
+                status="error",
+                completeness_disclaimer=f"Multimodal and agent readiness analysis failed during crawl aggregation: {e}",
+                facts=[f"Error during crawl aggregation: {e}"],
+                analyses=[f"Multimodal agent engine encountered an error: {e}"],
+            )
+
         if getattr(self.config, "enable_sitemap_analysis", False):
             try:
                 from rankintel.sitemaps.discovery import SitemapDiscovery

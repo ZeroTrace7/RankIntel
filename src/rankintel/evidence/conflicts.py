@@ -319,4 +319,73 @@ class ConflictDetector:
                     ))
                     break
 
+        # 11. Check Multimodal & Agent Readiness Conflicts (Phase 10.4)
+        mma_res = engine_results.get("multimodal_agent_engine")
+        if mma_res and mma_res.multimodal_agent and mma_res.status == "success":
+            mma_ev = mma_res.multimodal_agent
+            # Case A: Important Information Unit Linked to Visual-Only Graphic
+            for asset in mma_ev.multimodal.assets:
+                if asset.related_unit_id and asset.representation_status.value == "VISUAL_ONLY_OBSERVED":
+                    conflicts.append(ConflictFinding(
+                        category="MULTIMODAL_INFORMATION_GAP",
+                        feature="Information Unit Missing Textual / Alt Representation",
+                        description=f"Information unit '{asset.related_unit_id}' is linked to graphic '{asset.src_or_id[:40]}' with no text, alt, or caption representation.",
+                        engine_a_finding=f"Answerability Engine: Important information unit '{asset.related_unit_id}' identified",
+                        engine_b_finding="Multimodal Engine: Visual asset lacks alt text, figcaption, or surrounding explanation",
+                        interpretation=(
+                            "A key topical or procedural unit is illustrated by an informational visual graphic, but the visual "
+                            "asset provides no machine-readable textual representation. Non-visual user agents and text-only search "
+                            "crawlers cannot extract the information contained in the image."
+                        ),
+                        severity="MEDIUM"
+                    ))
+                    break
+
+            # Case B: Visible Action Button Has Conflicting Accessible Name Metadata
+            for s in mma_ev.agent_readiness.surfaces:
+                if s.signal_type.value == "ACTION_BUTTON" and s.aria_label and s.surface_name:
+                    vis = s.surface_name.strip().lower()
+                    aria = s.aria_label.strip().lower()
+                    clashes = [("submit", "cancel"), ("save", "delete"), ("next", "previous"), ("open", "close"), ("login", "logout")]
+                    if any((c1 in vis and c2 in aria) or (c2 in vis and c1 in aria) for c1, c2 in clashes):
+                        conflicts.append(ConflictFinding(
+                            category="ACTION_ACCESSIBLE_NAME_MISMATCH",
+                            feature="Button Visible Text vs Accessible Name Clashing",
+                            description=f"Button displays visible label '{s.surface_name}' but declares conflicting aria-label '{s.aria_label}'.",
+                            engine_a_finding=f"DOM Visible Label: '{s.surface_name}'",
+                            engine_b_finding=f"ARIA Accessible Name: '{s.aria_label}'",
+                            interpretation=(
+                                "The visible text displayed on an action control conflicts with the programmatic name exposed "
+                                "via ARIA attributes, causing divergent behavior for assistive technologies and web agents."
+                            ),
+                            severity="HIGH"
+                        ))
+                        break
+
+            # Case C: Structured Interaction Metadata (JSON-LD) Conflicts with Observable Control
+            schema_acts = [sf for sf in mma_ev.agent_readiness.surfaces if sf.signal_type.value == "SCHEMA_POTENTIAL_ACTION"]
+            dom_forms = [sf for sf in mma_ev.agent_readiness.surfaces if sf.signal_type.value in ("SEARCH_FORM", "FORM_CONTROL")]
+            if schema_acts and dom_forms:
+                for sa in schema_acts:
+                    target = (sa.structured_action_target or "").lower()
+                    for df in dom_forms:
+                        if df.form_action and target:
+                            # If schema action targets endpoint A but form action explicitly targets completely different endpoint B
+                            sa_path = target.split("?")[0].rstrip("/")
+                            df_path = df.form_action.split("?")[0].rstrip("/")
+                            if sa_path and df_path and sa_path != df_path and (sa_path in df_path or df_path in sa_path) is False:
+                                conflicts.append(ConflictFinding(
+                                    category="STRUCTURED_ACTION_CONTROL_CONFLICT",
+                                    feature="JSON-LD Action Target vs DOM Form Action Discrepancy",
+                                    description=f"Schema declares action target '{sa_path}' while DOM form targets '{df_path}'.",
+                                    engine_a_finding=f"JSON-LD Schema Action Target: '{sa_path}'",
+                                    engine_b_finding=f"DOM Form Action: '{df_path}'",
+                                    interpretation=(
+                                        "Structured data declares an automated interaction target endpoint that diverges from "
+                                        "the actual interactive form action attribute rendered in the DOM."
+                                    ),
+                                    severity="MEDIUM"
+                                ))
+                                break
+
         return conflicts
