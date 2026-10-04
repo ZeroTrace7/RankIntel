@@ -3,10 +3,10 @@
   "domain": "www.uniquemeasurement.com",
   "name": "Unique Measurement",
   "role": "competitor",
-  "collection_timestamp": "2026-10-04",
+  "collection_timestamp": "2026-10-05",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 16.62,
+  "execution_time_sec": 17.59,
   "overall_health_score": 33,
   "technical_health_score": 35,
   "geo_readiness_score": 30,
@@ -60,7 +60,7 @@
     "detected_schema_types": [],
     "schema_blocks_count": 0,
     "schema_validation_issues": [],
-    "ttfb_ms": 2175.9,
+    "ttfb_ms": 2239.6,
     "performance_score": 35,
     "performance_source": "local_probe",
     "notes": [
@@ -244,8 +244,8 @@
       "Unique Measurement Service"
     ],
     "entity_types_detected": [
-      "ORGANIZATION",
-      "LOCAL_BUSINESS"
+      "LOCAL_BUSINESS",
+      "ORGANIZATION"
     ],
     "relationships_count": 1,
     "structured_vs_visible_comparisons_count": 0,
@@ -367,9 +367,10 @@
   },
   "answerability": {
     "status": "AVAILABLE",
-    "total_units_detected": 5,
+    "total_units_detected": 8,
     "units_by_type": {
       "LIST": 2,
+      "FACTUAL_STATEMENT": 3,
       "DEFINITION": 1,
       "SERVICE_DESCRIPTION": 2
     },
@@ -378,9 +379,9 @@
     "definition_patterns": "PRESENT",
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
-    "explained_topics_count": 56,
-    "mentioned_only_topics_count": 22,
-    "unsupported_heading_topics_count": 19,
+    "explained_topics_count": 66,
+    "mentioned_only_topics_count": 14,
+    "unsupported_heading_topics_count": 17,
     "unsupported_headings_sample": [
       "THE LARGEST MEASUREMENT, CALIBRATION, TE",
       "NABL ACCREDITED LABORATORY ISO/IEC 17025",
@@ -389,19 +390,20 @@
       "Unique Measurement Service"
     ],
     "notes": [
-      "Detected 5 distinct observable information unit(s) across 3 structural types.",
-      "Evaluated 102 topic(s): 56 explained with explicit units, 22 mentioned only, 19 unsupported headings.",
+      "Detected 8 distinct observable information unit(s) across 4 structural types.",
+      "Evaluated 102 topic(s): 66 explained with explicit units, 14 mentioned only, 17 unsupported headings.",
       "Structure 'DEFINITION': 1 unit(s) observed.",
+      "Structure 'FACTUAL_STATEMENT': 3 unit(s) observed.",
       "Structure 'LIST': 2 unit(s) observed.",
       "Structure 'SERVICE_DESCRIPTION': 2 unit(s) observed."
     ]
   },
   "claim_grounding": {
     "status": "AVAILABLE",
-    "total_claims_detected": 12,
-    "supported_claims_count": 9,
+    "total_claims_detected": 15,
+    "supported_claims_count": 8,
     "partially_supported_count": 3,
-    "uncorroborated_count": 0,
+    "uncorroborated_count": 4,
     "contradicted_count": 0,
     "structured_agreements_count": 0,
     "structured_disagreements_count": 0,
@@ -410,8 +412,8 @@
       "CONSISTENT": 1
     },
     "notes": [
-      "Detected 12 observable claim(s) on page https://www.uniquemeasurement.com/.",
-      "On-site support status: 9 supported, 3 partially supported, 0 uncorroborated, 0 contradicted.",
+      "Detected 15 observable claim(s) on page https://www.uniquemeasurement.com/.",
+      "On-site support status: 8 supported, 3 partially supported, 4 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 0 agreement(s), 0 explicit disagreement(s).",
       "Evaluated 3 entity candidate(s) across 6 content surfaces."
     ]
@@ -473,18 +475,18 @@
       "Robots.txt found: True",
       "Schema types declared: None",
       "HTTPS enforced: True",
-      "Server latency probe: 2175.9ms (local_probe)",
+      "Server latency probe: 2239.6ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
       "Static HTML contains 879 words.",
       "Rendered browser DOM contains 909 words (delta: +30 words).",
-      "Detected 5 distinct observable information unit(s) across 3 structural types.",
-      "Evaluated 102 topic(s): 56 explained with explicit units, 22 mentioned only, 19 unsupported headings.",
+      "Detected 8 distinct observable information unit(s) across 4 structural types.",
+      "Evaluated 102 topic(s): 66 explained with explicit units, 14 mentioned only, 17 unsupported headings.",
       "Structure 'DEFINITION': 1 unit(s) observed.",
+      "Structure 'FACTUAL_STATEMENT': 3 unit(s) observed.",
       "Structure 'LIST': 2 unit(s) observed.",
-      "Structure 'SERVICE_DESCRIPTION': 2 unit(s) observed.",
-      "Detected 12 observable claim(s) on page https://www.uniquemeasurement.com/.",
-      "On-site support status: 9 supported, 3 partially supported, 0 uncorroborated, 0 contradicted.",
+      "Detected 15 observable claim(s) on page https://www.uniquemeasurement.com/.",
+      "On-site support status: 8 supported, 3 partially supported, 4 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 0 agreement(s), 0 explicit disagreement(s).",
       "Evaluated 3 entity candidate(s) across 6 content surfaces.",
       "Observed 32 visual asset(s): 28 informational, 4 with meaningful alt text, 0 with figure captions, 24 visual-only information gap(s).",
@@ -492,7 +494,7 @@
       "Mapped 7 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 2175.9ms TTFB",
+      "Local network latency probe recorded 2239.6ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -501,7 +503,7 @@
       "GEO citability readiness: 30/100",
       "Trust stack: F (32/100)",
       "Cross-engine conflict [MEDIUM] on 'Topic Heading without Supporting Content': Topic '17025' has dedicated heading 'NABL ACCREDITED LABORATORY ISO/IEC 17025:2017', but supporting body content is genuinely absent. -> The page establishes an explicit topical heading promise for search/AI retrieval, but fails to provide observable explanatory or factual body copy under that section.",
-      "Cross-engine conflict [MEDIUM] on 'Information Unit Missing Textual / Alt Representation': Information unit 'unit-service_description-4' is linked to graphic 'images/home-services/cmm-service.jpg' with no text, alt, or caption representation. -> A key topical or procedural unit is illustrated by an informational visual graphic, but the visual asset provides no machine-readable textual representation. Non-visual user agents and text-only search crawlers cannot extract the information contained in the image."
+      "Cross-engine conflict [MEDIUM] on 'Information Unit Missing Textual / Alt Representation': Information unit 'unit-factual_statement-2' is linked to graphic 'images/icon/icon_2.png' with no text, alt, or caption representation. -> A key topical or procedural unit is illustrated by an informational visual graphic, but the visual asset provides no machine-readable textual representation. Non-visual user agents and text-only search crawlers cannot extract the information contained in the image."
     ],
     "recommendations": [
       "[HIGH] Optimize Title Tag Length & CTR Hook: Titles over 60 chars are truncated in SERPs with ellipses. Target 50-60 chars with primary keyword front-loaded.",
@@ -730,7 +732,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 2176ms",
+      "finding": "TTFB Latency: 2240ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -922,7 +924,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Observable Information Units: 5 unit(s) across 3 structural types",
+      "finding": "Observable Information Units: 8 unit(s) across 4 structural types",
       "engine": "answerability_engine",
       "source_file": "DOM & Schema Structure",
       "confidence": "high",
@@ -930,7 +932,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 56 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 66 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",
@@ -946,7 +948,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Observable Claims Grounding: 12 claim(s) (9 supported on-site, 0 uncorroborated)",
+      "finding": "Observable Claims Grounding: 15 claim(s) (8 supported on-site, 4 uncorroborated)",
       "engine": "claim_grounding_engine",
       "source_file": "Visible Content & Answerable Units",
       "confidence": "high",
@@ -1006,8 +1008,8 @@
     {
       "severity": "MEDIUM",
       "feature": "Information Unit Missing Textual / Alt Representation",
-      "description": "Information unit 'unit-service_description-4' is linked to graphic 'images/home-services/cmm-service.jpg' with no text, alt, or caption representation.",
-      "engine_a_finding": "Answerability Engine: Important information unit 'unit-service_description-4' identified",
+      "description": "Information unit 'unit-factual_statement-2' is linked to graphic 'images/icon/icon_2.png' with no text, alt, or caption representation.",
+      "engine_a_finding": "Answerability Engine: Important information unit 'unit-factual_statement-2' identified",
       "engine_b_finding": "Multimodal Engine: Visual asset lacks alt text, figcaption, or surrounding explanation",
       "interpretation": "A key topical or procedural unit is illustrated by an informational visual graphic, but the visual asset provides no machine-readable textual representation. Non-visual user agents and text-only search crawlers cannot extract the information contained in the image."
     }
@@ -1034,7 +1036,7 @@
     "multimodal_agent_engine"
   ],
   "raw_report_paths": {
-    "markdown_audit": "audits\\uniquemeasurement.com-2026-10-04.md",
-    "json_audit": "audits\\uniquemeasurement.com-2026-10-04.json"
+    "markdown_audit": "audits\\uniquemeasurement.com-2026-10-05.md",
+    "json_audit": "audits\\uniquemeasurement.com-2026-10-05.json"
   }
 }

@@ -208,6 +208,13 @@ def run_audit(
             console.print(f"  • [bold red][{c.severity}][/bold red] [bold]{c.feature}:[/bold] {c.description}")
             console.print(f"    [dim]Interpretation:[/dim] {c.interpretation}\n")
 
+    if hasattr(report, 'remediation_records') and report.remediation_records:
+        console.print("\n[bold cyan]Remediation Intelligence:[/bold cyan]")
+        for rem in report.remediation_records:
+            color = "green" if rem.classification.value == "AUTO_SAFE" else "yellow"
+            console.print(f"  \U0001F6E0\FE0F [{color}][{rem.classification.value}][/{color}] [bold]{rem.problem}[/bold]")
+            console.print(f"    [dim]Action:[/dim] {rem.recommended_action}")
+
     console.print(f"[bold green]Report saved to:[/bold green] [underline cyan]{report_file}[/underline cyan]")
     return report_file
 

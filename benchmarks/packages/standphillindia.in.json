@@ -3,10 +3,10 @@
   "domain": "www.standphillindia.in",
   "name": "Standphill India",
   "role": "competitor",
-  "collection_timestamp": "2026-10-04",
+  "collection_timestamp": "2026-10-05",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 8.78,
+  "execution_time_sec": 8.76,
   "overall_health_score": 67,
   "technical_health_score": 75,
   "geo_readiness_score": 51,
@@ -60,12 +60,12 @@
     "h3_count": 11,
     "detected_schema_types": [
       "WebSite",
-      "Organization",
-      "FAQPage"
+      "FAQPage",
+      "Organization"
     ],
     "schema_blocks_count": 3,
     "schema_validation_issues": [],
-    "ttfb_ms": 176.9,
+    "ttfb_ms": 125.2,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -78,9 +78,9 @@
     "wcag_status": "FAIL",
     "engine_source": "axe_core_playwright",
     "browser_evaluated": true,
-    "total_violations": 42,
+    "total_violations": 40,
     "critical_count": 0,
-    "serious_count": 42,
+    "serious_count": 40,
     "moderate_count": 0,
     "minor_count": 0,
     "rules_checked_count": 28,
@@ -108,43 +108,43 @@
         "rule_id": "color-contrast",
         "severity": "SERIOUS",
         "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.37 (foreground color: #a1a9b3, background color: #ffffff, font size: 25.5pt (34px), font weight: bold). Expected contrast ratio of 3:1"
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.97 (foreground color: #b3b9c2, background color: #ffffff, font size: 25.5pt (34px), font weight: bold). Expected contrast ratio of 3:1"
       },
       {
         "rule_id": "color-contrast",
         "severity": "SERIOUS",
         "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.37 (foreground color: #a1a9b3, background color: #ffffff, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.97 (foreground color: #b3b9c2, background color: #ffffff, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
       },
       {
         "rule_id": "color-contrast",
         "severity": "SERIOUS",
         "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.37 (foreground color: #a1a9b3, background color: #ffffff, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.97 (foreground color: #b3b9c2, background color: #ffffff, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
       },
       {
         "rule_id": "color-contrast",
         "severity": "SERIOUS",
         "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.61 (foreground color: #ffffff, background color: #ffbbad, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.47 (foreground color: #ffffff, background color: #ffc8bd, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
       },
       {
         "rule_id": "color-contrast",
         "severity": "SERIOUS",
         "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.61 (foreground color: #ffffff, background color: #ffbbad, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.47 (foreground color: #ffffff, background color: #ffc8bd, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
       },
       {
         "rule_id": "color-contrast",
         "severity": "SERIOUS",
         "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.61 (foreground color: #ffffff, background color: #ffbbad, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.47 (foreground color: #ffffff, background color: #ffc8bd, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
       },
       {
         "rule_id": "color-contrast",
         "severity": "SERIOUS",
         "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.61 (foreground color: #ffffff, background color: #ffbbad, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.47 (foreground color: #ffffff, background color: #ffc8bd, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
       }
     ],
     "disclaimer": "Automated checks evaluate observable criteria; non-certification scope.",
@@ -233,7 +233,7 @@
     "notes": [
       "Extraction method: HEURISTIC_PRUNED_BODY yielded 2152 main content words (2499 total body words).",
       "Content-to-body ratio: 86.1%.",
-      "Exact main-content SHA-256: 6c11969954d15882..., Full HTML SHA-256: f7573842b8c5232f...",
+      "Exact main-content SHA-256: 6c11969954d15882..., Full HTML SHA-256: 75bdfe7fef77cbd2...",
       "SimHash fingerprint: b36c09274708a5b3."
     ]
   },
@@ -250,9 +250,9 @@
     ],
     "entity_types_detected": [
       "ORGANIZATION",
-      "LOCAL_BUSINESS",
       "PERSON",
-      "OTHER"
+      "OTHER",
+      "LOCAL_BUSINESS"
     ],
     "relationships_count": 2,
     "structured_vs_visible_comparisons_count": 3,
@@ -395,11 +395,11 @@
   },
   "answerability": {
     "status": "AVAILABLE",
-    "total_units_detected": 13,
+    "total_units_detected": 17,
     "units_by_type": {
       "LOCATION_CONTACT": 1,
       "FAQ": 6,
-      "FACTUAL_STATEMENT": 5,
+      "FACTUAL_STATEMENT": 9,
       "SERVICE_DESCRIPTION": 1
     },
     "heading_content_relationship": "PARTIAL",
@@ -407,8 +407,8 @@
     "definition_patterns": "ABSENT",
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
-    "explained_topics_count": 72,
-    "mentioned_only_topics_count": 37,
+    "explained_topics_count": 78,
+    "mentioned_only_topics_count": 31,
     "unsupported_heading_topics_count": 22,
     "unsupported_headings_sample": [
       "LICENCE & CERTIFICATION",
@@ -418,9 +418,9 @@
       "OUR SERVICES"
     ],
     "notes": [
-      "Detected 13 distinct observable information unit(s) across 4 structural types.",
-      "Evaluated 145 topic(s): 72 explained with explicit units, 37 mentioned only, 22 unsupported headings.",
-      "Structure 'FACTUAL_STATEMENT': 5 unit(s) observed.",
+      "Detected 17 distinct observable information unit(s) across 4 structural types.",
+      "Evaluated 145 topic(s): 78 explained with explicit units, 31 mentioned only, 22 unsupported headings.",
+      "Structure 'FACTUAL_STATEMENT': 9 unit(s) observed.",
       "Structure 'FAQ': 6 unit(s) observed.",
       "Structure 'LOCATION_CONTACT': 1 unit(s) observed.",
       "Structure 'SERVICE_DESCRIPTION': 1 unit(s) observed."
@@ -428,10 +428,10 @@
   },
   "claim_grounding": {
     "status": "AVAILABLE",
-    "total_claims_detected": 39,
-    "supported_claims_count": 31,
+    "total_claims_detected": 43,
+    "supported_claims_count": 33,
     "partially_supported_count": 7,
-    "uncorroborated_count": 1,
+    "uncorroborated_count": 3,
     "contradicted_count": 0,
     "structured_agreements_count": 3,
     "structured_disagreements_count": 1,
@@ -440,8 +440,8 @@
       "PARTIALLY_CONSISTENT": 2
     },
     "notes": [
-      "Detected 39 observable claim(s) on page https://www.standphillindia.in/.",
-      "On-site support status: 31 supported, 7 partially supported, 1 uncorroborated, 0 contradicted.",
+      "Detected 43 observable claim(s) on page https://www.standphillindia.in/.",
+      "On-site support status: 33 supported, 7 partially supported, 3 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 3 agreement(s), 1 explicit disagreement(s).",
       "Evaluated 4 entity candidate(s) across 6 content surfaces."
     ]
@@ -456,7 +456,7 @@
     "text_represented_count": 15,
     "visual_only_observed_gaps": 1,
     "modern_format_count": 113,
-    "missing_dimensions_count": 52,
+    "missing_dimensions_count": 56,
     "notes": [
       "155 visual assets audited (139 alt-represented)"
     ]
@@ -470,7 +470,7 @@
     "descriptive_navigation_links_count": 46,
     "schema_actions_detected": 0,
     "webmcp_declarations_detected": 0,
-    "total_access_paths": 20,
+    "total_access_paths": 45,
     "action_surface_gaps": 0,
     "notes": [
       "6 forms, 31 buttons audited"
@@ -501,28 +501,28 @@
       "Internal links observed: 57",
       "External links observed: 198",
       "Robots.txt found: True",
-      "Schema types declared: WebSite, Organization, FAQPage",
+      "Schema types declared: WebSite, FAQPage, Organization",
       "HTTPS enforced: True",
-      "Server latency probe: 176.9ms (local_probe)",
+      "Server latency probe: 125.2ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
       "Static HTML contains 1972 words.",
       "Rendered browser DOM contains 2396 words (delta: +424 words).",
-      "Detected 13 distinct observable information unit(s) across 4 structural types.",
-      "Evaluated 145 topic(s): 72 explained with explicit units, 37 mentioned only, 22 unsupported headings.",
-      "Structure 'FACTUAL_STATEMENT': 5 unit(s) observed.",
+      "Detected 17 distinct observable information unit(s) across 4 structural types.",
+      "Evaluated 145 topic(s): 78 explained with explicit units, 31 mentioned only, 22 unsupported headings.",
+      "Structure 'FACTUAL_STATEMENT': 9 unit(s) observed.",
       "Structure 'FAQ': 6 unit(s) observed.",
       "Structure 'LOCATION_CONTACT': 1 unit(s) observed.",
-      "Detected 39 observable claim(s) on page https://www.standphillindia.in/.",
-      "On-site support status: 31 supported, 7 partially supported, 1 uncorroborated, 0 contradicted.",
+      "Detected 43 observable claim(s) on page https://www.standphillindia.in/.",
+      "On-site support status: 33 supported, 7 partially supported, 3 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 3 agreement(s), 1 explicit disagreement(s).",
       "Evaluated 4 entity candidate(s) across 6 content surfaces.",
       "Observed 155 visual asset(s): 149 informational, 139 with meaningful alt text, 0 with figure captions, 1 visual-only information gap(s).",
       "Observed 6 form(s) (5 labeled), 31 action button(s) (30 accessible names), 0 structured schema action(s), 0 WebMCP declaration(s).",
-      "Mapped 20 information access path(s) across multimodal and agent surfaces."
+      "Mapped 45 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 176.9ms TTFB",
+      "Local network latency probe recorded 125.2ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -760,7 +760,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 177ms",
+      "finding": "TTFB Latency: 125ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -800,7 +800,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "WCAG AA Automated Status: FAIL (42 violations)",
+      "finding": "WCAG AA Automated Status: FAIL (40 violations)",
       "engine": "axe_core_playwright",
       "source_file": "HTML DOM",
       "confidence": "high",
@@ -896,7 +896,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Structure: Title and H1 share 2 core evidenced terms: bis, certification.",
+      "finding": "Search Signal Structure: Title and H1 share 2 core evidenced terms: certification, bis.",
       "engine": "search_signal_engine",
       "source_file": "Structural Tag Correlation",
       "confidence": "high",
@@ -968,7 +968,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Observable Information Units: 13 unit(s) across 4 structural types",
+      "finding": "Observable Information Units: 17 unit(s) across 4 structural types",
       "engine": "answerability_engine",
       "source_file": "DOM & Schema Structure",
       "confidence": "high",
@@ -976,7 +976,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 72 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 78 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",
@@ -992,7 +992,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Observable Claims Grounding: 39 claim(s) (31 supported on-site, 1 uncorroborated)",
+      "finding": "Observable Claims Grounding: 43 claim(s) (33 supported on-site, 3 uncorroborated)",
       "engine": "claim_grounding_engine",
       "source_file": "Visible Content & Answerable Units",
       "confidence": "high",
@@ -1032,7 +1032,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Information Access Paths: 20 path(s) triangulated across visual and interactive surfaces",
+      "finding": "Information Access Paths: 45 path(s) triangulated across visual and interactive surfaces",
       "engine": "multimodal_agent_engine",
       "source_file": "Multi-Engine Triangulation",
       "confidence": "high",
@@ -1088,7 +1088,7 @@
     "multimodal_agent_engine"
   ],
   "raw_report_paths": {
-    "markdown_audit": "audits\\standphillindia.in-2026-10-04.md",
-    "json_audit": "audits\\standphillindia.in-2026-10-04.json"
+    "markdown_audit": "audits\\standphillindia.in-2026-10-05.md",
+    "json_audit": "audits\\standphillindia.in-2026-10-05.json"
   }
 }

@@ -39,6 +39,7 @@ from rankintel.models.schema import (
 from rankintel.evidence.conflicts import ConflictDetector
 from rankintel.evidence.provenance import ProvenanceTagger
 from rankintel.intelligence.fixer import FixGenerator
+from rankintel.intelligence.remediation_engine import RemediationEngine
 from rankintel.references.quality_gates import META_LENGTH_BOUNDS, HEADING_HIERARCHY_RULES
 from rankintel.analyzers.trust_evaluator import TrustEvaluator
 
@@ -382,7 +383,7 @@ class IntelligenceSynthesizer:
         if robots_fix:
             fixes["hardened_robots"] = robots_fix
 
-        return SynthesisReport(
+        report = SynthesisReport(
             url=url,
             domain=domain,
             timestamp=timestamp,
@@ -422,6 +423,8 @@ class IntelligenceSynthesizer:
             cloud_intelligence=cloud_intelligence,
             fixes=fixes
         )
+        report.remediation_records = RemediationEngine.generate_remediations(report)
+        return report
 
     def _compute_technical_score(
         self, on_page: OnPageEvidence, robots: RobotsEvidence, schema: SchemaEvidence

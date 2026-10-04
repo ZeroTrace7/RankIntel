@@ -3,10 +3,10 @@
   "domain": "www.zaubacorp.com",
   "name": "Zauba Corp",
   "role": "competitor",
-  "collection_timestamp": "2026-10-04",
+  "collection_timestamp": "2026-10-05",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 4.83,
+  "execution_time_sec": 5.3,
   "overall_health_score": 59,
   "technical_health_score": 80,
   "geo_readiness_score": 30,
@@ -59,7 +59,7 @@
     "detected_schema_types": [],
     "schema_blocks_count": 0,
     "schema_validation_issues": [],
-    "ttfb_ms": 80.2,
+    "ttfb_ms": 83.4,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -172,7 +172,7 @@
     "notes": [
       "Extraction method: SEMANTIC_MAIN yielded 650 main content words (1005 total body words).",
       "Content-to-body ratio: 64.7%.",
-      "Exact main-content SHA-256: e67647d457796dc8..., Full HTML SHA-256: c98d78bdccbd0302...",
+      "Exact main-content SHA-256: e67647d457796dc8..., Full HTML SHA-256: 0f8af8ae27c51dec...",
       "SimHash fingerprint: 97750d29c7b88dba."
     ]
   },
@@ -278,7 +278,7 @@
     "search_index_allowed_count": 6,
     "ai_training_allowed_count": 3,
     "user_fetch_allowed_count": 3,
-    "waf_or_challenge_detected": true,
+    "waf_or_challenge_detected": false,
     "waf_blocked": false,
     "waf_provider": "Cloudflare",
     "has_nosnippet": false,
@@ -290,25 +290,26 @@
     "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (864 raw vs 979 rendered).",
     "notes": [
       "HTTP Status: 200",
-      "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
+      "No active WAF or automated challenge barriers observed.",
       "Static HTML contains 864 words.",
       "Rendered browser DOM contains 979 words (delta: +115 words)."
     ]
   },
   "answerability": {
     "status": "AVAILABLE",
-    "total_units_detected": 3,
+    "total_units_detected": 9,
     "units_by_type": {
-      "LIST": 3
+      "LIST": 3,
+      "FACTUAL_STATEMENT": 6
     },
     "heading_content_relationship": "PARTIAL",
     "question_answer_patterns": "ABSENT",
     "definition_patterns": "ABSENT",
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
-    "explained_topics_count": 43,
-    "mentioned_only_topics_count": 45,
-    "unsupported_heading_topics_count": 13,
+    "explained_topics_count": 72,
+    "mentioned_only_topics_count": 20,
+    "unsupported_heading_topics_count": 10,
     "unsupported_headings_sample": [
       "By Industry",
       "By Team",
@@ -317,17 +318,18 @@
       "Information Required"
     ],
     "notes": [
-      "Detected 3 distinct observable information unit(s) across 1 structural types.",
-      "Evaluated 122 topic(s): 43 explained with explicit units, 45 mentioned only, 13 unsupported headings.",
+      "Detected 9 distinct observable information unit(s) across 2 structural types.",
+      "Evaluated 122 topic(s): 72 explained with explicit units, 20 mentioned only, 10 unsupported headings.",
+      "Structure 'FACTUAL_STATEMENT': 6 unit(s) observed.",
       "Structure 'LIST': 3 unit(s) observed."
     ]
   },
   "claim_grounding": {
     "status": "AVAILABLE",
-    "total_claims_detected": 4,
-    "supported_claims_count": 3,
+    "total_claims_detected": 10,
+    "supported_claims_count": 0,
     "partially_supported_count": 1,
-    "uncorroborated_count": 0,
+    "uncorroborated_count": 9,
     "contradicted_count": 0,
     "structured_agreements_count": 0,
     "structured_disagreements_count": 0,
@@ -336,8 +338,8 @@
       "PARTIALLY_CONSISTENT": 1
     },
     "notes": [
-      "Detected 4 observable claim(s) on page https://www.zaubacorp.com/.",
-      "On-site support status: 3 supported, 1 partially supported, 0 uncorroborated, 0 contradicted.",
+      "Detected 10 observable claim(s) on page https://www.zaubacorp.com/.",
+      "On-site support status: 0 supported, 1 partially supported, 9 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 0 agreement(s), 0 explicit disagreement(s).",
       "Evaluated 2 entity candidate(s) across 6 content surfaces."
     ]
@@ -366,7 +368,7 @@
     "descriptive_navigation_links_count": 22,
     "schema_actions_detected": 0,
     "webmcp_declarations_detected": 0,
-    "total_access_paths": 5,
+    "total_access_paths": 8,
     "action_surface_gaps": 0,
     "notes": [
       "1 forms, 31 buttons audited"
@@ -399,24 +401,25 @@
       "Robots.txt found: True",
       "Schema types declared: None",
       "HTTPS enforced: True",
-      "Server latency probe: 80.2ms (local_probe)",
+      "Server latency probe: 83.4ms (local_probe)",
       "HTTP Status: 200",
-      "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
+      "No active WAF or automated challenge barriers observed.",
       "Static HTML contains 864 words.",
       "Rendered browser DOM contains 979 words (delta: +115 words).",
-      "Detected 3 distinct observable information unit(s) across 1 structural types.",
-      "Evaluated 122 topic(s): 43 explained with explicit units, 45 mentioned only, 13 unsupported headings.",
+      "Detected 9 distinct observable information unit(s) across 2 structural types.",
+      "Evaluated 122 topic(s): 72 explained with explicit units, 20 mentioned only, 10 unsupported headings.",
+      "Structure 'FACTUAL_STATEMENT': 6 unit(s) observed.",
       "Structure 'LIST': 3 unit(s) observed.",
-      "Detected 4 observable claim(s) on page https://www.zaubacorp.com/.",
-      "On-site support status: 3 supported, 1 partially supported, 0 uncorroborated, 0 contradicted.",
+      "Detected 10 observable claim(s) on page https://www.zaubacorp.com/.",
+      "On-site support status: 0 supported, 1 partially supported, 9 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 0 agreement(s), 0 explicit disagreement(s).",
       "Evaluated 2 entity candidate(s) across 6 content surfaces.",
       "Observed 34 visual asset(s): 21 informational, 3 with meaningful alt text, 0 with figure captions, 18 visual-only information gap(s).",
       "Observed 1 form(s) (0 labeled), 31 action button(s) (29 accessible names), 0 structured schema action(s), 0 WebMCP declaration(s).",
-      "Mapped 5 information access path(s) across multimodal and agent surfaces."
+      "Mapped 8 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 80.2ms TTFB",
+      "Local network latency probe recorded 83.4ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -622,7 +625,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 80ms",
+      "finding": "TTFB Latency: 83ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -814,7 +817,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Observable Information Units: 3 unit(s) across 1 structural types",
+      "finding": "Observable Information Units: 9 unit(s) across 2 structural types",
       "engine": "answerability_engine",
       "source_file": "DOM & Schema Structure",
       "confidence": "high",
@@ -822,7 +825,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 43 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 72 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",
@@ -838,7 +841,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Observable Claims Grounding: 4 claim(s) (3 supported on-site, 0 uncorroborated)",
+      "finding": "Observable Claims Grounding: 10 claim(s) (0 supported on-site, 9 uncorroborated)",
       "engine": "claim_grounding_engine",
       "source_file": "Visible Content & Answerable Units",
       "confidence": "high",
@@ -878,7 +881,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Information Access Paths: 5 path(s) triangulated across visual and interactive surfaces",
+      "finding": "Information Access Paths: 8 path(s) triangulated across visual and interactive surfaces",
       "engine": "multimodal_agent_engine",
       "source_file": "Multi-Engine Triangulation",
       "confidence": "high",
@@ -926,7 +929,7 @@
     "multimodal_agent_engine"
   ],
   "raw_report_paths": {
-    "markdown_audit": "audits\\zaubacorp.com-2026-10-04.md",
-    "json_audit": "audits\\zaubacorp.com-2026-10-04.json"
+    "markdown_audit": "audits\\zaubacorp.com-2026-10-05.md",
+    "json_audit": "audits\\zaubacorp.com-2026-10-05.json"
   }
 }

@@ -3,10 +3,10 @@
   "domain": "www.ascgroup.in",
   "name": "ASC Group",
   "role": "competitor",
-  "collection_timestamp": "2026-10-04",
+  "collection_timestamp": "2026-10-05",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 15.35,
+  "execution_time_sec": 15.9,
   "overall_health_score": 72,
   "technical_health_score": 100,
   "geo_readiness_score": 43,
@@ -61,7 +61,7 @@
     ],
     "schema_blocks_count": 1,
     "schema_validation_issues": [],
-    "ttfb_ms": 415.4,
+    "ttfb_ms": 345.7,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -234,7 +234,7 @@
     "notes": [
       "Extraction method: SEMANTIC_ARTICLE yielded 414 main content words (4562 total body words).",
       "Content-to-body ratio: 9.1%.",
-      "Exact main-content SHA-256: 05463680c8327421..., Full HTML SHA-256: ad20a46d8b31c3ed...",
+      "Exact main-content SHA-256: 05463680c8327421..., Full HTML SHA-256: c280f9b1ced8dc08...",
       "SimHash fingerprint: 3c5f750cf8c27d53."
     ]
   },
@@ -330,8 +330,8 @@
       "Advisory",
       "Consulting",
       "Group®",
-      "Taxation",
       "ASC",
+      "Taxation",
       "About ASC",
       "Audit",
       "Financial",
@@ -389,18 +389,19 @@
   },
   "answerability": {
     "status": "AVAILABLE",
-    "total_units_detected": 7,
+    "total_units_detected": 12,
     "units_by_type": {
-      "SERVICE_DESCRIPTION": 7
+      "SERVICE_DESCRIPTION": 7,
+      "FACTUAL_STATEMENT": 5
     },
     "heading_content_relationship": "PARTIAL",
     "question_answer_patterns": "ABSENT",
     "definition_patterns": "ABSENT",
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
-    "explained_topics_count": 37,
-    "mentioned_only_topics_count": 41,
-    "unsupported_heading_topics_count": 150,
+    "explained_topics_count": 57,
+    "mentioned_only_topics_count": 32,
+    "unsupported_heading_topics_count": 139,
     "unsupported_headings_sample": [
       "Accounting & Assurance Services",
       "Risk & Technology Consulting",
@@ -409,17 +410,18 @@
       "Insolvency & Bankruptcy"
     ],
     "notes": [
-      "Detected 7 distinct observable information unit(s) across 1 structural types.",
-      "Evaluated 233 topic(s): 37 explained with explicit units, 41 mentioned only, 150 unsupported headings.",
+      "Detected 12 distinct observable information unit(s) across 2 structural types.",
+      "Evaluated 233 topic(s): 57 explained with explicit units, 32 mentioned only, 139 unsupported headings.",
+      "Structure 'FACTUAL_STATEMENT': 5 unit(s) observed.",
       "Structure 'SERVICE_DESCRIPTION': 7 unit(s) observed."
     ]
   },
   "claim_grounding": {
     "status": "AVAILABLE",
-    "total_claims_detected": 19,
-    "supported_claims_count": 10,
+    "total_claims_detected": 24,
+    "supported_claims_count": 11,
     "partially_supported_count": 8,
-    "uncorroborated_count": 1,
+    "uncorroborated_count": 5,
     "contradicted_count": 0,
     "structured_agreements_count": 2,
     "structured_disagreements_count": 0,
@@ -428,8 +430,8 @@
       "PARTIALLY_CONSISTENT": 4
     },
     "notes": [
-      "Detected 19 observable claim(s) on page https://www.ascgroup.in/.",
-      "On-site support status: 10 supported, 8 partially supported, 1 uncorroborated, 0 contradicted.",
+      "Detected 24 observable claim(s) on page https://www.ascgroup.in/.",
+      "On-site support status: 11 supported, 8 partially supported, 5 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 2 agreement(s), 0 explicit disagreement(s).",
       "Evaluated 5 entity candidate(s) across 6 content surfaces."
     ]
@@ -444,7 +446,7 @@
     "text_represented_count": 11,
     "visual_only_observed_gaps": 1,
     "modern_format_count": 32,
-    "missing_dimensions_count": 65,
+    "missing_dimensions_count": 74,
     "notes": [
       "119 visual assets audited (107 alt-represented)"
     ]
@@ -458,7 +460,7 @@
     "descriptive_navigation_links_count": 720,
     "schema_actions_detected": 0,
     "webmcp_declarations_detected": 0,
-    "total_access_paths": 9,
+    "total_access_paths": 11,
     "action_surface_gaps": 0,
     "notes": [
       "4 forms, 20 buttons audited"
@@ -491,25 +493,26 @@
       "Robots.txt found: True",
       "Schema types declared: Organization",
       "HTTPS enforced: True",
-      "Server latency probe: 415.4ms (local_probe)",
+      "Server latency probe: 345.7ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
       "max-snippet threshold set to -1 characters (meta:robots)",
       "Static HTML contains 3754 words.",
       "Rendered browser DOM contains 4320 words (delta: +566 words).",
-      "Detected 7 distinct observable information unit(s) across 1 structural types.",
-      "Evaluated 233 topic(s): 37 explained with explicit units, 41 mentioned only, 150 unsupported headings.",
+      "Detected 12 distinct observable information unit(s) across 2 structural types.",
+      "Evaluated 233 topic(s): 57 explained with explicit units, 32 mentioned only, 139 unsupported headings.",
+      "Structure 'FACTUAL_STATEMENT': 5 unit(s) observed.",
       "Structure 'SERVICE_DESCRIPTION': 7 unit(s) observed.",
-      "Detected 19 observable claim(s) on page https://www.ascgroup.in/.",
-      "On-site support status: 10 supported, 8 partially supported, 1 uncorroborated, 0 contradicted.",
+      "Detected 24 observable claim(s) on page https://www.ascgroup.in/.",
+      "On-site support status: 11 supported, 8 partially supported, 5 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 2 agreement(s), 0 explicit disagreement(s).",
       "Evaluated 5 entity candidate(s) across 6 content surfaces.",
       "Observed 119 visual asset(s): 108 informational, 107 with meaningful alt text, 0 with figure captions, 1 visual-only information gap(s).",
       "Observed 4 form(s) (2 labeled), 20 action button(s) (10 accessible names), 0 structured schema action(s), 0 WebMCP declaration(s).",
-      "Mapped 9 information access path(s) across multimodal and agent surfaces."
+      "Mapped 11 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 415.4ms TTFB",
+      "Local network latency probe recorded 345.7ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -735,7 +738,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 415ms",
+      "finding": "TTFB Latency: 346ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -935,7 +938,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Observable Information Units: 7 unit(s) across 1 structural types",
+      "finding": "Observable Information Units: 12 unit(s) across 2 structural types",
       "engine": "answerability_engine",
       "source_file": "DOM & Schema Structure",
       "confidence": "high",
@@ -943,7 +946,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 37 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 57 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",
@@ -959,7 +962,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Observable Claims Grounding: 19 claim(s) (10 supported on-site, 1 uncorroborated)",
+      "finding": "Observable Claims Grounding: 24 claim(s) (11 supported on-site, 5 uncorroborated)",
       "engine": "claim_grounding_engine",
       "source_file": "Visible Content & Answerable Units",
       "confidence": "high",
@@ -999,7 +1002,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Information Access Paths: 9 path(s) triangulated across visual and interactive surfaces",
+      "finding": "Information Access Paths: 11 path(s) triangulated across visual and interactive surfaces",
       "engine": "multimodal_agent_engine",
       "source_file": "Multi-Engine Triangulation",
       "confidence": "high",
@@ -1039,7 +1042,7 @@
     "multimodal_agent_engine"
   ],
   "raw_report_paths": {
-    "markdown_audit": "audits\\ascgroup.in-2026-10-04.md",
-    "json_audit": "audits\\ascgroup.in-2026-10-04.json"
+    "markdown_audit": "audits\\ascgroup.in-2026-10-05.md",
+    "json_audit": "audits\\ascgroup.in-2026-10-05.json"
   }
 }

@@ -3,10 +3,10 @@
   "domain": "www.yadavmeasurements.com",
   "name": "Yadav Measurements",
   "role": "competitor",
-  "collection_timestamp": "2026-10-04",
+  "collection_timestamp": "2026-10-05",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 6.4,
+  "execution_time_sec": 7.64,
   "overall_health_score": 41,
   "technical_health_score": 35,
   "geo_readiness_score": 28,
@@ -55,7 +55,7 @@
     "detected_schema_types": [],
     "schema_blocks_count": 0,
     "schema_validation_issues": [],
-    "ttfb_ms": 119.2,
+    "ttfb_ms": 106.2,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -222,7 +222,7 @@
     "notes": [
       "Extraction method: HEURISTIC_PRUNED_BODY yielded 284 main content words (1068 total body words).",
       "Content-to-body ratio: 26.6%.",
-      "Exact main-content SHA-256: 74d5a15d46f189f0..., Full HTML SHA-256: c5da064a507df9c1...",
+      "Exact main-content SHA-256: 74d5a15d46f189f0..., Full HTML SHA-256: b5249b328002e9dc...",
       "SimHash fingerprint: bbdd1d27400a29f2."
     ]
   },
@@ -322,7 +322,7 @@
     "search_index_allowed_count": 6,
     "ai_training_allowed_count": 3,
     "user_fetch_allowed_count": 3,
-    "waf_or_challenge_detected": true,
+    "waf_or_challenge_detected": false,
     "waf_blocked": false,
     "waf_provider": null,
     "has_nosnippet": false,
@@ -334,15 +334,16 @@
     "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (1055 raw vs 1059 rendered).",
     "notes": [
       "HTTP Status: 200",
-      "WAF / Challenge Indicators: Observable embedded form protection in HTML: 'recaptcha'",
+      "No active WAF or automated challenge barriers observed.",
       "Static HTML contains 1055 words.",
       "Rendered browser DOM contains 1059 words (delta: +4 words)."
     ]
   },
   "answerability": {
     "status": "AVAILABLE",
-    "total_units_detected": 1,
+    "total_units_detected": 12,
     "units_by_type": {
+      "FACTUAL_STATEMENT": 11,
       "SERVICE_DESCRIPTION": 1
     },
     "heading_content_relationship": "PARTIAL",
@@ -350,9 +351,9 @@
     "definition_patterns": "ABSENT",
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
-    "explained_topics_count": 2,
-    "mentioned_only_topics_count": 32,
-    "unsupported_heading_topics_count": 4,
+    "explained_topics_count": 25,
+    "mentioned_only_topics_count": 12,
+    "unsupported_heading_topics_count": 1,
     "unsupported_headings_sample": [
       "Power",
       "Gas",
@@ -361,17 +362,18 @@
       "Automation and Control"
     ],
     "notes": [
-      "Detected 1 distinct observable information unit(s) across 1 structural types.",
-      "Evaluated 42 topic(s): 2 explained with explicit units, 32 mentioned only, 4 unsupported headings.",
+      "Detected 12 distinct observable information unit(s) across 2 structural types.",
+      "Evaluated 42 topic(s): 25 explained with explicit units, 12 mentioned only, 1 unsupported headings.",
+      "Structure 'FACTUAL_STATEMENT': 11 unit(s) observed.",
       "Structure 'SERVICE_DESCRIPTION': 1 unit(s) observed."
     ]
   },
   "claim_grounding": {
     "status": "AVAILABLE",
-    "total_claims_detected": 1,
-    "supported_claims_count": 0,
+    "total_claims_detected": 12,
+    "supported_claims_count": 1,
     "partially_supported_count": 1,
-    "uncorroborated_count": 0,
+    "uncorroborated_count": 10,
     "contradicted_count": 0,
     "structured_agreements_count": 0,
     "structured_disagreements_count": 0,
@@ -379,8 +381,8 @@
       "CONSISTENT": 1
     },
     "notes": [
-      "Detected 1 observable claim(s) on page https://www.yadavmeasurements.com/.",
-      "On-site support status: 0 supported, 1 partially supported, 0 uncorroborated, 0 contradicted.",
+      "Detected 12 observable claim(s) on page https://www.yadavmeasurements.com/.",
+      "On-site support status: 1 supported, 1 partially supported, 10 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 0 agreement(s), 0 explicit disagreement(s).",
       "Evaluated 1 entity candidate(s) across 6 content surfaces."
     ]
@@ -395,7 +397,7 @@
     "text_represented_count": 5,
     "visual_only_observed_gaps": 15,
     "modern_format_count": 0,
-    "missing_dimensions_count": 2,
+    "missing_dimensions_count": 8,
     "notes": [
       "28 visual assets audited (8 alt-represented)"
     ]
@@ -409,7 +411,7 @@
     "descriptive_navigation_links_count": 51,
     "schema_actions_detected": 0,
     "webmcp_declarations_detected": 0,
-    "total_access_paths": 7,
+    "total_access_paths": 13,
     "action_surface_gaps": 0,
     "notes": [
       "2 forms, 17 buttons audited"
@@ -442,24 +444,25 @@
       "Robots.txt found: True",
       "Schema types declared: None",
       "HTTPS enforced: True",
-      "Server latency probe: 119.2ms (local_probe)",
+      "Server latency probe: 106.2ms (local_probe)",
       "HTTP Status: 200",
-      "WAF / Challenge Indicators: Observable embedded form protection in HTML: 'recaptcha'",
+      "No active WAF or automated challenge barriers observed.",
       "Static HTML contains 1055 words.",
       "Rendered browser DOM contains 1059 words (delta: +4 words).",
-      "Detected 1 distinct observable information unit(s) across 1 structural types.",
-      "Evaluated 42 topic(s): 2 explained with explicit units, 32 mentioned only, 4 unsupported headings.",
+      "Detected 12 distinct observable information unit(s) across 2 structural types.",
+      "Evaluated 42 topic(s): 25 explained with explicit units, 12 mentioned only, 1 unsupported headings.",
+      "Structure 'FACTUAL_STATEMENT': 11 unit(s) observed.",
       "Structure 'SERVICE_DESCRIPTION': 1 unit(s) observed.",
-      "Detected 1 observable claim(s) on page https://www.yadavmeasurements.com/.",
-      "On-site support status: 0 supported, 1 partially supported, 0 uncorroborated, 0 contradicted.",
+      "Detected 12 observable claim(s) on page https://www.yadavmeasurements.com/.",
+      "On-site support status: 1 supported, 1 partially supported, 10 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 0 agreement(s), 0 explicit disagreement(s).",
       "Evaluated 1 entity candidate(s) across 6 content surfaces.",
       "Observed 28 visual asset(s): 27 informational, 8 with meaningful alt text, 0 with figure captions, 15 visual-only information gap(s).",
       "Observed 2 form(s) (0 labeled), 17 action button(s) (11 accessible names), 0 structured schema action(s), 0 WebMCP declaration(s).",
-      "Mapped 7 information access path(s) across multimodal and agent surfaces."
+      "Mapped 13 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 119.2ms TTFB",
+      "Local network latency probe recorded 106.2ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -468,7 +471,7 @@
       "GEO citability readiness: 28/100",
       "Trust stack: D (36/100)",
       "Cross-engine conflict [MEDIUM] on 'Topic Heading without Supporting Content': Topic 'Company' has dedicated heading 'Our company', but supporting body content is genuinely absent. -> The page establishes an explicit topical heading promise for search/AI retrieval, but fails to provide observable explanatory or factual body copy under that section.",
-      "Cross-engine conflict [MEDIUM] on 'Information Unit Missing Textual / Alt Representation': Information unit 'unit-service_description-0' is linked to graphic 'https://www.yadavmeasurements.com/dashbo' with no text, alt, or caption representation. -> A key topical or procedural unit is illustrated by an informational visual graphic, but the visual asset provides no machine-readable textual representation. Non-visual user agents and text-only search crawlers cannot extract the information contained in the image."
+      "Cross-engine conflict [MEDIUM] on 'Information Unit Missing Textual / Alt Representation': Information unit 'unit-service_description-7' is linked to graphic 'https://www.yadavmeasurements.com/dashbo' with no text, alt, or caption representation. -> A key topical or procedural unit is illustrated by an informational visual graphic, but the visual asset provides no machine-readable textual representation. Non-visual user agents and text-only search crawlers cannot extract the information contained in the image."
     ],
     "recommendations": [
       "[HIGH] Optimize Title Tag Length & CTR Hook: Titles over 60 chars are truncated in SERPs with ellipses. Target 50-60 chars with primary keyword front-loaded.",
@@ -673,7 +676,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 119ms",
+      "finding": "TTFB Latency: 106ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -857,7 +860,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Observable Information Units: 1 unit(s) across 1 structural types",
+      "finding": "Observable Information Units: 12 unit(s) across 2 structural types",
       "engine": "answerability_engine",
       "source_file": "DOM & Schema Structure",
       "confidence": "high",
@@ -865,7 +868,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 2 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 25 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",
@@ -881,7 +884,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Observable Claims Grounding: 1 claim(s) (0 supported on-site, 0 uncorroborated)",
+      "finding": "Observable Claims Grounding: 12 claim(s) (1 supported on-site, 10 uncorroborated)",
       "engine": "claim_grounding_engine",
       "source_file": "Visible Content & Answerable Units",
       "confidence": "high",
@@ -921,7 +924,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Information Access Paths: 7 path(s) triangulated across visual and interactive surfaces",
+      "finding": "Information Access Paths: 13 path(s) triangulated across visual and interactive surfaces",
       "engine": "multimodal_agent_engine",
       "source_file": "Multi-Engine Triangulation",
       "confidence": "high",
@@ -941,8 +944,8 @@
     {
       "severity": "MEDIUM",
       "feature": "Information Unit Missing Textual / Alt Representation",
-      "description": "Information unit 'unit-service_description-0' is linked to graphic 'https://www.yadavmeasurements.com/dashbo' with no text, alt, or caption representation.",
-      "engine_a_finding": "Answerability Engine: Important information unit 'unit-service_description-0' identified",
+      "description": "Information unit 'unit-service_description-7' is linked to graphic 'https://www.yadavmeasurements.com/dashbo' with no text, alt, or caption representation.",
+      "engine_a_finding": "Answerability Engine: Important information unit 'unit-service_description-7' identified",
       "engine_b_finding": "Multimodal Engine: Visual asset lacks alt text, figcaption, or surrounding explanation",
       "interpretation": "A key topical or procedural unit is illustrated by an informational visual graphic, but the visual asset provides no machine-readable textual representation. Non-visual user agents and text-only search crawlers cannot extract the information contained in the image."
     }
@@ -969,7 +972,7 @@
     "multimodal_agent_engine"
   ],
   "raw_report_paths": {
-    "markdown_audit": "audits\\yadavmeasurements.com-2026-10-04.md",
-    "json_audit": "audits\\yadavmeasurements.com-2026-10-04.json"
+    "markdown_audit": "audits\\yadavmeasurements.com-2026-10-05.md",
+    "json_audit": "audits\\yadavmeasurements.com-2026-10-05.json"
   }
 }

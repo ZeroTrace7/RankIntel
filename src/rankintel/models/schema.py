@@ -2236,6 +2236,27 @@ class ConflictFinding(BaseModel):
     interpretation: str
     severity: str  # HIGH, MEDIUM, LOW
 
+class RemediationClassification(str, Enum):
+    AUTO_SAFE = "AUTO_SAFE"
+    HUMAN_REVIEW = "HUMAN_REVIEW"
+    REQUIRES_EXTERNAL_VALIDATION = "REQUIRES_EXTERNAL_VALIDATION"
+    NOT_ACTIONABLE = "NOT_ACTIONABLE"
+
+class RemediationRecord(BaseModel):
+    remediation_id: str
+    finding_id: str
+    category: str
+    problem: str
+    why_it_matters: str
+    recommended_action: str
+    affected_urls: List[str] = Field(default_factory=list)
+    supporting_evidence: Dict[str, Any] = Field(default_factory=dict)
+    evidence_provenance: str
+    confidence_status: str
+    classification: RemediationClassification
+    implementation_notes: Optional[str] = None
+    limitation_uncertainty: Optional[str] = None
+
 class PrioritizedAction(BaseModel):
     level: str  # CRITICAL, HIGH, MEDIUM, GEO_WIN
     title: str
@@ -2262,6 +2283,7 @@ class SynthesisReport(BaseModel):
     engines_executed: List[str] = Field(default_factory=list)
     conflicts_detected: List[ConflictFinding] = Field(default_factory=list)
     prioritized_actions: List[PrioritizedAction] = Field(default_factory=list)
+    remediation_records: List[RemediationRecord] = Field(default_factory=list)
     provenance: List[EvidenceProvenanceTag] = Field(default_factory=list)
     
     # Unified reconciled states

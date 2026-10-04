@@ -3,10 +3,10 @@
   "domain": "sunrisetesting.vercel.app",
   "name": "Sunrise Testing",
   "role": "sunrise",
-  "collection_timestamp": "2026-10-04",
+  "collection_timestamp": "2026-10-05",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 6.03,
+  "execution_time_sec": 5.81,
   "overall_health_score": 48,
   "technical_health_score": 60,
   "geo_readiness_score": 35,
@@ -57,7 +57,7 @@
     "detected_schema_types": [],
     "schema_blocks_count": 0,
     "schema_validation_issues": [],
-    "ttfb_ms": 95.5,
+    "ttfb_ms": 99.4,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -231,8 +231,8 @@
       "Sunrise Testing & Calibration Centre"
     ],
     "entity_types_detected": [
-      "ORGANIZATION",
-      "LOCAL_BUSINESS"
+      "LOCAL_BUSINESS",
+      "ORGANIZATION"
     ],
     "relationships_count": 1,
     "structured_vs_visible_comparisons_count": 0,
@@ -351,11 +351,11 @@
   },
   "answerability": {
     "status": "AVAILABLE",
-    "total_units_detected": 11,
+    "total_units_detected": 21,
     "units_by_type": {
       "DEFINITION": 2,
       "PROCEDURE_STEPS": 1,
-      "FACTUAL_STATEMENT": 3,
+      "FACTUAL_STATEMENT": 13,
       "DIRECT_ANSWER": 2,
       "SERVICE_DESCRIPTION": 1,
       "REQUIREMENTS_ELIGIBILITY": 2
@@ -365,8 +365,8 @@
     "definition_patterns": "PRESENT",
     "step_list_structure": "PRESENT",
     "table_availability": "ABSENT",
-    "explained_topics_count": 72,
-    "mentioned_only_topics_count": 48,
+    "explained_topics_count": 79,
+    "mentioned_only_topics_count": 41,
     "unsupported_heading_topics_count": 2,
     "unsupported_headings_sample": [
       "Sunrise Testing & Calibration Centre",
@@ -376,11 +376,11 @@
       "Sun Associates — QMS & BIS Consultancy"
     ],
     "notes": [
-      "Detected 11 distinct observable information unit(s) across 6 structural types.",
-      "Evaluated 129 topic(s): 72 explained with explicit units, 48 mentioned only, 2 unsupported headings.",
+      "Detected 21 distinct observable information unit(s) across 6 structural types.",
+      "Evaluated 129 topic(s): 79 explained with explicit units, 41 mentioned only, 2 unsupported headings.",
       "Structure 'DEFINITION': 2 unit(s) observed.",
       "Structure 'DIRECT_ANSWER': 2 unit(s) observed.",
-      "Structure 'FACTUAL_STATEMENT': 3 unit(s) observed.",
+      "Structure 'FACTUAL_STATEMENT': 13 unit(s) observed.",
       "Structure 'PROCEDURE_STEPS': 1 unit(s) observed.",
       "Structure 'REQUIREMENTS_ELIGIBILITY': 2 unit(s) observed.",
       "Structure 'SERVICE_DESCRIPTION': 1 unit(s) observed."
@@ -388,10 +388,10 @@
   },
   "claim_grounding": {
     "status": "AVAILABLE",
-    "total_claims_detected": 17,
-    "supported_claims_count": 16,
+    "total_claims_detected": 27,
+    "supported_claims_count": 22,
     "partially_supported_count": 1,
-    "uncorroborated_count": 0,
+    "uncorroborated_count": 4,
     "contradicted_count": 0,
     "structured_agreements_count": 0,
     "structured_disagreements_count": 0,
@@ -399,8 +399,8 @@
       "PARTIALLY_CONSISTENT": 4
     },
     "notes": [
-      "Detected 17 observable claim(s) on page https://sunrisetesting.vercel.app/.",
-      "On-site support status: 16 supported, 1 partially supported, 0 uncorroborated, 0 contradicted.",
+      "Detected 27 observable claim(s) on page https://sunrisetesting.vercel.app/.",
+      "On-site support status: 22 supported, 1 partially supported, 4 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 0 agreement(s), 0 explicit disagreement(s).",
       "Evaluated 4 entity candidate(s) across 6 content surfaces."
     ]
@@ -462,18 +462,18 @@
       "Robots.txt found: False",
       "Schema types declared: None",
       "HTTPS enforced: True",
-      "Server latency probe: 95.5ms (local_probe)",
+      "Server latency probe: 99.4ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
       "Static HTML contains 957 words.",
       "Rendered browser DOM contains 957 words (delta: +0 words).",
-      "Detected 11 distinct observable information unit(s) across 6 structural types.",
-      "Evaluated 129 topic(s): 72 explained with explicit units, 48 mentioned only, 2 unsupported headings.",
+      "Detected 21 distinct observable information unit(s) across 6 structural types.",
+      "Evaluated 129 topic(s): 79 explained with explicit units, 41 mentioned only, 2 unsupported headings.",
       "Structure 'DEFINITION': 2 unit(s) observed.",
       "Structure 'DIRECT_ANSWER': 2 unit(s) observed.",
-      "Structure 'FACTUAL_STATEMENT': 3 unit(s) observed.",
-      "Detected 17 observable claim(s) on page https://sunrisetesting.vercel.app/.",
-      "On-site support status: 16 supported, 1 partially supported, 0 uncorroborated, 0 contradicted.",
+      "Structure 'FACTUAL_STATEMENT': 13 unit(s) observed.",
+      "Detected 27 observable claim(s) on page https://sunrisetesting.vercel.app/.",
+      "On-site support status: 22 supported, 1 partially supported, 4 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 0 agreement(s), 0 explicit disagreement(s).",
       "Evaluated 4 entity candidate(s) across 6 content surfaces.",
       "Observed 34 visual asset(s): 3 informational, 0 with meaningful alt text, 0 with figure captions, 3 visual-only information gap(s).",
@@ -481,7 +481,7 @@
       "Mapped 3 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 95.5ms TTFB",
+      "Local network latency probe recorded 99.4ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -513,7 +513,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 96ms",
+      "finding": "TTFB Latency: 99ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -697,7 +697,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Observable Information Units: 11 unit(s) across 6 structural types",
+      "finding": "Observable Information Units: 21 unit(s) across 6 structural types",
       "engine": "answerability_engine",
       "source_file": "DOM & Schema Structure",
       "confidence": "high",
@@ -705,7 +705,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 72 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 79 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",
@@ -721,7 +721,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Observable Claims Grounding: 17 claim(s) (16 supported on-site, 0 uncorroborated)",
+      "finding": "Observable Claims Grounding: 27 claim(s) (22 supported on-site, 4 uncorroborated)",
       "engine": "claim_grounding_engine",
       "source_file": "Visible Content & Answerable Units",
       "confidence": "high",
@@ -793,7 +793,7 @@
     "multimodal_agent_engine"
   ],
   "raw_report_paths": {
-    "markdown_audit": "audits\\sunrisetesting.vercel.app-2026-10-04.md",
-    "json_audit": "audits\\sunrisetesting.vercel.app-2026-10-04.json"
+    "markdown_audit": "audits\\sunrisetesting.vercel.app-2026-10-05.md",
+    "json_audit": "audits\\sunrisetesting.vercel.app-2026-10-05.json"
   }
 }

@@ -1277,6 +1277,21 @@ class MarkdownReporter:
             lines.append(f"- **Rationale:** {action.rationale}")
             lines.append(f"- **Confidence:** {action.engine_confidence}\n")
 
+        # Remediation Intelligence
+        if hasattr(report, 'remediation_records') and report.remediation_records:
+            lines.append("## \U0001F6E0\FE0F REMEDIATION INTELLIGENCE")
+            for rem in report.remediation_records:
+                lines.append(f"### [{rem.classification.value}] {rem.problem}")
+                lines.append(f"- **Finding ID:** `{rem.finding_id}` (Provenance: `{rem.evidence_provenance}`)")
+                lines.append(f"- **Category:** {rem.category}")
+                lines.append(f"- **Why it matters:** {rem.why_it_matters}")
+                lines.append(f"- **Recommended Action:** {rem.recommended_action}")
+                if rem.affected_urls:
+                    lines.append(f"- **Affected URL(s):** {', '.join(rem.affected_urls)}")
+                if rem.implementation_notes:
+                    lines.append(f"- **Implementation Notes:** {rem.implementation_notes}")
+                lines.append("")
+
         # Copy-Paste Ready Production Assets
         lines.append("## 🚀 PRODUCTION-READY FIXES (COPY & PASTE)")
         

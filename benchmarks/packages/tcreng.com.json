@@ -3,10 +3,10 @@
   "domain": "www.tcreng.com",
   "name": "TCR Engineering",
   "role": "competitor",
-  "collection_timestamp": "2026-10-04",
+  "collection_timestamp": "2026-10-05",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 5.81,
+  "execution_time_sec": 6.86,
   "overall_health_score": 79,
   "technical_health_score": 100,
   "geo_readiness_score": 63,
@@ -58,18 +58,18 @@
     "h2_count": 17,
     "h3_count": 26,
     "detected_schema_types": [
+      "FAQPage",
+      "VideoObject",
+      "Organization",
       "WebPage",
       "ItemList",
-      "Organization",
-      "WebSite",
-      "NewsArticle",
       "BreadcrumbList",
-      "FAQPage",
-      "VideoObject"
+      "NewsArticle",
+      "WebSite"
     ],
     "schema_blocks_count": 8,
     "schema_validation_issues": [],
-    "ttfb_ms": 81.0,
+    "ttfb_ms": 111.9,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -142,7 +142,7 @@
     "notes": [
       "Extraction method: SEMANTIC_MAIN yielded 1545 main content words (2463 total body words).",
       "Content-to-body ratio: 62.7%.",
-      "Exact main-content SHA-256: 7bd7d761d9e4300c..., Full HTML SHA-256: 0d75925e36a8c294...",
+      "Exact main-content SHA-256: 7bd7d761d9e4300c..., Full HTML SHA-256: f57eaf081c17c342...",
       "SimHash fingerprint: 8d6c4932dd1c4fb5."
     ]
   },
@@ -161,9 +161,9 @@
       "Contact Email (sales@tcreng.com)"
     ],
     "entity_types_detected": [
+      "LOCAL_BUSINESS",
       "ORGANIZATION",
-      "OTHER",
-      "LOCAL_BUSINESS"
+      "OTHER"
     ],
     "relationships_count": 10,
     "structured_vs_visible_comparisons_count": 3,
@@ -302,7 +302,7 @@
     "search_index_allowed_count": 6,
     "ai_training_allowed_count": 3,
     "user_fetch_allowed_count": 3,
-    "waf_or_challenge_detected": true,
+    "waf_or_challenge_detected": false,
     "waf_blocked": false,
     "waf_provider": "Cloudflare",
     "has_nosnippet": false,
@@ -314,20 +314,20 @@
     "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (2329 raw vs 2309 rendered).",
     "notes": [
       "HTTP Status: 200",
-      "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
+      "No active WAF or automated challenge barriers observed.",
       "Static HTML contains 2329 words.",
       "Rendered browser DOM contains 2309 words (delta: -20 words)."
     ]
   },
   "answerability": {
     "status": "AVAILABLE",
-    "total_units_detected": 36,
+    "total_units_detected": 43,
     "units_by_type": {
       "LOCATION_CONTACT": 1,
       "FAQ": 19,
       "LIST": 7,
       "EXAMPLE": 1,
-      "FACTUAL_STATEMENT": 3,
+      "FACTUAL_STATEMENT": 10,
       "DIRECT_ANSWER": 1,
       "SERVICE_DESCRIPTION": 4
     },
@@ -336,9 +336,9 @@
     "definition_patterns": "ABSENT",
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
-    "explained_topics_count": 168,
-    "mentioned_only_topics_count": 34,
-    "unsupported_heading_topics_count": 40,
+    "explained_topics_count": 185,
+    "mentioned_only_topics_count": 20,
+    "unsupported_heading_topics_count": 38,
     "unsupported_headings_sample": [
       "Latest Insights",
       "Rebuilding a 13Cr valve seat on a WCB bo",
@@ -347,11 +347,11 @@
       "What an Accredited Materials Test Report"
     ],
     "notes": [
-      "Detected 36 distinct observable information unit(s) across 7 structural types.",
-      "Evaluated 252 topic(s): 168 explained with explicit units, 34 mentioned only, 40 unsupported headings.",
+      "Detected 43 distinct observable information unit(s) across 7 structural types.",
+      "Evaluated 252 topic(s): 185 explained with explicit units, 20 mentioned only, 38 unsupported headings.",
       "Structure 'DIRECT_ANSWER': 1 unit(s) observed.",
       "Structure 'EXAMPLE': 1 unit(s) observed.",
-      "Structure 'FACTUAL_STATEMENT': 3 unit(s) observed.",
+      "Structure 'FACTUAL_STATEMENT': 10 unit(s) observed.",
       "Structure 'FAQ': 19 unit(s) observed.",
       "Structure 'LIST': 7 unit(s) observed.",
       "Structure 'LOCATION_CONTACT': 1 unit(s) observed.",
@@ -360,10 +360,10 @@
   },
   "claim_grounding": {
     "status": "AVAILABLE",
-    "total_claims_detected": 57,
-    "supported_claims_count": 34,
+    "total_claims_detected": 64,
+    "supported_claims_count": 32,
     "partially_supported_count": 18,
-    "uncorroborated_count": 0,
+    "uncorroborated_count": 9,
     "contradicted_count": 5,
     "structured_agreements_count": 3,
     "structured_disagreements_count": 1,
@@ -372,8 +372,8 @@
       "PARTIALLY_CONSISTENT": 6
     },
     "notes": [
-      "Detected 57 observable claim(s) on page https://www.tcreng.com/.",
-      "On-site support status: 34 supported, 18 partially supported, 0 uncorroborated, 5 contradicted.",
+      "Detected 64 observable claim(s) on page https://www.tcreng.com/.",
+      "On-site support status: 32 supported, 18 partially supported, 9 uncorroborated, 5 contradicted.",
       "Structured vs visible comparisons: 3 agreement(s), 1 explicit disagreement(s).",
       "Evaluated 8 entity candidate(s) across 6 content surfaces."
     ]
@@ -402,7 +402,7 @@
     "descriptive_navigation_links_count": 126,
     "schema_actions_detected": 1,
     "webmcp_declarations_detected": 0,
-    "total_access_paths": 24,
+    "total_access_paths": 26,
     "action_surface_gaps": 0,
     "notes": [
       "1 forms, 4 buttons audited"
@@ -433,28 +433,28 @@
       "Internal links observed: 148",
       "External links observed: 395",
       "Robots.txt found: True",
-      "Schema types declared: WebPage, ItemList, Organization, WebSite, NewsArticle, BreadcrumbList, FAQPage, VideoObject",
+      "Schema types declared: FAQPage, VideoObject, Organization, WebPage, ItemList, BreadcrumbList, NewsArticle, WebSite",
       "HTTPS enforced: True",
-      "Server latency probe: 81.0ms (local_probe)",
+      "Server latency probe: 111.9ms (local_probe)",
       "HTTP Status: 200",
-      "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
+      "No active WAF or automated challenge barriers observed.",
       "Static HTML contains 2329 words.",
       "Rendered browser DOM contains 2309 words (delta: -20 words).",
-      "Detected 36 distinct observable information unit(s) across 7 structural types.",
-      "Evaluated 252 topic(s): 168 explained with explicit units, 34 mentioned only, 40 unsupported headings.",
+      "Detected 43 distinct observable information unit(s) across 7 structural types.",
+      "Evaluated 252 topic(s): 185 explained with explicit units, 20 mentioned only, 38 unsupported headings.",
       "Structure 'DIRECT_ANSWER': 1 unit(s) observed.",
       "Structure 'EXAMPLE': 1 unit(s) observed.",
-      "Structure 'FACTUAL_STATEMENT': 3 unit(s) observed.",
-      "Detected 57 observable claim(s) on page https://www.tcreng.com/.",
-      "On-site support status: 34 supported, 18 partially supported, 0 uncorroborated, 5 contradicted.",
+      "Structure 'FACTUAL_STATEMENT': 10 unit(s) observed.",
+      "Detected 64 observable claim(s) on page https://www.tcreng.com/.",
+      "On-site support status: 32 supported, 18 partially supported, 9 uncorroborated, 5 contradicted.",
       "Structured vs visible comparisons: 3 agreement(s), 1 explicit disagreement(s).",
       "Evaluated 8 entity candidate(s) across 6 content surfaces.",
       "Observed 49 visual asset(s): 40 informational, 39 with meaningful alt text, 0 with figure captions, 0 visual-only information gap(s).",
       "Observed 1 form(s) (1 labeled), 4 action button(s) (4 accessible names), 1 structured schema action(s), 0 WebMCP declaration(s).",
-      "Mapped 24 information access path(s) across multimodal and agent surfaces."
+      "Mapped 26 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 81.0ms TTFB",
+      "Local network latency probe recorded 111.9ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -742,7 +742,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 81ms",
+      "finding": "TTFB Latency: 112ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -950,7 +950,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Observable Information Units: 36 unit(s) across 7 structural types",
+      "finding": "Observable Information Units: 43 unit(s) across 7 structural types",
       "engine": "answerability_engine",
       "source_file": "DOM & Schema Structure",
       "confidence": "high",
@@ -958,7 +958,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 168 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 185 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",
@@ -974,7 +974,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Observable Claims Grounding: 57 claim(s) (34 supported on-site, 0 uncorroborated)",
+      "finding": "Observable Claims Grounding: 64 claim(s) (32 supported on-site, 9 uncorroborated)",
       "engine": "claim_grounding_engine",
       "source_file": "Visible Content & Answerable Units",
       "confidence": "high",
@@ -1014,7 +1014,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Information Access Paths: 24 path(s) triangulated across visual and interactive surfaces",
+      "finding": "Information Access Paths: 26 path(s) triangulated across visual and interactive surfaces",
       "engine": "multimodal_agent_engine",
       "source_file": "Multi-Engine Triangulation",
       "confidence": "high",
@@ -1078,7 +1078,7 @@
     "multimodal_agent_engine"
   ],
   "raw_report_paths": {
-    "markdown_audit": "audits\\tcreng.com-2026-10-04.md",
-    "json_audit": "audits\\tcreng.com-2026-10-04.json"
+    "markdown_audit": "audits\\tcreng.com-2026-10-05.md",
+    "json_audit": "audits\\tcreng.com-2026-10-05.json"
   }
 }
