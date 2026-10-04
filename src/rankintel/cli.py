@@ -260,6 +260,21 @@ def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_p
             "site-wide claim grounding & entity consistency"
         )
 
+    if getattr(report, "unified_multimodal_agent", None):
+        mma = report.unified_multimodal_agent
+        table.add_row(
+            "Multimodal & Agent Readiness",
+            f"{mma.multimodal.total_visual_assets} asset(s) ({mma.multimodal.alt_represented_count} alt-repr), {mma.agent_readiness.total_forms_detected} form(s), {len(mma.access_paths)} path(s)",
+            "visual representations + forms/controls + access paths (Phase 10.4)"
+        )
+    elif report.site_crawl and getattr(report.site_crawl, "multimodal_agent_intelligence", None):
+        mmi = report.site_crawl.multimodal_agent_intelligence
+        table.add_row(
+            "Site Multimodal & Agent Scope",
+            f"{mmi.total_site_visual_assets} visual assets, {mmi.total_site_forms} forms across {mmi.total_pages_evaluated} pages ({mmi.total_visual_only_gaps} visual gaps)",
+            "site-wide multimodal & agent interaction surfaces"
+        )
+
     console.print(table)
 
     if report.conflicts_detected:

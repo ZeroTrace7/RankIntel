@@ -108,6 +108,19 @@ def rankintel_audit(url: str, deep_crawl: bool = False, max_pages: int = 25) -> 
         "claim_grounding_agreements_count": report.unified_claim_grounding.agreement_count if report.unified_claim_grounding else 0,
         "claim_grounding_disagreements_count": report.unified_claim_grounding.disagreement_count if report.unified_claim_grounding else 0,
         "claim_grounding_entity_candidates_count": len(report.unified_claim_grounding.entity_grounding) if report.unified_claim_grounding else 0,
+        "multimodal_total_assets": report.unified_multimodal_agent.multimodal.total_visual_assets if report.unified_multimodal_agent else 0,
+        "multimodal_informational_count": report.unified_multimodal_agent.multimodal.informational_assets_count if report.unified_multimodal_agent else 0,
+        "multimodal_alt_represented_count": report.unified_multimodal_agent.multimodal.alt_represented_count if report.unified_multimodal_agent else 0,
+        "multimodal_caption_represented_count": report.unified_multimodal_agent.multimodal.caption_represented_count if report.unified_multimodal_agent else 0,
+        "multimodal_visual_only_gaps": report.unified_multimodal_agent.multimodal.visual_only_observed_count if report.unified_multimodal_agent else 0,
+        "agent_total_forms": report.unified_multimodal_agent.agent_readiness.total_forms_detected if report.unified_multimodal_agent else 0,
+        "agent_labeled_forms_count": report.unified_multimodal_agent.agent_readiness.labeled_forms_count if report.unified_multimodal_agent else 0,
+        "agent_action_buttons_count": report.unified_multimodal_agent.agent_readiness.action_buttons_detected if report.unified_multimodal_agent else 0,
+        "agent_schema_actions_count": report.unified_multimodal_agent.agent_readiness.schema_actions_detected if report.unified_multimodal_agent else 0,
+        "agent_webmcp_declarations_count": report.unified_multimodal_agent.agent_readiness.webmcp_declarations_detected if report.unified_multimodal_agent else 0,
+        "access_paths_total_count": len(report.unified_multimodal_agent.access_paths) if report.unified_multimodal_agent else 0,
+        "access_paths_structured_sample": [p.model_dump() for p in report.unified_multimodal_agent.access_paths[:5]] if report.unified_multimodal_agent else [],
+        "agent_interaction_surfaces_sample": [s.model_dump() for s in report.unified_multimodal_agent.agent_readiness.surfaces[:5]] if report.unified_multimodal_agent else [],
     }
 
 @mcp.tool
