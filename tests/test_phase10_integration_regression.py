@@ -535,8 +535,6 @@ class TestInterfaceParityAcrossAllSurfaces:
         assert "CLAIM GROUNDING & ENTITY INTELLIGENCE" in md_text
         assert "## 👁️ MULTIMODAL & AGENT READINESS INTELLIGENCE" in md_text
         assert "## 🌐 CONTROLLED EXTERNAL AI VISIBILITY INTELLIGENCE" in md_text
-        assert "## 👁️ MULTIMODAL & AGENT READINESS INTELLIGENCE" in md_text
-        assert "## 🌐 CONTROLLED EXTERNAL AI VISIBILITY INTELLIGENCE" in md_text
 
         # 2. JSON serialization
         json_str = JsonReporter.render_audit(report)
@@ -556,3 +554,47 @@ class TestInterfaceParityAcrossAllSurfaces:
             assert "multimodal_total_assets" in mcp_out
             assert "external_visibility_status" in mcp_out
             assert mcp_out["external_visibility_status"] == "SUCCESS"
+
+    def test_audit_engine_runner_phase10_integration(self, tmp_path):
+        """Verifies alternative CLI runner audit_engine.py correctly supports Phase 10 & external-ai."""
+        from audit_engine import run_audit
+
+        real_report = SynthesisReport(
+            url="https://apexmetrology.example.com",
+            domain="apexmetrology.example.com",
+            timestamp="2026-10-04",
+            overall_health_score=80,
+            technical_health_score=85,
+            geo_readiness_score=75,
+            trust_score=70,
+            performance_score=80,
+            score_formula_mode="4_engine",
+            engines_executed=["advertools_seo"],
+            unified_on_page=OnPageEvidence(url="https://apexmetrology.example.com", title="Apex Labs"),
+            unified_geo=GeoAeoEvidence(llms_txt_found=True),
+            unified_performance=PerformanceEvidence(overall_performance_score=80, ttfb_ms=200.0, source="local_probe"),
+            unified_retrieval_readiness=RetrievalReadinessEngine().evaluate_page("https://apexmetrology.example.com", 200, SAMPLE_PAGE_HTML, SAMPLE_PAGE_HTML, {}),
+            unified_answerability=AnswerabilityEngine().evaluate_page("https://apexmetrology.example.com", raw_html=SAMPLE_PAGE_HTML),
+            unified_claim_grounding=ClaimGroundingEngine().evaluate_page("https://apexmetrology.example.com", raw_html=SAMPLE_PAGE_HTML),
+            unified_multimodal_agent=MultimodalAgentEngine().evaluate_page("https://apexmetrology.example.com", raw_html=SAMPLE_PAGE_HTML),
+            unified_external_visibility=ExternalVisibilityEngine(enable_external_visibility=True, providers=["mock"]).evaluate_page("https://apexmetrology.example.com"),
+        )
+
+        with patch("audit_engine.EvidenceCollector.collect") as mock_collect, \
+             patch("audit_engine.IntelligenceSynthesizer.synthesize") as mock_synth:
+
+            mock_collect.return_value = {}
+            mock_synth.return_value = real_report
+
+            rep_path = run_audit(
+                "https://apexmetrology.example.com",
+                output_dir=str(tmp_path),
+                external_ai=True,
+                external_providers="mock",
+            )
+            assert rep_path is not None
+            mock_collect.assert_called_once_with(
+                "https://apexmetrology.example.com",
+                enable_external_visibility=True,
+                external_providers=["mock"],
+            )
