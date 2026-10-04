@@ -362,6 +362,9 @@ class ProvenanceTagger:
                     finding=f"Cannibalization & Gap Observations: {cann_ev.analyses[0]}",
                     source_file="On-Site Evidence Triangulation",
                     engine="cannibalization_analyzer",
+                    evidence_snippet=cann_ev.analyses[0][:100],
+                    confidence="high"
+                ))
         # 18. AI Access & Retrieval Readiness findings (Phase 10.1)
         retrieval_res = engine_results.get("retrieval_readiness_engine")
         if retrieval_res and retrieval_res.retrieval_readiness and retrieval_res.status == "success":

@@ -347,3 +347,9 @@ CORE_RETRIEVAL_BOTS = [
     "Bingbot",
     "Applebot",
 ]
+
+
+def get_crawler_info(bot_name: str) -> dict | None:
+    """Lookup crawler metadata from MASTER_BOT_REGISTRY."""
+    return MASTER_BOT_REGISTRY.get(bot_name)
+

@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 from rankintel.engines.retrieval_readiness_engine import RetrievalReadinessEngine
 from rankintel.references.ai_crawlers import (
     CORE_RETRIEVAL_BOTS,
-    AI_CRAWLER_DATABASE,
+    MASTER_BOT_REGISTRY,
     get_crawler_info,
 )
 from rankintel.models.schema import (
@@ -88,7 +88,7 @@ class TestCoreCrawlerRegistry:
         ]
         for bot in expected_bots:
             assert bot in CORE_RETRIEVAL_BOTS
-            assert bot in AI_CRAWLER_DATABASE
+            assert bot in MASTER_BOT_REGISTRY
 
     def test_crawler_purposes_and_properties(self):
         # OAI-SearchBot is search_index and honors robots.txt
