@@ -122,11 +122,25 @@ class RetrievalReadinessEngine:
         waf_detected = bool(indicators)
         blocked = is_http_blocked or has_challenge_body
 
+        barrier_type = None
+        if has_challenge_body:
+            barrier_type = "BOT_CHALLENGE"
+        elif status_code == 429:
+            barrier_type = "RATE_LIMIT"
+        elif status_code in (403, 503):
+            barrier_type = "WAF_HTTP_STATUS"
+
+        status = RetrievalReadinessStatus.BLOCKED if blocked else RetrievalReadinessStatus.ALLOWED
+        final_provider = waf_provider if (waf_provider != "UNKNOWN" or blocked) else None
+
         return WafChallengeEvidence(
             is_blocked=blocked,
             status_code=status_code,
+            status=status,
+            barrier_type=barrier_type,
             waf_or_challenge_detected=waf_detected,
-            waf_provider=waf_provider if waf_detected else "UNKNOWN",
+            waf_provider=final_provider,
+            challenge_detected=has_challenge_body,
             challenge_indicators=indicators,
         )
 
@@ -166,6 +180,13 @@ class RetrievalReadinessEngine:
                                     if max_snippet_val is None or val_int < max_snippet_val:
                                         max_snippet_val = val_int
                                         max_snippet_src = f"meta:{name_attr}"
+                                except ValueError:
+                                    pass
+                            elif clean.startswith("max-image-preview:"):
+                                evidence.max_image_preview = clean.split(":", 1)[1].strip()
+                            elif clean.startswith("max-video-preview:"):
+                                try:
+                                    evidence.max_video_preview = int(clean.split(":", 1)[1].strip())
                                 except ValueError:
                                     pass
 
@@ -221,6 +242,15 @@ class RetrievalReadinessEngine:
                             max_snippet_src = "header:x-robots-tag"
                     except ValueError:
                         pass
+                elif "max-image-preview:" in clean:
+                    idx = clean.find("max-image-preview:")
+                    evidence.max_image_preview = clean[idx + len("max-image-preview:"):].strip().split()[0]
+                elif "max-video-preview:" in clean:
+                    idx = clean.find("max-video-preview:")
+                    try:
+                        evidence.max_video_preview = int(clean[idx + len("max-video-preview:"):].strip().split()[0])
+                    except ValueError:
+                        pass
 
         evidence.has_nosnippet = bool(nosnippet_sources)
         evidence.nosnippet_sources = list(dict.fromkeys(nosnippet_sources))
@@ -228,7 +258,7 @@ class RetrievalReadinessEngine:
         evidence.max_snippet_source = max_snippet_src
 
         # Determine overall snippet control status
-        if evidence.has_nosnippet:
+        if evidence.has_nosnippet or (evidence.max_snippet is not None and evidence.max_snippet == 0):
             evidence.status = SnippetControlStatus.NOSNIPPET
         elif evidence.max_snippet is not None:
             evidence.status = SnippetControlStatus.MAX_SNIPPET
@@ -625,16 +655,19 @@ class RetrievalReadinessEngine:
         page_readiness: Dict[str, RetrievalReadinessEvidence] = {}
 
         for rec in records:
-            ev = cls.evaluate_page(
-                url=rec.url,
-                status_code=rec.status_code,
-                raw_html=rec.raw_html,
-                rendered_html=None,  # Browser DOM if individual record tracked it
-                response_headers=rec.response_headers,
-                robots_content=robots_content,
-                robots_found=robots_found,
-                core_bots_only=True,
-            )
+            if getattr(rec, "retrieval_readiness", None) is not None:
+                ev = rec.retrieval_readiness
+            else:
+                ev = cls.evaluate_page(
+                    url=rec.url,
+                    status_code=rec.status_code,
+                    raw_html=rec.raw_html,
+                    rendered_html=None,  # Browser DOM if individual record tracked it
+                    response_headers=rec.response_headers,
+                    robots_content=robots_content,
+                    robots_found=robots_found,
+                    core_bots_only=True,
+                )
             page_readiness[rec.url] = ev
 
             if ev.waf_challenge.is_blocked:

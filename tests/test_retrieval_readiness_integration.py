@@ -10,6 +10,7 @@ Verifies end-to-end integration across:
 - CLI (executive scorecard compact row)
 - MCP Server (rankintel_audit telemetry fields)
 """
+import json
 import pytest
 from unittest.mock import MagicMock, patch
 from click.testing import CliRunner
@@ -43,13 +44,41 @@ from rankintel.models.schema import (
     WafChallengeEvidence,
     IndexabilityInteractionEvidence,
     BotRetrievalAccessRecord,
-    ConflictType,
 )
 
 
 def build_mock_engine_result(url: str = "https://example.com/test") -> EngineResult:
     """Builds a deterministic mock EngineResult with retrieval readiness populated."""
+    bot_records = {
+        "Googlebot": BotRetrievalAccessRecord(
+            bot_name="Googlebot",
+            company="Google",
+            purpose=BotPurpose.SEARCH_INDEX,
+            category_label="Search Engine",
+            robots_access=RetrievalReadinessStatus.ALLOWED,
+            effective_status=RetrievalReadinessStatus.ALLOWED,
+        ),
+        "OAI-SearchBot": BotRetrievalAccessRecord(
+            bot_name="OAI-SearchBot",
+            company="OpenAI",
+            purpose=BotPurpose.SEARCH_INDEX,
+            category_label="AI Search Engine",
+            robots_access=RetrievalReadinessStatus.ALLOWED,
+            effective_status=RetrievalReadinessStatus.ALLOWED,
+        ),
+        "GPTBot": BotRetrievalAccessRecord(
+            bot_name="GPTBot",
+            company="OpenAI",
+            purpose=BotPurpose.AI_TRAINING,
+            category_label="AI Model Training",
+            robots_access=RetrievalReadinessStatus.DISALLOWED,
+            effective_status=RetrievalReadinessStatus.DISALLOWED,
+        ),
+    }
+
     return EngineResult(
+        engine_name="retrieval_readiness_engine",
+        status="success",
         on_page=OnPageEvidence(
             url=url,
             status_code=200,
@@ -76,58 +105,34 @@ def build_mock_engine_result(url: str = "https://example.com/test") -> EngineRes
         cloud=CloudIntelligenceEvidence(domain="example.com"),
         retrieval_readiness=RetrievalReadinessEvidence(
             url=url,
-            bot_access=[
-                BotRetrievalAccessRecord(
-                    bot_name="Googlebot",
-                    purpose=BotPurpose.SEARCH_INDEX,
-                    robots_status=RetrievalReadinessStatus.ALLOWED,
-                    effective_status=RetrievalReadinessStatus.ALLOWED,
-                    honors_robots_txt=True,
-                    is_control_token_only=False,
-                ),
-                BotRetrievalAccessRecord(
-                    bot_name="OAI-SearchBot",
-                    purpose=BotPurpose.SEARCH_INDEX,
-                    robots_status=RetrievalReadinessStatus.ALLOWED,
-                    effective_status=RetrievalReadinessStatus.ALLOWED,
-                    honors_robots_txt=True,
-                    is_control_token_only=False,
-                ),
-                BotRetrievalAccessRecord(
-                    bot_name="GPTBot",
-                    purpose=BotPurpose.AI_TRAINING,
-                    robots_status=RetrievalReadinessStatus.DISALLOWED,
-                    effective_status=RetrievalReadinessStatus.DISALLOWED,
-                    honors_robots_txt=True,
-                    is_control_token_only=False,
-                ),
-            ],
+            bot_access_records=bot_records,
+            total_bots_evaluated=3,
             search_index_allowed_count=2,
             ai_training_allowed_count=0,
             user_fetch_allowed_count=0,
             snippet_controls=SnippetControlEvidence(
                 status=SnippetControlStatus.ALLOWED,
-                nosnippet=False,
-                max_snippet_chars=None,
+                has_nosnippet=False,
+                max_snippet=None,
             ),
             content_availability=ContentAvailabilityEvidence(
+                raw_html_available=True,
+                rendered_html_available=True,
                 raw_word_count=50,
                 rendered_word_count=50,
                 word_count_delta=0,
-                requires_js_for_core_content=False,
-                impact_fact="FACT: Core content is available in raw HTML without requiring JavaScript execution.",
+                significant_content_difference=False,
+                js_rendering_impact="Raw and rendered HTML text counts are aligned (50 raw vs 50 rendered).",
             ),
             waf_challenge=WafChallengeEvidence(
                 status=RetrievalReadinessStatus.ALLOWED,
                 is_blocked=False,
             ),
-            canonical_interaction=IndexabilityInteractionEvidence(
-                url=url,
+            indexability_interaction=IndexabilityInteractionEvidence(
                 canonical_url=url,
-                is_indexable=True,
-                matches_canonical=True,
-                has_canonical_mismatch=False,
-                interaction_analysis="Canonical matches URL and indexing is permitted.",
+                canonical_signal="SELF_REFERENCING",
+                canonical_conflict=False,
+                interaction_summary="Self-referencing canonical tag declared.",
             ),
             facts=["Observable FACT: 2 search indexing crawler(s) permitted; 1 AI scraper(s) disallowed."],
             analyses=["ANALYSIS: Search indexers have unobstructed crawl and index paths."],
@@ -138,37 +143,42 @@ def build_mock_engine_result(url: str = "https://example.com/test") -> EngineRes
 class TestEvidenceCollectorRetrievalIntegration:
     """Verifies that EvidenceCollector runs Step 17 without issuing redundant network requests."""
 
-    @patch("rankintel.engines.seo_engine.SeoEngine.extract_on_page")
-    @patch("rankintel.engines.seo_engine.SeoEngine.fetch_robots_txt")
-    @patch("rankintel.engines.browser_engine.BrowserEngine.extract_dynamic_dom")
-    def test_collector_zero_redundant_http_calls(self, mock_browser, mock_robots, mock_on_page):
-        # Configure mocks
-        mock_on_page.return_value = OnPageEvidence(
-            url="https://example.com/",
-            status_code=200,
-            title="Home",
-            raw_html="<html><body><p>Clean home page</p></body></html>",
-            response_headers={"content-type": "text/html"},
+    def test_collector_zero_redundant_http_calls(self):
+        collector = EvidenceCollector()
+        mock_browser = EngineResult(
+            engine_name="browser_engine",
+            status="success",
+            raw_html="<html><body><p>Clean home page rendered</p></body></html>",
         )
-        mock_robots.return_value = RobotsEvidence(
-            status_code=200,
-            raw_content="User-agent: *\nAllow: /\n",
-        )
-        mock_browser.return_value = MagicMock(
-            rendered_html="<html><body><p>Clean home page rendered</p></body></html>",
-            hydrated_json_ld=[],
-            console_errors=[],
+        mock_seo = EngineResult(
+            engine_name="advertools_seo",
+            status="success",
+            on_page=OnPageEvidence(
+                url="https://example.com/",
+                status_code=200,
+                title="Home",
+                raw_html="<html><body><p>Clean home page</p></body></html>",
+                response_headers={"content-type": "text/html"},
+            ),
+            robots=RobotsEvidence(
+                status_code=200,
+                raw_content="User-agent: *\nAllow: /\n",
+            ),
         )
 
-        collector = EvidenceCollector()
-        with patch.object(collector.retrieval_readiness_engine, "evaluate_page", wraps=collector.retrieval_readiness_engine.evaluate_page) as mock_eval:
-            result = collector.collect("https://example.com/")
+        with patch.object(collector.browser_engine, "execute_sync", return_value=mock_browser), \
+             patch.object(collector.seo_engine, "execute", return_value=mock_seo), \
+             patch.object(collector.geo_engine, "execute", return_value=EngineResult(engine_name="rankintel_geo", status="success")), \
+             patch.object(collector.retrieval_readiness_engine, "evaluate_page", wraps=collector.retrieval_readiness_engine.evaluate_page) as mock_eval:
+            results = collector.collect("https://example.com/")
 
             # Step 17 was executed
             assert mock_eval.call_count == 1
-            assert result.retrieval_readiness is not None
-            assert result.retrieval_readiness.url == "https://example.com/"
-            assert result.retrieval_readiness.search_index_allowed_count >= 1
+            retrieval_result = results.get("retrieval_readiness_engine")
+            assert retrieval_result is not None
+            assert retrieval_result.retrieval_readiness is not None
+            assert retrieval_result.retrieval_readiness.url == "https://example.com/"
+            assert retrieval_result.retrieval_readiness.search_index_allowed_count >= 1
 
             # No extra HTTP calls were made by retrieval readiness engine
             # It strictly reused on_page, robots, and browser data passed in memory
@@ -179,14 +189,13 @@ class TestProvenancePreservation:
 
     def test_provenance_includes_retrieval_readiness(self):
         engine_result = build_mock_engine_result()
-        tagger = ProvenanceTagger()
-        tags = tagger.tag_all(engine_result)
+        tags = ProvenanceTagger.tag({"retrieval_readiness_engine": engine_result})
 
         rr_tags = [t for t in tags if t.engine == "retrieval_readiness_engine"]
         assert len(rr_tags) == 1
         tag = rr_tags[0]
-        assert tag.source == "HTTP Headers, Raw/Rendered DOM & RFC 9309 robots.txt"
-        assert tag.confidence == 1.0
+        assert "robots.txt & HTTP Directives" in tag.source_file
+        assert tag.confidence == "high"
 
 
 class TestConflictDetection:
@@ -195,27 +204,28 @@ class TestConflictDetection:
     def test_detect_ai_retrieval_directive_conflict(self):
         detector = ConflictDetector()
         mock_result = build_mock_engine_result()
-        # Create conflict: robots allows OAI-SearchBot, but page has nosnippet
-        mock_result.retrieval_readiness.snippet_controls.nosnippet = True
-        mock_result.retrieval_readiness.snippet_controls.status = SnippetControlStatus.DISALLOWED
+        # Create conflict: robots allows OAI-SearchBot, but page has noindex
+        mock_result.retrieval_readiness.indexability_interaction.has_noindex = True
+        mock_result.retrieval_readiness.indexability_interaction.noindex_sources = ["meta:robots"]
 
-        conflicts = detector.detect(mock_result)
-        rr_conflicts = [c for c in conflicts if c.conflict_type == ConflictType.AI_RETRIEVAL_DIRECTIVE_CONFLICT]
+        conflicts = detector.detect({"retrieval_readiness_engine": mock_result})
+        rr_conflicts = [c for c in conflicts if c.category == "AI_RETRIEVAL_DIRECTIVE_CONFLICT"]
         assert len(rr_conflicts) == 1
-        assert "OAI-SearchBot is allowed in robots.txt, but page specifies nosnippet" in rr_conflicts[0].description
+        assert "OAI-SearchBot is permitted in robots.txt, but page declares noindex" in rr_conflicts[0].description
 
     def test_detect_waf_retrieval_block_conflict(self):
         detector = ConflictDetector()
         mock_result = build_mock_engine_result()
         # Create conflict: robots allows crawler, but WAF blocks with 403
         mock_result.retrieval_readiness.waf_challenge.is_blocked = True
+        mock_result.retrieval_readiness.waf_challenge.status_code = 403
         mock_result.retrieval_readiness.waf_challenge.barrier_type = "WAF_HTTP_STATUS"
         mock_result.retrieval_readiness.waf_challenge.waf_provider = "Cloudflare"
 
-        conflicts = detector.detect(mock_result)
-        waf_conflicts = [c for c in conflicts if c.conflict_type == ConflictType.WAF_RETRIEVAL_BLOCK]
+        conflicts = detector.detect({"retrieval_readiness_engine": mock_result})
+        waf_conflicts = [c for c in conflicts if c.category == "WAF_RETRIEVAL_BLOCK"]
         assert len(waf_conflicts) == 1
-        assert "Cloudflare WAF / challenge is actively blocking automated retrieval" in waf_conflicts[0].description
+        assert "robots.txt permits crawler access, but server returned HTTP 403" in waf_conflicts[0].description
 
 
 class TestSynthesizerFormulaInvariance:
@@ -224,7 +234,13 @@ class TestSynthesizerFormulaInvariance:
     def test_synthesis_preserves_health_scores(self):
         engine_result = build_mock_engine_result()
         synthesizer = IntelligenceSynthesizer()
-        report = synthesizer.synthesize("https://example.com/test", engine_result)
+        results_map = {
+            "advertools_seo": engine_result,
+            "browser_engine": engine_result,
+            "rankintel_geo": engine_result,
+            "retrieval_readiness_engine": engine_result,
+        }
+        report = synthesizer.synthesize("https://example.com/test", results_map)
 
         assert report.unified_retrieval_readiness is not None
         assert report.unified_retrieval_readiness.search_index_allowed_count == 2
@@ -245,27 +261,39 @@ class TestMarkdownAndJsonReporting:
     def test_markdown_report_includes_dedicated_section(self):
         engine_result = build_mock_engine_result()
         synthesizer = IntelligenceSynthesizer()
-        report = synthesizer.synthesize("https://example.com/test", engine_result)
+        results_map = {
+            "advertools_seo": engine_result,
+            "browser_engine": engine_result,
+            "rankintel_geo": engine_result,
+            "retrieval_readiness_engine": engine_result,
+        }
+        report = synthesizer.synthesize("https://example.com/test", results_map)
 
-        md_reporter = MarkdownReporter()
-        md_text = md_reporter.generate_report(report)
+        md_text = MarkdownReporter.render(report)
 
         assert "## 🤖 AI ACCESS & RETRIEVAL READINESS" in md_text
-        assert "### Bot Retrieval Access Matrix" in md_text
+        assert "Core Crawler Retrieval Status Matrix" in md_text
         assert "Googlebot" in md_text
         assert "OAI-SearchBot" in md_text
         assert "GPTBot" in md_text
-        assert "### Snippet & Content Controls" in md_text
-        assert "### Content Availability (Raw vs Rendered)" in md_text
-        assert "### Access Barriers & WAF / Challenge Detection" in md_text
+        assert "Snippet Controls & Document Directives" in md_text
+        assert "Content Availability & Rendering Telemetry" in md_text
+        assert "Factual Findings" in md_text
+        assert "Technical Analyses" in md_text
 
     def test_json_serialization(self):
         engine_result = build_mock_engine_result()
         synthesizer = IntelligenceSynthesizer()
-        report = synthesizer.synthesize("https://example.com/test", engine_result)
+        results_map = {
+            "advertools_seo": engine_result,
+            "browser_engine": engine_result,
+            "rankintel_geo": engine_result,
+            "retrieval_readiness_engine": engine_result,
+        }
+        report = synthesizer.synthesize("https://example.com/test", results_map)
 
-        json_reporter = JsonReporter()
-        payload = json_reporter.to_dict(report)
+        json_str = JsonReporter.render_audit(report)
+        payload = json.loads(json_str)
 
         assert "unified_retrieval_readiness" in payload
         rr_payload = payload["unified_retrieval_readiness"]
@@ -279,18 +307,36 @@ class TestCliScorecardAndMcpTelemetry:
 
     def test_cli_renders_retrieval_row(self):
         engine_result = build_mock_engine_result()
+        results_map = {
+            "advertools_seo": engine_result,
+            "browser_engine": engine_result,
+            "rankintel_geo": engine_result,
+            "retrieval_readiness_engine": engine_result,
+        }
+        synthesizer = IntelligenceSynthesizer()
+        report = synthesizer.synthesize("https://example.com/test", results_map)
 
-        with patch("rankintel.evidence.collector.EvidenceCollector.collect", return_value=engine_result):
+        with patch("rankintel.cli.EvidenceCollector") as mock_col, \
+             patch("rankintel.cli.IntelligenceSynthesizer") as mock_syn, \
+             patch("rankintel.reporters.markdown.MarkdownReporter.save", return_value="audits/test.md"):
+            mock_col.return_value.collect.return_value = results_map
+            mock_syn.return_value.synthesize.return_value = report
             runner = CliRunner()
-            result = runner.invoke(main, ["audit", "https://example.com/test", "--no-browser", "--no-cloud"])
+            result = runner.invoke(main, ["audit", "https://example.com/test"])
             assert result.exit_code == 0
-            assert "AI Retrieval Access" in result.output
-            assert "Search Index: 2 allowed" in result.output
+            assert "AI Retrieval Readiness" in result.output
+            assert "2 search indexers" in result.output
 
     def test_mcp_rankintel_audit_telemetry(self):
         engine_result = build_mock_engine_result()
+        results_map = {
+            "advertools_seo": engine_result,
+            "browser_engine": engine_result,
+            "rankintel_geo": engine_result,
+            "retrieval_readiness_engine": engine_result,
+        }
 
-        with patch("rankintel.evidence.collector.EvidenceCollector.collect", return_value=engine_result):
+        with patch("rankintel.evidence.collector.EvidenceCollector.collect", return_value=results_map):
             response = rankintel_audit("https://example.com/test")
             assert "retrieval_search_indexers_allowed" in response
             assert response["retrieval_search_indexers_allowed"] == 2

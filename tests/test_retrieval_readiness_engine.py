@@ -5,7 +5,6 @@ content availability (raw vs rendered), conservative WAF/challenge detection,
 canonical/indexability interactions, and strict FACT + ANALYSIS output.
 """
 import pytest
-from bs4 import BeautifulSoup
 
 from rankintel.engines.retrieval_readiness_engine import RetrievalReadinessEngine
 from rankintel.references.ai_crawlers import (
@@ -23,8 +22,7 @@ from rankintel.models.schema import (
     WafChallengeEvidence,
     BotRetrievalAccessRecord,
     RetrievalReadinessEvidence,
-    RobotsEvidence,
-    OnPageEvidence,
+    IndexabilityStatus,
     CrawlRecord,
     CrawlStatus,
     SiteCrawlResult,
@@ -94,30 +92,30 @@ class TestCoreCrawlerRegistry:
         # OAI-SearchBot is search_index and honors robots.txt
         oai_sb = get_crawler_info("OAI-SearchBot")
         assert oai_sb is not None
-        assert oai_sb["purpose"] == BotPurpose.SEARCH_INDEX
+        assert oai_sb["purpose"] == BotPurpose.SEARCH_INDEX.value
         assert oai_sb["honors_robots_txt"] is True
 
         # GPTBot is ai_training and honors robots.txt
         gptbot = get_crawler_info("GPTBot")
         assert gptbot is not None
-        assert gptbot["purpose"] == BotPurpose.AI_TRAINING
+        assert gptbot["purpose"] == BotPurpose.AI_TRAINING.value
         assert gptbot["honors_robots_txt"] is True
 
         # Google-Extended is control token for AI training / Gemini
         g_ext = get_crawler_info("Google-Extended")
         assert g_ext is not None
-        assert g_ext["purpose"] == BotPurpose.AI_TRAINING
+        assert g_ext["purpose"] == BotPurpose.AI_TRAINING.value
         assert g_ext["is_control_token_only"] is True
 
         # ChatGPT-User is user_fetch
         cg_user = get_crawler_info("ChatGPT-User")
         assert cg_user is not None
-        assert cg_user["purpose"] == BotPurpose.USER_FETCH
+        assert cg_user["purpose"] == BotPurpose.USER_FETCH.value
 
         # Perplexity-User is user_fetch and generally ignores robots.txt per Perplexity docs
         perp_user = get_crawler_info("Perplexity-User")
         assert perp_user is not None
-        assert perp_user["purpose"] == BotPurpose.USER_FETCH
+        assert perp_user["purpose"] == BotPurpose.USER_FETCH.value
         assert perp_user["honors_robots_txt"] is False
 
 
@@ -126,62 +124,71 @@ class TestRobotsAccessEvaluation:
 
     def test_hardened_robots_eval(self):
         engine = RetrievalReadinessEngine()
-        records = engine.evaluate_bot_access(
+        ev = engine.evaluate_page(
             url="https://example.com/article",
+            status_code=200,
             robots_content=SAMPLE_ROBOTS_HARDENED,
-            is_waf_blocked=False,
+            robots_found=True,
+            core_bots_only=True,
         )
-        by_name = {r.bot_name: r for r in records}
+        by_name = ev.bot_access_records
 
         # Search indexers allowed
-        assert by_name["Googlebot"].robots_status == RetrievalReadinessStatus.ALLOWED
-        assert by_name["OAI-SearchBot"].robots_status == RetrievalReadinessStatus.ALLOWED
-        assert by_name["PerplexityBot"].robots_status == RetrievalReadinessStatus.ALLOWED
-        assert by_name["Bingbot"].robots_status == RetrievalReadinessStatus.ALLOWED
+        assert by_name["Googlebot"].robots_access == RetrievalReadinessStatus.ALLOWED
+        assert by_name["OAI-SearchBot"].robots_access == RetrievalReadinessStatus.ALLOWED
+        assert by_name["PerplexityBot"].robots_access == RetrievalReadinessStatus.ALLOWED
+        assert by_name["Bingbot"].robots_access == RetrievalReadinessStatus.ALLOWED
 
         # Scrapers disallowed
-        assert by_name["GPTBot"].robots_status == RetrievalReadinessStatus.DISALLOWED
-        assert by_name["ClaudeBot"].robots_status == RetrievalReadinessStatus.DISALLOWED
-        assert by_name["Google-Extended"].robots_status == RetrievalReadinessStatus.DISALLOWED
+        assert by_name["GPTBot"].robots_access == RetrievalReadinessStatus.DISALLOWED
+        assert by_name["ClaudeBot"].robots_access == RetrievalReadinessStatus.DISALLOWED
+        assert by_name["Google-Extended"].robots_access == RetrievalReadinessStatus.DISALLOWED
 
         # Perplexity-User is user_fetch and bypasses robots.txt
-        assert by_name["Perplexity-User"].robots_status == RetrievalReadinessStatus.NOT_APPLICABLE
+        assert by_name["Perplexity-User"].robots_access == RetrievalReadinessStatus.NOT_APPLICABLE
 
     def test_disallow_all_robots(self):
         engine = RetrievalReadinessEngine()
-        records = engine.evaluate_bot_access(
+        ev = engine.evaluate_page(
             url="https://example.com/page",
+            status_code=200,
             robots_content=SAMPLE_ROBOTS_DISALLOW_ALL,
-            is_waf_blocked=False,
+            robots_found=True,
+            core_bots_only=True,
         )
-        by_name = {r.bot_name: r for r in records}
+        by_name = ev.bot_access_records
         for name, rec in by_name.items():
-            if rec.honors_robots_txt:
-                assert rec.robots_status == RetrievalReadinessStatus.DISALLOWED
+            meta = MASTER_BOT_REGISTRY.get(name, {})
+            if meta.get("honors_robots_txt", True):
+                assert rec.robots_access == RetrievalReadinessStatus.DISALLOWED
             else:
-                assert rec.robots_status == RetrievalReadinessStatus.NOT_APPLICABLE
+                assert rec.robots_access == RetrievalReadinessStatus.NOT_APPLICABLE
 
     def test_missing_robots_defaults_to_allowed(self):
         engine = RetrievalReadinessEngine()
-        records = engine.evaluate_bot_access(
+        ev = engine.evaluate_page(
             url="https://example.com/page",
+            status_code=200,
             robots_content="",
-            is_waf_blocked=False,
+            robots_found=False,
+            core_bots_only=True,
         )
-        for rec in records:
-            if rec.honors_robots_txt:
-                assert rec.robots_status == RetrievalReadinessStatus.ALLOWED
+        for name, rec in ev.bot_access_records.items():
+            meta = MASTER_BOT_REGISTRY.get(name, {})
+            if meta.get("honors_robots_txt", True):
+                assert rec.robots_access == RetrievalReadinessStatus.ALLOWED
 
     def test_waf_blocked_overrides_effective_status(self):
         engine = RetrievalReadinessEngine()
-        records = engine.evaluate_bot_access(
+        ev = engine.evaluate_page(
             url="https://example.com/page",
+            status_code=403,
             robots_content=SAMPLE_ROBOTS_ALLOW_ALL,
-            is_waf_blocked=True,
+            robots_found=True,
+            core_bots_only=True,
         )
-        for rec in records:
-            # robots_status is still ALLOWED, but effective_status is BLOCKED
-            assert rec.robots_status in (RetrievalReadinessStatus.ALLOWED, RetrievalReadinessStatus.NOT_APPLICABLE)
+        for rec in ev.bot_access_records.values():
+            # robots_access is still ALLOWED or NOT_APPLICABLE, but effective_status is BLOCKED
             assert rec.effective_status == RetrievalReadinessStatus.BLOCKED
 
 
@@ -191,56 +198,56 @@ class TestSnippetControlsEvaluation:
     def test_default_snippet_allowed(self):
         engine = RetrievalReadinessEngine()
         html = "<html><head><title>Test</title></head><body><p>Hello world</p></body></html>"
-        evidence = engine.evaluate_snippet_controls(html=html, headers={})
+        evidence = engine.parse_snippet_controls(raw_html=html, response_headers={})
         assert evidence.status == SnippetControlStatus.ALLOWED
-        assert evidence.nosnippet is False
-        assert evidence.max_snippet_chars is None
+        assert evidence.has_nosnippet is False
+        assert evidence.max_snippet is None
         assert evidence.data_nosnippet_count == 0
 
     def test_meta_nosnippet(self):
         engine = RetrievalReadinessEngine()
         html = '<html><head><meta name="robots" content="nosnippet"></head><body><p>Hello</p></body></html>'
-        evidence = engine.evaluate_snippet_controls(html=html, headers={})
-        assert evidence.status == SnippetControlStatus.DISALLOWED
-        assert evidence.nosnippet is True
+        evidence = engine.parse_snippet_controls(raw_html=html, response_headers={})
+        assert evidence.status == SnippetControlStatus.NOSNIPPET
+        assert evidence.has_nosnippet is True
 
     def test_x_robots_tag_nosnippet(self):
         engine = RetrievalReadinessEngine()
         html = "<html><head><title>Test</title></head><body><p>Hello</p></body></html>"
         headers = {"x-robots-tag": "nosnippet, noarchive"}
-        evidence = engine.evaluate_snippet_controls(html=html, headers=headers)
-        assert evidence.status == SnippetControlStatus.DISALLOWED
-        assert evidence.nosnippet is True
-        assert "nosnippet" in evidence.x_robots_tag_directives
+        evidence = engine.parse_snippet_controls(raw_html=html, response_headers=headers)
+        assert evidence.status == SnippetControlStatus.NOSNIPPET
+        assert evidence.has_nosnippet is True
+        assert "header:x-robots-tag" in evidence.nosnippet_sources
 
     def test_max_snippet_numeric(self):
         engine = RetrievalReadinessEngine()
         html = '<html><head><meta name="robots" content="max-snippet:150, max-image-preview:large"></head><body><p>Hello</p></body></html>'
-        evidence = engine.evaluate_snippet_controls(html=html, headers={})
-        assert evidence.status == SnippetControlStatus.ALLOWED
-        assert evidence.max_snippet_chars == 150
+        evidence = engine.parse_snippet_controls(raw_html=html, response_headers={})
+        assert evidence.status == SnippetControlStatus.MAX_SNIPPET
+        assert evidence.max_snippet == 150
         assert evidence.max_image_preview == "large"
 
     def test_max_snippet_zero_disallows(self):
         engine = RetrievalReadinessEngine()
         html = '<html><head><meta name="robots" content="max-snippet:0"></head><body><p>Hello</p></body></html>'
-        evidence = engine.evaluate_snippet_controls(html=html, headers={})
-        assert evidence.status == SnippetControlStatus.DISALLOWED
-        assert evidence.max_snippet_chars == 0
+        evidence = engine.parse_snippet_controls(raw_html=html, response_headers={})
+        assert evidence.status == SnippetControlStatus.NOSNIPPET
+        assert evidence.max_snippet == 0
 
     def test_data_nosnippet_elements(self):
         engine = RetrievalReadinessEngine()
         html = (
             "<html><body>"
             "<p>Public overview text.</p>"
-            '<div data-nosnippet="true">Private client data section</div>'
-            "<span data-nosnippet>Internal code 12345</span>"
+            '<div data-nosnippet="true" class="client-box">Private client data section</div>'
+            "<span data-nosnippet id='secret'>Internal code 12345</span>"
             "</body></html>"
         )
-        evidence = engine.evaluate_snippet_controls(html=html, headers={})
+        evidence = engine.parse_snippet_controls(raw_html=html, response_headers={})
         assert evidence.has_data_nosnippet is True
         assert evidence.data_nosnippet_count == 2
-        assert len(evidence.data_nosnippet_samples) == 2
+        assert len(evidence.data_nosnippet_sample_selectors) == 2
 
 
 class TestContentAvailabilityEvaluation:
@@ -251,10 +258,10 @@ class TestContentAvailabilityEvaluation:
         raw_html = "<html><body><p>" + "word " * 200 + "</p></body></html>"
         evidence = engine.evaluate_content_availability(raw_html=raw_html, rendered_html=None)
         assert evidence.raw_word_count == 200
-        assert evidence.rendered_word_count is None
-        assert evidence.word_count_delta is None
-        assert evidence.requires_js_for_core_content is False
-        assert "FACT" in evidence.impact_fact
+        assert evidence.rendered_word_count == 0
+        assert evidence.word_count_delta == 0
+        assert evidence.significant_content_difference is False
+        assert "Static HTML observed" in evidence.js_rendering_impact
 
     def test_static_html_near_identical_words(self):
         engine = RetrievalReadinessEngine()
@@ -264,11 +271,11 @@ class TestContentAvailabilityEvaluation:
         assert evidence.raw_word_count == 300
         assert evidence.rendered_word_count == 310
         assert evidence.word_count_delta == 10
-        assert evidence.requires_js_for_core_content is False
+        assert evidence.significant_content_difference is False
 
     def test_heavy_js_client_rendered_page(self):
         engine = RetrievalReadinessEngine()
-        # Raw HTML is just a root div with 20 words
+        # Raw HTML is just a root div with 10 words
         raw = "<html><body><div id='root'>" + "loading app " * 5 + "</div></body></html>"
         # Rendered HTML hydrates 600 words
         rendered = "<html><body><div id='root'>" + "content detailed information " * 200 + "</div></body></html>"
@@ -276,9 +283,9 @@ class TestContentAvailabilityEvaluation:
         assert evidence.raw_word_count == 10
         assert evidence.rendered_word_count == 600
         assert evidence.word_count_delta == 590
-        assert evidence.requires_js_for_core_content is True
-        assert "FACT: Core content differs significantly" in evidence.impact_fact
-        assert "ANALYSIS: Some retrieval systems may have reduced access" in evidence.impact_fact
+        assert evidence.significant_content_difference is True
+        assert "Rendered HTML yields" in evidence.js_rendering_impact
+        assert "Some retrieval systems may have reduced access" in evidence.js_rendering_impact
 
 
 class TestWafChallengeEvaluation:
@@ -286,10 +293,10 @@ class TestWafChallengeEvaluation:
 
     def test_http_403_blocked(self):
         engine = RetrievalReadinessEngine()
-        evidence = engine.evaluate_waf_challenge(
+        evidence = engine.detect_waf_and_challenges(
             status_code=403,
-            headers={"cf-ray": "12345678"},
-            html="<html><head><title>403 Forbidden</title></head></html>",
+            response_headers={"cf-ray": "12345678"},
+            raw_html="<html><head><title>403 Forbidden</title></head></html>",
         )
         assert evidence.status == RetrievalReadinessStatus.BLOCKED
         assert evidence.is_blocked is True
@@ -298,10 +305,10 @@ class TestWafChallengeEvaluation:
 
     def test_http_429_rate_limited(self):
         engine = RetrievalReadinessEngine()
-        evidence = engine.evaluate_waf_challenge(
+        evidence = engine.detect_waf_and_challenges(
             status_code=429,
-            headers={"retry-after": "60"},
-            html="<html><body>Too Many Requests</body></html>",
+            response_headers={"retry-after": "60"},
+            raw_html="<html><body>Too Many Requests</body></html>",
         )
         assert evidence.status == RetrievalReadinessStatus.BLOCKED
         assert evidence.is_blocked is True
@@ -310,10 +317,10 @@ class TestWafChallengeEvaluation:
     def test_cf_challenge_page_at_200(self):
         engine = RetrievalReadinessEngine()
         html = "<html><head><title>Just a moment...</title></head><body>Verify you are human cf-turnstile</body></html>"
-        evidence = engine.evaluate_waf_challenge(
+        evidence = engine.detect_waf_and_challenges(
             status_code=200,
-            headers={"cf-mitigated": "challenge"},
-            html=html,
+            response_headers={"cf-mitigated": "challenge"},
+            raw_html=html,
         )
         assert evidence.status == RetrievalReadinessStatus.BLOCKED
         assert evidence.is_blocked is True
@@ -322,10 +329,10 @@ class TestWafChallengeEvaluation:
 
     def test_unknown_provider_preserved(self):
         engine = RetrievalReadinessEngine()
-        evidence = engine.evaluate_waf_challenge(
+        evidence = engine.detect_waf_and_challenges(
             status_code=403,
-            headers={},
-            html="<html><body>Access Denied</body></html>",
+            response_headers={},
+            raw_html="<html><body>Access Denied</body></html>",
         )
         assert evidence.status == RetrievalReadinessStatus.BLOCKED
         assert evidence.is_blocked is True
@@ -333,10 +340,10 @@ class TestWafChallengeEvaluation:
 
     def test_standard_clean_page(self):
         engine = RetrievalReadinessEngine()
-        evidence = engine.evaluate_waf_challenge(
+        evidence = engine.detect_waf_and_challenges(
             status_code=200,
-            headers={"content-type": "text/html; charset=utf-8"},
-            html="<html><body>Normal content</body></html>",
+            response_headers={"content-type": "text/html; charset=utf-8"},
+            raw_html="<html><body>Normal content</body></html>",
         )
         assert evidence.status == RetrievalReadinessStatus.ALLOWED
         assert evidence.is_blocked is False
@@ -348,39 +355,40 @@ class TestCanonicalAndIndexabilityInteractions:
 
     def test_self_canonical_indexable(self):
         engine = RetrievalReadinessEngine()
-        evidence = engine.evaluate_canonical_interaction(
+        html = '<html><head><link rel="canonical" href="https://example.com/page"><meta name="robots" content="index, follow"></head></html>'
+        evidence = engine.evaluate_indexability_interaction(
             url="https://example.com/page",
-            canonical_url="https://example.com/page",
-            meta_robots=["index", "follow"],
-            x_robots_tag=None,
+            http_status=200,
+            raw_html=html,
+            response_headers={},
         )
-        assert evidence.is_indexable is True
-        assert evidence.matches_canonical is True
-        assert evidence.has_canonical_mismatch is False
-        assert evidence.interaction_analysis == "Canonical matches URL and indexing is permitted."
+        assert evidence.canonical_signal == "SELF_REFERENCING"
+        assert evidence.canonical_conflict is False
+        assert "Self-referencing canonical tag declared." in evidence.interaction_summary
 
     def test_canonical_mismatch(self):
         engine = RetrievalReadinessEngine()
-        evidence = engine.evaluate_canonical_interaction(
+        html = '<html><head><link rel="canonical" href="https://example.com/page"></head></html>'
+        evidence = engine.evaluate_indexability_interaction(
             url="https://example.com/page?ref=ad",
-            canonical_url="https://example.com/page",
-            meta_robots=None,
-            x_robots_tag=None,
+            http_status=200,
+            raw_html=html,
+            response_headers={},
         )
-        assert evidence.matches_canonical is False
-        assert evidence.has_canonical_mismatch is True
-        assert "Non-canonical page points to" in evidence.interaction_analysis
+        assert evidence.canonical_signal == "CANONICALIZED_ELSEWHERE"
+        assert "Page canonicalizes to internal URL" in evidence.interaction_summary
 
     def test_noindex_directive(self):
         engine = RetrievalReadinessEngine()
-        evidence = engine.evaluate_canonical_interaction(
+        html = '<html><head><meta name="robots" content="noindex, nofollow"></head></html>'
+        evidence = engine.evaluate_indexability_interaction(
             url="https://example.com/page",
-            canonical_url="https://example.com/page",
-            meta_robots=["noindex", "nofollow"],
-            x_robots_tag=None,
+            http_status=200,
+            raw_html=html,
+            response_headers={},
         )
-        assert evidence.is_indexable is False
-        assert "Page has noindex directive" in evidence.interaction_analysis
+        assert evidence.has_noindex is True
+        assert "Page declares noindex directive." in evidence.interaction_summary
 
 
 class TestSiteEvaluation:
@@ -391,8 +399,11 @@ class TestSiteEvaluation:
         records = [
             CrawlRecord(
                 url="https://example.com/",
+                normalized_url="https://example.com/",
+                identity_url="https://example.com/",
+                crawl_status=CrawlStatus.FETCHED,
+                depth=0,
                 status_code=200,
-                status=CrawlStatus.SUCCESS,
                 retrieval_readiness=RetrievalReadinessEvidence(
                     url="https://example.com/",
                     search_index_allowed_count=4,
@@ -400,7 +411,7 @@ class TestSiteEvaluation:
                     user_fetch_allowed_count=3,
                     content_availability=ContentAvailabilityEvidence(
                         raw_word_count=500,
-                        requires_js_for_core_content=False,
+                        significant_content_difference=False,
                     ),
                     snippet_controls=SnippetControlEvidence(
                         status=SnippetControlStatus.ALLOWED,
@@ -413,8 +424,11 @@ class TestSiteEvaluation:
             ),
             CrawlRecord(
                 url="https://example.com/js-heavy",
+                normalized_url="https://example.com/js-heavy",
+                identity_url="https://example.com/js-heavy",
+                crawl_status=CrawlStatus.FETCHED,
+                depth=1,
                 status_code=200,
-                status=CrawlStatus.SUCCESS,
                 retrieval_readiness=RetrievalReadinessEvidence(
                     url="https://example.com/js-heavy",
                     search_index_allowed_count=4,
@@ -423,7 +437,7 @@ class TestSiteEvaluation:
                     content_availability=ContentAvailabilityEvidence(
                         raw_word_count=20,
                         rendered_word_count=600,
-                        requires_js_for_core_content=True,
+                        significant_content_difference=True,
                     ),
                     snippet_controls=SnippetControlEvidence(
                         status=SnippetControlStatus.ALLOWED,
@@ -436,8 +450,11 @@ class TestSiteEvaluation:
             ),
             CrawlRecord(
                 url="https://example.com/blocked",
+                normalized_url="https://example.com/blocked",
+                identity_url="https://example.com/blocked",
+                crawl_status=CrawlStatus.BLOCKED,
+                depth=1,
                 status_code=403,
-                status=CrawlStatus.BLOCKED,
                 retrieval_readiness=RetrievalReadinessEvidence(
                     url="https://example.com/blocked",
                     search_index_allowed_count=0,
@@ -460,8 +477,9 @@ class TestSiteEvaluation:
 
         site_intel = engine.evaluate_site(site_crawl)
         assert site_intel.total_pages_evaluated == 3
-        assert site_intel.accessible_pages_count == 2
-        assert site_intel.blocked_pages_count == 1
-        assert site_intel.js_dependent_pages_count == 1
-        assert site_intel.search_index_allowed_pages == 2
-        assert len(site_intel.observable_access_barriers) == 1
+        assert len(site_intel.pages_with_waf_challenge) == 1
+        assert "https://example.com/blocked" in site_intel.pages_with_waf_challenge
+        assert len(site_intel.pages_requiring_js) == 1
+        assert "https://example.com/js-heavy" in site_intel.pages_requiring_js
+        assert len(site_intel.page_readiness_evidence) == 3
+        assert len(site_intel.facts) >= 1

@@ -779,6 +779,7 @@ class CrawlRecord(BaseModel):
     discovered_links: List[str] = Field(default_factory=list)
     response_headers: Dict[str, Any] = Field(default_factory=dict)
     redirect_url: Optional[str] = None
+    retrieval_readiness: Optional[RetrievalReadinessEvidence] = None
 
 class PageSummary(BaseModel):
     """Summary of a single crawled page for site-wide analysis."""
@@ -1504,6 +1505,8 @@ class SnippetControlEvidence(BaseModel):
     nosnippet_sources: List[str] = Field(default_factory=list)
     max_snippet: Optional[int] = None
     max_snippet_source: Optional[str] = None
+    max_image_preview: Optional[str] = None
+    max_video_preview: Optional[int] = None
     has_data_nosnippet: bool = False
     data_nosnippet_count: int = 0
     data_nosnippet_sample_selectors: List[str] = Field(default_factory=list)
@@ -1530,8 +1533,11 @@ class ContentAvailabilityEvidence(BaseModel):
 class WafChallengeEvidence(BaseModel):
     is_blocked: bool = False
     status_code: int = 0
+    status: RetrievalReadinessStatus = RetrievalReadinessStatus.ALLOWED
+    barrier_type: Optional[str] = None
     waf_or_challenge_detected: bool = False
-    waf_provider: str = "UNKNOWN"
+    waf_provider: Optional[str] = None
+    challenge_detected: bool = False
     challenge_indicators: List[str] = Field(default_factory=list)
 
 class BotRetrievalAccessRecord(BaseModel):
