@@ -517,14 +517,12 @@ class MultimodalAgentEngine:
             if len(words) >= 2 and not is_generic and not is_filename:
                 return MultimodalRepresentationStatus.ALT_REPRESENTED, None
 
-        # 3. Text represented via heading or parent link text
+        # 3. Text represented via parent link text
         if parent_a and parent_a.get_text(strip=True):
             return MultimodalRepresentationStatus.TEXT_REPRESENTED, None
-        if heading and len(heading.split()) >= 2:
-            return MultimodalRepresentationStatus.TEXT_REPRESENTED, None
 
-        # 4. Informational with missing or generic alt and no caption/text
-        reason = "Informational visual asset lacks meaningful alt text, caption, or proximate textual context"
+        # 4. Informational with missing or generic alt and no caption/link text
+        reason = "Informational visual asset lacks meaningful alt text, caption, or accessible textual context"
         return MultimodalRepresentationStatus.VISUAL_ONLY_OBSERVED, reason
 
     @classmethod
@@ -828,20 +826,24 @@ class MultimodalAgentEngine:
         """Recursively locate Action or potentialAction entries in JSON-LD data."""
         actions: List[Dict[str, Any]] = []
         if isinstance(data, dict):
-            if "potentialAction" in data:
-                pa = data["potentialAction"]
-                if isinstance(pa, list):
-                    actions.extend([x for x in pa if isinstance(x, dict)])
-                elif isinstance(pa, dict):
-                    actions.append(pa)
-            if data.get("@type") in ("SearchAction", "OrderAction", "ReserveAction", "TradeAction"):
+            typ = str(data.get("@type", ""))
+            if typ.endswith("Action") or typ in ("SearchAction", "OrderAction", "ReserveAction", "TradeAction"):
                 actions.append(data)
             for v in data.values():
                 actions.extend(cls._find_schema_actions(v))
         elif isinstance(data, list):
             for item in data:
                 actions.extend(cls._find_schema_actions(item))
-        return actions
+
+        # Deduplicate
+        deduped: List[Dict[str, Any]] = []
+        seen = set()
+        for a in actions:
+            key = (a.get("@type"), str(a.get("target") or a.get("url") or ""))
+            if key not in seen:
+                seen.add(key)
+                deduped.append(a)
+        return deduped
 
     # =========================================================================
     # Part C: Information Access Path Analysis

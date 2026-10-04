@@ -420,7 +420,7 @@ def test_conflict_detection_phase_10_4():
     )
 
     detector = ConflictDetector()
-    conflicts = detector.detect_conflicts({
+    conflicts = detector.detect({
         "multimodal_agent_engine": EngineResult(
             engine_name="multimodal_agent_engine",
             status="success",
@@ -484,12 +484,12 @@ def test_provenance_tagging_step_21():
 def test_collector_integration_step_20(monkeypatch):
     collector = EvidenceCollector()
     # Mock seo and browser engines to avoid live HTTP
-    monkeypatch.setattr(collector.seo_engine, "evaluate", lambda url: EngineResult(
+    monkeypatch.setattr(collector.seo_engine, "execute", lambda url: EngineResult(
         engine_name="advertools_seo",
         status="success",
         on_page=OnPageEvidence(url=url, status_code=200, title="Test Lab"),
     ))
-    monkeypatch.setattr(collector.browser_engine, "evaluate", lambda url: EngineResult(
+    monkeypatch.setattr(collector.browser_engine, "execute_sync", lambda url: EngineResult(
         engine_name="crawl4ai_browser",
         status="success",
         raw_html=HTML_COMPREHENSIVE_FIXTURE,
@@ -658,7 +658,7 @@ def test_reporting_formats():
     report = synthesizer.synthesize("https://example.com", results)
 
     # 1. Markdown reporter
-    md = MarkdownReporter.render_audit(report)
+    md = MarkdownReporter.render(report)
     assert "## 👁️ MULTIMODAL & AGENT READINESS INTELLIGENCE" in md
     assert "Observable Agent Interaction Surfaces" in md
     assert "Information Access Paths" in md
