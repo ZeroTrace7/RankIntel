@@ -90,6 +90,11 @@ def rankintel_audit(url: str, deep_crawl: bool = False, max_pages: int = 25) -> 
         "site_topics_covered_count": report.site_crawl.topic_coverage_intelligence.total_topics_covered if (report.site_crawl and report.site_crawl.topic_coverage_intelligence) else 0,
         "potential_cannibalization_signals_count": len(report.site_crawl.cannibalization_intelligence.potential_cannibalization_signals) if (report.site_crawl and report.site_crawl.cannibalization_intelligence) else (len(report.unified_cannibalization.potential_signals) if report.unified_cannibalization else 0),
         "observable_topic_gaps_count": len(report.site_crawl.cannibalization_intelligence.observable_topic_gaps) if (report.site_crawl and report.site_crawl.cannibalization_intelligence) else (len(report.unified_cannibalization.observable_gaps) if report.unified_cannibalization else 0),
+        "retrieval_search_indexers_allowed": report.unified_retrieval_readiness.search_index_allowed_count if report.unified_retrieval_readiness else 0,
+        "retrieval_training_scrapers_allowed": report.unified_retrieval_readiness.ai_training_allowed_count if report.unified_retrieval_readiness else 0,
+        "retrieval_user_fetchers_allowed": report.unified_retrieval_readiness.user_fetch_allowed_count if report.unified_retrieval_readiness else 0,
+        "retrieval_waf_blocked": report.unified_retrieval_readiness.waf_challenge.is_blocked if report.unified_retrieval_readiness else False,
+        "retrieval_snippet_status": report.unified_retrieval_readiness.snippet_controls.status.value if report.unified_retrieval_readiness else "ALLOWED",
     }
 
 @mcp.tool
