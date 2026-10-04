@@ -105,6 +105,14 @@ def run_audit(url: str, output_dir: str = "audits", output_format: str = "markdo
         "Present" if report.unified_geo.llms_txt_found else "Missing",
         "llmstxt.org v2 check"
     )
+    if getattr(report, "unified_retrieval_readiness", None):
+        rr = report.unified_retrieval_readiness
+        snip_str = "snippets allowed" if not rr.snippet_controls.has_nosnippet else "nosnippet active"
+        table.add_row(
+            "AI Retrieval Readiness",
+            f"{rr.search_index_allowed_count} search indexers permitted ({snip_str})",
+            "robots + headers + directives (Phase 10.1)"
+        )
 
     console.print(table)
 

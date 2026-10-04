@@ -214,6 +214,22 @@ def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_p
             "on-site multi-dimensional gate (Layer A)"
         )
 
+    if getattr(report, "unified_retrieval_readiness", None):
+        rr = report.unified_retrieval_readiness
+        snip_str = "snippets allowed" if not rr.snippet_controls.has_nosnippet else "nosnippet active"
+        table.add_row(
+            "AI Retrieval Readiness",
+            f"{rr.search_index_allowed_count} search indexers permitted ({snip_str})",
+            "robots + headers + directives (Phase 10.1)"
+        )
+    elif report.site_crawl and getattr(report.site_crawl, "retrieval_readiness_intelligence", None):
+        rri = report.site_crawl.retrieval_readiness_intelligence
+        table.add_row(
+            "Site AI Retrieval Scope",
+            f"{rri.total_pages_evaluated} pages ({len(rri.pages_with_waf_challenge)} blocked, {len(rri.pages_with_nosnippet)} nosnippet)",
+            "site-wide retrieval triangulation"
+        )
+
     console.print(table)
 
     if report.conflicts_detected:

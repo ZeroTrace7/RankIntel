@@ -377,10 +377,22 @@ class MarkdownReporter:
 
                 if qpi.facts or qpi.analyses:
                     lines.append("\n#### Query-Page Telemetry Observations:")
-                    for fact in qpi.facts:
+            if getattr(sc, "retrieval_readiness_intelligence", None):
+                rri = sc.retrieval_readiness_intelligence
+                lines.append("\n### 🤖 Site-Wide AI Access & Retrieval Readiness Intelligence")
+                if rri.is_partial_crawl:
+                    lines.append(f"> ⚠️ **Coverage Notice:** {rri.completeness_disclaimer}")
+                lines.append(f"- **Total Crawled Pages Evaluated:** {rri.total_pages_evaluated}")
+                lines.append(f"- **Pages with WAF / Challenge Barriers:** {len(rri.pages_with_waf_challenge)}")
+                lines.append(f"- **Pages with Significant Content Delta (JS Dependency):** {len(rri.pages_requiring_js)}")
+                lines.append(f"- **Pages with nosnippet Directives:** {len(rri.pages_with_nosnippet)}")
+                lines.append(f"- **Pages with data-nosnippet Attributes:** {len(rri.pages_with_data_nosnippet)}")
+                lines.append(f"- **Pages with noindex Directives:** {len(rri.pages_with_noindex)}")
+                lines.append(f"- **Pages with Canonical Conflicts:** {len(rri.pages_with_canonical_conflicts)}")
+                if rri.facts:
+                    lines.append("\n#### Site-Wide Retrieval Observations:")
+                    for fact in rri.facts:
                         lines.append(f"- **FACT:** {fact}")
-                    for an in qpi.analyses:
-                        lines.append(f"- **ANALYSIS:** {an}")
 
             if sc.site_wide_issues:
                 lines.append("\n### 🔴 Site-Wide Structural Findings:")
@@ -458,6 +470,74 @@ class MarkdownReporter:
                 icon = "🟢" if info.status == "ALLOWED" else ("🔴" if info.status in ("BLOCKED", "DISALLOWED") else "⚪")
                 lines.append(f"| **{bot}** | {info.category.upper()} | {icon} {info.status} | {info.role_or_purpose or info.engine} |")
             lines.append("")
+
+        # AI Access & Retrieval Readiness (Phase 10.1)
+        if getattr(report, "unified_retrieval_readiness", None):
+            rr = report.unified_retrieval_readiness
+            lines.append("## 🤖 AI ACCESS & RETRIEVAL READINESS")
+            lines.append("*(Factual evaluation of crawler access, index/snippet controls, and content availability)*\n")
+            lines.append(f"- **Search Indexers Permitted:** {rr.search_index_allowed_count}")
+            lines.append(f"- **AI Model Training Allowed:** {rr.ai_training_allowed_count}")
+            lines.append(f"- **User-Initiated Fetchers Allowed:** {rr.user_fetch_allowed_count}")
+            lines.append(f"- **Observable Access Barriers (WAF/HTTP):** {'🔴 ' + str(rr.blocked_by_waf_count) + ' blocked' if rr.blocked_by_waf_count > 0 else '🟢 None detected'}")
+            lines.append("")
+
+            # Core Bot Retrieval Access Table (Separate dimensions: robots, indexability, snippets, effective)
+            lines.append("### 📋 Core Crawler Retrieval Status Matrix:")
+            lines.append("| Bot Name | Provider | Purpose | robots.txt Access | Document Indexability | Snippet Control | Effective Retrieval Status |")
+            lines.append("|---|---|---|---|---|---|---|")
+            for b_name, b_rec in rr.bot_access_records.items():
+                eff_icon = "🟢" if b_rec.effective_status.value == "ALLOWED" else ("⛔" if b_rec.effective_status.value in ("DISALLOWED", "BLOCKED") else "⚪")
+                lines.append(
+                    f"| **{b_name}** | {b_rec.company} | `{b_rec.purpose.value}` | "
+                    f"`{b_rec.robots_access.value}` | `{b_rec.indexability.value}` | "
+                    f"`{b_rec.snippet_control.value}` | {eff_icon} **{b_rec.effective_status.value}** |"
+                )
+            lines.append("")
+
+            # Snippet & Directives Telemetry
+            lines.append("### ✂️ Snippet Controls & Document Directives:")
+            lines.append(f"- **nosnippet Directive:** {'🔴 Present (' + ', '.join(rr.snippet_controls.nosnippet_sources) + ')' if rr.snippet_controls.has_nosnippet else '🟢 Not present (snippets permitted)'}")
+            if rr.snippet_controls.max_snippet is not None:
+                lines.append(f"- **max-snippet Limitation:** ⚠️ Set to {rr.snippet_controls.max_snippet} characters ({rr.snippet_controls.max_snippet_source})")
+            if rr.snippet_controls.has_data_nosnippet:
+                samples = f" (e.g. {', '.join(rr.snippet_controls.data_nosnippet_sample_selectors)})" if rr.snippet_controls.data_nosnippet_sample_selectors else ""
+                lines.append(f"- **data-nosnippet Attributes:** ⚠️ Observed on {rr.snippet_controls.data_nosnippet_count} element(s){samples}")
+            lines.append(f"- **Document Indexability:** `{rr.indexability_interaction.indexability_status.value}` (noindex: {rr.indexability_interaction.has_noindex}, nofollow: {rr.indexability_interaction.has_nofollow})")
+            lines.append(f"- **Canonical Target & Signal:** `{rr.indexability_interaction.canonical_signal}` ({rr.indexability_interaction.canonical_url or 'None declared'})")
+            if rr.indexability_interaction.canonical_conflict:
+                lines.append(f"- **Canonical Interaction Conflict:** ⚠️ {rr.indexability_interaction.interaction_summary}")
+            lines.append("")
+
+            # Content Availability Telemetry
+            ca = rr.content_availability
+            lines.append("### 📄 Content Availability & Rendering Telemetry:")
+            lines.append(f"- **Static HTML Words:** {ca.raw_word_count} words")
+            if ca.rendered_html_available:
+                lines.append(f"- **Rendered DOM Words:** {ca.rendered_word_count} words (Delta: {ca.word_count_delta:+d} words)")
+            lines.append(f"- **Observation:** {ca.js_rendering_impact}")
+            lines.append("")
+
+            # Observable Barriers & WAF Telemetry
+            if rr.waf_challenge.waf_or_challenge_detected:
+                lines.append("### 🛡️ Access Barriers & Firewall Telemetry:")
+                lines.append(f"- **HTTP Response Status:** {rr.waf_challenge.status_code}")
+                lines.append(f"- **Identified WAF Provider:** `{rr.waf_challenge.waf_provider}`")
+                lines.append(f"- **Challenge Indicators:** {', '.join(rr.waf_challenge.challenge_indicators)}")
+                lines.append("")
+
+            # Factual Findings & Analyses
+            if rr.facts:
+                lines.append("### 🔍 Factual Findings:")
+                for fact in rr.facts:
+                    lines.append(f"- {fact}")
+                lines.append("")
+
+            if rr.analyses:
+                lines.append("### 💡 Technical Analyses:")
+                for analysis in rr.analyses:
+                    lines.append(f"- {analysis}")
+                lines.append("")
 
         # Security & Web Best Practices
         sec = report.unified_security
