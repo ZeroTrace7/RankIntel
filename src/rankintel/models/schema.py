@@ -1692,6 +1692,125 @@ class SiteAnswerabilityIntelligence(BaseModel):
     facts: List[str] = Field(default_factory=list)
     analyses: List[str] = Field(default_factory=list)
 
+# ==============================================================================
+# Phase 10.3 — Entity + Claim + Grounding Intelligence Models
+# ==============================================================================
+
+class ClaimSupportStatus(str, Enum):
+    SUPPORTED_ON_SITE = "SUPPORTED_ON_SITE"
+    PARTIALLY_SUPPORTED = "PARTIALLY_SUPPORTED"
+    UNCORROBORATED_ON_SITE = "UNCORROBORATED_ON_SITE"
+    CONTRADICTED_ON_SITE = "CONTRADICTED_ON_SITE"
+    UNKNOWN = "UNKNOWN"
+    UNAVAILABLE = "UNAVAILABLE"
+
+class EntityConsistencyStatus(str, Enum):
+    CONSISTENT = "CONSISTENT"
+    PARTIALLY_CONSISTENT = "PARTIALLY_CONSISTENT"
+    INCONSISTENT = "INCONSISTENT"
+    UNKNOWN = "UNKNOWN"
+    UNAVAILABLE = "UNAVAILABLE"
+
+class StructuredVisibleAgreementStatus(str, Enum):
+    AGREEMENT = "AGREEMENT"
+    PARTIAL_AGREEMENT = "PARTIAL_AGREEMENT"
+    DISAGREEMENT = "DISAGREEMENT"
+    MISSING_STRUCTURED = "MISSING_STRUCTURED"
+    MISSING_VISIBLE = "MISSING_VISIBLE"
+    UNAVAILABLE = "UNAVAILABLE"
+
+class StructuredVisibleAgreement(BaseModel):
+    field_name: str
+    context_label: str = "primary"
+    url: str = ""
+    structured_value: Optional[str] = None
+    visible_value: Optional[str] = None
+    status: StructuredVisibleAgreementStatus = StructuredVisibleAgreementStatus.UNAVAILABLE
+    bounded_snippet: str = ""
+    source_location: str = ""
+    source_type: str = "jsonld_and_dom"
+    extraction_method: str = "structured_visible_alignment"
+    provenance: str = "claim_grounding_engine"
+    evidence_snippet: Optional[str] = None
+    notes: List[str] = Field(default_factory=list)
+
+class ClaimEvidence(BaseModel):
+    claim_id: str
+    url: str = ""
+    claim_text: str
+    claim_type: str = "factual_statement"
+    source_location: str = ""
+    source_type: str = "visible_body"
+    extraction_method: str = "m10_2_unit_reuse"
+    bounded_snippet: str = ""
+    related_entity: Optional[str] = None
+    related_topic: Optional[str] = None
+    related_unit_id: Optional[str] = None
+    support_status: ClaimSupportStatus = ClaimSupportStatus.UNKNOWN
+    supporting_snippets: List[str] = Field(default_factory=list)
+    supporting_locations: List[str] = Field(default_factory=list)
+    supporting_urls: List[str] = Field(default_factory=list)
+    contradicting_snippets: List[str] = Field(default_factory=list)
+    contradicting_urls: List[str] = Field(default_factory=list)
+    notes: List[str] = Field(default_factory=list)
+    provenance: str = "claim_grounding_engine"
+
+class EntityGroundingEvidence(BaseModel):
+    entity_name: str
+    entity_type: str = "ORGANIZATION"
+    url: str = ""
+    bounded_snippet: str = ""
+    source_location: str = ""
+    source_type: str = "multi_surface"
+    extraction_method: str = "phase8_entity_reuse"
+    consistency_status: EntityConsistencyStatus = EntityConsistencyStatus.UNKNOWN
+    observed_in_visible_body: bool = False
+    observed_in_headings: bool = False
+    observed_in_title_meta: bool = False
+    observed_in_json_ld: bool = False
+    observed_in_contact_info: bool = False
+    observed_in_answerable_units: bool = False
+    visible_mentions: List[str] = Field(default_factory=list)
+    heading_mentions: List[str] = Field(default_factory=list)
+    meta_mentions: List[str] = Field(default_factory=list)
+    schema_types: List[str] = Field(default_factory=list)
+    associated_units: List[str] = Field(default_factory=list)
+    discrepancies: List[str] = Field(default_factory=list)
+    notes: List[str] = Field(default_factory=list)
+    provenance: str = "claim_grounding_engine"
+
+class ClaimGroundingEvidence(BaseModel):
+    url: str = ""
+    engine_source: str = "claim_grounding_engine"
+    total_claims_detected: int = 0
+    supported_claims_count: int = 0
+    partially_supported_count: int = 0
+    uncorroborated_count: int = 0
+    contradicted_count: int = 0
+    claims: List[ClaimEvidence] = Field(default_factory=list)
+    entity_grounding: List[EntityGroundingEvidence] = Field(default_factory=list)
+    structured_agreements: List[StructuredVisibleAgreement] = Field(default_factory=list)
+    agreement_count: int = 0
+    disagreement_count: int = 0
+    facts: List[str] = Field(default_factory=list)
+    analyses: List[str] = Field(default_factory=list)
+
+class SiteClaimGroundingIntelligence(BaseModel):
+    status: str = "success"
+    total_pages_evaluated: int = 0
+    is_partial_crawl: bool = False
+    completeness_disclaimer: str = ""
+    total_site_claims_detected: int = 0
+    supported_claims_count: int = 0
+    partially_supported_count: int = 0
+    uncorroborated_count: int = 0
+    contradicted_count: int = 0
+    entity_consistency_summary: Dict[str, str] = Field(default_factory=dict)
+    disagreement_items: List[StructuredVisibleAgreement] = Field(default_factory=list)
+    page_grounding_evidence: Dict[str, ClaimGroundingEvidence] = Field(default_factory=dict)
+    facts: List[str] = Field(default_factory=list)
+    analyses: List[str] = Field(default_factory=list)
+
 class SiteCrawlResult(BaseModel):
     """Aggregated multi-page crawl intelligence."""
     completeness_status: str = "CRAWL_COMPLETE"
@@ -1738,6 +1857,7 @@ class SiteCrawlResult(BaseModel):
     cannibalization_intelligence: Optional[SiteCannibalizationIntelligence] = None
     retrieval_readiness_intelligence: Optional[SiteRetrievalReadinessIntelligence] = None
     answerability_intelligence: Optional[SiteAnswerabilityIntelligence] = None
+    claim_grounding_intelligence: Optional[SiteClaimGroundingIntelligence] = None
 
 class EngineResult(BaseModel):
     engine_name: str
@@ -1764,6 +1884,7 @@ class EngineResult(BaseModel):
     cloud_intelligence: Optional[CloudIntelligenceEvidence] = None
     retrieval_readiness: Optional[RetrievalReadinessEvidence] = None
     answerability: Optional[AnswerabilityEvidence] = None
+    claim_grounding: Optional[ClaimGroundingEvidence] = None
     raw_html: Optional[str] = None  # Post-JS rendered HTML from crawl4ai; used by TrustEvaluator and GeoEngine
 
 class ConflictFinding(BaseModel):
@@ -1824,6 +1945,7 @@ class SynthesisReport(BaseModel):
     cloud_intelligence: CloudIntelligenceEvidence = Field(default_factory=CloudIntelligenceEvidence)
     unified_retrieval_readiness: Optional[RetrievalReadinessEvidence] = None
     unified_answerability: Optional[AnswerabilityEvidence] = None
+    unified_claim_grounding: Optional[ClaimGroundingEvidence] = None
     site_crawl: Optional[SiteCrawlResult] = None
     
     # Generated fixes
