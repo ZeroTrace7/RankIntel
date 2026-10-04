@@ -441,6 +441,18 @@ class CrawlFrontier:
                 recommendations=["Check crawl telemetry and record validity."],
             )
 
+        try:
+            from rankintel.engines.retrieval_readiness_engine import RetrievalReadinessEngine
+            RetrievalReadinessEngine.evaluate_site(result)
+        except Exception as e:
+            from rankintel.models.schema import SiteRetrievalReadinessIntelligence
+            result.retrieval_readiness_intelligence = SiteRetrievalReadinessIntelligence(
+                status="error",
+                completeness_disclaimer=f"Retrieval readiness analysis failed during crawl aggregation: {e}",
+                facts=[f"Error during crawl aggregation: {e}"],
+                analyses=[f"Retrieval readiness analyzer encountered an error: {e}"],
+            )
+
         if getattr(self.config, "enable_sitemap_analysis", False):
             try:
                 from rankintel.sitemaps.discovery import SitemapDiscovery
