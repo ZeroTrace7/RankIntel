@@ -273,7 +273,7 @@ def run_compare(url_a: str, url_b: str, output_dir: str = "reports", output_form
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        console.print("[bold red]Usage:[/bold red] python audit_engine.py <url> [--format json] [--deep-crawl] [--external-ai] [--external-providers gemini,mock] OR python audit_engine.py compare <url1> vs <url2> [--format json]")
+        console.print("[bold red]Usage:[/bold red] python audit_engine.py <url> [--format json] [--deep-crawl] [--external-ai] [--external-providers gemini,mock] OR python audit_engine.py compare <url1> vs <url2> [--format json] OR python audit_engine.py benchmark [--external-ai]")
         sys.exit(1)
 
     fmt = "json" if "--format" in sys.argv and "json" in sys.argv else ("json" if "--json" in sys.argv else "markdown")
@@ -298,6 +298,13 @@ if __name__ == "__main__":
         url1 = cleaned_args[1]
         url2 = cleaned_args[3] if len(cleaned_args) > 3 and cleaned_args[2].lower() == "vs" else cleaned_args[2]
         run_compare(url1, url2, output_format=fmt)
+    elif cleaned_args and cleaned_args[0].lower() in ("benchmark", "benchmarks"):
+        from rankintel.benchmark.collector import BenchmarkCollector
+        collector = BenchmarkCollector(
+            external_ai=ext_ai,
+            external_providers=[p.strip() for p in ext_prov.split(",")] if ext_prov else None,
+        )
+        collector.collect_all(workers=3)
     elif cleaned_args:
         target_url = cleaned_args[0]
         run_audit(

@@ -111,3 +111,28 @@ Whenever the user asks RankIntel to perform an "analysis", "audit", "validation"
 - **Conservative Citations**: Citation matching is strictly affirmative (no false contradictions from unquoted summaries).
 - **Maintenance Discipline**: Future agents should preserve Phase 10 models and provenance contracts; do not redesign working components merely for stylistic reasons.
 
+## 12. Phase 11 — Benchmark & Competitive Gap Intelligence
+- **Phase 11.1 Complete**: Benchmark intelligence collection layer established across permanent 11-site benchmark.
+- **Unified 15-Dimension Collection Package**:
+  1. Crawl/discovery evidence
+  2. Technical SEO
+  3. Accessibility
+  4. Security
+  5. Content intelligence
+  6. Entity intelligence
+  7. Internal-link intelligence
+  8. Search/topic/query/intent intelligence
+  9. Cannibalization/search-gap observations
+  10. AI retrieval readiness
+  11. Answerability
+  12. Claim/entity grounding
+  13. Multimodal readiness
+  14. Agent readiness
+  15. External AI observations (strictly opt-in via `--external-ai`, otherwise `DISABLED`)
+- **Normalized Data Architecture**: Each audited site yields a structured, provenance-preserving `SiteIntelligencePackage` in `benchmarks/packages/{domain}.json` and is assembled into `benchmarks/benchmark_dataset_phase11.json`.
+- **Zero Redundant HTTP**: Benchmark collection reuses the unified multi-engine evidence pipeline. No duplicate page fetches.
+- **Strict Epistemic Partitioning**: All benchmark findings preserve strict segregation into `FACT`, `EXTERNAL OBSERVATION`, `ANALYSIS`, and `RECOMMENDATION`.
+- **Formula Invariance**: Health-score formulas remain strictly invariant ($\Delta = 0$). No arbitrary competitive superiority or leadership scoring formulas.
+- **Competitive Grounding Discipline**: Website evidence alone must not be used to claim market leadership, rankings, traffic, or search volume without verified external measurement.
+
+

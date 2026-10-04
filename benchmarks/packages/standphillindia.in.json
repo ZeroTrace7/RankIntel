@@ -1,0 +1,1111 @@
+{
+  "site_url": "https://www.standphillindia.in/",
+  "domain": "www.standphillindia.in",
+  "name": "Standphill India",
+  "role": "competitor",
+  "collection_timestamp": "2026-10-04",
+  "collection_status": "SUCCESS",
+  "error_message": null,
+  "execution_time_sec": 8.7,
+  "overall_health_score": 67,
+  "technical_health_score": 75,
+  "geo_readiness_score": 51,
+  "trust_score": 64,
+  "performance_score": 85,
+  "score_formula_mode": "4_engine",
+  "formula_invariance_verified": true,
+  "crawl_limitations": [
+    "Single-page multi-engine collection pass",
+    "Process-isolated worker execution",
+    "Socket timeout: 15.0s",
+    "Respects robots.txt directives"
+  ],
+  "crawl_discovery": {
+    "status": "AVAILABLE",
+    "url": "https://www.standphillindia.in/",
+    "http_status_code": 200,
+    "is_redirect": false,
+    "canonical_url": "https://www.standphillindia.in",
+    "internal_links_count": 57,
+    "external_links_count": 198,
+    "robots_txt_found": true,
+    "robots_txt_url": "https://www.standphillindia.in/robots.txt",
+    "sitemaps_declared": [
+      "https://www.standphillindia.in/sitemap.xml"
+    ],
+    "crawl_limitations": [
+      "Single-page multi-engine collection pass",
+      "Process-isolated worker execution",
+      "Socket timeout: 15.0s",
+      "Respects robots.txt directives"
+    ],
+    "notes": [
+      "HTTP Status: 200",
+      "Discovered 57 internal links"
+    ]
+  },
+  "technical_seo": {
+    "status": "AVAILABLE",
+    "title": "BIS Certification Consultant in India - Standphill India",
+    "title_length": 56,
+    "meta_description": "Standphill India is a leading BIS certification consultant in India, offering a single window for ISI Mark, FMCS, CRS, BEE, EPR, WPC-ETA, LMPC, TEC, third-party inspection and many more.",
+    "meta_description_length": 186,
+    "h1_count": 3,
+    "h1_samples": [
+      "India's Trusted \nBIS Certification Experts",
+      "Get BIS Certification\n                        in 20-25 Days",
+      "Instant Service to the \nGLOBAL MANUFACTURES"
+    ],
+    "h2_count": 12,
+    "h3_count": 11,
+    "detected_schema_types": [
+      "WebSite",
+      "FAQPage",
+      "Organization"
+    ],
+    "schema_blocks_count": 3,
+    "schema_validation_issues": [],
+    "ttfb_ms": 117.0,
+    "performance_score": 85,
+    "performance_source": "local_probe",
+    "notes": [
+      "Title (56 chars)",
+      "3 schema types detected"
+    ]
+  },
+  "accessibility": {
+    "status": "AVAILABLE",
+    "wcag_status": "FAIL",
+    "engine_source": "axe_core_playwright",
+    "browser_evaluated": true,
+    "total_violations": 42,
+    "critical_count": 0,
+    "serious_count": 42,
+    "moderate_count": 0,
+    "minor_count": 0,
+    "rules_checked_count": 28,
+    "rules_passed_count": 25,
+    "violation_samples": [
+      {
+        "rule_id": "color-contrast",
+        "severity": "SERIOUS",
+        "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.09 (foreground color: #ffffff, background color: #ff5b2e, font size: 11.3pt (15px), font weight: bold). Expected contrast ratio of 4.5:1"
+      },
+      {
+        "rule_id": "color-contrast",
+        "severity": "SERIOUS",
+        "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.09 (foreground color: #ffffff, background color: #ff5b2e, font size: 11.3pt (15px), font weight: bold). Expected contrast ratio of 4.5:1"
+      },
+      {
+        "rule_id": "color-contrast",
+        "severity": "SERIOUS",
+        "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.68 (foreground color: #ffffff, background color: #f9775e, font size: 13.5pt (18px), font weight: bold). Expected contrast ratio of 4.5:1"
+      },
+      {
+        "rule_id": "color-contrast",
+        "severity": "SERIOUS",
+        "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.64 (foreground color: #98a0ab, background color: #ffffff, font size: 25.5pt (34px), font weight: bold). Expected contrast ratio of 3:1"
+      },
+      {
+        "rule_id": "color-contrast",
+        "severity": "SERIOUS",
+        "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.64 (foreground color: #98a0ab, background color: #ffffff, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+      },
+      {
+        "rule_id": "color-contrast",
+        "severity": "SERIOUS",
+        "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.64 (foreground color: #98a0ab, background color: #ffffff, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+      },
+      {
+        "rule_id": "color-contrast",
+        "severity": "SERIOUS",
+        "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.7 (foreground color: #ffffff, background color: #ffb4a4, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+      },
+      {
+        "rule_id": "color-contrast",
+        "severity": "SERIOUS",
+        "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.7 (foreground color: #ffffff, background color: #ffb4a4, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+      },
+      {
+        "rule_id": "color-contrast",
+        "severity": "SERIOUS",
+        "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.7 (foreground color: #ffffff, background color: #ffb4a4, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+      },
+      {
+        "rule_id": "color-contrast",
+        "severity": "SERIOUS",
+        "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.7 (foreground color: #ffffff, background color: #ffb4a4, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+      }
+    ],
+    "disclaimer": "Automated checks evaluate observable criteria; non-certification scope.",
+    "notes": []
+  },
+  "security": {
+    "status": "AVAILABLE",
+    "overall_status": "PARTIAL",
+    "is_https": true,
+    "tls_valid": true,
+    "tls_protocol": "TLSv1.3",
+    "tls_days_remaining": 74,
+    "hsts_present": true,
+    "hsts_preload": false,
+    "csp_present": true,
+    "x_frame_options": "SAMEORIGIN",
+    "x_content_type_options": "nosniff",
+    "referrer_policy": "strict-origin-when-cross-origin",
+    "mixed_content_count": 0,
+    "server_leakage": [
+      "X-Powered-By: PHP/8.0.30"
+    ],
+    "findings_count": 2,
+    "findings_samples": [
+      {
+        "severity": "LOW",
+        "category": "best_practice",
+        "title": "Missing Permissions-Policy Header",
+        "recommendation": "Declare 'Permissions-Policy: camera=(), microphone=(), geolocation=()' to restrict unnecessary hardware access."
+      },
+      {
+        "severity": "LOW",
+        "category": "security_vulnerability",
+        "title": "X-Powered-By Header Discloses Technology Stack",
+        "recommendation": "Remove X-Powered-By header via server configuration or application middleware."
+      }
+    ],
+    "notes": [
+      "Declare 'Permissions-Policy: camera=(), microphone=(), geolocation=()' to restrict unnecessary hardware access.",
+      "Remove X-Powered-By header via server configuration or application middleware."
+    ]
+  },
+  "content": {
+    "status": "AVAILABLE",
+    "main_content_words": 2152,
+    "total_body_words": 2499,
+    "content_to_boilerplate_ratio": 0.86,
+    "paragraph_count": 45,
+    "extraction_method": "HEURISTIC_PRUNED_BODY",
+    "thin_content_tier": "SUBSTANTIVE",
+    "has_placeholder_text": false,
+    "exact_content_hash": "6c11969954d1588262a4a10ac606c2b56aa79c9fd0b3d6221b8604989465103a",
+    "simhash": "b36c09274708a5b3",
+    "title_h1_alignment": "MODERATE_ALIGNMENT",
+    "title_h1_token_overlap": 0.25,
+    "heading_hierarchy_valid": false,
+    "heading_skips": [
+      "Heading skip: <h1> to <h3> ('Get Free Consultation...')",
+      "Heading skip: <h1> to <h3> ('Get FreeConsultation...')",
+      "Heading skip: <h1> to <h3> ('Get Free Consultation...')",
+      "Heading skip: <h2> to <h5> ('Chintan Shah                  ...')",
+      "Heading skip: <h2> to <h4> ('Shubham Kumar...')",
+      "Heading skip: <h4> to <h6> ('AI Engineer...')",
+      "Heading skip: <h4> to <h6> ('Data Analyst...')",
+      "Heading skip: <h4> to <h6> ('Marketing Executive Trainee...')",
+      "Heading skip: <h4> to <h6> ('Director Of Operations & Accou...')",
+      "Heading skip: <h4> to <h6> ('Director Of Marketing & Techni...')",
+      "Heading skip: <h4> to <h6> ('Senior Operation Executive...')",
+      "Heading skip: <h4> to <h6> ('Senior Marketing Executive...')",
+      "Heading skip: <h4> to <h6> ('Product Compliance Manager...')",
+      "Heading skip: <h4> to <h6> ('Backend & System Engineer...')",
+      "Heading skip: <h4> to <h6> ('Operation Executive...')",
+      "Heading skip: <h4> to <h6> ('Office Admin...')",
+      "Heading skip: <h4> to <h6> ('Digital Marketing Executive...')",
+      "Heading skip: <h4> to <h6> ('Accounts Manager...')",
+      "Heading skip: <h4> to <h6> ('Frontend Engineer...')",
+      "Heading skip: <h4> to <h6> ('AI Engineer...')",
+      "Heading skip: <h4> to <h6> ('Data Analyst...')",
+      "Heading skip: <h4> to <h6> ('Marketing Executive Trainee...')",
+      "Heading skip: <h4> to <h6> ('Director Of Operations & Accou...')",
+      "Heading skip: <h4> to <h6> ('Director Of Marketing & Techni...')",
+      "Heading skip: <h4> to <h6> ('Senior Operation Executive...')",
+      "Heading skip: <h3> to <h5> ('Licence Services...')"
+    ],
+    "empty_sections_count": 77,
+    "notes": [
+      "Extraction method: HEURISTIC_PRUNED_BODY yielded 2152 main content words (2499 total body words).",
+      "Content-to-body ratio: 86.1%.",
+      "Exact main-content SHA-256: 6c11969954d15882..., Full HTML SHA-256: bc4f5ab199f0a8a2...",
+      "SimHash fingerprint: b36c09274708a5b3."
+    ]
+  },
+  "entity": {
+    "status": "AVAILABLE",
+    "total_entities_detected": 10,
+    "entity_names": [
+      "Standphill India",
+      "Standphill India",
+      "Standphill India",
+      "Standphill India",
+      "Standphillindia",
+      "Contact Phone (+919667674225)",
+      "Contact Phone (+919667674225)",
+      "Contact Phone (+919667674225)",
+      "Contact Email (info@standphillindia.in)",
+      "Contact Email (info@standphillindia.in)"
+    ],
+    "entity_types_detected": [
+      "PERSON",
+      "OTHER",
+      "ORGANIZATION",
+      "LOCAL_BUSINESS"
+    ],
+    "relationships_count": 2,
+    "structured_vs_visible_comparisons_count": 3,
+    "aligned_comparisons_count": 2,
+    "divergent_comparisons_count": 1,
+    "samples": [
+      {
+        "name": "Standphill India",
+        "type": "ORGANIZATION",
+        "source": "JSON_LD",
+        "telephone": "+91-9667674225",
+        "email": "info@standphillindia.in"
+      },
+      {
+        "name": "Standphill India",
+        "type": "OTHER",
+        "source": "JSON_LD",
+        "telephone": null,
+        "email": null
+      },
+      {
+        "name": "Standphill India",
+        "type": "ORGANIZATION",
+        "source": "META_TAG",
+        "telephone": null,
+        "email": null
+      },
+      {
+        "name": "Standphill India",
+        "type": "PERSON",
+        "source": "META_TAG",
+        "telephone": null,
+        "email": null
+      },
+      {
+        "name": "Standphillindia",
+        "type": "ORGANIZATION",
+        "source": "VISIBLE_HTML",
+        "telephone": null,
+        "email": null
+      },
+      {
+        "name": "Contact Phone (+919667674225)",
+        "type": "LOCAL_BUSINESS",
+        "source": "VISIBLE_HTML",
+        "telephone": "+919667674225",
+        "email": null
+      },
+      {
+        "name": "Contact Phone (+919667674225)",
+        "type": "LOCAL_BUSINESS",
+        "source": "VISIBLE_HTML",
+        "telephone": "+919667674225",
+        "email": null
+      },
+      {
+        "name": "Contact Phone (+919667674225)",
+        "type": "LOCAL_BUSINESS",
+        "source": "VISIBLE_HTML",
+        "telephone": "+919667674225",
+        "email": null
+      }
+    ],
+    "notes": [
+      "Detected 10 entity signals (ORGANIZATION: 5, OTHER: 1, PERSON: 1, LOCAL_BUSINESS: 3).",
+      "Recorded 2 observable entity relationships."
+    ]
+  },
+  "internal_links": {
+    "status": "AVAILABLE",
+    "total_internal_links": 57,
+    "unique_internal_targets": 57,
+    "total_external_links": 198,
+    "unique_external_targets": 99,
+    "empty_anchors_count": 0,
+    "sample_internal_targets": [
+      "https://www.standphillindia.in/contact.php",
+      "https://www.standphillindia.in/",
+      "https://www.standphillindia.in/about-us.php",
+      "https://www.standphillindia.in/our-team.php",
+      "https://www.standphillindia.in/projects/",
+      "https://www.standphillindia.in/qco/",
+      "https://www.standphillindia.in/our-company-gallery.php/",
+      "https://www.standphillindia.in/our-gallery.php",
+      "https://www.standphillindia.in/youtube-gallery.php",
+      "https://www.standphillindia.in/bis-certification-for-indian-manufacturers.php"
+    ],
+    "notes": [
+      "57 internal links observed, 57 unique targets"
+    ]
+  },
+  "search_topic_query_intent": {
+    "status": "AVAILABLE",
+    "search_signals_count": 188,
+    "topics_detected_count": 119,
+    "topics_sample": [
+      "Certification",
+      "BIS",
+      "Standphill India",
+      "India",
+      "Standphill",
+      "Get",
+      "Consultant",
+      "GLOBAL",
+      "BIS Certification Consultant in India",
+      "Days"
+    ],
+    "query_page_concepts_count": 135,
+    "primary_intent": "transactional",
+    "secondary_intents": [
+      "navigational",
+      "informational",
+      "local"
+    ],
+    "intent_evidence_items_count": 16,
+    "notes": [
+      "Primary Intent: transactional",
+      "119 topics extracted"
+    ]
+  },
+  "cannibalization_search_gaps": {
+    "status": "AVAILABLE",
+    "potential_cannibalization_signals_count": 0,
+    "observable_gaps_count": 0,
+    "overlap_signals_sample": [],
+    "gaps_sample": [],
+    "layer_boundary_note": "Strictly deterministic identification of observable on-site topic overlaps and gaps. No external ranking, GSC, or competitor superiority claims.",
+    "notes": [
+      "0 potential cannibalization signals flagged",
+      "0 topic gaps identified"
+    ]
+  },
+  "retrieval_readiness": {
+    "status": "AVAILABLE",
+    "total_bots_evaluated": 12,
+    "search_index_allowed_count": 6,
+    "ai_training_allowed_count": 1,
+    "user_fetch_allowed_count": 3,
+    "waf_or_challenge_detected": false,
+    "waf_blocked": false,
+    "waf_provider": null,
+    "has_nosnippet": false,
+    "has_data_nosnippet": false,
+    "max_snippet": null,
+    "static_words": 2396,
+    "rendered_words": 0,
+    "word_count_delta": 0,
+    "rendering_impact_summary": "Static HTML observed (2396 words); browser DOM was not rendered in this pass.",
+    "notes": [
+      "HTTP Status: 200",
+      "No active WAF or automated challenge barriers observed.",
+      "Static HTML contains 2396 words."
+    ]
+  },
+  "answerability": {
+    "status": "AVAILABLE",
+    "total_units_detected": 13,
+    "units_by_type": {
+      "LOCATION_CONTACT": 1,
+      "FAQ": 6,
+      "FACTUAL_STATEMENT": 5,
+      "SERVICE_DESCRIPTION": 1
+    },
+    "heading_content_relationship": "PARTIAL",
+    "question_answer_patterns": "PRESENT",
+    "definition_patterns": "ABSENT",
+    "step_list_structure": "ABSENT",
+    "table_availability": "ABSENT",
+    "explained_topics_count": 72,
+    "mentioned_only_topics_count": 28,
+    "unsupported_heading_topics_count": 21,
+    "unsupported_headings_sample": [
+      "LICENCE & CERTIFICATION",
+      "REGISTRATION",
+      "AUXILIARY",
+      "Standphill India- The house of Standards",
+      "OUR SERVICES"
+    ],
+    "notes": [
+      "Detected 13 distinct observable information unit(s) across 4 structural types.",
+      "Evaluated 135 topic(s): 72 explained with explicit units, 28 mentioned only, 21 unsupported headings.",
+      "Structure 'FACTUAL_STATEMENT': 5 unit(s) observed.",
+      "Structure 'FAQ': 6 unit(s) observed.",
+      "Structure 'LOCATION_CONTACT': 1 unit(s) observed.",
+      "Structure 'SERVICE_DESCRIPTION': 1 unit(s) observed."
+    ]
+  },
+  "claim_grounding": {
+    "status": "AVAILABLE",
+    "total_claims_detected": 39,
+    "supported_claims_count": 31,
+    "partially_supported_count": 7,
+    "uncorroborated_count": 1,
+    "contradicted_count": 0,
+    "structured_agreements_count": 3,
+    "structured_disagreements_count": 1,
+    "entity_consistency_breakdown": {
+      "CONSISTENT": 2,
+      "PARTIALLY_CONSISTENT": 2
+    },
+    "notes": [
+      "Detected 39 observable claim(s) on page https://www.standphillindia.in/.",
+      "On-site support status: 31 supported, 7 partially supported, 1 uncorroborated, 0 contradicted.",
+      "Structured vs visible comparisons: 3 agreement(s), 1 explicit disagreement(s).",
+      "Evaluated 4 entity candidate(s) across 6 content surfaces."
+    ]
+  },
+  "multimodal": {
+    "status": "AVAILABLE",
+    "total_visual_assets": 155,
+    "informational_assets_count": 149,
+    "decorative_assets_count": 6,
+    "alt_represented_count": 139,
+    "caption_represented_count": 0,
+    "text_represented_count": 15,
+    "visual_only_observed_gaps": 1,
+    "modern_format_count": 113,
+    "missing_dimensions_count": 54,
+    "notes": [
+      "155 visual assets audited (139 alt-represented)"
+    ]
+  },
+  "agent_readiness": {
+    "status": "AVAILABLE",
+    "total_forms_detected": 6,
+    "labeled_forms_count": 5,
+    "action_buttons_detected": 31,
+    "meaningful_accessible_buttons_count": 30,
+    "descriptive_navigation_links_count": 46,
+    "schema_actions_detected": 0,
+    "webmcp_declarations_detected": 0,
+    "total_access_paths": 20,
+    "action_surface_gaps": 0,
+    "notes": [
+      "6 forms, 31 buttons audited"
+    ]
+  },
+  "external_ai": {
+    "status": "DISABLED",
+    "providers_evaluated": [],
+    "queries_executed_count": 0,
+    "successful_observations_count": 0,
+    "failed_observations_count": 0,
+    "target_domain_cited_count": 0,
+    "target_domain_mentioned_count": 0,
+    "total_external_citations": 0,
+    "failure_reason": null,
+    "limitation_disclaimer": "Controlled empirical observations under explicit API configurations. Strictly opt-in; does not imply universal AI rankings or traffic.",
+    "notes": [
+      "External AI visibility measurement was not requested (strictly opt-in via --external-ai)."
+    ]
+  },
+  "epistemic_separation": {
+    "facts": [
+      "HTTP response code: 200",
+      "Static HTML word count: 2222",
+      "Title: 'BIS Certification Consultant in India - Standphill India' (56 characters)",
+      "Meta description: 'Standphill India is a leading BIS certification consultant in India, offering a single window for ISI Mark, FMCS, CRS, BEE, EPR, WPC-ETA, LMPC, TEC, third-party inspection and many more.' (186 characters)",
+      "H1 tags observed: 3",
+      "Internal links observed: 57",
+      "External links observed: 198",
+      "Robots.txt found: True",
+      "Schema types declared: WebSite, FAQPage, Organization",
+      "HTTPS enforced: True",
+      "Server latency probe: 117.0ms (local_probe)",
+      "HTTP Status: 200",
+      "No active WAF or automated challenge barriers observed.",
+      "Static HTML contains 2396 words.",
+      "Detected 13 distinct observable information unit(s) across 4 structural types.",
+      "Evaluated 135 topic(s): 72 explained with explicit units, 28 mentioned only, 21 unsupported headings.",
+      "Structure 'FACTUAL_STATEMENT': 5 unit(s) observed.",
+      "Structure 'FAQ': 6 unit(s) observed.",
+      "Structure 'LOCATION_CONTACT': 1 unit(s) observed.",
+      "Detected 39 observable claim(s) on page https://www.standphillindia.in/.",
+      "On-site support status: 31 supported, 7 partially supported, 1 uncorroborated, 0 contradicted.",
+      "Structured vs visible comparisons: 3 agreement(s), 1 explicit disagreement(s).",
+      "Evaluated 4 entity candidate(s) across 6 content surfaces.",
+      "Observed 155 visual asset(s): 149 informational, 139 with meaningful alt text, 0 with figure captions, 1 visual-only information gap(s).",
+      "Observed 6 form(s) (5 labeled), 31 action button(s) (30 accessible names), 0 structured schema action(s), 0 WebMCP declaration(s).",
+      "Mapped 20 information access path(s) across multimodal and agent surfaces."
+    ],
+    "external_observations": [
+      "Local network latency probe recorded 117.0ms TTFB",
+      "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
+    ],
+    "analyses": [
+      "Health score computed: 67/100 via invariant formula mode '4_engine'",
+      "Technical SEO foundation: 75/100",
+      "GEO citability readiness: 51/100",
+      "Trust stack: C (64/100)",
+      "Cross-engine conflict [MEDIUM] on 'Structured vs Visible Entity Branding': Structured Organization 'Standphill India' differs from visible branding 'Standphillindia'. -> The organization declared in structured data and the organization observed in visible page branding share no common brand tokens. This may represent white-labeling, third-party template reuse, or an entity disambiguation discrepancy in search engine knowledge graphs.",
+      "Cross-engine conflict [MEDIUM] on 'Topic Heading without Supporting Content': Topic 'ACHIEVEMENTS' has dedicated heading 'OUR ACHIEVEMENTS', but supporting body content is genuinely absent. -> The page establishes an explicit topical heading promise for search/AI retrieval, but fails to provide observable explanatory or factual body copy under that section.",
+      "Cross-engine conflict [HIGH] on 'JSON-LD vs Visible Organization Name': JSON-LD declares 'Standphill India' while visible content displays 'India's Trusted BIS Certification Experts' under primary_identity context. -> Discrepancy detected between structured schema declarations and visible user-facing text. Search engines and AI systems comparing structured data against rendered pages may flag inconsistent identity signals for 'organization_name'."
+    ],
+    "recommendations": [
+      "[CRITICAL] Resolve Triangulation Conflict: JSON-LD vs Visible Organization Name: Discrepancy detected between structured schema declarations and visible user-facing text. Search engines and AI systems comparing structured data against rendered pages may flag inconsistent identity signals for 'organization_name'.",
+      "[HIGH] Rewrite Meta Description with Active Call-to-Action: Descriptions over 160 chars are clipped. Overly short descriptions fail to compel searcher clicks.",
+      "[HIGH] Consolidate Multiple H1 Headings into Single Logical H1: Multiple H1 tags dilute topical focus. Best practice is a single clear H1 reflecting page intent.",
+      "[GEO_WIN] Implement Answer-First H2 Structure: AutoGEO research proves AI models prioritize passages providing concrete numbers/facts in the first 150 characters.",
+      "[MEDIUM] Review Structured vs Visible Organization Alignment: Significant brand name divergence between structured data and observable page branding may confuse entity disambiguation in search engines. Verify intentionality."
+    ]
+  },
+  "provenance_tags": [
+    {
+      "finding": "Googlebot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bingbot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Slurp: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "DuckDuckBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "YandexBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Baiduspider: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "OAI-SearchBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "PerplexityBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Claude-SearchBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "ChatGPT-User: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Claude-User: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Perplexity-User: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "GPTBot: DISALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "ClaudeBot: DISALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Google-Extended: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Applebot-Extended: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "CCBot: DISALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bytespider: DISALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "FacebookBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "cohere-ai: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "anthropic-ai: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Applebot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'FAQPage' detected",
+      "engine": "seo_engine",
+      "source_file": "application/ld+json",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'Organization' detected",
+      "engine": "seo_engine",
+      "source_file": "application/ld+json",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'WebSite' detected",
+      "engine": "seo_engine",
+      "source_file": "application/ld+json",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Page Title (56 chars): 'BIS Certification Consultant in India - Stand...'",
+      "engine": "seo_engine",
+      "source_file": "<title> tag",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "TTFB Latency: 117ms",
+      "engine": "performance_engine",
+      "source_file": "HTTP response probe",
+      "confidence": "medium",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "/llms.txt: PRESENT",
+      "engine": "rankintel_geo",
+      "source_file": "/llms.txt HTTP check",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Princeton GEO Citability: 51/100",
+      "engine": "rankintel_geo",
+      "source_file": "DOM content passages",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Image Optimization: 155 images detected (0 missing alt)",
+      "engine": "image_engine",
+      "source_file": "HTML DOM",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "HTML Head Audit: Viewport Present, Lang Present",
+      "engine": "image_engine",
+      "source_file": "<head> HTML",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "WCAG AA Automated Status: FAIL (42 violations)",
+      "engine": "axe_core_playwright",
+      "source_file": "HTML DOM",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Security Posture Status: PARTIAL (2 findings)",
+      "engine": "security_engine",
+      "source_file": "HTTP Headers / TLS",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "TLS Certificate: Valid (74 days left)",
+      "engine": "security_engine",
+      "source_file": "TLS Handshake",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Main Content Extraction: 2152 words (HEURISTIC_PRUNED_BODY)",
+      "engine": "content_engine",
+      "source_file": "HTML DOM",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Heading Structure: 98 headings (26 skips)",
+      "engine": "content_engine",
+      "source_file": "HTML Headings",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Entity Detection: 10 entity signals (8 organization/business)",
+      "engine": "entity_engine",
+      "source_file": "JSON-LD & HTML DOM",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Entity Alignment (organization_name): EXACT_MATCH",
+      "engine": "entity_engine",
+      "source_file": "JSON-LD vs DOM Signals",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Entity Alignment (organization_name): DIVERGENT_IDENTITY_SUSPECTED",
+      "engine": "entity_engine",
+      "source_file": "JSON-LD vs DOM Signals",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Entity Alignment (telephone): EXACT_MATCH",
+      "engine": "entity_engine",
+      "source_file": "JSON-LD vs DOM Signals",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Internal Link Topology: 146 internal links (57 unique destinations)",
+      "engine": "internal_link_engine",
+      "source_file": "HTML DOM",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Search Signal Evidence: 188 on-site search-relevant signal terms evidenced",
+      "engine": "search_signal_engine",
+      "source_file": "HTML DOM & Metadata",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Search Signal Structure: Multi-location co-occurrence observed for key terms: bis, certification, india, standphill india, standphill.",
+      "engine": "search_signal_engine",
+      "source_file": "Structural Tag Correlation",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Search Signal Structure: Title and H1 share 2 core evidenced terms: bis, certification.",
+      "engine": "search_signal_engine",
+      "source_file": "Structural Tag Correlation",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Topic Intelligence: 119 deterministic concept groups derived from on-site evidence",
+      "engine": "topic_intelligence_engine",
+      "source_file": "Search Signal & Entity Evidence",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Topic Relationships: 170 inter-topic relationships mapped",
+      "engine": "topic_intelligence_engine",
+      "source_file": "Deterministic Concept Clustering",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Query-Page Mapping: 135 observed concepts mapped to page (22 DIRECT, 65 SUPPORTED)",
+      "engine": "query_page_mapping_engine",
+      "source_file": "On-Site Evidence Triangulation",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 22 direct primary concepts, 65 secondary supported concepts.",
+      "engine": "query_page_mapping_engine",
+      "source_file": "Structural Evidence Matrix",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (16 observable evidence items)",
+      "engine": "search_intent_engine",
+      "source_file": "On-Site Structural Intent Heuristics",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 7 corroborating evidence points.",
+      "engine": "search_intent_engine",
+      "source_file": "Multi-Signal Corroboration Engine",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Cannibalization & Gap Observations: OBSERVED_WEBSITE_EVIDENCE: Multi-page competition cannot be evaluated on an isolated single page.",
+      "engine": "cannibalization_analyzer",
+      "source_file": "On-Site Evidence Triangulation",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "AI Search Retrieval Access: 6 indexers allowed, 1 training scrapers allowed",
+      "engine": "retrieval_readiness_engine",
+      "source_file": "robots.txt & HTTP Directives",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Observable Information Units: 13 unit(s) across 4 structural types",
+      "engine": "answerability_engine",
+      "source_file": "DOM & Schema Structure",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Phase 9 Topic Explanations: 72 topic(s) substantiated by explicit answerable structures",
+      "engine": "answerability_engine",
+      "source_file": "Heading & Body Passages",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Unsupported Topical Headings: 82 heading(s) without supporting body copy",
+      "engine": "answerability_engine",
+      "source_file": "Heading Section AST",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Observable Claims Grounding: 39 claim(s) (31 supported on-site, 1 uncorroborated)",
+      "engine": "claim_grounding_engine",
+      "source_file": "Visible Content & Answerable Units",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Structured vs Visible Alignment: 3 agreement(s), 1 disagreement(s)",
+      "engine": "claim_grounding_engine",
+      "source_file": "JSON-LD & DOM Content",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Entity Surface Consistency: 4 candidate(s) tracked across 6 content surfaces",
+      "engine": "claim_grounding_engine",
+      "source_file": "DOM, Headings, Meta, JSON-LD, Units",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Multimodal Information Representation: 155 visual asset(s) (149 informational, 139 alt-represented)",
+      "engine": "multimodal_agent_engine",
+      "source_file": "HTML DOM & Image Assets",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Agent Interaction Surfaces: 6 form(s) (5 labeled), 31 button(s)",
+      "engine": "multimodal_agent_engine",
+      "source_file": "HTML Forms & Controls",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Information Access Paths: 20 path(s) triangulated across visual and interactive surfaces",
+      "engine": "multimodal_agent_engine",
+      "source_file": "Multi-Engine Triangulation",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    }
+  ],
+  "conflicts_detected": [
+    {
+      "severity": "MEDIUM",
+      "feature": "Structured vs Visible Entity Branding",
+      "description": "Structured Organization 'Standphill India' differs from visible branding 'Standphillindia'.",
+      "engine_a_finding": "Structured Data (JSON-LD): Declares 'Standphill India'",
+      "engine_b_finding": "Visible Signals (DOM): Declares 'Standphillindia'",
+      "interpretation": "The organization declared in structured data and the organization observed in visible page branding share no common brand tokens. This may represent white-labeling, third-party template reuse, or an entity disambiguation discrepancy in search engine knowledge graphs."
+    },
+    {
+      "severity": "MEDIUM",
+      "feature": "Topic Heading without Supporting Content",
+      "description": "Topic 'ACHIEVEMENTS' has dedicated heading 'OUR ACHIEVEMENTS', but supporting body content is genuinely absent.",
+      "engine_a_finding": "Topic Engine: Candidate topic 'ACHIEVEMENTS'",
+      "engine_b_finding": "Answerability Engine: Heading 'OUR ACHIEVEMENTS' has 0 supporting body words",
+      "interpretation": "The page establishes an explicit topical heading promise for search/AI retrieval, but fails to provide observable explanatory or factual body copy under that section."
+    },
+    {
+      "severity": "HIGH",
+      "feature": "JSON-LD vs Visible Organization Name",
+      "description": "JSON-LD declares 'Standphill India' while visible content displays 'India's Trusted BIS Certification Experts' under primary_identity context.",
+      "engine_a_finding": "JSON-LD Schema: 'Standphill India'",
+      "engine_b_finding": "Visible Content: 'India's Trusted BIS Certification Experts'",
+      "interpretation": "Discrepancy detected between structured schema declarations and visible user-facing text. Search engines and AI systems comparing structured data against rendered pages may flag inconsistent identity signals for 'organization_name'."
+    }
+  ],
+  "engines_executed": [
+    "advertools_seo",
+    "browser_engine",
+    "rankintel_geo",
+    "performance_engine",
+    "image_engine",
+    "accessibility_engine",
+    "security_engine",
+    "content_engine",
+    "entity_engine",
+    "internal_link_engine",
+    "search_signal_engine",
+    "topic_intelligence_engine",
+    "query_page_mapping_engine",
+    "search_intent_engine",
+    "cannibalization_analyzer",
+    "retrieval_readiness_engine",
+    "answerability_engine",
+    "claim_grounding_engine",
+    "multimodal_agent_engine"
+  ],
+  "raw_report_paths": {
+    "markdown_audit": "audits\\standphillindia.in-2026-10-04.md",
+    "json_audit": "audits\\standphillindia.in-2026-10-04.json"
+  }
+}
