@@ -780,6 +780,7 @@ class CrawlRecord(BaseModel):
     response_headers: Dict[str, Any] = Field(default_factory=dict)
     redirect_url: Optional[str] = None
     retrieval_readiness: Optional[RetrievalReadinessEvidence] = None
+    answerability: Optional[AnswerabilityEvidence] = None
 
 class PageSummary(BaseModel):
     """Summary of a single crawled page for site-wide analysis."""
@@ -1589,6 +1590,108 @@ class SiteRetrievalReadinessIntelligence(BaseModel):
     facts: List[str] = Field(default_factory=list)
     analyses: List[str] = Field(default_factory=list)
 
+class AnswerableUnitType(str, Enum):
+    DEFINITION = "DEFINITION"
+    DIRECT_ANSWER = "DIRECT_ANSWER"
+    SERVICE_DESCRIPTION = "SERVICE_DESCRIPTION"
+    PROCEDURE_STEPS = "PROCEDURE_STEPS"
+    SPECIFICATION = "SPECIFICATION"
+    REQUIREMENTS_ELIGIBILITY = "REQUIREMENTS_ELIGIBILITY"
+    FAQ = "FAQ"
+    LIST = "LIST"
+    TABLE = "TABLE"
+    COMPARISON = "COMPARISON"
+    LOCATION_CONTACT = "LOCATION_CONTACT"
+    DATE_POLICY = "DATE_POLICY"
+    FACTUAL_STATEMENT = "FACTUAL_STATEMENT"
+    EXAMPLE = "EXAMPLE"
+
+class ClarityStatus(str, Enum):
+    OBSERVED = "OBSERVED"
+    PRESENT = "PRESENT"
+    ABSENT = "ABSENT"
+    PARTIAL = "PARTIAL"
+    UNKNOWN = "UNKNOWN"
+    UNAVAILABLE = "UNAVAILABLE"
+
+class TopicExplanationStatus(str, Enum):
+    EXPLAINED = "EXPLAINED"
+    MENTIONED_ONLY = "MENTIONED_ONLY"
+    UNSUPPORTED_HEADING = "UNSUPPORTED_HEADING"
+    ABSENT = "ABSENT"
+
+class AnswerableInformationUnit(BaseModel):
+    unit_id: str
+    unit_type: AnswerableUnitType
+    secondary_types: List[AnswerableUnitType] = Field(default_factory=list)
+    topic: Optional[str] = None
+    section_heading: Optional[str] = None
+    heading_level: Optional[str] = None
+    snippet: str
+    content_location: str
+    structural_type: str
+    supporting_context: Optional[str] = None
+    is_explicit: bool = True
+    source: str = "raw_html"
+    extraction_method: str = "dom_structure"
+    bounded_evidence: str = ""
+    confidence: str = "high"
+
+class InformationClarityAssessment(BaseModel):
+    heading_content_relationship: ClarityStatus = ClarityStatus.UNAVAILABLE
+    heading_content_notes: List[str] = Field(default_factory=list)
+    question_answer_patterns: ClarityStatus = ClarityStatus.UNAVAILABLE
+    question_answer_notes: List[str] = Field(default_factory=list)
+    definition_patterns: ClarityStatus = ClarityStatus.UNAVAILABLE
+    definition_notes: List[str] = Field(default_factory=list)
+    step_list_structure: ClarityStatus = ClarityStatus.UNAVAILABLE
+    step_list_notes: List[str] = Field(default_factory=list)
+    table_availability: ClarityStatus = ClarityStatus.UNAVAILABLE
+    table_notes: List[str] = Field(default_factory=list)
+    unsupported_concepts: List[str] = Field(default_factory=list)
+    buried_facts: List[str] = Field(default_factory=list)
+    obscured_or_fragmented_items: List[str] = Field(default_factory=list)
+
+class TopicAnswerabilityLink(BaseModel):
+    topic_name: str
+    status: TopicExplanationStatus = TopicExplanationStatus.MENTIONED_ONLY
+    section_heading: Optional[str] = None
+    associated_unit_ids: List[str] = Field(default_factory=list)
+    unit_types: List[AnswerableUnitType] = Field(default_factory=list)
+    explanation_snippet: Optional[str] = None
+    is_explicit: bool = False
+    evidence_notes: List[str] = Field(default_factory=list)
+
+class AnswerabilityEvidence(BaseModel):
+    url: str = ""
+    engine_source: str = "answerability_engine"
+    total_units_detected: int = 0
+    units_by_type: Dict[str, int] = Field(default_factory=dict)
+    units: List[AnswerableInformationUnit] = Field(default_factory=list)
+    clarity_assessment: InformationClarityAssessment = Field(default_factory=InformationClarityAssessment)
+    topic_links: List[TopicAnswerabilityLink] = Field(default_factory=list)
+    explained_topics_count: int = 0
+    mentioned_only_topics_count: int = 0
+    unsupported_heading_topics_count: int = 0
+    facts: List[str] = Field(default_factory=list)
+    analyses: List[str] = Field(default_factory=list)
+
+class SiteAnswerabilityIntelligence(BaseModel):
+    status: str = "success"
+    total_pages_evaluated: int = 0
+    is_partial_crawl: bool = False
+    completeness_disclaimer: str = ""
+    total_site_units_detected: int = 0
+    site_units_by_type: Dict[str, int] = Field(default_factory=dict)
+    pages_with_faq: List[str] = Field(default_factory=list)
+    pages_with_definitions: List[str] = Field(default_factory=list)
+    pages_with_steps: List[str] = Field(default_factory=list)
+    pages_with_tables: List[str] = Field(default_factory=list)
+    pages_with_unsupported_concepts: List[str] = Field(default_factory=list)
+    page_answerability_evidence: Dict[str, AnswerabilityEvidence] = Field(default_factory=dict)
+    facts: List[str] = Field(default_factory=list)
+    analyses: List[str] = Field(default_factory=list)
+
 class SiteCrawlResult(BaseModel):
     """Aggregated multi-page crawl intelligence."""
     completeness_status: str = "CRAWL_COMPLETE"
@@ -1634,6 +1737,7 @@ class SiteCrawlResult(BaseModel):
     topic_coverage_intelligence: Optional[SiteTopicCoverageIntelligence] = None
     cannibalization_intelligence: Optional[SiteCannibalizationIntelligence] = None
     retrieval_readiness_intelligence: Optional[SiteRetrievalReadinessIntelligence] = None
+    answerability_intelligence: Optional[SiteAnswerabilityIntelligence] = None
 
 class EngineResult(BaseModel):
     engine_name: str
@@ -1659,6 +1763,7 @@ class EngineResult(BaseModel):
     cannibalization: Optional[PageCannibalizationEvidence] = None
     cloud_intelligence: Optional[CloudIntelligenceEvidence] = None
     retrieval_readiness: Optional[RetrievalReadinessEvidence] = None
+    answerability: Optional[AnswerabilityEvidence] = None
     raw_html: Optional[str] = None  # Post-JS rendered HTML from crawl4ai; used by TrustEvaluator and GeoEngine
 
 class ConflictFinding(BaseModel):
