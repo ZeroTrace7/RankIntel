@@ -781,6 +781,7 @@ class CrawlRecord(BaseModel):
     redirect_url: Optional[str] = None
     retrieval_readiness: Optional[RetrievalReadinessEvidence] = None
     answerability: Optional[AnswerabilityEvidence] = None
+    claim_grounding: Optional[ClaimGroundingEvidence] = None
 
 class PageSummary(BaseModel):
     """Summary of a single crawled page for site-wide analysis."""
