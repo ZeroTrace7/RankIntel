@@ -19,6 +19,7 @@ from rankintel.engines.query_page_mapping_engine import QueryPageMappingEngine
 from rankintel.engines.search_intent_engine import SearchIntentEngine
 from rankintel.engines.retrieval_readiness_engine import RetrievalReadinessEngine
 from rankintel.engines.answerability_engine import AnswerabilityEngine
+from rankintel.engines.claim_grounding_engine import ClaimGroundingEngine
 
 __all__ = [
     "SeoEngine",
@@ -40,4 +41,5 @@ __all__ = [
     "SearchIntentEngine",
     "RetrievalReadinessEngine",
     "AnswerabilityEngine",
+    "ClaimGroundingEngine",
 ]
