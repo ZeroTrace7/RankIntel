@@ -451,4 +451,32 @@ class ProvenanceTagger:
                     confidence="high",
                 ))
 
+        # 21. Multimodal & Agent Readiness Intelligence findings (Phase 10.4)
+        mma_res = engine_results.get("multimodal_agent_engine")
+        if mma_res and mma_res.multimodal_agent and mma_res.status == "success":
+            mma_ev = mma_res.multimodal_agent
+            tags.append(EvidenceProvenanceTag(
+                finding=f"Multimodal Information Representation: {mma_ev.multimodal.total_visual_assets} visual asset(s) ({mma_ev.multimodal.informational_assets_count} informational, {mma_ev.multimodal.alt_represented_count} alt-represented)",
+                source_file="HTML DOM & Image Assets",
+                engine="multimodal_agent_engine",
+                evidence_snippet=f"Captions: {mma_ev.multimodal.caption_represented_count}, Visual-only gaps: {mma_ev.multimodal.visual_only_observed_count}",
+                confidence="high",
+            ))
+            if mma_ev.agent_readiness.total_forms_detected > 0:
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"Agent Interaction Surfaces: {mma_ev.agent_readiness.total_forms_detected} form(s) ({mma_ev.agent_readiness.labeled_forms_count} labeled), {mma_ev.agent_readiness.action_buttons_detected} button(s)",
+                    source_file="HTML Forms & Controls",
+                    engine="multimodal_agent_engine",
+                    evidence_snippet=f"Search: {mma_ev.agent_readiness.search_forms_count}, Contact/Inquiry: {mma_ev.agent_readiness.contact_inquiry_forms_count}, Schema Actions: {mma_ev.agent_readiness.schema_actions_detected}",
+                    confidence="high",
+                ))
+            if mma_ev.access_paths:
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"Information Access Paths: {len(mma_ev.access_paths)} path(s) triangulated across visual and interactive surfaces",
+                    source_file="Multi-Engine Triangulation",
+                    engine="multimodal_agent_engine",
+                    evidence_snippet=", ".join([f"{p.path_type} ({p.related_concept})" for p in mma_ev.access_paths[:3]]),
+                    confidence="high",
+                ))
+
         return tags

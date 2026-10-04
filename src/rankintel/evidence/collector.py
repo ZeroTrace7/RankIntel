@@ -26,6 +26,7 @@ from rankintel.engines.search_intent_engine import SearchIntentEngine
 from rankintel.engines.retrieval_readiness_engine import RetrievalReadinessEngine
 from rankintel.engines.answerability_engine import AnswerabilityEngine
 from rankintel.engines.claim_grounding_engine import ClaimGroundingEngine
+from rankintel.engines.multimodal_agent_engine import MultimodalAgentEngine
 from rankintel.analyzers.cannibalization_analyzer import CannibalizationAnalyzer
 from rankintel.models.schema import (
     EngineResult,
@@ -45,6 +46,7 @@ from rankintel.models.schema import (
     RetrievalReadinessEvidence,
     AnswerabilityEvidence,
     ClaimGroundingEvidence,
+    MultimodalAgentIntelligence,
 )
 import asyncio
 import concurrent.futures
@@ -73,6 +75,7 @@ class EvidenceCollector:
         self.retrieval_readiness_engine = RetrievalReadinessEngine()
         self.answerability_engine = AnswerabilityEngine()
         self.claim_grounding_engine = ClaimGroundingEngine()
+        self.multimodal_agent_engine = MultimodalAgentEngine()
 
     def _run_async(self, coro):
         """Helper to run async coroutines safely from synchronous context."""
@@ -676,6 +679,41 @@ class EvidenceCollector:
                 claim_grounding=ClaimGroundingEvidence(
                     url=url,
                     engine_source="claim_grounding_engine",
+                    facts=[f"Evaluation failed: {e}"],
+                ),
+            )
+
+        # 20. Multimodal & Agent Readiness Engine (Phase 10.4) — Reuses already-observed evidence (zero extra HTTP requests)
+        try:
+            img_res = results.get("image_engine")
+            img_ev_data = img_res.image_seo if (img_res and img_res.image_seo) else None
+            cg_res = results.get("claim_grounding_engine")
+            cg_data = cg_res.claim_grounding if (cg_res and cg_res.claim_grounding) else None
+
+            multimodal_agent_ev = self.multimodal_agent_engine.evaluate_page(
+                url=url,
+                raw_html=browser_html,
+                rendered_html=rendered_dom if 'rendered_dom' in locals() else None,
+                image_seo_ev=img_ev_data,
+                answerability_ev=answerability_ev if 'answerability_ev' in locals() else None,
+                claim_grounding_ev=cg_data,
+                entity_ev=ent_data if 'ent_data' in locals() else None,
+                schema_ev=schema_data if 'schema_data' in locals() else None,
+                on_page=on_page_data if 'on_page_data' in locals() else None,
+            )
+            results["multimodal_agent_engine"] = EngineResult(
+                engine_name="multimodal_agent_engine",
+                status="success",
+                multimodal_agent=multimodal_agent_ev,
+            )
+        except Exception as e:
+            results["multimodal_agent_engine"] = EngineResult(
+                engine_name="multimodal_agent_engine",
+                status="error",
+                error_message=f"Multimodal agent engine failed: {e}",
+                multimodal_agent=MultimodalAgentIntelligence(
+                    url=url,
+                    engine_source="multimodal_agent_engine",
                     facts=[f"Evaluation failed: {e}"],
                 ),
             )
