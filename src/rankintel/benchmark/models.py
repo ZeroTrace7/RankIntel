@@ -344,3 +344,336 @@ class BenchmarkCollectionDataset(BaseModel):
     sites_list: List[str] = Field(default_factory=list)
     packages: Dict[str, SiteIntelligencePackage] = Field(default_factory=dict)
     summary_matrix: List[Dict[str, Any]] = Field(default_factory=list)
+
+
+# ── Phase 11.2 Website Intelligence Review Models ─────────────────────────────
+
+class ReviewDimensionStatus(str, Enum):
+    AVAILABLE = "AVAILABLE"
+    PARTIAL = "PARTIAL"
+    UNAVAILABLE = "UNAVAILABLE"
+    BLOCKED = "BLOCKED"
+    DISABLED = "DISABLED"
+    INSUFFICIENT_EVIDENCE = "INSUFFICIENT_EVIDENCE"
+
+
+class ObservableBusinessProfile(BaseModel):
+    """Observable company branding, declared name, and business nature."""
+    status: ReviewDimensionStatus = ReviewDimensionStatus.AVAILABLE
+    business_name: str = ""
+    legal_name: Optional[str] = None
+    branding_title: str = ""
+    meta_description_summary: str = ""
+    business_nature_summary: str = ""
+    primary_industry_domain: str = ""
+    evidence_sources: List[str] = Field(default_factory=list)
+    confidence: str = "high"
+
+
+class EntityProfile(BaseModel):
+    """Named entities, organization identifiers, and multi-surface alignment."""
+    status: ReviewDimensionStatus = ReviewDimensionStatus.AVAILABLE
+    total_entities_detected: int = 0
+    entity_types_detected: List[str] = Field(default_factory=list)
+    named_entities: List[str] = Field(default_factory=list)
+    relationships_count: int = 0
+    structured_vs_visible_comparisons: int = 0
+    aligned_comparisons: int = 0
+    divergent_comparisons: int = 0
+    entity_alignment_summary: str = ""
+    samples: List[Dict[str, Any]] = Field(default_factory=list)
+
+
+class ServiceProductProfile(BaseModel):
+    """Observable services, products, and core capabilities evidenced on-site."""
+    status: ReviewDimensionStatus = ReviewDimensionStatus.AVAILABLE
+    services_observed: List[str] = Field(default_factory=list)
+    product_offerings: List[str] = Field(default_factory=list)
+    service_descriptions_count: int = 0
+    structured_units_count: int = 0
+    evidence_sources: List[str] = Field(default_factory=list)
+    summary: str = ""
+
+
+class TopicTaxonomyProfile(BaseModel):
+    """Primary and supporting topics identified deterministically on-site."""
+    status: ReviewDimensionStatus = ReviewDimensionStatus.AVAILABLE
+    total_topics_detected: int = 0
+    primary_topics: List[str] = Field(default_factory=list)
+    supporting_topics: List[str] = Field(default_factory=list)
+    topics_sample: List[str] = Field(default_factory=list)
+    dominant_concepts: List[str] = Field(default_factory=list)
+    summary: str = ""
+
+
+class SearchIntentProfile(BaseModel):
+    """Observable search intent classification supported by structural evidence."""
+    status: ReviewDimensionStatus = ReviewDimensionStatus.AVAILABLE
+    primary_intent: str = "INFORMATIONAL"
+    secondary_intents: List[str] = Field(default_factory=list)
+    intent_evidence_count: int = 0
+    intent_evidence_summary: str = ""
+
+
+class TopicDistributionProfile(BaseModel):
+    """Concept-to-page distribution and structural topical depth."""
+    status: ReviewDimensionStatus = ReviewDimensionStatus.AVAILABLE
+    direct_primary_concepts_count: int = 0
+    secondary_supported_concepts_count: int = 0
+    query_page_concepts_count: int = 0
+    total_words: int = 0
+    paragraphs_count: int = 0
+    explained_topics_count: int = 0
+    mentioned_only_topics_count: int = 0
+    concept_density_per_100_words: float = 0.0
+    summary: str = ""
+
+
+class PageTopicConcentrationProfile(BaseModel):
+    """Topical concentration, cannibalization risk, and heading alignment."""
+    status: ReviewDimensionStatus = ReviewDimensionStatus.AVAILABLE
+    content_to_boilerplate_ratio: float = 0.0
+    title_h1_alignment: str = "UNAVAILABLE"
+    title_h1_token_overlap: float = 0.0
+    heading_hierarchy_valid: bool = True
+    heading_skips: List[str] = Field(default_factory=list)
+    empty_sections_count: int = 0
+    potential_cannibalization_signals_count: int = 0
+    observable_gaps_count: int = 0
+    concentration_summary: str = ""
+    layer_boundary_note: str = ""
+
+
+class TechnicalSeoReviewProfile(BaseModel):
+    """Technical SEO foundation, indexability, metadata, and performance."""
+    status: ReviewDimensionStatus = ReviewDimensionStatus.AVAILABLE
+    title: str = ""
+    title_length: int = 0
+    title_status: str = "NORMAL"
+    meta_description: str = ""
+    meta_description_length: int = 0
+    meta_desc_status: str = "NORMAL"
+    h1_count: int = 0
+    h1_samples: List[str] = Field(default_factory=list)
+    h2_count: int = 0
+    h3_count: int = 0
+    schema_types: List[str] = Field(default_factory=list)
+    schema_blocks_count: int = 0
+    schema_validation_issues: List[str] = Field(default_factory=list)
+    canonical_url: Optional[str] = None
+    canonical_status: str = "MATCHING"
+    robots_txt_found: bool = False
+    sitemaps_declared: List[str] = Field(default_factory=list)
+    ttfb_ms: float = 0.0
+    performance_score: int = 0
+    performance_source: str = "local_probe"
+    summary: str = ""
+
+
+class AccessibilitySecurityProfile(BaseModel):
+    """Automated WCAG 2.1 checks and transport/header security posture."""
+    status: ReviewDimensionStatus = ReviewDimensionStatus.AVAILABLE
+    wcag_status: str = "UNKNOWN"
+    total_accessibility_violations: int = 0
+    critical_violations: int = 0
+    serious_violations: int = 0
+    rules_checked_count: int = 0
+    rules_passed_count: int = 0
+    a11y_disclaimer: str = "Automated checks evaluate observable criteria; non-certification scope."
+    security_status: str = "UNKNOWN"
+    is_https: bool = False
+    tls_valid: Optional[bool] = None
+    tls_protocol: Optional[str] = None
+    tls_days_remaining: Optional[int] = None
+    hsts_present: bool = False
+    csp_present: bool = False
+    x_frame_options: Optional[str] = None
+    x_content_type_options: Optional[str] = None
+    referrer_policy: Optional[str] = None
+    mixed_content_count: int = 0
+    server_leakage: List[str] = Field(default_factory=list)
+    security_findings_count: int = 0
+    summary: str = ""
+
+
+class InternalLinkStructureProfile(BaseModel):
+    """Internal navigation topology and link architecture."""
+    status: ReviewDimensionStatus = ReviewDimensionStatus.AVAILABLE
+    total_internal_links: int = 0
+    unique_internal_targets: int = 0
+    total_external_links: int = 0
+    unique_external_targets: int = 0
+    empty_anchors_count: int = 0
+    sample_internal_targets: List[str] = Field(default_factory=list)
+    link_density_ratio: float = 0.0
+    summary: str = ""
+
+
+class RetrievalReadinessProfile(BaseModel):
+    """Search/AI crawler access matrix, WAF status, and rendering delta."""
+    status: ReviewDimensionStatus = ReviewDimensionStatus.AVAILABLE
+    total_bots_evaluated: int = 12
+    search_index_allowed_count: int = 0
+    ai_training_allowed_count: int = 0
+    user_fetch_allowed_count: int = 0
+    waf_or_challenge_detected: bool = False
+    waf_blocked: bool = False
+    waf_provider: Optional[str] = None
+    has_nosnippet: bool = False
+    has_data_nosnippet: bool = False
+    max_snippet: Optional[int] = None
+    static_words: int = 0
+    rendered_words: int = 0
+    word_count_delta: int = 0
+    rendering_impact_summary: str = ""
+    llms_txt_present: bool = False
+    geo_score: int = 0
+    summary: str = ""
+
+
+class AnswerabilityReviewProfile(BaseModel):
+    """Structured information units and factual explanation coverage."""
+    status: ReviewDimensionStatus = ReviewDimensionStatus.AVAILABLE
+    total_units_detected: int = 0
+    units_by_type: Dict[str, int] = Field(default_factory=dict)
+    heading_content_relationship: str = "UNKNOWN"
+    question_answer_patterns: str = "UNKNOWN"
+    definition_patterns: str = "UNKNOWN"
+    step_list_structure: str = "UNKNOWN"
+    table_availability: str = "UNKNOWN"
+    explained_topics_count: int = 0
+    mentioned_only_topics_count: int = 0
+    unsupported_heading_topics_count: int = 0
+    unsupported_headings_sample: List[str] = Field(default_factory=list)
+    summary: str = ""
+
+
+class ClaimGroundingReviewProfile(BaseModel):
+    """Claim extraction, on-site support verification, and schema consistency."""
+    status: ReviewDimensionStatus = ReviewDimensionStatus.AVAILABLE
+    total_claims_detected: int = 0
+    supported_claims_count: int = 0
+    partially_supported_count: int = 0
+    uncorroborated_count: int = 0
+    contradicted_count: int = 0
+    structured_agreements_count: int = 0
+    structured_disagreements_count: int = 0
+    entity_consistency_breakdown: Dict[str, int] = Field(default_factory=dict)
+    grounding_ratio: float = 0.0
+    summary: str = ""
+
+
+class MultimodalReviewProfile(BaseModel):
+    """Visual asset analysis, text/alt fallbacks, and layout shift risks."""
+    status: ReviewDimensionStatus = ReviewDimensionStatus.AVAILABLE
+    total_visual_assets: int = 0
+    informational_assets_count: int = 0
+    decorative_assets_count: int = 0
+    alt_represented_count: int = 0
+    caption_represented_count: int = 0
+    text_represented_count: int = 0
+    visual_only_observed_gaps: int = 0
+    modern_format_count: int = 0
+    missing_dimensions_count: int = 0
+    alt_coverage_ratio: float = 0.0
+    summary: str = ""
+
+
+class AgentReadinessReviewProfile(BaseModel):
+    """Autonomous agent action surfaces, form labels, and access paths."""
+    status: ReviewDimensionStatus = ReviewDimensionStatus.AVAILABLE
+    total_forms_detected: int = 0
+    labeled_forms_count: int = 0
+    action_buttons_detected: int = 0
+    meaningful_accessible_buttons_count: int = 0
+    descriptive_navigation_links_count: int = 0
+    schema_actions_detected: int = 0
+    webmcp_declarations_detected: int = 0
+    total_access_paths: int = 0
+    action_surface_gaps: int = 0
+    summary: str = ""
+
+
+class ExternalAiReviewProfile(BaseModel):
+    """Controlled external AI visibility observations."""
+    status: ReviewDimensionStatus = ReviewDimensionStatus.DISABLED
+    providers_evaluated: List[str] = Field(default_factory=list)
+    queries_executed_count: int = 0
+    successful_observations_count: int = 0
+    failed_observations_count: int = 0
+    target_domain_cited_count: int = 0
+    target_domain_mentioned_count: int = 0
+    total_external_citations: int = 0
+    failure_reason: Optional[str] = None
+    limitation_disclaimer: str = (
+        "Controlled empirical observations under explicit API configurations. "
+        "Strictly opt-in; does not imply universal AI rankings or traffic."
+    )
+    summary: str = ""
+
+
+class EvidenceLimitationsProfile(BaseModel):
+    """Explicit evidence boundaries, crawl limits, uncertainty, and conflicts."""
+    status: ReviewDimensionStatus = ReviewDimensionStatus.AVAILABLE
+    crawl_limitations: List[str] = Field(default_factory=list)
+    dimension_statuses: Dict[str, str] = Field(default_factory=dict)
+    cross_engine_conflicts: List[Dict[str, Any]] = Field(default_factory=list)
+    uncertainty_notes: List[str] = Field(default_factory=list)
+    summary: str = ""
+
+
+class WebsiteIntelligenceReview(BaseModel):
+    """Structured, reusable Website Intelligence Review representing synthesized website understanding."""
+    domain: str
+    site_url: str
+    name: str = ""
+    role: str = "competitor"
+    collection_timestamp: str
+    review_timestamp: str
+    
+    # Invariant health scores (strictly delta = 0)
+    overall_health_score: int = 0
+    technical_health_score: int = 0
+    geo_readiness_score: int = 0
+    trust_score: int = 0
+    performance_score: int = 0
+    score_formula_mode: str = "4_engine"
+    formula_invariance_verified: bool = True
+    
+    # 18 Synthesized Review Profiles
+    business_profile: ObservableBusinessProfile = Field(default_factory=ObservableBusinessProfile)
+    entity_profile: EntityProfile = Field(default_factory=EntityProfile)
+    service_profile: ServiceProductProfile = Field(default_factory=ServiceProductProfile)
+    topic_taxonomy: TopicTaxonomyProfile = Field(default_factory=TopicTaxonomyProfile)
+    dominant_concepts: List[str] = Field(default_factory=list)
+    search_intent: SearchIntentProfile = Field(default_factory=SearchIntentProfile)
+    topic_distribution: TopicDistributionProfile = Field(default_factory=TopicDistributionProfile)
+    concentration_and_overlap: PageTopicConcentrationProfile = Field(default_factory=PageTopicConcentrationProfile)
+    technical_seo: TechnicalSeoReviewProfile = Field(default_factory=TechnicalSeoReviewProfile)
+    accessibility_security: AccessibilitySecurityProfile = Field(default_factory=AccessibilitySecurityProfile)
+    internal_links: InternalLinkStructureProfile = Field(default_factory=InternalLinkStructureProfile)
+    retrieval_readiness: RetrievalReadinessProfile = Field(default_factory=RetrievalReadinessProfile)
+    answerability: AnswerabilityReviewProfile = Field(default_factory=AnswerabilityReviewProfile)
+    claim_grounding: ClaimGroundingReviewProfile = Field(default_factory=ClaimGroundingReviewProfile)
+    multimodal: MultimodalReviewProfile = Field(default_factory=MultimodalReviewProfile)
+    agent_readiness: AgentReadinessReviewProfile = Field(default_factory=AgentReadinessReviewProfile)
+    external_ai: ExternalAiReviewProfile = Field(default_factory=ExternalAiReviewProfile)
+    limitations_and_uncertainty: EvidenceLimitationsProfile = Field(default_factory=EvidenceLimitationsProfile)
+    
+    # Epistemic separation container
+    epistemic_separation: EpistemicSeparation = Field(default_factory=EpistemicSeparation)
+    
+    # Provenance tags & engine telemetry
+    provenance_tags: List[Dict[str, Any]] = Field(default_factory=list)
+    engines_executed: List[str] = Field(default_factory=list)
+    raw_evidence_summary: Dict[str, Any] = Field(default_factory=dict)
+
+
+class BenchmarkReviewDataset(BaseModel):
+    """Aggregate dataset collecting all 11 website intelligence reviews."""
+    review_version: str = "11.2"
+    created_at: str
+    total_sites: int = 11
+    sites_reviewed: int = 0
+    reviews: Dict[str, WebsiteIntelligenceReview] = Field(default_factory=dict)
+    summary_index: List[Dict[str, Any]] = Field(default_factory=list)

@@ -271,9 +271,97 @@ def run_compare(url_a: str, url_b: str, output_dir: str = "reports", output_form
     console.print(f"[bold green]Detailed gap report saved to:[/bold green] [underline cyan]{report_file}[/underline cyan]")
     return report_file
 
+
+def run_review(
+    target: Optional[str] = None,
+    output_dir: str = "benchmarks/reviews",
+    output_format: str = "markdown",
+):
+    import json
+    from pathlib import Path
+    from rankintel.benchmark.reviewer import WebsiteIntelligenceReviewer, _clean_domain
+    from rankintel.reporters.review_reporter import ReviewReporter
+
+    if target in (None, "", "all", "--all"):
+        console.print(Panel.fit(
+            f"[bold cyan]RankIntel Phase 11.2 — Website Intelligence Reviewer[/bold cyan]\n"
+            f"[dim]Synthesizing 18 Intelligence Dimensions across Permanent 11-Site Benchmark[/dim]",
+            border_style="cyan"
+        ))
+        with console.status("[bold green]Synthesizing website intelligence reviews from benchmark packages...[/bold green]", spinner="dots"):
+            dataset = WebsiteIntelligenceReviewer.review_all(packages_dir="benchmarks/packages", output_dir=output_dir)
+
+        if output_format == "json":
+            console.print_json(dataset.model_dump_json(indent=2))
+            return output_dir
+
+        table = Table(title="11-Site Website Intelligence Review Matrix", show_header=True, header_style="bold magenta")
+        table.add_column("Domain", style="cyan")
+        table.add_column("Role", justify="center")
+        table.add_column("Health", justify="center")
+        table.add_column("Entities", justify="center")
+        table.add_column("Topics", justify="center")
+        table.add_column("Answer Units", justify="center")
+        table.add_column("Claims Grounded", justify="center")
+        table.add_column("Visual Assets", justify="center")
+        table.add_column("WAF Barrier", justify="center")
+
+        for item in dataset.summary_index:
+            table.add_row(
+                item["domain"],
+                item["role"],
+                str(item["health_score"]),
+                str(item["entities_detected"]),
+                str(item["topics_detected"]),
+                str(item["answer_units"]),
+                item["claims_grounded"],
+                str(item["visual_assets"]),
+                "Cloudflare" if item["waf_detected"] else "None",
+            )
+        console.print(table)
+        console.print(f"\n[bold green][SUCCESS] Successfully reviewed {dataset.sites_reviewed} benchmark sites![/bold green]")
+        console.print(f"Reports saved to: [underline cyan]{output_dir}/[/underline cyan] (.json & .md)")
+        return output_dir
+    else:
+        clean_target = _clean_domain(target)
+        pkg_file = os.path.join("benchmarks", "packages", f"{clean_target}.json")
+        if not os.path.exists(pkg_file):
+            matched = False
+            for p in Path("benchmarks/packages").glob("*.json"):
+                with open(p, "r", encoding="utf-8") as f:
+                    pdata = json.load(f)
+                if _clean_domain(pdata.get("domain", "")) == clean_target:
+                    pkg_file = str(p)
+                    matched = True
+                    break
+            if not matched:
+                console.print(f"[bold red]Error:[/bold red] Benchmark package for '{target}' not found in benchmarks/packages/.")
+                return None
+
+        pkg = WebsiteIntelligenceReviewer.load_package(pkg_file)
+        review = WebsiteIntelligenceReviewer.synthesize_review(pkg)
+        json_path, md_path = ReviewReporter.save_review_pair(review, output_dir=output_dir)
+
+        if output_format == "json":
+            console.print_json(ReviewReporter.render_json(review))
+            return json_path
+
+        console.print(Panel.fit(
+            f"[bold cyan]Website Intelligence Review: {review.name or review.domain}[/bold cyan]\n"
+            f"[dim]URL:[/dim] {review.site_url} | [dim]Health Score:[/dim] {review.overall_health_score}/100 | [dim]Invariance:[/dim] Δ=0\n"
+            f"[dim]Industry:[/dim] {review.business_profile.primary_industry_domain}\n"
+            f"[dim]Intent:[/dim] {review.search_intent.primary_intent} | [dim]Entities:[/dim] {review.entity_profile.total_entities_detected} | [dim]Topics:[/dim] {review.topic_taxonomy.total_topics_detected}\n"
+            f"[dim]Answer Units:[/dim] {review.answerability.total_units_detected} | [dim]Claims Grounded:[/dim] {review.claim_grounding.supported_claims_count}/{review.claim_grounding.total_claims_detected}",
+            border_style="cyan"
+        ))
+        console.print(f"[bold green]Markdown Review:[/bold green] [underline cyan]{md_path}[/underline cyan]")
+        console.print(f"[bold green]JSON Profile:[/bold green] [underline cyan]{json_path}[/underline cyan]")
+        return md_path
+
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        console.print("[bold red]Usage:[/bold red] python audit_engine.py <url> [--format json] [--deep-crawl] [--external-ai] [--external-providers gemini,mock] OR python audit_engine.py compare <url1> vs <url2> [--format json] OR python audit_engine.py benchmark [--external-ai]")
+        console.print("[bold red]Usage:[/bold red] python audit_engine.py <url> [--format json] [--deep-crawl] [--external-ai] [--external-providers gemini,mock] OR python audit_engine.py compare <url1> vs <url2> [--format json] OR python audit_engine.py benchmark [--external-ai] OR python audit_engine.py review [<domain>|all] [--format json]")
         sys.exit(1)
 
     fmt = "json" if "--format" in sys.argv and "json" in sys.argv else ("json" if "--json" in sys.argv else "markdown")
@@ -305,6 +393,9 @@ if __name__ == "__main__":
             external_providers=[p.strip() for p in ext_prov.split(",")] if ext_prov else None,
         )
         collector.collect_all(workers=3)
+    elif cleaned_args and cleaned_args[0].lower() in ("review", "reviews"):
+        target_site = cleaned_args[1] if len(cleaned_args) > 1 else None
+        run_review(target=target_site, output_format=fmt)
     elif cleaned_args:
         target_url = cleaned_args[0]
         run_audit(

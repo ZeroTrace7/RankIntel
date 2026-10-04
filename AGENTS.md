@@ -132,7 +132,28 @@ Whenever the user asks RankIntel to perform an "analysis", "audit", "validation"
 - **Normalized Data Architecture**: Each audited site yields a structured, provenance-preserving `SiteIntelligencePackage` in `benchmarks/packages/{domain}.json` and is assembled into `benchmarks/benchmark_dataset_phase11.json`.
 - **Zero Redundant HTTP**: Benchmark collection reuses the unified multi-engine evidence pipeline. No duplicate page fetches.
 - **Strict Epistemic Partitioning**: All benchmark findings preserve strict segregation into `FACT`, `EXTERNAL OBSERVATION`, `ANALYSIS`, and `RECOMMENDATION`.
-- **Formula Invariance**: Health-score formulas remain strictly invariant ($\Delta = 0$). No arbitrary competitive superiority or leadership scoring formulas.
-- **Competitive Grounding Discipline**: Website evidence alone must not be used to claim market leadership, rankings, traffic, or search volume without verified external measurement.
+- **Phase 11.2 Complete**: Website-level intelligence review layer implemented (`WebsiteIntelligenceReviewer`).
+- **18-Dimension Synthesized Intelligence Profile**: Transforms normalized packages into coherent, human-readable website reviews spanning:
+  1. Observable business/company understanding
+  2. Entities and entity types
+  3. Observable services/products
+  4. Primary and supporting topics
+  5. Dominant concepts
+  6. Observable search intents
+  7. Topic-to-page distribution
+  8. Page/topic concentration and overlap
+  9. Technical SEO condition
+  10. Accessibility and security signals
+  11. Internal-link structure
+  12. GEO/AI retrieval readiness
+  13. Answerability structures
+  14. Claim/entity grounding
+  15. Multimodal readiness
+  16. Agent/action-surface readiness
+  17. External AI observations (strictly opt-in, otherwise `DISABLED`)
+  18. Evidence limitations and uncertainty
+- **Strict Offline Execution**: M11.2 operates purely in-memory on normalized benchmark packages with zero network socket requests.
+- **Formula Invariance & Epistemic Boundaries**: Health scores remain strictly invariant ($\Delta = 0$). Epistemic separation (`FACT`, `EXTERNAL OBSERVATION`, `ANALYSIS`, `RECOMMENDATION`) and engine provenance are fully preserved.
+
 
 

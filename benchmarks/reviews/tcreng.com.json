@@ -1,0 +1,1081 @@
+{
+  "domain": "www.tcreng.com",
+  "site_url": "https://www.tcreng.com/",
+  "name": "TCR Engineering",
+  "role": "competitor",
+  "collection_timestamp": "2026-10-04",
+  "review_timestamp": "2026-10-04",
+  "overall_health_score": 79,
+  "technical_health_score": 100,
+  "geo_readiness_score": 63,
+  "trust_score": 60,
+  "performance_score": 85,
+  "score_formula_mode": "4_engine",
+  "formula_invariance_verified": true,
+  "business_profile": {
+    "status": "AVAILABLE",
+    "business_name": "TCR Engineering",
+    "legal_name": "TCR Engineering Services Pvt. Ltd.",
+    "branding_title": "Materials Testing, NDT & Asset Integrity | TCR Engineering",
+    "meta_description_summary": "India's oldest third-party materials testing, NDT and asset integrity company. NABL ISO/IEC 17025, NADCAP AC7101, BIS, IBR, BMC and CIDCO approved.",
+    "business_nature_summary": "Observable enterprise entity 'TCR Engineering' operating within Materials Testing, NDT & Engineering Inspection. Branded as 'Materials Testing, NDT & Asset Integrity | TCR Engineering' with primary purpose evidenced via 4 structural on-page sources.",
+    "primary_industry_domain": "Materials Testing, NDT & Engineering Inspection",
+    "evidence_sources": [
+      "<title> element",
+      "<meta name='description'>",
+      "Entity declarations",
+      "H1 headings"
+    ],
+    "confidence": "high"
+  },
+  "entity_profile": {
+    "status": "AVAILABLE",
+    "total_entities_detected": 12,
+    "entity_types_detected": [
+      "LOCAL_BUSINESS",
+      "ORGANIZATION",
+      "OTHER"
+    ],
+    "named_entities": [
+      "TCR Engineering Services Pvt. Ltd.",
+      "TCR Engineering",
+      "TCR Engineering service pillars",
+      "TCR Engineering corporate video",
+      "Documents: Materials fail. Evidence doesn't.",
+      "TCR Engineering",
+      "1973–2026 TCR Engineering Services Pvt",
+      "Contact Phone (+919833530200)",
+      "Contact Phone (+919833530200)",
+      "Contact Phone (+919833530200)"
+    ],
+    "relationships_count": 10,
+    "structured_vs_visible_comparisons": 3,
+    "aligned_comparisons": 3,
+    "divergent_comparisons": 0,
+    "entity_alignment_summary": "Detected 12 entity signals across 3 types (LOCAL_BUSINESS, ORGANIZATION, OTHER). Structured vs visible comparisons: 3 aligned, 0 divergent.",
+    "samples": [
+      {
+        "name": "TCR Engineering Services Pvt. Ltd.",
+        "type": "ORGANIZATION",
+        "source": "JSON_LD",
+        "telephone": "+91-9833530200",
+        "email": "sales@tcreng.com"
+      },
+      {
+        "name": "TCR Engineering",
+        "type": "OTHER",
+        "source": "JSON_LD",
+        "telephone": null,
+        "email": null
+      },
+      {
+        "name": "TCR Engineering service pillars",
+        "type": "OTHER",
+        "source": "JSON_LD",
+        "telephone": null,
+        "email": null
+      },
+      {
+        "name": "TCR Engineering corporate video",
+        "type": "OTHER",
+        "source": "JSON_LD",
+        "telephone": null,
+        "email": null
+      },
+      {
+        "name": "Documents: Materials fail. Evidence doesn't.",
+        "type": "OTHER",
+        "source": "JSON_LD",
+        "telephone": null,
+        "email": null
+      }
+    ]
+  },
+  "service_profile": {
+    "status": "AVAILABLE",
+    "services_observed": [
+      "Testing",
+      "Materials",
+      "NDT"
+    ],
+    "product_offerings": [],
+    "service_descriptions_count": 4,
+    "structured_units_count": 4,
+    "evidence_sources": [
+      "AnswerabilityEngine",
+      "SearchSignalEngine",
+      "TopicIntelligenceEngine"
+    ],
+    "summary": "Evidenced 3 distinct core service/capability domains and 4 explicit on-page service description units."
+  },
+  "topic_taxonomy": {
+    "status": "AVAILABLE",
+    "total_topics_detected": 227,
+    "primary_topics": [
+      "TCR",
+      "Testing",
+      "Engineering",
+      "Materials",
+      "TCR Engineering"
+    ],
+    "supporting_topics": [
+      "Integrity",
+      "Asset",
+      "NDT",
+      "doesn't.",
+      "Evidence"
+    ],
+    "topics_sample": [
+      "TCR",
+      "Testing",
+      "Engineering",
+      "Materials",
+      "TCR Engineering",
+      "Integrity",
+      "Asset",
+      "NDT",
+      "doesn't.",
+      "Evidence"
+    ],
+    "dominant_concepts": [
+      "TCR",
+      "Testing",
+      "Engineering",
+      "Materials",
+      "TCR Engineering",
+      "Integrity",
+      "Asset",
+      "NDT"
+    ],
+    "summary": "Identified 227 deterministic concept clusters. Primary topical anchors: TCR, Testing, Engineering, Materials, TCR Engineering."
+  },
+  "dominant_concepts": [
+    "TCR",
+    "Testing",
+    "Engineering",
+    "Materials",
+    "TCR Engineering",
+    "Integrity",
+    "Asset",
+    "NDT"
+  ],
+  "search_intent": {
+    "status": "AVAILABLE",
+    "primary_intent": "navigational",
+    "secondary_intents": [
+      "informational",
+      "transactional",
+      "local"
+    ],
+    "intent_evidence_count": 21,
+    "intent_evidence_summary": "Primary search intent classified as 'navigational' supported by 21 observable structural signals. Secondary intent spectrum: informational, transactional, local."
+  },
+  "topic_distribution": {
+    "status": "AVAILABLE",
+    "direct_primary_concepts_count": 5,
+    "secondary_supported_concepts_count": 5,
+    "query_page_concepts_count": 242,
+    "total_words": 1545,
+    "paragraphs_count": 133,
+    "explained_topics_count": 161,
+    "mentioned_only_topics_count": 35,
+    "concept_density_per_100_words": 14.69,
+    "summary": "Content corpus comprises 1545 words across 133 paragraphs. Topical distribution: 161 explained topics with structured units vs 35 mentioned-only topics (topic density: 14.69 per 100 words)."
+  },
+  "concentration_and_overlap": {
+    "status": "AVAILABLE",
+    "content_to_boilerplate_ratio": 0.63,
+    "title_h1_alignment": "MODERATE_ALIGNMENT",
+    "title_h1_token_overlap": 0.1,
+    "heading_hierarchy_valid": true,
+    "heading_skips": [],
+    "empty_sections_count": 15,
+    "potential_cannibalization_signals_count": 0,
+    "observable_gaps_count": 0,
+    "concentration_summary": "Boilerplate ratio: 0.63. Title-H1 lexical alignment is 'MODERATE_ALIGNMENT' with 10.0% token overlap. Heading hierarchy: valid. Observable topic overlap signals: 0.",
+    "layer_boundary_note": "Strictly deterministic identification of observable on-site topic overlaps and gaps. No external ranking, GSC, or competitor superiority claims."
+  },
+  "technical_seo": {
+    "status": "AVAILABLE",
+    "title": "Materials Testing, NDT & Asset Integrity | TCR Engineering",
+    "title_length": 58,
+    "title_status": "OPTIMAL",
+    "meta_description": "India's oldest third-party materials testing, NDT and asset integrity company. NABL ISO/IEC 17025, NADCAP AC7101, BIS, IBR, BMC and CIDCO approved.",
+    "meta_description_length": 147,
+    "meta_desc_status": "OPTIMAL",
+    "h1_count": 1,
+    "h1_samples": [
+      "Materials fail. Evidence doesn't."
+    ],
+    "h2_count": 17,
+    "h3_count": 26,
+    "schema_types": [
+      "BreadcrumbList",
+      "ItemList",
+      "VideoObject",
+      "WebSite",
+      "FAQPage",
+      "NewsArticle",
+      "WebPage",
+      "Organization"
+    ],
+    "schema_blocks_count": 8,
+    "schema_validation_issues": [],
+    "canonical_url": "https://www.tcreng.com/",
+    "canonical_status": "MATCHING",
+    "robots_txt_found": true,
+    "sitemaps_declared": [
+      "https://www.tcreng.com/sitemap.xml",
+      "https://www.tcreng.com/news-sitemap.xml"
+    ],
+    "ttfb_ms": 82.5,
+    "performance_score": 85,
+    "performance_source": "local_probe",
+    "summary": "Title length (58 chars: OPTIMAL), Meta description (147 chars: OPTIMAL). Headings: 1 H1, 17 H2, 26 H3. Structured data: 8 schema types declared across 8 blocks. TTFB latency: 82.5ms (local_probe)."
+  },
+  "accessibility_security": {
+    "status": "AVAILABLE",
+    "wcag_status": "UNAVAILABLE",
+    "total_accessibility_violations": 0,
+    "critical_violations": 0,
+    "serious_violations": 0,
+    "rules_checked_count": 0,
+    "rules_passed_count": 0,
+    "a11y_disclaimer": "Automated checks evaluate observable criteria; non-certification scope.",
+    "security_status": "FAIL",
+    "is_https": true,
+    "tls_valid": true,
+    "tls_protocol": "TLSv1.3",
+    "tls_days_remaining": 83,
+    "hsts_present": true,
+    "csp_present": false,
+    "x_frame_options": "SAMEORIGIN",
+    "x_content_type_options": "nosniff",
+    "referrer_policy": "strict-origin-when-cross-origin",
+    "mixed_content_count": 0,
+    "server_leakage": [],
+    "security_findings_count": 1,
+    "summary": "Accessibility WCAG automated status: UNAVAILABLE (0 violations: 0 serious, 0 critical). Security transport posture: FAIL (HTTPS: True, TLS days remaining: 83, HSTS: True, CSP: False, X-Frame-Options: SAMEORIGIN)."
+  },
+  "internal_links": {
+    "status": "AVAILABLE",
+    "total_internal_links": 148,
+    "unique_internal_targets": 148,
+    "total_external_links": 395,
+    "unique_external_targets": 169,
+    "empty_anchors_count": 0,
+    "sample_internal_targets": [
+      "https://www.tcreng.com/",
+      "https://www.tcreng.com/global/tcr-arabia/",
+      "https://www.tcreng.com/global/tcr-advanced/",
+      "https://www.tcreng.com/global/tcr-kuwait/",
+      "https://www.tcreng.com/global/tcr-qatar/"
+    ],
+    "link_density_ratio": 0.0958,
+    "summary": "Topology reveals 148 total internal link instances targeting 148 unique internal destination URLs. External references: 395 instances targeting 169 unique domains. Empty anchor text occurrences: 0."
+  },
+  "retrieval_readiness": {
+    "status": "AVAILABLE",
+    "total_bots_evaluated": 12,
+    "search_index_allowed_count": 6,
+    "ai_training_allowed_count": 3,
+    "user_fetch_allowed_count": 3,
+    "waf_or_challenge_detected": true,
+    "waf_blocked": false,
+    "waf_provider": "Cloudflare",
+    "has_nosnippet": false,
+    "has_data_nosnippet": false,
+    "max_snippet": null,
+    "static_words": 2309,
+    "rendered_words": 0,
+    "word_count_delta": 0,
+    "rendering_impact_summary": "Static HTML observed (2309 words); browser DOM was not rendered in this pass.",
+    "llms_txt_present": false,
+    "geo_score": 63,
+    "summary": "Bot access: 6/6 search indexers, 3/3 training scrapers permitted. WAF status: CHALLENGE/BLOCK DETECTED (Cloudflare). Snippet directives: snippets allowed. Word count rendering delta: 0 words (2309 static vs 0 rendered). /llms.txt manifest: Missing. GEO Score: 63/100."
+  },
+  "answerability": {
+    "status": "AVAILABLE",
+    "total_units_detected": 36,
+    "units_by_type": {
+      "LOCATION_CONTACT": 1,
+      "FAQ": 19,
+      "LIST": 7,
+      "EXAMPLE": 1,
+      "FACTUAL_STATEMENT": 3,
+      "DIRECT_ANSWER": 1,
+      "SERVICE_DESCRIPTION": 4
+    },
+    "heading_content_relationship": "PARTIAL",
+    "question_answer_patterns": "PRESENT",
+    "definition_patterns": "ABSENT",
+    "step_list_structure": "ABSENT",
+    "table_availability": "ABSENT",
+    "explained_topics_count": 161,
+    "mentioned_only_topics_count": 35,
+    "unsupported_heading_topics_count": 40,
+    "unsupported_headings_sample": [
+      "Latest Insights",
+      "Rebuilding a 13Cr valve seat on a WCB bo",
+      "Hydrogen induced disbonding testing to A",
+      "TCR commissions a WDXRF spectrometer for",
+      "What an Accredited Materials Test Report"
+    ],
+    "summary": "Discovered 36 observable information units across 7 structural types (LOCATION_CONTACT:1, FAQ:19, LIST:7, EXAMPLE:1, FACTUAL_STATEMENT:3, DIRECT_ANSWER:1, SERVICE_DESCRIPTION:4). Topical support: 161 explained topics with explicit answerable structures, 35 mentioned-only topics, 40 unsupported headings."
+  },
+  "claim_grounding": {
+    "status": "AVAILABLE",
+    "total_claims_detected": 57,
+    "supported_claims_count": 34,
+    "partially_supported_count": 18,
+    "uncorroborated_count": 0,
+    "contradicted_count": 5,
+    "structured_agreements_count": 3,
+    "structured_disagreements_count": 1,
+    "entity_consistency_breakdown": {
+      "CONSISTENT": 2,
+      "PARTIALLY_CONSISTENT": 6
+    },
+    "grounding_ratio": 0.6,
+    "summary": "Evaluated 57 visible factual assertions: 34 fully supported on-site, 18 partially supported, 0 uncorroborated, 5 contradicted (60% grounding ratio). Schema-DOM alignment: 3 agreements, 1 disagreements."
+  },
+  "multimodal": {
+    "status": "AVAILABLE",
+    "total_visual_assets": 49,
+    "informational_assets_count": 40,
+    "decorative_assets_count": 9,
+    "alt_represented_count": 39,
+    "caption_represented_count": 0,
+    "text_represented_count": 10,
+    "visual_only_observed_gaps": 0,
+    "modern_format_count": 41,
+    "missing_dimensions_count": 0,
+    "alt_coverage_ratio": 0.97,
+    "summary": "Identified 49 visual assets (40 informational, 9 decorative). Alt-text coverage: 39/40 informational assets (97%). Visual-only observed information gaps: 0. Modern formats (WebP/AVIF): 41. Layout shift risks (missing dimensions): 0."
+  },
+  "agent_readiness": {
+    "status": "AVAILABLE",
+    "total_forms_detected": 1,
+    "labeled_forms_count": 1,
+    "action_buttons_detected": 4,
+    "meaningful_accessible_buttons_count": 4,
+    "descriptive_navigation_links_count": 126,
+    "schema_actions_detected": 1,
+    "webmcp_declarations_detected": 0,
+    "total_access_paths": 24,
+    "action_surface_gaps": 0,
+    "summary": "Detected 1 interactive forms (1 labeled), 4 action buttons (4 accessible), 126 descriptive navigation links. Structured schema actions: 1, WebMCP declarations: 0. Triangulated information access paths: 24 (Action surface gaps: 0)."
+  },
+  "external_ai": {
+    "status": "DISABLED",
+    "providers_evaluated": [],
+    "queries_executed_count": 0,
+    "successful_observations_count": 0,
+    "failed_observations_count": 0,
+    "target_domain_cited_count": 0,
+    "target_domain_mentioned_count": 0,
+    "total_external_citations": 0,
+    "failure_reason": null,
+    "limitation_disclaimer": "Controlled empirical observations under explicit API configurations. Strictly opt-in; does not imply universal AI rankings or traffic.",
+    "summary": "External AI visibility evaluation was not requested (strictly opt-in via --external-ai). Offline boundary preserved."
+  },
+  "limitations_and_uncertainty": {
+    "status": "AVAILABLE",
+    "crawl_limitations": [
+      "Single-page multi-engine collection pass",
+      "Process-isolated worker execution",
+      "Socket timeout: 15.0s",
+      "Respects robots.txt directives"
+    ],
+    "dimension_statuses": {
+      "crawl_discovery": "AVAILABLE",
+      "technical_seo": "AVAILABLE",
+      "accessibility": "UNAVAILABLE",
+      "security": "AVAILABLE",
+      "content": "AVAILABLE",
+      "entity": "AVAILABLE",
+      "internal_links": "AVAILABLE",
+      "search_topic_query_intent": "AVAILABLE",
+      "cannibalization_search_gaps": "AVAILABLE",
+      "retrieval_readiness": "AVAILABLE",
+      "answerability": "AVAILABLE",
+      "claim_grounding": "AVAILABLE",
+      "multimodal": "AVAILABLE",
+      "agent_readiness": "AVAILABLE",
+      "external_ai": "DISABLED"
+    },
+    "cross_engine_conflicts": [
+      {
+        "severity": "MEDIUM",
+        "feature": "Topic Heading without Supporting Content",
+        "description": "Topic 'Answers' has dedicated heading 'Concrete NDT: Which Test Answers Which Question, and What Each One Cannot Tell You', but supporting body content is genuinely absent.",
+        "engine_a_finding": "Topic Engine: Candidate topic 'Answers'",
+        "engine_b_finding": "Answerability Engine: Heading 'Concrete NDT: Which Test Answers Which Question, and What Each One Cannot Tell You' has 0 supporting body words",
+        "interpretation": "The page establishes an explicit topical heading promise for search/AI retrieval, but fails to provide observable explanatory or factual body copy under that section."
+      },
+      {
+        "severity": "HIGH",
+        "feature": "JSON-LD vs Visible Organization Name",
+        "description": "JSON-LD declares 'TCR Engineering Services Pvt. Ltd.' while visible content displays 'Materials fail. Evidence doesn't.' under primary_identity context.",
+        "engine_a_finding": "JSON-LD Schema: 'TCR Engineering Services Pvt. Ltd.'",
+        "engine_b_finding": "Visible Content: 'Materials fail. Evidence doesn't.'",
+        "interpretation": "Discrepancy detected between structured schema declarations and visible user-facing text. Search engines and AI systems comparing structured data against rendered pages may flag inconsistent identity signals for 'organization_name'."
+      },
+      {
+        "severity": "HIGH",
+        "feature": "Contradicting Claims: Founding Claim",
+        "description": "Observable statement '06 Inspection Manpower & Third-Party Services 700+ PMI proje...' is explicitly contradicted by 'India's oldest third-party inspection company Materials fail...' on the site.",
+        "engine_a_finding": "Statement: '06 Inspection Manpower & Third-Party Services 700+ PMI projects across the GCC a'",
+        "engine_b_finding": "Contradicting Evidence: 'India's oldest third-party inspection company Materials fail. Evidence doesn't. '",
+        "interpretation": "The site presents mutually incompatible factual values for the same subject and context, creating ambiguous signals for both human readers and AI retrieval systems."
+      },
+      {
+        "severity": "MEDIUM",
+        "feature": "JSON-LD Action Target vs DOM Form Action Discrepancy",
+        "description": "Schema declares action target '{'@type': 'entrypoint', 'urltemplate': 'https://www.tcreng.com/search' while DOM form targets '/services'.",
+        "engine_a_finding": "JSON-LD Schema Action Target: '{'@type': 'entrypoint', 'urltemplate': 'https://www.tcreng.com/search'",
+        "engine_b_finding": "DOM Form Action: '/services'",
+        "interpretation": "Structured data declares an automated interaction target endpoint that diverges from the actual interactive form action attribute rendered in the DOM."
+      }
+    ],
+    "uncertainty_notes": [
+      "Evaluated from single-page multi-engine collection pass; multi-page cannibalization and site-wide architecture are bounded.",
+      "Automated WCAG 2.1 checks evaluate observable criteria; non-certification scope.",
+      "Third-party search volume, market share, Google rankings, and traffic are NOT inferred from website evidence.",
+      "Zero redundant network calls dispatched during review synthesis."
+    ],
+    "summary": "Review bound by 4 explicit crawl limitations and 4 cross-engine conflicts. All 15 collection dimensions maintain explicit epistemic statuses."
+  },
+  "epistemic_separation": {
+    "facts": [
+      "HTTP response code: 200",
+      "Static HTML word count: 2016",
+      "Title: 'Materials Testing, NDT & Asset Integrity | TCR Engineering' (58 characters)",
+      "Meta description: 'India's oldest third-party materials testing, NDT and asset integrity company. NABL ISO/IEC 17025, NADCAP AC7101, BIS, IBR, BMC and CIDCO approved.' (147 characters)",
+      "H1 tags observed: 1",
+      "Internal links observed: 148",
+      "External links observed: 395",
+      "Robots.txt found: True",
+      "Schema types declared: BreadcrumbList, ItemList, VideoObject, WebSite, FAQPage, NewsArticle, WebPage, Organization",
+      "HTTPS enforced: True",
+      "Server latency probe: 82.5ms (local_probe)",
+      "HTTP Status: 200",
+      "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
+      "Static HTML contains 2309 words.",
+      "Detected 36 distinct observable information unit(s) across 7 structural types.",
+      "Evaluated 242 topic(s): 161 explained with explicit units, 35 mentioned only, 40 unsupported headings.",
+      "Structure 'DIRECT_ANSWER': 1 unit(s) observed.",
+      "Structure 'EXAMPLE': 1 unit(s) observed.",
+      "Structure 'FACTUAL_STATEMENT': 3 unit(s) observed.",
+      "Detected 57 observable claim(s) on page https://www.tcreng.com/.",
+      "On-site support status: 34 supported, 18 partially supported, 0 uncorroborated, 5 contradicted.",
+      "Structured vs visible comparisons: 3 agreement(s), 1 explicit disagreement(s).",
+      "Evaluated 8 entity candidate(s) across 6 content surfaces.",
+      "Observed 49 visual asset(s): 40 informational, 39 with meaningful alt text, 0 with figure captions, 0 visual-only information gap(s).",
+      "Observed 1 form(s) (1 labeled), 4 action button(s) (4 accessible names), 1 structured schema action(s), 0 WebMCP declaration(s).",
+      "Mapped 24 information access path(s) across multimodal and agent surfaces."
+    ],
+    "external_observations": [
+      "Local network latency probe recorded 82.5ms TTFB",
+      "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
+    ],
+    "analyses": [
+      "Health score computed: 79/100 via invariant formula mode '4_engine'",
+      "Technical SEO foundation: 100/100",
+      "GEO citability readiness: 63/100",
+      "Trust stack: C (60/100)",
+      "Cross-engine conflict [MEDIUM] on 'Topic Heading without Supporting Content': Topic 'Answers' has dedicated heading 'Concrete NDT: Which Test Answers Which Question, and What Each One Cannot Tell You', but supporting body content is genuinely absent. -> The page establishes an explicit topical heading promise for search/AI retrieval, but fails to provide observable explanatory or factual body copy under that section.",
+      "Cross-engine conflict [HIGH] on 'JSON-LD vs Visible Organization Name': JSON-LD declares 'TCR Engineering Services Pvt. Ltd.' while visible content displays 'Materials fail. Evidence doesn't.' under primary_identity context. -> Discrepancy detected between structured schema declarations and visible user-facing text. Search engines and AI systems comparing structured data against rendered pages may flag inconsistent identity signals for 'organization_name'.",
+      "Cross-engine conflict [HIGH] on 'Contradicting Claims: Founding Claim': Observable statement '06 Inspection Manpower & Third-Party Services 700+ PMI proje...' is explicitly contradicted by 'India's oldest third-party inspection company Materials fail...' on the site. -> The site presents mutually incompatible factual values for the same subject and context, creating ambiguous signals for both human readers and AI retrieval systems.",
+      "Cross-engine conflict [MEDIUM] on 'JSON-LD Action Target vs DOM Form Action Discrepancy': Schema declares action target '{'@type': 'entrypoint', 'urltemplate': 'https://www.tcreng.com/search' while DOM form targets '/services'. -> Structured data declares an automated interaction target endpoint that diverges from the actual interactive form action attribute rendered in the DOM."
+    ],
+    "recommendations": [
+      "[CRITICAL] Resolve Triangulation Conflict: JSON-LD vs Visible Organization Name: Discrepancy detected between structured schema declarations and visible user-facing text. Search engines and AI systems comparing structured data against rendered pages may flag inconsistent identity signals for 'organization_name'.",
+      "[CRITICAL] Resolve Triangulation Conflict: Contradicting Claims: Founding Claim: The site presents mutually incompatible factual values for the same subject and context, creating ambiguous signals for both human readers and AI retrieval systems.",
+      "[HIGH] Harden Technical Trust & Security Headers: HSTS and Content-Security-Policy prevent security downgrades and satisfy AI agent reliability gates.",
+      "[HIGH] Missing Content-Security-Policy (CSP) Header: Implement a robust Content-Security-Policy defining trusted sources for scripts, styles, frames, and images."
+    ]
+  },
+  "provenance_tags": [
+    {
+      "finding": "Googlebot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bingbot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Slurp: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "DuckDuckBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "YandexBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Baiduspider: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "OAI-SearchBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "PerplexityBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Claude-SearchBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "ChatGPT-User: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Claude-User: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Perplexity-User: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "GPTBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "ClaudeBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Google-Extended: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Applebot-Extended: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "CCBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bytespider: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "FacebookBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "cohere-ai: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "anthropic-ai: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Applebot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'BreadcrumbList' detected",
+      "engine": "seo_engine",
+      "source_file": "application/ld+json",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'FAQPage' detected",
+      "engine": "seo_engine",
+      "source_file": "application/ld+json",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'ItemList' detected",
+      "engine": "seo_engine",
+      "source_file": "application/ld+json",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'NewsArticle' detected",
+      "engine": "seo_engine",
+      "source_file": "application/ld+json",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'Organization' detected",
+      "engine": "seo_engine",
+      "source_file": "application/ld+json",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'VideoObject' detected",
+      "engine": "seo_engine",
+      "source_file": "application/ld+json",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'WebPage' detected",
+      "engine": "seo_engine",
+      "source_file": "application/ld+json",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'WebSite' detected",
+      "engine": "seo_engine",
+      "source_file": "application/ld+json",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Page Title (58 chars): 'Materials Testing, NDT & Asset Integrity | TC...'",
+      "engine": "seo_engine",
+      "source_file": "<title> tag",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "TTFB Latency: 82ms",
+      "engine": "performance_engine",
+      "source_file": "HTTP response probe",
+      "confidence": "medium",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "/llms.txt: PRESENT",
+      "engine": "rankintel_geo",
+      "source_file": "/llms.txt HTTP check",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Princeton GEO Citability: 63/100",
+      "engine": "rankintel_geo",
+      "source_file": "DOM content passages",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Image Optimization: 41 images detected (0 missing alt)",
+      "engine": "image_engine",
+      "source_file": "HTML DOM",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "HTML Head Audit: Viewport Present, Lang Present",
+      "engine": "image_engine",
+      "source_file": "<head> HTML",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "WCAG AA Automated Status: UNAVAILABLE (0 violations)",
+      "engine": "static_ast_auditor",
+      "source_file": "HTML DOM",
+      "confidence": "medium",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Security Posture Status: FAIL (1 findings)",
+      "engine": "security_engine",
+      "source_file": "HTTP Headers / TLS",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "TLS Certificate: Valid (83 days left)",
+      "engine": "security_engine",
+      "source_file": "TLS Handshake",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Main Content Extraction: 1545 words (SEMANTIC_MAIN)",
+      "engine": "content_engine",
+      "source_file": "HTML DOM",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Heading Structure: 44 headings (Valid hierarchy)",
+      "engine": "content_engine",
+      "source_file": "HTML Headings",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Entity Detection: 12 entity signals (8 organization/business)",
+      "engine": "entity_engine",
+      "source_file": "JSON-LD & HTML DOM",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Entity Alignment (organization_name): PARTIAL_MATCH",
+      "engine": "entity_engine",
+      "source_file": "JSON-LD vs DOM Signals",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Entity Alignment (organization_name): PARTIAL_MATCH",
+      "engine": "entity_engine",
+      "source_file": "JSON-LD vs DOM Signals",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Entity Alignment (telephone): EXACT_MATCH",
+      "engine": "entity_engine",
+      "source_file": "JSON-LD vs DOM Signals",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Internal Link Topology: 360 internal links (148 unique destinations)",
+      "engine": "internal_link_engine",
+      "source_file": "HTML DOM",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Search Signal Evidence: 280 on-site search-relevant signal terms evidenced",
+      "engine": "search_signal_engine",
+      "source_file": "HTML DOM & Metadata",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Search Signal Structure: Multi-location co-occurrence observed for key terms: tcr, testing, engineering, materials, tcr engineering.",
+      "engine": "search_signal_engine",
+      "source_file": "Structural Tag Correlation",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Search Signal Structure: Title and H1 share 1 core evidenced terms: materials.",
+      "engine": "search_signal_engine",
+      "source_file": "Structural Tag Correlation",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Topic Intelligence: 227 deterministic concept groups derived from on-site evidence",
+      "engine": "topic_intelligence_engine",
+      "source_file": "Search Signal & Entity Evidence",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Topic Relationships: 96 inter-topic relationships mapped",
+      "engine": "topic_intelligence_engine",
+      "source_file": "Deterministic Concept Clustering",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Query-Page Mapping: 242 observed concepts mapped to page (15 DIRECT, 66 SUPPORTED)",
+      "engine": "query_page_mapping_engine",
+      "source_file": "On-Site Evidence Triangulation",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 15 direct primary concepts, 66 secondary supported concepts.",
+      "engine": "query_page_mapping_engine",
+      "source_file": "Structural Evidence Matrix",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Search Intent Signals: Primary observed intent signal is 'navigational' (21 observable evidence items)",
+      "engine": "search_intent_engine",
+      "source_file": "On-Site Structural Intent Heuristics",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'navigational' based on 11 corroborating evidence points.",
+      "engine": "search_intent_engine",
+      "source_file": "Multi-Signal Corroboration Engine",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Cannibalization & Gap Observations: OBSERVED_WEBSITE_EVIDENCE: Multi-page competition cannot be evaluated on an isolated single page.",
+      "engine": "cannibalization_analyzer",
+      "source_file": "On-Site Evidence Triangulation",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "AI Search Retrieval Access: 6 indexers allowed, 3 training scrapers allowed",
+      "engine": "retrieval_readiness_engine",
+      "source_file": "robots.txt & HTTP Directives",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Observable Information Units: 36 unit(s) across 7 structural types",
+      "engine": "answerability_engine",
+      "source_file": "DOM & Schema Structure",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Phase 9 Topic Explanations: 161 topic(s) substantiated by explicit answerable structures",
+      "engine": "answerability_engine",
+      "source_file": "Heading & Body Passages",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Unsupported Topical Headings: 19 heading(s) without supporting body copy",
+      "engine": "answerability_engine",
+      "source_file": "Heading Section AST",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Observable Claims Grounding: 57 claim(s) (34 supported on-site, 0 uncorroborated)",
+      "engine": "claim_grounding_engine",
+      "source_file": "Visible Content & Answerable Units",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Structured vs Visible Alignment: 2 agreement(s), 1 disagreement(s)",
+      "engine": "claim_grounding_engine",
+      "source_file": "JSON-LD & DOM Content",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Entity Surface Consistency: 8 candidate(s) tracked across 6 content surfaces",
+      "engine": "claim_grounding_engine",
+      "source_file": "DOM, Headings, Meta, JSON-LD, Units",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Multimodal Information Representation: 49 visual asset(s) (40 informational, 39 alt-represented)",
+      "engine": "multimodal_agent_engine",
+      "source_file": "HTML DOM & Image Assets",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Agent Interaction Surfaces: 1 form(s) (1 labeled), 4 button(s)",
+      "engine": "multimodal_agent_engine",
+      "source_file": "HTML Forms & Controls",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Information Access Paths: 24 path(s) triangulated across visual and interactive surfaces",
+      "engine": "multimodal_agent_engine",
+      "source_file": "Multi-Engine Triangulation",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    }
+  ],
+  "engines_executed": [
+    "advertools_seo",
+    "browser_engine",
+    "rankintel_geo",
+    "performance_engine",
+    "image_engine",
+    "accessibility_engine",
+    "security_engine",
+    "content_engine",
+    "entity_engine",
+    "internal_link_engine",
+    "search_signal_engine",
+    "topic_intelligence_engine",
+    "query_page_mapping_engine",
+    "search_intent_engine",
+    "cannibalization_analyzer",
+    "retrieval_readiness_engine",
+    "answerability_engine",
+    "claim_grounding_engine",
+    "multimodal_agent_engine"
+  ],
+  "raw_evidence_summary": {
+    "status_code": 200,
+    "word_count": 1545,
+    "title_length": 58,
+    "entities_count": 12,
+    "topics_count": 227,
+    "units_count": 36,
+    "claims_count": 57,
+    "visual_assets": 49,
+    "waf_detected": true,
+    "wcag_status": "UNAVAILABLE",
+    "security_status": "FAIL"
+  }
+}

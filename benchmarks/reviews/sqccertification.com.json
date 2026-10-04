@@ -1,0 +1,1005 @@
+{
+  "domain": "sqccertification.com",
+  "site_url": "https://sqccertification.com/",
+  "name": "SQC Certification",
+  "role": "competitor",
+  "collection_timestamp": "2026-10-04",
+  "review_timestamp": "2026-10-04",
+  "overall_health_score": 70,
+  "technical_health_score": 90,
+  "geo_readiness_score": 47,
+  "trust_score": 56,
+  "performance_score": 85,
+  "score_formula_mode": "4_engine",
+  "formula_invariance_verified": true,
+  "business_profile": {
+    "status": "AVAILABLE",
+    "business_name": "SQC Certification",
+    "legal_name": "SQC Certification Services Pvt. Ltd",
+    "branding_title": "SQC Certification Provides Globally recognized ISO Certifications",
+    "meta_description_summary": "We specialize in assessing and certifying organizations to internationally recognized standards such as ISO 9001, 14001, 45001, 37001, 42001, and 27001.",
+    "business_nature_summary": "Observable enterprise entity 'SQC Certification' operating within Regulatory Compliance & Product Certification. Branded as 'SQC Certification Provides Globally recognized ISO Certifications' with primary purpose evidenced via 4 structural on-page sources.",
+    "primary_industry_domain": "Regulatory Compliance & Product Certification",
+    "evidence_sources": [
+      "<title> element",
+      "<meta name='description'>",
+      "Entity declarations",
+      "H1 headings"
+    ],
+    "confidence": "high"
+  },
+  "entity_profile": {
+    "status": "AVAILABLE",
+    "total_entities_detected": 9,
+    "entity_types_detected": [
+      "OTHER",
+      "ORGANIZATION",
+      "LOCAL_BUSINESS"
+    ],
+    "named_entities": [
+      "SQC Certification Services Pvt. Ltd",
+      "SQC Certification Provides Globally recognized ISO Certifications",
+      "SQC Certification Services Pvt. Ltd",
+      "SQC Certification Services Pvt. Ltd - Quality as our Signature, Satisfaction as Our Promise",
+      "2026",
+      "Contact Phone (20+919990747758)",
+      "Contact Phone (+919990747758)",
+      "Contact Phone (20+91859562060914)",
+      "Contact Email (info@sqccertification.com)"
+    ],
+    "relationships_count": 7,
+    "structured_vs_visible_comparisons": 2,
+    "aligned_comparisons": 1,
+    "divergent_comparisons": 1,
+    "entity_alignment_summary": "Detected 9 entity signals across 3 types (OTHER, ORGANIZATION, LOCAL_BUSINESS). Structured vs visible comparisons: 1 aligned, 1 divergent.",
+    "samples": [
+      {
+        "name": "SQC Certification Services Pvt. Ltd",
+        "type": "ORGANIZATION",
+        "source": "JSON_LD",
+        "telephone": null,
+        "email": null
+      },
+      {
+        "name": "SQC Certification Provides Globally recognized ISO Certifications",
+        "type": "OTHER",
+        "source": "JSON_LD",
+        "telephone": null,
+        "email": null
+      },
+      {
+        "name": "SQC Certification Services Pvt. Ltd",
+        "type": "OTHER",
+        "source": "JSON_LD",
+        "telephone": null,
+        "email": null
+      },
+      {
+        "name": "SQC Certification Services Pvt. Ltd - Quality as our Signature, Satisfaction as Our Promise",
+        "type": "ORGANIZATION",
+        "source": "META_TAG",
+        "telephone": null,
+        "email": null
+      },
+      {
+        "name": "2026",
+        "type": "ORGANIZATION",
+        "source": "VISIBLE_HTML",
+        "telephone": null,
+        "email": null
+      }
+    ]
+  },
+  "service_profile": {
+    "status": "AVAILABLE",
+    "services_observed": [
+      "Certification",
+      "Certifications",
+      "About SQC Certification"
+    ],
+    "product_offerings": [],
+    "service_descriptions_count": 0,
+    "structured_units_count": 0,
+    "evidence_sources": [
+      "AnswerabilityEngine",
+      "SearchSignalEngine",
+      "TopicIntelligenceEngine"
+    ],
+    "summary": "Evidenced 3 distinct core service/capability domains and 0 explicit on-page service description units."
+  },
+  "topic_taxonomy": {
+    "status": "AVAILABLE",
+    "total_topics_detected": 123,
+    "primary_topics": [
+      "ISO",
+      "Certification",
+      "SQC",
+      "recognized",
+      "Certifications"
+    ],
+    "supporting_topics": [
+      "Globally",
+      "About SQC Certification",
+      "Provides",
+      "services",
+      "IEC"
+    ],
+    "topics_sample": [
+      "ISO",
+      "Certification",
+      "SQC",
+      "recognized",
+      "Certifications",
+      "Globally",
+      "About SQC Certification",
+      "Provides",
+      "services",
+      "IEC"
+    ],
+    "dominant_concepts": [
+      "ISO",
+      "Certification",
+      "SQC",
+      "recognized",
+      "Certifications",
+      "Globally",
+      "About SQC Certification",
+      "Provides"
+    ],
+    "summary": "Identified 123 deterministic concept clusters. Primary topical anchors: ISO, Certification, SQC, recognized, Certifications."
+  },
+  "dominant_concepts": [
+    "ISO",
+    "Certification",
+    "SQC",
+    "recognized",
+    "Certifications",
+    "Globally",
+    "About SQC Certification",
+    "Provides"
+  ],
+  "search_intent": {
+    "status": "AVAILABLE",
+    "primary_intent": "transactional",
+    "secondary_intents": [
+      "navigational",
+      "local"
+    ],
+    "intent_evidence_count": 9,
+    "intent_evidence_summary": "Primary search intent classified as 'transactional' supported by 9 observable structural signals. Secondary intent spectrum: navigational, local."
+  },
+  "topic_distribution": {
+    "status": "AVAILABLE",
+    "direct_primary_concepts_count": 5,
+    "secondary_supported_concepts_count": 5,
+    "query_page_concepts_count": 137,
+    "total_words": 963,
+    "paragraphs_count": 19,
+    "explained_topics_count": 0,
+    "mentioned_only_topics_count": 23,
+    "concept_density_per_100_words": 12.77,
+    "summary": "Content corpus comprises 963 words across 19 paragraphs. Topical distribution: 0 explained topics with structured units vs 23 mentioned-only topics (topic density: 12.77 per 100 words)."
+  },
+  "concentration_and_overlap": {
+    "status": "AVAILABLE",
+    "content_to_boilerplate_ratio": 1.0,
+    "title_h1_alignment": "MODERATE_ALIGNMENT",
+    "title_h1_token_overlap": 0.29,
+    "heading_hierarchy_valid": false,
+    "heading_skips": [
+      "Heading skip: <h1> to <h3> ('Customer Service...')",
+      "Heading skip: <h3> to <h6> ('Submit the Form and Get Your F...')"
+    ],
+    "empty_sections_count": 26,
+    "potential_cannibalization_signals_count": 0,
+    "observable_gaps_count": 0,
+    "concentration_summary": "Boilerplate ratio: 1.00. Title-H1 lexical alignment is 'MODERATE_ALIGNMENT' with 29.0% token overlap. Heading hierarchy: invalid with skips. Observable topic overlap signals: 0.",
+    "layer_boundary_note": "Strictly deterministic identification of observable on-site topic overlaps and gaps. No external ranking, GSC, or competitor superiority claims."
+  },
+  "technical_seo": {
+    "status": "AVAILABLE",
+    "title": "SQC Certification Provides Globally recognized ISO Certifications",
+    "title_length": 65,
+    "title_status": "TRUNCATED_RISK",
+    "meta_description": "We specialize in assessing and certifying organizations to internationally recognized standards such as ISO 9001, 14001, 45001, 37001, 42001, and 27001.",
+    "meta_description_length": 152,
+    "meta_desc_status": "OPTIMAL",
+    "h1_count": 1,
+    "h1_samples": [
+      "About SQC Certification"
+    ],
+    "h2_count": 22,
+    "h3_count": 10,
+    "schema_types": [
+      "WebSite",
+      "Organization",
+      "WebPage",
+      "BreadcrumbList"
+    ],
+    "schema_blocks_count": 4,
+    "schema_validation_issues": [],
+    "canonical_url": "https://sqccertification.com/",
+    "canonical_status": "MATCHING",
+    "robots_txt_found": true,
+    "sitemaps_declared": [
+      "https://sqccertification.com/sitemap.xml",
+      "https://sqccertification.com/sitemap.rss"
+    ],
+    "ttfb_ms": 699.7,
+    "performance_score": 85,
+    "performance_source": "local_probe",
+    "summary": "Title length (65 chars: TRUNCATED_RISK), Meta description (152 chars: OPTIMAL). Headings: 1 H1, 22 H2, 10 H3. Structured data: 4 schema types declared across 4 blocks. TTFB latency: 699.7ms (local_probe)."
+  },
+  "accessibility_security": {
+    "status": "AVAILABLE",
+    "wcag_status": "FAIL",
+    "total_accessibility_violations": 6,
+    "critical_violations": 0,
+    "serious_violations": 6,
+    "rules_checked_count": 26,
+    "rules_passed_count": 24,
+    "a11y_disclaimer": "Automated checks evaluate observable criteria; non-certification scope.",
+    "security_status": "FAIL",
+    "is_https": true,
+    "tls_valid": true,
+    "tls_protocol": "TLSv1.3",
+    "tls_days_remaining": 50,
+    "hsts_present": false,
+    "csp_present": true,
+    "x_frame_options": null,
+    "x_content_type_options": null,
+    "referrer_policy": null,
+    "mixed_content_count": 0,
+    "server_leakage": [
+      "X-Powered-By: PHP/8.1.34"
+    ],
+    "security_findings_count": 6,
+    "summary": "Accessibility WCAG automated status: FAIL (6 violations: 6 serious, 0 critical). Security transport posture: FAIL (HTTPS: True, TLS days remaining: 50, HSTS: False, CSP: True, X-Frame-Options: MISSING)."
+  },
+  "internal_links": {
+    "status": "AVAILABLE",
+    "total_internal_links": 49,
+    "unique_internal_targets": 49,
+    "total_external_links": 176,
+    "unique_external_targets": 63,
+    "empty_anchors_count": 0,
+    "sample_internal_targets": [
+      "https://sqccertification.com/",
+      "https://sqccertification.com/about/",
+      "https://sqccertification.com/services-we-offer/",
+      "https://sqccertification.com/industries/",
+      "https://sqccertification.com/global-coverage/"
+    ],
+    "link_density_ratio": 0.0509,
+    "summary": "Topology reveals 49 total internal link instances targeting 49 unique internal destination URLs. External references: 176 instances targeting 63 unique domains. Empty anchor text occurrences: 0."
+  },
+  "retrieval_readiness": {
+    "status": "AVAILABLE",
+    "total_bots_evaluated": 12,
+    "search_index_allowed_count": 6,
+    "ai_training_allowed_count": 3,
+    "user_fetch_allowed_count": 3,
+    "waf_or_challenge_detected": true,
+    "waf_blocked": false,
+    "waf_provider": null,
+    "has_nosnippet": false,
+    "has_data_nosnippet": false,
+    "max_snippet": null,
+    "static_words": 939,
+    "rendered_words": 0,
+    "word_count_delta": 0,
+    "rendering_impact_summary": "Static HTML observed (939 words); browser DOM was not rendered in this pass.",
+    "llms_txt_present": false,
+    "geo_score": 47,
+    "summary": "Bot access: 6/6 search indexers, 3/3 training scrapers permitted. WAF status: CHALLENGE/BLOCK DETECTED (unknown). Snippet directives: snippets allowed. Word count rendering delta: 0 words (939 static vs 0 rendered). /llms.txt manifest: Missing. GEO Score: 47/100."
+  },
+  "answerability": {
+    "status": "INSUFFICIENT_EVIDENCE",
+    "total_units_detected": 0,
+    "units_by_type": {},
+    "heading_content_relationship": "PARTIAL",
+    "question_answer_patterns": "ABSENT",
+    "definition_patterns": "ABSENT",
+    "step_list_structure": "ABSENT",
+    "table_availability": "ABSENT",
+    "explained_topics_count": 0,
+    "mentioned_only_topics_count": 23,
+    "unsupported_heading_topics_count": 107,
+    "unsupported_headings_sample": [
+      "Achieve ISO certification:ISO 9001:2026I",
+      "About SQC Certification",
+      "Customer Service",
+      "Reliability and Trustworthiness",
+      "Innovative Solutions"
+    ],
+    "summary": "Discovered 0 observable information units across 0 structural types (none). Topical support: 0 explained topics with explicit answerable structures, 23 mentioned-only topics, 107 unsupported headings."
+  },
+  "claim_grounding": {
+    "status": "AVAILABLE",
+    "total_claims_detected": 21,
+    "supported_claims_count": 21,
+    "partially_supported_count": 0,
+    "uncorroborated_count": 0,
+    "contradicted_count": 0,
+    "structured_agreements_count": 1,
+    "structured_disagreements_count": 1,
+    "entity_consistency_breakdown": {
+      "CONSISTENT": 2,
+      "PARTIALLY_CONSISTENT": 6
+    },
+    "grounding_ratio": 1.0,
+    "summary": "Evaluated 21 visible factual assertions: 21 fully supported on-site, 0 partially supported, 0 uncorroborated, 0 contradicted (100% grounding ratio). Schema-DOM alignment: 1 agreements, 1 disagreements."
+  },
+  "multimodal": {
+    "status": "AVAILABLE",
+    "total_visual_assets": 24,
+    "informational_assets_count": 12,
+    "decorative_assets_count": 12,
+    "alt_represented_count": 3,
+    "caption_represented_count": 0,
+    "text_represented_count": 21,
+    "visual_only_observed_gaps": 0,
+    "modern_format_count": 1,
+    "missing_dimensions_count": 0,
+    "alt_coverage_ratio": 0.25,
+    "summary": "Identified 24 visual assets (12 informational, 12 decorative). Alt-text coverage: 3/12 informational assets (25%). Visual-only observed information gaps: 0. Modern formats (WebP/AVIF): 1. Layout shift risks (missing dimensions): 0."
+  },
+  "agent_readiness": {
+    "status": "AVAILABLE",
+    "total_forms_detected": 1,
+    "labeled_forms_count": 1,
+    "action_buttons_detected": 2,
+    "meaningful_accessible_buttons_count": 2,
+    "descriptive_navigation_links_count": 124,
+    "schema_actions_detected": 0,
+    "webmcp_declarations_detected": 0,
+    "total_access_paths": 0,
+    "action_surface_gaps": 0,
+    "summary": "Detected 1 interactive forms (1 labeled), 2 action buttons (2 accessible), 124 descriptive navigation links. Structured schema actions: 0, WebMCP declarations: 0. Triangulated information access paths: 0 (Action surface gaps: 0)."
+  },
+  "external_ai": {
+    "status": "DISABLED",
+    "providers_evaluated": [],
+    "queries_executed_count": 0,
+    "successful_observations_count": 0,
+    "failed_observations_count": 0,
+    "target_domain_cited_count": 0,
+    "target_domain_mentioned_count": 0,
+    "total_external_citations": 0,
+    "failure_reason": null,
+    "limitation_disclaimer": "Controlled empirical observations under explicit API configurations. Strictly opt-in; does not imply universal AI rankings or traffic.",
+    "summary": "External AI visibility evaluation was not requested (strictly opt-in via --external-ai). Offline boundary preserved."
+  },
+  "limitations_and_uncertainty": {
+    "status": "AVAILABLE",
+    "crawl_limitations": [
+      "Single-page multi-engine collection pass",
+      "Process-isolated worker execution",
+      "Socket timeout: 15.0s",
+      "Respects robots.txt directives"
+    ],
+    "dimension_statuses": {
+      "crawl_discovery": "AVAILABLE",
+      "technical_seo": "AVAILABLE",
+      "accessibility": "AVAILABLE",
+      "security": "AVAILABLE",
+      "content": "AVAILABLE",
+      "entity": "AVAILABLE",
+      "internal_links": "AVAILABLE",
+      "search_topic_query_intent": "AVAILABLE",
+      "cannibalization_search_gaps": "AVAILABLE",
+      "retrieval_readiness": "AVAILABLE",
+      "answerability": "AVAILABLE",
+      "claim_grounding": "AVAILABLE",
+      "multimodal": "AVAILABLE",
+      "agent_readiness": "AVAILABLE",
+      "external_ai": "DISABLED"
+    },
+    "cross_engine_conflicts": [
+      {
+        "severity": "MEDIUM",
+        "feature": "Structured vs Visible Entity Branding",
+        "description": "Structured Organization 'SQC Certification Services Pvt. Ltd' differs from visible branding '2026'.",
+        "engine_a_finding": "Structured Data (JSON-LD): Declares 'SQC Certification Services Pvt. Ltd'",
+        "engine_b_finding": "Visible Signals (DOM): Declares '2026'",
+        "interpretation": "The organization declared in structured data and the organization observed in visible page branding share no common brand tokens. This may represent white-labeling, third-party template reuse, or an entity disambiguation discrepancy in search engine knowledge graphs."
+      },
+      {
+        "severity": "MEDIUM",
+        "feature": "Topic Heading without Supporting Content",
+        "description": "Topic '+91-9990747758 +91-85956 60914 01204634181' has dedicated heading '+91-9990747758+91-85956 6091401204634181', but supporting body content is genuinely absent.",
+        "engine_a_finding": "Topic Engine: Candidate topic '+91-9990747758 +91-85956 60914 01204634181'",
+        "engine_b_finding": "Answerability Engine: Heading '+91-9990747758+91-85956 6091401204634181' has 0 supporting body words",
+        "interpretation": "The page establishes an explicit topical heading promise for search/AI retrieval, but fails to provide observable explanatory or factual body copy under that section."
+      },
+      {
+        "severity": "HIGH",
+        "feature": "JSON-LD vs Visible Organization Name",
+        "description": "JSON-LD declares 'SQC Certification Services Pvt. Ltd' while visible content displays 'About SQC Certification' under primary_identity context.",
+        "engine_a_finding": "JSON-LD Schema: 'SQC Certification Services Pvt. Ltd'",
+        "engine_b_finding": "Visible Content: 'About SQC Certification'",
+        "interpretation": "Discrepancy detected between structured schema declarations and visible user-facing text. Search engines and AI systems comparing structured data against rendered pages may flag inconsistent identity signals for 'organization_name'."
+      }
+    ],
+    "uncertainty_notes": [
+      "Evaluated from single-page multi-engine collection pass; multi-page cannibalization and site-wide architecture are bounded.",
+      "Automated WCAG 2.1 checks evaluate observable criteria; non-certification scope.",
+      "Third-party search volume, market share, Google rankings, and traffic are NOT inferred from website evidence.",
+      "Zero redundant network calls dispatched during review synthesis."
+    ],
+    "summary": "Review bound by 4 explicit crawl limitations and 3 cross-engine conflicts. All 15 collection dimensions maintain explicit epistemic statuses."
+  },
+  "epistemic_separation": {
+    "facts": [
+      "HTTP response code: 200",
+      "Static HTML word count: 710",
+      "Title: 'SQC Certification Provides Globally recognized ISO Certifications' (65 characters)",
+      "Meta description: 'We specialize in assessing and certifying organizations to internationally recognized standards such as ISO 9001, 14001, 45001, 37001, 42001, and 27001.' (152 characters)",
+      "H1 tags observed: 1",
+      "Internal links observed: 49",
+      "External links observed: 176",
+      "Robots.txt found: True",
+      "Schema types declared: WebSite, Organization, WebPage, BreadcrumbList",
+      "HTTPS enforced: True",
+      "Server latency probe: 699.7ms (local_probe)",
+      "HTTP Status: 200",
+      "WAF / Challenge Indicators: Observable embedded form protection in HTML: 'recaptcha'",
+      "Static HTML contains 939 words.",
+      "Detected 0 distinct observable information unit(s) across 0 structural types.",
+      "Evaluated 136 topic(s): 0 explained with explicit units, 23 mentioned only, 107 unsupported headings.",
+      "Detected 21 observable claim(s) on page https://sqccertification.com/.",
+      "On-site support status: 21 supported, 0 partially supported, 0 uncorroborated, 0 contradicted.",
+      "Structured vs visible comparisons: 1 agreement(s), 1 explicit disagreement(s).",
+      "Evaluated 8 entity candidate(s) across 6 content surfaces.",
+      "Observed 24 visual asset(s): 12 informational, 3 with meaningful alt text, 0 with figure captions, 0 visual-only information gap(s).",
+      "Observed 1 form(s) (1 labeled), 2 action button(s) (2 accessible names), 0 structured schema action(s), 0 WebMCP declaration(s)."
+    ],
+    "external_observations": [
+      "Local network latency probe recorded 699.7ms TTFB",
+      "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
+    ],
+    "analyses": [
+      "Health score computed: 70/100 via invariant formula mode '4_engine'",
+      "Technical SEO foundation: 90/100",
+      "GEO citability readiness: 47/100",
+      "Trust stack: C (56/100)",
+      "Cross-engine conflict [MEDIUM] on 'Structured vs Visible Entity Branding': Structured Organization 'SQC Certification Services Pvt. Ltd' differs from visible branding '2026'. -> The organization declared in structured data and the organization observed in visible page branding share no common brand tokens. This may represent white-labeling, third-party template reuse, or an entity disambiguation discrepancy in search engine knowledge graphs.",
+      "Cross-engine conflict [MEDIUM] on 'Topic Heading without Supporting Content': Topic '+91-9990747758 +91-85956 60914 01204634181' has dedicated heading '+91-9990747758+91-85956 6091401204634181', but supporting body content is genuinely absent. -> The page establishes an explicit topical heading promise for search/AI retrieval, but fails to provide observable explanatory or factual body copy under that section.",
+      "Cross-engine conflict [HIGH] on 'JSON-LD vs Visible Organization Name': JSON-LD declares 'SQC Certification Services Pvt. Ltd' while visible content displays 'About SQC Certification' under primary_identity context. -> Discrepancy detected between structured schema declarations and visible user-facing text. Search engines and AI systems comparing structured data against rendered pages may flag inconsistent identity signals for 'organization_name'."
+    ],
+    "recommendations": [
+      "[CRITICAL] Resolve Triangulation Conflict: JSON-LD vs Visible Organization Name: Discrepancy detected between structured schema declarations and visible user-facing text. Search engines and AI systems comparing structured data against rendered pages may flag inconsistent identity signals for 'organization_name'.",
+      "[HIGH] Harden Technical Trust & Security Headers: HSTS and Content-Security-Policy prevent security downgrades and satisfy AI agent reliability gates.",
+      "[GEO_WIN] Publish Standard /llms.txt AI Agent Manifest: Provides AI assistants (ChatGPT, Claude, Perplexity) with clean, curated markdown documentation.",
+      "[HIGH] Missing Strict-Transport-Security (HSTS) Header: Add 'Strict-Transport-Security: max-age=31536000; includeSubDomains; preload' to all HTTPS responses.",
+      "[MEDIUM] Review Structured vs Visible Organization Alignment: Significant brand name divergence between structured data and observable page branding may confuse entity disambiguation in search engines. Verify intentionality.",
+      "[MEDIUM] Generic Anchor Text Optimization Opportunity: Generic anchor usage was observed across multiple internal links. Review whether important navigation links can incorporate more descriptive, topic-specific anchor text."
+    ]
+  },
+  "provenance_tags": [
+    {
+      "finding": "Googlebot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bingbot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Slurp: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "DuckDuckBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "YandexBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Baiduspider: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "OAI-SearchBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "PerplexityBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Claude-SearchBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "ChatGPT-User: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Claude-User: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Perplexity-User: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "GPTBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "ClaudeBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Google-Extended: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Applebot-Extended: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "CCBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Bytespider: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "FacebookBot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "cohere-ai: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "anthropic-ai: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Applebot: ALLOWED",
+      "engine": "seo_engine",
+      "source_file": "robots.txt",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'BreadcrumbList' detected",
+      "engine": "seo_engine",
+      "source_file": "application/ld+json",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'Organization' detected",
+      "engine": "seo_engine",
+      "source_file": "application/ld+json",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'WebPage' detected",
+      "engine": "seo_engine",
+      "source_file": "application/ld+json",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Schema type 'WebSite' detected",
+      "engine": "seo_engine",
+      "source_file": "application/ld+json",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Page Title (65 chars): 'SQC Certification Provides Globally recognize...'",
+      "engine": "seo_engine",
+      "source_file": "<title> tag",
+      "confidence": "high",
+      "confirmed_by": [
+        "browser_engine"
+      ],
+      "contradicted_by": []
+    },
+    {
+      "finding": "TTFB Latency: 700ms",
+      "engine": "performance_engine",
+      "source_file": "HTTP response probe",
+      "confidence": "medium",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "/llms.txt: MISSING",
+      "engine": "rankintel_geo",
+      "source_file": "/llms.txt HTTP check",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Princeton GEO Citability: 47/100",
+      "engine": "rankintel_geo",
+      "source_file": "DOM content passages",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Image Optimization: 4 images detected (0 missing alt)",
+      "engine": "image_engine",
+      "source_file": "HTML DOM",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "HTML Head Audit: Viewport Present, Lang Present",
+      "engine": "image_engine",
+      "source_file": "<head> HTML",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "WCAG AA Automated Status: FAIL (6 violations)",
+      "engine": "axe_core_playwright",
+      "source_file": "HTML DOM",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Security Posture Status: FAIL (6 findings)",
+      "engine": "security_engine",
+      "source_file": "HTTP Headers / TLS",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "TLS Certificate: Valid (50 days left)",
+      "engine": "security_engine",
+      "source_file": "TLS Handshake",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Main Content Extraction: 963 words (RAW_BODY_FALLBACK)",
+      "engine": "content_engine",
+      "source_file": "HTML DOM",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Heading Structure: 34 headings (2 skips)",
+      "engine": "content_engine",
+      "source_file": "HTML Headings",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Entity Detection: 9 entity signals (7 organization/business)",
+      "engine": "entity_engine",
+      "source_file": "JSON-LD & HTML DOM",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Entity Alignment (organization_name): PARTIAL_MATCH",
+      "engine": "entity_engine",
+      "source_file": "JSON-LD vs DOM Signals",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Entity Alignment (organization_name): DIVERGENT_IDENTITY_SUSPECTED",
+      "engine": "entity_engine",
+      "source_file": "JSON-LD vs DOM Signals",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Internal Link Topology: 121 internal links (49 unique destinations)",
+      "engine": "internal_link_engine",
+      "source_file": "HTML DOM",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Generic Anchor Text: 6 generic anchor links observed",
+      "engine": "internal_link_engine",
+      "source_file": "HTML DOM",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Search Signal Evidence: 140 on-site search-relevant signal terms evidenced",
+      "engine": "search_signal_engine",
+      "source_file": "HTML DOM & Metadata",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Search Signal Structure: Multi-location co-occurrence observed for key terms: iso, certification, 9001, 14001, 45001.",
+      "engine": "search_signal_engine",
+      "source_file": "Structural Tag Correlation",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Search Signal Structure: Title and H1 share 2 core evidenced terms: certification, sqc.",
+      "engine": "search_signal_engine",
+      "source_file": "Structural Tag Correlation",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Topic Intelligence: 123 deterministic concept groups derived from on-site evidence",
+      "engine": "topic_intelligence_engine",
+      "source_file": "Search Signal & Entity Evidence",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Topic Relationships: 103 inter-topic relationships mapped",
+      "engine": "topic_intelligence_engine",
+      "source_file": "Deterministic Concept Clustering",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Query-Page Mapping: 137 observed concepts mapped to page (12 DIRECT, 43 SUPPORTED)",
+      "engine": "query_page_mapping_engine",
+      "source_file": "On-Site Evidence Triangulation",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 12 direct primary concepts, 43 secondary supported concepts.",
+      "engine": "query_page_mapping_engine",
+      "source_file": "Structural Evidence Matrix",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (9 observable evidence items)",
+      "engine": "search_intent_engine",
+      "source_file": "On-Site Structural Intent Heuristics",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 5 corroborating evidence points.",
+      "engine": "search_intent_engine",
+      "source_file": "Multi-Signal Corroboration Engine",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Cannibalization & Gap Observations: OBSERVED_WEBSITE_EVIDENCE: Multi-page competition cannot be evaluated on an isolated single page.",
+      "engine": "cannibalization_analyzer",
+      "source_file": "On-Site Evidence Triangulation",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "AI Search Retrieval Access: 6 indexers allowed, 3 training scrapers allowed",
+      "engine": "retrieval_readiness_engine",
+      "source_file": "robots.txt & HTTP Directives",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Observable Information Units: 0 unit(s) across 0 structural types",
+      "engine": "answerability_engine",
+      "source_file": "DOM & Schema Structure",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Unsupported Topical Headings: 34 heading(s) without supporting body copy",
+      "engine": "answerability_engine",
+      "source_file": "Heading Section AST",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Observable Claims Grounding: 21 claim(s) (21 supported on-site, 0 uncorroborated)",
+      "engine": "claim_grounding_engine",
+      "source_file": "Visible Content & Answerable Units",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Structured vs Visible Alignment: 1 agreement(s), 1 disagreement(s)",
+      "engine": "claim_grounding_engine",
+      "source_file": "JSON-LD & DOM Content",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Entity Surface Consistency: 8 candidate(s) tracked across 6 content surfaces",
+      "engine": "claim_grounding_engine",
+      "source_file": "DOM, Headings, Meta, JSON-LD, Units",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Multimodal Information Representation: 24 visual asset(s) (12 informational, 3 alt-represented)",
+      "engine": "multimodal_agent_engine",
+      "source_file": "HTML DOM & Image Assets",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Agent Interaction Surfaces: 1 form(s) (1 labeled), 2 button(s)",
+      "engine": "multimodal_agent_engine",
+      "source_file": "HTML Forms & Controls",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    }
+  ],
+  "engines_executed": [
+    "advertools_seo",
+    "browser_engine",
+    "rankintel_geo",
+    "performance_engine",
+    "image_engine",
+    "accessibility_engine",
+    "security_engine",
+    "content_engine",
+    "entity_engine",
+    "internal_link_engine",
+    "search_signal_engine",
+    "topic_intelligence_engine",
+    "query_page_mapping_engine",
+    "search_intent_engine",
+    "cannibalization_analyzer",
+    "retrieval_readiness_engine",
+    "answerability_engine",
+    "claim_grounding_engine",
+    "multimodal_agent_engine"
+  ],
+  "raw_evidence_summary": {
+    "status_code": 200,
+    "word_count": 963,
+    "title_length": 65,
+    "entities_count": 9,
+    "topics_count": 123,
+    "units_count": 0,
+    "claims_count": 21,
+    "visual_assets": 24,
+    "waf_detected": true,
+    "wcag_status": "FAIL",
+    "security_status": "FAIL"
+  }
+}
