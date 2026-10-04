@@ -662,6 +662,28 @@ class ClaimGroundingEngine:
                             obs_contact = True
                             break
 
+            # Fallback to soup JSON-LD for matching contact phone or email
+            if not obs_contact and soup:
+                for script in soup.find_all("script", attrs={"type": re.compile(r"application/ld\+json", re.I)}):
+                    try:
+                        c_str = script.string or script.get_text()
+                        if not c_str:
+                            continue
+                        data = json.loads(c_str.strip())
+                        items = [data] if isinstance(data, dict) else (data if isinstance(data, list) else [])
+                        for item in items:
+                            if isinstance(item, dict) and norm_name in normalize_entity_name(item.get("name", "")):
+                                tel = item.get("telephone", "")
+                                em = item.get("email", "")
+                                if tel and normalize_phone_number(str(tel)) in normalize_phone_number(contact_text):
+                                    obs_contact = True
+                                    break
+                                if em and str(em).lower() in contact_text:
+                                    obs_contact = True
+                                    break
+                    except Exception:
+                        pass
+
             obs_units = norm_name in units_text
 
             # Surface matches details
@@ -986,13 +1008,21 @@ class ClaimGroundingEngine:
 
         # Collect page evidence
         for rec in records:
-            if rec.engine_results and "claim_grounding_engine" in rec.engine_results:
-                ev = rec.engine_results["claim_grounding_engine"].claim_grounding
-                if ev:
-                    page_evidence_map[rec.url] = ev
-                    all_claims.extend(ev.claims)
-                    all_disagreements.extend([a for a in ev.structured_agreements if a.status == StructuredVisibleAgreementStatus.DISAGREEMENT])
-                    all_entity_groundings.extend(ev.entity_grounding)
+            ev = getattr(rec, "claim_grounding", None)
+            if ev is None and getattr(rec, "engine_results", None) and "claim_grounding_engine" in rec.engine_results:
+                res = rec.engine_results["claim_grounding_engine"]
+                ev = getattr(res, "claim_grounding", None)
+            if ev is None:
+                ev = cls.evaluate_page(
+                    url=rec.url,
+                    raw_html=getattr(rec, "raw_html", None),
+                    rendered_html=None,
+                )
+            if ev:
+                page_evidence_map[rec.url] = ev
+                all_claims.extend(ev.claims)
+                all_disagreements.extend([a for a in ev.structured_agreements if a.status == StructuredVisibleAgreementStatus.DISAGREEMENT])
+                all_entity_groundings.extend(ev.entity_grounding)
 
         # Cross-Page Corroboration:
         # If a claim on Page A was UNCORROBORATED_ON_SITE, check if Page B (e.g. /about, /services) corroborates it

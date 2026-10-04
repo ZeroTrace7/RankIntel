@@ -391,7 +391,7 @@ def test_site_wide_aggregation_and_cross_page_corroboration():
         identity_url="https://example.com/",
         crawl_status=CrawlStatus.FETCHED,
         depth=0,
-        engine_results={"claim_grounding_engine": type("Res", (), {"claim_grounding": ev_p1})()}
+        claim_grounding=ev_p1,
     )
     rec2 = CrawlRecord(
         url="https://example.com/services/calibration",
@@ -399,7 +399,7 @@ def test_site_wide_aggregation_and_cross_page_corroboration():
         identity_url="https://example.com/services/calibration",
         crawl_status=CrawlStatus.FETCHED,
         depth=1,
-        engine_results={"claim_grounding_engine": type("Res", (), {"claim_grounding": ev_p2})()}
+        claim_grounding=ev_p2,
     )
 
     site_crawl = SiteCrawlResult(
