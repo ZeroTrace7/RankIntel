@@ -85,6 +85,8 @@ MASTER_BOT_REGISTRY = {
         "company": "Google",
         "engine": "Google Search & AI Overviews",
         "priority": "CRITICAL",
+        "purpose": "search_index",
+        "honors_robots_txt": True,
         "allowed_impact": "Indexed in Google Search & AI Overviews",
         "disallowed_impact": "⚠️ De-indexed from Google Search (Catastrophic Traffic Loss)"
     },
@@ -94,6 +96,8 @@ MASTER_BOT_REGISTRY = {
         "company": "Microsoft",
         "engine": "Microsoft Bing & Copilot",
         "priority": "CRITICAL",
+        "purpose": "search_index",
+        "honors_robots_txt": True,
         "allowed_impact": "Indexed in Bing Search & Microsoft Copilot",
         "disallowed_impact": "⚠️ De-indexed from Bing & Microsoft Copilot"
     },
@@ -103,6 +107,8 @@ MASTER_BOT_REGISTRY = {
         "company": "Yahoo",
         "engine": "Yahoo Search",
         "priority": "MEDIUM",
+        "purpose": "search_index",
+        "honors_robots_txt": True,
         "allowed_impact": "Indexed in Yahoo Search Network",
         "disallowed_impact": "De-indexed from Yahoo Search Network"
     },
@@ -112,6 +118,8 @@ MASTER_BOT_REGISTRY = {
         "company": "DuckDuckGo",
         "engine": "DuckDuckGo Search",
         "priority": "MEDIUM",
+        "purpose": "search_index",
+        "honors_robots_txt": True,
         "allowed_impact": "Indexed in DuckDuckGo Search",
         "disallowed_impact": "De-indexed from DuckDuckGo Search"
     },
@@ -121,6 +129,8 @@ MASTER_BOT_REGISTRY = {
         "company": "Yandex",
         "engine": "Yandex Search",
         "priority": "MEDIUM",
+        "purpose": "search_index",
+        "honors_robots_txt": True,
         "allowed_impact": "Indexed in Yandex Search",
         "disallowed_impact": "De-indexed from Yandex Search"
     },
@@ -130,6 +140,8 @@ MASTER_BOT_REGISTRY = {
         "company": "Baidu",
         "engine": "Baidu Search",
         "priority": "LOW",
+        "purpose": "search_index",
+        "honors_robots_txt": True,
         "allowed_impact": "Indexed in Baidu Search",
         "disallowed_impact": "De-indexed from Baidu Search"
     },
@@ -141,6 +153,8 @@ MASTER_BOT_REGISTRY = {
         "company": "OpenAI",
         "engine": "ChatGPT Search",
         "priority": "CRITICAL",
+        "purpose": "search_index",
+        "honors_robots_txt": True,
         "allowed_impact": "Eligible for ChatGPT Search links & live citations",
         "disallowed_impact": "⚠️ Excluded from ChatGPT Search results & citations"
     },
@@ -150,6 +164,8 @@ MASTER_BOT_REGISTRY = {
         "company": "Perplexity AI",
         "engine": "Perplexity AI",
         "priority": "HIGH",
+        "purpose": "search_index",
+        "honors_robots_txt": True,
         "allowed_impact": "Eligible for Perplexity citations & referral clicks",
         "disallowed_impact": "⚠️ Excluded from Perplexity citations & referral traffic"
     },
@@ -159,17 +175,56 @@ MASTER_BOT_REGISTRY = {
         "company": "Anthropic",
         "engine": "Claude Search",
         "priority": "HIGH",
+        "purpose": "search_index",
+        "honors_robots_txt": True,
         "allowed_impact": "Eligible for Claude live search & citation retrieval",
         "disallowed_impact": "Excluded from Claude Search citations"
     },
 
-    # 3. AI Model Training Crawlers (Bulk Scrapers — IP & Copyright Protection)
+    # 3. AI User-Initiated Fetchers (Real-Time On-Demand Retrieval)
+    "ChatGPT-User": {
+        "category": "user_fetch",
+        "category_label": "User-Initiated Fetcher",
+        "company": "OpenAI",
+        "engine": "ChatGPT Live Browsing",
+        "priority": "HIGH",
+        "purpose": "user_fetch",
+        "honors_robots_txt": True,
+        "allowed_impact": "Permits real-time page retrieval when requested by ChatGPT users",
+        "disallowed_impact": "Prevents on-demand live browsing retrieval by ChatGPT users"
+    },
+    "Claude-User": {
+        "category": "user_fetch",
+        "category_label": "User-Initiated Fetcher",
+        "company": "Anthropic",
+        "engine": "Claude Live Browsing",
+        "priority": "HIGH",
+        "purpose": "user_fetch",
+        "honors_robots_txt": True,
+        "allowed_impact": "Permits real-time page retrieval when requested by Claude users",
+        "disallowed_impact": "Prevents on-demand live browsing retrieval by Claude users"
+    },
+    "Perplexity-User": {
+        "category": "user_fetch",
+        "category_label": "User-Initiated Fetcher",
+        "company": "Perplexity AI",
+        "engine": "Perplexity Live Actions",
+        "priority": "HIGH",
+        "purpose": "user_fetch",
+        "honors_robots_txt": False,  # Official Perplexity docs: generally ignores robots.txt as user action
+        "allowed_impact": "Permits real-time user-driven fetching in Perplexity answers",
+        "disallowed_impact": "User-triggered fetcher; official Perplexity docs indicate it generally bypasses robots.txt"
+    },
+
+    # 4. AI Model Training Crawlers (Bulk Scrapers — IP & Copyright Protection)
     "GPTBot": {
         "category": "ai_training",
         "category_label": "AI Model Training",
         "company": "OpenAI",
         "engine": "OpenAI Foundation Models",
         "priority": "HIGH",
+        "purpose": "ai_training",
+        "honors_robots_txt": True,
         "allowed_impact": "Content scraped for OpenAI foundation model training",
         "disallowed_impact": "🛡️ Protected from OpenAI model training scraping"
     },
@@ -179,6 +234,8 @@ MASTER_BOT_REGISTRY = {
         "company": "Anthropic",
         "engine": "Anthropic Claude Models",
         "priority": "HIGH",
+        "purpose": "ai_training",
+        "honors_robots_txt": True,
         "allowed_impact": "Content scraped for Anthropic foundation model training",
         "disallowed_impact": "🛡️ Protected from Anthropic Claude training scraping"
     },
@@ -188,6 +245,9 @@ MASTER_BOT_REGISTRY = {
         "company": "Google",
         "engine": "Google Gemini & Vertex AI",
         "priority": "HIGH",
+        "purpose": "ai_training",
+        "is_control_token_only": True,
+        "honors_robots_txt": True,
         "allowed_impact": "Content harvested for Google Gemini training (Search unaffected)",
         "disallowed_impact": "🛡️ Protected from Google Gemini training (Search unaffected)"
     },
@@ -197,6 +257,8 @@ MASTER_BOT_REGISTRY = {
         "company": "Apple",
         "engine": "Apple Foundation Models",
         "priority": "MEDIUM",
+        "purpose": "ai_training",
+        "honors_robots_txt": True,
         "allowed_impact": "Content collected for Apple AI model training",
         "disallowed_impact": "🛡️ Protected from Apple Foundation training"
     },
@@ -206,6 +268,8 @@ MASTER_BOT_REGISTRY = {
         "company": "Common Crawl",
         "engine": "Common Crawl Training Corpus",
         "priority": "MEDIUM",
+        "purpose": "ai_training",
+        "honors_robots_txt": True,
         "allowed_impact": "Scraped into public LLM training datasets",
         "disallowed_impact": "🛡️ Protected from Common Crawl dataset ingestion"
     },
@@ -215,6 +279,8 @@ MASTER_BOT_REGISTRY = {
         "company": "ByteDance",
         "engine": "ByteDance AI Models",
         "priority": "MEDIUM",
+        "purpose": "ai_training",
+        "honors_robots_txt": True,
         "allowed_impact": "Scraped by ByteDance AI crawlers",
         "disallowed_impact": "🛡️ Protected from ByteDance data scraping"
     },
@@ -224,6 +290,8 @@ MASTER_BOT_REGISTRY = {
         "company": "Meta",
         "engine": "Meta Llama & AI Models",
         "priority": "MEDIUM",
+        "purpose": "ai_training",
+        "honors_robots_txt": True,
         "allowed_impact": "Scraped for Meta Llama model training",
         "disallowed_impact": "🛡️ Protected from Meta AI model scraping"
     },
@@ -233,6 +301,8 @@ MASTER_BOT_REGISTRY = {
         "company": "Cohere",
         "engine": "Cohere Enterprise LLMs",
         "priority": "LOW",
+        "purpose": "ai_training",
+        "honors_robots_txt": True,
         "allowed_impact": "Scraped for Cohere LLM training",
         "disallowed_impact": "🛡️ Protected from Cohere training ingestion"
     },
@@ -242,18 +312,38 @@ MASTER_BOT_REGISTRY = {
         "company": "Anthropic",
         "engine": "Anthropic Web Harvester",
         "priority": "LOW",
+        "purpose": "ai_training",
+        "honors_robots_txt": True,
         "allowed_impact": "Scraped by Anthropic legacy scrapers",
         "disallowed_impact": "🛡️ Protected from Anthropic legacy crawlers"
     },
 
-    # 4. Platform Bots
+    # 5. Platform Bots
     "Applebot": {
         "category": "platform",
         "category_label": "Platform Bot",
         "company": "Apple",
         "engine": "Apple Intelligence, Siri & Spotlight",
         "priority": "HIGH",
+        "purpose": "search_index",
+        "honors_robots_txt": True,
         "allowed_impact": "Indexed for Apple Intelligence, Siri & Safari citations",
         "disallowed_impact": "⚠️ Blocked from Apple Intelligence & Siri integration"
     }
 }
+
+# Core 12 bots prioritized for M10.1 AI Access & Retrieval Readiness
+CORE_RETRIEVAL_BOTS = [
+    "Googlebot",
+    "Google-Extended",
+    "OAI-SearchBot",
+    "GPTBot",
+    "ChatGPT-User",
+    "Claude-SearchBot",
+    "ClaudeBot",
+    "Claude-User",
+    "PerplexityBot",
+    "Perplexity-User",
+    "Bingbot",
+    "Applebot",
+]
