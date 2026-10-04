@@ -394,6 +394,23 @@ class MarkdownReporter:
                     for fact in rri.facts:
                         lines.append(f"- **FACT:** {fact}")
 
+            if getattr(sc, "answerability_intelligence", None):
+                ai = sc.answerability_intelligence
+                lines.append("\n### 💡 Site-Wide AI Answerability & Information Extraction")
+                if ai.is_partial_crawl:
+                    lines.append(f"> ⚠️ **Coverage Notice:** {ai.completeness_disclaimer}")
+                lines.append(f"- **Total Crawled Pages Evaluated:** {ai.total_pages_evaluated}")
+                lines.append(f"- **Total Observable Information Units Detected:** {ai.total_site_units_detected}")
+                lines.append(f"- **Pages with FAQ Structures:** {len(ai.pages_with_faq)}")
+                lines.append(f"- **Pages with Explicit Definitions:** {len(ai.pages_with_definitions)}")
+                lines.append(f"- **Pages with Structured Procedural Steps:** {len(ai.pages_with_steps)}")
+                lines.append(f"- **Pages with Tabular Specifications / Comparisons:** {len(ai.pages_with_tables)}")
+                lines.append(f"- **Pages with Unsupported Concept Headings:** {len(ai.pages_with_unsupported_concepts)}")
+                if ai.facts:
+                    lines.append("\n#### Site-Wide Answerability Observations:")
+                    for fact in ai.facts:
+                        lines.append(f"- **FACT:** {fact}")
+
             if sc.site_wide_issues:
                 lines.append("\n### 🔴 Site-Wide Structural Findings:")
                 for issue in sc.site_wide_issues:
@@ -537,6 +554,66 @@ class MarkdownReporter:
                 lines.append("### 💡 Technical Analyses:")
                 for analysis in rr.analyses:
                     lines.append(f"- {analysis}")
+                lines.append("")
+
+        # AI Answerability & Information Extraction (Phase 10.2)
+        if getattr(report, "unified_answerability", None):
+            ans = report.unified_answerability
+            lines.append("## 💡 AI ANSWERABILITY & INFORMATION EXTRACTION")
+            lines.append("*(Deterministic evaluation of observable information units, structural clarity, and topic explanations)*\n")
+            lines.append(f"- **Total Information Units Extracted:** {ans.total_units_detected} units across {len(ans.units_by_type)} structural types")
+            lines.append(f"- **Phase 9 Concepts Linked:** {len(ans.topic_links)} topic(s) ({ans.explained_topics_count} explained, {ans.mentioned_only_topics_count} mentioned only, {ans.unsupported_heading_topics_count} unsupported headings)")
+            lines.append("")
+
+            # Structural Clarity Assessment Table
+            cl = ans.clarity_assessment
+            lines.append("### 📐 Structural Clarity Assessment:")
+            lines.append("| Dimension | Status | Observable Notes |")
+            lines.append("|---|---|---|")
+            lines.append(f"| **Heading-to-Content Relationship** | `{cl.heading_content_relationship.value}` | {'; '.join(cl.heading_content_notes[:2]) or 'N/A'} |")
+            lines.append(f"| **Question-to-Answer Patterns** | `{cl.question_answer_patterns.value}` | {'; '.join(cl.question_answer_notes[:2]) or 'N/A'} |")
+            lines.append(f"| **Definition Structures** | `{cl.definition_patterns.value}` | {'; '.join(cl.definition_notes[:2]) or 'N/A'} |")
+            lines.append(f"| **Step & Procedural Sequences** | `{cl.step_list_structure.value}` | {'; '.join(cl.step_list_notes[:2]) or 'N/A'} |")
+            lines.append(f"| **Tabular Structured Facts** | `{cl.table_availability.value}` | {'; '.join(cl.table_notes[:2]) or 'N/A'} |")
+            lines.append("")
+
+            if cl.unsupported_concepts:
+                lines.append(f"- ⚠️ **Unsupported Headings (0 body copy):** {', '.join(cl.unsupported_concepts[:5])}")
+            if cl.buried_facts:
+                lines.append(f"- ⚠️ **Dense Walls of Text (>150 words with facts):** {len(cl.buried_facts)} paragraph(s)")
+            if cl.obscured_or_fragmented_items:
+                lines.append(f"- ⚠️ **Suppressed Units (data-nosnippet):** {len(cl.obscured_or_fragmented_items)} item(s)")
+            if cl.unsupported_concepts or cl.buried_facts or cl.obscured_or_fragmented_items:
+                lines.append("")
+
+            # Topic Explanation Matrix
+            if ans.topic_links:
+                lines.append("### 🎯 Concept Explanation vs Mention Matrix:")
+                lines.append("| Concept / Topic | Status | Section Heading | Explanation Types | Explicit Snippet |")
+                lines.append("|---|---|---|---|---|")
+                for tl in ans.topic_links[:10]:
+                    status_icon = "🟢" if tl.status.value == "EXPLAINED" else ("⚠️" if tl.status.value == "UNSUPPORTED_HEADING" else "⚪")
+                    sec_h = tl.section_heading or "—"
+                    u_types = ", ".join([ut.value for ut in tl.unit_types]) if tl.unit_types else "None"
+                    snip = (tl.explanation_snippet[:70] + "...") if tl.explanation_snippet else "—"
+                    lines.append(f"| **{tl.topic_name}** | {status_icon} `{tl.status.value}` | {sec_h} | `{u_types}` | {snip} |")
+                lines.append("")
+
+            # Observable Information Units Sample
+            if ans.units:
+                lines.append("### 📋 Observable Answerable Units Sample:")
+                lines.append("| Unit ID | Type | Section Heading | Extraction Method | Bounded Snippet |")
+                lines.append("|---|---|---|---|---|")
+                for u in ans.units[:10]:
+                    u_head = u.section_heading or "Page Level"
+                    u_snip = (u.snippet[:80] + "...") if len(u.snippet) > 80 else u.snippet
+                    lines.append(f"| `{u.unit_id}` | **{u.unit_type.value}** | {u_head} | `{u.extraction_method}` | {u_snip} |")
+                lines.append("")
+
+            if ans.facts:
+                lines.append("### 🔍 Answerability Facts:")
+                for fact in ans.facts:
+                    lines.append(f"- {fact}")
                 lines.append("")
 
         # Security & Web Best Practices
