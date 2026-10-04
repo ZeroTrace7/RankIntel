@@ -120,7 +120,7 @@ class TestCollectorStep18Integration:
         """
         # Patch heavy network engines
         with patch.object(collector.seo_engine, "execute") as mock_seo, \
-             patch.object(collector.browser_engine, "execute") as mock_browser, \
+             patch.object(collector.browser_engine, "execute_sync") as mock_browser, \
              patch.object(collector.geo_engine, "optimize") as mock_geo, \
              patch.object(collector.performance_engine, "execute") as mock_perf, \
              patch.object(collector.mcp_engine, "execute") as mock_mcp:
@@ -162,7 +162,7 @@ class TestConflictDetection:
                 answerability=ans_ev,
             )
         }
-        conflicts = ConflictDetector.detect_conflicts(engine_results)
+        conflicts = ConflictDetector().detect(engine_results)
         gap_conflicts = [c for c in conflicts if c.category == "CONTENT_ANSWERABILITY_GAP"]
         assert len(gap_conflicts) == 1
         assert "ISO Certification" in gap_conflicts[0].description
@@ -183,7 +183,7 @@ class TestConflictDetection:
                 answerability=ans_ev,
             )
         }
-        conflicts = ConflictDetector.detect_conflicts(engine_results)
+        conflicts = ConflictDetector().detect(engine_results)
         snip_conflicts = [c for c in conflicts if c.category == "SNIPPET_SUPPRESSION_CONFLICT"]
         assert len(snip_conflicts) == 1
         assert "data-nosnippet" in snip_conflicts[0].description
@@ -201,7 +201,7 @@ class TestProvenanceTagger:
                 answerability=ans_ev,
             )
         }
-        tags = ProvenanceTagger.tag_evidence(engine_results)
+        tags = ProvenanceTagger.tag(engine_results)
         ans_tags = [t for t in tags if t.engine == "answerability_engine"]
         assert len(ans_tags) >= 1
         assert any("Observable Information Units" in t.finding for t in ans_tags)
@@ -285,7 +285,7 @@ class TestMarkdownAndJsonReporting:
             ),
         )
 
-        md = MarkdownReporter.render_audit(report)
+        md = MarkdownReporter.render(report)
         assert "## 💡 AI ANSWERABILITY & INFORMATION EXTRACTION" in md
         assert "### 📐 Structural Clarity Assessment:" in md
         assert "### 🎯 Concept Explanation vs Mention Matrix:" in md
