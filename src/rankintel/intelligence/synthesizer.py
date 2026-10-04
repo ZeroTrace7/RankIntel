@@ -327,6 +327,14 @@ class IntelligenceSynthesizer:
             else None
         )
 
+        # 19. Claim Grounding & Entity Intelligence Reconciliation (Phase 10.3)
+        grounding_res = engine_results.get("claim_grounding_engine")
+        unified_claim_grounding = (
+            grounding_res.claim_grounding
+            if (grounding_res and grounding_res.claim_grounding)
+            else None
+        )
+
         # Build Prioritized Actions
         actions = self._build_prioritized_actions(
             unified_on_page,
@@ -392,6 +400,7 @@ class IntelligenceSynthesizer:
             unified_cannibalization=unified_cannibalization,
             unified_retrieval_readiness=unified_retrieval_readiness,
             unified_answerability=unified_answerability,
+            unified_claim_grounding=unified_claim_grounding,
             cloud_intelligence=cloud_intelligence,
             fixes=fixes
         )

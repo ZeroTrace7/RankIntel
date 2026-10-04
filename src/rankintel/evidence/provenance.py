@@ -421,4 +421,34 @@ class ProvenanceTagger:
                     confidence="high",
                 ))
 
+        # 20. Claim Grounding & Entity Intelligence findings (Phase 10.3)
+        cg_res = engine_results.get("claim_grounding_engine")
+        if cg_res and cg_res.claim_grounding and cg_res.status == "success":
+            cg_ev = cg_res.claim_grounding
+            tags.append(EvidenceProvenanceTag(
+                finding=f"Observable Claims Grounding: {cg_ev.total_claims_detected} claim(s) ({cg_ev.supported_claims_count} supported on-site, {cg_ev.uncorroborated_count} uncorroborated)",
+                source_file="Visible Content & Answerable Units",
+                engine="claim_grounding_engine",
+                evidence_snippet=f"Supported: {cg_ev.supported_claims_count}, Partial: {cg_ev.partially_supported_count}, Uncorroborated: {cg_ev.uncorroborated_count}, Contradicted: {cg_ev.contradicted_count}",
+                confidence="high",
+            ))
+            if cg_ev.structured_agreements:
+                agree_cnt = sum(1 for a in cg_ev.structured_agreements if a.status.value == "AGREEMENT")
+                disagree_cnt = sum(1 for a in cg_ev.structured_agreements if a.status.value == "DISAGREEMENT")
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"Structured vs Visible Alignment: {agree_cnt} agreement(s), {disagree_cnt} disagreement(s)",
+                    source_file="JSON-LD & DOM Content",
+                    engine="claim_grounding_engine",
+                    evidence_snippet=", ".join([f"{a.field_name}: {a.status.value}" for a in cg_ev.structured_agreements[:3]]),
+                    confidence="high",
+                ))
+            if cg_ev.entity_grounding:
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"Entity Surface Consistency: {len(cg_ev.entity_grounding)} candidate(s) tracked across 6 content surfaces",
+                    source_file="DOM, Headings, Meta, JSON-LD, Units",
+                    engine="claim_grounding_engine",
+                    evidence_snippet=", ".join([f"{eg.entity_name} ({eg.consistency_status.value})" for eg in cg_ev.entity_grounding[:2]]),
+                    confidence="high",
+                ))
+
         return tags

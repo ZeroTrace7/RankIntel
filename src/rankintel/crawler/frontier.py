@@ -465,6 +465,18 @@ class CrawlFrontier:
                 analyses=[f"Answerability engine encountered an error: {e}"],
             )
 
+        try:
+            from rankintel.engines.claim_grounding_engine import ClaimGroundingEngine
+            ClaimGroundingEngine.evaluate_site(result)
+        except Exception as e:
+            from rankintel.models.schema import SiteClaimGroundingIntelligence
+            result.claim_grounding_intelligence = SiteClaimGroundingIntelligence(
+                status="error",
+                completeness_disclaimer=f"Claim grounding analysis failed during crawl aggregation: {e}",
+                facts=[f"Error during crawl aggregation: {e}"],
+                analyses=[f"Claim grounding engine encountered an error: {e}"],
+            )
+
         if getattr(self.config, "enable_sitemap_analysis", False):
             try:
                 from rankintel.sitemaps.discovery import SitemapDiscovery

@@ -275,4 +275,48 @@ class ConflictDetector:
                     severity="HIGH"
                 ))
 
+        # 10. Check Claim Grounding & Structured Agreement Conflicts (Phase 10.3)
+        cg_res = engine_results.get("claim_grounding_engine")
+        if cg_res and cg_res.claim_grounding and cg_res.status == "success":
+            cg_ev = cg_res.claim_grounding
+            # Case A: Structured vs Visible Disagreement (e.g., name, phone, email, address)
+            for agree in cg_ev.structured_agreements:
+                if agree.status.value == "DISAGREEMENT":
+                    conflicts.append(ConflictFinding(
+                        category="STRUCTURED_VISIBLE_DIVERGENCE",
+                        feature=f"JSON-LD vs Visible {agree.field_name.replace('_', ' ').title()}",
+                        description=(
+                            f"JSON-LD declares '{agree.structured_value}' while visible content "
+                            f"displays '{agree.visible_value}' under {agree.context_label} context."
+                        ),
+                        engine_a_finding=f"JSON-LD Schema: '{agree.structured_value}'",
+                        engine_b_finding=f"Visible Content: '{agree.visible_value}'",
+                        interpretation=(
+                            f"Discrepancy detected between structured schema declarations and visible user-facing text. "
+                            f"Search engines and AI systems comparing structured data against rendered pages may flag "
+                            f"inconsistent identity signals for '{agree.field_name}'."
+                        ),
+                        severity="HIGH" if agree.field_name in ("organization_name", "telephone") else "MEDIUM"
+                    ))
+
+            # Case B: Explicit Contradictory Claims on Site
+            for claim in cg_ev.claims:
+                if claim.support_status.value == "CONTRADICTED_ON_SITE" and claim.contradicting_snippets:
+                    conflicts.append(ConflictFinding(
+                        category="ON_SITE_CLAIM_CONTRADICTION",
+                        feature=f"Contradicting Claims: {claim.claim_type.replace('_', ' ').title()}",
+                        description=(
+                            f"Observable statement '{claim.claim_text[:60]}...' is explicitly contradicted "
+                            f"by '{claim.contradicting_snippets[0][:60]}...' on the site."
+                        ),
+                        engine_a_finding=f"Statement: '{claim.claim_text[:80]}'",
+                        engine_b_finding=f"Contradicting Evidence: '{claim.contradicting_snippets[0][:80]}'",
+                        interpretation=(
+                            "The site presents mutually incompatible factual values for the same subject and context, "
+                            "creating ambiguous signals for both human readers and AI retrieval systems."
+                        ),
+                        severity="HIGH"
+                    ))
+                    break
+
         return conflicts

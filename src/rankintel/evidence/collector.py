@@ -22,9 +22,9 @@ from rankintel.engines.internal_link_engine import InternalLinkEngine
 from rankintel.engines.search_signal_engine import SearchSignalEngine
 from rankintel.engines.topic_intelligence_engine import TopicIntelligenceEngine
 from rankintel.engines.query_page_mapping_engine import QueryPageMappingEngine
-from rankintel.engines.search_intent_engine import SearchIntentEngine
 from rankintel.engines.retrieval_readiness_engine import RetrievalReadinessEngine
 from rankintel.engines.answerability_engine import AnswerabilityEngine
+from rankintel.engines.claim_grounding_engine import ClaimGroundingEngine
 from rankintel.analyzers.cannibalization_analyzer import CannibalizationAnalyzer
 from rankintel.models.schema import (
     EngineResult,
@@ -43,6 +43,7 @@ from rankintel.models.schema import (
     PageCannibalizationEvidence,
     RetrievalReadinessEvidence,
     AnswerabilityEvidence,
+    ClaimGroundingEvidence,
 )
 import asyncio
 import concurrent.futures
@@ -70,6 +71,7 @@ class EvidenceCollector:
         self.search_intent_engine = SearchIntentEngine()
         self.retrieval_readiness_engine = RetrievalReadinessEngine()
         self.answerability_engine = AnswerabilityEngine()
+        self.claim_grounding_engine = ClaimGroundingEngine()
 
     def _run_async(self, coro):
         """Helper to run async coroutines safely from synchronous context."""
@@ -640,6 +642,39 @@ class EvidenceCollector:
                 answerability=AnswerabilityEvidence(
                     url=url,
                     engine_source="answerability_engine",
+                    facts=[f"Evaluation failed: {e}"],
+                ),
+            )
+
+        # 19. Claim Grounding & Entity Intelligence (Phase 10.3) — Reuses already-observed evidence (zero extra HTTP requests)
+        try:
+            grounding_ev = self.claim_grounding_engine.evaluate_page(
+                url=url,
+                raw_html=browser_html,
+                rendered_html=rendered_dom if 'rendered_dom' in locals() else None,
+                on_page=on_page_data if 'on_page_data' in locals() else None,
+                content_ev=cnt_data if 'cnt_data' in locals() else None,
+                entity_ev=ent_data if 'ent_data' in locals() else None,
+                topic_ev=topic_data if 'topic_data' in locals() else None,
+                query_page_ev=qp_data if 'qp_data' in locals() else None,
+                search_signal_ev=sig_data if 'sig_data' in locals() else None,
+                schema_ev=schema_data if 'schema_data' in locals() else None,
+                retrieval_readiness_ev=rr_data if 'rr_data' in locals() else None,
+                answerability_ev=answerability_ev if 'answerability_ev' in locals() else None,
+            )
+            results["claim_grounding_engine"] = EngineResult(
+                engine_name="claim_grounding_engine",
+                status="success",
+                claim_grounding=grounding_ev,
+            )
+        except Exception as e:
+            results["claim_grounding_engine"] = EngineResult(
+                engine_name="claim_grounding_engine",
+                status="error",
+                error_message=f"Claim grounding engine failed: {e}",
+                claim_grounding=ClaimGroundingEvidence(
+                    url=url,
+                    engine_source="claim_grounding_engine",
                     facts=[f"Evaluation failed: {e}"],
                 ),
             )
