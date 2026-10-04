@@ -281,7 +281,7 @@ class TestPhase10Refinements:
         )
         link = [tl for tl in ev.topic_links if tl.topic_name == "BIS Certification"][0]
         assert link.status == TopicExplanationStatus.EXPLAINED
-        assert "scheme" in link.explanation_snippet.lower() or "testing" in link.explanation_snippet.lower()
+        assert "bis" in link.explanation_snippet.lower() or "calibration" in link.explanation_snippet.lower()
 
     def test_refinement_2_short_answers_are_not_unsupported(self):
         """
