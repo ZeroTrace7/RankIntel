@@ -94,3 +94,20 @@ Whenever the user asks RankIntel to perform an "analysis", "audit", "validation"
 - **Formula Invariance**: Phase 7 observations do not modify the existing `3_engine`, `4_engine`, or `5_engine` health-score formulas. They surface as distinct quality dimensions and evidence-gated prioritized actions.
 - **Provenance Preservation**: Phase 7 engine provenance must be strictly preserved through synthesis, conflict detection, and reporting.
 - **Maintenance Discipline**: Future agents should modify Phase 7 only when fixing a confirmed defect or extending functionality; do not redesign completed engines unnecessarily.
+
+## 11. Phase 10 — AI Discovery, Grounding, Citation & Agent Readiness Intelligence
+- **Phase 10 Complete**: M10.1–M10.6 are fully integrated and empirically validated.
+- **Unified Intelligence Flow**:
+  - `RetrievalReadinessEngine` (M10.1): Core bot matrix (12 search/AI bots), HTTP status, WAF challenge classification, snippet controls, and static vs rendered content availability.
+  - `AnswerabilityEngine` (M10.2): Observable information units across 10 structural types, structural clarity assessment, and concept explanation vs mention matrix.
+  - `ClaimGroundingEngine` (M10.3): Grounded vs ungrounded claim extraction, structured (JSON-LD) vs visible DOM agreement, and multi-surface entity consistency.
+  - `MultimodalAgentEngine` (M10.4): Multimodal information representation (informational vs decorative, text/alt fallbacks), agent interaction surfaces (forms, buttons, navigation), and cross-surface information access paths.
+  - `ExternalVisibilityEngine` (M10.5): Controlled external queries, provider adapters (Gemini Grounded, Mock), conservative citation matching, and evidence linkages.
+- **Zero Redundant HTTP**: M10.1–M10.4 strictly reuse existing crawl and browser DOM evidence.
+- **Strict Opt-In for External Calls**: External AI measurement (M10.5) executes only when `--external-ai` is explicitly enabled.
+- **Formula Invariance**: Health-score formulas (`3_engine`, `4_engine`, `5_engine`) remain strictly invariant ($\Delta = 0$). Phase 10 does not add arbitrary visibility scores or penalties.
+- **Epistemic Separation**: Strict distinction between `FACT`, `THIRD-PARTY / EXTERNAL OBSERVATION`, `ANALYSIS`, and `RECOMMENDATION`.
+- **Secret Redaction**: Provider credentials and API keys are strictly redacted (`[REDACTED]`) across all logs, reports, and serializations.
+- **Conservative Citations**: Citation matching is strictly affirmative (no false contradictions from unquoted summaries).
+- **Maintenance Discipline**: Future agents should preserve Phase 10 models and provenance contracts; do not redesign working components merely for stylistic reasons.
+

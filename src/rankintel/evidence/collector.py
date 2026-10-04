@@ -100,8 +100,17 @@ class EvidenceCollector:
         else:
             return asyncio.run(coro)
 
-    def collect(self, url: str) -> Dict[str, EngineResult]:
+    def collect(
+        self,
+        url: str,
+        enable_external_visibility: Optional[bool] = None,
+        external_providers: Optional[List[str]] = None,
+    ) -> Dict[str, EngineResult]:
         """Run all engines on the target URL and collect raw evidence."""
+        if enable_external_visibility is not None:
+            self.external_visibility_engine.enabled = enable_external_visibility
+        if external_providers is not None:
+            self.external_visibility_engine.provider_names = external_providers
         results: Dict[str, EngineResult] = {}
 
         # 1. SEO Engine (advertools — robots, sitemap, static HTML)

@@ -349,6 +349,20 @@ class TestWafChallengeEvaluation:
         assert evidence.is_blocked is False
         assert evidence.waf_provider is None
 
+    def test_embedded_form_recaptcha_not_blocked(self):
+        engine = RetrievalReadinessEngine()
+        # Page with > 200 words and embedded recaptcha script/div
+        substantial_html = f"<html><body>{'Lorem ipsum dolor sit amet ' * 40} <form><div class='g-recaptcha'>recaptcha</div></form></body></html>"
+        evidence = engine.detect_waf_and_challenges(
+            status_code=200,
+            response_headers={"content-type": "text/html; charset=utf-8"},
+            raw_html=substantial_html,
+        )
+        assert evidence.status == RetrievalReadinessStatus.ALLOWED
+        assert evidence.is_blocked is False
+        assert evidence.challenge_detected is False
+        assert any("Observable embedded form protection" in ind for ind in evidence.challenge_indicators)
+
 
 class TestCanonicalAndIndexabilityInteractions:
     """Verifies canonical mismatches and interactions with indexability."""

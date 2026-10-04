@@ -114,8 +114,14 @@ class RetrievalReadinessEngine:
         has_challenge_body = False
         if raw_html:
             html_lower = raw_html.lower()
+            words_count = len(html_lower.split())
             for kw in cls.CHALLENGE_KEYWORDS:
                 if kw in html_lower:
+                    if kw in ("recaptcha", "hcaptcha"):
+                        # If page returned 200 OK with substantial content (> 200 words), this is an embedded form verification element, not an access block
+                        if status_code == 200 and words_count > 200:
+                            indicators.append(f"Observable embedded form protection in HTML: '{kw}'")
+                            continue
                     indicators.append(f"Observable challenge signature in HTML: '{kw}'")
                     has_challenge_body = True
 
