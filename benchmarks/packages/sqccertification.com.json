@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 11.5,
+  "execution_time_sec": 11.84,
   "overall_health_score": 70,
   "technical_health_score": 90,
   "geo_readiness_score": 47,
@@ -65,7 +65,7 @@
     ],
     "schema_blocks_count": 4,
     "schema_validation_issues": [],
-    "ttfb_ms": 699.7,
+    "ttfb_ms": 784.3,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -213,7 +213,7 @@
     "notes": [
       "Extraction method: RAW_BODY_FALLBACK yielded 963 main content words (963 total body words).",
       "Content-to-body ratio: 100.0%.",
-      "Exact main-content SHA-256: c5fcf368fefdbad0..., Full HTML SHA-256: 477921b551797258...",
+      "Exact main-content SHA-256: c5fcf368fefdbad0..., Full HTML SHA-256: 5e891261581f734a...",
       "SimHash fingerprint: f10c9917d13cad70."
     ]
   },
@@ -232,9 +232,9 @@
       "Contact Email (info@sqccertification.com)"
     ],
     "entity_types_detected": [
-      "OTHER",
       "ORGANIZATION",
-      "LOCAL_BUSINESS"
+      "LOCAL_BUSINESS",
+      "OTHER"
     ],
     "relationships_count": 7,
     "structured_vs_visible_comparisons_count": 2,
@@ -378,14 +378,15 @@
     "has_nosnippet": false,
     "has_data_nosnippet": false,
     "max_snippet": null,
-    "static_words": 939,
-    "rendered_words": 0,
-    "word_count_delta": 0,
-    "rendering_impact_summary": "Static HTML observed (939 words); browser DOM was not rendered in this pass.",
+    "static_words": 917,
+    "rendered_words": 939,
+    "word_count_delta": 22,
+    "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (917 raw vs 939 rendered).",
     "notes": [
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Observable embedded form protection in HTML: 'recaptcha'",
-      "Static HTML contains 939 words."
+      "Static HTML contains 917 words.",
+      "Rendered browser DOM contains 939 words (delta: +22 words)."
     ]
   },
   "answerability": {
@@ -489,10 +490,11 @@
       "Robots.txt found: True",
       "Schema types declared: WebSite, Organization, WebPage, BreadcrumbList",
       "HTTPS enforced: True",
-      "Server latency probe: 699.7ms (local_probe)",
+      "Server latency probe: 784.3ms (local_probe)",
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Observable embedded form protection in HTML: 'recaptcha'",
-      "Static HTML contains 939 words.",
+      "Static HTML contains 917 words.",
+      "Rendered browser DOM contains 939 words (delta: +22 words).",
       "Detected 0 distinct observable information unit(s) across 0 structural types.",
       "Evaluated 136 topic(s): 0 explained with explicit units, 23 mentioned only, 107 unsupported headings.",
       "Detected 21 observable claim(s) on page https://sqccertification.com/.",
@@ -503,7 +505,7 @@
       "Observed 1 form(s) (1 labeled), 2 action button(s) (2 accessible names), 0 structured schema action(s), 0 WebMCP declaration(s)."
     ],
     "external_observations": [
-      "Local network latency probe recorded 699.7ms TTFB",
+      "Local network latency probe recorded 784.3ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -752,7 +754,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 700ms",
+      "finding": "TTFB Latency: 784ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -888,7 +890,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Structure: Title and H1 share 2 core evidenced terms: certification, sqc.",
+      "finding": "Search Signal Structure: Title and H1 share 2 core evidenced terms: sqc, certification.",
       "engine": "search_signal_engine",
       "source_file": "Structural Tag Correlation",
       "confidence": "high",

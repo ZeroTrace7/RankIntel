@@ -79,6 +79,7 @@ class OnPageEvidence(BaseModel):
     internal_links: List[str] = Field(default_factory=list)
     external_links: List[str] = Field(default_factory=list)
     engine_source: str = ""
+    raw_html: Optional[str] = None
 
 class SchemaEvidence(BaseModel):
     detected_types: List[str] = Field(default_factory=list)

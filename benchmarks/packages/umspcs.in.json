@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 13.07,
+  "execution_time_sec": 12.28,
   "overall_health_score": 76,
   "technical_health_score": 100,
   "geo_readiness_score": 53,
@@ -57,19 +57,19 @@
     "h2_count": 14,
     "h3_count": 44,
     "detected_schema_types": [
-      "PostalAddress",
+      "LocalBusiness",
       "Place",
-      "BreadcrumbList",
-      "FAQPage",
       "WebSite",
       "WebPage",
       "ImageObject",
-      "LocalBusiness",
-      "Organization"
+      "FAQPage",
+      "PostalAddress",
+      "Organization",
+      "BreadcrumbList"
     ],
     "schema_blocks_count": 9,
     "schema_validation_issues": [],
-    "ttfb_ms": 132.0,
+    "ttfb_ms": 149.3,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -235,7 +235,7 @@
     "notes": [
       "Extraction method: RAW_BODY_FALLBACK yielded 4006 main content words (4006 total body words).",
       "Content-to-body ratio: 100.0%.",
-      "Exact main-content SHA-256: 0c6df3f1b0d616e6..., Full HTML SHA-256: 20931d6a8f2fc27f...",
+      "Exact main-content SHA-256: 0c6df3f1b0d616e6..., Full HTML SHA-256: 347d8e1dad79e3c4...",
       "SimHash fingerprint: b3fd4912ab0821b3."
     ]
   },
@@ -259,10 +259,10 @@
       "Contact Email (Biscro.customercare@umspcs.in)"
     ],
     "entity_types_detected": [
+      "OTHER",
       "LOCAL_BUSINESS",
-      "ORGANIZATION",
       "PLACE",
-      "OTHER"
+      "ORGANIZATION"
     ],
     "relationships_count": 21,
     "structured_vs_visible_comparisons_count": 5,
@@ -378,7 +378,7 @@
       "informational",
       "commercial"
     ],
-    "intent_evidence_items_count": 24,
+    "intent_evidence_items_count": 20,
     "notes": [
       "Primary Intent: local",
       "159 topics extracted"
@@ -408,15 +408,16 @@
     "has_nosnippet": false,
     "has_data_nosnippet": false,
     "max_snippet": -1,
-    "static_words": 3861,
-    "rendered_words": 0,
-    "word_count_delta": 0,
-    "rendering_impact_summary": "Static HTML observed (3861 words); browser DOM was not rendered in this pass.",
+    "static_words": 3765,
+    "rendered_words": 3861,
+    "word_count_delta": 96,
+    "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (3765 raw vs 3861 rendered).",
     "notes": [
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
       "max-snippet threshold set to -1 characters (meta:robots)",
-      "Static HTML contains 3861 words."
+      "Static HTML contains 3765 words.",
+      "Rendered browser DOM contains 3861 words (delta: +96 words)."
     ]
   },
   "answerability": {
@@ -523,13 +524,14 @@
       "Internal links observed: 111",
       "External links observed: 512",
       "Robots.txt found: True",
-      "Schema types declared: PostalAddress, Place, BreadcrumbList, FAQPage, WebSite, WebPage, ImageObject, LocalBusiness, Organization",
+      "Schema types declared: LocalBusiness, Place, WebSite, WebPage, ImageObject, FAQPage, PostalAddress, Organization, BreadcrumbList",
       "HTTPS enforced: True",
-      "Server latency probe: 132.0ms (local_probe)",
+      "Server latency probe: 149.3ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
       "max-snippet threshold set to -1 characters (meta:robots)",
-      "Static HTML contains 3861 words.",
+      "Static HTML contains 3765 words.",
+      "Rendered browser DOM contains 3861 words (delta: +96 words).",
       "Detected 20 distinct observable information unit(s) across 2 structural types.",
       "Evaluated 198 topic(s): 51 explained with explicit units, 11 mentioned only, 123 unsupported headings.",
       "Structure 'FAQ': 18 unit(s) observed.",
@@ -543,7 +545,7 @@
       "Mapped 6 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 132.0ms TTFB",
+      "Local network latency probe recorded 149.3ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -842,7 +844,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 132ms",
+      "finding": "TTFB Latency: 149ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -1002,7 +1004,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Structure: Title and H1 share 2 core evidenced terms: consultant, bis.",
+      "finding": "Search Signal Structure: Title and H1 share 2 core evidenced terms: bis, consultant.",
       "engine": "search_signal_engine",
       "source_file": "Structural Tag Correlation",
       "confidence": "high",
@@ -1042,7 +1044,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'local' (24 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'local' (20 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -1050,7 +1052,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'local' based on 17 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'local' based on 11 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",

@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 5.78,
+  "execution_time_sec": 5.58,
   "overall_health_score": 48,
   "technical_health_score": 60,
   "geo_readiness_score": 35,
@@ -57,7 +57,7 @@
     "detected_schema_types": [],
     "schema_blocks_count": 0,
     "schema_validation_issues": [],
-    "ttfb_ms": 90.8,
+    "ttfb_ms": 95.7,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -223,20 +223,21 @@
   },
   "entity": {
     "status": "AVAILABLE",
-    "total_entities_detected": 6,
+    "total_entities_detected": 7,
     "entity_names": [
       "B-501, Harshit Jewels, Hirapur Road, Mohba Bazar, Raipur (C.",
       "Contact Phone (+919326048829)",
       "Contact Phone (+919326048829)",
       "Contact Phone (+919326048829)",
       "Contact Email (sunqms@gmail.com)",
-      "Contact Email (sunqms@gmail.com)"
+      "Contact Email (sunqms@gmail.com)",
+      "Sunrise Testing & Calibration Centre"
     ],
     "entity_types_detected": [
       "ORGANIZATION",
       "LOCAL_BUSINESS"
     ],
-    "relationships_count": 0,
+    "relationships_count": 1,
     "structured_vs_visible_comparisons_count": 0,
     "aligned_comparisons_count": 0,
     "divergent_comparisons_count": 0,
@@ -282,10 +283,18 @@
         "source": "VISIBLE_HTML",
         "telephone": null,
         "email": "sunqms@gmail.com"
+      },
+      {
+        "name": "Sunrise Testing & Calibration Centre",
+        "type": "ORGANIZATION",
+        "source": "VISIBLE_HTML",
+        "telephone": null,
+        "email": null
       }
     ],
     "notes": [
-      "Detected 6 entity signals (LOCAL_BUSINESS: 4, ORGANIZATION: 2)."
+      "Detected 7 entity signals (LOCAL_BUSINESS: 4, ORGANIZATION: 3).",
+      "Recorded 1 observable entity relationships."
     ]
   },
   "internal_links": {
@@ -315,15 +324,17 @@
       "Results",
       "Services",
       "Centre",
-      "Accurate",
-      "Precision"
+      "Sunrise Testing & Calibration Centre",
+      "Accurate"
     ],
     "query_page_concepts_count": 119,
-    "primary_intent": "local",
-    "secondary_intents": [],
-    "intent_evidence_items_count": 3,
+    "primary_intent": "navigational",
+    "secondary_intents": [
+      "local"
+    ],
+    "intent_evidence_items_count": 4,
     "notes": [
-      "Primary Intent: local",
+      "Primary Intent: navigational",
       "104 topics extracted"
     ]
   },
@@ -352,13 +363,14 @@
     "has_data_nosnippet": false,
     "max_snippet": null,
     "static_words": 957,
-    "rendered_words": 0,
+    "rendered_words": 957,
     "word_count_delta": 0,
-    "rendering_impact_summary": "Static HTML observed (957 words); browser DOM was not rendered in this pass.",
+    "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (957 raw vs 957 rendered).",
     "notes": [
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
-      "Static HTML contains 957 words."
+      "Static HTML contains 957 words.",
+      "Rendered browser DOM contains 957 words (delta: +0 words)."
     ]
   },
   "answerability": {
@@ -408,13 +420,13 @@
     "structured_agreements_count": 0,
     "structured_disagreements_count": 0,
     "entity_consistency_breakdown": {
-      "PARTIALLY_CONSISTENT": 3
+      "PARTIALLY_CONSISTENT": 4
     },
     "notes": [
       "Detected 17 observable claim(s) on page https://sunrisetesting.vercel.app/.",
       "On-site support status: 16 supported, 1 partially supported, 0 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 0 agreement(s), 0 explicit disagreement(s).",
-      "Evaluated 3 entity candidate(s) across 6 content surfaces."
+      "Evaluated 4 entity candidate(s) across 6 content surfaces."
     ]
   },
   "multimodal": {
@@ -474,10 +486,11 @@
       "Robots.txt found: False",
       "Schema types declared: None",
       "HTTPS enforced: True",
-      "Server latency probe: 90.8ms (local_probe)",
+      "Server latency probe: 95.7ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
       "Static HTML contains 957 words.",
+      "Rendered browser DOM contains 957 words (delta: +0 words).",
       "Detected 11 distinct observable information unit(s) across 6 structural types.",
       "Evaluated 119 topic(s): 71 explained with explicit units, 42 mentioned only, 2 unsupported headings.",
       "Structure 'DEFINITION': 2 unit(s) observed.",
@@ -486,13 +499,13 @@
       "Detected 17 observable claim(s) on page https://sunrisetesting.vercel.app/.",
       "On-site support status: 16 supported, 1 partially supported, 0 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 0 agreement(s), 0 explicit disagreement(s).",
-      "Evaluated 3 entity candidate(s) across 6 content surfaces.",
+      "Evaluated 4 entity candidate(s) across 6 content surfaces.",
       "Observed 34 visual asset(s): 3 informational, 0 with meaningful alt text, 0 with figure captions, 3 visual-only information gap(s).",
       "Observed 0 form(s) (0 labeled), 1 action button(s) (1 accessible names), 0 structured schema action(s), 0 WebMCP declaration(s).",
       "Mapped 3 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 90.8ms TTFB",
+      "Local network latency probe recorded 95.7ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -524,7 +537,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 91ms",
+      "finding": "TTFB Latency: 96ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -604,7 +617,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Detection: 6 entity signals (6 organization/business)",
+      "finding": "Entity Detection: 7 entity signals (7 organization/business)",
       "engine": "entity_engine",
       "source_file": "JSON-LD & HTML DOM",
       "confidence": "high",
@@ -676,7 +689,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'local' (3 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'navigational' (4 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -684,7 +697,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'local' based on 2 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'navigational' based on 3 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
@@ -748,7 +761,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Surface Consistency: 3 candidate(s) tracked across 6 content surfaces",
+      "finding": "Entity Surface Consistency: 4 candidate(s) tracked across 6 content surfaces",
       "engine": "claim_grounding_engine",
       "source_file": "DOM, Headings, Meta, JSON-LD, Units",
       "confidence": "high",

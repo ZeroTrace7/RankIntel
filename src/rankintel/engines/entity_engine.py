@@ -196,6 +196,13 @@ class EntityEngine:
         detected_entities.extend(visible_entities)
         relationships.extend(visible_rels)
 
+        # 4b. Deterministic Primary Brand / Organization Fallback (Phase 11.5.1 / GAP-ENT-002)
+        fallback_ent, fallback_rel = cls._extract_brand_fallback(soup, url, on_page, detected_entities)
+        if fallback_ent:
+            detected_entities.append(fallback_ent)
+        if fallback_rel:
+            relationships.append(fallback_rel)
+
         # 5. Website-to-Organization Relationship (if domain matches organization url or identity)
         if url:
             cls._link_domain_relationships(url, detected_entities, relationships)
@@ -648,6 +655,280 @@ class EntityEngine:
                 ))
 
         return entities, relationships
+
+    # -------------------------------------------------------------------------
+    # Primary Brand / Organization Fallback (Phase 11.5.1 / GAP-ENT-002)
+    # -------------------------------------------------------------------------
+    @classmethod
+    def _is_rejected_brand_candidate(cls, cand: str) -> bool:
+        """Filter out slogans, navigation menus, addresses, contact strings, and invalid phrases."""
+        if not cand or len(cand) < 3 or len(cand) > 60:
+            return True
+        words = cand.split()
+        if len(words) > 7:
+            return True
+
+        cand_lower = cand.lower().strip()
+
+        # Reject common contact patterns
+        if "@" in cand_lower or cand_lower.startswith(("tel:", "mailto:", "phone:", "http:", "https:")):
+            return True
+        if re.search(r"(\+?\d[\d\s\-\(\)]{6,}\d)", cand_lower):
+            return True
+        if any(w in cand_lower for w in ["call us", "contact us", "enquiry", "get a quote", "click here", "read more"]):
+            return True
+
+        # Reject addresses & location fragments
+        address_markers = [
+            "road", "street", "nagar", "bazar", "bazaar", "sector", "plot", "block", "floor",
+            "building", "bldg", "complex", "industrial area", "pin -", "pin code", "zip code",
+            "po box", "p.o. box", "near ", "opposite ", "dist.", "district"
+        ]
+        if any(m in cand_lower for m in address_markers):
+            return True
+        if re.search(r"\b\d{5,6}\b", cand_lower):  # 5-6 digit postal code
+            return True
+
+        # Reject common navigation menus / generic headers
+        generic_nav = [
+            "home", "about us", "about company", "our services", "services", "our products",
+            "products", "privacy policy", "terms and conditions", "terms of use", "disclaimer",
+            "head office", "delhi office", "mumbai office", "japan office", "branch office",
+            "registered office", "corporate office", "contact details", "quick links",
+            "navigation", "menu", "search", "login", "register", "cart", "checkout",
+            "overview", "faq", "faqs", "testimonials", "gallery", "portfolio"
+        ]
+        if cand_lower in generic_nav or cand_lower.rstrip(" :") in generic_nav:
+            return True
+        if any(cand_lower.startswith(o) for o in ["head office", "branch office", "registered office", "corporate office"]):
+            return True
+
+        # Reject marketing slogans & imperative clauses
+        slogan_markers = [
+            "materials fail", "evidence doesn't", "accurate results", "precision instruments",
+            "leading provider", "world class", "welcome to", "providing the best",
+            "quality you can trust", "trusted by", "committed to", "all rights reserved",
+            "excellence in", "dedicated to", "striving for", "empowering", "delivering",
+            "innovative solutions",
+        ]
+        if any(s in cand_lower for s in slogan_markers):
+            return True
+
+        # Reject pure non-letters or single generic category unigrams
+        cand_alpha = re.sub(r"[^a-z]", "", cand_lower)
+        if not cand_alpha or cand_alpha in ("services", "products", "testing", "calibration", "certification", "home", "iso", "company"):
+            return True
+
+        return False
+
+    @classmethod
+    def _extract_brand_fallback(
+        cls,
+        soup: BeautifulSoup,
+        page_url: str,
+        on_page: Optional[OnPageEvidence],
+        existing_entities: List[DetectedEntity],
+    ) -> Tuple[Optional[DetectedEntity], Optional[EntityRelationship]]:
+        """
+        Deterministic, conservative primary brand/organization fallback for schema-less websites.
+        (Phase 11.5.1 - GAP-ENT-002)
+
+        Requires at least TWO independent supporting signals (e.g. Domain match + Title match,
+        Domain match + H1 match, Title + H1 agreement) unless an exact domain-name match provides
+        sufficiently strong evidence.
+
+        Never converts arbitrary slogans, navigation menus, addresses, or contact strings into entities.
+        Returns (None, None) when evidence is ambiguous.
+        """
+        # 1. Skip if primary organization already exists from structured data or explicit meta/copyright
+        has_primary_org = any(
+            e.entity_type in (EntityType.ORGANIZATION, EntityType.LOCAL_BUSINESS)
+            and e.signal_type in (
+                EntitySignalType.STRUCTURED_DATA_DECLARATION,
+                EntitySignalType.BRAND_OR_SITE_NAME_SIGNAL,
+                EntitySignalType.COPYRIGHT_SIGNAL,
+            )
+            and not e.name.startswith(("Contact Phone", "Contact Email"))
+            for e in existing_entities
+        )
+        if has_primary_org:
+            return None, None
+
+        if not page_url:
+            return None, None
+
+        # 2. Extract domain core lexical token
+        try:
+            parsed = urlparse(page_url)
+            netloc = parsed.netloc.lower()
+            if ":" in netloc:
+                netloc = netloc.split(":")[0]
+            netloc = netloc.removeprefix("www.")
+            if not netloc:
+                return None, None
+
+            domain_name = netloc
+            for hosting in [".vercel.app", ".github.io", ".netlify.app", ".onrender.com", ".pages.dev", ".azurewebsites.net"]:
+                if domain_name.endswith(hosting):
+                    domain_name = domain_name[:-len(hosting)]
+                    break
+            else:
+                parts = domain_name.split(".")
+                if len(parts) >= 2:
+                    domain_name = parts[0]
+
+            domain_clean = re.sub(r"[^a-z0-9]", "", domain_name.lower())
+        except Exception:
+            return None, None
+
+        if not domain_clean or len(domain_clean) < 3:
+            return None, None
+
+        # 3. Gather candidate sources: Title segments, H1 headings
+        title_text = ""
+        if on_page and on_page.title:
+            title_text = on_page.title.strip()
+        if not title_text:
+            t_tag = soup.find("title")
+            title_text = t_tag.get_text().strip() if t_tag else ""
+
+        title_segments: List[str] = []
+        if title_text:
+            clean_title = re.sub(r"[\s|–—\-_:]+$", "", title_text).strip()
+            raw_segments = re.split(r"\s*[-|–—:]\s+|\s+::\s+|\s+/\s+", clean_title)
+            for seg in raw_segments:
+                seg_clean = seg.strip(" ,.-|_:")
+                if seg_clean and not cls._is_rejected_brand_candidate(seg_clean):
+                    title_segments.append(seg_clean)
+            if clean_title and clean_title not in title_segments and not cls._is_rejected_brand_candidate(clean_title):
+                title_segments.append(clean_title)
+
+        h1_candidates: List[str] = []
+        if on_page and on_page.h1_text:
+            raw_h1s = on_page.h1_text
+        else:
+            raw_h1s = [h.get_text().strip() for h in soup.find_all("h1") if h.get_text().strip()]
+
+        for h in raw_h1s:
+            h_clean = h.strip(" ,.-|_:")
+            if h_clean and not cls._is_rejected_brand_candidate(h_clean):
+                h1_candidates.append(h_clean)
+
+        candidates: List[Tuple[str, str]] = []
+        for ts in title_segments:
+            candidates.append((ts, "title"))
+        for h in h1_candidates:
+            candidates.append((h, "h1"))
+
+        if not candidates:
+            return None, None
+
+        # 4. Evaluate candidates with Multi-Signal Corroboration Rule
+        # A candidate must have at least TWO independent supporting signals unless an exact domain-name match provides strong evidence.
+        best_candidate: Optional[str] = None
+        best_score = -1
+        best_provenance = ""
+
+        seen_normalized: Set[str] = set()
+
+        for cand, primary_src in candidates:
+            cand_norm = normalize_entity_name(cand)
+            if not cand_norm or cand_norm in seen_normalized:
+                continue
+            seen_normalized.add(cand_norm)
+
+            cand_clean = re.sub(r"[^a-z0-9]", "", cand_norm.lower())
+            cand_tokens = set(cand_norm.lower().split())
+
+            exact_domain_match = (cand_clean == domain_clean)
+
+            # Signal 1: Domain match
+            has_domain_match = False
+            domain_score = 0
+            if exact_domain_match:
+                has_domain_match = True
+                domain_score = 50
+            elif domain_clean in cand_clean:
+                has_domain_match = True
+                domain_score = 40
+            elif cand_clean in domain_clean and len(cand_clean) >= 4:
+                has_domain_match = True
+                domain_score = 30
+            else:
+                matched_tokens = [tok for tok in cand_tokens if len(tok) >= 4 and tok in domain_clean]
+                if matched_tokens and len("".join(matched_tokens)) >= max(4, len(domain_clean) * 0.4):
+                    has_domain_match = True
+                    domain_score = 25
+
+            # Signal 2: Title presence / alignment
+            has_title_match = any(
+                cand_clean == re.sub(r"[^a-z0-9]", "", normalize_entity_name(ts).lower())
+                or cand_norm in normalize_entity_name(ts)
+                for ts in title_segments
+            )
+
+            # Signal 3: H1 presence / alignment
+            has_h1_match = any(
+                cand_clean == re.sub(r"[^a-z0-9]", "", normalize_entity_name(h).lower())
+                or cand_norm in normalize_entity_name(h)
+                for h in h1_candidates
+            )
+
+            # Count independent supporting signals:
+            signals_count = 0
+            signal_names: List[str] = []
+            if has_domain_match:
+                signals_count += 1
+                signal_names.append(f"domain lexical match '{domain_clean}'")
+            if has_title_match:
+                signals_count += 1
+                signal_names.append("title segment")
+            if has_h1_match:
+                signals_count += 1
+                signal_names.append("H1 heading")
+
+            # Check criteria:
+            # Must have exact_domain_match OR at least 2 independent supporting signals
+            is_valid = exact_domain_match or (signals_count >= 2)
+            if not is_valid:
+                continue
+
+            total_score = domain_score + (20 if has_title_match else 0) + (20 if has_h1_match else 0)
+            if total_score > best_score:
+                best_score = total_score
+                best_candidate = cand
+                best_provenance = " + ".join(signal_names)
+
+        if not best_candidate or best_score < 35:
+            return None, None
+
+        # 5. Deduplicate against existing entities
+        cand_norm = normalize_entity_name(best_candidate)
+        if any(normalize_entity_name(e.name) == cand_norm for e in existing_entities):
+            return None, None
+
+        detected = DetectedEntity(
+            entity_type=EntityType.ORGANIZATION,
+            name=best_candidate,
+            normalized_name=cand_norm,
+            source=EntitySource.VISIBLE_HTML,
+            signal_type=EntitySignalType.BRAND_OR_SITE_NAME_SIGNAL,
+            url=page_url,
+            raw_context=f"Deterministic brand fallback: corroborated by {best_provenance}",
+            confidence_nature=EvidenceNature.INFERRED,
+        )
+
+        relationship = EntityRelationship(
+            subject_name=best_candidate,
+            subject_type=EntityType.ORGANIZATION,
+            relation=EntityRelationshipType.ORGANIZATION_TO_WEBSITE,
+            object_name=netloc,
+            object_type="WebSite",
+            source="fallback_domain_corroboration",
+            evidence_text=f"Primary brand inferred from visible cues and domain origin {netloc}",
+        )
+
+        return detected, relationship
 
     # -------------------------------------------------------------------------
     # Domain Relationship Linking

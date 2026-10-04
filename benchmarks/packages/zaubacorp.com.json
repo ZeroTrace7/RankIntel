@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 5.33,
+  "execution_time_sec": 5.98,
   "overall_health_score": 59,
   "technical_health_score": 80,
   "geo_readiness_score": 30,
@@ -59,7 +59,7 @@
     "detected_schema_types": [],
     "schema_blocks_count": 0,
     "schema_validation_issues": [],
-    "ttfb_ms": 89.9,
+    "ttfb_ms": 92.3,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -172,7 +172,7 @@
     "notes": [
       "Extraction method: SEMANTIC_MAIN yielded 650 main content words (1005 total body words).",
       "Content-to-body ratio: 64.7%.",
-      "Exact main-content SHA-256: e67647d457796dc8..., Full HTML SHA-256: ac67f7a1cf57b081...",
+      "Exact main-content SHA-256: e67647d457796dc8..., Full HTML SHA-256: d65c15cde5281440...",
       "SimHash fingerprint: 97750d29c7b88dba."
     ]
   },
@@ -284,14 +284,15 @@
     "has_nosnippet": false,
     "has_data_nosnippet": false,
     "max_snippet": null,
-    "static_words": 979,
-    "rendered_words": 0,
-    "word_count_delta": 0,
-    "rendering_impact_summary": "Static HTML observed (979 words); browser DOM was not rendered in this pass.",
+    "static_words": 864,
+    "rendered_words": 979,
+    "word_count_delta": 115,
+    "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (864 raw vs 979 rendered).",
     "notes": [
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
-      "Static HTML contains 979 words."
+      "Static HTML contains 864 words.",
+      "Rendered browser DOM contains 979 words (delta: +115 words)."
     ]
   },
   "answerability": {
@@ -398,10 +399,11 @@
       "Robots.txt found: True",
       "Schema types declared: None",
       "HTTPS enforced: True",
-      "Server latency probe: 89.9ms (local_probe)",
+      "Server latency probe: 92.3ms (local_probe)",
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
-      "Static HTML contains 979 words.",
+      "Static HTML contains 864 words.",
+      "Rendered browser DOM contains 979 words (delta: +115 words).",
       "Detected 3 distinct observable information unit(s) across 1 structural types.",
       "Evaluated 112 topic(s): 48 explained with explicit units, 41 mentioned only, 13 unsupported headings.",
       "Structure 'LIST': 3 unit(s) observed.",
@@ -414,7 +416,7 @@
       "Mapped 5 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 89.9ms TTFB",
+      "Local network latency probe recorded 92.3ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -620,7 +622,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 90ms",
+      "finding": "TTFB Latency: 92ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",

@@ -145,7 +145,9 @@ class SeoEngine:
                 return on_page, schema_ev
 
             resp.encoding = 'utf-8' if not resp.encoding or resp.encoding.lower() == 'iso-8859-1' else resp.encoding
-            soup = BeautifulSoup(resp.text, 'html.parser')
+            static_html = resp.text
+            on_page.raw_html = static_html
+            soup = BeautifulSoup(static_html, 'html.parser')
 
             # Title
             t_tag = soup.find('title')
@@ -425,5 +427,6 @@ class SeoEngine:
             execution_time_sec=round(time.time() - t0, 2),
             on_page=on_page,
             robots=robots,
-            schema_data=schema_data
+            schema_data=schema_data,
+            raw_html=on_page.raw_html,
         )

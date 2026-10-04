@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 7.08,
+  "execution_time_sec": 6.26,
   "overall_health_score": 37,
   "technical_health_score": 25,
   "geo_readiness_score": 30,
@@ -59,7 +59,7 @@
     "detected_schema_types": [],
     "schema_blocks_count": 0,
     "schema_validation_issues": [],
-    "ttfb_ms": 141.6,
+    "ttfb_ms": 138.7,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -241,15 +241,16 @@
   },
   "entity": {
     "status": "AVAILABLE",
-    "total_entities_detected": 2,
+    "total_entities_detected": 3,
     "entity_names": [
       "Contact Email (info@qualityinternational.org)",
-      "Contact Email (info@qengineering.in)"
+      "Contact Email (info@qengineering.in)",
+      "Quality International"
     ],
     "entity_types_detected": [
       "ORGANIZATION"
     ],
-    "relationships_count": 0,
+    "relationships_count": 1,
     "structured_vs_visible_comparisons_count": 0,
     "aligned_comparisons_count": 0,
     "divergent_comparisons_count": 0,
@@ -267,10 +268,18 @@
         "source": "VISIBLE_HTML",
         "telephone": null,
         "email": "info@qengineering.in"
+      },
+      {
+        "name": "Quality International",
+        "type": "ORGANIZATION",
+        "source": "VISIBLE_HTML",
+        "telephone": null,
+        "email": null
       }
     ],
     "notes": [
-      "Detected 2 entity signals (ORGANIZATION: 2)."
+      "Detected 3 entity signals (ORGANIZATION: 3).",
+      "Recorded 1 observable entity relationships."
     ]
   },
   "internal_links": {
@@ -302,8 +311,8 @@
     "topics_detected_count": 76,
     "topics_sample": [
       "Quality",
-      "Japan",
       "Quality International",
+      "Japan",
       "Office",
       "International",
       "Delhi",
@@ -315,9 +324,10 @@
     "query_page_concepts_count": 85,
     "primary_intent": "transactional",
     "secondary_intents": [
+      "navigational",
       "local"
     ],
-    "intent_evidence_items_count": 6,
+    "intent_evidence_items_count": 7,
     "notes": [
       "Primary Intent: transactional",
       "76 topics extracted"
@@ -347,14 +357,15 @@
     "has_nosnippet": false,
     "has_data_nosnippet": false,
     "max_snippet": null,
-    "static_words": 571,
-    "rendered_words": 0,
-    "word_count_delta": 0,
-    "rendering_impact_summary": "Static HTML observed (571 words); browser DOM was not rendered in this pass.",
+    "static_words": 560,
+    "rendered_words": 571,
+    "word_count_delta": 11,
+    "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (560 raw vs 571 rendered).",
     "notes": [
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
-      "Static HTML contains 571 words."
+      "Static HTML contains 560 words.",
+      "Rendered browser DOM contains 571 words (delta: +11 words)."
     ]
   },
   "answerability": {
@@ -391,13 +402,13 @@
     "structured_agreements_count": 0,
     "structured_disagreements_count": 0,
     "entity_consistency_breakdown": {
-      "PARTIALLY_CONSISTENT": 2
+      "PARTIALLY_CONSISTENT": 3
     },
     "notes": [
       "Detected 4 observable claim(s) on page https://qualityinternational.org/.",
       "On-site support status: 4 supported, 0 partially supported, 0 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 0 agreement(s), 0 explicit disagreement(s).",
-      "Evaluated 2 entity candidate(s) across 6 content surfaces."
+      "Evaluated 3 entity candidate(s) across 6 content surfaces."
     ]
   },
   "multimodal": {
@@ -457,22 +468,23 @@
       "Robots.txt found: True",
       "Schema types declared: None",
       "HTTPS enforced: True",
-      "Server latency probe: 141.6ms (local_probe)",
+      "Server latency probe: 138.7ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
-      "Static HTML contains 571 words.",
+      "Static HTML contains 560 words.",
+      "Rendered browser DOM contains 571 words (delta: +11 words).",
       "Detected 0 distinct observable information unit(s) across 0 structural types.",
       "Evaluated 85 topic(s): 0 explained with explicit units, 43 mentioned only, 39 unsupported headings.",
       "Detected 4 observable claim(s) on page https://qualityinternational.org/.",
       "On-site support status: 4 supported, 0 partially supported, 0 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 0 agreement(s), 0 explicit disagreement(s).",
-      "Evaluated 2 entity candidate(s) across 6 content surfaces.",
+      "Evaluated 3 entity candidate(s) across 6 content surfaces.",
       "Observed 27 visual asset(s): 20 informational, 2 with meaningful alt text, 0 with figure captions, 18 visual-only information gap(s).",
       "Observed 2 form(s) (1 labeled), 1 action button(s) (1 accessible names), 0 structured schema action(s), 0 WebMCP declaration(s).",
       "Mapped 5 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 141.6ms TTFB",
+      "Local network latency probe recorded 138.7ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -694,7 +706,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 142ms",
+      "finding": "TTFB Latency: 139ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -774,7 +786,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Detection: 2 entity signals (2 organization/business)",
+      "finding": "Entity Detection: 3 entity signals (3 organization/business)",
       "engine": "entity_engine",
       "source_file": "JSON-LD & HTML DOM",
       "confidence": "high",
@@ -854,7 +866,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (6 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (7 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -918,7 +930,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Surface Consistency: 2 candidate(s) tracked across 6 content surfaces",
+      "finding": "Entity Surface Consistency: 3 candidate(s) tracked across 6 content surfaces",
       "engine": "claim_grounding_engine",
       "source_file": "DOM, Headings, Meta, JSON-LD, Units",
       "confidence": "high",

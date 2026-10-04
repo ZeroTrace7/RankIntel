@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 20.74,
+  "execution_time_sec": 19.14,
   "overall_health_score": 68,
   "technical_health_score": 90,
   "geo_readiness_score": 42,
@@ -57,12 +57,12 @@
     "h2_count": 9,
     "h3_count": 57,
     "detected_schema_types": [
-      "WebSite",
-      "Organization"
+      "Organization",
+      "WebSite"
     ],
     "schema_blocks_count": 2,
     "schema_validation_issues": [],
-    "ttfb_ms": 325.8,
+    "ttfb_ms": 442.7,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -242,7 +242,7 @@
     "notes": [
       "Extraction method: SEMANTIC_ARTICLE yielded 239 main content words (4334 total body words).",
       "Content-to-body ratio: 5.5%.",
-      "Exact main-content SHA-256: f4b36f8a8d212849..., Full HTML SHA-256: 21ba37e396e1cbee...",
+      "Exact main-content SHA-256: f4b36f8a8d212849..., Full HTML SHA-256: fb075a00a892f64e...",
       "SimHash fingerprint: 720f44728969af4d."
     ]
   },
@@ -262,10 +262,10 @@
       "Contact Email (info@alephindia.in)"
     ],
     "entity_types_detected": [
-      "PERSON",
-      "OTHER",
       "ORGANIZATION",
-      "LOCAL_BUSINESS"
+      "LOCAL_BUSINESS",
+      "PERSON",
+      "OTHER"
     ],
     "relationships_count": 7,
     "structured_vs_visible_comparisons_count": 3,
@@ -374,15 +374,15 @@
       "FMCS"
     ],
     "query_page_concepts_count": 258,
-    "primary_intent": "local",
+    "primary_intent": "transactional",
     "secondary_intents": [
-      "transactional",
       "navigational",
+      "local",
       "informational"
     ],
-    "intent_evidence_items_count": 49,
+    "intent_evidence_items_count": 18,
     "notes": [
-      "Primary Intent: local",
+      "Primary Intent: transactional",
       "217 topics extracted"
     ]
   },
@@ -410,14 +410,15 @@
     "has_nosnippet": false,
     "has_data_nosnippet": false,
     "max_snippet": null,
-    "static_words": 4139,
-    "rendered_words": 0,
-    "word_count_delta": 0,
-    "rendering_impact_summary": "Static HTML observed (4139 words); browser DOM was not rendered in this pass.",
+    "static_words": 2546,
+    "rendered_words": 4139,
+    "word_count_delta": 1593,
+    "rendering_impact_summary": "Rendered HTML yields 1593 additional words (4139 vs 2546 raw). Some retrieval systems may have reduced access to this content if they do not execute client-side JavaScript.",
     "notes": [
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
-      "Static HTML contains 4139 words."
+      "Static HTML contains 2546 words.",
+      "Rendered browser DOM contains 4139 words (delta: +1593 words)."
     ]
   },
   "answerability": {
@@ -485,7 +486,7 @@
     "text_represented_count": 88,
     "visual_only_observed_gaps": 174,
     "modern_format_count": 62,
-    "missing_dimensions_count": 50,
+    "missing_dimensions_count": 49,
     "notes": [
       "351 visual assets audited (89 alt-represented)"
     ]
@@ -530,12 +531,13 @@
       "Internal links observed: 81",
       "External links observed: 343",
       "Robots.txt found: True",
-      "Schema types declared: WebSite, Organization",
+      "Schema types declared: Organization, WebSite",
       "HTTPS enforced: True",
-      "Server latency probe: 325.8ms (local_probe)",
+      "Server latency probe: 442.7ms (local_probe)",
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
-      "Static HTML contains 4139 words.",
+      "Static HTML contains 2546 words.",
+      "Rendered browser DOM contains 4139 words (delta: +1593 words).",
       "Detected 14 distinct observable information unit(s) across 5 structural types.",
       "Evaluated 258 topic(s): 90 explained with explicit units, 116 mentioned only, 24 unsupported headings.",
       "Structure 'DIRECT_ANSWER': 2 unit(s) observed.",
@@ -550,7 +552,7 @@
       "Mapped 22 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 325.8ms TTFB",
+      "Local network latency probe recorded 442.7ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -777,7 +779,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 326ms",
+      "finding": "TTFB Latency: 443ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -961,7 +963,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'local' (49 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (18 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -969,7 +971,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'local' based on 65 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 13 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
@@ -988,6 +990,14 @@
       "finding": "AI Search Retrieval Access: 6 indexers allowed, 3 training scrapers allowed",
       "engine": "retrieval_readiness_engine",
       "source_file": "robots.txt & HTTP Directives",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Content Availability Delta: +1593 words in rendered DOM",
+      "engine": "retrieval_readiness_engine",
+      "source_file": "DOM (hydration comparison)",
       "confidence": "high",
       "confirmed_by": [],
       "contradicted_by": []

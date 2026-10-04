@@ -134,13 +134,37 @@ class EvidenceCollector:
             )
 
         # 3. GEO Engine — pass raw_html from browser engine to avoid a second HTTP request
-        browser_res = results.get("browser_engine")
-        browser_html = browser_res.raw_html if browser_res else None
-        # Fallback to static HTML if browser engine produced none
-        if not browser_html:
-            seo_res_check = results.get("advertools_seo")
-            if seo_res_check and seo_res_check.on_page and hasattr(seo_res_check.on_page, "raw_html"):
-                browser_html = getattr(seo_res_check.on_page, "raw_html", None)
+        seo_res = results.get("advertools_seo")
+        browser_res = results.get("browser_engine") or results.get("crawl4ai_browser")
+
+        static_html = (
+            seo_res.raw_html
+            if (seo_res and seo_res.raw_html)
+            else (getattr(seo_res.on_page, "raw_html", None) if (seo_res and seo_res.on_page) else None)
+        )
+
+        browser_is_fallback = (
+            browser_res is not None
+            and (
+                browser_res.status == "fallback"
+                or (browser_res.on_page is not None and browser_res.on_page.engine_source == "httpx_static_fallback")
+            )
+        )
+        browser_rendered = (
+            browser_res is not None
+            and browser_res.status == "success"
+            and not browser_is_fallback
+            and bool(browser_res.raw_html)
+        )
+        rendered_dom = browser_res.raw_html if browser_rendered else None
+
+        if not static_html and browser_is_fallback and browser_res and browser_res.raw_html:
+            static_html = browser_res.raw_html
+
+        # Primary HTML for DOM analysis across downstream single-DOM engines:
+        # Prefer rendered DOM, then static HTML, then any available raw_html from browser_res
+        primary_html = rendered_dom or static_html or (browser_res.raw_html if browser_res else None)
+        browser_html = primary_html
 
         try:
             results["rankintel_geo"] = self.geo_engine.execute(url, raw_html=browser_html)
@@ -531,7 +555,7 @@ class EvidenceCollector:
 
         # 15. Search Intent Engine (Phase 9.4 - Layer A) — Reuses already-observed evidence (zero duplicate HTTP requests)
         try:
-            browser_res = results.get("crawl4ai_browser")
+            browser_res = results.get("browser_engine") or results.get("crawl4ai_browser")
             schema_data = browser_res.schema_data if (browser_res and browser_res.schema_data) else None
 
             intent_ev = self.search_intent_engine.evaluate(
@@ -588,19 +612,14 @@ class EvidenceCollector:
             )
         # 17. AI Access & Retrieval Readiness Engine (Phase 10.1) — Reuses static HTML, browser DOM, headers, robots (zero extra HTTP requests)
         try:
-            status_code = seo_res.on_page.status_code if (seo_res and seo_res.on_page) else (200 if browser_html else 0)
-            rendered_dom = (
-                browser_res.raw_html
-                if (browser_res and browser_res.on_page and browser_res.on_page.engine_source == "crawl4ai_browser_dom")
-                else None
-            )
+            status_code = seo_res.on_page.status_code if (seo_res and seo_res.on_page) else (200 if primary_html else 0)
             bot_matrix_rep = seo_res.robots.bot_matrix if (seo_res and seo_res.robots) else None
             robots_found = seo_res.robots.found if (seo_res and seo_res.robots) else False
 
             retrieval_ev = self.retrieval_readiness_engine.evaluate_page(
                 url=url,
                 status_code=status_code,
-                raw_html=browser_html,
+                raw_html=static_html or primary_html,
                 rendered_html=rendered_dom,
                 response_headers=headers if 'headers' in locals() else {},
                 robots_found=robots_found,
@@ -643,8 +662,8 @@ class EvidenceCollector:
 
             answerability_ev = self.answerability_engine.evaluate_page(
                 url=url,
-                raw_html=browser_html,
-                rendered_html=rendered_dom if 'rendered_dom' in locals() else None,
+                raw_html=static_html or primary_html,
+                rendered_html=rendered_dom,
                 content_ev=cnt_data,
                 entity_ev=ent_data,
                 topic_ev=topic_data,
@@ -674,8 +693,8 @@ class EvidenceCollector:
         try:
             grounding_ev = self.claim_grounding_engine.evaluate_page(
                 url=url,
-                raw_html=browser_html,
-                rendered_html=rendered_dom if 'rendered_dom' in locals() else None,
+                raw_html=static_html or primary_html,
+                rendered_html=rendered_dom,
                 on_page=on_page_data if 'on_page_data' in locals() else None,
                 content_ev=cnt_data if 'cnt_data' in locals() else None,
                 entity_ev=ent_data if 'ent_data' in locals() else None,
@@ -712,8 +731,8 @@ class EvidenceCollector:
 
             multimodal_agent_ev = self.multimodal_agent_engine.evaluate_page(
                 url=url,
-                raw_html=browser_html,
-                rendered_html=rendered_dom if 'rendered_dom' in locals() else None,
+                raw_html=static_html or primary_html,
+                rendered_html=rendered_dom,
                 image_seo_ev=img_ev_data,
                 answerability_ev=answerability_ev if 'answerability_ev' in locals() else None,
                 claim_grounding_ev=cg_data,

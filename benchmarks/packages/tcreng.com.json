@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 7.27,
+  "execution_time_sec": 6.27,
   "overall_health_score": 79,
   "technical_health_score": 100,
   "geo_readiness_score": 63,
@@ -58,18 +58,18 @@
     "h2_count": 17,
     "h3_count": 26,
     "detected_schema_types": [
-      "BreadcrumbList",
-      "ItemList",
-      "VideoObject",
       "WebSite",
-      "FAQPage",
-      "NewsArticle",
       "WebPage",
-      "Organization"
+      "FAQPage",
+      "ItemList",
+      "NewsArticle",
+      "VideoObject",
+      "Organization",
+      "BreadcrumbList"
     ],
     "schema_blocks_count": 8,
     "schema_validation_issues": [],
-    "ttfb_ms": 82.5,
+    "ttfb_ms": 78.5,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -142,7 +142,7 @@
     "notes": [
       "Extraction method: SEMANTIC_MAIN yielded 1545 main content words (2463 total body words).",
       "Content-to-body ratio: 62.7%.",
-      "Exact main-content SHA-256: 7bd7d761d9e4300c..., Full HTML SHA-256: fdc567daf3c32223...",
+      "Exact main-content SHA-256: 7bd7d761d9e4300c..., Full HTML SHA-256: 1d4ab7bf5a966b88...",
       "SimHash fingerprint: 8d6c4932dd1c4fb5."
     ]
   },
@@ -164,9 +164,9 @@
       "Contact Email (sales@tcreng.com)"
     ],
     "entity_types_detected": [
+      "OTHER",
       "LOCAL_BUSINESS",
-      "ORGANIZATION",
-      "OTHER"
+      "ORGANIZATION"
     ],
     "relationships_count": 10,
     "structured_vs_visible_comparisons_count": 3,
@@ -275,15 +275,15 @@
       "Evidence"
     ],
     "query_page_concepts_count": 242,
-    "primary_intent": "navigational",
+    "primary_intent": "transactional",
     "secondary_intents": [
       "informational",
-      "transactional",
+      "navigational",
       "local"
     ],
-    "intent_evidence_items_count": 21,
+    "intent_evidence_items_count": 12,
     "notes": [
-      "Primary Intent: navigational",
+      "Primary Intent: transactional",
       "227 topics extracted"
     ]
   },
@@ -311,14 +311,15 @@
     "has_nosnippet": false,
     "has_data_nosnippet": false,
     "max_snippet": null,
-    "static_words": 2309,
-    "rendered_words": 0,
-    "word_count_delta": 0,
-    "rendering_impact_summary": "Static HTML observed (2309 words); browser DOM was not rendered in this pass.",
+    "static_words": 2329,
+    "rendered_words": 2309,
+    "word_count_delta": -20,
+    "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (2329 raw vs 2309 rendered).",
     "notes": [
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
-      "Static HTML contains 2309 words."
+      "Static HTML contains 2329 words.",
+      "Rendered browser DOM contains 2309 words (delta: -20 words)."
     ]
   },
   "answerability": {
@@ -338,9 +339,9 @@
     "definition_patterns": "ABSENT",
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
-    "explained_topics_count": 161,
-    "mentioned_only_topics_count": 35,
-    "unsupported_heading_topics_count": 40,
+    "explained_topics_count": 164,
+    "mentioned_only_topics_count": 34,
+    "unsupported_heading_topics_count": 38,
     "unsupported_headings_sample": [
       "Latest Insights",
       "Rebuilding a 13Cr valve seat on a WCB bo",
@@ -350,7 +351,7 @@
     ],
     "notes": [
       "Detected 36 distinct observable information unit(s) across 7 structural types.",
-      "Evaluated 242 topic(s): 161 explained with explicit units, 35 mentioned only, 40 unsupported headings.",
+      "Evaluated 242 topic(s): 164 explained with explicit units, 34 mentioned only, 38 unsupported headings.",
       "Structure 'DIRECT_ANSWER': 1 unit(s) observed.",
       "Structure 'EXAMPLE': 1 unit(s) observed.",
       "Structure 'FACTUAL_STATEMENT': 3 unit(s) observed.",
@@ -435,14 +436,15 @@
       "Internal links observed: 148",
       "External links observed: 395",
       "Robots.txt found: True",
-      "Schema types declared: BreadcrumbList, ItemList, VideoObject, WebSite, FAQPage, NewsArticle, WebPage, Organization",
+      "Schema types declared: WebSite, WebPage, FAQPage, ItemList, NewsArticle, VideoObject, Organization, BreadcrumbList",
       "HTTPS enforced: True",
-      "Server latency probe: 82.5ms (local_probe)",
+      "Server latency probe: 78.5ms (local_probe)",
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
-      "Static HTML contains 2309 words.",
+      "Static HTML contains 2329 words.",
+      "Rendered browser DOM contains 2309 words (delta: -20 words).",
       "Detected 36 distinct observable information unit(s) across 7 structural types.",
-      "Evaluated 242 topic(s): 161 explained with explicit units, 35 mentioned only, 40 unsupported headings.",
+      "Evaluated 242 topic(s): 164 explained with explicit units, 34 mentioned only, 38 unsupported headings.",
       "Structure 'DIRECT_ANSWER': 1 unit(s) observed.",
       "Structure 'EXAMPLE': 1 unit(s) observed.",
       "Structure 'FACTUAL_STATEMENT': 3 unit(s) observed.",
@@ -455,7 +457,7 @@
       "Mapped 24 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 82.5ms TTFB",
+      "Local network latency probe recorded 78.5ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -743,7 +745,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 82ms",
+      "finding": "TTFB Latency: 78ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -919,7 +921,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'navigational' (21 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (12 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -927,7 +929,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'navigational' based on 11 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 6 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
@@ -959,7 +961,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 161 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 164 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",

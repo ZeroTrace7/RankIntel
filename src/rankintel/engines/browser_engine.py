@@ -9,10 +9,14 @@ Key change from previous version:
 """
 from __future__ import annotations
 import asyncio
+import concurrent.futures
+import logging
 import time
 import json
 from typing import List, Optional
 from bs4 import BeautifulSoup
+
+logger = logging.getLogger(__name__)
 
 from rankintel.models.schema import (
     OnPageEvidence,
@@ -38,9 +42,17 @@ class BrowserEngine:
         t0 = time.time()
         if HAS_CRAWL4AI:
             try:
-                return asyncio.run(self._execute_async(url, t0))
-            except Exception:
-                pass  # fall through to httpx fallback
+                try:
+                    loop = asyncio.get_running_loop()
+                except RuntimeError:
+                    loop = None
+                if loop and loop.is_running():
+                    with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
+                        return pool.submit(asyncio.run, self._execute_async(url, t0)).result()
+                else:
+                    return asyncio.run(self._execute_async(url, t0))
+            except Exception as e:
+                logger.warning(f"crawl4ai async browser execution failed: {e}; falling back to httpx")
         return self._execute_httpx_fallback(url, t0)
 
     async def _execute_async(self, url: str, t0: float) -> EngineResult:
@@ -86,9 +98,11 @@ class BrowserEngine:
             raw_html=html,  # Stored for TrustEvaluator and GeoOptimizerAdapter
         )
 
-    def _execute_httpx_fallback(self, url: str, t0: float) -> EngineResult:
+    def _execute_httpx_fallback(self, url: str, t0: Optional[float] = None) -> EngineResult:
         """Plain HTTP fallback — no JS execution. Clearly labeled."""
         import httpx
+        if t0 is None:
+            t0 = time.time()
         try:
             headers = {
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -113,7 +127,8 @@ class BrowserEngine:
 
             return EngineResult(
                 engine_name="browser_engine",
-                status="success" if resp.status_code == 200 else "error",
+                status="fallback",
+                error_message="Browser rendering unavailable; static httpx fallback used (no JavaScript execution)",
                 execution_time_sec=duration,
                 on_page=on_page,
                 schema_data=schema_ev,

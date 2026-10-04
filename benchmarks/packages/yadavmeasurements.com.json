@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 6.94,
+  "execution_time_sec": 7.15,
   "overall_health_score": 41,
   "technical_health_score": 35,
   "geo_readiness_score": 28,
@@ -55,7 +55,7 @@
     "detected_schema_types": [],
     "schema_blocks_count": 0,
     "schema_validation_issues": [],
-    "ttfb_ms": 120.4,
+    "ttfb_ms": 103.7,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -222,22 +222,35 @@
     "notes": [
       "Extraction method: HEURISTIC_PRUNED_BODY yielded 284 main content words (1068 total body words).",
       "Content-to-body ratio: 26.6%.",
-      "Exact main-content SHA-256: 74d5a15d46f189f0..., Full HTML SHA-256: 426f66bf32cfb80a...",
+      "Exact main-content SHA-256: 74d5a15d46f189f0..., Full HTML SHA-256: ae0f40b0043427ca...",
       "SimHash fingerprint: bbdd1d27400a29f2."
     ]
   },
   "entity": {
-    "status": "PARTIAL",
-    "total_entities_detected": 0,
-    "entity_names": [],
-    "entity_types_detected": [],
-    "relationships_count": 0,
+    "status": "AVAILABLE",
+    "total_entities_detected": 1,
+    "entity_names": [
+      "Yadav Measurements"
+    ],
+    "entity_types_detected": [
+      "ORGANIZATION"
+    ],
+    "relationships_count": 1,
     "structured_vs_visible_comparisons_count": 0,
     "aligned_comparisons_count": 0,
     "divergent_comparisons_count": 0,
-    "samples": [],
+    "samples": [
+      {
+        "name": "Yadav Measurements",
+        "type": "ORGANIZATION",
+        "source": "VISIBLE_HTML",
+        "telephone": null,
+        "email": null
+      }
+    ],
     "notes": [
-      "No explicit entity declarations or visible entity signals detected."
+      "Detected 1 entity signals (ORGANIZATION: 1).",
+      "Recorded 1 observable entity relationships."
     ]
   },
   "internal_links": {
@@ -270,9 +283,9 @@
     "topics_sample": [
       "Testing",
       "Leading",
+      "Yadav Measurements",
       "Measurements",
       "Yadav",
-      "Yadav Measurements",
       "Calibration",
       "Company",
       "India’s",
@@ -281,8 +294,10 @@
     ],
     "query_page_concepts_count": 45,
     "primary_intent": "transactional",
-    "secondary_intents": [],
-    "intent_evidence_items_count": 4,
+    "secondary_intents": [
+      "navigational"
+    ],
+    "intent_evidence_items_count": 5,
     "notes": [
       "Primary Intent: transactional",
       "40 topics extracted"
@@ -312,14 +327,15 @@
     "has_nosnippet": false,
     "has_data_nosnippet": false,
     "max_snippet": null,
-    "static_words": 1059,
-    "rendered_words": 0,
-    "word_count_delta": 0,
-    "rendering_impact_summary": "Static HTML observed (1059 words); browser DOM was not rendered in this pass.",
+    "static_words": 1055,
+    "rendered_words": 1059,
+    "word_count_delta": 4,
+    "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (1055 raw vs 1059 rendered).",
     "notes": [
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Observable embedded form protection in HTML: 'recaptcha'",
-      "Static HTML contains 1059 words."
+      "Static HTML contains 1055 words.",
+      "Rendered browser DOM contains 1059 words (delta: +4 words)."
     ]
   },
   "answerability": {
@@ -334,7 +350,7 @@
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
     "explained_topics_count": 1,
-    "mentioned_only_topics_count": 36,
+    "mentioned_only_topics_count": 33,
     "unsupported_heading_topics_count": 4,
     "unsupported_headings_sample": [
       "Power",
@@ -345,7 +361,7 @@
     ],
     "notes": [
       "Detected 1 distinct observable information unit(s) across 1 structural types.",
-      "Evaluated 43 topic(s): 1 explained with explicit units, 36 mentioned only, 4 unsupported headings.",
+      "Evaluated 43 topic(s): 1 explained with explicit units, 33 mentioned only, 4 unsupported headings.",
       "Structure 'SERVICE_DESCRIPTION': 1 unit(s) observed."
     ]
   },
@@ -358,12 +374,14 @@
     "contradicted_count": 0,
     "structured_agreements_count": 0,
     "structured_disagreements_count": 0,
-    "entity_consistency_breakdown": {},
+    "entity_consistency_breakdown": {
+      "CONSISTENT": 1
+    },
     "notes": [
       "Detected 1 observable claim(s) on page https://www.yadavmeasurements.com/.",
       "On-site support status: 0 supported, 1 partially supported, 0 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 0 agreement(s), 0 explicit disagreement(s).",
-      "Evaluated 0 entity candidate(s) across 6 content surfaces."
+      "Evaluated 1 entity candidate(s) across 6 content surfaces."
     ]
   },
   "multimodal": {
@@ -376,7 +394,7 @@
     "text_represented_count": 5,
     "visual_only_observed_gaps": 15,
     "modern_format_count": 0,
-    "missing_dimensions_count": 4,
+    "missing_dimensions_count": 5,
     "notes": [
       "28 visual assets audited (8 alt-represented)"
     ]
@@ -423,23 +441,24 @@
       "Robots.txt found: True",
       "Schema types declared: None",
       "HTTPS enforced: True",
-      "Server latency probe: 120.4ms (local_probe)",
+      "Server latency probe: 103.7ms (local_probe)",
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Observable embedded form protection in HTML: 'recaptcha'",
-      "Static HTML contains 1059 words.",
+      "Static HTML contains 1055 words.",
+      "Rendered browser DOM contains 1059 words (delta: +4 words).",
       "Detected 1 distinct observable information unit(s) across 1 structural types.",
-      "Evaluated 43 topic(s): 1 explained with explicit units, 36 mentioned only, 4 unsupported headings.",
+      "Evaluated 43 topic(s): 1 explained with explicit units, 33 mentioned only, 4 unsupported headings.",
       "Structure 'SERVICE_DESCRIPTION': 1 unit(s) observed.",
       "Detected 1 observable claim(s) on page https://www.yadavmeasurements.com/.",
       "On-site support status: 0 supported, 1 partially supported, 0 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 0 agreement(s), 0 explicit disagreement(s).",
-      "Evaluated 0 entity candidate(s) across 6 content surfaces.",
+      "Evaluated 1 entity candidate(s) across 6 content surfaces.",
       "Observed 28 visual asset(s): 27 informational, 8 with meaningful alt text, 0 with figure captions, 15 visual-only information gap(s).",
       "Observed 2 form(s) (0 labeled), 17 action button(s) (11 accessible names), 0 structured schema action(s), 0 WebMCP declaration(s).",
       "Mapped 7 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 120.4ms TTFB",
+      "Local network latency probe recorded 103.7ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -653,7 +672,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 120ms",
+      "finding": "TTFB Latency: 104ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -733,6 +752,14 @@
       "contradicted_by": []
     },
     {
+      "finding": "Entity Detection: 1 entity signals (1 organization/business)",
+      "engine": "entity_engine",
+      "source_file": "JSON-LD & HTML DOM",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
       "finding": "Internal Link Topology: 89 internal links (44 unique destinations)",
       "engine": "internal_link_engine",
       "source_file": "HTML DOM",
@@ -757,7 +784,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Structure: Multi-location co-occurrence observed for key terms: testing, measurements, yadav measurements, leading, yadav.",
+      "finding": "Search Signal Structure: Multi-location co-occurrence observed for key terms: testing, yadav measurements, measurements, leading, yadav.",
       "engine": "search_signal_engine",
       "source_file": "Structural Tag Correlation",
       "confidence": "high",
@@ -797,7 +824,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (4 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (5 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -864,6 +891,14 @@
       "finding": "Structured vs Visible Alignment: 0 agreement(s), 0 disagreement(s)",
       "engine": "claim_grounding_engine",
       "source_file": "JSON-LD & DOM Content",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Entity Surface Consistency: 1 candidate(s) tracked across 6 content surfaces",
+      "engine": "claim_grounding_engine",
+      "source_file": "DOM, Headings, Meta, JSON-LD, Units",
       "confidence": "high",
       "confirmed_by": [],
       "contradicted_by": []
