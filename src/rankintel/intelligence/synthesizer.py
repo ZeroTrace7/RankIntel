@@ -319,6 +319,14 @@ class IntelligenceSynthesizer:
             else None
         )
 
+        # 18. Answerability & Information Extraction Reconciliation (Phase 10.2)
+        ans_res = engine_results.get("answerability_engine")
+        unified_answerability = (
+            ans_res.answerability
+            if (ans_res and ans_res.answerability)
+            else None
+        )
+
         # Build Prioritized Actions
         actions = self._build_prioritized_actions(
             unified_on_page,
@@ -383,6 +391,7 @@ class IntelligenceSynthesizer:
             unified_search_intent=unified_search_intent,
             unified_cannibalization=unified_cannibalization,
             unified_retrieval_readiness=unified_retrieval_readiness,
+            unified_answerability=unified_answerability,
             cloud_intelligence=cloud_intelligence,
             fixes=fixes
         )
