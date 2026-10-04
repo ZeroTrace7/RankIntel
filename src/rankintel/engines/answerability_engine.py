@@ -60,8 +60,8 @@ QUESTION_WORDS = ("what", "why", "how", "when", "where", "who", "which", "can", 
 
 SERVICE_KEYWORDS = (
     "service", "services", "solution", "solutions", "offering", "offerings",
-    "capability", "capabilities", "testing", "inspection", "calibration",
-    "certification", "consulting", "auditing", "advisory", "training", "compliance"
+    "capability", "capabilities", "testing service", "inspection service", "calibration service",
+    "certification service", "consulting", "auditing", "advisory", "training"
 )
 
 REQUIREMENT_KEYWORDS = (
@@ -459,10 +459,18 @@ class AnswerabilityEngine:
             dom_loc = get_dom_path(table)
             passage_key = f"table_{hashlib.md5(snippet_clean.encode()).hexdigest()[:10]}"
 
+            h_prev = cls._find_preceding_heading(table)
+            h_text = h_prev.get_text(strip=True) if h_prev else None
+            h_lower = h_text.lower() if h_text else ""
+
             # Detect if table represents SPECIFICATION or COMPARISON
             headers_lower = " ".join(th_cells).lower()
-            is_comparison = any(k in headers_lower for k in COMPARISON_KEYWORDS) or "vs" in headers_lower
-            is_spec = any(k in headers_lower for k in ("parameter", "specification", "spec", "standard", "rating", "dimension", "value"))
+            is_comparison = (
+                any(k in headers_lower or k in h_lower for k in COMPARISON_KEYWORDS)
+                or "vs" in headers_lower
+                or "vs" in h_lower
+            )
+            is_spec = any(k in headers_lower or k in h_lower for k in ("parameter", "specification", "spec", "standard", "rating", "dimension", "value", "uncertainty"))
 
             primary_type = AnswerableUnitType.TABLE
             sec_types = []
@@ -472,9 +480,6 @@ class AnswerabilityEngine:
             elif is_spec:
                 primary_type = AnswerableUnitType.SPECIFICATION
                 sec_types.append(AnswerableUnitType.TABLE)
-
-            h_prev = cls._find_preceding_heading(table)
-            h_text = h_prev.get_text(strip=True) if h_prev else None
 
             cls._register_unit(
                 registry=registry,
