@@ -522,24 +522,54 @@ class ClaimGroundingEngine:
                     claim.supporting_snippets = explicit_support
                     claim.notes.append("Service claim supported by explicit operational procedures, criteria, or technical specifications.")
                 else:
-                    # If merely mentioned in another paragraph without procedures/specs
-                    has_mention = any(len(c_tokens & clean_tokens(p)) >= 2 for p in all_body_passages if p != c_text)
+                    # GAP-GROUND-001: Prevent tautological self-matching
+                    def is_independent(p_text: str, c_txt: str) -> bool:
+                        pn = re.sub(r'\s+', '', p_text.lower())
+                        cn = re.sub(r'\s+', '', c_txt.lower())
+                        return pn != cn and cn not in pn and pn not in cn
+
+                    has_mention = any(len(c_tokens & clean_tokens(p)) >= 2 and is_independent(p, c_text) for p in all_body_passages)
                     if has_mention:
                         claim.support_status = ClaimSupportStatus.PARTIALLY_SUPPORTED
-                        claim.notes.append("Service mentioned on page, but explicit operational parameters or procedural steps are absent.")
+                        claim.notes.append("Service mentioned on page independently, but explicit operational parameters or procedural steps are absent.")
                     else:
                         claim.support_status = ClaimSupportStatus.UNCORROBORATED_ON_SITE
-                        claim.notes.append("Service claim asserted without supporting technical or operational context.")
+                        claim.notes.append("Service claim asserted without independent supporting technical or operational context.")
 
             # E. Specification / Table / Factual Statement
             elif claim.claim_type in ("specification", "factual_statement", "requirement_claim"):
-                if claim.source_type == "answerable_unit" and claim.extraction_method == "m10_2_unit_reuse":
-                    # M10.2 structured units are by definition structured factual extractions on page
+                # GAP-GROUND-001: Tautological claim grounding fix.
+                # Must not ground itself just because it's a visible text unit.
+                is_grounded = False
+                support_notes = []
+                
+                # Check for schema/entity structured support
+                if entity_ev and entity_ev.detected_entities:
+                    for ent in entity_ev.detected_entities:
+                        ent_fields = [ent.name, ent.description, ent.raw_context]
+                        if any(f for f in ent_fields if f and len(c_tokens & clean_tokens(f)) >= 2):
+                            is_grounded = True
+                            support_notes.append("Corroborated by structured Entity/Schema data.")
+                            break
+                            
+                # Check for independent table or procedure corroboration
+                if not is_grounded:
+                    for t in tables_text + procedure_text:
+                        tn = re.sub(r'\s+', '', t.lower())
+                        cn = re.sub(r'\s+', '', c_text.lower())
+                        if tn != cn and cn not in tn and tn not in cn:
+                            if len(c_tokens & clean_tokens(t)) >= 3:
+                                is_grounded = True
+                                support_notes.append("Corroborated by independent table or structured procedure on page.")
+                                break
+
+                if is_grounded:
                     claim.support_status = ClaimSupportStatus.SUPPORTED_ON_SITE
                     claim.supporting_snippets = [claim.bounded_snippet]
-                    claim.notes.append("Directly grounded in explicit on-page structured DOM element.")
+                    claim.notes.append(" ".join(support_notes))
                 else:
-                    claim.support_status = ClaimSupportStatus.PARTIALLY_SUPPORTED
+                    claim.support_status = ClaimSupportStatus.UNCORROBORATED_ON_SITE
+                    claim.notes.append("Claim observed as visible text but lacks independent structured data or tabular corroboration.")
 
             # F. Contact Claims
             elif claim.claim_type == "contact_identity_claim":

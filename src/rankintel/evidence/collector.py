@@ -161,9 +161,22 @@ class EvidenceCollector:
         if not static_html and browser_is_fallback and browser_res and browser_res.raw_html:
             static_html = browser_res.raw_html
 
+        # GAP-RETRIEVAL-003: Safe static HTML fallback
+        is_browser_failed = False
+        if browser_rendered and rendered_dom and static_html:
+            explicit_failure = False
+            if browser_res and browser_res.error_message:
+                if any(x in browser_res.error_message.lower() for x in ["timeout", "failed", "error", "collapse"]):
+                    explicit_failure = True
+            
+            is_suspiciously_small = len(rendered_dom) < 1500 and len(static_html) > 3000
+            if explicit_failure or is_suspiciously_small:
+                is_browser_failed = True
+
+        usable_rendered_dom = rendered_dom if not is_browser_failed else None
+
         # Primary HTML for DOM analysis across downstream single-DOM engines:
-        # Prefer rendered DOM, then static HTML, then any available raw_html from browser_res
-        primary_html = rendered_dom or static_html or (browser_res.raw_html if browser_res else None)
+        primary_html = usable_rendered_dom or static_html or (browser_res.raw_html if browser_res else None)
         browser_html = primary_html
 
         try:
@@ -620,7 +633,7 @@ class EvidenceCollector:
                 url=url,
                 status_code=status_code,
                 raw_html=static_html or primary_html,
-                rendered_html=rendered_dom,
+                rendered_html=usable_rendered_dom,
                 response_headers=headers if 'headers' in locals() else {},
                 robots_found=robots_found,
                 bot_matrix=bot_matrix_rep,
@@ -663,7 +676,7 @@ class EvidenceCollector:
             answerability_ev = self.answerability_engine.evaluate_page(
                 url=url,
                 raw_html=static_html or primary_html,
-                rendered_html=rendered_dom,
+                rendered_html=usable_rendered_dom,
                 content_ev=cnt_data,
                 entity_ev=ent_data,
                 topic_ev=topic_data,
@@ -694,7 +707,7 @@ class EvidenceCollector:
             grounding_ev = self.claim_grounding_engine.evaluate_page(
                 url=url,
                 raw_html=static_html or primary_html,
-                rendered_html=rendered_dom,
+                rendered_html=usable_rendered_dom,
                 on_page=on_page_data if 'on_page_data' in locals() else None,
                 content_ev=cnt_data if 'cnt_data' in locals() else None,
                 entity_ev=ent_data if 'ent_data' in locals() else None,
@@ -732,7 +745,7 @@ class EvidenceCollector:
             multimodal_agent_ev = self.multimodal_agent_engine.evaluate_page(
                 url=url,
                 raw_html=static_html or primary_html,
-                rendered_html=rendered_dom,
+                rendered_html=usable_rendered_dom,
                 image_seo_ev=img_ev_data,
                 answerability_ev=answerability_ev if 'answerability_ev' in locals() else None,
                 claim_grounding_ev=cg_data,

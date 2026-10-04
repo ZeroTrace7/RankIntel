@@ -125,8 +125,16 @@ class RetrievalReadinessEngine:
                     indicators.append(f"Observable challenge signature in HTML: '{kw}'")
                     has_challenge_body = True
 
-        waf_detected = bool(indicators)
         blocked = is_http_blocked or has_challenge_body
+        
+        # GAP-RETRIEVAL-002: CDN vs WAF distinction
+        # Passive CDN/proxy headers (e.g., cf-ray, server: cloudflare) are not active WAF blocks.
+        # Only set waf_detected if there is concrete evidence of a challenge or blocking layer.
+        is_active_waf = blocked or any(
+            x in " ".join(indicators).lower() 
+            for x in ["cf-mitigated", "datadome", "perimeterx", "challenge signature"]
+        )
+        waf_detected = is_active_waf
 
         barrier_type = None
         if has_challenge_body:

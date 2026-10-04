@@ -835,6 +835,30 @@ class AnswerabilityEngine:
                     confidence="medium",
                 )
 
+            # Check 8 (GAP-ANSWER-001): Generic substantive heading + paragraph
+            # Captures feature cards, generic FAQ items without <details>, step blocks, etc.
+            if passage_key not in registry and len(first_p_text.split()) >= 10:
+                snippet_clean = bound_snippet(f"{h_text}: {first_p_text}")
+                
+                # If heading looks like a step ("Step 1", "Phase 2", "How to")
+                is_step = bool(re.search(r'^(step|phase|stage)\s*\d+|how\s+to', h_lower))
+                unit_t = AnswerableUnitType.PROCEDURE_STEPS if is_step else AnswerableUnitType.FACTUAL_STATEMENT
+                
+                cls._register_unit(
+                    registry=registry,
+                    passage_key=passage_key,
+                    unit_type=unit_t,
+                    snippet=snippet_clean,
+                    location=p_loc,
+                    structural_type="heading_paragraph_block",
+                    section_heading=h_text,
+                    heading_level=h_tag,
+                    supporting_context=f"Descriptive block: '{h_text}'",
+                    source=source_label,
+                    extraction_method="dom_heading_paragraph_parser",
+                    confidence="medium",
+                )
+
     # -------------------------------------------------------------------------
     # Unit Registration with Deduplication (Refinement 4)
     # -------------------------------------------------------------------------
