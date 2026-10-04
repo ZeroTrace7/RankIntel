@@ -453,6 +453,18 @@ class CrawlFrontier:
                 analyses=[f"Retrieval readiness analyzer encountered an error: {e}"],
             )
 
+        try:
+            from rankintel.engines.answerability_engine import AnswerabilityEngine
+            AnswerabilityEngine.evaluate_site(result)
+        except Exception as e:
+            from rankintel.models.schema import SiteAnswerabilityIntelligence
+            result.answerability_intelligence = SiteAnswerabilityIntelligence(
+                status="error",
+                completeness_disclaimer=f"Answerability analysis failed during crawl aggregation: {e}",
+                facts=[f"Error during crawl aggregation: {e}"],
+                analyses=[f"Answerability engine encountered an error: {e}"],
+            )
+
         if getattr(self.config, "enable_sitemap_analysis", False):
             try:
                 from rankintel.sitemaps.discovery import SitemapDiscovery

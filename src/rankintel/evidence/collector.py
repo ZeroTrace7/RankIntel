@@ -24,6 +24,7 @@ from rankintel.engines.topic_intelligence_engine import TopicIntelligenceEngine
 from rankintel.engines.query_page_mapping_engine import QueryPageMappingEngine
 from rankintel.engines.search_intent_engine import SearchIntentEngine
 from rankintel.engines.retrieval_readiness_engine import RetrievalReadinessEngine
+from rankintel.engines.answerability_engine import AnswerabilityEngine
 from rankintel.analyzers.cannibalization_analyzer import CannibalizationAnalyzer
 from rankintel.models.schema import (
     EngineResult,
@@ -41,6 +42,7 @@ from rankintel.models.schema import (
     PageIntentEvidence,
     PageCannibalizationEvidence,
     RetrievalReadinessEvidence,
+    AnswerabilityEvidence,
 )
 import asyncio
 import concurrent.futures
@@ -67,6 +69,7 @@ class EvidenceCollector:
         self.query_page_mapping_engine = QueryPageMappingEngine()
         self.search_intent_engine = SearchIntentEngine()
         self.retrieval_readiness_engine = RetrievalReadinessEngine()
+        self.answerability_engine = AnswerabilityEngine()
 
     def _run_async(self, coro):
         """Helper to run async coroutines safely from synchronous context."""
@@ -591,6 +594,52 @@ class EvidenceCollector:
                 retrieval_readiness=RetrievalReadinessEvidence(
                     url=url,
                     engine_source="retrieval_readiness_engine",
+                    facts=[f"Evaluation failed: {e}"],
+                ),
+            )
+
+        # 18. AI Answerability & Information Extraction Engine (Phase 10.2) — Reuses already-observed evidence (zero extra HTTP requests)
+        try:
+            cnt_res = results.get("content_engine")
+            ent_res = results.get("entity_engine")
+            topic_res = results.get("topic_intelligence_engine")
+            qp_res = results.get("query_page_mapping_engine")
+            sig_res = results.get("search_signal_engine")
+            rr_res = results.get("retrieval_readiness_engine")
+
+            cnt_data = cnt_res.content if (cnt_res and cnt_res.content) else None
+            ent_data = ent_res.entity if (ent_res and ent_res.entity) else None
+            topic_data = topic_res.topic_intelligence if (topic_res and topic_res.topic_intelligence) else None
+            qp_data = qp_res.query_page if (qp_res and qp_res.query_page) else None
+            sig_data = sig_res.search_signal if (sig_res and sig_res.search_signal) else None
+            rr_data = rr_res.retrieval_readiness if (rr_res and rr_res.retrieval_readiness) else None
+            schema_data = seo_res.schema_data if (seo_res and seo_res.schema_data) else (browser_res.schema_data if (browser_res and browser_res.schema_data) else None)
+
+            answerability_ev = self.answerability_engine.evaluate_page(
+                url=url,
+                raw_html=browser_html,
+                rendered_html=rendered_dom if 'rendered_dom' in locals() else None,
+                content_ev=cnt_data,
+                entity_ev=ent_data,
+                topic_ev=topic_data,
+                query_page_ev=qp_data,
+                search_signal_ev=sig_data,
+                schema_ev=schema_data,
+                retrieval_readiness_ev=rr_data,
+            )
+            results["answerability_engine"] = EngineResult(
+                engine_name="answerability_engine",
+                status="success",
+                answerability=answerability_ev,
+            )
+        except Exception as e:
+            results["answerability_engine"] = EngineResult(
+                engine_name="answerability_engine",
+                status="error",
+                error_message=f"Answerability engine failed: {e}",
+                answerability=AnswerabilityEvidence(
+                    url=url,
+                    engine_source="answerability_engine",
                     facts=[f"Evaluation failed: {e}"],
                 ),
             )
