@@ -1984,6 +1984,159 @@ class SiteMultimodalAgentIntelligence(BaseModel):
     facts: List[str] = Field(default_factory=list)
     analyses: List[str] = Field(default_factory=list)
 
+# ==============================================================================
+# Phase 10.5 — Controlled External AI Visibility Intelligence Models
+# ==============================================================================
+
+class ExternalVisibilityProvider(str, Enum):
+    GEMINI = "gemini"
+    PERPLEXITY = "perplexity"
+    TAVILY = "tavily"
+    OPENAI = "openai"
+    MOCK = "mock"
+    CUSTOM = "custom"
+
+class ExternalVisibilityProviderType(str, Enum):
+    AI_GROUNDED_ANSWER = "AI_GROUNDED_ANSWER"      # e.g. Gemini with Google Search Grounding, Perplexity
+    SEARCH_RETRIEVAL_API = "SEARCH_RETRIEVAL_API"  # e.g. Tavily, raw web search APIs
+    MOCK_PROVIDER = "MOCK_PROVIDER"
+
+class ExternalVisibilityStatus(str, Enum):
+    SUCCESS = "SUCCESS"
+    UNAVAILABLE = "UNAVAILABLE"
+    TIMEOUT = "TIMEOUT"
+    RATE_LIMITED = "RATE_LIMITED"
+    ERROR = "ERROR"
+    DISABLED = "DISABLED"
+
+class CitationRelationship(str, Enum):
+    TARGET_DOMAIN_CITED = "TARGET_DOMAIN_CITED"
+    TARGET_PAGE_CITED = "TARGET_PAGE_CITED"
+    RELATED_PAGE_CITED = "RELATED_PAGE_CITED"
+    NO_TARGET_CITATION = "NO_TARGET_CITATION"
+    CITATION_UNAVAILABLE = "CITATION_UNAVAILABLE"
+    PROVIDER_DID_NOT_RETURN_CITATIONS = "PROVIDER_DID_NOT_RETURN_CITATIONS"
+
+class CitationContentMatchStatus(str, Enum):
+    MATCHES_PAGE_EVIDENCE = "MATCHES_PAGE_EVIDENCE"
+    PARTIALLY_MATCHES = "PARTIALLY_MATCHES"
+    MISMATCH = "MISMATCH"                          # strictly: crawled evidence materially conflicts with cited claim
+    UNABLE_TO_DETERMINE = "UNABLE_TO_DETERMINE"
+
+class QueryInformationNeedCategory(str, Enum):
+    ENTITY_IDENTIFICATION = "entity_identification"
+    SERVICE_DISCOVERY = "service_discovery"
+    SERVICE_EXPLANATION = "service_explanation"
+    CERTIFICATION_STANDARD = "certification_standard"
+    LOCATION_CONTACT = "location_contact"
+    PROCEDURE_HOWTO = "procedure_howto"
+    REQUIREMENT_ELIGIBILITY = "requirement_eligibility"
+    COMPARISON_DECISION = "comparison_decision"
+    TOPIC_SPECIFIC_PHASE9 = "topic_specific_phase9"
+    CLAIM_SPECIFIC_M10_3 = "claim_specific_m10_3"
+
+class ControlledVisibilityQuery(BaseModel):
+    query_id: str
+    query_text: str
+    category: QueryInformationNeedCategory
+    target_domain: str
+    target_url: str
+    derived_from_entity: Optional[str] = None
+    derived_from_topic: Optional[str] = None
+    derived_from_unit_id: Optional[str] = None
+    derived_from_claim_id: Optional[str] = None
+    expected_facts: List[str] = Field(default_factory=list)
+    trial_index: int = 1
+
+class ExternalCitationObservation(BaseModel):
+    citation_url: str
+    title: Optional[str] = None
+    snippet: Optional[str] = None
+    position: int = 0
+    relationship: CitationRelationship = CitationRelationship.CITATION_UNAVAILABLE
+    is_target_domain: bool = False
+    is_target_page: bool = False
+    content_match_status: CitationContentMatchStatus = CitationContentMatchStatus.UNABLE_TO_DETERMINE
+    match_notes: List[str] = Field(default_factory=list)
+    raw_citation_data: Dict[str, Any] = Field(default_factory=dict)
+
+class ExternalMentionObservation(BaseModel):
+    target_mentioned: bool = False
+    mention_strings_found: List[str] = Field(default_factory=list)
+    mention_contexts: List[str] = Field(default_factory=list)
+    mention_positions: List[int] = Field(default_factory=list)
+    entity_names_checked: List[str] = Field(default_factory=list)
+    domain_names_checked: List[str] = Field(default_factory=list)
+
+class ExternalAnswerEvidence(BaseModel):
+    answer_text: str = ""
+    answer_char_count: int = 0
+    answer_word_count: int = 0
+    appears_to_answer_topic: bool = False
+    corresponding_claims_found: List[str] = Field(default_factory=list)
+    corresponding_units_found: List[str] = Field(default_factory=list)
+    bounded_excerpt: str = ""
+
+class ExternalAIObservation(BaseModel):
+    observation_id: str
+    provider: ExternalVisibilityProvider
+    provider_type: ExternalVisibilityProviderType = ExternalVisibilityProviderType.AI_GROUNDED_ANSWER
+    model_version: Optional[str] = None
+    query: ControlledVisibilityQuery
+    target_domain: str
+    target_url: str
+    timestamp: str  # ISO 8601
+    request_config: Dict[str, Any] = Field(default_factory=dict)
+    status: ExternalVisibilityStatus = ExternalVisibilityStatus.UNAVAILABLE
+    latency_ms: Optional[float] = None
+    answer_evidence: Optional[ExternalAnswerEvidence] = None
+    citations: List[ExternalCitationObservation] = Field(default_factory=list)
+    target_domain_cited: bool = False
+    target_page_cited: bool = False
+    target_domain_citations_count: int = 0
+    cited_target_urls: List[str] = Field(default_factory=list)
+    mention_observation: Optional[ExternalMentionObservation] = None
+    provider_specific_evidence: Dict[str, Any] = Field(default_factory=dict)
+    provenance: str = "external_visibility_engine"
+    failure_reason: Optional[str] = None
+    trial_index: int = 1
+
+class ExternalVisibilityEvidence(BaseModel):
+    url: str = ""
+    domain: str = ""
+    engine_source: str = "external_visibility_engine"
+    status: ExternalVisibilityStatus = ExternalVisibilityStatus.UNAVAILABLE
+    providers_evaluated: List[str] = Field(default_factory=list)
+    queries_executed_count: int = 0
+    successful_observations_count: int = 0
+    unavailable_observations_count: int = 0
+    failed_observations_count: int = 0
+    target_domain_mention_count: int = 0
+    target_domain_cited_count: int = 0
+    target_page_cited_count: int = 0
+    total_external_citations_returned: int = 0
+    observations: List[ExternalAIObservation] = Field(default_factory=list)
+    queries: List[ControlledVisibilityQuery] = Field(default_factory=list)
+    evidence_linkages: List[Dict[str, Any]] = Field(default_factory=list)
+    limitations_and_disclaimers: List[str] = Field(default_factory=list)
+    facts: List[str] = Field(default_factory=list)
+    analyses: List[str] = Field(default_factory=list)
+
+class SiteExternalVisibilityIntelligence(BaseModel):
+    status: str = "success"
+    total_queries_planned: int = 0
+    total_observations_completed: int = 0
+    total_observations_unavailable: int = 0
+    total_target_domain_mentions: int = 0
+    total_target_citations: int = 0
+    citation_consistency_observations: Dict[str, Any] = Field(default_factory=dict)
+    providers_tested: List[str] = Field(default_factory=list)
+    observations: List[ExternalAIObservation] = Field(default_factory=list)
+    evidence_linkages: List[Dict[str, Any]] = Field(default_factory=list)
+    limitations_and_disclaimers: List[str] = Field(default_factory=list)
+    facts: List[str] = Field(default_factory=list)
+    analyses: List[str] = Field(default_factory=list)
+
 
 class SiteCrawlResult(BaseModel):
     """Aggregated multi-page crawl intelligence."""
@@ -2033,6 +2186,7 @@ class SiteCrawlResult(BaseModel):
     answerability_intelligence: Optional[SiteAnswerabilityIntelligence] = None
     claim_grounding_intelligence: Optional[SiteClaimGroundingIntelligence] = None
     multimodal_agent_intelligence: Optional[SiteMultimodalAgentIntelligence] = None
+    external_visibility_intelligence: Optional[SiteExternalVisibilityIntelligence] = None
 
 
 class EngineResult(BaseModel):
@@ -2062,6 +2216,7 @@ class EngineResult(BaseModel):
     answerability: Optional[AnswerabilityEvidence] = None
     claim_grounding: Optional[ClaimGroundingEvidence] = None
     multimodal_agent: Optional[MultimodalAgentIntelligence] = None
+    external_visibility: Optional[ExternalVisibilityEvidence] = None
 
     raw_html: Optional[str] = None  # Post-JS rendered HTML from crawl4ai; used by TrustEvaluator and GeoEngine
 
@@ -2125,6 +2280,7 @@ class SynthesisReport(BaseModel):
     unified_answerability: Optional[AnswerabilityEvidence] = None
     unified_claim_grounding: Optional[ClaimGroundingEvidence] = None
     unified_multimodal_agent: Optional[MultimodalAgentIntelligence] = None
+    unified_external_visibility: Optional[ExternalVisibilityEvidence] = None
 
     site_crawl: Optional[SiteCrawlResult] = None
     
