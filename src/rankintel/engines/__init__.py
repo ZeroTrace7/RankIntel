@@ -21,6 +21,7 @@ from rankintel.engines.retrieval_readiness_engine import RetrievalReadinessEngin
 from rankintel.engines.answerability_engine import AnswerabilityEngine
 from rankintel.engines.claim_grounding_engine import ClaimGroundingEngine
 from rankintel.engines.multimodal_agent_engine import MultimodalAgentEngine
+from rankintel.engines.external_visibility_engine import ExternalVisibilityEngine
 
 __all__ = [
     "SeoEngine",
@@ -44,4 +45,5 @@ __all__ = [
     "AnswerabilityEngine",
     "ClaimGroundingEngine",
     "MultimodalAgentEngine",
+    "ExternalVisibilityEngine",
 ]
