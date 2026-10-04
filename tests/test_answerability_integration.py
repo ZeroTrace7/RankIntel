@@ -118,18 +118,25 @@ class TestCollectorStep18Integration:
         <p>Calibration is defined as comparing a device to an established standard.</p>
         </body></html>
         """
-        # Patch heavy network engines
-        with patch.object(collector.seo_engine, "execute") as mock_seo, \
-             patch.object(collector.browser_engine, "execute_sync") as mock_browser, \
-             patch.object(collector.geo_engine, "optimize") as mock_geo, \
-             patch.object(collector.performance_engine, "execute") as mock_perf, \
-             patch.object(collector.mcp_engine, "execute") as mock_mcp:
+        mock_browser = EngineResult(
+            engine_name="browser_engine",
+            status="success",
+            raw_html=mock_html,
+            on_page=OnPageEvidence(url="https://example.com", status_code=200),
+        )
+        mock_seo = EngineResult(
+            engine_name="advertools_seo",
+            status="success",
+            on_page=OnPageEvidence(url="https://example.com", status_code=200, title="Calibration"),
+            robots=RobotsEvidence(status_code=200, raw_content="User-agent: *\nAllow: /\n"),
+        )
 
-            mock_seo.return_value = EngineResult(engine_name="advertools_seo", status="success", on_page=OnPageEvidence(url="https://example.com", status_code=200))
-            mock_browser.return_value = EngineResult(engine_name="crawl4ai_browser", status="success", raw_html=mock_html, on_page=OnPageEvidence(url="https://example.com", status_code=200))
-            mock_geo.return_value = EngineResult(engine_name="rankintel_geo", status="success", geo_aeo=GeoAeoEvidence())
-            mock_perf.return_value = EngineResult(engine_name="performance_engine", status="success", performance=PerformanceEvidence())
-            mock_mcp.return_value = EngineResult(engine_name="mcp_cloud", status="skipped")
+        # Patch heavy network engines
+        with patch.object(collector.seo_engine, "execute", return_value=mock_seo), \
+             patch.object(collector.browser_engine, "execute_sync", return_value=mock_browser), \
+             patch.object(collector.geo_engine, "execute", return_value=EngineResult(engine_name="rankintel_geo", status="success")), \
+             patch.object(collector.performance_engine, "execute", return_value=EngineResult(engine_name="performance_engine", status="success")), \
+             patch.object(collector.mcp_engine, "execute", return_value=EngineResult(engine_name="mcp_cloud", status="skipped")):
 
             results = collector.collect("https://example.com")
 
@@ -334,7 +341,7 @@ class TestCliAndMcpIntegration:
         with patch("rankintel.cli.EvidenceCollector") as mock_col_cls, \
              patch("rankintel.cli.IntelligenceSynthesizer") as mock_syn_cls, \
              patch("rankintel.cli.JsonReporter.save_audit"), \
-             patch("rankintel.cli.MarkdownReporter.save_audit"):
+             patch("rankintel.cli.MarkdownReporter.save", return_value="audits/test.md"):
 
             mock_syn_cls.return_value.synthesize.return_value = mock_report
             result = runner.invoke(main, ["audit", "https://example.com"])
@@ -354,8 +361,7 @@ class TestCliAndMcpIntegration:
         )
 
         with patch("rankintel.mcp.server.EvidenceCollector"), \
-             patch("rankintel.mcp.server.IntelligenceSynthesizer") as mock_syn_cls, \
-             patch("rankintel.mcp.server.MarkdownReporter.save_audit"):
+             patch("rankintel.mcp.server.IntelligenceSynthesizer") as mock_syn_cls:
 
             mock_syn_cls.return_value.synthesize.return_value = mock_report
             mcp_output = rankintel_audit("https://example.com")
