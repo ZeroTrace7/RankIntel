@@ -173,6 +173,26 @@ Whenever the user asks RankIntel to perform an "analysis", "audit", "validation"
 - **Strict Epistemic Rule**: Differences represent observable website differences only; no inference of commercial superiority, ranking, authority, or traffic. Explicit states: `OBSERVED_DIFFERENCE`, `COMMON`, `UNIQUE`, `PARTIAL`, `INSUFFICIENT_EVIDENCE`, `NOT_COMPARABLE`.
 - **Formula Invariance & Zero Network Calls**: Health-score formulas strictly invariant ($\Delta = 0$). Zero network/socket requests during execution.
 - **Reporting Parity & Artifacts**: Full parity across CLI (`audit_engine.py compare-benchmark`), JSON (`benchmarks/comparisons/benchmark_comparison_phase11.json`), and Markdown (`benchmarks/comparisons/benchmark_comparison_phase11.md`), alongside focused target comparisons (`target_vs_benchmark_sunrisetesting.vercel.app.{json,md}`).
+- **Phase 11.4 Complete**: Capability-gap discovery and engine evolution analysis layer implemented (`CapabilityGapAnalyzer`, `CapabilityGapReporter`).
+- **Self-Reflective Capability Discovery Across 11-Site Benchmark**:
+  - Forensically evaluates what RankIntel cannot reliably detect, interpret, classify, or compare across the permanent 11-site cohort.
+  - **Critical Epistemic Rule**: Strictly separates **Website Deficiencies** (what a website lacks in its own HTML/headers, e.g. missing `/llms.txt`, 0% image alt text, missing CSP) from **RankIntel Capability Gaps** (observable website evidence RankIntel cannot detect, extract, or classify reliably). Never labels a website deficiency as an engine defect.
+  - Catalogs 18 items: 15 true capability gaps, 1 reporting defect, and 2 evidence limitations across 11 standard categories:
+    1. Detection blind spots (e.g. `GAP-ENT-002` P0 Brand entity missed on schema-less sites; `GAP-RETRIEVAL-001` P0 Benchmark headless browser DOM bypass)
+    2. Extraction blind spots (e.g. `GAP-ENT-001` P1 Entity duplication; `GAP-ENT-003` P2 Encoding artifacts; `GAP-ANSWER-001` P1 Rigid syntax heuristics; `GAP-MM-002` P2 Image OCR)
+    3. Semantic interpretation gaps (e.g. `GAP-ENT-004` P1 Navigation menus/slogans as entities; `GAP-AGENT-001` P1 Forms vs buttons conflation)
+    4. Search-intent gaps (`GAP-INTENT-001` P1 Coarse transactional skew)
+    5. Topic/page differentiation gaps (`GAP-TOPIC-001` P1 Unigram fragmentation; `GAP-TOPIC-002` P2 Single-page cannibalization clean-pass illusion)
+    6. Entity/claim grounding gaps (`GAP-GROUND-001` P1 Tautological on-page lexical matching)
+    7. AI/GEO interpretation gaps (`GAP-RETRIEVAL-002` P2 Passive CDN headers conflated with WAF interstitials)
+    8. Multimodal/agent understanding gaps (`GAP-MM-001` P2 Default-decorative un-alt'd images)
+    9. Cross-site comparison limitations (`GAP-COMP-001` P2 Hardcoded void rule templates)
+    10. Evidence/provenance limitations (`LIM-EVID-001` P1 Single-page crawl scope; `LIM-EVID-002` P2 Disabled external AI)
+    11. Recommendation-quality limitations (`GAP-REC-001` P2 Generic template repetition lacking industrial context)
+  - Validates 5 explicit **False-Gap Exclusions** (`EXCL-WEBSITE-001` to `EXCL-WEBSITE-005`) confirming factual website deficiencies.
+- **Strict Offline Execution & Formula Invariance**: Operates 100% in-memory with zero network calls and strict health-score formula invariance ($\Delta = 0$).
+- **Reporting Parity & Artifacts**: Full parity across CLI (`audit_engine.py analyze-gaps [--format json]`), JSON (`benchmarks/capabilities/capability_gaps_phase11.json`), and Markdown (`benchmarks/capabilities/capability_gaps_phase11.md`).
+
 
 
 

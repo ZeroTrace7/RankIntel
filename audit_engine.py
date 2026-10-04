@@ -437,10 +437,86 @@ def run_compare_benchmark(
     return saved_paths["comparison_md"]
 
 
+def run_analyze_gaps(
+    comparison_file: str = "benchmarks/comparisons/benchmark_comparison_phase11.json",
+    output_dir: str = "benchmarks/capabilities",
+    output_format: str = "markdown",
+):
+    from rankintel.benchmark.gap_analyzer import CapabilityGapAnalyzer
+    from rankintel.reporters.capability_gap_reporter import CapabilityGapReporter
+
+    console.print(Panel.fit(
+        f"[bold cyan]RankIntel Phase 11.4 — Capability-Gap Discovery & Engine Evolution Analysis[/bold cyan]\n"
+        f"[dim]Deterministic analysis identifying RankIntel capability gaps vs website deficiencies (Δ=0)[/dim]",
+        border_style="cyan"
+    ))
+
+    with console.status("[bold green]Executing deterministic capability-gap analysis...[/bold green]", spinner="dots"):
+        report, json_path, md_path = CapabilityGapAnalyzer.run_analysis(
+            comparison_path=comparison_file,
+            output_dir=output_dir,
+        )
+
+    if output_format == "json":
+        console.print_json(CapabilityGapReporter.render_json(report))
+        return json_path
+
+    # Summary table of priority distribution
+    p_table = Table(title="Capability Gap Severity Distribution", show_header=True, header_style="bold magenta")
+    p_table.add_column("Severity", justify="center", style="cyan")
+    p_table.add_column("Count", justify="center", style="green")
+    p_table.add_column("Description", style="white")
+
+    p_table.add_row("P0", str(report.priority_breakdown.get("P0", 0)), "Critical architectural or detection gap causing total engine blindness")
+    p_table.add_row("P1", str(report.priority_breakdown.get("P1", 0)), "Major semantic or extraction gap causing substantial analysis distortion")
+    p_table.add_row("P2", str(report.priority_breakdown.get("P2", 0)), "Moderate heuristic, sanitization, or coverage limitation")
+    p_table.add_row("P3", str(report.priority_breakdown.get("P3", 0)), "Minor cosmetic or peripheral reporting discrepancy")
+    console.print(p_table)
+
+    # Catalog table
+    gap_table = Table(title="Discovered RankIntel Capability Gaps Catalog", show_header=True, header_style="bold yellow")
+    gap_table.add_column("Gap ID", style="cyan")
+    gap_table.add_column("Category", justify="center")
+    gap_table.add_column("Engine", style="green")
+    gap_table.add_column("Sev", justify="center")
+    gap_table.add_column("Title", style="white")
+    gap_table.add_column("Conf.", justify="center")
+
+    for g in report.gaps:
+        gap_table.add_row(
+            g.gap_id,
+            g.category.value,
+            g.affected_engine.split("/")[-1],
+            g.severity.value,
+            g.title[:45] + ("..." if len(g.title) > 45 else ""),
+            f"{int(g.confidence * 100)}%",
+        )
+    console.print(gap_table)
+
+    # Exclusions table
+    ex_table = Table(title="False-Gap Exclusions (Confirmed Website Deficiencies)", show_header=True, header_style="bold blue")
+    ex_table.add_column("Exclusion ID", style="cyan")
+    ex_table.add_column("Candidate Finding", style="white")
+    ex_table.add_column("Classification", justify="center", style="green")
+    for ex in report.false_gap_exclusions:
+        ex_table.add_row(
+            ex.exclusion_id,
+            ex.candidate_gap[:50] + ("..." if len(ex.candidate_gap) > 50 else ""),
+            ex.classification.value,
+        )
+    console.print(ex_table)
+
+    console.print(f"\n[bold green][SUCCESS] Capability gap analysis completed across {report.total_sites_analyzed} benchmark sites![/bold green]")
+    console.print(f"Capability Gaps Markdown: [underline cyan]{md_path}[/underline cyan]")
+    console.print(f"Capability Gaps JSON:     [underline cyan]{json_path}[/underline cyan]")
+    return md_path
+
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        console.print("[bold red]Usage:[/bold red] python audit_engine.py <url> [--format json] [--deep-crawl] [--external-ai] [--external-providers gemini,mock] OR python audit_engine.py compare <url1> vs <url2> [--format json] OR python audit_engine.py benchmark [--external-ai] OR python audit_engine.py review [<domain>|all] [--format json] OR python audit_engine.py compare-benchmark [--target <domain>] [--format json]")
+        console.print("[bold red]Usage:[/bold red] python audit_engine.py <url> [--format json] [--deep-crawl] [--external-ai] [--external-providers gemini,mock] OR python audit_engine.py compare <url1> vs <url2> [--format json] OR python audit_engine.py benchmark [--external-ai] OR python audit_engine.py review [<domain>|all] [--format json] OR python audit_engine.py compare-benchmark [--target <domain>] [--format json] OR python audit_engine.py analyze-gaps [--format json]")
         sys.exit(1)
+
 
     fmt = "json" if "--format" in sys.argv and "json" in sys.argv else ("json" if "--json" in sys.argv else "markdown")
     deep = "--deep-crawl" in sys.argv
@@ -466,9 +542,12 @@ if __name__ == "__main__":
 
     cleaned_args = [a for a in sys.argv[1:] if not a.startswith("--") and a not in ("json", "markdown") and (ext_prov is None or a != ext_prov) and (target_opt is None or a != target_opt)]
 
-    if cleaned_args and cleaned_args[0].lower() in ("compare-benchmark", "void-analysis"):
+    if cleaned_args and cleaned_args[0].lower() in ("analyze-gaps", "capability-gaps", "gap-analysis"):
+        run_analyze_gaps(output_format=fmt)
+    elif cleaned_args and cleaned_args[0].lower() in ("compare-benchmark", "void-analysis"):
         t_site = cleaned_args[1] if len(cleaned_args) > 1 else target_opt
         run_compare_benchmark(target=t_site, output_format=fmt)
+
     elif cleaned_args and cleaned_args[0].lower() == "compare" and len(cleaned_args) > 1 and cleaned_args[1].lower() == "benchmark":
         t_site = cleaned_args[2] if len(cleaned_args) > 2 else target_opt
         run_compare_benchmark(target=t_site, output_format=fmt)

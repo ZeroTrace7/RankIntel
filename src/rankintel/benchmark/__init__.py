@@ -58,9 +58,17 @@ from rankintel.benchmark.models import (
     TargetVsBenchmarkComparison,
     EvidenceUncertaintyProfile,
     BenchmarkComparisonReport,
+    GapSeverity,
+    GapClassification,
+    GapCategory,
+    CapabilityGapRecord,
+    FalseGapExclusionRecord,
+    CapabilityGapAnalysisReport,
 )
 from rankintel.benchmark.reviewer import WebsiteIntelligenceReviewer
 from rankintel.benchmark.comparator import CrossSiteComparator
+from rankintel.benchmark.gap_analyzer import CapabilityGapAnalyzer
+
 
 __all__ = [
     "BenchmarkDimensionStatus",
@@ -121,5 +129,13 @@ __all__ = [
     "EvidenceUncertaintyProfile",
     "BenchmarkComparisonReport",
     "CrossSiteComparator",
+    "GapSeverity",
+    "GapClassification",
+    "GapCategory",
+    "CapabilityGapRecord",
+    "FalseGapExclusionRecord",
+    "CapabilityGapAnalysisReport",
+    "CapabilityGapAnalyzer",
 ]
+
 

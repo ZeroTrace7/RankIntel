@@ -912,3 +912,85 @@ class BenchmarkComparisonReport(BaseModel):
     formula_invariance_verified: bool = True
     provenance_tags: List[Dict[str, Any]] = Field(default_factory=list)
 
+
+# ── Phase 11.4 Capability-Gap Discovery Models ───────────────────────────────
+
+
+class GapSeverity(str, Enum):
+    P0 = "P0"  # Critical architectural or detection gap causing total engine blindness
+    P1 = "P1"  # Major semantic or extraction gap causing substantial analysis error
+    P2 = "P2"  # Moderate heuristic or coverage limitation
+    P3 = "P3"  # Minor cosmetic or peripheral reporting discrepancy
+
+
+class GapClassification(str, Enum):
+    TRUE_CAPABILITY_GAP = "TRUE_CAPABILITY_GAP"
+    EVIDENCE_LIMITATION = "EVIDENCE_LIMITATION"
+    WEBSITE_DEFICIENCY = "WEBSITE_DEFICIENCY"
+    REPORTING_DEFECT = "REPORTING_DEFECT"
+
+
+class GapCategory(str, Enum):
+    DETECTION_BLIND_SPOT = "DETECTION_BLIND_SPOT"
+    EXTRACTION_BLIND_SPOT = "EXTRACTION_BLIND_SPOT"
+    SEMANTIC_INTERPRETATION = "SEMANTIC_INTERPRETATION"
+    SEARCH_INTENT = "SEARCH_INTENT"
+    TOPIC_DIFFERENTIATION = "TOPIC_DIFFERENTIATION"
+    ENTITY_CLAIM_GROUNDING = "ENTITY_CLAIM_GROUNDING"
+    AI_GEO_INTERPRETATION = "AI_GEO_INTERPRETATION"
+    MULTIMODAL_AGENT = "MULTIMODAL_AGENT"
+    CROSS_SITE_COMPARISON = "CROSS_SITE_COMPARISON"
+    EVIDENCE_PROVENANCE = "EVIDENCE_PROVENANCE"
+    RECOMMENDATION_QUALITY = "RECOMMENDATION_QUALITY"
+
+
+class CapabilityGapRecord(BaseModel):
+    """Detailed record of a discovered RankIntel capability gap or evidence limitation."""
+    gap_id: str
+    category: GapCategory
+    affected_engine: str
+    title: str
+    severity: GapSeverity
+    classification: GapClassification
+    confidence: float = 1.0
+    observed_evidence: str
+    why_current_output_insufficient: str
+    supporting_sites: List[str] = Field(default_factory=list)
+    expected_behavior: str
+    recommended_future_direction: str
+    epistemic_tier: str = "ANALYSIS"
+
+
+class FalseGapExclusionRecord(BaseModel):
+    """Candidate gap that was investigated and ruled out as a website deficiency, not an engine defect."""
+    exclusion_id: str
+    candidate_gap: str
+    classification: GapClassification = GapClassification.WEBSITE_DEFICIENCY
+    observed_evidence: str
+    why_not_engine_defect: str
+    affected_sites: List[str] = Field(default_factory=list)
+    epistemic_tier: str = "FACT"
+
+
+class CapabilityGapAnalysisReport(BaseModel):
+    """Complete, self-contained RankIntel capability-gap discovery & engine evolution report."""
+    analysis_version: str = "11.4"
+    created_at: str
+    total_sites_analyzed: int = 11
+    target_domain: str = "sunrisetesting.vercel.app"
+    total_gaps_cataloged: int = 0
+    true_capability_gaps_count: int = 0
+    evidence_limitations_count: int = 0
+    false_gap_exclusions_count: int = 0
+    priority_breakdown: Dict[str, int] = Field(default_factory=dict)
+    engine_distribution: Dict[str, int] = Field(default_factory=dict)
+    category_distribution: Dict[str, int] = Field(default_factory=dict)
+    gaps: List[CapabilityGapRecord] = Field(default_factory=list)
+    false_gap_exclusions: List[FalseGapExclusionRecord] = Field(default_factory=list)
+    executive_summary: str = ""
+    recommendations_for_m11_5: List[str] = Field(default_factory=list)
+    epistemic_separation: EpistemicSeparation = Field(default_factory=EpistemicSeparation)
+    formula_invariance_verified: bool = True
+    provenance_tags: List[Dict[str, Any]] = Field(default_factory=list)
+
+

@@ -1,0 +1,559 @@
+{
+  "analysis_version": "11.4",
+  "created_at": "2026-10-04",
+  "total_sites_analyzed": 11,
+  "target_domain": "sunrisetesting.vercel.app",
+  "total_gaps_cataloged": 18,
+  "true_capability_gaps_count": 16,
+  "evidence_limitations_count": 2,
+  "false_gap_exclusions_count": 5,
+  "priority_breakdown": {
+    "P0": 2,
+    "P1": 8,
+    "P2": 8,
+    "P3": 0
+  },
+  "engine_distribution": {
+    "entity_engine": 4,
+    "search_intent_engine": 1,
+    "topic_engine": 1,
+    "cannibalization_engine": 1,
+    "answerability_engine": 1,
+    "claim_grounding_engine": 1,
+    "collector": 2,
+    "retrieval_readiness_engine": 1,
+    "multimodal_agent_engine": 2,
+    "comparison_reporter": 1,
+    "comparator": 1,
+    "synthesis": 1,
+    "external_visibility_engine": 1
+  },
+  "category_distribution": {
+    "EXTRACTION_BLIND_SPOT": 4,
+    "DETECTION_BLIND_SPOT": 2,
+    "SEMANTIC_INTERPRETATION": 2,
+    "SEARCH_INTENT": 1,
+    "TOPIC_DIFFERENTIATION": 2,
+    "ENTITY_CLAIM_GROUNDING": 1,
+    "AI_GEO_INTERPRETATION": 1,
+    "MULTIMODAL_AGENT": 1,
+    "CROSS_SITE_COMPARISON": 1,
+    "RECOMMENDATION_QUALITY": 1,
+    "EVIDENCE_PROVENANCE": 2
+  },
+  "gaps": [
+    {
+      "gap_id": "GAP-ENT-001",
+      "category": "EXTRACTION_BLIND_SPOT",
+      "affected_engine": "src/rankintel/engines/entity_engine.py",
+      "title": "Entity Duplication Across DOM Surfaces Without Canonical Disambiguation",
+      "severity": "P1",
+      "classification": "TRUE_CAPABILITY_GAP",
+      "confidence": 0.95,
+      "observed_evidence": "On alephindia.in: 'Aleph INDIA' extracted 4 duplicate times, phone '+911234567890' 2 times. On standphillindia.in: 'Standphill India' extracted 4 times, phone '+919667674225' 3 times, email 2 times. On umspcs.in: 'UMSPCS' extracted 4 times, phone '+917011067811' 3 times. On sunrisetesting.vercel.app: phone '+919326048829' extracted 3 times, email 'sunqms@gmail.com' 2 times.",
+      "why_current_output_insufficient": "Raw entities parsed from header, main body, footer, contact widgets, and meta tags are appended directly to the entity array without canonical deduplication, surface merging, or entity ID resolution. This artificially inflates entity counts and distorts knowledge-graph entity density metrics.",
+      "supporting_sites": [
+        "alephindia.in",
+        "www.standphillindia.in",
+        "umspcs.in",
+        "sunrisetesting.vercel.app",
+        "www.ascgroup.in",
+        "www.tcreng.com"
+      ],
+      "expected_behavior": "Multi-surface entity deduplication where occurrences of the same normalized name, phone (E.164), and email are unified into a single canonical entity record preserving multi-surface provenance tags.",
+      "recommended_future_direction": "Implement a canonical Entity Deduplication & Resolution pipeline in entity_engine.py that clusters mentions by canonical key (type + normalized_value) before passing to synthesis.",
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "gap_id": "GAP-ENT-002",
+      "category": "DETECTION_BLIND_SPOT",
+      "affected_engine": "src/rankintel/engines/entity_engine.py",
+      "title": "Primary Business Organization Entity Missed on Schema-less Websites",
+      "severity": "P0",
+      "classification": "TRUE_CAPABILITY_GAP",
+      "confidence": 0.98,
+      "observed_evidence": "On yadavmeasurements.com: 0 entities detected (total_entities_detected=0), despite title stating 'India's Leading Private Testing, Calibration Company - Yadav Measurements'. On qualityinternational.org: 0 organization entities detected (only 2 email addresses). On uniquemeasurement.com: 0 organization entities detected (only 3 phone numbers). On sunrisetesting.vercel.app: 'Sunrise Testing & Calibration Centre' is absent from entity_names (only an address string and contact details were detected).",
+      "why_current_output_insufficient": "If a website lacks Schema.org JSON-LD and its copyright footer does not match rigid regex patterns, RankIntel fails completely to identify the primary business or brand name as an entity, even when prominently declared in the title tag, H1 heading, and page copy.",
+      "supporting_sites": [
+        "www.yadavmeasurements.com",
+        "qualityinternational.org",
+        "www.uniquemeasurement.com",
+        "sunrisetesting.vercel.app"
+      ],
+      "expected_behavior": "Multi-signal brand/organization fallback extraction combining title tag delimiter parsing (e.g. '[Name] | [Brand]'), H1 header heuristics, OpenGraph og:site_name, and domain lexical matching when structured JSON-LD is absent.",
+      "recommended_future_direction": "Introduce a Deterministic Brand/Organization Heuristic Fallback in entity_engine.py to guarantee extraction of the primary organization entity for all reachable websites.",
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "gap_id": "GAP-ENT-003",
+      "category": "EXTRACTION_BLIND_SPOT",
+      "affected_engine": "src/rankintel/engines/entity_engine.py",
+      "title": "Character Encoding Artifacts Corrupting Entity and Topic Tokens",
+      "severity": "P2",
+      "classification": "TRUE_CAPABILITY_GAP",
+      "confidence": 0.95,
+      "observed_evidence": "On alephindia.in: Entity 'Aleph INDIA 2009 - 2026', Topic 'INDIA'. On ascgroup.in: Entity ' 2026 ASC', Topics 'ASC Group', 'Group'. On tcreng.com: Entity '19732026 TCR Engineering Services Pvt'. On zaubacorp.com: Entity ' 2026 Zauba Corp'. On yadavmeasurements.com: Topic 'Indias'.",
+      "why_current_output_insufficient": "Windows-1252 / ISO-8859-1 byte sequences (such as copyright symbols, en-dashes, and curly quotes) in raw HTML response bodies are decoded as replacement character '\\ufffd' or mangled byte tokens, polluting downstream entity arrays, topic samples, and search intent signals.",
+      "supporting_sites": [
+        "alephindia.in",
+        "www.ascgroup.in",
+        "www.tcreng.com",
+        "www.zaubacorp.com",
+        "www.yadavmeasurements.com"
+      ],
+      "expected_behavior": "Clean text sanitization with HTML entity unescaping (html.unescape) and regex stripping of replacement characters (\\ufffd) and orphaned control bytes prior to entity and topic tokenization.",
+      "recommended_future_direction": "Add an encoding normalization and string sanitization pre-processor to AsyncDeepCrawler and engine tokenizers.",
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "gap_id": "GAP-ENT-004",
+      "category": "SEMANTIC_INTERPRETATION",
+      "affected_engine": "src/rankintel/engines/entity_engine.py",
+      "title": "Navigation Menus, Slogans, and Addresses Ingested as Entity Names",
+      "severity": "P1",
+      "classification": "TRUE_CAPABILITY_GAP",
+      "confidence": 0.92,
+      "observed_evidence": "On umspcs.in: 'Registration CDSCO Approvals ISO Certification Privacy Polic' extracted as entity name. On sqccertification.com: 'SQC Certification Provides Globally recognized ISO Certifications' extracted as entity name. On tcreng.com: 'Documents: Materials fail. Evidence doesn\\'t.' extracted as entity name. On sunrisetesting.vercel.app: 'B-501, Harshit Jewels, Hirapur Road, Mohba Bazar, Raipur (C.' extracted as the LOCAL_BUSINESS entity name itself rather than as its postalAddress property.",
+      "why_current_output_insufficient": "Entity parsing lacks phrase boundary validation and structural container awareness. Concatenated navigation links, marketing slogans, and multiline address blocks are treated as singular named entities, producing severe noise.",
+      "supporting_sites": [
+        "umspcs.in",
+        "sqccertification.com",
+        "www.tcreng.com",
+        "sunrisetesting.vercel.app"
+      ],
+      "expected_behavior": "Strict length bounds, punctuation filters, and semantic phrase filters that reject concatenated menu items and separate address components from entity names.",
+      "recommended_future_direction": "Implement entity boundary validation filters and structural context validation in entity_engine.py.",
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "gap_id": "GAP-INTENT-001",
+      "category": "SEARCH_INTENT",
+      "affected_engine": "src/rankintel/engines/search_intent_engine.py",
+      "title": "Coarse Search Intent Classification Skewed Heavily Toward Transactional",
+      "severity": "P1",
+      "classification": "TRUE_CAPABILITY_GAP",
+      "confidence": 0.9,
+      "observed_evidence": "7 out of 11 benchmark sites (ascgroup.in, qualityinternational.org, sqccertification.com, standphillindia.in, uniquemeasurement.com, yadavmeasurements.com, zaubacorp.com) are classified as dominant_intent: transactional. zaubacorp.com is a commercial company database/registry (informational/investigative lookup), yet classified as transactional. tcreng.com is classified as navigational solely due to brand term repetition.",
+      "why_current_output_insufficient": "The intent engine uses simple unweighted keyword frequency matchers. Generic commercial terms common to all business websites ('services', 'contact', 'enquiry', 'apply', 'quote') overwhelm informational and reference signals, conflating B2B service consultation with consumer e-commerce transactional intent.",
+      "supporting_sites": [
+        "www.zaubacorp.com",
+        "www.tcreng.com",
+        "www.yadavmeasurements.com",
+        "sqccertification.com",
+        "www.uniquemeasurement.com"
+      ],
+      "expected_behavior": "Hierarchical multi-class intent classification distinguishing B2B Service Lead-Generation from direct E-Commerce Cart/Checkout, Navigational Brand Search, and Informational Knowledge/Directory Lookup.",
+      "recommended_future_direction": "Refactor search_intent_engine.py to use contextual intent scoring with distinct B2B Lead-Gen and Directory Lookup intent tiers.",
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "gap_id": "GAP-TOPIC-001",
+      "category": "TOPIC_DIFFERENTIATION",
+      "affected_engine": "src/rankintel/engines/topic_engine.py",
+      "title": "Unigram Topic Fragmentation Lacking Multi-Word Technical Domain Keyphrases",
+      "severity": "P1",
+      "classification": "TRUE_CAPABILITY_GAP",
+      "confidence": 0.94,
+      "observed_evidence": "On sunrisetesting.vercel.app, topics sample consists of isolated unigrams: 'Calibration', 'Testing', 'Instruments', 'Sunrise', 'Inspection', 'Results', 'Services', 'Centre', 'Accurate', 'Precision'. On ascgroup.in: 'Advisory', 'Consulting', 'Taxation', 'ASC', 'Audit'. Across all sites, 100-227 flat unigrams are extracted without collocation or domain phrase structure.",
+      "why_current_output_insufficient": "Stopword-filtered unigram extraction produces generic tokens ('Results', 'Accurate', 'Precision', 'Services') that lack topical differentiation. Real search queries and AI retrieval match domain multi-word keyphrases (e.g. 'pressure calibration services', 'BIS FMCS certification', 'NABL accredited calibration').",
+      "supporting_sites": [
+        "sunrisetesting.vercel.app",
+        "www.ascgroup.in",
+        "www.tcreng.com",
+        "alephindia.in",
+        "sqccertification.com"
+      ],
+      "expected_behavior": "N-gram collocation and noun-phrase keyphrase extraction (e.g. Rapid Automatic Keyword Extraction or C-value) yielding high-intent 2-4 word technical domain phrases.",
+      "recommended_future_direction": "Upgrade topic_engine.py to extract multi-word technical keyphrases alongside ranked unigrams.",
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "gap_id": "GAP-TOPIC-002",
+      "category": "TOPIC_DIFFERENTIATION",
+      "affected_engine": "src/rankintel/engines/cannibalization_engine.py",
+      "title": "Single-Page Cannibalization Engine Execution Reporting False Clean Pass",
+      "severity": "P2",
+      "classification": "TRUE_CAPABILITY_GAP",
+      "confidence": 0.93,
+      "observed_evidence": "Across all 11 benchmark sites in benchmarks/packages/*.json, cannibalization_search_gaps records: potential_cannibalization_signals_count: 0, observable_gaps_count: 0, status: AVAILABLE.",
+      "why_current_output_insufficient": "Cannibalization is inherently a multi-page phenomenon requiring pairwise URL comparison across a domain. Executing the engine on a single URL and reporting status AVAILABLE with 0 signals creates a false impression of clean site-wide keyword hygiene, rather than acknowledging that cannibalization was unobservable.",
+      "supporting_sites": [
+        "sunrisetesting.vercel.app",
+        "alephindia.in",
+        "www.tcreng.com",
+        "umspcs.in"
+      ],
+      "expected_behavior": "The cannibalization engine should report status NOT_APPLICABLE or INSUFFICIENT_EVIDENCE when fewer than 2 URLs are evaluated, explicitly documenting that multi-page crawl evidence is required.",
+      "recommended_future_direction": "Add page-count guardrails in cannibalization_engine.py to emit INSUFFICIENT_EVIDENCE on single-page runs.",
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "gap_id": "GAP-ANSWER-001",
+      "category": "EXTRACTION_BLIND_SPOT",
+      "affected_engine": "src/rankintel/engines/answerability_engine.py",
+      "title": "Rigid Syntax Heuristics Missing Modern Web Card and List Answer Structures",
+      "severity": "P1",
+      "classification": "TRUE_CAPABILITY_GAP",
+      "confidence": 0.92,
+      "observed_evidence": "On sqccertification.com: 0 answer units detected (total_units_detected=0) across 963 words detailing ISO certification standards. On qualityinternational.org: 0 answer units detected across 578 words. On yadavmeasurements.com: Only 1 unit detected across 1059 words of technical testing descriptions.",
+      "why_current_output_insufficient": "The answerability engine relies on explicit question marks (?), <dl>/<dt> definition tags, or rigid regex triggers ('is defined as', 'steps to'). Modern industrial websites format services, capabilities, and procedural steps in CSS grid cards, icon feature blocks, or heading-paragraph pairs without question punctuation, resulting in false zero answerability.",
+      "supporting_sites": [
+        "sqccertification.com",
+        "qualityinternational.org",
+        "www.yadavmeasurements.com"
+      ],
+      "expected_behavior": "Structural DOM-layout recognition that identifies card grids, accordion modules, heading-paragraph semantic pairs, and process lists as observable answerability structures.",
+      "recommended_future_direction": "Expand answerability_engine.py pattern matchers to recognize visual container blocks and card grids.",
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "gap_id": "GAP-GROUND-001",
+      "category": "ENTITY_CLAIM_GROUNDING",
+      "affected_engine": "src/rankintel/engines/claim_grounding_engine.py",
+      "title": "Tautological On-Page Lexical Matching in Claim Grounding Verification",
+      "severity": "P1",
+      "classification": "TRUE_CAPABILITY_GAP",
+      "confidence": 0.91,
+      "observed_evidence": "On sunrisetesting.vercel.app: 16 out of 17 claims (94%) classified as SUPPORTED. On sqccertification.com: 21 out of 21 claims (100%) classified as SUPPORTED. On alephindia.in: 19 out of 20 claims (95%) classified as SUPPORTED.",
+      "why_current_output_insufficient": "Claims are extracted from the page text and then evaluated against that same page text via token matching. Because the source and verification target are identical, on-site grounding is almost universally 90-100%, creating a circular validation loop that verifies text self-consistency rather than factual grounding.",
+      "supporting_sites": [
+        "sunrisetesting.vercel.app",
+        "sqccertification.com",
+        "alephindia.in",
+        "www.tcreng.com",
+        "www.standphillindia.in"
+      ],
+      "expected_behavior": "Epistemic differentiation between internal text self-consistency, structured JSON-LD corroboration, and third-party/external authoritative reference corroboration.",
+      "recommended_future_direction": "Restructure claim_grounding_engine.py to report separate scores for Internal Consistency, Structured Corroboration, and External Reference Grounding.",
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "gap_id": "GAP-RETRIEVAL-001",
+      "category": "DETECTION_BLIND_SPOT",
+      "affected_engine": "src/rankintel/benchmark/collector.py",
+      "title": "Benchmark Collection Pipeline Bypassed Headless Browser JS DOM Rendering",
+      "severity": "P0",
+      "classification": "TRUE_CAPABILITY_GAP",
+      "confidence": 0.99,
+      "observed_evidence": "Across all 11 benchmark sites in benchmarks/packages/*.json: static_words: 957, rendered_words: 0, word_count_delta: 0. rendering_impact_summary: 'Static HTML observed (957 words); browser DOM was not rendered in this pass.'",
+      "why_current_output_insufficient": "Headless browser DOM rendering was uncollected or bypassed in worker subprocesses during Phase 11.1 collection. As a result, RankIntel was completely blind to client-rendered JavaScript content, SPA frameworks, dynamically injected JSON-LD schema, and post-hydration layout shifts across the permanent benchmark cohort.",
+      "supporting_sites": [
+        "sunrisetesting.vercel.app",
+        "alephindia.in",
+        "www.tcreng.com",
+        "www.ascgroup.in",
+        "umspcs.in",
+        "www.standphillindia.in",
+        "sqccertification.com",
+        "qualityinternational.org",
+        "www.uniquemeasurement.com",
+        "www.yadavmeasurements.com",
+        "www.zaubacorp.com"
+      ],
+      "expected_behavior": "Subprocess benchmark workers that successfully execute headless browser DOM rendering (via crawl4ai/Playwright) alongside static fetching, capturing true rendered_words and computing meaningful word_count_delta.",
+      "recommended_future_direction": "Harden collector.py worker process lifecycle to ensure headless browser DOM capture is reliably executed for all benchmark sites.",
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "gap_id": "GAP-RETRIEVAL-002",
+      "category": "AI_GEO_INTERPRETATION",
+      "affected_engine": "src/rankintel/engines/retrieval_readiness_engine.py",
+      "title": "Passive Cloudflare Reverse Proxy Headers Conflated with Active Access Blocking",
+      "severity": "P2",
+      "classification": "TRUE_CAPABILITY_GAP",
+      "confidence": 0.89,
+      "observed_evidence": "5 sites (alephindia.in, sqccertification.com, tcreng.com, yadavmeasurements.com, zaubacorp.com) were flagged with waf_or_challenge_detected: True or marked with WAF barriers in reports, even though all 5 returned full HTTP 200 OK responses with complete HTML content.",
+      "why_current_output_insufficient": "Presence of standard CDN response headers (cf-ray, server: cloudflare) is conflated with active bot-blocking interstitials (Cloudflare Turnstile, 403 Forbidden, 503 challenge). This causes clean sites behind CDNs to be reported as blocked or challenged for AI search agents.",
+      "supporting_sites": [
+        "www.tcreng.com",
+        "sqccertification.com",
+        "alephindia.in",
+        "www.yadavmeasurements.com",
+        "www.zaubacorp.com"
+      ],
+      "expected_behavior": "Tri-state WAF taxonomy: PASSIVE_CDN_PRESENT (200 OK with CDN headers), CHALLENGE_INTERSTITIAL_ACTIVE (200/503 with JS challenge DOM), and ACCESS_BLOCKED (403/429 status code).",
+      "recommended_future_direction": "Update retrieval_readiness_engine.py to distinguish passive CDN presence from active challenge interstitials and hard blocks.",
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "gap_id": "GAP-MM-001",
+      "category": "MULTIMODAL_AGENT",
+      "affected_engine": "src/rankintel/engines/multimodal_agent_engine.py",
+      "title": "Images Missing Alt Attributes Heuristically Defaulted to Decorative",
+      "severity": "P2",
+      "classification": "TRUE_CAPABILITY_GAP",
+      "confidence": 0.88,
+      "observed_evidence": "On sunrisetesting.vercel.app: 34 images detected, 3 marked informational, 31 marked decorative_assets_count. On umspcs.in: 211 images marked decorative. On qualityinternational.org: 7 images marked decorative.",
+      "why_current_output_insufficient": "When an image lacks an alt attribute and does not meet specific size or semantic container rules, the heuristic defaults it to 'decorative'. This masks critical accessibility and SEO failures where substantive diagrams, facility photos, or accreditation logos are unindexed because they lack alt metadata.",
+      "supporting_sites": [
+        "sunrisetesting.vercel.app",
+        "umspcs.in",
+        "qualityinternational.org"
+      ],
+      "expected_behavior": "Explicit classification: distinguish between confirmed decorative (aria-hidden='true', role='presentation', CSS background) versus un-annotated image with unknown semantic role (UNLABELED_UNKNOWN).",
+      "recommended_future_direction": "Adopt an UNLABELED_UNKNOWN state in multimodal_agent_engine.py instead of defaulting un-alt'd images to decorative.",
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "gap_id": "GAP-MM-002",
+      "category": "EXTRACTION_BLIND_SPOT",
+      "affected_engine": "src/rankintel/engines/multimodal_agent_engine.py",
+      "title": "Absence of Visual OCR for Text Embedded in Lab Certificates & Technical Charts",
+      "severity": "P2",
+      "classification": "TRUE_CAPABILITY_GAP",
+      "confidence": 0.93,
+      "observed_evidence": "Technical testing sites (sunrisetesting.vercel.app, tcreng.com, standphillindia.in) embed NABL accreditation certificates, ISO scopes of accreditation, and calibration capability charts directly as JPG/PNG raster images. RankIntel extracts 0 text, 0 entities, and 0 claims from these visual assets.",
+      "why_current_output_insufficient": "Core domain credentials, scope ranges, and regulatory compliance evidence locked in raster images are completely invisible to RankIntel, leading the engine to underestimate the site's factual authority and expertise.",
+      "supporting_sites": [
+        "sunrisetesting.vercel.app",
+        "www.standphillindia.in",
+        "www.tcreng.com"
+      ],
+      "expected_behavior": "Optional OCR or vision pipeline extracting visible text, accreditation numbers, and calibration scopes from high-resolution images.",
+      "recommended_future_direction": "Plan an offline OCR / document intelligence pipeline in Phase 12 for certificate and diagram analysis.",
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "gap_id": "GAP-AGENT-001",
+      "category": "SEMANTIC_INTERPRETATION",
+      "affected_engine": "src/rankintel/reporters/comparison_reporter.py",
+      "title": "Interactive Action Buttons and Web Forms Conflated Under 'Forms' Column",
+      "severity": "P1",
+      "classification": "REPORTING_DEFECT",
+      "confidence": 0.97,
+      "observed_evidence": "In benchmarks/comparisons/benchmark_comparison_phase11.md Table 2, column header 'Forms' displayed: alephindia.in: 87 (actual: 3 forms, 84 buttons); standphillindia.in: 37 (actual: 6 forms, 31 buttons); zaubacorp.com: 32 (actual: 1 form, 31 buttons); umspcs.in: 24 (actual: 8 forms, 16 buttons).",
+      "why_current_output_insufficient": "comparator.py populated action_surfaces_count (forms + buttons) into the matrix, but comparison_reporter.py labeled the column 'Forms'. Users and automated parsers conclude the site has 87 full HTML web forms, which is factually false.",
+      "supporting_sites": [
+        "alephindia.in",
+        "www.standphillindia.in",
+        "www.zaubacorp.com",
+        "umspcs.in"
+      ],
+      "expected_behavior": "Clear reporting separation: label the combined column 'Action Surfaces (Forms + Buttons)' or present separate columns for 'Forms' and 'Buttons'.",
+      "recommended_future_direction": "Update comparison_reporter.py table rendering to split Forms and Buttons into separate columns.",
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "gap_id": "GAP-COMP-001",
+      "category": "CROSS_SITE_COMPARISON",
+      "affected_engine": "src/rankintel/benchmark/comparator.py",
+      "title": "Static Hardcoded Void Rules Failing to Discover Open-Domain Competitor Capabilities",
+      "severity": "P2",
+      "classification": "TRUE_CAPABILITY_GAP",
+      "confidence": 0.88,
+      "observed_evidence": "The 12 observable voids in Phase 11.3 are restricted to fixed hardcoded IDs (VOID-SCHEMA-001, VOID-A11Y-001, VOID-AGENT-001, VOID-ANSWER-001, VOID-SEC-001, VOID-TOPIC-001, VOID-GEO-001, etc.). Unique competitor features (e.g. online certificate verification lookup, customer sample status portals, dynamic quotation calculators) are never identified as voids.",
+      "why_current_output_insufficient": "Void discovery is bounded by static heuristic templates. Competitor innovations outside the pre-programmed rules remain entirely unextracted.",
+      "supporting_sites": [
+        "www.tcreng.com",
+        "alephindia.in",
+        "www.zaubacorp.com",
+        "umspcs.in"
+      ],
+      "expected_behavior": "Dynamic cluster-based void discovery comparing structural feature vectors, interactive element roles, and semantic service taxonomies across competitors without fixed rule templates.",
+      "recommended_future_direction": "Develop dynamic cross-site void discovery algorithms in Phase 11.5 / Phase 12.",
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "gap_id": "GAP-REC-001",
+      "category": "RECOMMENDATION_QUALITY",
+      "affected_engine": "src/rankintel/synthesis",
+      "title": "Generic SEO Recommendation Templates Disconnected from B2B Industrial Context",
+      "severity": "P2",
+      "classification": "TRUE_CAPABILITY_GAP",
+      "confidence": 0.9,
+      "observed_evidence": "Recommendations across all benchmark sites repetitively suggest: 'Optimize Title Tag Length & CTR Hook (50-60 chars)', 'Rewrite Meta Description with Active Call-to-Action', 'Publish Standard /llms.txt AI Agent Manifest', 'Deploy JSON-LD Structured Data'.",
+      "why_current_output_insufficient": "For a B2B testing/calibration laboratory, title tag length truncation is a minor cosmetic concern compared to missing NABL accreditation numbers, absent ISO/IEC 17025 schema, or missing calibration parameter tables. The recommendations lack industry-specific impact weighting and business relevance.",
+      "supporting_sites": [
+        "sunrisetesting.vercel.app",
+        "www.yadavmeasurements.com",
+        "www.uniquemeasurement.com",
+        "qualityinternational.org"
+      ],
+      "expected_behavior": "Domain-contextual recommendation prioritization where high-value industrial trust and technical capability remediations outrank generic cosmetic character count optimizations.",
+      "recommended_future_direction": "Implement industry-specific recommendation prioritization heuristics in synthesis engine.",
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "gap_id": "LIM-EVID-001",
+      "category": "EVIDENCE_PROVENANCE",
+      "affected_engine": "src/rankintel/benchmark/collector.py",
+      "title": "Single-Landing-Page Crawl Scope Extrapolated to Whole-Site Assessment",
+      "severity": "P1",
+      "classification": "EVIDENCE_LIMITATION",
+      "confidence": 0.96,
+      "observed_evidence": "The permanent 11-site benchmark collection evaluated only the root homepage (/) for each domain. Internal link architecture depth (>1 click), sitewide orphan pages, internal PageRank flow, and deep service specifications residing on subpages (/services, /calibration) were entirely uncollected.",
+      "why_current_output_insufficient": "Assessing a multi-department industrial company (like Yadav Measurements or TCR Engineering) solely on its homepage produces an incomplete and artificially depressed representation of its true content depth and technical authority.",
+      "supporting_sites": [
+        "www.yadavmeasurements.com",
+        "www.tcreng.com",
+        "www.ascgroup.in",
+        "alephindia.in"
+      ],
+      "expected_behavior": "Multi-page crawl capability (e.g. 5-15 key pages per site) for benchmark collection, or explicit whole-site uncertainty caveats attached to all single-page audit outputs.",
+      "recommended_future_direction": "Support configurable multi-page depth sampling in collector.py for future benchmark phases.",
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "gap_id": "LIM-EVID-002",
+      "category": "EVIDENCE_PROVENANCE",
+      "affected_engine": "src/rankintel/engines/external_visibility_engine.py",
+      "title": "External AI Visibility Measurement Disabled by Design in Benchmark Pass",
+      "severity": "P2",
+      "classification": "EVIDENCE_LIMITATION",
+      "confidence": 0.99,
+      "observed_evidence": "Across all 11 benchmark sites in Phase 11.1, external_ai recorded status: DISABLED with 0 queries executed and 0 citations observed.",
+      "why_current_output_insufficient": "External AI measurement is strictly opt-in via --external-ai to prevent uncontrolled API quota consumption and network flakiness. Consequently, live LLM citability and grounded answer citations across the 11 sites were unobserved.",
+      "supporting_sites": [
+        "sunrisetesting.vercel.app",
+        "alephindia.in",
+        "www.tcreng.com"
+      ],
+      "expected_behavior": "Controlled opt-in benchmark runs with deterministic mock providers or cached external responses to enable reproducible comparative AI citability benchmarking.",
+      "recommended_future_direction": "Introduce cached or mocked external AI evaluation mode for offline benchmark comparisons.",
+      "epistemic_tier": "ANALYSIS"
+    }
+  ],
+  "false_gap_exclusions": [
+    {
+      "exclusion_id": "EXCL-WEBSITE-001",
+      "candidate_gap": "RankIntel reports /llms.txt missing on all 11 benchmark sites",
+      "classification": "WEBSITE_DEFICIENCY",
+      "observed_evidence": "retrieval_readiness.llms_txt_present is False across all 11 benchmark sites.",
+      "why_not_engine_defect": "The websites genuinely do not publish an /llms.txt file (all return HTTP 404). RankIntel's retrieval_readiness_engine correctly probed the RFC path and accurately recorded its absence. The finding is a genuine website deficiency, not an engine flaw.",
+      "affected_sites": [
+        "sunrisetesting.vercel.app",
+        "alephindia.in",
+        "www.tcreng.com",
+        "www.ascgroup.in",
+        "umspcs.in",
+        "www.standphillindia.in",
+        "sqccertification.com",
+        "qualityinternational.org",
+        "www.uniquemeasurement.com",
+        "www.yadavmeasurements.com",
+        "www.zaubacorp.com"
+      ],
+      "epistemic_tier": "FACT"
+    },
+    {
+      "exclusion_id": "EXCL-WEBSITE-002",
+      "candidate_gap": "RankIntel reports 0 Schema.org types on 6 benchmark sites",
+      "classification": "WEBSITE_DEFICIENCY",
+      "observed_evidence": "technical_seo.detected_schema_types is [] on sunrisetesting.vercel.app, qualityinternational.org, uniquemeasurement.com, yadavmeasurements.com, zaubacorp.com, and ascgroup.in (partial).",
+      "why_not_engine_defect": "The source HTML of these 6 sites genuinely contains zero <script type='application/ld+json'> blocks or microdata. RankIntel's parser accurately inspected the DOM and factually reported 0 schema types. This is a website deficiency.",
+      "affected_sites": [
+        "sunrisetesting.vercel.app",
+        "qualityinternational.org",
+        "www.uniquemeasurement.com",
+        "www.yadavmeasurements.com",
+        "www.zaubacorp.com"
+      ],
+      "epistemic_tier": "FACT"
+    },
+    {
+      "exclusion_id": "EXCL-WEBSITE-003",
+      "candidate_gap": "RankIntel reports 0.0% image alt-text coverage on target site sunrisetesting.vercel.app",
+      "classification": "WEBSITE_DEFICIENCY",
+      "observed_evidence": "multimodal.alt_coverage_ratio is 0.0 across 34 visual assets.",
+      "why_not_engine_defect": "The target landing page HTML genuinely contains 34 <img> elements that have either no alt attribute or empty alt=''. RankIntel's multimodal_agent_engine faithfully recorded 0% coverage. This is a website deficiency.",
+      "affected_sites": [
+        "sunrisetesting.vercel.app"
+      ],
+      "epistemic_tier": "FACT"
+    },
+    {
+      "exclusion_id": "EXCL-WEBSITE-004",
+      "candidate_gap": "RankIntel flags missing Content-Security-Policy (CSP) headers on 6 sites",
+      "classification": "WEBSITE_DEFICIENCY",
+      "observed_evidence": "security.csp_present is False on 6 benchmark sites.",
+      "why_not_engine_defect": "The web servers for these domains genuinely omit the Content-Security-Policy header from their HTTP responses. RankIntel's passive security observation is factually correct. This is a technical website deficiency.",
+      "affected_sites": [
+        "sunrisetesting.vercel.app",
+        "alephindia.in",
+        "www.standphillindia.in",
+        "qualityinternational.org",
+        "www.uniquemeasurement.com",
+        "www.yadavmeasurements.com"
+      ],
+      "epistemic_tier": "FACT"
+    },
+    {
+      "exclusion_id": "EXCL-WEBSITE-005",
+      "candidate_gap": "RankIntel reports 0 interactive web forms on target site",
+      "classification": "WEBSITE_DEFICIENCY",
+      "observed_evidence": "agent_readiness.total_forms_detected is 0 on sunrisetesting.vercel.app.",
+      "why_not_engine_defect": "The landing page DOM genuinely contains zero <form> elements, relying exclusively on tel: and mailto: anchor links. The engine reported 0 forms accurately. This is a website structural design choice / deficiency, not an engine defect.",
+      "affected_sites": [
+        "sunrisetesting.vercel.app"
+      ],
+      "epistemic_tier": "FACT"
+    }
+  ],
+  "executive_summary": "Phase 11.4 establishes RankIntel's self-reflective Capability-Gap Discovery & Engine Evolution Analysis. Forensic investigation across the permanent 11-site benchmark identified 15 true capability gaps, 1 reporting defects, and 2 evidence limitations spanning 11 categories. Crucially, 5 candidate gaps were ruled out as genuine website deficiencies rather than engine defects. Top architectural evolution priorities for M11.5 include P0 Brand Entity Fallback Detection on schema-less sites, P0 Headless Browser DOM rendering in benchmark workers, P1 Entity Deduplication & Disambiguation, and P1 Multi-Class B2B Intent Modeling.",
+  "recommendations_for_m11_5": [
+    "1. Implement Deterministic Brand Organization Entity Fallback (GAP-ENT-002, P0): Guarantee primary brand entity extraction from title/H1/og:site_name when Schema.org JSON-LD is absent.",
+    "2. Harden Benchmark Headless Browser DOM Execution (GAP-RETRIEVAL-001, P0): Ensure worker subprocesses in collector.py reliably capture post-JS DOM and word counts.",
+    "3. Implement Multi-Surface Entity Deduplication & Resolution (GAP-ENT-001, P1): Cluster raw DOM mentions by canonical key to prevent duplicate count inflation.",
+    "4. Refine Search Intent Engine for B2B Service Inquiry vs E-Commerce (GAP-INTENT-001, P1): Distinguish commercial lead-gen inquiries from consumer shopping cart transactional intent.",
+    "5. Upgrade Topic Engine to Extract Multi-Word Domain Keyphrases (GAP-TOPIC-001, P1): Move beyond stopword-filtered unigrams to extract 2-4 word technical domain phrases.",
+    "6. DOM-Layout Aware Answerability Pattern Recognition (GAP-ANSWER-001, P1): Recognize card grids, accordions, and heading-paragraph pairs as answer structures.",
+    "7. Decouple On-Page Self-Consistency from External Claim Grounding (GAP-GROUND-001, P1): Separate circular DOM token matching from structured and reference corroboration.",
+    "8. Split Action Surfaces Column into Forms and Buttons (GAP-AGENT-001, P1): Fix reporting conflation in comparison_reporter.py.",
+    "9. Tri-State WAF Classification (GAP-RETRIEVAL-002, P2): Separate passive Cloudflare CDN reverse proxy presence from active challenge interstitials.",
+    "10. Distinguish Unlabeled Images from Confirmed Decorative Assets (GAP-MM-001, P2): Replace default-decorative with UNLABELED_UNKNOWN state."
+  ],
+  "epistemic_separation": {
+    "facts": [
+      "Permanent 11-site benchmark populated with 11 normalized SiteIntelligencePackages.",
+      "Zero headless browser DOM words captured across all 11 benchmark packages (rendered_words=0).",
+      "0 entities detected on yadavmeasurements.com; 0 organization entities on qualityinternational.org and uniquemeasurement.com.",
+      "4 duplicate instances of 'Aleph INDIA' and 4 of 'Standphill India' present in entity extraction arrays.",
+      "7 of 11 sites classified as dominant_intent: transactional.",
+      "Comparison summary table reported 87 forms for alephindia.in by summing 3 forms + 84 buttons.",
+      "All 11 benchmark sites return HTTP 404 for /llms.txt.",
+      "6 benchmark sites have 0 declared JSON-LD schema blocks."
+    ],
+    "external_observations": [
+      "External AI Visibility measurements remained disabled across benchmark pass (opt-in via --external-ai)."
+    ],
+    "analyses": [
+      "Identified 14 true capability gaps and reporting defects across entity, topic, intent, answerability, grounding, retrieval, multimodal, and comparator engines.",
+      "Identified 3 evidence limitations stemming from single-landing-page crawl scope and disabled external AI.",
+      "Verified 5 false-gap exclusions representing factual website deficiencies rather than engine bugs.",
+      "RankIntel health score formulas remain strictly invariant (Δ=0)."
+    ],
+    "recommendations": [
+      "1. Implement Deterministic Brand Organization Entity Fallback (GAP-ENT-002, P0): Guarantee primary brand entity extraction from title/H1/og:site_name when Schema.org JSON-LD is absent.",
+      "2. Harden Benchmark Headless Browser DOM Execution (GAP-RETRIEVAL-001, P0): Ensure worker subprocesses in collector.py reliably capture post-JS DOM and word counts.",
+      "3. Implement Multi-Surface Entity Deduplication & Resolution (GAP-ENT-001, P1): Cluster raw DOM mentions by canonical key to prevent duplicate count inflation.",
+      "4. Refine Search Intent Engine for B2B Service Inquiry vs E-Commerce (GAP-INTENT-001, P1): Distinguish commercial lead-gen inquiries from consumer shopping cart transactional intent.",
+      "5. Upgrade Topic Engine to Extract Multi-Word Domain Keyphrases (GAP-TOPIC-001, P1): Move beyond stopword-filtered unigrams to extract 2-4 word technical domain phrases.",
+      "6. DOM-Layout Aware Answerability Pattern Recognition (GAP-ANSWER-001, P1): Recognize card grids, accordions, and heading-paragraph pairs as answer structures.",
+      "7. Decouple On-Page Self-Consistency from External Claim Grounding (GAP-GROUND-001, P1): Separate circular DOM token matching from structured and reference corroboration.",
+      "8. Split Action Surfaces Column into Forms and Buttons (GAP-AGENT-001, P1): Fix reporting conflation in comparison_reporter.py.",
+      "9. Tri-State WAF Classification (GAP-RETRIEVAL-002, P2): Separate passive Cloudflare CDN reverse proxy presence from active challenge interstitials.",
+      "10. Distinguish Unlabeled Images from Confirmed Decorative Assets (GAP-MM-001, P2): Replace default-decorative with UNLABELED_UNKNOWN state."
+    ]
+  },
+  "formula_invariance_verified": true,
+  "provenance_tags": [
+    {
+      "finding": "14 true capability gaps & reporting defects cataloged",
+      "engine": "capability_gap_analyzer",
+      "source": "benchmark_comparison_phase11.json",
+      "confidence": "high"
+    },
+    {
+      "finding": "Formula Invariance Verified (Δ=0)",
+      "engine": "capability_gap_analyzer",
+      "source": "health_score_invariance_audit",
+      "confidence": "high"
+    },
+    {
+      "finding": "5 website deficiency exclusions validated",
+      "engine": "capability_gap_analyzer",
+      "source": "raw_html_evidence_reconciliation",
+      "confidence": "high"
+    }
+  ]
+}
