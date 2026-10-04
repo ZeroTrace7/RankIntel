@@ -17,6 +17,7 @@ from rankintel.engines.search_signal_engine import SearchSignalEngine, normalize
 from rankintel.engines.topic_intelligence_engine import TopicIntelligenceEngine
 from rankintel.engines.query_page_mapping_engine import QueryPageMappingEngine
 from rankintel.engines.search_intent_engine import SearchIntentEngine
+from rankintel.engines.retrieval_readiness_engine import RetrievalReadinessEngine
 
 __all__ = [
     "SeoEngine",
@@ -36,4 +37,5 @@ __all__ = [
     "TopicIntelligenceEngine",
     "QueryPageMappingEngine",
     "SearchIntentEngine",
+    "RetrievalReadinessEngine",
 ]
