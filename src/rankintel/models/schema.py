@@ -782,6 +782,8 @@ class CrawlRecord(BaseModel):
     retrieval_readiness: Optional[RetrievalReadinessEvidence] = None
     answerability: Optional[AnswerabilityEvidence] = None
     claim_grounding: Optional[ClaimGroundingEvidence] = None
+    multimodal_agent: Optional[MultimodalAgentIntelligence] = None
+
 
 class PageSummary(BaseModel):
     """Summary of a single crawled page for site-wide analysis."""
@@ -1812,6 +1814,177 @@ class SiteClaimGroundingIntelligence(BaseModel):
     facts: List[str] = Field(default_factory=list)
     analyses: List[str] = Field(default_factory=list)
 
+# ==============================================================================
+# Phase 10.4 — Multimodal + Agent Readiness Intelligence Models
+# ==============================================================================
+
+class MultimodalRepresentationStatus(str, Enum):
+    TEXT_REPRESENTED = "TEXT_REPRESENTED"
+    ALT_REPRESENTED = "ALT_REPRESENTED"
+    CAPTION_REPRESENTED = "CAPTION_REPRESENTED"
+    STRUCTURED_CONTEXT_AVAILABLE = "STRUCTURED_CONTEXT_AVAILABLE"
+    VISUAL_ONLY_OBSERVED = "VISUAL_ONLY_OBSERVED"
+    UNKNOWN = "UNKNOWN"
+    UNAVAILABLE = "UNAVAILABLE"
+
+class AgentInteractionSignal(str, Enum):
+    FORM_CONTROL = "FORM_CONTROL"
+    SEARCH_FORM = "SEARCH_FORM"
+    CONTACT_INQUIRY_FORM = "CONTACT_INQUIRY_FORM"
+    LOGIN_ACCOUNT_SURFACE = "LOGIN_ACCOUNT_SURFACE"
+    ACTION_BUTTON = "ACTION_BUTTON"
+    DESCRIPTIVE_NAVIGATION = "DESCRIPTIVE_NAVIGATION"
+    STRUCTURED_ACTION_URL = "STRUCTURED_ACTION_URL"
+    SEMANTIC_CONTROL = "SEMANTIC_CONTROL"
+    ARIA_INTERACTION_SURFACE = "ARIA_INTERACTION_SURFACE"
+    SCHEMA_POTENTIAL_ACTION = "SCHEMA_POTENTIAL_ACTION"
+    WEBMCP_DECLARATION = "WEBMCP_DECLARATION"
+
+class AgentInteractionStatus(str, Enum):
+    LABELED = "LABELED"
+    PARTIALLY_LABELED = "PARTIALLY_LABELED"
+    UNLABELED = "UNLABELED"
+    AMBIGUOUS = "AMBIGUOUS"
+    EXPLICIT = "EXPLICIT"
+    OBSERVED = "OBSERVED"
+    UNKNOWN = "UNKNOWN"
+    UNAVAILABLE = "UNAVAILABLE"
+
+class MultimodalAssetItem(BaseModel):
+    asset_id: str
+    asset_type: str = "image"  # image, figure, picture, svg, canvas
+    src_or_id: str = ""
+    representation_status: MultimodalRepresentationStatus = MultimodalRepresentationStatus.UNKNOWN
+    is_informational: bool = True
+    alt_text: Optional[str] = None
+    caption_text: Optional[str] = None
+    is_responsive_or_picture: bool = False
+    is_linked_action: bool = False
+    link_href: Optional[str] = None
+    link_has_text: bool = False
+    associated_heading: Optional[str] = None
+    related_unit_id: Optional[str] = None
+    visual_only_reason: Optional[str] = None
+    bounded_snippet: str = ""
+    source_location: str = ""
+    source_type: str = "raw_html"
+    extraction_method: str = "dom_multimodal_inspection"
+    provenance: str = "multimodal_agent_engine"
+
+class MultimodalInformationEvidence(BaseModel):
+    url: str = ""
+    engine_source: str = "multimodal_agent_engine"
+    total_visual_assets: int = 0
+    informational_assets_count: int = 0
+    decorative_assets_count: int = 0
+    text_represented_count: int = 0
+    alt_represented_count: int = 0
+    caption_represented_count: int = 0
+    structured_context_count: int = 0
+    visual_only_observed_count: int = 0
+    responsive_picture_count: int = 0
+    svg_assets_count: int = 0
+    canvas_assets_count: int = 0
+    image_link_actions_count: int = 0
+    assets: List[MultimodalAssetItem] = Field(default_factory=list)
+    limitations_recorded: List[str] = Field(default_factory=list)
+    facts: List[str] = Field(default_factory=list)
+    analyses: List[str] = Field(default_factory=list)
+
+class AgentInteractionSurfaceItem(BaseModel):
+    surface_id: str
+    signal_type: AgentInteractionSignal = AgentInteractionSignal.FORM_CONTROL
+    surface_name: str = ""
+    form_action: Optional[str] = None
+    form_method: Optional[str] = None
+    input_types: List[str] = Field(default_factory=list)
+    control_count: int = 0
+    labeled_control_count: int = 0
+    status: AgentInteractionStatus = AgentInteractionStatus.UNKNOWN
+    accessible_name: Optional[str] = None
+    aria_role: Optional[str] = None
+    aria_label: Optional[str] = None
+    is_machine_readable: bool = False
+    structured_action_target: Optional[str] = None
+    bounded_snippet: str = ""
+    source_location: str = ""
+    source_type: str = "raw_html"
+    extraction_method: str = "agent_surface_inspection"
+    provenance: str = "multimodal_agent_engine"
+
+class AgentReadinessEvidence(BaseModel):
+    url: str = ""
+    engine_source: str = "multimodal_agent_engine"
+    total_forms_detected: int = 0
+    labeled_forms_count: int = 0
+    search_forms_count: int = 0
+    contact_inquiry_forms_count: int = 0
+    login_account_forms_count: int = 0
+    action_buttons_detected: int = 0
+    meaningful_accessible_buttons_count: int = 0
+    descriptive_navigation_links_count: int = 0
+    ambiguous_navigation_links_count: int = 0
+    aria_interaction_surfaces_count: int = 0
+    schema_actions_detected: int = 0
+    webmcp_declarations_detected: int = 0
+    surfaces: List[AgentInteractionSurfaceItem] = Field(default_factory=list)
+    facts: List[str] = Field(default_factory=list)
+    analyses: List[str] = Field(default_factory=list)
+
+class InformationAccessPathEvidence(BaseModel):
+    path_id: str
+    url: str = ""
+    path_type: str = ""
+    related_concept: str = ""
+    textual_representation_present: bool = False
+    multimodal_representation_present: bool = False
+    agent_action_surface_present: bool = False
+    representation_status: MultimodalRepresentationStatus = MultimodalRepresentationStatus.UNKNOWN
+    interaction_status: AgentInteractionStatus = AgentInteractionStatus.UNKNOWN
+    linked_unit_id: Optional[str] = None
+    linked_claim_id: Optional[str] = None
+    linked_entity_name: Optional[str] = None
+    description: str = ""
+    evidence_gap_identified: bool = False
+    gap_description: Optional[str] = None
+    bounded_snippet: str = ""
+    source_location: str = ""
+    source_type: str = "triangulation"
+    extraction_method: str = "access_path_analysis"
+    provenance: str = "multimodal_agent_engine"
+
+class MultimodalAgentIntelligence(BaseModel):
+    url: str = ""
+    engine_source: str = "multimodal_agent_engine"
+    multimodal: MultimodalInformationEvidence = Field(default_factory=MultimodalInformationEvidence)
+    agent_readiness: AgentReadinessEvidence = Field(default_factory=AgentReadinessEvidence)
+    access_paths: List[InformationAccessPathEvidence] = Field(default_factory=list)
+    visual_only_gaps_count: int = 0
+    action_surface_gaps_count: int = 0
+    facts: List[str] = Field(default_factory=list)
+    analyses: List[str] = Field(default_factory=list)
+
+class SiteMultimodalAgentIntelligence(BaseModel):
+    status: str = "success"
+    total_pages_evaluated: int = 0
+    is_partial_crawl: bool = False
+    completeness_disclaimer: str = ""
+    total_site_visual_assets: int = 0
+    total_informational_images: int = 0
+    total_meaningful_alt_images: int = 0
+    total_visual_only_gaps: int = 0
+    total_site_forms: int = 0
+    total_labeled_controls: int = 0
+    total_action_buttons: int = 0
+    total_schema_actions: int = 0
+    total_webmcp_declarations: int = 0
+    total_access_paths_observed: int = 0
+    total_path_gaps_identified: int = 0
+    page_multimodal_agent_intelligence: Dict[str, MultimodalAgentIntelligence] = Field(default_factory=dict)
+    facts: List[str] = Field(default_factory=list)
+    analyses: List[str] = Field(default_factory=list)
+
+
 class SiteCrawlResult(BaseModel):
     """Aggregated multi-page crawl intelligence."""
     completeness_status: str = "CRAWL_COMPLETE"
@@ -1859,6 +2032,8 @@ class SiteCrawlResult(BaseModel):
     retrieval_readiness_intelligence: Optional[SiteRetrievalReadinessIntelligence] = None
     answerability_intelligence: Optional[SiteAnswerabilityIntelligence] = None
     claim_grounding_intelligence: Optional[SiteClaimGroundingIntelligence] = None
+    multimodal_agent_intelligence: Optional[SiteMultimodalAgentIntelligence] = None
+
 
 class EngineResult(BaseModel):
     engine_name: str
@@ -1886,6 +2061,8 @@ class EngineResult(BaseModel):
     retrieval_readiness: Optional[RetrievalReadinessEvidence] = None
     answerability: Optional[AnswerabilityEvidence] = None
     claim_grounding: Optional[ClaimGroundingEvidence] = None
+    multimodal_agent: Optional[MultimodalAgentIntelligence] = None
+
     raw_html: Optional[str] = None  # Post-JS rendered HTML from crawl4ai; used by TrustEvaluator and GeoEngine
 
 class ConflictFinding(BaseModel):
@@ -1947,6 +2124,8 @@ class SynthesisReport(BaseModel):
     unified_retrieval_readiness: Optional[RetrievalReadinessEvidence] = None
     unified_answerability: Optional[AnswerabilityEvidence] = None
     unified_claim_grounding: Optional[ClaimGroundingEvidence] = None
+    unified_multimodal_agent: Optional[MultimodalAgentIntelligence] = None
+
     site_crawl: Optional[SiteCrawlResult] = None
     
     # Generated fixes

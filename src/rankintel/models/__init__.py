@@ -160,6 +160,16 @@ from rankintel.models.schema import (
     EntityGroundingEvidence,
     ClaimGroundingEvidence,
     SiteClaimGroundingIntelligence,
+    MultimodalRepresentationStatus,
+    AgentInteractionSignal,
+    AgentInteractionStatus,
+    MultimodalAssetItem,
+    MultimodalInformationEvidence,
+    AgentInteractionSurfaceItem,
+    AgentReadinessEvidence,
+    InformationAccessPathEvidence,
+    MultimodalAgentIntelligence,
+    SiteMultimodalAgentIntelligence,
 )
 
 __all__ = [
@@ -321,4 +331,14 @@ __all__ = [
     "EntityGroundingEvidence",
     "ClaimGroundingEvidence",
     "SiteClaimGroundingIntelligence",
+    "MultimodalRepresentationStatus",
+    "AgentInteractionSignal",
+    "AgentInteractionStatus",
+    "MultimodalAssetItem",
+    "MultimodalInformationEvidence",
+    "AgentInteractionSurfaceItem",
+    "AgentReadinessEvidence",
+    "InformationAccessPathEvidence",
+    "MultimodalAgentIntelligence",
+    "SiteMultimodalAgentIntelligence",
 ]
