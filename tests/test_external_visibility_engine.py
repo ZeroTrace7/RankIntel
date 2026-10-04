@@ -141,7 +141,7 @@ class TestProviderAdapterFoundation:
             target_url="https://example.com",
         )
         config_with_secret = {
-            "api_key": "sk-secret-key-123",
+            "api_key": "MOCK_DUMMY_KEY_XYZ",
             "auth_token": "token-xyz",
             "temperature": 0.2,
         }
