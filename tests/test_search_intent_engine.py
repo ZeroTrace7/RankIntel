@@ -130,9 +130,9 @@ def test_transactional_signal_detection():
     )
 
     assert result.status == "success"
-    assert result.primary_observed_intent_signal == SearchIntentCategory.TRANSACTIONAL
-    assert any(it.signal_type == "SPECIFIC_CALL_TO_ACTION" for it in result.evidence_items)
-    assert any(it.signal_type == "TRANSACTIONAL_INQUIRY_FORM" for it in result.evidence_items)
+    assert result.primary_observed_intent_signal == SearchIntentCategory.TRANSACTIONAL_LEAD_GEN
+    assert any("CALL_TO_ACTION" in it.signal_type for it in result.evidence_items)
+    assert any("INQUIRY_FORM" in it.signal_type for it in result.evidence_items)
     assert any("call-to-action" in f for f in result.facts)
 
 
@@ -267,10 +267,12 @@ def test_mixed_intent_resolution():
         SearchIntentCategory.MIXED,
         SearchIntentCategory.INFORMATIONAL,
         SearchIntentCategory.TRANSACTIONAL,
+        SearchIntentCategory.TRANSACTIONAL_LEAD_GEN,
+        SearchIntentCategory.TRANSACTIONAL_ECOMMERCE,
     )
     # Both informational and transactional must have strong corroborated presence
     assert result.intent_counts.get("informational", 0) >= 2
-    assert result.intent_counts.get("transactional", 0) >= 2
+    assert result.intent_counts.get("transactional_lead_gen", 0) >= 2
 
 
 def test_topic_linkage_and_analyses_formatting():

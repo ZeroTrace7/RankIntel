@@ -247,15 +247,26 @@ class SearchSignalEngine:
             for w in content_words:
                 word_freq[w] = word_freq.get(w, 0) + 1
 
-            # Two-word phrases
+            # Multi-word phrases (2-4 words) bounded by stopwords/punctuation (GAP-TOPIC-001)
             phrase_freq: Dict[str, int] = {}
-            raw_tokens = editorial_text.split()
-            for i in range(len(raw_tokens) - 1):
-                w1 = normalize_term(raw_tokens[i])
-                w2 = normalize_term(raw_tokens[i + 1])
-                if w1 and w2 and w1 not in STOPWORDS and w2 not in STOPWORDS:
-                    phrase = f"{w1} {w2}"
-                    phrase_freq[phrase] = phrase_freq.get(phrase, 0) + 1
+            raw_words = re.findall(r"[a-z0-9]+(?:-[a-z0-9]+)?", editorial_text.lower())
+            
+            current_chunk = []
+            def process_chunk(chunk: List[str]):
+                if len(chunk) >= 2:
+                    for i in range(len(chunk)):
+                        for j in range(2, 5):
+                            if i + j <= len(chunk):
+                                phrase = " ".join(chunk[i:i+j])
+                                phrase_freq[phrase] = phrase_freq.get(phrase, 0) + 1
+
+            for w in raw_words:
+                if w in STOPWORDS or w in GENERIC_IGNORE_TERMS or len(w) < 2:
+                    process_chunk(current_chunk)
+                    current_chunk = []
+                else:
+                    current_chunk.append(w)
+            process_chunk(current_chunk)
 
             # Register repeated words (frequency >= 2)
             sorted_words = sorted(word_freq.items(), key=lambda kv: kv[1], reverse=True)
@@ -267,9 +278,9 @@ class SearchSignalEngine:
                         term_map[w]["total_occurrences"] += (count - 1)
                     main_content_top_terms_list.append({"term": w, "frequency": count})
 
-            # Register repeated 2-word phrases (frequency >= 2)
-            sorted_phrases = sorted(phrase_freq.items(), key=lambda kv: kv[1], reverse=True)
-            for p, count in sorted_phrases[:15]:
+            # Register repeated 2-4 word phrases (frequency >= 2)
+            sorted_phrases = sorted(phrase_freq.items(), key=lambda kv: (kv[1], len(kv[0])), reverse=True)
+            for p, count in sorted_phrases[:25]:
                 if count >= 2:
                     register_signal(p, SearchSignalLocation.MAIN_CONTENT, "main_content_phrase", raw_snippet=f"Phrase appears {count} times in main content")
                     if p in term_map:

@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 6.97,
+  "execution_time_sec": 6.77,
   "overall_health_score": 41,
   "technical_health_score": 35,
   "geo_readiness_score": 28,
@@ -55,7 +55,7 @@
     "detected_schema_types": [],
     "schema_blocks_count": 0,
     "schema_validation_issues": [],
-    "ttfb_ms": 100.4,
+    "ttfb_ms": 102.3,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -278,29 +278,30 @@
   },
   "search_topic_query_intent": {
     "status": "AVAILABLE",
-    "search_signals_count": 53,
-    "topics_detected_count": 40,
+    "search_signals_count": 50,
+    "topics_detected_count": 37,
     "topics_sample": [
       "Testing",
-      "Leading",
       "Yadav Measurements",
       "Measurements",
+      "Leading",
       "Yadav",
       "Calibration",
       "Company",
       "India’s",
       "Private",
-      "learn"
+      "ympl"
     ],
-    "query_page_concepts_count": 45,
-    "primary_intent": "transactional",
+    "query_page_concepts_count": 42,
+    "primary_intent": "navigational",
     "secondary_intents": [
-      "navigational"
+      "transactional",
+      "transactional_lead_gen"
     ],
     "intent_evidence_items_count": 5,
     "notes": [
-      "Primary Intent: transactional",
-      "40 topics extracted"
+      "Primary Intent: navigational",
+      "37 topics extracted"
     ]
   },
   "cannibalization_search_gaps": {
@@ -349,8 +350,8 @@
     "definition_patterns": "ABSENT",
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
-    "explained_topics_count": 1,
-    "mentioned_only_topics_count": 33,
+    "explained_topics_count": 2,
+    "mentioned_only_topics_count": 32,
     "unsupported_heading_topics_count": 4,
     "unsupported_headings_sample": [
       "Power",
@@ -361,7 +362,7 @@
     ],
     "notes": [
       "Detected 1 distinct observable information unit(s) across 1 structural types.",
-      "Evaluated 43 topic(s): 1 explained with explicit units, 33 mentioned only, 4 unsupported headings.",
+      "Evaluated 42 topic(s): 2 explained with explicit units, 32 mentioned only, 4 unsupported headings.",
       "Structure 'SERVICE_DESCRIPTION': 1 unit(s) observed."
     ]
   },
@@ -441,13 +442,13 @@
       "Robots.txt found: True",
       "Schema types declared: None",
       "HTTPS enforced: True",
-      "Server latency probe: 100.4ms (local_probe)",
+      "Server latency probe: 102.3ms (local_probe)",
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Observable embedded form protection in HTML: 'recaptcha'",
       "Static HTML contains 1055 words.",
       "Rendered browser DOM contains 1059 words (delta: +4 words).",
       "Detected 1 distinct observable information unit(s) across 1 structural types.",
-      "Evaluated 43 topic(s): 1 explained with explicit units, 33 mentioned only, 4 unsupported headings.",
+      "Evaluated 42 topic(s): 2 explained with explicit units, 32 mentioned only, 4 unsupported headings.",
       "Structure 'SERVICE_DESCRIPTION': 1 unit(s) observed.",
       "Detected 1 observable claim(s) on page https://www.yadavmeasurements.com/.",
       "On-site support status: 0 supported, 1 partially supported, 0 uncorroborated, 0 contradicted.",
@@ -458,7 +459,7 @@
       "Mapped 7 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 100.4ms TTFB",
+      "Local network latency probe recorded 102.3ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -672,7 +673,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 100ms",
+      "finding": "TTFB Latency: 102ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -776,7 +777,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 53 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 50 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -792,7 +793,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 40 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 37 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -800,7 +801,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 39 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 38 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -808,7 +809,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 45 observed concepts mapped to page (9 DIRECT, 36 SUPPORTED)",
+      "finding": "Query-Page Mapping: 42 observed concepts mapped to page (9 DIRECT, 33 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -816,7 +817,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 9 direct primary concepts, 36 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 9 direct primary concepts, 33 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -824,7 +825,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (5 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'navigational' (5 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -832,7 +833,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 4 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'navigational' based on 3 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
@@ -864,7 +865,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 1 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 2 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",

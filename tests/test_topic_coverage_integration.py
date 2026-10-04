@@ -169,7 +169,7 @@ def test_site_topic_coverage_aggregation_and_multi_intent():
     # Verify intent breakdown includes informational, commercial, and transactional
     assert ht_cov.intent_breakdown.get("informational", 0) == 1
     assert ht_cov.intent_breakdown.get("commercial", 0) == 1
-    assert ht_cov.intent_breakdown.get("transactional", 0) == 1
+    assert ht_cov.intent_breakdown.get("transactional_lead_gen", 0) == 1
     # Equal 1:1:1 split (< 60% threshold) resolves to MIXED
     assert ht_cov.observed_dominant_intent == SearchIntentCategory.MIXED
     # Must be identified as multi-intent topic

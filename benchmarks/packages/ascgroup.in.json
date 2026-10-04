@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 15.6,
+  "execution_time_sec": 14.83,
   "overall_health_score": 72,
   "technical_health_score": 100,
   "geo_readiness_score": 43,
@@ -61,7 +61,7 @@
     ],
     "schema_blocks_count": 1,
     "schema_validation_issues": [],
-    "ttfb_ms": 311.6,
+    "ttfb_ms": 310.2,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -234,18 +234,16 @@
     "notes": [
       "Extraction method: SEMANTIC_ARTICLE yielded 414 main content words (4562 total body words).",
       "Content-to-body ratio: 9.1%.",
-      "Exact main-content SHA-256: 05463680c8327421..., Full HTML SHA-256: 8f7f5f48c8024af3...",
+      "Exact main-content SHA-256: 05463680c8327421..., Full HTML SHA-256: ab10ea099c8fece9...",
       "SimHash fingerprint: 3c5f750cf8c27d53."
     ]
   },
   "entity": {
     "status": "AVAILABLE",
-    "total_entities_detected": 7,
+    "total_entities_detected": 5,
     "entity_names": [
       "ASC Group",
       "© 2026 ASC",
-      "Contact Phone (+919999043311)",
-      "Contact Phone (+919999043311)",
       "Contact Phone (+919999043311)",
       "Contact Email (info@ascgroup.in)",
       "Contact Email (Mahesh@insolvencyservices.in)"
@@ -281,20 +279,6 @@
         "email": null
       },
       {
-        "name": "Contact Phone (+919999043311)",
-        "type": "LOCAL_BUSINESS",
-        "source": "VISIBLE_HTML",
-        "telephone": "+919999043311",
-        "email": null
-      },
-      {
-        "name": "Contact Phone (+919999043311)",
-        "type": "LOCAL_BUSINESS",
-        "source": "VISIBLE_HTML",
-        "telephone": "+919999043311",
-        "email": null
-      },
-      {
         "name": "Contact Email (info@ascgroup.in)",
         "type": "ORGANIZATION",
         "source": "VISIBLE_HTML",
@@ -310,7 +294,7 @@
       }
     ],
     "notes": [
-      "Detected 7 entity signals (ORGANIZATION: 4, LOCAL_BUSINESS: 3).",
+      "Detected 5 entity signals (ORGANIZATION: 4, LOCAL_BUSINESS: 1).",
       "Recorded 6 observable entity relationships."
     ]
   },
@@ -339,8 +323,8 @@
   },
   "search_topic_query_intent": {
     "status": "AVAILABLE",
-    "search_signals_count": 226,
-    "topics_detected_count": 189,
+    "search_signals_count": 237,
+    "topics_detected_count": 200,
     "topics_sample": [
       "ASC Group®",
       "Advisory",
@@ -353,17 +337,18 @@
       "Financial",
       "Audit, Consulting, Financial  Advisory, Taxation"
     ],
-    "query_page_concepts_count": 222,
-    "primary_intent": "transactional",
+    "query_page_concepts_count": 233,
+    "primary_intent": "navigational",
     "secondary_intents": [
-      "navigational",
       "commercial",
-      "local"
+      "transactional",
+      "local",
+      "transactional_lead_gen"
     ],
     "intent_evidence_items_count": 11,
     "notes": [
-      "Primary Intent: transactional",
-      "189 topics extracted"
+      "Primary Intent: navigational",
+      "200 topics extracted"
     ]
   },
   "cannibalization_search_gaps": {
@@ -414,7 +399,7 @@
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
     "explained_topics_count": 37,
-    "mentioned_only_topics_count": 30,
+    "mentioned_only_topics_count": 41,
     "unsupported_heading_topics_count": 150,
     "unsupported_headings_sample": [
       "Accounting & Assurance Services",
@@ -425,7 +410,7 @@
     ],
     "notes": [
       "Detected 7 distinct observable information unit(s) across 1 structural types.",
-      "Evaluated 222 topic(s): 37 explained with explicit units, 30 mentioned only, 150 unsupported headings.",
+      "Evaluated 233 topic(s): 37 explained with explicit units, 41 mentioned only, 150 unsupported headings.",
       "Structure 'SERVICE_DESCRIPTION': 7 unit(s) observed."
     ]
   },
@@ -459,7 +444,7 @@
     "text_represented_count": 11,
     "visual_only_observed_gaps": 1,
     "modern_format_count": 32,
-    "missing_dimensions_count": 7,
+    "missing_dimensions_count": 53,
     "notes": [
       "119 visual assets audited (107 alt-represented)"
     ]
@@ -506,14 +491,14 @@
       "Robots.txt found: True",
       "Schema types declared: Organization",
       "HTTPS enforced: True",
-      "Server latency probe: 311.6ms (local_probe)",
+      "Server latency probe: 310.2ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
       "max-snippet threshold set to -1 characters (meta:robots)",
       "Static HTML contains 3754 words.",
       "Rendered browser DOM contains 4320 words (delta: +566 words).",
       "Detected 7 distinct observable information unit(s) across 1 structural types.",
-      "Evaluated 222 topic(s): 37 explained with explicit units, 30 mentioned only, 150 unsupported headings.",
+      "Evaluated 233 topic(s): 37 explained with explicit units, 41 mentioned only, 150 unsupported headings.",
       "Structure 'SERVICE_DESCRIPTION': 7 unit(s) observed.",
       "Detected 19 observable claim(s) on page https://www.ascgroup.in/.",
       "On-site support status: 10 supported, 8 partially supported, 1 uncorroborated, 0 contradicted.",
@@ -524,7 +509,7 @@
       "Mapped 9 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 311.6ms TTFB",
+      "Local network latency probe recorded 310.2ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -750,7 +735,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 312ms",
+      "finding": "TTFB Latency: 310ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -830,7 +815,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Detection: 7 entity signals (7 organization/business)",
+      "finding": "Entity Detection: 5 entity signals (5 organization/business)",
       "engine": "entity_engine",
       "source_file": "JSON-LD & HTML DOM",
       "confidence": "high",
@@ -862,7 +847,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 226 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 237 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -886,7 +871,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 189 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 200 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -894,7 +879,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 108 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 175 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -902,7 +887,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 222 observed concepts mapped to page (12 DIRECT, 125 SUPPORTED)",
+      "finding": "Query-Page Mapping: 233 observed concepts mapped to page (12 DIRECT, 135 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -910,7 +895,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 12 direct primary concepts, 125 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 12 direct primary concepts, 135 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -918,7 +903,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (11 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'navigational' (11 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -926,7 +911,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 5 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'navigational' based on 4 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",

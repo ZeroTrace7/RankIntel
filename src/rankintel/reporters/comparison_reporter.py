@@ -69,10 +69,10 @@ class ComparisonReporter:
         lines.append("## 2. Cross-Site Benchmark Summary Matrix")
         lines.append("")
         lines.append(
-            "| Domain | Role | Health | Tech | GEO | Trust | Primary Intent | Schema | Answer Units | Grounded | Visual | Alt % | Forms | WAF |"
+            "| Domain | Role | Health | Tech | GEO | Trust | Primary Intent | Schema | Answer Units | Grounded | Visual | Alt % | Forms | Buttons | WAF |"
         )
         lines.append(
-            "| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |"
+            "| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |"
         )
 
         for m in report.cross_site_matrix:
@@ -82,7 +82,7 @@ class ComparisonReporter:
             lines.append(
                 f"| `{m.domain}` | {role_badge} | **{m.health_score}** | {m.technical_health_score} | {m.geo_readiness_score} | "
                 f"{m.trust_score} | {m.primary_intent.capitalize()} | {m.schema_types_count} | {m.answer_units_count} | "
-                f"{grounded_pct} | {m.visual_assets_count} | {alt_pct} | {m.action_surfaces_count} | {m.waf_barrier} |"
+                f"{grounded_pct} | {m.visual_assets_count} | {alt_pct} | {m.forms_count} | {m.buttons_count} | {m.waf_barrier} |"
             )
         lines.append("")
 

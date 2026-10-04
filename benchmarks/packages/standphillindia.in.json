@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 8.21,
+  "execution_time_sec": 8.46,
   "overall_health_score": 67,
   "technical_health_score": 75,
   "geo_readiness_score": 51,
@@ -59,13 +59,13 @@
     "h2_count": 12,
     "h3_count": 11,
     "detected_schema_types": [
+      "WebSite",
       "Organization",
-      "FAQPage",
-      "WebSite"
+      "FAQPage"
     ],
     "schema_blocks_count": 3,
     "schema_validation_issues": [],
-    "ttfb_ms": 119.4,
+    "ttfb_ms": 109.5,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -108,43 +108,43 @@
         "rule_id": "color-contrast",
         "severity": "SERIOUS",
         "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.37 (foreground color: #d9dce1, background color: #ffffff, font size: 25.5pt (34px), font weight: bold). Expected contrast ratio of 3:1"
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.69 (foreground color: #c2c7ce, background color: #ffffff, font size: 25.5pt (34px), font weight: bold). Expected contrast ratio of 3:1"
       },
       {
         "rule_id": "color-contrast",
         "severity": "SERIOUS",
         "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.37 (foreground color: #d9dce1, background color: #ffffff, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.69 (foreground color: #c2c7ce, background color: #ffffff, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
       },
       {
         "rule_id": "color-contrast",
         "severity": "SERIOUS",
         "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.37 (foreground color: #d9dce1, background color: #ffffff, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.69 (foreground color: #c2c7ce, background color: #ffffff, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
       },
       {
         "rule_id": "color-contrast",
         "severity": "SERIOUS",
         "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.2 (foreground color: #ffffff, background color: #ffe4de, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.36 (foreground color: #ffffff, background color: #ffd3ca, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
       },
       {
         "rule_id": "color-contrast",
         "severity": "SERIOUS",
         "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.2 (foreground color: #ffffff, background color: #ffe4de, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.36 (foreground color: #ffffff, background color: #ffd3ca, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
       },
       {
         "rule_id": "color-contrast",
         "severity": "SERIOUS",
         "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.2 (foreground color: #ffffff, background color: #ffe4de, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.36 (foreground color: #ffffff, background color: #ffd3ca, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
       },
       {
         "rule_id": "color-contrast",
         "severity": "SERIOUS",
         "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.2 (foreground color: #ffffff, background color: #ffe4de, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.36 (foreground color: #ffffff, background color: #ffd3ca, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
       }
     ],
     "disclaimer": "Automated checks evaluate observable criteria; non-certification scope.",
@@ -239,24 +239,20 @@
   },
   "entity": {
     "status": "AVAILABLE",
-    "total_entities_detected": 10,
+    "total_entities_detected": 6,
     "entity_names": [
-      "Standphill India",
       "Standphill India",
       "Standphill India",
       "Standphill India",
       "Standphillindia",
       "Contact Phone (+919667674225)",
-      "Contact Phone (+919667674225)",
-      "Contact Phone (+919667674225)",
-      "Contact Email (info@standphillindia.in)",
       "Contact Email (info@standphillindia.in)"
     ],
     "entity_types_detected": [
       "ORGANIZATION",
-      "LOCAL_BUSINESS",
       "PERSON",
-      "OTHER"
+      "OTHER",
+      "LOCAL_BUSINESS"
     ],
     "relationships_count": 2,
     "structured_vs_visible_comparisons_count": 3,
@@ -274,13 +270,6 @@
         "name": "Standphill India",
         "type": "OTHER",
         "source": "JSON_LD",
-        "telephone": null,
-        "email": null
-      },
-      {
-        "name": "Standphill India",
-        "type": "ORGANIZATION",
-        "source": "META_TAG",
         "telephone": null,
         "email": null
       },
@@ -306,22 +295,15 @@
         "email": null
       },
       {
-        "name": "Contact Phone (+919667674225)",
-        "type": "LOCAL_BUSINESS",
+        "name": "Contact Email (info@standphillindia.in)",
+        "type": "ORGANIZATION",
         "source": "VISIBLE_HTML",
-        "telephone": "+919667674225",
-        "email": null
-      },
-      {
-        "name": "Contact Phone (+919667674225)",
-        "type": "LOCAL_BUSINESS",
-        "source": "VISIBLE_HTML",
-        "telephone": "+919667674225",
-        "email": null
+        "telephone": null,
+        "email": "info@standphillindia.in"
       }
     ],
     "notes": [
-      "Detected 10 entity signals (ORGANIZATION: 5, OTHER: 1, PERSON: 1, LOCAL_BUSINESS: 3).",
+      "Detected 6 entity signals (ORGANIZATION: 3, OTHER: 1, PERSON: 1, LOCAL_BUSINESS: 1).",
       "Recorded 2 observable entity relationships."
     ]
   },
@@ -350,8 +332,8 @@
   },
   "search_topic_query_intent": {
     "status": "AVAILABLE",
-    "search_signals_count": 188,
-    "topics_detected_count": 119,
+    "search_signals_count": 198,
+    "topics_detected_count": 129,
     "topics_sample": [
       "Certification",
       "BIS",
@@ -364,16 +346,16 @@
       "BIS Certification Consultant in India",
       "Days"
     ],
-    "query_page_concepts_count": 135,
-    "primary_intent": "transactional",
+    "query_page_concepts_count": 145,
+    "primary_intent": "mixed",
     "secondary_intents": [
-      "navigational",
-      "informational"
+      "transactional",
+      "navigational"
     ],
     "intent_evidence_items_count": 15,
     "notes": [
-      "Primary Intent: transactional",
-      "119 topics extracted"
+      "Primary Intent: mixed",
+      "129 topics extracted"
     ]
   },
   "cannibalization_search_gaps": {
@@ -426,8 +408,8 @@
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
     "explained_topics_count": 72,
-    "mentioned_only_topics_count": 28,
-    "unsupported_heading_topics_count": 21,
+    "mentioned_only_topics_count": 37,
+    "unsupported_heading_topics_count": 22,
     "unsupported_headings_sample": [
       "LICENCE & CERTIFICATION",
       "REGISTRATION",
@@ -437,7 +419,7 @@
     ],
     "notes": [
       "Detected 13 distinct observable information unit(s) across 4 structural types.",
-      "Evaluated 135 topic(s): 72 explained with explicit units, 28 mentioned only, 21 unsupported headings.",
+      "Evaluated 145 topic(s): 72 explained with explicit units, 37 mentioned only, 22 unsupported headings.",
       "Structure 'FACTUAL_STATEMENT': 5 unit(s) observed.",
       "Structure 'FAQ': 6 unit(s) observed.",
       "Structure 'LOCATION_CONTACT': 1 unit(s) observed.",
@@ -519,15 +501,15 @@
       "Internal links observed: 57",
       "External links observed: 198",
       "Robots.txt found: True",
-      "Schema types declared: Organization, FAQPage, WebSite",
+      "Schema types declared: WebSite, Organization, FAQPage",
       "HTTPS enforced: True",
-      "Server latency probe: 119.4ms (local_probe)",
+      "Server latency probe: 109.5ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
       "Static HTML contains 1972 words.",
       "Rendered browser DOM contains 2396 words (delta: +424 words).",
       "Detected 13 distinct observable information unit(s) across 4 structural types.",
-      "Evaluated 135 topic(s): 72 explained with explicit units, 28 mentioned only, 21 unsupported headings.",
+      "Evaluated 145 topic(s): 72 explained with explicit units, 37 mentioned only, 22 unsupported headings.",
       "Structure 'FACTUAL_STATEMENT': 5 unit(s) observed.",
       "Structure 'FAQ': 6 unit(s) observed.",
       "Structure 'LOCATION_CONTACT': 1 unit(s) observed.",
@@ -540,7 +522,7 @@
       "Mapped 20 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 119.4ms TTFB",
+      "Local network latency probe recorded 109.5ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -778,7 +760,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 119ms",
+      "finding": "TTFB Latency: 110ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -858,7 +840,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Detection: 10 entity signals (8 organization/business)",
+      "finding": "Entity Detection: 6 entity signals (4 organization/business)",
       "engine": "entity_engine",
       "source_file": "JSON-LD & HTML DOM",
       "confidence": "high",
@@ -898,7 +880,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 188 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 198 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -922,7 +904,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 119 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 129 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -930,7 +912,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 170 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 221 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -938,7 +920,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 135 observed concepts mapped to page (22 DIRECT, 65 SUPPORTED)",
+      "finding": "Query-Page Mapping: 145 observed concepts mapped to page (23 DIRECT, 72 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -946,7 +928,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 22 direct primary concepts, 65 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 23 direct primary concepts, 72 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -954,7 +936,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (15 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'mixed' (15 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -962,7 +944,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 7 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Content exhibits balanced co-equal intent signals between 'transactional' and 'navigational' (classified as MIXED).",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",

@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 14.52,
+  "execution_time_sec": 15.02,
   "overall_health_score": 37,
   "technical_health_score": 35,
   "geo_readiness_score": 30,
@@ -60,7 +60,7 @@
     "detected_schema_types": [],
     "schema_blocks_count": 0,
     "schema_validation_issues": [],
-    "ttfb_ms": 1465.2,
+    "ttfb_ms": 1514.7,
     "performance_score": 65,
     "performance_source": "local_probe",
     "notes": [
@@ -237,10 +237,9 @@
   },
   "entity": {
     "status": "AVAILABLE",
-    "total_entities_detected": 4,
+    "total_entities_detected": 3,
     "entity_names": [
       "Contact Phone (04445050301)",
-      "Contact Phone (+9965251951)",
       "Contact Phone (+9965251951)",
       "Unique Measurement Service"
     ],
@@ -268,13 +267,6 @@
         "email": null
       },
       {
-        "name": "Contact Phone (+9965251951)",
-        "type": "LOCAL_BUSINESS",
-        "source": "VISIBLE_HTML",
-        "telephone": "+9965251951",
-        "email": null
-      },
-      {
         "name": "Unique Measurement Service",
         "type": "ORGANIZATION",
         "source": "VISIBLE_HTML",
@@ -283,7 +275,7 @@
       }
     ],
     "notes": [
-      "Detected 4 entity signals (LOCAL_BUSINESS: 3, ORGANIZATION: 1).",
+      "Detected 3 entity signals (LOCAL_BUSINESS: 2, ORGANIZATION: 1).",
       "Recorded 1 observable entity relationships."
     ]
   },
@@ -312,29 +304,30 @@
   },
   "search_topic_query_intent": {
     "status": "AVAILABLE",
-    "search_signals_count": 98,
-    "topics_detected_count": 83,
+    "search_signals_count": 107,
+    "topics_detected_count": 86,
     "topics_sample": [
-      "Service",
       "Measurement",
+      "Service",
       "Unique",
-      "Services",
       "Unique Measurement Service",
+      "Services",
       "Our Services",
       "Assistant",
       "UMS",
       "🤖 UMS Assistant",
       "read"
     ],
-    "query_page_concepts_count": 94,
+    "query_page_concepts_count": 103,
     "primary_intent": "transactional",
     "secondary_intents": [
-      "navigational"
+      "navigational",
+      "transactional_lead_gen"
     ],
     "intent_evidence_items_count": 8,
     "notes": [
       "Primary Intent: transactional",
-      "83 topics extracted"
+      "86 topics extracted"
     ]
   },
   "cannibalization_search_gaps": {
@@ -385,8 +378,8 @@
     "definition_patterns": "PRESENT",
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
-    "explained_topics_count": 50,
-    "mentioned_only_topics_count": 22,
+    "explained_topics_count": 56,
+    "mentioned_only_topics_count": 23,
     "unsupported_heading_topics_count": 19,
     "unsupported_headings_sample": [
       "THE LARGEST MEASUREMENT, CALIBRATION, TE",
@@ -397,7 +390,7 @@
     ],
     "notes": [
       "Detected 5 distinct observable information unit(s) across 3 structural types.",
-      "Evaluated 94 topic(s): 50 explained with explicit units, 22 mentioned only, 19 unsupported headings.",
+      "Evaluated 103 topic(s): 56 explained with explicit units, 23 mentioned only, 19 unsupported headings.",
       "Structure 'DEFINITION': 1 unit(s) observed.",
       "Structure 'LIST': 2 unit(s) observed.",
       "Structure 'SERVICE_DESCRIPTION': 2 unit(s) observed."
@@ -480,13 +473,13 @@
       "Robots.txt found: True",
       "Schema types declared: None",
       "HTTPS enforced: True",
-      "Server latency probe: 1465.2ms (local_probe)",
+      "Server latency probe: 1514.7ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
       "Static HTML contains 879 words.",
       "Rendered browser DOM contains 921 words (delta: +42 words).",
       "Detected 5 distinct observable information unit(s) across 3 structural types.",
-      "Evaluated 94 topic(s): 50 explained with explicit units, 22 mentioned only, 19 unsupported headings.",
+      "Evaluated 103 topic(s): 56 explained with explicit units, 23 mentioned only, 19 unsupported headings.",
       "Structure 'DEFINITION': 1 unit(s) observed.",
       "Structure 'LIST': 2 unit(s) observed.",
       "Structure 'SERVICE_DESCRIPTION': 2 unit(s) observed.",
@@ -499,7 +492,7 @@
       "Mapped 7 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 1465.2ms TTFB",
+      "Local network latency probe recorded 1514.7ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -737,7 +730,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 1465ms",
+      "finding": "TTFB Latency: 1515ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -817,7 +810,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Detection: 4 entity signals (4 organization/business)",
+      "finding": "Entity Detection: 3 entity signals (3 organization/business)",
       "engine": "entity_engine",
       "source_file": "JSON-LD & HTML DOM",
       "confidence": "high",
@@ -841,7 +834,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 98 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 107 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -849,7 +842,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Structure: Multi-location co-occurrence observed for key terms: service, measurement, unique, services, india.",
+      "finding": "Search Signal Structure: Multi-location co-occurrence observed for key terms: service, measurement, unique, unique measurement service, services.",
       "engine": "search_signal_engine",
       "source_file": "Structural Tag Correlation",
       "confidence": "high",
@@ -865,7 +858,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 83 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 86 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -873,7 +866,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 51 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 52 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -881,7 +874,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 94 observed concepts mapped to page (11 DIRECT, 44 SUPPORTED)",
+      "finding": "Query-Page Mapping: 103 observed concepts mapped to page (11 DIRECT, 53 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -889,7 +882,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 11 direct primary concepts, 44 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 11 direct primary concepts, 53 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -905,7 +898,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 6 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 4 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
@@ -937,7 +930,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 50 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 56 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",

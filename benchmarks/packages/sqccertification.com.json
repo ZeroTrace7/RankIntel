@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 12.84,
+  "execution_time_sec": 12.77,
   "overall_health_score": 67,
   "technical_health_score": 90,
   "geo_readiness_score": 47,
@@ -59,13 +59,13 @@
     "h3_count": 10,
     "detected_schema_types": [
       "BreadcrumbList",
-      "Organization",
       "WebSite",
+      "Organization",
       "WebPage"
     ],
     "schema_blocks_count": 4,
     "schema_validation_issues": [],
-    "ttfb_ms": 885.7,
+    "ttfb_ms": 806.5,
     "performance_score": 65,
     "performance_source": "local_probe",
     "notes": [
@@ -213,7 +213,7 @@
     "notes": [
       "Extraction method: RAW_BODY_FALLBACK yielded 944 main content words (944 total body words).",
       "Content-to-body ratio: 100.0%.",
-      "Exact main-content SHA-256: a27a36f8e24d2796..., Full HTML SHA-256: edf9146b2451e440...",
+      "Exact main-content SHA-256: a27a36f8e24d2796..., Full HTML SHA-256: 7a56254cdc4e4886...",
       "SimHash fingerprint: f10c9937d13cad70."
     ]
   },
@@ -233,8 +233,8 @@
     ],
     "entity_types_detected": [
       "ORGANIZATION",
-      "LOCAL_BUSINESS",
-      "OTHER"
+      "OTHER",
+      "LOCAL_BUSINESS"
     ],
     "relationships_count": 7,
     "structured_vs_visible_comparisons_count": 2,
@@ -328,8 +328,8 @@
   },
   "search_topic_query_intent": {
     "status": "AVAILABLE",
-    "search_signals_count": 141,
-    "topics_detected_count": 124,
+    "search_signals_count": 151,
+    "topics_detected_count": 134,
     "topics_sample": [
       "ISO",
       "Certification",
@@ -339,19 +339,20 @@
       "Globally",
       "About SQC Certification",
       "Provides",
-      "services",
-      "IEC"
+      "certification iso",
+      "services"
     ],
-    "query_page_concepts_count": 138,
+    "query_page_concepts_count": 148,
     "primary_intent": "transactional",
     "secondary_intents": [
       "navigational",
-      "local"
+      "local",
+      "transactional_lead_gen"
     ],
     "intent_evidence_items_count": 9,
     "notes": [
       "Primary Intent: transactional",
-      "124 topics extracted"
+      "134 topics extracted"
     ]
   },
   "cannibalization_search_gaps": {
@@ -400,7 +401,7 @@
     "table_availability": "ABSENT",
     "explained_topics_count": 0,
     "mentioned_only_topics_count": 24,
-    "unsupported_heading_topics_count": 107,
+    "unsupported_heading_topics_count": 116,
     "unsupported_headings_sample": [
       "Achieve ISO certification:ISO 9001:2026I",
       "About SQC Certification",
@@ -410,7 +411,7 @@
     ],
     "notes": [
       "Detected 0 distinct observable information unit(s) across 0 structural types.",
-      "Evaluated 137 topic(s): 0 explained with explicit units, 24 mentioned only, 107 unsupported headings."
+      "Evaluated 147 topic(s): 0 explained with explicit units, 24 mentioned only, 116 unsupported headings."
     ]
   },
   "claim_grounding": {
@@ -488,15 +489,15 @@
       "Internal links observed: 49",
       "External links observed: 176",
       "Robots.txt found: True",
-      "Schema types declared: BreadcrumbList, Organization, WebSite, WebPage",
+      "Schema types declared: BreadcrumbList, WebSite, Organization, WebPage",
       "HTTPS enforced: True",
-      "Server latency probe: 885.7ms (local_probe)",
+      "Server latency probe: 806.5ms (local_probe)",
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Observable embedded form protection in HTML: 'recaptcha'",
       "Static HTML contains 917 words.",
       "Rendered browser DOM contains 921 words (delta: +4 words).",
       "Detected 0 distinct observable information unit(s) across 0 structural types.",
-      "Evaluated 137 topic(s): 0 explained with explicit units, 24 mentioned only, 107 unsupported headings.",
+      "Evaluated 147 topic(s): 0 explained with explicit units, 24 mentioned only, 116 unsupported headings.",
       "Detected 21 observable claim(s) on page https://sqccertification.com/.",
       "On-site support status: 21 supported, 0 partially supported, 0 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 1 agreement(s), 1 explicit disagreement(s).",
@@ -505,7 +506,7 @@
       "Observed 1 form(s) (1 labeled), 2 action button(s) (2 accessible names), 0 structured schema action(s), 0 WebMCP declaration(s)."
     ],
     "external_observations": [
-      "Local network latency probe recorded 885.7ms TTFB",
+      "Local network latency probe recorded 806.5ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -754,7 +755,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 886ms",
+      "finding": "TTFB Latency: 806ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -874,7 +875,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 141 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 151 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -898,7 +899,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 124 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 134 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -906,7 +907,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 104 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 163 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -914,7 +915,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 138 observed concepts mapped to page (12 DIRECT, 44 SUPPORTED)",
+      "finding": "Query-Page Mapping: 148 observed concepts mapped to page (12 DIRECT, 54 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -922,7 +923,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 12 direct primary concepts, 44 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 12 direct primary concepts, 54 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -938,7 +939,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 5 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 3 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",

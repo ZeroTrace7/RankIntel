@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 6.12,
+  "execution_time_sec": 7.15,
   "overall_health_score": 37,
   "technical_health_score": 25,
   "geo_readiness_score": 30,
@@ -59,7 +59,7 @@
     "detected_schema_types": [],
     "schema_blocks_count": 0,
     "schema_validation_issues": [],
-    "ttfb_ms": 137.3,
+    "ttfb_ms": 146.3,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -307,8 +307,8 @@
   },
   "search_topic_query_intent": {
     "status": "AVAILABLE",
-    "search_signals_count": 91,
-    "topics_detected_count": 76,
+    "search_signals_count": 101,
+    "topics_detected_count": 79,
     "topics_sample": [
       "Quality",
       "Quality International",
@@ -321,16 +321,17 @@
       "Head Office :",
       "Japan Office :"
     ],
-    "query_page_concepts_count": 85,
-    "primary_intent": "transactional",
+    "query_page_concepts_count": 95,
+    "primary_intent": "navigational",
     "secondary_intents": [
-      "navigational",
-      "local"
+      "local",
+      "transactional",
+      "transactional_lead_gen"
     ],
     "intent_evidence_items_count": 7,
     "notes": [
-      "Primary Intent: transactional",
-      "76 topics extracted"
+      "Primary Intent: navigational",
+      "79 topics extracted"
     ]
   },
   "cannibalization_search_gaps": {
@@ -378,8 +379,8 @@
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
     "explained_topics_count": 0,
-    "mentioned_only_topics_count": 43,
-    "unsupported_heading_topics_count": 39,
+    "mentioned_only_topics_count": 38,
+    "unsupported_heading_topics_count": 38,
     "unsupported_headings_sample": [
       "Physical , Virtual , Material , Product ",
       "ISI MARK Certificates",
@@ -389,7 +390,7 @@
     ],
     "notes": [
       "Detected 0 distinct observable information unit(s) across 0 structural types.",
-      "Evaluated 85 topic(s): 0 explained with explicit units, 43 mentioned only, 39 unsupported headings."
+      "Evaluated 95 topic(s): 0 explained with explicit units, 38 mentioned only, 38 unsupported headings."
     ]
   },
   "claim_grounding": {
@@ -468,13 +469,13 @@
       "Robots.txt found: True",
       "Schema types declared: None",
       "HTTPS enforced: True",
-      "Server latency probe: 137.3ms (local_probe)",
+      "Server latency probe: 146.3ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
       "Static HTML contains 560 words.",
       "Rendered browser DOM contains 571 words (delta: +11 words).",
       "Detected 0 distinct observable information unit(s) across 0 structural types.",
-      "Evaluated 85 topic(s): 0 explained with explicit units, 43 mentioned only, 39 unsupported headings.",
+      "Evaluated 95 topic(s): 0 explained with explicit units, 38 mentioned only, 38 unsupported headings.",
       "Detected 4 observable claim(s) on page https://qualityinternational.org/.",
       "On-site support status: 4 supported, 0 partially supported, 0 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 0 agreement(s), 0 explicit disagreement(s).",
@@ -484,7 +485,7 @@
       "Mapped 5 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 137.3ms TTFB",
+      "Local network latency probe recorded 146.3ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -706,7 +707,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 137ms",
+      "finding": "TTFB Latency: 146ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -810,7 +811,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 91 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 101 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -834,7 +835,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 76 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 79 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -842,7 +843,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 56 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 58 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -850,7 +851,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 85 observed concepts mapped to page (10 DIRECT, 42 SUPPORTED)",
+      "finding": "Query-Page Mapping: 95 observed concepts mapped to page (10 DIRECT, 52 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -858,7 +859,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 10 direct primary concepts, 42 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 10 direct primary concepts, 52 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -866,7 +867,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (7 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'navigational' (7 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -874,7 +875,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 4 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'navigational' based on 3 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",

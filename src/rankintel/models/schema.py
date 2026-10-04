@@ -1342,10 +1342,14 @@ class SiteQueryPageIntelligence(BaseModel):
 
 class SearchIntentCategory(str, Enum):
     INFORMATIONAL = "informational"
+    INFORMATIONAL_REFERENCE = "informational_reference"  # Directory / DB lookup
     COMMERCIAL = "commercial"
-    TRANSACTIONAL = "transactional"
+    TRANSACTIONAL = "transactional"  # Keep for backwards compatibility
+    TRANSACTIONAL_ECOMMERCE = "transactional_ecommerce"    # Add to cart / Buy
+    TRANSACTIONAL_LEAD_GEN = "transactional_lead_gen"      # B2B Quote / Contact
     NAVIGATIONAL = "navigational"
     LOCAL = "local"
+    LOCAL_SERVICE = "local_service"
     MIXED = "mixed"
     UNSPECIFIED = "unspecified"
 

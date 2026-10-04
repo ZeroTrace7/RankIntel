@@ -393,6 +393,7 @@ def run_compare_benchmark(
     table.add_column("Grounded %", justify="center")
     table.add_column("Alt %", justify="center")
     table.add_column("Forms", justify="center")
+    table.add_column("Buttons", justify="center")
     table.add_column("WAF", justify="center")
 
     for item in report.cross_site_matrix:
@@ -407,7 +408,8 @@ def run_compare_benchmark(
             str(item.answer_units_count),
             f"{int(item.claims_grounded_ratio * 100)}%",
             f"{int(item.alt_coverage_ratio * 100)}%",
-            str(item.action_surfaces_count),
+            str(item.forms_count),
+            str(item.buttons_count),
             item.waf_barrier,
         )
     console.print(table)

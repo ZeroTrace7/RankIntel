@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 5.25,
+  "execution_time_sec": 5.15,
   "overall_health_score": 59,
   "technical_health_score": 80,
   "geo_readiness_score": 30,
@@ -59,7 +59,7 @@
     "detected_schema_types": [],
     "schema_blocks_count": 0,
     "schema_validation_issues": [],
-    "ttfb_ms": 91.8,
+    "ttfb_ms": 78.6,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -172,7 +172,7 @@
     "notes": [
       "Extraction method: SEMANTIC_MAIN yielded 650 main content words (1005 total body words).",
       "Content-to-body ratio: 64.7%.",
-      "Exact main-content SHA-256: e67647d457796dc8..., Full HTML SHA-256: 9a939a8120702bbd...",
+      "Exact main-content SHA-256: e67647d457796dc8..., Full HTML SHA-256: 3eeb8005dbb0ee4c...",
       "SimHash fingerprint: 97750d29c7b88dba."
     ]
   },
@@ -235,12 +235,12 @@
   },
   "search_topic_query_intent": {
     "status": "AVAILABLE",
-    "search_signals_count": 120,
-    "topics_detected_count": 107,
+    "search_signals_count": 130,
+    "topics_detected_count": 117,
     "topics_sample": [
       "research",
-      "ZaubaCorp",
       "Sales",
+      "ZaubaCorp",
       "business",
       "Market",
       "Art",
@@ -249,15 +249,15 @@
       "Lead",
       "Financial"
     ],
-    "query_page_concepts_count": 112,
-    "primary_intent": "transactional",
+    "query_page_concepts_count": 122,
+    "primary_intent": "transactional_ecommerce",
     "secondary_intents": [
       "navigational"
     ],
     "intent_evidence_items_count": 9,
     "notes": [
-      "Primary Intent: transactional",
-      "107 topics extracted"
+      "Primary Intent: transactional_ecommerce",
+      "117 topics extracted"
     ]
   },
   "cannibalization_search_gaps": {
@@ -306,8 +306,8 @@
     "definition_patterns": "ABSENT",
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
-    "explained_topics_count": 48,
-    "mentioned_only_topics_count": 41,
+    "explained_topics_count": 43,
+    "mentioned_only_topics_count": 45,
     "unsupported_heading_topics_count": 13,
     "unsupported_headings_sample": [
       "By Industry",
@@ -318,7 +318,7 @@
     ],
     "notes": [
       "Detected 3 distinct observable information unit(s) across 1 structural types.",
-      "Evaluated 112 topic(s): 48 explained with explicit units, 41 mentioned only, 13 unsupported headings.",
+      "Evaluated 122 topic(s): 43 explained with explicit units, 45 mentioned only, 13 unsupported headings.",
       "Structure 'LIST': 3 unit(s) observed."
     ]
   },
@@ -399,13 +399,13 @@
       "Robots.txt found: True",
       "Schema types declared: None",
       "HTTPS enforced: True",
-      "Server latency probe: 91.8ms (local_probe)",
+      "Server latency probe: 78.6ms (local_probe)",
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
       "Static HTML contains 864 words.",
       "Rendered browser DOM contains 979 words (delta: +115 words).",
       "Detected 3 distinct observable information unit(s) across 1 structural types.",
-      "Evaluated 112 topic(s): 48 explained with explicit units, 41 mentioned only, 13 unsupported headings.",
+      "Evaluated 122 topic(s): 43 explained with explicit units, 45 mentioned only, 13 unsupported headings.",
       "Structure 'LIST': 3 unit(s) observed.",
       "Detected 4 observable claim(s) on page https://www.zaubacorp.com/.",
       "On-site support status: 3 supported, 1 partially supported, 0 uncorroborated, 0 contradicted.",
@@ -416,7 +416,7 @@
       "Mapped 5 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 91.8ms TTFB",
+      "Local network latency probe recorded 78.6ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -622,7 +622,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 92ms",
+      "finding": "TTFB Latency: 79ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -726,7 +726,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 120 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 130 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -750,7 +750,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 107 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 117 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -758,7 +758,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 183 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 244 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -766,7 +766,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 112 observed concepts mapped to page (24 DIRECT, 41 SUPPORTED)",
+      "finding": "Query-Page Mapping: 122 observed concepts mapped to page (23 DIRECT, 52 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -774,7 +774,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 24 direct primary concepts, 41 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 23 direct primary concepts, 52 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -782,7 +782,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (9 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional_ecommerce' (9 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -790,7 +790,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 11 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional_ecommerce' based on 10 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
@@ -822,7 +822,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 48 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 43 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",

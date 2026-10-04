@@ -18,19 +18,19 @@ This report delivers a **deterministic cross-site comparison** across the perman
 
 ## 2. Cross-Site Benchmark Summary Matrix
 
-| Domain | Role | Health | Tech | GEO | Trust | Primary Intent | Schema | Answer Units | Grounded | Visual | Alt % | Forms | WAF |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| `alephindia.in` | Competitor | **68** | 90 | 42 | 56 | Local | 2 | 14 | 95% | 351 | 33% | 87 | Cloudflare |
-| `ascgroup.in` | Competitor | **72** | 100 | 43 | 56 | Transactional | 1 | 7 | 53% | 119 | 99% | 24 | None |
-| `qualityinternational.org` | Competitor | **37** | 25 | 30 | 32 | Transactional | 0 | 0 | 100% | 27 | 10% | 3 | None |
-| `sqccertification.com` | Competitor | **70** | 90 | 47 | 56 | Transactional | 4 | 0 | 100% | 24 | 25% | 3 | Cloudflare |
-| `standphillindia.in` | Competitor | **67** | 75 | 51 | 64 | Transactional | 3 | 13 | 79% | 155 | 93% | 37 | None |
-| `sunrisetesting.vercel.app` | **TARGET** | **48** | 60 | 35 | 20 | Local | 0 | 11 | 94% | 34 | 0% | 1 | None |
-| `tcreng.com` | Competitor | **79** | 100 | 63 | 60 | Navigational | 8 | 36 | 60% | 49 | 97% | 5 | Cloudflare |
-| `umspcs.in` | Competitor | **76** | 100 | 53 | 64 | Local | 9 | 20 | 72% | 364 | 86% | 24 | None |
-| `uniquemeasurement.com` | Competitor | **33** | 35 | 30 | 32 | Transactional | 0 | 5 | 75% | 32 | 14% | 12 | None |
-| `yadavmeasurements.com` | Competitor | **41** | 35 | 28 | 36 | Transactional | 0 | 1 | 0% | 28 | 30% | 19 | Cloudflare |
-| `zaubacorp.com` | Competitor | **59** | 80 | 30 | 48 | Transactional | 0 | 3 | 75% | 34 | 14% | 32 | Cloudflare |
+| Domain | Role | Health | Tech | GEO | Trust | Primary Intent | Schema | Answer Units | Grounded | Visual | Alt % | Forms | Buttons | WAF |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| `alephindia.in` | Competitor | **68** | 90 | 42 | 56 | Local | 2 | 14 | 95% | 351 | 33% | 3 | 84 | Cloudflare |
+| `ascgroup.in` | Competitor | **72** | 100 | 43 | 56 | Transactional | 1 | 7 | 53% | 119 | 99% | 4 | 20 | None |
+| `qualityinternational.org` | Competitor | **37** | 25 | 30 | 32 | Transactional | 0 | 0 | 100% | 27 | 10% | 2 | 1 | None |
+| `sqccertification.com` | Competitor | **70** | 90 | 47 | 56 | Transactional | 4 | 0 | 100% | 24 | 25% | 1 | 2 | Cloudflare |
+| `standphillindia.in` | Competitor | **67** | 75 | 51 | 64 | Transactional | 3 | 13 | 79% | 155 | 93% | 6 | 31 | None |
+| `sunrisetesting.vercel.app` | **TARGET** | **48** | 60 | 35 | 20 | Local | 0 | 11 | 94% | 34 | 0% | 0 | 1 | None |
+| `tcreng.com` | Competitor | **79** | 100 | 63 | 60 | Navigational | 8 | 36 | 60% | 49 | 97% | 1 | 4 | Cloudflare |
+| `umspcs.in` | Competitor | **76** | 100 | 53 | 64 | Local | 9 | 20 | 72% | 364 | 86% | 8 | 16 | None |
+| `uniquemeasurement.com` | Competitor | **33** | 35 | 30 | 32 | Transactional | 0 | 5 | 75% | 32 | 14% | 2 | 10 | None |
+| `yadavmeasurements.com` | Competitor | **41** | 35 | 28 | 36 | Transactional | 0 | 1 | 0% | 28 | 30% | 2 | 17 | Cloudflare |
+| `zaubacorp.com` | Competitor | **59** | 80 | 30 | 48 | Transactional | 0 | 3 | 75% | 34 | 14% | 1 | 31 | Cloudflare |
 
 ## 3. Target (`sunrisetesting.vercel.app`) vs Benchmark Cohort Analysis
 

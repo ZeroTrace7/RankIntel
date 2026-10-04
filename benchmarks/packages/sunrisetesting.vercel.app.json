@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 6.22,
+  "execution_time_sec": 5.96,
   "overall_health_score": 48,
   "technical_health_score": 60,
   "geo_readiness_score": 35,
@@ -57,7 +57,7 @@
     "detected_schema_types": [],
     "schema_blocks_count": 0,
     "schema_validation_issues": [],
-    "ttfb_ms": 123.7,
+    "ttfb_ms": 94.5,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -223,13 +223,10 @@
   },
   "entity": {
     "status": "AVAILABLE",
-    "total_entities_detected": 7,
+    "total_entities_detected": 4,
     "entity_names": [
       "B-501, Harshit Jewels, Hirapur Road, Mohba Bazar, Raipur (C.",
       "Contact Phone (+919326048829)",
-      "Contact Phone (+919326048829)",
-      "Contact Phone (+919326048829)",
-      "Contact Email (sunqms@gmail.com)",
       "Contact Email (sunqms@gmail.com)",
       "Sunrise Testing & Calibration Centre"
     ],
@@ -257,27 +254,6 @@
         "email": null
       },
       {
-        "name": "Contact Phone (+919326048829)",
-        "type": "LOCAL_BUSINESS",
-        "source": "VISIBLE_HTML",
-        "telephone": "+919326048829",
-        "email": null
-      },
-      {
-        "name": "Contact Phone (+919326048829)",
-        "type": "LOCAL_BUSINESS",
-        "source": "VISIBLE_HTML",
-        "telephone": "+919326048829",
-        "email": null
-      },
-      {
-        "name": "Contact Email (sunqms@gmail.com)",
-        "type": "ORGANIZATION",
-        "source": "VISIBLE_HTML",
-        "telephone": null,
-        "email": "sunqms@gmail.com"
-      },
-      {
         "name": "Contact Email (sunqms@gmail.com)",
         "type": "ORGANIZATION",
         "source": "VISIBLE_HTML",
@@ -293,7 +269,7 @@
       }
     ],
     "notes": [
-      "Detected 7 entity signals (LOCAL_BUSINESS: 4, ORGANIZATION: 3).",
+      "Detected 4 entity signals (LOCAL_BUSINESS: 2, ORGANIZATION: 2).",
       "Recorded 1 observable entity relationships."
     ]
   },
@@ -313,8 +289,8 @@
   },
   "search_topic_query_intent": {
     "status": "AVAILABLE",
-    "search_signals_count": 119,
-    "topics_detected_count": 104,
+    "search_signals_count": 129,
+    "topics_detected_count": 109,
     "topics_sample": [
       "Calibration",
       "Testing",
@@ -327,7 +303,7 @@
       "Sunrise Testing & Calibration Centre",
       "Accurate"
     ],
-    "query_page_concepts_count": 119,
+    "query_page_concepts_count": 129,
     "primary_intent": "navigational",
     "secondary_intents": [
       "local"
@@ -335,7 +311,7 @@
     "intent_evidence_items_count": 4,
     "notes": [
       "Primary Intent: navigational",
-      "104 topics extracted"
+      "109 topics extracted"
     ]
   },
   "cannibalization_search_gaps": {
@@ -389,8 +365,8 @@
     "definition_patterns": "PRESENT",
     "step_list_structure": "PRESENT",
     "table_availability": "ABSENT",
-    "explained_topics_count": 71,
-    "mentioned_only_topics_count": 42,
+    "explained_topics_count": 72,
+    "mentioned_only_topics_count": 48,
     "unsupported_heading_topics_count": 2,
     "unsupported_headings_sample": [
       "Sunrise Testing & Calibration Centre",
@@ -401,7 +377,7 @@
     ],
     "notes": [
       "Detected 11 distinct observable information unit(s) across 6 structural types.",
-      "Evaluated 119 topic(s): 71 explained with explicit units, 42 mentioned only, 2 unsupported headings.",
+      "Evaluated 129 topic(s): 72 explained with explicit units, 48 mentioned only, 2 unsupported headings.",
       "Structure 'DEFINITION': 2 unit(s) observed.",
       "Structure 'DIRECT_ANSWER': 2 unit(s) observed.",
       "Structure 'FACTUAL_STATEMENT': 3 unit(s) observed.",
@@ -486,13 +462,13 @@
       "Robots.txt found: False",
       "Schema types declared: None",
       "HTTPS enforced: True",
-      "Server latency probe: 123.7ms (local_probe)",
+      "Server latency probe: 94.5ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
       "Static HTML contains 957 words.",
       "Rendered browser DOM contains 957 words (delta: +0 words).",
       "Detected 11 distinct observable information unit(s) across 6 structural types.",
-      "Evaluated 119 topic(s): 71 explained with explicit units, 42 mentioned only, 2 unsupported headings.",
+      "Evaluated 129 topic(s): 72 explained with explicit units, 48 mentioned only, 2 unsupported headings.",
       "Structure 'DEFINITION': 2 unit(s) observed.",
       "Structure 'DIRECT_ANSWER': 2 unit(s) observed.",
       "Structure 'FACTUAL_STATEMENT': 3 unit(s) observed.",
@@ -505,7 +481,7 @@
       "Mapped 3 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 123.7ms TTFB",
+      "Local network latency probe recorded 94.5ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -537,7 +513,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 124ms",
+      "finding": "TTFB Latency: 94ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -617,7 +593,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Detection: 7 entity signals (7 organization/business)",
+      "finding": "Entity Detection: 4 entity signals (4 organization/business)",
       "engine": "entity_engine",
       "source_file": "JSON-LD & HTML DOM",
       "confidence": "high",
@@ -633,7 +609,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 119 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 129 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -657,7 +633,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 104 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 109 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -665,7 +641,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 86 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 112 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -673,7 +649,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 119 observed concepts mapped to page (18 DIRECT, 36 SUPPORTED)",
+      "finding": "Query-Page Mapping: 129 observed concepts mapped to page (18 DIRECT, 44 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -681,7 +657,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 18 direct primary concepts, 36 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 18 direct primary concepts, 44 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -729,7 +705,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 71 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 72 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",

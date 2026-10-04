@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 6.59,
+  "execution_time_sec": 6.48,
   "overall_health_score": 79,
   "technical_health_score": 100,
   "geo_readiness_score": 63,
@@ -58,18 +58,18 @@
     "h2_count": 17,
     "h3_count": 26,
     "detected_schema_types": [
-      "FAQPage",
+      "ItemList",
       "BreadcrumbList",
       "WebPage",
       "VideoObject",
-      "Organization",
+      "NewsArticle",
       "WebSite",
-      "ItemList",
-      "NewsArticle"
+      "Organization",
+      "FAQPage"
     ],
     "schema_blocks_count": 8,
     "schema_validation_issues": [],
-    "ttfb_ms": 80.9,
+    "ttfb_ms": 71.7,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -142,13 +142,13 @@
     "notes": [
       "Extraction method: SEMANTIC_MAIN yielded 1545 main content words (2463 total body words).",
       "Content-to-body ratio: 62.7%.",
-      "Exact main-content SHA-256: 7bd7d761d9e4300c..., Full HTML SHA-256: dadbefc79ca9761c...",
+      "Exact main-content SHA-256: 7bd7d761d9e4300c..., Full HTML SHA-256: 1b3230899fc7ff28...",
       "SimHash fingerprint: 8d6c4932dd1c4fb5."
     ]
   },
   "entity": {
     "status": "AVAILABLE",
-    "total_entities_detected": 12,
+    "total_entities_detected": 9,
     "entity_names": [
       "TCR Engineering Services Pvt. Ltd.",
       "TCR Engineering",
@@ -158,9 +158,6 @@
       "TCR Engineering",
       "1973–2026 TCR Engineering Services Pvt",
       "Contact Phone (+919833530200)",
-      "Contact Phone (+919833530200)",
-      "Contact Phone (+919833530200)",
-      "Contact Email (sales@tcreng.com)",
       "Contact Email (sales@tcreng.com)"
     ],
     "entity_types_detected": [
@@ -231,7 +228,7 @@
       }
     ],
     "notes": [
-      "Detected 12 entity signals (ORGANIZATION: 5, OTHER: 4, LOCAL_BUSINESS: 3).",
+      "Detected 9 entity signals (ORGANIZATION: 4, OTHER: 4, LOCAL_BUSINESS: 1).",
       "Recorded 10 observable entity relationships."
     ]
   },
@@ -260,8 +257,8 @@
   },
   "search_topic_query_intent": {
     "status": "AVAILABLE",
-    "search_signals_count": 280,
-    "topics_detected_count": 227,
+    "search_signals_count": 290,
+    "topics_detected_count": 237,
     "topics_sample": [
       "TCR",
       "Testing",
@@ -274,8 +271,8 @@
       "doesn't.",
       "Evidence"
     ],
-    "query_page_concepts_count": 242,
-    "primary_intent": "transactional",
+    "query_page_concepts_count": 252,
+    "primary_intent": "transactional_lead_gen",
     "secondary_intents": [
       "informational",
       "navigational",
@@ -283,8 +280,8 @@
     ],
     "intent_evidence_items_count": 12,
     "notes": [
-      "Primary Intent: transactional",
-      "227 topics extracted"
+      "Primary Intent: transactional_lead_gen",
+      "237 topics extracted"
     ]
   },
   "cannibalization_search_gaps": {
@@ -339,9 +336,9 @@
     "definition_patterns": "ABSENT",
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
-    "explained_topics_count": 164,
+    "explained_topics_count": 168,
     "mentioned_only_topics_count": 34,
-    "unsupported_heading_topics_count": 38,
+    "unsupported_heading_topics_count": 40,
     "unsupported_headings_sample": [
       "Latest Insights",
       "Rebuilding a 13Cr valve seat on a WCB bo",
@@ -351,7 +348,7 @@
     ],
     "notes": [
       "Detected 36 distinct observable information unit(s) across 7 structural types.",
-      "Evaluated 242 topic(s): 164 explained with explicit units, 34 mentioned only, 38 unsupported headings.",
+      "Evaluated 252 topic(s): 168 explained with explicit units, 34 mentioned only, 40 unsupported headings.",
       "Structure 'DIRECT_ANSWER': 1 unit(s) observed.",
       "Structure 'EXAMPLE': 1 unit(s) observed.",
       "Structure 'FACTUAL_STATEMENT': 3 unit(s) observed.",
@@ -436,15 +433,15 @@
       "Internal links observed: 148",
       "External links observed: 395",
       "Robots.txt found: True",
-      "Schema types declared: FAQPage, BreadcrumbList, WebPage, VideoObject, Organization, WebSite, ItemList, NewsArticle",
+      "Schema types declared: ItemList, BreadcrumbList, WebPage, VideoObject, NewsArticle, WebSite, Organization, FAQPage",
       "HTTPS enforced: True",
-      "Server latency probe: 80.9ms (local_probe)",
+      "Server latency probe: 71.7ms (local_probe)",
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
       "Static HTML contains 2329 words.",
       "Rendered browser DOM contains 2309 words (delta: -20 words).",
       "Detected 36 distinct observable information unit(s) across 7 structural types.",
-      "Evaluated 242 topic(s): 164 explained with explicit units, 34 mentioned only, 38 unsupported headings.",
+      "Evaluated 252 topic(s): 168 explained with explicit units, 34 mentioned only, 40 unsupported headings.",
       "Structure 'DIRECT_ANSWER': 1 unit(s) observed.",
       "Structure 'EXAMPLE': 1 unit(s) observed.",
       "Structure 'FACTUAL_STATEMENT': 3 unit(s) observed.",
@@ -457,7 +454,7 @@
       "Mapped 24 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 80.9ms TTFB",
+      "Local network latency probe recorded 71.7ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -745,7 +742,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 81ms",
+      "finding": "TTFB Latency: 72ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -825,7 +822,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Detection: 12 entity signals (8 organization/business)",
+      "finding": "Entity Detection: 9 entity signals (5 organization/business)",
       "engine": "entity_engine",
       "source_file": "JSON-LD & HTML DOM",
       "confidence": "high",
@@ -865,7 +862,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 280 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 290 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -889,7 +886,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 227 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 237 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -897,7 +894,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 96 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 143 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -905,7 +902,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 242 observed concepts mapped to page (15 DIRECT, 66 SUPPORTED)",
+      "finding": "Query-Page Mapping: 252 observed concepts mapped to page (15 DIRECT, 74 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -913,7 +910,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 15 direct primary concepts, 66 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 15 direct primary concepts, 74 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -921,7 +918,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (12 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional_lead_gen' (12 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -929,7 +926,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 6 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional_lead_gen' based on 6 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
@@ -961,7 +958,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 164 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 168 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",

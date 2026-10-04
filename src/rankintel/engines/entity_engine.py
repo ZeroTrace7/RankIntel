@@ -215,6 +215,9 @@ class EntityEngine:
             url=url,
         )
 
+        # 7. Multi-Surface Deduplication (GAP-ENT-001)
+        detected_entities, relationships = cls._deduplicate_entities(detected_entities, relationships)
+
         # Build summary facts
         facts: List[str] = []
         types_count: Dict[str, int] = {}
@@ -1097,3 +1100,84 @@ class EntityEngine:
             EntityAlignmentStatus.DIVERGENT_IDENTITY_SUSPECTED,
             f"Structured entity '{name_a}' and visible signal '{name_b}' share no common brand tokens. Review recommended."
         )
+
+    @classmethod
+    def _deduplicate_entities(
+        cls, entities: List[DetectedEntity], relationships: List[EntityRelationship]
+    ) -> Tuple[List[DetectedEntity], List[EntityRelationship]]:
+        """
+        Deduplicate entities by canonical identity key (entity_type + normalized_value).
+        Preserves multi-surface provenance and merges fields where possible.
+        (Phase 11.5.3 - GAP-ENT-001)
+        """
+        entity_map: Dict[Tuple[EntityType, str], DetectedEntity] = {}
+        for ent in entities:
+            # Re-normalize if missing or empty
+            norm = ent.normalized_name if ent.normalized_name else normalize_entity_name(ent.name)
+            if not norm:
+                norm = ent.name.strip().lower()
+            key = (ent.entity_type, norm)
+
+            if key not in entity_map:
+                entity_map[key] = ent
+            else:
+                existing = entity_map[key]
+
+                # Promote source to JSON_LD if we find a structured declaration
+                if ent.source == EntitySource.JSON_LD and existing.source != EntitySource.JSON_LD:
+                    existing.source = EntitySource.JSON_LD
+                    existing.signal_type = ent.signal_type
+                    existing.structured_data_type = ent.structured_data_type
+                    if ent.declared_url:
+                        existing.declared_url = ent.declared_url
+
+                # Merge contact details
+                if ent.telephone and not existing.telephone:
+                    existing.telephone = ent.telephone
+                if ent.email and not existing.email:
+                    existing.email = ent.email
+                if ent.address and not existing.address:
+                    existing.address = ent.address
+                if ent.description and not existing.description:
+                    existing.description = ent.description
+
+                # Merge same_as and identifiers
+                for s in ent.same_as:
+                    if s not in existing.same_as:
+                        existing.same_as.append(s)
+                for k, v in ent.identifiers.items():
+                    if k not in existing.identifiers:
+                        existing.identifiers[k] = v
+
+                # Preserve provenance in raw_context
+                context_parts = []
+                if existing.raw_context:
+                    context_parts.extend(existing.raw_context.split(" | "))
+                if ent.raw_context:
+                    context_parts.extend(ent.raw_context.split(" | "))
+                elif ent.source == EntitySource.JSON_LD:
+                    context_parts.append(f"JSON-LD declaration ({ent.structured_data_type})")
+                
+                unique_context = []
+                for c in context_parts:
+                    if c not in unique_context:
+                        unique_context.append(c)
+                if unique_context:
+                    existing.raw_context = " | ".join(unique_context)
+
+        # Deduplicate relationships
+        seen_rels = set()
+        deduped_rels = []
+        for rel in relationships:
+            rel_key = (
+                rel.subject_type,
+                normalize_entity_name(rel.subject_name),
+                rel.relation,
+                rel.object_type,
+                rel.object_name.strip().lower()
+            )
+            if rel_key not in seen_rels:
+                seen_rels.add(rel_key)
+                deduped_rels.append(rel)
+
+        return list(entity_map.values()), deduped_rels

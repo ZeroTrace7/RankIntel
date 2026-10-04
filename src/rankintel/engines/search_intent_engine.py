@@ -45,6 +45,11 @@ class SearchIntentEngine:
         r"tutorial|documentation|specifications|glossary|standards|methodology)\b",
         re.IGNORECASE,
     )
+    RE_INFO_REFERENCE = re.compile(
+        r"\b(company\s+details|director\s+details|registration\s+details|cin|din|incorporation|"
+        r"trademark|records|database|search\s+records|registry)\b",
+        re.IGNORECASE,
+    )
 
     # Commercial evaluation patterns
     RE_COMM_VS = re.compile(r"\b[a-z0-9]+\s+(?:vs\.?|versus)\s+[a-z0-9]+\b", re.IGNORECASE)
@@ -58,11 +63,14 @@ class SearchIntentEngine:
         re.IGNORECASE,
     )
 
-    # Transactional action patterns
-    RE_TRANS_SPECIFIC_CTA = re.compile(
-        r"\b(request\s+a\s+quote|get\s+a\s+quote|book\s+now|order\s+now|buy\s+now|"
-        r"add\s+to\s+cart|checkout|schedule\s+(?:an?\s+)?appointment|schedule\s+demo|"
-        r"apply\s+online|download\s+now|inquire\s+now|request\s+pricing|get\s+started\s+now)\b",
+    # Transactional action patterns (E-commerce vs B2B Lead Gen)
+    RE_TRANS_ECOMM_CTA = re.compile(
+        r"\b(add\s+to\s+cart|buy\s+now|order\s+now|checkout)\b",
+        re.IGNORECASE,
+    )
+    RE_TRANS_LEAD_GEN_CTA = re.compile(
+        r"\b(request\s+a\s+quote|get\s+a\s+quote|schedule\s+(?:an?\s+)?appointment|schedule\s+demo|"
+        r"apply\s+online|inquire\s+now|request\s+pricing|get\s+started\s+now|book\s+now)\b",
         re.IGNORECASE,
     )
     RE_TRANS_ISOLATED = re.compile(
@@ -75,7 +83,7 @@ class SearchIntentEngine:
     RE_ZIP_CODE = re.compile(r"\b\d{5}(?:-\d{4})?\b")  # US Zip
     RE_LOCAL_PHONE = re.compile(r"(?:\+91[-\s]?\d{2,5}[-\s]?\d{6,8}|\b0\d{2,4}[-\s]?\d{6,8}\b|\(\d{3}\)\s*\d{3}[-\s]\d{4})")
     RE_ADDRESS_TERMS = re.compile(
-        r"\b(registered\s+office|head\s+office|branch\s+office|corporate\s+office|address\s*:|location\s*:|plot\s+no|sector\s+\d+|road|street|nagar|marg|industrial\s+area)\b",
+        r"\b(registered\s+office|head\s+office|branch\s+office|corporate\s+office|address\s*:|location\s*:|plot\s+no|sector\s+\d+|road|street|nagar|marg|industrial\s+area|testing\s+lab|calibration\s+center)\b",
         re.IGNORECASE,
     )
 
@@ -198,6 +206,7 @@ class SearchIntentEngine:
 
         info_heading_count = 0
         comm_heading_count = 0
+        ref_heading_count = 0
         for tag, text in all_headings:
             # Informational check
             if cls.RE_INFO_HEADINGS.search(text):
@@ -211,6 +220,17 @@ class SearchIntentEngine:
                 ))
                 structural_signals[SearchIntentCategory.INFORMATIONAL] += 2
                 info_heading_count += 1
+            elif cls.RE_INFO_REFERENCE.search(text):
+                evidence_items.append(IntentEvidenceItem(
+                    intent_category=SearchIntentCategory.INFORMATIONAL_REFERENCE,
+                    signal_type="REFERENCE_DB_HEADING",
+                    evidence_term=text[:60],
+                    evidence_location=tag,
+                    supporting_snippet=f"Reference lookup heading: '{text[:80]}'",
+                    confidence=SearchSignalConfidence.DIRECT,
+                ))
+                structural_signals[SearchIntentCategory.INFORMATIONAL_REFERENCE] += 2
+                ref_heading_count += 1
             elif cls.RE_INFO_KEYWORDS.search(text):
                 evidence_items.append(IntentEvidenceItem(
                     intent_category=SearchIntentCategory.INFORMATIONAL,
@@ -275,17 +295,29 @@ class SearchIntentEngine:
             # Check buttons and CTA anchors
             for elem in soup.find_all(["button", "a"]):
                 elem_txt = elem.get_text(" ", strip=True)
-                if cls.RE_TRANS_SPECIFIC_CTA.search(elem_txt):
-                    match_str = cls.RE_TRANS_SPECIFIC_CTA.search(elem_txt).group(0)
+                if cls.RE_TRANS_ECOMM_CTA.search(elem_txt):
+                    match_str = cls.RE_TRANS_ECOMM_CTA.search(elem_txt).group(0)
                     evidence_items.append(IntentEvidenceItem(
-                        intent_category=SearchIntentCategory.TRANSACTIONAL,
-                        signal_type="SPECIFIC_CALL_TO_ACTION",
+                        intent_category=SearchIntentCategory.TRANSACTIONAL_ECOMMERCE,
+                        signal_type="ECOMMERCE_CALL_TO_ACTION",
                         evidence_term=match_str,
                         evidence_location=f"CTA_{elem.name.upper()}",
-                        supporting_snippet=f"High-intent action element: '{elem_txt[:60]}'",
+                        supporting_snippet=f"High-intent e-commerce action element: '{elem_txt[:60]}'",
                         confidence=SearchSignalConfidence.DIRECT,
                     ))
-                    structural_signals[SearchIntentCategory.TRANSACTIONAL] += 2
+                    structural_signals[SearchIntentCategory.TRANSACTIONAL_ECOMMERCE] += 2
+                    cta_count += 1
+                elif cls.RE_TRANS_LEAD_GEN_CTA.search(elem_txt):
+                    match_str = cls.RE_TRANS_LEAD_GEN_CTA.search(elem_txt).group(0)
+                    evidence_items.append(IntentEvidenceItem(
+                        intent_category=SearchIntentCategory.TRANSACTIONAL_LEAD_GEN,
+                        signal_type="LEAD_GEN_CALL_TO_ACTION",
+                        evidence_term=match_str,
+                        evidence_location=f"CTA_{elem.name.upper()}",
+                        supporting_snippet=f"High-intent lead generation action element: '{elem_txt[:60]}'",
+                        confidence=SearchSignalConfidence.DIRECT,
+                    ))
+                    structural_signals[SearchIntentCategory.TRANSACTIONAL_LEAD_GEN] += 2
                     cta_count += 1
                 elif cls.RE_TRANS_ISOLATED.search(elem_txt):
                     # Captured as evidence item ONLY; not an automatic transactional classification
@@ -305,16 +337,29 @@ class SearchIntentEngine:
                 form_text = form.get_text(" ", strip=True).lower()
                 form_inputs = [inp.get("name", "").lower() for inp in form.find_all(["input", "textarea", "select"])]
                 inputs_str = " ".join(form_inputs)
-                if any(w in form_text or w in inputs_str for w in ["quote", "inquiry", "message", "checkout", "order", "book", "schedule", "phone", "email"]):
+                
+                if any(w in form_text or w in inputs_str for w in ["checkout", "order", "cart"]):
                     evidence_items.append(IntentEvidenceItem(
-                        intent_category=SearchIntentCategory.TRANSACTIONAL,
-                        signal_type="TRANSACTIONAL_INQUIRY_FORM",
+                        intent_category=SearchIntentCategory.TRANSACTIONAL_ECOMMERCE,
+                        signal_type="ECOMMERCE_CHECKOUT_FORM",
+                        evidence_term="form",
+                        evidence_location="FORM_ELEMENT",
+                        supporting_snippet=f"Interactive e-commerce submission form with fields: {', '.join(form_inputs[:4])}",
+                        confidence=SearchSignalConfidence.DIRECT,
+                    ))
+                    structural_signals[SearchIntentCategory.TRANSACTIONAL_ECOMMERCE] += 2
+                    form_count += 1
+                    break
+                elif any(w in form_text or w in inputs_str for w in ["quote", "inquiry", "message", "book", "schedule", "phone", "email"]):
+                    evidence_items.append(IntentEvidenceItem(
+                        intent_category=SearchIntentCategory.TRANSACTIONAL_LEAD_GEN,
+                        signal_type="LEAD_GEN_INQUIRY_FORM",
                         evidence_term="form",
                         evidence_location="FORM_ELEMENT",
                         supporting_snippet=f"Interactive inquiry/quote submission form with fields: {', '.join(form_inputs[:4])}",
                         confidence=SearchSignalConfidence.DIRECT,
                     ))
-                    structural_signals[SearchIntentCategory.TRANSACTIONAL] += 2
+                    structural_signals[SearchIntentCategory.TRANSACTIONAL_LEAD_GEN] += 2
                     form_count += 1
                     break
 
@@ -444,10 +489,14 @@ class SearchIntentEngine:
 
         for cat in [
             SearchIntentCategory.INFORMATIONAL,
+            SearchIntentCategory.INFORMATIONAL_REFERENCE,
             SearchIntentCategory.COMMERCIAL,
             SearchIntentCategory.TRANSACTIONAL,
+            SearchIntentCategory.TRANSACTIONAL_ECOMMERCE,
+            SearchIntentCategory.TRANSACTIONAL_LEAD_GEN,
             SearchIntentCategory.NAVIGATIONAL,
             SearchIntentCategory.LOCAL,
+            SearchIntentCategory.LOCAL_SERVICE,
         ]:
             s_score = structural_signals[cat]
             sup_score = supporting_signals[cat]

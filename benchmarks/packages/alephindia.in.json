@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 19.18,
+  "execution_time_sec": 18.84,
   "overall_health_score": 68,
   "technical_health_score": 90,
   "geo_readiness_score": 42,
@@ -57,12 +57,12 @@
     "h2_count": 9,
     "h3_count": 57,
     "detected_schema_types": [
-      "Organization",
-      "WebSite"
+      "WebSite",
+      "Organization"
     ],
     "schema_blocks_count": 2,
     "schema_validation_issues": [],
-    "ttfb_ms": 462.1,
+    "ttfb_ms": 443.7,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -242,30 +242,28 @@
     "notes": [
       "Extraction method: SEMANTIC_ARTICLE yielded 239 main content words (4334 total body words).",
       "Content-to-body ratio: 5.5%.",
-      "Exact main-content SHA-256: f4b36f8a8d212849..., Full HTML SHA-256: 8958d92f95e8e633...",
+      "Exact main-content SHA-256: f4b36f8a8d212849..., Full HTML SHA-256: 04cefb294255f6c8...",
       "SimHash fingerprint: 720f44728969af4d."
     ]
   },
   "entity": {
     "status": "AVAILABLE",
-    "total_entities_detected": 10,
+    "total_entities_detected": 8,
     "entity_names": [
       "Aleph INDIA",
       "Aleph INDIA",
       "Aleph INDIA",
-      "Aleph INDIA",
       "Aleph INDIA® 2009 - 2026",
-      "Contact Phone (+911234567890)",
       "Contact Phone (+911234567890)",
       "Contact Phone (+919818571192)",
       "Contact Email (inbox@alephindia.in)",
       "Contact Email (info@alephindia.in)"
     ],
     "entity_types_detected": [
-      "ORGANIZATION",
       "LOCAL_BUSINESS",
       "PERSON",
-      "OTHER"
+      "OTHER",
+      "ORGANIZATION"
     ],
     "relationships_count": 7,
     "structured_vs_visible_comparisons_count": 3,
@@ -283,13 +281,6 @@
         "name": "Aleph INDIA",
         "type": "OTHER",
         "source": "JSON_LD",
-        "telephone": null,
-        "email": null
-      },
-      {
-        "name": "Aleph INDIA",
-        "type": "ORGANIZATION",
-        "source": "META_TAG",
         "telephone": null,
         "email": null
       },
@@ -315,22 +306,29 @@
         "email": null
       },
       {
-        "name": "Contact Phone (+911234567890)",
-        "type": "LOCAL_BUSINESS",
-        "source": "VISIBLE_HTML",
-        "telephone": "+911234567890",
-        "email": null
-      },
-      {
         "name": "Contact Phone (+919818571192)",
         "type": "LOCAL_BUSINESS",
         "source": "VISIBLE_HTML",
         "telephone": "+919818571192",
         "email": null
+      },
+      {
+        "name": "Contact Email (inbox@alephindia.in)",
+        "type": "ORGANIZATION",
+        "source": "VISIBLE_HTML",
+        "telephone": null,
+        "email": "inbox@alephindia.in"
+      },
+      {
+        "name": "Contact Email (info@alephindia.in)",
+        "type": "ORGANIZATION",
+        "source": "VISIBLE_HTML",
+        "telephone": null,
+        "email": "info@alephindia.in"
       }
     ],
     "notes": [
-      "Detected 10 entity signals (ORGANIZATION: 5, OTHER: 1, PERSON: 1, LOCAL_BUSINESS: 3).",
+      "Detected 8 entity signals (ORGANIZATION: 4, OTHER: 1, PERSON: 1, LOCAL_BUSINESS: 2).",
       "Recorded 7 observable entity relationships."
     ]
   },
@@ -359,8 +357,8 @@
   },
   "search_topic_query_intent": {
     "status": "AVAILABLE",
-    "search_signals_count": 278,
-    "topics_detected_count": 217,
+    "search_signals_count": 288,
+    "topics_detected_count": 227,
     "topics_sample": [
       "INDIA®",
       "Certificate",
@@ -373,9 +371,10 @@
       "CRS",
       "FMCS"
     ],
-    "query_page_concepts_count": 258,
+    "query_page_concepts_count": 268,
     "primary_intent": "transactional",
     "secondary_intents": [
+      "transactional_lead_gen",
       "navigational",
       "local",
       "informational"
@@ -383,7 +382,7 @@
     "intent_evidence_items_count": 18,
     "notes": [
       "Primary Intent: transactional",
-      "217 topics extracted"
+      "227 topics extracted"
     ]
   },
   "cannibalization_search_gaps": {
@@ -436,8 +435,8 @@
     "definition_patterns": "ABSENT",
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
-    "explained_topics_count": 90,
-    "mentioned_only_topics_count": 116,
+    "explained_topics_count": 89,
+    "mentioned_only_topics_count": 124,
     "unsupported_heading_topics_count": 24,
     "unsupported_headings_sample": [
       "Latest Regulatory Updates",
@@ -448,7 +447,7 @@
     ],
     "notes": [
       "Detected 14 distinct observable information unit(s) across 5 structural types.",
-      "Evaluated 258 topic(s): 90 explained with explicit units, 116 mentioned only, 24 unsupported headings.",
+      "Evaluated 268 topic(s): 89 explained with explicit units, 124 mentioned only, 24 unsupported headings.",
       "Structure 'DIRECT_ANSWER': 2 unit(s) observed.",
       "Structure 'FACTUAL_STATEMENT': 5 unit(s) observed.",
       "Structure 'LIST': 5 unit(s) observed.",
@@ -531,15 +530,15 @@
       "Internal links observed: 81",
       "External links observed: 343",
       "Robots.txt found: True",
-      "Schema types declared: Organization, WebSite",
+      "Schema types declared: WebSite, Organization",
       "HTTPS enforced: True",
-      "Server latency probe: 462.1ms (local_probe)",
+      "Server latency probe: 443.7ms (local_probe)",
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
       "Static HTML contains 2546 words.",
       "Rendered browser DOM contains 4139 words (delta: +1593 words).",
       "Detected 14 distinct observable information unit(s) across 5 structural types.",
-      "Evaluated 258 topic(s): 90 explained with explicit units, 116 mentioned only, 24 unsupported headings.",
+      "Evaluated 268 topic(s): 89 explained with explicit units, 124 mentioned only, 24 unsupported headings.",
       "Structure 'DIRECT_ANSWER': 2 unit(s) observed.",
       "Structure 'FACTUAL_STATEMENT': 5 unit(s) observed.",
       "Structure 'LIST': 5 unit(s) observed.",
@@ -552,7 +551,7 @@
       "Mapped 22 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 462.1ms TTFB",
+      "Local network latency probe recorded 443.7ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -779,7 +778,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 462ms",
+      "finding": "TTFB Latency: 444ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -859,7 +858,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Detection: 10 entity signals (8 organization/business)",
+      "finding": "Entity Detection: 8 entity signals (6 organization/business)",
       "engine": "entity_engine",
       "source_file": "JSON-LD & HTML DOM",
       "confidence": "high",
@@ -907,7 +906,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 278 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 288 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -931,7 +930,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 217 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 227 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -939,7 +938,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 151 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 224 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -947,7 +946,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 258 observed concepts mapped to page (20 DIRECT, 124 SUPPORTED)",
+      "finding": "Query-Page Mapping: 268 observed concepts mapped to page (20 DIRECT, 133 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -955,7 +954,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 20 direct primary concepts, 124 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 20 direct primary concepts, 133 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -971,7 +970,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 13 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 7 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
@@ -1011,7 +1010,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 90 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 89 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",

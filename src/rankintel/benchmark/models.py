@@ -710,7 +710,8 @@ class CrossSiteMatrixItem(BaseModel):
     claims_grounded_ratio: float = 0.0
     visual_assets_count: int = 0
     alt_coverage_ratio: float = 0.0
-    action_surfaces_count: int = 0
+    forms_count: int = 0
+    buttons_count: int = 0
     a11y_violations_count: int = 0
     security_findings_count: int = 0
     waf_barrier: str = "None"
