@@ -430,6 +430,22 @@ class MarkdownReporter:
                     for fact in cgi.facts:
                         lines.append(f"- **FACT:** {fact}")
 
+            if getattr(sc, "multimodal_agent_intelligence", None):
+                mmi = sc.multimodal_agent_intelligence
+                lines.append("\n### 👁️ Site-Wide Multimodal & Agent Readiness Scope")
+                if mmi.is_partial_crawl:
+                    lines.append(f"> ⚠️ **Coverage Notice:** {mmi.completeness_disclaimer}")
+                lines.append(f"- **Total Crawled Pages Evaluated:** {mmi.total_pages_evaluated}")
+                lines.append(f"- **Visual Assets Observed:** {mmi.total_site_visual_assets} ({mmi.total_informational_images} informational, {mmi.total_meaningful_alt_images} with meaningful alt)")
+                lines.append(f"- **Visual-Only Information Limitations (Gaps):** {mmi.total_visual_only_gaps}")
+                lines.append(f"- **Observable Interaction Surfaces:** {mmi.total_site_forms} form(s) ({mmi.total_labeled_controls} labeled), {mmi.total_action_buttons} button(s)")
+                lines.append(f"- **Machine-Readable Actions:** {mmi.total_schema_actions} schema action(s), {mmi.total_webmcp_declarations} WebMCP declaration(s)")
+                lines.append(f"- **Information Access Paths Triangulated:** {mmi.total_access_paths_observed} path(s)")
+                if mmi.facts:
+                    lines.append("\n#### Site-Wide Multimodal & Agent Observations:")
+                    for fact in mmi.facts:
+                        lines.append(f"- **FACT:** {fact}")
+
             if sc.site_wide_issues:
                 lines.append("\n### 🔴 Site-Wide Structural Findings:")
                 for issue in sc.site_wide_issues:
@@ -687,6 +703,52 @@ class MarkdownReporter:
             if cg.facts:
                 lines.append("### 📋 Claim Grounding Facts:")
                 for fact in cg.facts:
+                    lines.append(f"- {fact}")
+                lines.append("")
+
+        # Multimodal & Agent Readiness Intelligence (Phase 10.4)
+        if getattr(report, "unified_multimodal_agent", None):
+            mma = report.unified_multimodal_agent
+            lines.append("## 👁️ MULTIMODAL & AGENT READINESS INTELLIGENCE")
+            lines.append("*(Deterministic analysis of observable visual asset representations, agent interaction surfaces, and cross-layer access paths. Note: No OCR or binary downloads performed; visual contents inside graphics cannot be read from HTML alone.)*\n")
+            lines.append(f"- **Visual Assets Detected:** {mma.multimodal.total_visual_assets} ({mma.multimodal.informational_assets_count} informational, {mma.multimodal.decorative_assets_count} decorative)")
+            lines.append(f"- **Representation Status:** {mma.multimodal.alt_represented_count} alt-represented, {mma.multimodal.caption_represented_count} caption-represented, {mma.multimodal.text_represented_count} text-represented, {mma.multimodal.visual_only_observed_count} visual-only gap(s)")
+            lines.append(f"- **Agent Interaction Surfaces:** {mma.agent_readiness.total_forms_detected} form(s) ({mma.agent_readiness.labeled_forms_count} labeled), {mma.agent_readiness.action_buttons_detected} action button(s) ({mma.agent_readiness.meaningful_accessible_buttons_count} accessible names)")
+            lines.append(f"- **Machine-Readable Actions:** {mma.agent_readiness.schema_actions_detected} schema potentialAction(s), {mma.agent_readiness.webmcp_declarations_detected} observable WebMCP declaration(s)")
+            lines.append(f"- **Information Access Paths:** {len(mma.access_paths)} path(s) mapped ({mma.visual_only_gaps_count} visual gap(s))")
+            lines.append("")
+
+            # Agent Interaction Surfaces Table
+            if mma.agent_readiness.surfaces:
+                lines.append("### 🤖 Observable Agent Interaction Surfaces:")
+                lines.append("| Surface ID | Type | Action / Target | Controls | Status | Accessible Name |")
+                lines.append("|---|---|---|:---:|:---:|---|")
+                for s in mma.agent_readiness.surfaces[:6]:
+                    status_icon = "🟢" if s.status.value in ("LABELED", "EXPLICIT") else ("⚠️" if s.status.value == "PARTIALLY_LABELED" else "⚪")
+                    target = s.form_action or s.structured_action_target or "—"
+                    if len(target) > 35:
+                        target = target[:32] + "..."
+                    acc = s.accessible_name or s.surface_name or "—"
+                    if len(acc) > 30:
+                        acc = acc[:27] + "..."
+                    lines.append(f"| `{s.surface_id}` | `{s.signal_type.value}` | `{target}` | {s.labeled_control_count}/{s.control_count} | {status_icon} `{s.status.value}` | {acc} |")
+                lines.append("")
+
+            # Information Access Paths Table
+            if mma.access_paths:
+                lines.append("### 🛤️ Information Access Paths & Multi-Surface Linkages:")
+                lines.append("| Path ID | Type | Related Concept | Representation | Action Surface | Status / Gap |")
+                lines.append("|---|---|---|:---:|:---:|---|")
+                for p in mma.access_paths[:8]:
+                    rep_icon = "🟢" if p.representation_status.value in ("TEXT_REPRESENTED", "ALT_REPRESENTED", "CAPTION_REPRESENTED") else ("🔴" if p.representation_status.value == "VISUAL_ONLY_OBSERVED" else "⚪")
+                    act_icon = "🟢" if p.agent_action_surface_present else "—"
+                    gap_text = f"⚠️ {p.gap_description}" if p.evidence_gap_identified else "✓ Connected"
+                    lines.append(f"| `{p.path_id}` | `{p.path_type}` | **{p.related_concept[:30]}** | {rep_icon} `{p.representation_status.value}` | {act_icon} | {gap_text} |")
+                lines.append("")
+
+            if mma.facts:
+                lines.append("### 📋 Multimodal & Agent Readiness Facts:")
+                for fact in mma.facts:
                     lines.append(f"- {fact}")
                 lines.append("")
 
