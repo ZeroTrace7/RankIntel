@@ -152,6 +152,14 @@ from rankintel.models.schema import (
     TopicAnswerabilityLink,
     AnswerabilityEvidence,
     SiteAnswerabilityIntelligence,
+    ClaimSupportStatus,
+    EntityConsistencyStatus,
+    StructuredVisibleAgreementStatus,
+    StructuredVisibleAgreement,
+    ClaimEvidence,
+    EntityGroundingEvidence,
+    ClaimGroundingEvidence,
+    SiteClaimGroundingIntelligence,
 )
 
 __all__ = [
@@ -305,4 +313,12 @@ __all__ = [
     "TopicAnswerabilityLink",
     "AnswerabilityEvidence",
     "SiteAnswerabilityIntelligence",
+    "ClaimSupportStatus",
+    "EntityConsistencyStatus",
+    "StructuredVisibleAgreementStatus",
+    "StructuredVisibleAgreement",
+    "ClaimEvidence",
+    "EntityGroundingEvidence",
+    "ClaimGroundingEvidence",
+    "SiteClaimGroundingIntelligence",
 ]
