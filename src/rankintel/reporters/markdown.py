@@ -411,6 +411,25 @@ class MarkdownReporter:
                     for fact in ai.facts:
                         lines.append(f"- **FACT:** {fact}")
 
+            if getattr(sc, "claim_grounding_intelligence", None):
+                cgi = sc.claim_grounding_intelligence
+                lines.append("\n### 🏷️ Site-Wide Claim Grounding & Entity Consistency")
+                if cgi.is_partial_crawl:
+                    lines.append(f"> ⚠️ **Coverage Notice:** {cgi.completeness_disclaimer}")
+                lines.append(f"- **Total Crawled Pages Evaluated:** {cgi.total_pages_evaluated}")
+                lines.append(f"- **Total Site Claims Detected:** {cgi.total_site_claims_detected}")
+                lines.append(f"  - **Supported on Site:** {cgi.supported_claims_count} (substantiated by on-site parameters or scope)")
+                lines.append(f"  - **Partially Supported:** {cgi.partially_supported_count} (mentioned without direct supporting context)")
+                lines.append(f"  - **Uncorroborated on Site:** {cgi.uncorroborated_count} (isolated assertion with 0 supporting context)")
+                lines.append(f"  - **Contradicted on Site:** {cgi.contradicted_count}")
+                lines.append(f"- **Structured vs Visible Disagreements:** {len(cgi.disagreement_items)}")
+                if cgi.entity_consistency_summary:
+                    lines.append(f"- **Tracked Entities:** {', '.join([f'{k} ({v})' for k, v in list(cgi.entity_consistency_summary.items())[:5]])}")
+                if cgi.facts:
+                    lines.append("\n#### Site-Wide Grounding Observations:")
+                    for fact in cgi.facts:
+                        lines.append(f"- **FACT:** {fact}")
+
             if sc.site_wide_issues:
                 lines.append("\n### 🔴 Site-Wide Structural Findings:")
                 for issue in sc.site_wide_issues:
@@ -613,6 +632,61 @@ class MarkdownReporter:
             if ans.facts:
                 lines.append("### 🔍 Answerability Facts:")
                 for fact in ans.facts:
+                    lines.append(f"- {fact}")
+                lines.append("")
+
+        # Claim Grounding & Entity Intelligence (Phase 10.3)
+        if getattr(report, "unified_claim_grounding", None):
+            cg = report.unified_claim_grounding
+            lines.append("## 🏷️ CLAIM GROUNDING & ENTITY INTELLIGENCE")
+            lines.append("*(Deterministic analysis of observable on-site claims, grounding evidence, and multi-surface entity consistency. Note: On-site support does not imply independent external verification.)*\n")
+            lines.append(f"- **Total Claims Detected:** {cg.total_claims_detected} ({cg.supported_claims_count} supported on-site, {cg.partially_supported_count} partially supported, {cg.uncorroborated_count} uncorroborated, {cg.contradicted_count} contradicted)")
+            lines.append(f"- **Structured vs Visible Alignment:** {cg.agreement_count} agreement(s), {cg.disagreement_count} explicit disagreement(s)")
+            lines.append("")
+
+            # Structured vs Visible Agreement Table
+            if cg.structured_agreements:
+                lines.append("### ⚖️ Structured vs Visible Representation Agreement:")
+                lines.append("| Field | Context | JSON-LD Structured Value | Visible HTML Value | Agreement Status |")
+                lines.append("|---|---|---|---|---|")
+                for agr in cg.structured_agreements:
+                    status_icon = "🟢" if agr.status.value in ("AGREEMENT", "PARTIAL_AGREEMENT") else ("🔴" if agr.status.value == "DISAGREEMENT" else "⚪")
+                    s_val = (agr.structured_value[:40] + "...") if agr.structured_value and len(agr.structured_value) > 40 else (agr.structured_value or "*(missing)*")
+                    v_val = (agr.visible_value[:40] + "...") if agr.visible_value and len(agr.visible_value) > 40 else (agr.visible_value or "*(missing)*")
+                    lines.append(f"| **{agr.field_name.replace('_', ' ').title()}** | `{agr.context_label}` | {s_val} | {v_val} | {status_icon} `{agr.status.value}` |")
+                lines.append("")
+
+            # Entity Consistency across 6 Surfaces
+            if cg.entity_grounding:
+                lines.append("### 🏢 Multi-Surface Entity Consistency (6 Surfaces):")
+                lines.append("| Entity Name | Type | Body | Headings | Meta | JSON-LD | Contact | Units | Consistency |")
+                lines.append("|---|---|:---:|:---:|:---:|:---:|:---:|:---:|---|")
+                for eg in cg.entity_grounding[:5]:
+                    b_icon = "✓" if eg.observed_in_visible_body else "—"
+                    h_icon = "✓" if eg.observed_in_headings else "—"
+                    m_icon = "✓" if eg.observed_in_title_meta else "—"
+                    j_icon = "✓" if eg.observed_in_json_ld else "—"
+                    c_icon = "✓" if eg.observed_in_contact_info else "—"
+                    u_icon = "✓" if eg.observed_in_answerable_units else "—"
+                    c_status_icon = "🟢" if eg.consistency_status.value == "CONSISTENT" else ("⚠️" if eg.consistency_status.value == "PARTIALLY_CONSISTENT" else "🔴")
+                    lines.append(f"| **{eg.entity_name}** | `{eg.entity_type}` | {b_icon} | {h_icon} | {m_icon} | {j_icon} | {c_icon} | {u_icon} | {c_status_icon} `{eg.consistency_status.value}` |")
+                lines.append("")
+
+            # Sample Observable Claims
+            if cg.claims:
+                lines.append("### 🔎 Observable Claims Sample:")
+                lines.append("| Claim ID | Type | Support Status | Bounded Statement | On-Site Supporting Context |")
+                lines.append("|---|---|---|---|---|")
+                for clm in cg.claims[:8]:
+                    supp_icon = "🟢" if clm.support_status.value == "SUPPORTED_ON_SITE" else ("⚠️" if clm.support_status.value == "PARTIALLY_SUPPORTED" else ("🔴" if clm.support_status.value == "CONTRADICTED_ON_SITE" else "⚪"))
+                    clm_text = (clm.claim_text[:65] + "...") if len(clm.claim_text) > 65 else clm.claim_text
+                    supp_text = (clm.supporting_snippets[0][:65] + "...") if clm.supporting_snippets else ("*(no on-site support)*" if clm.support_status.value == "UNCORROBORATED_ON_SITE" else "—")
+                    lines.append(f"| `{clm.claim_id}` | `{clm.claim_type}` | {supp_icon} `{clm.support_status.value}` | {clm_text} | {supp_text} |")
+                lines.append("")
+
+            if cg.facts:
+                lines.append("### 📋 Claim Grounding Facts:")
+                for fact in cg.facts:
                     lines.append(f"- {fact}")
                 lines.append("")
 

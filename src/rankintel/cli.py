@@ -245,6 +245,21 @@ def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_p
             "site-wide information answerability"
         )
 
+    if getattr(report, "unified_claim_grounding", None):
+        cg = report.unified_claim_grounding
+        table.add_row(
+            "Claim Grounding & Consistency",
+            f"{cg.total_claims_detected} claim(s) ({cg.supported_claims_count} supported, {cg.agreement_count} agree, {cg.disagreement_count} conflict)",
+            "on-site grounding + multi-surface alignment (Phase 10.3)"
+        )
+    elif report.site_crawl and getattr(report.site_crawl, "claim_grounding_intelligence", None):
+        cgi = report.site_crawl.claim_grounding_intelligence
+        table.add_row(
+            "Site Claim Grounding Scope",
+            f"{cgi.total_site_claims_detected} claims across {cgi.total_pages_evaluated} pages ({cgi.supported_claims_count} supported, {len(cgi.disagreement_items)} disagreements)",
+            "site-wide claim grounding & entity consistency"
+        )
+
     console.print(table)
 
     if report.conflicts_detected:

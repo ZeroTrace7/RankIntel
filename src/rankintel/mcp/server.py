@@ -100,6 +100,14 @@ def rankintel_audit(url: str, deep_crawl: bool = False, max_pages: int = 25) -> 
         "answerability_explained_topics_count": report.unified_answerability.explained_topics_count if report.unified_answerability else 0,
         "answerability_clarity_qa_status": report.unified_answerability.clarity_assessment.question_answer_patterns.value if report.unified_answerability else "UNAVAILABLE",
         "answerability_clarity_definitions_status": report.unified_answerability.clarity_assessment.definition_patterns.value if report.unified_answerability else "UNAVAILABLE",
+        "claim_grounding_total_claims": report.unified_claim_grounding.total_claims_detected if report.unified_claim_grounding else 0,
+        "claim_grounding_supported_count": report.unified_claim_grounding.supported_claims_count if report.unified_claim_grounding else 0,
+        "claim_grounding_partially_supported_count": report.unified_claim_grounding.partially_supported_count if report.unified_claim_grounding else 0,
+        "claim_grounding_uncorroborated_count": report.unified_claim_grounding.uncorroborated_count if report.unified_claim_grounding else 0,
+        "claim_grounding_contradicted_count": report.unified_claim_grounding.contradicted_count if report.unified_claim_grounding else 0,
+        "claim_grounding_agreements_count": report.unified_claim_grounding.agreement_count if report.unified_claim_grounding else 0,
+        "claim_grounding_disagreements_count": report.unified_claim_grounding.disagreement_count if report.unified_claim_grounding else 0,
+        "claim_grounding_entity_candidates_count": len(report.unified_claim_grounding.entity_grounding) if report.unified_claim_grounding else 0,
     }
 
 @mcp.tool
