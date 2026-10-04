@@ -1474,9 +1474,114 @@ class SiteCannibalizationIntelligence(BaseModel):
     def potential_signals(self) -> List[PotentialCannibalizationItem]:
         return self.potential_cannibalization_signals
 
-    @property
-    def observable_gaps(self) -> List[ObservableTopicGapItem]:
-        return self.observable_topic_gaps
+# ==============================================================================
+# Phase 10.1 — AI Access & Retrieval Readiness Models
+# ==============================================================================
+
+class RetrievalReadinessStatus(str, Enum):
+    ALLOWED = "ALLOWED"
+    DISALLOWED = "DISALLOWED"
+    BLOCKED = "BLOCKED"
+    UNKNOWN = "UNKNOWN"
+    UNAVAILABLE = "UNAVAILABLE"
+    NOT_APPLICABLE = "NOT_APPLICABLE"
+
+class BotPurpose(str, Enum):
+    SEARCH_INDEX = "search_index"
+    AI_TRAINING = "ai_training"
+    USER_FETCH = "user_fetch"
+    RESEARCH_PREVIEW = "research_preview"
+
+class SnippetControlStatus(str, Enum):
+    ALLOWED = "ALLOWED"
+    NOSNIPPET = "NOSNIPPET"
+    MAX_SNIPPET = "MAX_SNIPPET"
+    NOT_APPLICABLE = "NOT_APPLICABLE"
+
+class SnippetControlEvidence(BaseModel):
+    status: SnippetControlStatus = SnippetControlStatus.ALLOWED
+    has_nosnippet: bool = False
+    nosnippet_sources: List[str] = Field(default_factory=list)
+    max_snippet: Optional[int] = None
+    max_snippet_source: Optional[str] = None
+    has_data_nosnippet: bool = False
+    data_nosnippet_count: int = 0
+    data_nosnippet_sample_selectors: List[str] = Field(default_factory=list)
+
+class IndexabilityInteractionEvidence(BaseModel):
+    indexability_status: IndexabilityStatus = IndexabilityStatus.INDEXABLE
+    has_noindex: bool = False
+    noindex_sources: List[str] = Field(default_factory=list)
+    has_nofollow: bool = False
+    canonical_url: Optional[str] = None
+    canonical_signal: str = "MISSING"
+    canonical_conflict: bool = False
+    interaction_summary: str = ""
+
+class ContentAvailabilityEvidence(BaseModel):
+    raw_html_available: bool = False
+    rendered_html_available: bool = False
+    raw_word_count: int = 0
+    rendered_word_count: int = 0
+    word_count_delta: int = 0
+    significant_content_difference: bool = False
+    js_rendering_impact: str = ""
+
+class WafChallengeEvidence(BaseModel):
+    is_blocked: bool = False
+    status_code: int = 0
+    waf_or_challenge_detected: bool = False
+    waf_provider: str = "UNKNOWN"
+    challenge_indicators: List[str] = Field(default_factory=list)
+
+class BotRetrievalAccessRecord(BaseModel):
+    bot_name: str
+    company: str
+    purpose: BotPurpose
+    category_label: str
+    robots_access: RetrievalReadinessStatus = RetrievalReadinessStatus.UNKNOWN
+    indexability: IndexabilityStatus = IndexabilityStatus.UNKNOWN
+    snippet_control: SnippetControlStatus = SnippetControlStatus.NOT_APPLICABLE
+    waf_network_status: RetrievalReadinessStatus = RetrievalReadinessStatus.ALLOWED
+    effective_status: RetrievalReadinessStatus = RetrievalReadinessStatus.UNKNOWN
+    rule_source: str = "unknown"
+    matched_directive: Optional[str] = None
+    line_number: Optional[int] = None
+    raw_pattern: Optional[str] = None
+    notes: List[str] = Field(default_factory=list)
+
+class RetrievalReadinessEvidence(BaseModel):
+    url: str = ""
+    engine_source: str = "retrieval_readiness_engine"
+    http_status: int = 0
+    content_availability: ContentAvailabilityEvidence = Field(default_factory=ContentAvailabilityEvidence)
+    waf_challenge: WafChallengeEvidence = Field(default_factory=WafChallengeEvidence)
+    snippet_controls: SnippetControlEvidence = Field(default_factory=SnippetControlEvidence)
+    indexability_interaction: IndexabilityInteractionEvidence = Field(default_factory=IndexabilityInteractionEvidence)
+    bot_access_records: Dict[str, BotRetrievalAccessRecord] = Field(default_factory=dict)
+    total_bots_evaluated: int = 0
+    search_index_allowed_count: int = 0
+    ai_training_allowed_count: int = 0
+    user_fetch_allowed_count: int = 0
+    blocked_by_waf_count: int = 0
+    facts: List[str] = Field(default_factory=list)
+    analyses: List[str] = Field(default_factory=list)
+
+class SiteRetrievalReadinessIntelligence(BaseModel):
+    status: str = "success"
+    total_pages_evaluated: int = 0
+    is_partial_crawl: bool = False
+    completeness_disclaimer: str = ""
+    pages_with_waf_challenge: List[str] = Field(default_factory=list)
+    pages_requiring_js: List[str] = Field(default_factory=list)
+    pages_with_nosnippet: List[str] = Field(default_factory=list)
+    pages_with_data_nosnippet: List[str] = Field(default_factory=list)
+    pages_with_noindex: List[str] = Field(default_factory=list)
+    pages_with_canonical_conflicts: List[str] = Field(default_factory=list)
+    bot_disallowed_counts: Dict[str, int] = Field(default_factory=dict)
+    page_readiness_evidence: Dict[str, RetrievalReadinessEvidence] = Field(default_factory=dict)
+    facts: List[str] = Field(default_factory=list)
+    analyses: List[str] = Field(default_factory=list)
 
 class SiteCrawlResult(BaseModel):
     """Aggregated multi-page crawl intelligence."""
@@ -1522,6 +1627,7 @@ class SiteCrawlResult(BaseModel):
     query_page_intelligence: Optional[SiteQueryPageIntelligence] = None
     topic_coverage_intelligence: Optional[SiteTopicCoverageIntelligence] = None
     cannibalization_intelligence: Optional[SiteCannibalizationIntelligence] = None
+    retrieval_readiness_intelligence: Optional[SiteRetrievalReadinessIntelligence] = None
 
 class EngineResult(BaseModel):
     engine_name: str
@@ -1546,6 +1652,7 @@ class EngineResult(BaseModel):
     search_intent: Optional[PageIntentEvidence] = None
     cannibalization: Optional[PageCannibalizationEvidence] = None
     cloud_intelligence: Optional[CloudIntelligenceEvidence] = None
+    retrieval_readiness: Optional[RetrievalReadinessEvidence] = None
     raw_html: Optional[str] = None  # Post-JS rendered HTML from crawl4ai; used by TrustEvaluator and GeoEngine
 
 class ConflictFinding(BaseModel):
@@ -1604,6 +1711,7 @@ class SynthesisReport(BaseModel):
     unified_search_intent: PageIntentEvidence = Field(default_factory=PageIntentEvidence)
     unified_cannibalization: PageCannibalizationEvidence = Field(default_factory=PageCannibalizationEvidence)
     cloud_intelligence: CloudIntelligenceEvidence = Field(default_factory=CloudIntelligenceEvidence)
+    unified_retrieval_readiness: Optional[RetrievalReadinessEvidence] = None
     site_crawl: Optional[SiteCrawlResult] = None
     
     # Generated fixes
