@@ -385,8 +385,22 @@ def test_site_wide_aggregation_and_cross_page_corroboration():
         claims=[claim_p2],
     )
 
-    rec1 = CrawlRecord(url="https://example.com/", status=CrawlStatus.FETCHED, engine_results={"claim_grounding_engine": type("Res", (), {"claim_grounding": ev_p1})()})
-    rec2 = CrawlRecord(url="https://example.com/services/calibration", status=CrawlStatus.FETCHED, engine_results={"claim_grounding_engine": type("Res", (), {"claim_grounding": ev_p2})()})
+    rec1 = CrawlRecord(
+        url="https://example.com/",
+        normalized_url="https://example.com/",
+        identity_url="https://example.com/",
+        crawl_status=CrawlStatus.FETCHED,
+        depth=0,
+        engine_results={"claim_grounding_engine": type("Res", (), {"claim_grounding": ev_p1})()}
+    )
+    rec2 = CrawlRecord(
+        url="https://example.com/services/calibration",
+        normalized_url="https://example.com/services/calibration",
+        identity_url="https://example.com/services/calibration",
+        crawl_status=CrawlStatus.FETCHED,
+        depth=1,
+        engine_results={"claim_grounding_engine": type("Res", (), {"claim_grounding": ev_p2})()}
+    )
 
     site_crawl = SiteCrawlResult(
         pages_crawled=2,

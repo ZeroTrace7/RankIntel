@@ -629,7 +629,7 @@ class ClaimGroundingEngine:
         # 5. contact_info
         contact_text = ""
         if soup:
-            footer = soup.find(["footer", "address"]) or soup.find(id=re.compile(r"contact|footer", re.I))
+            footer = soup.find("footer") or soup.find("address") or soup.find(id=re.compile(r"contact|footer", re.I))
             if footer:
                 contact_text = " ".join(footer.get_text().split()).lower()
             else:
@@ -649,7 +649,19 @@ class ClaimGroundingEngine:
             obs_head = norm_name in headings_text
             obs_title_meta = norm_name in title_meta_text
             obs_json_ld = any(norm_name in sn for sn in schema_names)
+            
+            # Check contact info surface
             obs_contact = norm_name in contact_text
+            if not obs_contact and entity_ev and entity_ev.detected_entities:
+                for ent in entity_ev.detected_entities:
+                    if normalize_entity_name(ent.name) == norm_name:
+                        if ent.telephone and normalize_phone_number(ent.telephone) in normalize_phone_number(contact_text):
+                            obs_contact = True
+                            break
+                        if ent.email and ent.email.lower() in contact_text:
+                            obs_contact = True
+                            break
+
             obs_units = norm_name in units_text
 
             # Surface matches details
@@ -741,6 +753,39 @@ class ClaimGroundingEngine:
                         structured_address = ent.address
                     if not structured_url and ent.declared_url:
                         structured_url = ent.declared_url
+
+        # Fallback to direct JSON-LD script parsing from soup if structured values remain unextracted
+        if soup and not (structured_name and structured_phone and structured_email and structured_address):
+            for script in soup.find_all("script", attrs={"type": re.compile(r"application/ld\+json", re.I)}):
+                try:
+                    c_str = script.string or script.get_text()
+                    if not c_str or not c_str.strip():
+                        continue
+                    data = json.loads(c_str.strip())
+                    items = [data] if isinstance(data, dict) else (data if isinstance(data, list) else [])
+                    expanded = []
+                    for it in items:
+                        if isinstance(it, dict) and "@graph" in it and isinstance(it["@graph"], list):
+                            expanded.extend(it["@graph"])
+                        else:
+                            expanded.append(it)
+                    for it in expanded:
+                        if isinstance(it, dict):
+                            t = it.get("@type", "")
+                            t_str = t if isinstance(t, str) else (t[0] if isinstance(t, list) else "")
+                            if any(term in t_str for term in ("Organization", "LocalBusiness", "Corporation", "Laboratory")):
+                                if not structured_name and it.get("name"):
+                                    structured_name = str(it.get("name"))
+                                if not structured_phone and it.get("telephone"):
+                                    structured_phone = str(it.get("telephone"))
+                                if not structured_email and it.get("email"):
+                                    structured_email = str(it.get("email"))
+                                if not structured_address and it.get("address"):
+                                    structured_address = format_postal_address(it.get("address"))
+                                if not structured_url and it.get("url"):
+                                    structured_url = str(it.get("url"))
+                except Exception:
+                    pass
 
         # Observable Visible Values from DOM / on_page
         visible_name: Optional[str] = None
