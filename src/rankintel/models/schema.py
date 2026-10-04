@@ -2265,6 +2265,17 @@ class PrioritizedAction(BaseModel):
     engine_confidence: str
     fix_snippet: Optional[str] = None
 
+class CIPolicyConfig(BaseModel):
+    enabled: bool = False
+    fail_on_classifications: List[str] = Field(default_factory=list)
+    max_remediations: Optional[int] = None
+
+class CIPolicyResult(BaseModel):
+    passed: bool = True
+    remediation_count: int = 0
+    failed_classifications_found: List[str] = Field(default_factory=list)
+    failure_reasons: List[str] = Field(default_factory=list)
+
 class SynthesisReport(BaseModel):
     url: str
     domain: str
@@ -2272,6 +2283,7 @@ class SynthesisReport(BaseModel):
     overall_health_score: int = 0
     geo_readiness_score: int = 0
     technical_health_score: int = 0
+    ci_policy_result: Optional[CIPolicyResult] = None
     trust_score: int = 0
     performance_score: int = 0
     security_score: int = 0

@@ -21,6 +21,8 @@ from rankintel.intelligence.comparer import IntelligenceComparer
 from rankintel.reporters.markdown import MarkdownReporter
 from rankintel.reporters.gap_reporter import GapReporter
 from rankintel.reporters.json_reporter import JsonReporter
+from rankintel.models.schema import CIPolicyConfig
+from rankintel.intelligence.ci_evaluator import CIEvaluator
 
 console = Console(highlight=False)
 
@@ -37,7 +39,10 @@ def main():
 @click.option("--max-pages", default=25, help="Maximum pages to crawl in deep mode")
 @click.option("--external-ai", is_flag=True, default=False, help="Enable controlled external AI visibility observations (Phase 10.5 opt-in)")
 @click.option("--external-providers", default=None, help="Comma-separated external visibility providers (e.g. 'gemini', 'mock')")
-def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_pages: int, external_ai: bool, external_providers: Optional[str] = None):
+@click.option("--ci", is_flag=True, default=False, help="Enable CI policy evaluation mode")
+@click.option("--ci-fail-on", default=None, help="Comma-separated remediation classifications to fail on (e.g. HUMAN_REVIEW)")
+@click.option("--ci-max-remediations", type=int, default=None, help="Maximum number of remediations allowed before failing")
+def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_pages: int, external_ai: bool, external_providers: Optional[str] = None, ci: bool = False, ci_fail_on: Optional[str] = None, ci_max_remediations: Optional[int] = None):
     """Run full multi-engine SEO, GEO, browser, and performance triangulation audit."""
     if not url.startswith("http://") and not url.startswith("https://"):
         url = "https://" + url
@@ -70,16 +75,41 @@ def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_p
             site_crawl = collector.seo_engine.crawl_site(url, max_pages=max_pages)
             report.site_crawl = site_crawl
 
+    # Evaluate CI Policy if requested
+    ci_mode = ci or ci_fail_on is not None or ci_max_remediations is not None
+    if ci_mode:
+        fail_list = [c.strip() for c in ci_fail_on.split(",")] if ci_fail_on else []
+        ci_policy = CIPolicyConfig(
+            enabled=True,
+            fail_on_classifications=fail_list,
+            max_remediations=ci_max_remediations
+        )
+        with console.status("[bold magenta]Evaluating CI policy...[/bold magenta]", spinner="dots"):
+            ci_result = CIEvaluator.evaluate(report, ci_policy)
+            report.ci_policy_result = ci_result
+
     # Phase 3: Persist Audit Report
     if output_format == "json":
         report_file = JsonReporter.save_audit(report, output_dir=output_dir)
         click.echo(JsonReporter.render_audit(report))
         sys.stderr.write(f"\nReport saved to: {report_file}\n")
+        if ci_mode and not report.ci_policy_result.passed:
+            sys.exit(1)
         return
 
     report_file = MarkdownReporter.save(report, output_dir=output_dir)
 
-    console.print("\n[bold green][SUCCESS] Multi-Engine Triangulation Completed Successfully![/bold green]\n")
+    if ci_mode:
+        if report.ci_policy_result.passed:
+            console.print("\n[bold green][SUCCESS] CI Policy Passed![/bold green]\n")
+        else:
+            console.print("\n[bold red][FAILURE] CI Policy Failed![/bold red]")
+            for reason in report.ci_policy_result.failure_reasons:
+                console.print(f"  ? [red]{reason}[/red]")
+            console.print("")
+    else:
+        console.print("\n[bold green][SUCCESS] Multi-Engine Triangulation Completed Successfully![/bold green]\n")
+
 
     table = Table(title="Executive Audit Scorecard", show_header=True, header_style="bold magenta")
     table.add_column("Telemetry Category", style="cyan")
@@ -306,6 +336,9 @@ def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_p
             console.print(f"    [dim]Interpretation:[/dim] {c.interpretation}\n")
 
     console.print(f"[bold green]Report saved to:[/bold green] [underline cyan]{report_file}[/underline cyan]")
+
+    if ci_mode and not report.ci_policy_result.passed:
+        sys.exit(1)
 
 @main.command()
 @click.argument("target_a")
