@@ -29,16 +29,32 @@ from rankintel.intelligence.comparer import IntelligenceComparer
 mcp = FastMCP("rankintel", instructions="RankIntel Multi-Engine Search Intelligence & GEO Server")
 
 @mcp.tool
-def rankintel_audit(url: str, deep_crawl: bool = False, max_pages: int = 25) -> Dict[str, Any]:
+def rankintel_audit(
+    url: str,
+    deep_crawl: bool = False,
+    max_pages: int = 25,
+    external_ai: bool = False,
+    external_providers: Optional[str] = None,
+) -> Dict[str, Any]:
     """
     Run full multi-engine SEO, GEO citability, Trust Stack, and CWV performance audit on a URL.
     Optionally crawls internal site pages for site-wide issues.
+    Optionally enables controlled external AI visibility observations via external_ai=True.
     """
     if not url.startswith("http"):
         url = "https://" + url
 
-    collector = EvidenceCollector()
-    results = collector.collect(url)
+    providers_list = [p.strip() for p in external_providers.split(",")] if external_providers else None
+
+    collector = EvidenceCollector(
+        enable_external_visibility=external_ai,
+        external_providers=providers_list,
+    )
+    results = collector.collect(
+        url,
+        enable_external_visibility=external_ai,
+        external_providers=providers_list,
+    )
 
     synthesizer = IntelligenceSynthesizer()
     report = synthesizer.synthesize(url, results)
