@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 7.15,
+  "execution_time_sec": 6.57,
   "overall_health_score": 37,
   "technical_health_score": 25,
   "geo_readiness_score": 30,
@@ -59,7 +59,7 @@
     "detected_schema_types": [],
     "schema_blocks_count": 0,
     "schema_validation_issues": [],
-    "ttfb_ms": 146.3,
+    "ttfb_ms": 168.1,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -469,7 +469,7 @@
       "Robots.txt found: True",
       "Schema types declared: None",
       "HTTPS enforced: True",
-      "Server latency probe: 146.3ms (local_probe)",
+      "Server latency probe: 168.1ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
       "Static HTML contains 560 words.",
@@ -485,7 +485,7 @@
       "Mapped 5 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 146.3ms TTFB",
+      "Local network latency probe recorded 168.1ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -707,7 +707,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 146ms",
+      "finding": "TTFB Latency: 168ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",

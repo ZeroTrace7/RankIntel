@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 6.77,
+  "execution_time_sec": 6.4,
   "overall_health_score": 41,
   "technical_health_score": 35,
   "geo_readiness_score": 28,
@@ -55,7 +55,7 @@
     "detected_schema_types": [],
     "schema_blocks_count": 0,
     "schema_validation_issues": [],
-    "ttfb_ms": 102.3,
+    "ttfb_ms": 119.2,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -442,7 +442,7 @@
       "Robots.txt found: True",
       "Schema types declared: None",
       "HTTPS enforced: True",
-      "Server latency probe: 102.3ms (local_probe)",
+      "Server latency probe: 119.2ms (local_probe)",
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Observable embedded form protection in HTML: 'recaptcha'",
       "Static HTML contains 1055 words.",
@@ -459,7 +459,7 @@
       "Mapped 7 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 102.3ms TTFB",
+      "Local network latency probe recorded 119.2ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -673,7 +673,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 102ms",
+      "finding": "TTFB Latency: 119ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",

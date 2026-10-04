@@ -33,10 +33,10 @@
 ## 2. Entities & Knowledge Graph Representation
 - **Status:** `AVAILABLE`
 - **Total Entities Detected:** 3
-- **Entity Types:** LOCAL_BUSINESS
-- **Named Entities (Sample):** Contact Phone (04445050301), Contact Phone (+9965251951), Contact Phone (+9965251951)
+- **Entity Types:** ORGANIZATION, LOCAL_BUSINESS
+- **Named Entities (Sample):** Contact Phone (04445050301), Contact Phone (+9965251951), Unique Measurement Service
 - **Structured vs Visible Alignment:** 0 aligned, 0 divergent across 0 comparisons.
-- **Synthesis:** Detected 3 entity signals across 1 types (LOCAL_BUSINESS). Structured vs visible comparisons: 0 aligned, 0 divergent.
+- **Synthesis:** Detected 3 entity signals across 2 types (ORGANIZATION, LOCAL_BUSINESS). Structured vs visible comparisons: 0 aligned, 0 divergent.
 
 ## 3. Observable Services & Products
 - **Status:** `AVAILABLE`
@@ -46,25 +46,25 @@
 
 ## 4 & 5. Topic Taxonomy & Dominant Concepts
 - **Status:** `AVAILABLE`
-- **Total Topics Detected:** 83
-- **Primary Topics (Top 5):** Service, Measurement, Unique, Services, Unique Measurement Service
+- **Total Topics Detected:** 84
+- **Primary Topics (Top 5):** Measurement, Service, Unique, Unique Measurement Service, Services
 - **Supporting Topics (Sample):** Our Services, Assistant, UMS, 🤖 UMS Assistant, read
-- **Dominant Semantic Concepts:** Service, Measurement, Unique, Services, Unique Measurement Service, Our Services, Assistant, UMS
-- **Synthesis:** Identified 83 deterministic concept clusters. Primary topical anchors: Service, Measurement, Unique, Services, Unique Measurement Service.
+- **Dominant Semantic Concepts:** Measurement, Service, Unique, Unique Measurement Service, Services, Our Services, Assistant, UMS
+- **Synthesis:** Identified 84 deterministic concept clusters. Primary topical anchors: Measurement, Service, Unique, Unique Measurement Service, Services.
 
 ## 6. Observable Search Intent
 - **Status:** `AVAILABLE`
 - **Primary Intent:** `transactional`
-- **Secondary Intents:** None evidenced
-- **Supporting Evidence Count:** 7 observable signals
-- **Synthesis:** Primary search intent classified as 'transactional' supported by 7 observable structural signals. Secondary intent spectrum: None evidenced.
+- **Secondary Intents:** `navigational`, `transactional_lead_gen`
+- **Supporting Evidence Count:** 8 observable signals
+- **Synthesis:** Primary search intent classified as 'transactional' supported by 8 observable structural signals. Secondary intent spectrum: navigational, transactional_lead_gen.
 
 ## 7. Topic-to-Page Distribution
 - **Status:** `AVAILABLE`
-- **Content Length:** 518 words across 42 paragraphs
-- **Topic Breadth:** 50 explained topics vs 22 mentioned-only topics
-- **Topic Density:** 16.02 concepts per 100 words
-- **Synthesis:** Content corpus comprises 518 words across 42 paragraphs. Topical distribution: 50 explained topics with structured units vs 22 mentioned-only topics (topic density: 16.02 per 100 words).
+- **Content Length:** 505 words across 42 paragraphs
+- **Topic Breadth:** 56 explained topics vs 22 mentioned-only topics
+- **Topic Density:** 16.63 concepts per 100 words
+- **Synthesis:** Content corpus comprises 505 words across 42 paragraphs. Topical distribution: 56 explained topics with structured units vs 22 mentioned-only topics (topic density: 16.63 per 100 words).
 
 ## 8. Page Concentration & Topical Overlap
 - **Status:** `AVAILABLE`
@@ -84,7 +84,7 @@
 - **Structured Data:** 0 types (None) across 0 blocks
 - **Canonical URL:** `MISSING` [`MISSING`]
 - **Robots.txt:** Found | Sitemaps declared: 1
-- **Latency (TTFB):** 2681.4ms (local_probe)
+- **Latency (TTFB):** 2175.9ms (local_probe)
 
 ## 10. Accessibility & Transport Security
 - **WCAG 2.1 Automated Status:** `FAIL` (55 violations: 25 critical, 30 serious)
@@ -98,14 +98,14 @@
 - **Internal Links:** 63 instances targeting 63 unique URLs
 - **External Links:** 116 instances targeting 73 unique URLs
 - **Empty Anchors:** 1
-- **Link Density:** 0.1216 links per content word
+- **Link Density:** 0.1248 links per content word
 
 ## 12. GEO & AI Retrieval Readiness
 - **Status:** `AVAILABLE`
 - **Bot Access Matrix:** 6/6 search indexers, 3/3 training scrapers allowed
 - **WAF / Barrier:** None observed
 - **Snippet Directives:** Snippets allowed
-- **Word Count Rendering Impact:** 0 words delta (921 static vs 0 rendered)
+- **Word Count Rendering Impact:** 30 words delta (879 static vs 909 rendered)
 - **/llms.txt Manifest:** Missing
 - **GEO Readiness Score:** 30/100
 
@@ -116,7 +116,7 @@
   - `LIST`: 2
   - `DEFINITION`: 1
   - `SERVICE_DESCRIPTION`: 2
-- **Explained vs Mentioned Topics:** 50 explained, 22 mentioned only
+- **Explained vs Mentioned Topics:** 56 explained, 22 mentioned only
 - **Unsupported Headings:** 19
 
 ## 14. Claim Grounding & Assertion Support
@@ -136,7 +136,7 @@
 ## 16. Autonomous Agent Action Surfaces
 - **Status:** `AVAILABLE`
 - **Interactive Forms:** 2 (2 labeled)
-- **Action Buttons:** 10 (10 accessible)
+- **Action Buttons:** 8 (8 accessible)
 - **Descriptive Navigation Links:** 0
 - **Schema Actions & WebMCP:** 0 Schema actions, 0 WebMCP declarations
 - **Triangulated Access Paths:** 7 (Action surface gaps: 0)
@@ -168,7 +168,7 @@
 
 ### 1. Hard On-Page Facts (DOM & HTTP Headers)
 - HTTP response code: 200
-- Static HTML word count: 975
+- Static HTML word count: 962
 - Title: 'Unique Measurement Service' (26 characters)
 - Meta description: 'Unique Measurement Service | Advanced Measuring Solution Provider in India' (74 characters)
 - H1 tags observed: 2
@@ -177,11 +177,11 @@
 - Robots.txt found: True
 - Schema types declared: None
 - HTTPS enforced: True
-- Server latency probe: 2681.4ms (local_probe)
+- Server latency probe: 2175.9ms (local_probe)
 - HTTP Status: 200
 
 ### 2. External Observations (Third-Party Probes)
-- Local network latency probe recorded 2681.4ms TTFB
+- Local network latency probe recorded 2175.9ms TTFB
 - External AI measurement was disabled during this collection pass (opt-in via --external-ai).
 
 ### 3. RankIntel Analysis & Syntheses

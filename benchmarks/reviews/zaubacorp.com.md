@@ -48,25 +48,25 @@
 
 ## 4 & 5. Topic Taxonomy & Dominant Concepts
 - **Status:** `AVAILABLE`
-- **Total Topics Detected:** 107
-- **Primary Topics (Top 5):** research, Sales, ZaubaCorp, business, Market
+- **Total Topics Detected:** 117
+- **Primary Topics (Top 5):** research, ZaubaCorp, Sales, business, Market
 - **Supporting Topics (Sample):** Art, platform, State, Lead, Financial
-- **Dominant Semantic Concepts:** research, Sales, ZaubaCorp, business, Market, Art, platform, State
-- **Synthesis:** Identified 107 deterministic concept clusters. Primary topical anchors: research, Sales, ZaubaCorp, business, Market.
+- **Dominant Semantic Concepts:** research, ZaubaCorp, Sales, business, Market, Art, platform, State
+- **Synthesis:** Identified 117 deterministic concept clusters. Primary topical anchors: research, ZaubaCorp, Sales, business, Market.
 
 ## 6. Observable Search Intent
 - **Status:** `AVAILABLE`
-- **Primary Intent:** `transactional`
+- **Primary Intent:** `transactional_ecommerce`
 - **Secondary Intents:** `navigational`
 - **Supporting Evidence Count:** 9 observable signals
-- **Synthesis:** Primary search intent classified as 'transactional' supported by 9 observable structural signals. Secondary intent spectrum: navigational.
+- **Synthesis:** Primary search intent classified as 'transactional_ecommerce' supported by 9 observable structural signals. Secondary intent spectrum: navigational.
 
 ## 7. Topic-to-Page Distribution
 - **Status:** `AVAILABLE`
 - **Content Length:** 650 words across 44 paragraphs
-- **Topic Breadth:** 48 explained topics vs 41 mentioned-only topics
-- **Topic Density:** 16.46 concepts per 100 words
-- **Synthesis:** Content corpus comprises 650 words across 44 paragraphs. Topical distribution: 48 explained topics with structured units vs 41 mentioned-only topics (topic density: 16.46 per 100 words).
+- **Topic Breadth:** 43 explained topics vs 45 mentioned-only topics
+- **Topic Density:** 18.0 concepts per 100 words
+- **Synthesis:** Content corpus comprises 650 words across 44 paragraphs. Topical distribution: 43 explained topics with structured units vs 45 mentioned-only topics (topic density: 18.0 per 100 words).
 
 ## 8. Page Concentration & Topical Overlap
 - **Status:** `AVAILABLE`
@@ -86,7 +86,7 @@
 - **Structured Data:** 0 types (None) across 0 blocks
 - **Canonical URL:** `MISSING` [`MISSING`]
 - **Robots.txt:** Found | Sitemaps declared: 1
-- **Latency (TTFB):** 89.9ms (local_probe)
+- **Latency (TTFB):** 80.2ms (local_probe)
 
 ## 10. Accessibility & Transport Security
 - **WCAG 2.1 Automated Status:** `UNAVAILABLE` (6 violations: 3 critical, 0 serious)
@@ -107,7 +107,7 @@
 - **Bot Access Matrix:** 6/6 search indexers, 3/3 training scrapers allowed
 - **WAF / Barrier:** CHALLENGE/BLOCK DETECTED (Cloudflare)
 - **Snippet Directives:** Snippets allowed
-- **Word Count Rendering Impact:** 0 words delta (979 static vs 0 rendered)
+- **Word Count Rendering Impact:** 115 words delta (864 static vs 979 rendered)
 - **/llms.txt Manifest:** Missing
 - **GEO Readiness Score:** 30/100
 
@@ -116,7 +116,7 @@
 - **Total Units Detected:** 3
 - **Units Breakdown:**
   - `LIST`: 3
-- **Explained vs Mentioned Topics:** 48 explained, 41 mentioned only
+- **Explained vs Mentioned Topics:** 43 explained, 45 mentioned only
 - **Unsupported Headings:** 13
 
 ## 14. Claim Grounding & Assertion Support
@@ -177,11 +177,11 @@
 - Robots.txt found: True
 - Schema types declared: None
 - HTTPS enforced: True
-- Server latency probe: 89.9ms (local_probe)
+- Server latency probe: 80.2ms (local_probe)
 - HTTP Status: 200
 
 ### 2. External Observations (Third-Party Probes)
-- Local network latency probe recorded 89.9ms TTFB
+- Local network latency probe recorded 80.2ms TTFB
 - External AI measurement was disabled during this collection pass (opt-in via --external-ai).
 
 ### 3. RankIntel Analysis & Syntheses

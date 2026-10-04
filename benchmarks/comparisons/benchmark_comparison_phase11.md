@@ -20,17 +20,17 @@ This report delivers a **deterministic cross-site comparison** across the perman
 
 | Domain | Role | Health | Tech | GEO | Trust | Primary Intent | Schema | Answer Units | Grounded | Visual | Alt % | Forms | Buttons | WAF |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| `alephindia.in` | Competitor | **68** | 90 | 42 | 56 | Local | 2 | 14 | 95% | 351 | 33% | 3 | 84 | Cloudflare |
-| `ascgroup.in` | Competitor | **72** | 100 | 43 | 56 | Transactional | 1 | 7 | 53% | 119 | 99% | 4 | 20 | None |
-| `qualityinternational.org` | Competitor | **37** | 25 | 30 | 32 | Transactional | 0 | 0 | 100% | 27 | 10% | 2 | 1 | None |
+| `alephindia.in` | Competitor | **68** | 90 | 42 | 56 | Transactional | 2 | 14 | 95% | 351 | 33% | 3 | 84 | Cloudflare |
+| `ascgroup.in` | Competitor | **72** | 100 | 43 | 56 | Navigational | 1 | 7 | 53% | 119 | 99% | 4 | 20 | None |
+| `qualityinternational.org` | Competitor | **37** | 25 | 30 | 32 | Navigational | 0 | 0 | 100% | 27 | 10% | 2 | 1 | None |
 | `sqccertification.com` | Competitor | **70** | 90 | 47 | 56 | Transactional | 4 | 0 | 100% | 24 | 25% | 1 | 2 | Cloudflare |
-| `standphillindia.in` | Competitor | **67** | 75 | 51 | 64 | Transactional | 3 | 13 | 79% | 155 | 93% | 6 | 31 | None |
-| `sunrisetesting.vercel.app` | **TARGET** | **48** | 60 | 35 | 20 | Local | 0 | 11 | 94% | 34 | 0% | 0 | 1 | None |
-| `tcreng.com` | Competitor | **79** | 100 | 63 | 60 | Navigational | 8 | 36 | 60% | 49 | 97% | 1 | 4 | Cloudflare |
-| `umspcs.in` | Competitor | **76** | 100 | 53 | 64 | Local | 9 | 20 | 72% | 364 | 86% | 8 | 16 | None |
-| `uniquemeasurement.com` | Competitor | **33** | 35 | 30 | 32 | Transactional | 0 | 5 | 75% | 32 | 14% | 2 | 10 | None |
-| `yadavmeasurements.com` | Competitor | **41** | 35 | 28 | 36 | Transactional | 0 | 1 | 0% | 28 | 30% | 2 | 17 | Cloudflare |
-| `zaubacorp.com` | Competitor | **59** | 80 | 30 | 48 | Transactional | 0 | 3 | 75% | 34 | 14% | 1 | 31 | Cloudflare |
+| `standphillindia.in` | Competitor | **67** | 75 | 51 | 64 | Mixed | 3 | 13 | 79% | 155 | 93% | 6 | 31 | None |
+| `sunrisetesting.vercel.app` | **TARGET** | **48** | 60 | 35 | 20 | Navigational | 0 | 11 | 94% | 34 | 0% | 0 | 1 | None |
+| `tcreng.com` | Competitor | **79** | 100 | 63 | 60 | Transactional_lead_gen | 8 | 36 | 60% | 49 | 97% | 1 | 4 | Cloudflare |
+| `umspcs.in` | Competitor | **61** | 85 | 25 | 56 | Navigational | 9 | 20 | 13% | 0 | 0% | 0 | 0 | None |
+| `uniquemeasurement.com` | Competitor | **33** | 35 | 30 | 32 | Transactional | 0 | 5 | 75% | 32 | 14% | 2 | 8 | None |
+| `yadavmeasurements.com` | Competitor | **41** | 35 | 28 | 36 | Navigational | 0 | 1 | 0% | 28 | 30% | 2 | 17 | Cloudflare |
+| `zaubacorp.com` | Competitor | **59** | 80 | 30 | 48 | Transactional_ecommerce | 0 | 3 | 75% | 34 | 14% | 1 | 31 | Cloudflare |
 
 ## 3. Target (`sunrisetesting.vercel.app`) vs Benchmark Cohort Analysis
 
@@ -40,17 +40,17 @@ Target site sunrisetesting.vercel.app shows clear observable parity in core cali
 
 | Dimension | Target Value | Cohort Average / Range | Observable Delta | Epistemic Context |
 | :--- | :--- | :--- | :---: | :--- |
-| **Overall Search Health** | `48/100` | 60.2/100 | `-12.2` | Triangulated health score difference based strictly on existing multi-engine formula (Δ=0). |
-| **Technical SEO Health** | `60/100` | 73.0/100 | `-13.0` | Technical SEO score evaluating meta tags, robots, canonicals, and heading structures. |
-| **GEO / AI Search Readiness** | `35/100` | 41.7/100 | `-6.7` | Princeton GEO scoring evaluating answer density, quotes, citations, and LLM visibility. |
+| **Overall Search Health** | `48/100` | 58.7/100 | `-10.7` | Triangulated health score difference based strictly on existing multi-engine formula (Δ=0). |
+| **Technical SEO Health** | `60/100` | 71.5/100 | `-11.5` | Technical SEO score evaluating meta tags, robots, canonicals, and heading structures. |
+| **GEO / AI Search Readiness** | `35/100` | 38.9/100 | `-3.9` | Princeton GEO scoring evaluating answer density, quotes, citations, and LLM visibility. |
 | **Schema Markup Types** | `0 types` | 2.7 types (max: 9) | `-2.7` | Target deploys 0 schema blocks vs competitor implementations reaching up to 9 types. |
 | **Structured Answer Units** | `11 units` | 9.9 units (max: 36) | `1.1` | Target holds 11 answer units (definitions, procedures); cohort leads reach 36 units (FAQs, tables). |
-| **Alt-Text Coverage Ratio** | `0.0%` | 50.0% (max: 99.0%) | `-0.5` | Target exhibits 0% alt coverage across 34 images; leading competitors reach 97%. |
-| **Agent Form Action Surfaces** | `0 forms` | 3.0 forms (max: 8) | `-3.0` | Target lacks interactive web forms, contrasting with competitor quote/inquiry surfaces. |
-| **Visual Assets Count** | `34 images` | 118.3 images (max: 364) | `-84.3` | Total visual assets detected on landing page DOM. |
-| **Automated WCAG Violations** | `22 violations` | 36.5 violations (min: 0) | `-14.5` | Automated AST rule checks (non-certification scope). |
+| **Alt-Text Coverage Ratio** | `0.0%` | 42.0% (max: 99.0%) | `-0.42` | Target exhibits 0% alt coverage across 34 images; leading competitors reach 97%. |
+| **Agent Form Action Surfaces** | `0 forms` | 2.2 forms (max: 6) | `-2.2` | Target lacks interactive web forms, contrasting with competitor quote/inquiry surfaces. |
+| **Visual Assets Count** | `34 images` | 81.9 images (max: 351) | `-47.9` | Total visual assets detected on landing page DOM. |
+| **Automated WCAG Violations** | `22 violations` | 36.1 violations (min: 0) | `-14.1` | Automated AST rule checks (non-certification scope). |
 | **Security Findings Count** | `5 findings` | 4.7 findings (min: 1) | `0.3` | Transport security, TLS certificate expiry, and missing HTTP headers. |
-| **Claim Grounding Ratio** | `94.0%` | 71.0% | `0.23` | Percentage of extracted factual assertions corroborated by on-site evidence. |
+| **Claim Grounding Ratio** | `94.0%` | 65.0% | `0.29` | Percentage of extracted factual assertions corroborated by on-site evidence. |
 
 ### Target Unique Capabilities
 
@@ -72,8 +72,8 @@ Observable voids represent concrete structural, content, or technical attributes
 | Void ID | Category | Title | State | Target Status | Present Sites | Absent Sites |
 | :--- | :--- | :--- | :---: | :---: | :---: | :---: |
 | `VOID-SCHEMA-001` | SCHEMA | Structured JSON-LD Schema Absence | `OBSERVED_DIFFERENCE` | `ABSENT` | 6 sites | 5 sites |
-| `VOID-A11Y-001` | MULTIMODAL | Image Alternative Text Coverage Gap | `OBSERVED_DIFFERENCE` | `ABSENT` | 4 sites | 7 sites |
-| `VOID-AGENT-001` | ACTION_SURFACE | Interactive Form Action Surface Void | `OBSERVED_DIFFERENCE` | `ABSENT` | 10 sites | 1 sites |
+| `VOID-A11Y-001` | MULTIMODAL | Image Alternative Text Coverage Gap | `OBSERVED_DIFFERENCE` | `ABSENT` | 3 sites | 8 sites |
+| `VOID-AGENT-001` | ACTION_SURFACE | Interactive Form Action Surface Void | `OBSERVED_DIFFERENCE` | `ABSENT` | 9 sites | 2 sites |
 | `VOID-ANSWER-001` | ANSWERABILITY | Structured FAQ Answer Units Void | `OBSERVED_DIFFERENCE` | `ABSENT` | 3 sites | 8 sites |
 | `VOID-SEC-001` | SECURITY | Content Security Policy (CSP) Header Void | `OBSERVED_DIFFERENCE` | `ABSENT` | 6 sites | 5 sites |
 | `VOID-TOPIC-001` | TOPIC | Regulatory Certification & Compliance Topic Lacuna | `OBSERVED_DIFFERENCE` | `ABSENT` | 4 sites | 7 sites |
@@ -91,8 +91,8 @@ Observable voids represent concrete structural, content, or technical attributes
 - **Provenance Engines:** advertools, crawl4ai
 - **Evidence References:**
   - `domain: sunrisetesting.vercel.app, schema_types_count: 0, detected_types: []`
-  - `domain: umspcs.in, schema_types_count: 9, detected_types: ['PostalAddress', 'Place', 'BreadcrumbList', 'FAQPage', 'WebSite', 'WebPage', 'ImageObject', 'LocalBusiness', 'Organization']`
-  - `domain: tcreng.com, schema_types_count: 8, detected_types: ['BreadcrumbList', 'ItemList', 'VideoObject', 'WebSite', 'FAQPage', 'NewsArticle', 'WebPage', 'Organization']`
+  - `domain: umspcs.in, schema_types_count: 9, detected_types: ['LocalBusiness', 'WebPage', 'Organization', 'Place', 'WebSite', 'ImageObject', 'BreadcrumbList', 'FAQPage', 'PostalAddress']`
+  - `domain: tcreng.com, schema_types_count: 8, detected_types: ['WebPage', 'ItemList', 'Organization', 'WebSite', 'NewsArticle', 'BreadcrumbList', 'FAQPage', 'VideoObject']`
 
 #### `VOID-A11Y-001`: Image Alternative Text Coverage Gap
 - **Description:** Target site displays 0% alt-text coverage across 34 visual assets, whereas top-performing benchmark sites provide alt representations for up to 97% of visual assets.
@@ -111,7 +111,7 @@ Observable voids represent concrete structural, content, or technical attributes
 - **Provenance Engines:** multimodal_agent_engine
 - **Evidence References:**
   - `domain: sunrisetesting.vercel.app, forms_detected: 0`
-  - `domain: umspcs.in, forms_detected: 8`
+  - `domain: umspcs.in, forms_detected: 0`
   - `domain: standphillindia.in, forms_detected: 6`
 
 #### `VOID-ANSWER-001`: Structured FAQ Answer Units Void
@@ -201,26 +201,25 @@ Observable voids represent concrete structural, content, or technical attributes
 
 ## 5. Common vs Unique Entities & Types
 
-Evaluated 46 unique entity mentions across 11 sites. Observed 2 common entities appearing in multiple sites, with Organization and LocalBusiness recognized as the dominant entity types.
+Evaluated 47 unique entity mentions across 11 sites. Observed 0 common entities appearing in multiple sites, with Organization and LocalBusiness recognized as the dominant entity types.
 
 ### Entity Types Coverage Across Benchmark
 
 | Entity Type | Adoption Count | Associated Domains |
 | :--- | :---: | :--- |
-| `LOCAL_BUSINESS` | 8 | `alephindia.in`, `ascgroup.in`, `sqccertification.com`, `standphillindia.in`, `sunrisetesting.vercel.app`, `tcreng.com`, `umspcs.in`, `uniquemeasurement.com` |
-| `ORGANIZATION` | 9 | `alephindia.in`, `ascgroup.in`, `qualityinternational.org`, `sqccertification.com`, `standphillindia.in`, `sunrisetesting.vercel.app`, `tcreng.com`, `umspcs.in`, `zaubacorp.com` |
+| `LOCAL_BUSINESS` | 7 | `alephindia.in`, `ascgroup.in`, `sqccertification.com`, `standphillindia.in`, `sunrisetesting.vercel.app`, `tcreng.com`, `uniquemeasurement.com` |
+| `ORGANIZATION` | 11 | `alephindia.in`, `ascgroup.in`, `qualityinternational.org`, `sqccertification.com`, `standphillindia.in`, `sunrisetesting.vercel.app`, `tcreng.com`, `umspcs.in`, `uniquemeasurement.com`, `yadavmeasurements.com`, `zaubacorp.com` |
 | `OTHER` | 5 | `alephindia.in`, `sqccertification.com`, `standphillindia.in`, `tcreng.com`, `umspcs.in` |
 | `PERSON` | 2 | `alephindia.in`, `standphillindia.in` |
 | `PLACE` | 1 | `umspcs.in` |
 
 ### Common Entities (Appearing in Multiple Sites)
 
-- `UMSPCS`
-- `umspcs`
+- *No common entity names observed across multiple discrete organizations.*
 
 ## 6. Service & Product Offerings Comparison
 
-Cataloged 17 observable services/products across 11 benchmark sites. Testing, Calibration, Certification, and Compliance represent the most prevalent common services across the industrial testing benchmark.
+Cataloged 20 observable services/products across 11 benchmark sites. Testing, Calibration, Certification, and Compliance represent the most prevalent common services across the industrial testing benchmark.
 
 ### Core Prevalent Services Across Benchmark
 
@@ -233,35 +232,35 @@ Cataloged 17 observable services/products across 11 benchmark sites. Testing, Ca
 ### Target (`sunrisetesting.vercel.app`) Service Offerings
 
 - **Shared with Cohort:** Calibration, Testing
-- **Unique to Target:** Inspection
+- **Unique to Target:** Inspection, Sunrise Testing & Calibration Centre
 
 ## 7. Topic & Concept Overlap (Jaccard Similarity Matrix)
 
-Extracted 76 distinct topical concepts across the benchmark. Observed 7 common concepts shared across multiple sites. Topic breadth ranges from 40 topics (yadavmeasurements.com) to 227 topics (tcreng.com).
+Extracted 78 distinct topical concepts across the benchmark. Observed 7 common concepts shared across multiple sites. Topic breadth ranges from 40 topics (yadavmeasurements.com) to 227 topics (tcreng.com).
 
 ### Pairwise Jaccard Concept Similarity Matrix
 
 | Domain | `alephindia` | `ascgroup` | `qualityinternational` | `sqccertification` | `standphillindia` | `tcreng` | `umspcs` | `uniquemeasurement` | `yadavmeasurements` | `zaubacorp` | `sunrisetesting` |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| `alephindia` | 1.00 | 0.00 | 0.00 | 0.07 | 0.14 | 0.00 | 0.14 | 0.00 | 0.00 | 0.00 | 0.00 |
+| `alephindia` | 1.00 | 0.00 | 0.00 | 0.07 | 0.14 | 0.00 | 0.07 | 0.00 | 0.00 | 0.00 | 0.00 |
 | `ascgroup` | 0.00 | 1.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
 | `qualityinternational` | 0.00 | 0.00 | 1.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
 | `sqccertification` | 0.07 | 0.00 | 0.00 | 1.00 | 0.07 | 0.00 | 0.07 | 0.00 | 0.00 | 0.00 | 0.00 |
-| `standphillindia` | 0.14 | 0.00 | 0.00 | 0.07 | 1.00 | 0.00 | 0.33 | 0.00 | 0.00 | 0.00 | 0.00 |
+| `standphillindia` | 0.14 | 0.00 | 0.00 | 0.07 | 1.00 | 0.00 | 0.14 | 0.00 | 0.00 | 0.00 | 0.00 |
 | `tcreng` | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | 0.00 | 0.00 | 0.07 | 0.00 | 0.07 |
-| `umspcs` | 0.14 | 0.00 | 0.00 | 0.07 | 0.33 | 0.00 | 1.00 | 0.07 | 0.00 | 0.00 | 0.07 |
-| `uniquemeasurement` | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.07 | 1.00 | 0.00 | 0.00 | 0.07 |
+| `umspcs` | 0.07 | 0.00 | 0.00 | 0.07 | 0.14 | 0.00 | 1.00 | 0.00 | 0.00 | 0.00 | 0.00 |
+| `uniquemeasurement` | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | 0.00 | 0.00 | 0.07 |
 | `yadavmeasurements` | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.07 | 0.00 | 0.00 | 1.00 | 0.00 | 0.14 |
 | `zaubacorp` | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | 0.00 |
-| `sunrisetesting` | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.07 | 0.07 | 0.07 | 0.14 | 0.00 | 1.00 |
+| `sunrisetesting` | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.07 | 0.00 | 0.07 | 0.14 | 0.00 | 1.00 |
 
 ### Topic Breadth Tiers
 
 | Breadth Tier | Criteria | Domains |
 | :--- | :--- | :--- |
-| **HIGH** | > 150 topics | `alephindia.in`, `ascgroup.in`, `tcreng.com`, `umspcs.in` |
+| **HIGH** | > 150 topics | `alephindia.in`, `ascgroup.in`, `tcreng.com` |
 | **MODERATE** | 80–150 topics | `sqccertification.com`, `standphillindia.in`, `sunrisetesting.vercel.app`, `uniquemeasurement.com`, `zaubacorp.com` |
-| **LOW** | < 80 topics | `qualityinternational.org`, `yadavmeasurements.com` |
+| **LOW** | < 80 topics | `qualityinternational.org`, `umspcs.in`, `yadavmeasurements.com` |
 
 ## 8. Schema Markup Adoption & Distribution
 
@@ -309,16 +308,16 @@ Robots.txt evaluation indicates 100% crawl access for general search bots across
 
 | Domain | Search Bots (of 6) | AI Scrapers (of 3) | Edge Barrier | JS Hydration Delta | GEO Score | `/llms.txt` |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| `alephindia.in` | 6/6 | 3/3 | Cloudflare | 0 words | 42/100 | Missing |
-| `ascgroup.in` | 6/6 | 3/3 | None | 0 words | 43/100 | Missing |
-| `qualityinternational.org` | 6/6 | 3/3 | None | 0 words | 30/100 | Missing |
-| `sqccertification.com` | 6/6 | 3/3 | Cloudflare | 0 words | 47/100 | Missing |
-| `standphillindia.in` | 6/6 | 1/3 | None | 0 words | 51/100 | Missing |
-| `tcreng.com` | 6/6 | 3/3 | Cloudflare | 0 words | 63/100 | Missing |
-| `umspcs.in` | 6/6 | 3/3 | None | 0 words | 53/100 | Missing |
-| `uniquemeasurement.com` | 6/6 | 3/3 | None | 0 words | 30/100 | Missing |
-| `yadavmeasurements.com` | 6/6 | 3/3 | Cloudflare | 0 words | 28/100 | Missing |
-| `zaubacorp.com` | 6/6 | 3/3 | Cloudflare | 0 words | 30/100 | Missing |
+| `alephindia.in` | 6/6 | 3/3 | Cloudflare | 1593 words | 42/100 | Missing |
+| `ascgroup.in` | 6/6 | 3/3 | None | 566 words | 43/100 | Missing |
+| `qualityinternational.org` | 6/6 | 3/3 | None | 11 words | 30/100 | Missing |
+| `sqccertification.com` | 6/6 | 3/3 | Cloudflare | 22 words | 47/100 | Missing |
+| `standphillindia.in` | 6/6 | 1/3 | None | 424 words | 51/100 | Missing |
+| `tcreng.com` | 6/6 | 3/3 | Cloudflare | -20 words | 63/100 | Missing |
+| `umspcs.in` | 6/6 | 3/3 | None | -3759 words | 25/100 | Missing |
+| `uniquemeasurement.com` | 6/6 | 3/3 | None | 30 words | 30/100 | Missing |
+| `yadavmeasurements.com` | 6/6 | 3/3 | Cloudflare | 4 words | 28/100 | Missing |
+| `zaubacorp.com` | 6/6 | 3/3 | Cloudflare | 115 words | 30/100 | Missing |
 | `sunrisetesting.vercel.app` | 6/6 | 3/3 | None | 0 words | 35/100 | Missing |
 
 ## 11. Multimodal & Agent Surface Readiness
@@ -333,8 +332,8 @@ Visual assets range from 24 (sqccertification.com) to 364 (umspcs.in). Alt-text 
 | `sqccertification.com` | 24 | 25% | 0 | 1 | 2 | 0 |
 | `standphillindia.in` | 155 | 93% | 1 | 6 | 31 | 0 |
 | `tcreng.com` | 49 | 97% | 0 | 1 | 4 | 1 |
-| `umspcs.in` | 364 | 86% | 18 | 8 | 16 | 2 |
-| `uniquemeasurement.com` | 32 | 14% | 24 | 2 | 10 | 0 |
+| `umspcs.in` | 0 | 0% | 0 | 0 | 0 | 2 |
+| `uniquemeasurement.com` | 32 | 14% | 24 | 2 | 8 | 0 |
 | `yadavmeasurements.com` | 28 | 30% | 15 | 2 | 17 | 0 |
 | `zaubacorp.com` | 34 | 14% | 18 | 1 | 31 | 0 |
 | `sunrisetesting.vercel.app` | 34 | 0% | 3 | 0 | 1 | 0 |
@@ -348,17 +347,17 @@ HTTPS is universally enforced (100% of sites). HSTS is present on 5 sites, and C
 
 | Domain | Title Length | Meta Desc Length | TTFB (ms) | WCAG Violations (Crit) | HTTPS | HSTS | CSP | Security Findings |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| `alephindia.in` | 63 chars | 298 chars | 325.8ms | 63 (0) | Yes | No | No | 7 |
-| `ascgroup.in` | 61 chars | 156 chars | 292.9ms | 129 (9) | Yes | No | No | 6 |
-| `qualityinternational.org` | 23 chars | 0 chars | 141.6ms | 31 (9) | Yes | No | Yes | 7 |
-| `sqccertification.com` | 65 chars | 152 chars | 699.7ms | 6 (0) | Yes | No | Yes | 6 |
-| `standphillindia.in` | 56 chars | 186 chars | 117.0ms | 42 (0) | Yes | Yes | Yes | 2 |
-| `tcreng.com` | 58 chars | 147 chars | 82.5ms | 0 (0) | Yes | Yes | No | 1 |
-| `umspcs.in` | 61 chars | 165 chars | 132.0ms | 15 (0) | Yes | Yes | Yes | 5 |
-| `uniquemeasurement.com` | 26 chars | 74 chars | 2681.4ms | 55 (25) | Yes | No | Yes | 6 |
-| `yadavmeasurements.com` | 73 chars | 0 chars | 120.4ms | 18 (1) | Yes | No | No | 6 |
-| `zaubacorp.com` | 54 chars | 128 chars | 89.9ms | 6 (3) | Yes | Yes | Yes | 1 |
-| `sunrisetesting.vercel.app` | 81 chars | 181 chars | 90.8ms | 22 (0) | Yes | Yes | No | 5 |
+| `alephindia.in` | 63 chars | 298 chars | 452.7ms | 59 (0) | Yes | No | No | 7 |
+| `ascgroup.in` | 61 chars | 156 chars | 415.4ms | 129 (9) | Yes | No | No | 6 |
+| `qualityinternational.org` | 23 chars | 0 chars | 168.1ms | 31 (9) | Yes | No | Yes | 7 |
+| `sqccertification.com` | 65 chars | 152 chars | 796.9ms | 6 (0) | Yes | No | Yes | 6 |
+| `standphillindia.in` | 56 chars | 186 chars | 176.9ms | 42 (0) | Yes | Yes | Yes | 2 |
+| `tcreng.com` | 58 chars | 147 chars | 81.0ms | 0 (0) | Yes | Yes | No | 1 |
+| `umspcs.in` | 61 chars | 165 chars | 139.3ms | 15 (0) | Yes | Yes | Yes | 5 |
+| `uniquemeasurement.com` | 26 chars | 74 chars | 2175.9ms | 55 (25) | Yes | No | Yes | 6 |
+| `yadavmeasurements.com` | 73 chars | 0 chars | 119.2ms | 18 (1) | Yes | No | No | 6 |
+| `zaubacorp.com` | 54 chars | 128 chars | 80.2ms | 6 (3) | Yes | Yes | Yes | 1 |
+| `sunrisetesting.vercel.app` | 81 chars | 181 chars | 95.5ms | 22 (0) | Yes | Yes | No | 5 |
 
 ## 13. Epistemic Separation Container
 

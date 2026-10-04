@@ -32,11 +32,11 @@
 
 ## 2. Entities & Knowledge Graph Representation
 - **Status:** `AVAILABLE`
-- **Total Entities Detected:** 10
-- **Entity Types:** PERSON, OTHER, ORGANIZATION, LOCAL_BUSINESS
-- **Named Entities (Sample):** Aleph INDIA, Aleph INDIA, Aleph INDIA, Aleph INDIA, Aleph INDIA® 2009 - 2026, Contact Phone (+911234567890)
+- **Total Entities Detected:** 8
+- **Entity Types:** ORGANIZATION, LOCAL_BUSINESS, PERSON, OTHER
+- **Named Entities (Sample):** Aleph INDIA, Aleph INDIA, Aleph INDIA, Aleph INDIA® 2009 - 2026, Contact Phone (+911234567890), Contact Phone (+919818571192)
 - **Structured vs Visible Alignment:** 2 aligned, 1 divergent across 3 comparisons.
-- **Synthesis:** Detected 10 entity signals across 4 types (PERSON, OTHER, ORGANIZATION). Structured vs visible comparisons: 2 aligned, 1 divergent.
+- **Synthesis:** Detected 8 entity signals across 4 types (ORGANIZATION, LOCAL_BUSINESS, PERSON). Structured vs visible comparisons: 2 aligned, 1 divergent.
 
 ## 3. Observable Services & Products
 - **Status:** `AVAILABLE`
@@ -49,25 +49,25 @@
 
 ## 4 & 5. Topic Taxonomy & Dominant Concepts
 - **Status:** `AVAILABLE`
-- **Total Topics Detected:** 217
+- **Total Topics Detected:** 227
 - **Primary Topics (Top 5):** INDIA®, Certificate, BIS, Certification, Aleph
 - **Supporting Topics (Sample):** BIS Certification Consultants, ISI, Consultants, CRS, FMCS
 - **Dominant Semantic Concepts:** INDIA®, Certificate, BIS, Certification, Aleph, BIS Certification Consultants, ISI, Consultants
-- **Synthesis:** Identified 217 deterministic concept clusters. Primary topical anchors: INDIA®, Certificate, BIS, Certification, Aleph.
+- **Synthesis:** Identified 227 deterministic concept clusters. Primary topical anchors: INDIA®, Certificate, BIS, Certification, Aleph.
 
 ## 6. Observable Search Intent
 - **Status:** `AVAILABLE`
-- **Primary Intent:** `local`
-- **Secondary Intents:** `transactional`, `navigational`, `informational`
-- **Supporting Evidence Count:** 49 observable signals
-- **Synthesis:** Primary search intent classified as 'local' supported by 49 observable structural signals. Secondary intent spectrum: transactional, navigational, informational.
+- **Primary Intent:** `transactional`
+- **Secondary Intents:** `transactional_lead_gen`, `navigational`, `local`, `informational`
+- **Supporting Evidence Count:** 18 observable signals
+- **Synthesis:** Primary search intent classified as 'transactional' supported by 18 observable structural signals. Secondary intent spectrum: transactional_lead_gen, navigational, local, informational.
 
 ## 7. Topic-to-Page Distribution
 - **Status:** `AVAILABLE`
 - **Content Length:** 239 words across 116 paragraphs
-- **Topic Breadth:** 90 explained topics vs 116 mentioned-only topics
-- **Topic Density:** 90.79 concepts per 100 words
-- **Synthesis:** Content corpus comprises 239 words across 116 paragraphs. Topical distribution: 90 explained topics with structured units vs 116 mentioned-only topics (topic density: 90.79 per 100 words).
+- **Topic Breadth:** 89 explained topics vs 124 mentioned-only topics
+- **Topic Density:** 94.98 concepts per 100 words
+- **Synthesis:** Content corpus comprises 239 words across 116 paragraphs. Topical distribution: 89 explained topics with structured units vs 124 mentioned-only topics (topic density: 94.98 per 100 words).
 
 ## 8. Page Concentration & Topical Overlap
 - **Status:** `AVAILABLE`
@@ -87,10 +87,10 @@
 - **Structured Data:** 2 types (WebSite, Organization) across 2 blocks
 - **Canonical URL:** `https://alephindia.in/` [`MATCHING`]
 - **Robots.txt:** Found | Sitemaps declared: 1
-- **Latency (TTFB):** 325.8ms (local_probe)
+- **Latency (TTFB):** 452.7ms (local_probe)
 
 ## 10. Accessibility & Transport Security
-- **WCAG 2.1 Automated Status:** `FAIL` (63 violations: 0 critical, 63 serious)
+- **WCAG 2.1 Automated Status:** `FAIL` (59 violations: 0 critical, 59 serious)
 - **Accessibility Disclaimer:** *Automated checks evaluate observable criteria; non-certification scope.*
 - **Security Posture:** `FAIL` (7 findings)
 - **HTTPS:** Enforced | TLS Days Remaining: 68
@@ -108,7 +108,7 @@
 - **Bot Access Matrix:** 6/6 search indexers, 3/3 training scrapers allowed
 - **WAF / Barrier:** CHALLENGE/BLOCK DETECTED (Cloudflare)
 - **Snippet Directives:** Snippets allowed
-- **Word Count Rendering Impact:** 0 words delta (4139 static vs 0 rendered)
+- **Word Count Rendering Impact:** 1593 words delta (2546 static vs 4139 rendered)
 - **/llms.txt Manifest:** Missing
 - **GEO Readiness Score:** 42/100
 
@@ -121,7 +121,7 @@
   - `FACTUAL_STATEMENT`: 5
   - `DIRECT_ANSWER`: 2
   - `SERVICE_DESCRIPTION`: 1
-- **Explained vs Mentioned Topics:** 90 explained, 116 mentioned only
+- **Explained vs Mentioned Topics:** 89 explained, 124 mentioned only
 - **Unsupported Headings:** 24
 
 ## 14. Claim Grounding & Assertion Support
@@ -181,11 +181,11 @@
 - Robots.txt found: True
 - Schema types declared: WebSite, Organization
 - HTTPS enforced: True
-- Server latency probe: 325.8ms (local_probe)
+- Server latency probe: 452.7ms (local_probe)
 - HTTP Status: 200
 
 ### 2. External Observations (Third-Party Probes)
-- Local network latency probe recorded 325.8ms TTFB
+- Local network latency probe recorded 452.7ms TTFB
 - External AI measurement was disabled during this collection pass (opt-in via --external-ai).
 
 ### 3. RankIntel Analysis & Syntheses
@@ -207,7 +207,7 @@
 
 ## Provenance & Attribution Log
 
-Preserving 61 provenance records across engines: `advertools_seo, browser_engine, rankintel_geo, performance_engine, image_engine, accessibility_engine, security_engine, content_engine, entity_engine, internal_link_engine, search_signal_engine, topic_intelligence_engine, query_page_mapping_engine, search_intent_engine, cannibalization_analyzer, retrieval_readiness_engine, answerability_engine, claim_grounding_engine, multimodal_agent_engine`.
+Preserving 62 provenance records across engines: `advertools_seo, browser_engine, rankintel_geo, performance_engine, image_engine, accessibility_engine, security_engine, content_engine, entity_engine, internal_link_engine, search_signal_engine, topic_intelligence_engine, query_page_mapping_engine, search_intent_engine, cannibalization_analyzer, retrieval_readiness_engine, answerability_engine, claim_grounding_engine, multimodal_agent_engine`.
 
 | Engine | Finding | Source | Confidence |
 | :--- | :--- | :--- | :---: |

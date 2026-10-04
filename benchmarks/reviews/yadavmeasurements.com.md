@@ -26,17 +26,17 @@
 - **Primary Industry Domain:** Calibration, Measurement & Metrology
 - **Branding Page Title:** "India’s Leading Private Testing, Calibration Company - Yadav Measurements"
 - **Meta Description:** "No meta description evidenced on page."
-- **Evidence Sources:** <title> element
-- **Operational Status:** `AVAILABLE` (Confidence: `medium`)
-- **Analytical Summary:** Observable enterprise entity 'Yadav Measurements' operating within Calibration, Measurement & Metrology. Branded as 'India’s Leading Private Testing, Calibration Company - Yadav Measurements' with primary purpose evidenced via 1 structural on-page sources.
+- **Evidence Sources:** <title> element, Entity declarations
+- **Operational Status:** `AVAILABLE` (Confidence: `high`)
+- **Analytical Summary:** Observable enterprise entity 'Yadav Measurements' operating within Calibration, Measurement & Metrology. Branded as 'India’s Leading Private Testing, Calibration Company - Yadav Measurements' with primary purpose evidenced via 2 structural on-page sources.
 
 ## 2. Entities & Knowledge Graph Representation
-- **Status:** `INSUFFICIENT_EVIDENCE`
-- **Total Entities Detected:** 0
-- **Entity Types:** None evidenced
-- **Named Entities (Sample):** None detected
+- **Status:** `AVAILABLE`
+- **Total Entities Detected:** 1
+- **Entity Types:** ORGANIZATION
+- **Named Entities (Sample):** Yadav Measurements
 - **Structured vs Visible Alignment:** 0 aligned, 0 divergent across 0 comparisons.
-- **Synthesis:** Detected 0 entity signals across 0 types (none). Structured vs visible comparisons: 0 aligned, 0 divergent.
+- **Synthesis:** Detected 1 entity signals across 1 types (ORGANIZATION). Structured vs visible comparisons: 0 aligned, 0 divergent.
 
 ## 3. Observable Services & Products
 - **Status:** `AVAILABLE`
@@ -48,25 +48,25 @@
 
 ## 4 & 5. Topic Taxonomy & Dominant Concepts
 - **Status:** `AVAILABLE`
-- **Total Topics Detected:** 40
-- **Primary Topics (Top 5):** Testing, Leading, Measurements, Yadav, Yadav Measurements
-- **Supporting Topics (Sample):** Calibration, Company, India’s, Private, learn
-- **Dominant Semantic Concepts:** Testing, Leading, Measurements, Yadav, Yadav Measurements, Calibration, Company, India’s
-- **Synthesis:** Identified 40 deterministic concept clusters. Primary topical anchors: Testing, Leading, Measurements, Yadav, Yadav Measurements.
+- **Total Topics Detected:** 37
+- **Primary Topics (Top 5):** Testing, Yadav Measurements, Measurements, Leading, Yadav
+- **Supporting Topics (Sample):** Calibration, Company, India’s, Private, ympl
+- **Dominant Semantic Concepts:** Testing, Yadav Measurements, Measurements, Leading, Yadav, Calibration, Company, India’s
+- **Synthesis:** Identified 37 deterministic concept clusters. Primary topical anchors: Testing, Yadav Measurements, Measurements, Leading, Yadav.
 
 ## 6. Observable Search Intent
 - **Status:** `AVAILABLE`
-- **Primary Intent:** `transactional`
-- **Secondary Intents:** None evidenced
-- **Supporting Evidence Count:** 4 observable signals
-- **Synthesis:** Primary search intent classified as 'transactional' supported by 4 observable structural signals. Secondary intent spectrum: None evidenced.
+- **Primary Intent:** `navigational`
+- **Secondary Intents:** `transactional`, `transactional_lead_gen`
+- **Supporting Evidence Count:** 5 observable signals
+- **Synthesis:** Primary search intent classified as 'navigational' supported by 5 observable structural signals. Secondary intent spectrum: transactional, transactional_lead_gen.
 
 ## 7. Topic-to-Page Distribution
 - **Status:** `AVAILABLE`
 - **Content Length:** 284 words across 13 paragraphs
-- **Topic Breadth:** 1 explained topics vs 36 mentioned-only topics
-- **Topic Density:** 14.08 concepts per 100 words
-- **Synthesis:** Content corpus comprises 284 words across 13 paragraphs. Topical distribution: 1 explained topics with structured units vs 36 mentioned-only topics (topic density: 14.08 per 100 words).
+- **Topic Breadth:** 2 explained topics vs 32 mentioned-only topics
+- **Topic Density:** 13.03 concepts per 100 words
+- **Synthesis:** Content corpus comprises 284 words across 13 paragraphs. Topical distribution: 2 explained topics with structured units vs 32 mentioned-only topics (topic density: 13.03 per 100 words).
 
 ## 8. Page Concentration & Topical Overlap
 - **Status:** `AVAILABLE`
@@ -85,7 +85,7 @@
 - **Structured Data:** 0 types (None) across 0 blocks
 - **Canonical URL:** `MISSING` [`MISSING`]
 - **Robots.txt:** Found | Sitemaps declared: 0
-- **Latency (TTFB):** 120.4ms (local_probe)
+- **Latency (TTFB):** 119.2ms (local_probe)
 
 ## 10. Accessibility & Transport Security
 - **WCAG 2.1 Automated Status:** `FAIL` (18 violations: 1 critical, 17 serious)
@@ -106,7 +106,7 @@
 - **Bot Access Matrix:** 6/6 search indexers, 3/3 training scrapers allowed
 - **WAF / Barrier:** CHALLENGE/BLOCK DETECTED (unknown)
 - **Snippet Directives:** Snippets allowed
-- **Word Count Rendering Impact:** 0 words delta (1059 static vs 0 rendered)
+- **Word Count Rendering Impact:** 4 words delta (1055 static vs 1059 rendered)
 - **/llms.txt Manifest:** Missing
 - **GEO Readiness Score:** 28/100
 
@@ -115,7 +115,7 @@
 - **Total Units Detected:** 1
 - **Units Breakdown:**
   - `SERVICE_DESCRIPTION`: 1
-- **Explained vs Mentioned Topics:** 1 explained, 36 mentioned only
+- **Explained vs Mentioned Topics:** 2 explained, 32 mentioned only
 - **Unsupported Headings:** 4
 
 ## 14. Claim Grounding & Assertion Support
@@ -130,7 +130,7 @@
 - **Asset Breakdown:** 27 informational, 1 decorative
 - **Alt-Text Coverage:** 8/27 informational assets (30%)
 - **Visual-Only Gaps:** 15
-- **Layout Shift Risks (Missing Dimensions):** 4
+- **Layout Shift Risks (Missing Dimensions):** 2
 
 ## 16. Autonomous Agent Action Surfaces
 - **Status:** `AVAILABLE`
@@ -176,11 +176,11 @@
 - Robots.txt found: True
 - Schema types declared: None
 - HTTPS enforced: True
-- Server latency probe: 120.4ms (local_probe)
+- Server latency probe: 119.2ms (local_probe)
 - HTTP Status: 200
 
 ### 2. External Observations (Third-Party Probes)
-- Local network latency probe recorded 120.4ms TTFB
+- Local network latency probe recorded 119.2ms TTFB
 - External AI measurement was disabled during this collection pass (opt-in via --external-ai).
 
 ### 3. RankIntel Analysis & Syntheses
@@ -209,7 +209,7 @@
 
 ## Provenance & Attribution Log
 
-Preserving 53 provenance records across engines: `advertools_seo, browser_engine, rankintel_geo, performance_engine, image_engine, accessibility_engine, security_engine, content_engine, entity_engine, internal_link_engine, search_signal_engine, topic_intelligence_engine, query_page_mapping_engine, search_intent_engine, cannibalization_analyzer, retrieval_readiness_engine, answerability_engine, claim_grounding_engine, multimodal_agent_engine`.
+Preserving 55 provenance records across engines: `advertools_seo, browser_engine, rankintel_geo, performance_engine, image_engine, accessibility_engine, security_engine, content_engine, entity_engine, internal_link_engine, search_signal_engine, topic_intelligence_engine, query_page_mapping_engine, search_intent_engine, cannibalization_analyzer, retrieval_readiness_engine, answerability_engine, claim_grounding_engine, multimodal_agent_engine`.
 
 | Engine | Finding | Source | Confidence |
 | :--- | :--- | :--- | :---: |

@@ -32,11 +32,11 @@
 
 ## 2. Entities & Knowledge Graph Representation
 - **Status:** `AVAILABLE`
-- **Total Entities Detected:** 6
+- **Total Entities Detected:** 4
 - **Entity Types:** ORGANIZATION, LOCAL_BUSINESS
-- **Named Entities (Sample):** B-501, Harshit Jewels, Hirapur Road, Mohba Bazar, Raipur (C., Contact Phone (+919326048829), Contact Phone (+919326048829), Contact Phone (+919326048829), Contact Email (sunqms@gmail.com), Contact Email (sunqms@gmail.com)
+- **Named Entities (Sample):** B-501, Harshit Jewels, Hirapur Road, Mohba Bazar, Raipur (C., Contact Phone (+919326048829), Contact Email (sunqms@gmail.com), Sunrise Testing & Calibration Centre
 - **Structured vs Visible Alignment:** 0 aligned, 0 divergent across 0 comparisons.
-- **Synthesis:** Detected 6 entity signals across 2 types (ORGANIZATION, LOCAL_BUSINESS). Structured vs visible comparisons: 0 aligned, 0 divergent.
+- **Synthesis:** Detected 4 entity signals across 2 types (ORGANIZATION, LOCAL_BUSINESS). Structured vs visible comparisons: 0 aligned, 0 divergent.
 
 ## 3. Observable Services & Products
 - **Status:** `AVAILABLE`
@@ -45,29 +45,30 @@
   - Calibration
   - Testing
   - Inspection
-- **Synthesis:** Evidenced 3 distinct core service/capability domains and 1 explicit on-page service description units.
+  - Sunrise Testing & Calibration Centre
+- **Synthesis:** Evidenced 4 distinct core service/capability domains and 1 explicit on-page service description units.
 
 ## 4 & 5. Topic Taxonomy & Dominant Concepts
 - **Status:** `AVAILABLE`
-- **Total Topics Detected:** 104
+- **Total Topics Detected:** 109
 - **Primary Topics (Top 5):** Calibration, Testing, Instruments, Sunrise, Inspection
-- **Supporting Topics (Sample):** Results, Services, Centre, Accurate, Precision
+- **Supporting Topics (Sample):** Results, Services, Centre, Sunrise Testing & Calibration Centre, Accurate
 - **Dominant Semantic Concepts:** Calibration, Testing, Instruments, Sunrise, Inspection, Results, Services, Centre
-- **Synthesis:** Identified 104 deterministic concept clusters. Primary topical anchors: Calibration, Testing, Instruments, Sunrise, Inspection.
+- **Synthesis:** Identified 109 deterministic concept clusters. Primary topical anchors: Calibration, Testing, Instruments, Sunrise, Inspection.
 
 ## 6. Observable Search Intent
 - **Status:** `AVAILABLE`
-- **Primary Intent:** `local`
-- **Secondary Intents:** None evidenced
-- **Supporting Evidence Count:** 3 observable signals
-- **Synthesis:** Primary search intent classified as 'local' supported by 3 observable structural signals. Secondary intent spectrum: None evidenced.
+- **Primary Intent:** `navigational`
+- **Secondary Intents:** `local`
+- **Supporting Evidence Count:** 4 observable signals
+- **Synthesis:** Primary search intent classified as 'navigational' supported by 4 observable structural signals. Secondary intent spectrum: local.
 
 ## 7. Topic-to-Page Distribution
 - **Status:** `AVAILABLE`
 - **Content Length:** 826 words across 39 paragraphs
-- **Topic Breadth:** 71 explained topics vs 42 mentioned-only topics
-- **Topic Density:** 12.59 concepts per 100 words
-- **Synthesis:** Content corpus comprises 826 words across 39 paragraphs. Topical distribution: 71 explained topics with structured units vs 42 mentioned-only topics (topic density: 12.59 per 100 words).
+- **Topic Breadth:** 72 explained topics vs 48 mentioned-only topics
+- **Topic Density:** 13.2 concepts per 100 words
+- **Synthesis:** Content corpus comprises 826 words across 39 paragraphs. Topical distribution: 72 explained topics with structured units vs 48 mentioned-only topics (topic density: 13.2 per 100 words).
 
 ## 8. Page Concentration & Topical Overlap
 - **Status:** `AVAILABLE`
@@ -86,7 +87,7 @@
 - **Structured Data:** 0 types (None) across 0 blocks
 - **Canonical URL:** `MISSING` [`MISSING`]
 - **Robots.txt:** Missing | Sitemaps declared: 0
-- **Latency (TTFB):** 90.8ms (local_probe)
+- **Latency (TTFB):** 95.5ms (local_probe)
 
 ## 10. Accessibility & Transport Security
 - **WCAG 2.1 Automated Status:** `FAIL` (22 violations: 0 critical, 22 serious)
@@ -107,7 +108,7 @@
 - **Bot Access Matrix:** 6/6 search indexers, 3/3 training scrapers allowed
 - **WAF / Barrier:** None observed
 - **Snippet Directives:** Snippets allowed
-- **Word Count Rendering Impact:** 0 words delta (957 static vs 0 rendered)
+- **Word Count Rendering Impact:** 0 words delta (957 static vs 957 rendered)
 - **/llms.txt Manifest:** Missing
 - **GEO Readiness Score:** 35/100
 
@@ -121,7 +122,7 @@
   - `DIRECT_ANSWER`: 2
   - `SERVICE_DESCRIPTION`: 1
   - `REQUIREMENTS_ELIGIBILITY`: 2
-- **Explained vs Mentioned Topics:** 71 explained, 42 mentioned only
+- **Explained vs Mentioned Topics:** 72 explained, 48 mentioned only
 - **Unsupported Headings:** 2
 
 ## 14. Claim Grounding & Assertion Support
@@ -181,11 +182,11 @@
 - Robots.txt found: False
 - Schema types declared: None
 - HTTPS enforced: True
-- Server latency probe: 90.8ms (local_probe)
+- Server latency probe: 95.5ms (local_probe)
 - HTTP Status: 200
 
 ### 2. External Observations (Third-Party Probes)
-- Local network latency probe recorded 90.8ms TTFB
+- Local network latency probe recorded 95.5ms TTFB
 - External AI measurement was disabled during this collection pass (opt-in via --external-ai).
 
 ### 3. RankIntel Analysis & Syntheses
@@ -213,7 +214,7 @@ Preserving 32 provenance records across engines: `advertools_seo, browser_engine
 | Engine | Finding | Source | Confidence |
 | :--- | :--- | :--- | :---: |
 | `seo_engine` | Page Title (81 chars): 'Sunrise Testing & Calibration Centre \| Testin...' | `<title> tag` | `high` |
-| `performance_engine` | TTFB Latency: 91ms | `HTTP response probe` | `medium` |
+| `performance_engine` | TTFB Latency: 96ms | `HTTP response probe` | `medium` |
 | `rankintel_geo` | /llms.txt: MISSING | `/llms.txt HTTP check` | `high` |
 | `rankintel_geo` | Princeton GEO Citability: 35/100 | `DOM content passages` | `high` |
 | `image_engine` | Image Optimization: 0 images detected (0 missing alt) | `HTML DOM` | `high` |
@@ -223,4 +224,4 @@ Preserving 32 provenance records across engines: `advertools_seo, browser_engine
 | `security_engine` | TLS Certificate: Valid (54 days left) | `TLS Handshake` | `high` |
 | `content_engine` | Main Content Extraction: 826 words (SEMANTIC_MAIN) | `HTML DOM` | `high` |
 | `content_engine` | Heading Structure: 35 headings (Valid hierarchy) | `HTML Headings` | `high` |
-| `entity_engine` | Entity Detection: 6 entity signals (6 organization/business) | `JSON-LD & HTML DOM` | `high` |
+| `entity_engine` | Entity Detection: 4 entity signals (4 organization/business) | `JSON-LD & HTML DOM` | `high` |

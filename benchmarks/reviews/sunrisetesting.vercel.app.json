@@ -30,7 +30,7 @@
   },
   "entity_profile": {
     "status": "AVAILABLE",
-    "total_entities_detected": 6,
+    "total_entities_detected": 4,
     "entity_types_detected": [
       "ORGANIZATION",
       "LOCAL_BUSINESS"
@@ -38,16 +38,14 @@
     "named_entities": [
       "B-501, Harshit Jewels, Hirapur Road, Mohba Bazar, Raipur (C.",
       "Contact Phone (+919326048829)",
-      "Contact Phone (+919326048829)",
-      "Contact Phone (+919326048829)",
       "Contact Email (sunqms@gmail.com)",
-      "Contact Email (sunqms@gmail.com)"
+      "Sunrise Testing & Calibration Centre"
     ],
-    "relationships_count": 0,
+    "relationships_count": 1,
     "structured_vs_visible_comparisons": 0,
     "aligned_comparisons": 0,
     "divergent_comparisons": 0,
-    "entity_alignment_summary": "Detected 6 entity signals across 2 types (ORGANIZATION, LOCAL_BUSINESS). Structured vs visible comparisons: 0 aligned, 0 divergent.",
+    "entity_alignment_summary": "Detected 4 entity signals across 2 types (ORGANIZATION, LOCAL_BUSINESS). Structured vs visible comparisons: 0 aligned, 0 divergent.",
     "samples": [
       {
         "name": "B-501, Harshit Jewels, Hirapur Road, Mohba Bazar, Raipur (C.",
@@ -64,25 +62,18 @@
         "email": null
       },
       {
-        "name": "Contact Phone (+919326048829)",
-        "type": "LOCAL_BUSINESS",
-        "source": "VISIBLE_HTML",
-        "telephone": "+919326048829",
-        "email": null
-      },
-      {
-        "name": "Contact Phone (+919326048829)",
-        "type": "LOCAL_BUSINESS",
-        "source": "VISIBLE_HTML",
-        "telephone": "+919326048829",
-        "email": null
-      },
-      {
         "name": "Contact Email (sunqms@gmail.com)",
         "type": "ORGANIZATION",
         "source": "VISIBLE_HTML",
         "telephone": null,
         "email": "sunqms@gmail.com"
+      },
+      {
+        "name": "Sunrise Testing & Calibration Centre",
+        "type": "ORGANIZATION",
+        "source": "VISIBLE_HTML",
+        "telephone": null,
+        "email": null
       }
     ]
   },
@@ -91,7 +82,8 @@
     "services_observed": [
       "Calibration",
       "Testing",
-      "Inspection"
+      "Inspection",
+      "Sunrise Testing & Calibration Centre"
     ],
     "product_offerings": [],
     "service_descriptions_count": 1,
@@ -101,11 +93,11 @@
       "SearchSignalEngine",
       "TopicIntelligenceEngine"
     ],
-    "summary": "Evidenced 3 distinct core service/capability domains and 1 explicit on-page service description units."
+    "summary": "Evidenced 4 distinct core service/capability domains and 1 explicit on-page service description units."
   },
   "topic_taxonomy": {
     "status": "AVAILABLE",
-    "total_topics_detected": 104,
+    "total_topics_detected": 109,
     "primary_topics": [
       "Calibration",
       "Testing",
@@ -117,8 +109,8 @@
       "Results",
       "Services",
       "Centre",
-      "Accurate",
-      "Precision"
+      "Sunrise Testing & Calibration Centre",
+      "Accurate"
     ],
     "topics_sample": [
       "Calibration",
@@ -129,8 +121,8 @@
       "Results",
       "Services",
       "Centre",
-      "Accurate",
-      "Precision"
+      "Sunrise Testing & Calibration Centre",
+      "Accurate"
     ],
     "dominant_concepts": [
       "Calibration",
@@ -142,7 +134,7 @@
       "Services",
       "Centre"
     ],
-    "summary": "Identified 104 deterministic concept clusters. Primary topical anchors: Calibration, Testing, Instruments, Sunrise, Inspection."
+    "summary": "Identified 109 deterministic concept clusters. Primary topical anchors: Calibration, Testing, Instruments, Sunrise, Inspection."
   },
   "dominant_concepts": [
     "Calibration",
@@ -156,22 +148,24 @@
   ],
   "search_intent": {
     "status": "AVAILABLE",
-    "primary_intent": "local",
-    "secondary_intents": [],
-    "intent_evidence_count": 3,
-    "intent_evidence_summary": "Primary search intent classified as 'local' supported by 3 observable structural signals. Secondary intent spectrum: None evidenced."
+    "primary_intent": "navigational",
+    "secondary_intents": [
+      "local"
+    ],
+    "intent_evidence_count": 4,
+    "intent_evidence_summary": "Primary search intent classified as 'navigational' supported by 4 observable structural signals. Secondary intent spectrum: local."
   },
   "topic_distribution": {
     "status": "AVAILABLE",
     "direct_primary_concepts_count": 5,
     "secondary_supported_concepts_count": 5,
-    "query_page_concepts_count": 119,
+    "query_page_concepts_count": 129,
     "total_words": 826,
     "paragraphs_count": 39,
-    "explained_topics_count": 71,
-    "mentioned_only_topics_count": 42,
-    "concept_density_per_100_words": 12.59,
-    "summary": "Content corpus comprises 826 words across 39 paragraphs. Topical distribution: 71 explained topics with structured units vs 42 mentioned-only topics (topic density: 12.59 per 100 words)."
+    "explained_topics_count": 72,
+    "mentioned_only_topics_count": 48,
+    "concept_density_per_100_words": 13.2,
+    "summary": "Content corpus comprises 826 words across 39 paragraphs. Topical distribution: 72 explained topics with structured units vs 48 mentioned-only topics (topic density: 13.2 per 100 words)."
   },
   "concentration_and_overlap": {
     "status": "AVAILABLE",
@@ -207,10 +201,10 @@
     "canonical_status": "MISSING",
     "robots_txt_found": false,
     "sitemaps_declared": [],
-    "ttfb_ms": 90.8,
+    "ttfb_ms": 95.5,
     "performance_score": 85,
     "performance_source": "local_probe",
-    "summary": "Title length (81 chars: TRUNCATED_RISK), Meta description (181 chars: TRUNCATED_RISK). Headings: 1 H1, 8 H2, 25 H3. Structured data: 0 schema types declared across 0 blocks. TTFB latency: 90.8ms (local_probe)."
+    "summary": "Title length (81 chars: TRUNCATED_RISK), Meta description (181 chars: TRUNCATED_RISK). Headings: 1 H1, 8 H2, 25 H3. Structured data: 0 schema types declared across 0 blocks. TTFB latency: 95.5ms (local_probe)."
   },
   "accessibility_security": {
     "status": "AVAILABLE",
@@ -262,12 +256,12 @@
     "has_data_nosnippet": false,
     "max_snippet": null,
     "static_words": 957,
-    "rendered_words": 0,
+    "rendered_words": 957,
     "word_count_delta": 0,
-    "rendering_impact_summary": "Static HTML observed (957 words); browser DOM was not rendered in this pass.",
+    "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (957 raw vs 957 rendered).",
     "llms_txt_present": false,
     "geo_score": 35,
-    "summary": "Bot access: 6/6 search indexers, 3/3 training scrapers permitted. WAF status: No WAF challenge barriers observed. Snippet directives: snippets allowed. Word count rendering delta: 0 words (957 static vs 0 rendered). /llms.txt manifest: Missing. GEO Score: 35/100."
+    "summary": "Bot access: 6/6 search indexers, 3/3 training scrapers permitted. WAF status: No WAF challenge barriers observed. Snippet directives: snippets allowed. Word count rendering delta: 0 words (957 static vs 957 rendered). /llms.txt manifest: Missing. GEO Score: 35/100."
   },
   "answerability": {
     "status": "AVAILABLE",
@@ -285,8 +279,8 @@
     "definition_patterns": "PRESENT",
     "step_list_structure": "PRESENT",
     "table_availability": "ABSENT",
-    "explained_topics_count": 71,
-    "mentioned_only_topics_count": 42,
+    "explained_topics_count": 72,
+    "mentioned_only_topics_count": 48,
     "unsupported_heading_topics_count": 2,
     "unsupported_headings_sample": [
       "Sunrise Testing & Calibration Centre",
@@ -295,7 +289,7 @@
       "Services",
       "Sun Associates — QMS & BIS Consultancy"
     ],
-    "summary": "Discovered 11 observable information units across 6 structural types (DEFINITION:2, PROCEDURE_STEPS:1, FACTUAL_STATEMENT:3, DIRECT_ANSWER:2, SERVICE_DESCRIPTION:1, REQUIREMENTS_ELIGIBILITY:2). Topical support: 71 explained topics with explicit answerable structures, 42 mentioned-only topics, 2 unsupported headings."
+    "summary": "Discovered 11 observable information units across 6 structural types (DEFINITION:2, PROCEDURE_STEPS:1, FACTUAL_STATEMENT:3, DIRECT_ANSWER:2, SERVICE_DESCRIPTION:1, REQUIREMENTS_ELIGIBILITY:2). Topical support: 72 explained topics with explicit answerable structures, 48 mentioned-only topics, 2 unsupported headings."
   },
   "claim_grounding": {
     "status": "AVAILABLE",
@@ -307,7 +301,7 @@
     "structured_agreements_count": 0,
     "structured_disagreements_count": 0,
     "entity_consistency_breakdown": {
-      "PARTIALLY_CONSISTENT": 3
+      "PARTIALLY_CONSISTENT": 4
     },
     "grounding_ratio": 0.94,
     "summary": "Evaluated 17 visible factual assertions: 16 fully supported on-site, 1 partially supported, 0 uncorroborated, 0 contradicted (94% grounding ratio). Schema-DOM alignment: 0 agreements, 0 disagreements."
@@ -407,25 +401,26 @@
       "Robots.txt found: False",
       "Schema types declared: None",
       "HTTPS enforced: True",
-      "Server latency probe: 90.8ms (local_probe)",
+      "Server latency probe: 95.5ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
       "Static HTML contains 957 words.",
+      "Rendered browser DOM contains 957 words (delta: +0 words).",
       "Detected 11 distinct observable information unit(s) across 6 structural types.",
-      "Evaluated 119 topic(s): 71 explained with explicit units, 42 mentioned only, 2 unsupported headings.",
+      "Evaluated 129 topic(s): 72 explained with explicit units, 48 mentioned only, 2 unsupported headings.",
       "Structure 'DEFINITION': 2 unit(s) observed.",
       "Structure 'DIRECT_ANSWER': 2 unit(s) observed.",
       "Structure 'FACTUAL_STATEMENT': 3 unit(s) observed.",
       "Detected 17 observable claim(s) on page https://sunrisetesting.vercel.app/.",
       "On-site support status: 16 supported, 1 partially supported, 0 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 0 agreement(s), 0 explicit disagreement(s).",
-      "Evaluated 3 entity candidate(s) across 6 content surfaces.",
+      "Evaluated 4 entity candidate(s) across 6 content surfaces.",
       "Observed 34 visual asset(s): 3 informational, 0 with meaningful alt text, 0 with figure captions, 3 visual-only information gap(s).",
       "Observed 0 form(s) (0 labeled), 1 action button(s) (1 accessible names), 0 structured schema action(s), 0 WebMCP declaration(s).",
       "Mapped 3 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 90.8ms TTFB",
+      "Local network latency probe recorded 95.5ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -457,7 +452,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 91ms",
+      "finding": "TTFB Latency: 96ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -537,7 +532,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Detection: 6 entity signals (6 organization/business)",
+      "finding": "Entity Detection: 4 entity signals (4 organization/business)",
       "engine": "entity_engine",
       "source_file": "JSON-LD & HTML DOM",
       "confidence": "high",
@@ -553,7 +548,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 119 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 129 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -577,7 +572,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 104 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 109 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -585,7 +580,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 86 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 112 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -593,7 +588,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 119 observed concepts mapped to page (18 DIRECT, 36 SUPPORTED)",
+      "finding": "Query-Page Mapping: 129 observed concepts mapped to page (18 DIRECT, 44 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -601,7 +596,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 18 direct primary concepts, 36 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 18 direct primary concepts, 44 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -609,7 +604,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'local' (3 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'navigational' (4 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -617,7 +612,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'local' based on 2 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'navigational' based on 3 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
@@ -649,7 +644,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 71 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 72 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",
@@ -681,7 +676,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Surface Consistency: 3 candidate(s) tracked across 6 content surfaces",
+      "finding": "Entity Surface Consistency: 4 candidate(s) tracked across 6 content surfaces",
       "engine": "claim_grounding_engine",
       "source_file": "DOM, Headings, Meta, JSON-LD, Units",
       "confidence": "high",
@@ -730,8 +725,8 @@
     "status_code": 200,
     "word_count": 826,
     "title_length": 81,
-    "entities_count": 6,
-    "topics_count": 104,
+    "entities_count": 4,
+    "topics_count": 109,
     "units_count": 11,
     "claims_count": 17,
     "visual_assets": 34,

@@ -77,11 +77,11 @@
   },
   "topic_taxonomy": {
     "status": "AVAILABLE",
-    "total_topics_detected": 107,
+    "total_topics_detected": 117,
     "primary_topics": [
       "research",
-      "Sales",
       "ZaubaCorp",
+      "Sales",
       "business",
       "Market"
     ],
@@ -94,8 +94,8 @@
     ],
     "topics_sample": [
       "research",
-      "Sales",
       "ZaubaCorp",
+      "Sales",
       "business",
       "Market",
       "Art",
@@ -106,20 +106,20 @@
     ],
     "dominant_concepts": [
       "research",
-      "Sales",
       "ZaubaCorp",
+      "Sales",
       "business",
       "Market",
       "Art",
       "platform",
       "State"
     ],
-    "summary": "Identified 107 deterministic concept clusters. Primary topical anchors: research, Sales, ZaubaCorp, business, Market."
+    "summary": "Identified 117 deterministic concept clusters. Primary topical anchors: research, ZaubaCorp, Sales, business, Market."
   },
   "dominant_concepts": [
     "research",
-    "Sales",
     "ZaubaCorp",
+    "Sales",
     "business",
     "Market",
     "Art",
@@ -128,24 +128,24 @@
   ],
   "search_intent": {
     "status": "AVAILABLE",
-    "primary_intent": "transactional",
+    "primary_intent": "transactional_ecommerce",
     "secondary_intents": [
       "navigational"
     ],
     "intent_evidence_count": 9,
-    "intent_evidence_summary": "Primary search intent classified as 'transactional' supported by 9 observable structural signals. Secondary intent spectrum: navigational."
+    "intent_evidence_summary": "Primary search intent classified as 'transactional_ecommerce' supported by 9 observable structural signals. Secondary intent spectrum: navigational."
   },
   "topic_distribution": {
     "status": "AVAILABLE",
     "direct_primary_concepts_count": 5,
     "secondary_supported_concepts_count": 5,
-    "query_page_concepts_count": 112,
+    "query_page_concepts_count": 122,
     "total_words": 650,
     "paragraphs_count": 44,
-    "explained_topics_count": 48,
-    "mentioned_only_topics_count": 41,
-    "concept_density_per_100_words": 16.46,
-    "summary": "Content corpus comprises 650 words across 44 paragraphs. Topical distribution: 48 explained topics with structured units vs 41 mentioned-only topics (topic density: 16.46 per 100 words)."
+    "explained_topics_count": 43,
+    "mentioned_only_topics_count": 45,
+    "concept_density_per_100_words": 18.0,
+    "summary": "Content corpus comprises 650 words across 44 paragraphs. Topical distribution: 43 explained topics with structured units vs 45 mentioned-only topics (topic density: 18.0 per 100 words)."
   },
   "concentration_and_overlap": {
     "status": "AVAILABLE",
@@ -186,10 +186,10 @@
     "sitemaps_declared": [
       "https://www.zaubacorp.com/sitemap.xml"
     ],
-    "ttfb_ms": 89.9,
+    "ttfb_ms": 80.2,
     "performance_score": 85,
     "performance_source": "local_probe",
-    "summary": "Title length (54 chars: OPTIMAL), Meta description (128 chars: OPTIMAL). Headings: 1 H1, 10 H2, 7 H3. Structured data: 0 schema types declared across 0 blocks. TTFB latency: 89.9ms (local_probe)."
+    "summary": "Title length (54 chars: OPTIMAL), Meta description (128 chars: OPTIMAL). Headings: 1 H1, 10 H2, 7 H3. Structured data: 0 schema types declared across 0 blocks. TTFB latency: 80.2ms (local_probe)."
   },
   "accessibility_security": {
     "status": "AVAILABLE",
@@ -244,13 +244,13 @@
     "has_nosnippet": false,
     "has_data_nosnippet": false,
     "max_snippet": null,
-    "static_words": 979,
-    "rendered_words": 0,
-    "word_count_delta": 0,
-    "rendering_impact_summary": "Static HTML observed (979 words); browser DOM was not rendered in this pass.",
+    "static_words": 864,
+    "rendered_words": 979,
+    "word_count_delta": 115,
+    "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (864 raw vs 979 rendered).",
     "llms_txt_present": false,
     "geo_score": 30,
-    "summary": "Bot access: 6/6 search indexers, 3/3 training scrapers permitted. WAF status: CHALLENGE/BLOCK DETECTED (Cloudflare). Snippet directives: snippets allowed. Word count rendering delta: 0 words (979 static vs 0 rendered). /llms.txt manifest: Missing. GEO Score: 30/100."
+    "summary": "Bot access: 6/6 search indexers, 3/3 training scrapers permitted. WAF status: CHALLENGE/BLOCK DETECTED (Cloudflare). Snippet directives: snippets allowed. Word count rendering delta: 115 words (864 static vs 979 rendered). /llms.txt manifest: Missing. GEO Score: 30/100."
   },
   "answerability": {
     "status": "AVAILABLE",
@@ -263,8 +263,8 @@
     "definition_patterns": "ABSENT",
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
-    "explained_topics_count": 48,
-    "mentioned_only_topics_count": 41,
+    "explained_topics_count": 43,
+    "mentioned_only_topics_count": 45,
     "unsupported_heading_topics_count": 13,
     "unsupported_headings_sample": [
       "By Industry",
@@ -273,7 +273,7 @@
       "Solutions",
       "Information Required"
     ],
-    "summary": "Discovered 3 observable information units across 1 structural types (LIST:3). Topical support: 48 explained topics with explicit answerable structures, 41 mentioned-only topics, 13 unsupported headings."
+    "summary": "Discovered 3 observable information units across 1 structural types (LIST:3). Topical support: 43 explained topics with explicit answerable structures, 45 mentioned-only topics, 13 unsupported headings."
   },
   "claim_grounding": {
     "status": "AVAILABLE",
@@ -394,12 +394,13 @@
       "Robots.txt found: True",
       "Schema types declared: None",
       "HTTPS enforced: True",
-      "Server latency probe: 89.9ms (local_probe)",
+      "Server latency probe: 80.2ms (local_probe)",
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
-      "Static HTML contains 979 words.",
+      "Static HTML contains 864 words.",
+      "Rendered browser DOM contains 979 words (delta: +115 words).",
       "Detected 3 distinct observable information unit(s) across 1 structural types.",
-      "Evaluated 112 topic(s): 48 explained with explicit units, 41 mentioned only, 13 unsupported headings.",
+      "Evaluated 122 topic(s): 43 explained with explicit units, 45 mentioned only, 13 unsupported headings.",
       "Structure 'LIST': 3 unit(s) observed.",
       "Detected 4 observable claim(s) on page https://www.zaubacorp.com/.",
       "On-site support status: 3 supported, 1 partially supported, 0 uncorroborated, 0 contradicted.",
@@ -410,7 +411,7 @@
       "Mapped 5 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 89.9ms TTFB",
+      "Local network latency probe recorded 80.2ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -616,7 +617,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 90ms",
+      "finding": "TTFB Latency: 80ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -720,7 +721,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 120 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 130 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -736,7 +737,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Structure: Title and H1 share 2 core evidenced terms: research, platform.",
+      "finding": "Search Signal Structure: Title and H1 share 2 core evidenced terms: platform, research.",
       "engine": "search_signal_engine",
       "source_file": "Structural Tag Correlation",
       "confidence": "high",
@@ -744,7 +745,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 107 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 117 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -752,7 +753,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 183 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 244 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -760,7 +761,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 112 observed concepts mapped to page (24 DIRECT, 41 SUPPORTED)",
+      "finding": "Query-Page Mapping: 122 observed concepts mapped to page (23 DIRECT, 52 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -768,7 +769,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 24 direct primary concepts, 41 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 23 direct primary concepts, 52 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -776,7 +777,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (9 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional_ecommerce' (9 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -784,7 +785,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 11 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional_ecommerce' based on 10 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
@@ -816,7 +817,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 48 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 43 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",
@@ -906,7 +907,7 @@
     "word_count": 650,
     "title_length": 54,
     "entities_count": 2,
-    "topics_count": 107,
+    "topics_count": 117,
     "units_count": 3,
     "claims_count": 4,
     "visual_assets": 34,

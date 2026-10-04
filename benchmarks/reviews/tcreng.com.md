@@ -33,11 +33,11 @@
 
 ## 2. Entities & Knowledge Graph Representation
 - **Status:** `AVAILABLE`
-- **Total Entities Detected:** 12
-- **Entity Types:** LOCAL_BUSINESS, ORGANIZATION, OTHER
+- **Total Entities Detected:** 9
+- **Entity Types:** ORGANIZATION, OTHER, LOCAL_BUSINESS
 - **Named Entities (Sample):** TCR Engineering Services Pvt. Ltd., TCR Engineering, TCR Engineering service pillars, TCR Engineering corporate video, Documents: Materials fail. Evidence doesn't., TCR Engineering
 - **Structured vs Visible Alignment:** 3 aligned, 0 divergent across 3 comparisons.
-- **Synthesis:** Detected 12 entity signals across 3 types (LOCAL_BUSINESS, ORGANIZATION, OTHER). Structured vs visible comparisons: 3 aligned, 0 divergent.
+- **Synthesis:** Detected 9 entity signals across 3 types (ORGANIZATION, OTHER, LOCAL_BUSINESS). Structured vs visible comparisons: 3 aligned, 0 divergent.
 
 ## 3. Observable Services & Products
 - **Status:** `AVAILABLE`
@@ -50,25 +50,25 @@
 
 ## 4 & 5. Topic Taxonomy & Dominant Concepts
 - **Status:** `AVAILABLE`
-- **Total Topics Detected:** 227
+- **Total Topics Detected:** 237
 - **Primary Topics (Top 5):** TCR, Testing, Engineering, Materials, TCR Engineering
 - **Supporting Topics (Sample):** Integrity, Asset, NDT, doesn't., Evidence
 - **Dominant Semantic Concepts:** TCR, Testing, Engineering, Materials, TCR Engineering, Integrity, Asset, NDT
-- **Synthesis:** Identified 227 deterministic concept clusters. Primary topical anchors: TCR, Testing, Engineering, Materials, TCR Engineering.
+- **Synthesis:** Identified 237 deterministic concept clusters. Primary topical anchors: TCR, Testing, Engineering, Materials, TCR Engineering.
 
 ## 6. Observable Search Intent
 - **Status:** `AVAILABLE`
-- **Primary Intent:** `navigational`
-- **Secondary Intents:** `informational`, `transactional`, `local`
-- **Supporting Evidence Count:** 21 observable signals
-- **Synthesis:** Primary search intent classified as 'navigational' supported by 21 observable structural signals. Secondary intent spectrum: informational, transactional, local.
+- **Primary Intent:** `transactional_lead_gen`
+- **Secondary Intents:** `informational`, `navigational`, `local`
+- **Supporting Evidence Count:** 12 observable signals
+- **Synthesis:** Primary search intent classified as 'transactional_lead_gen' supported by 12 observable structural signals. Secondary intent spectrum: informational, navigational, local.
 
 ## 7. Topic-to-Page Distribution
 - **Status:** `AVAILABLE`
 - **Content Length:** 1545 words across 133 paragraphs
-- **Topic Breadth:** 161 explained topics vs 35 mentioned-only topics
-- **Topic Density:** 14.69 concepts per 100 words
-- **Synthesis:** Content corpus comprises 1545 words across 133 paragraphs. Topical distribution: 161 explained topics with structured units vs 35 mentioned-only topics (topic density: 14.69 per 100 words).
+- **Topic Breadth:** 168 explained topics vs 34 mentioned-only topics
+- **Topic Density:** 15.34 concepts per 100 words
+- **Synthesis:** Content corpus comprises 1545 words across 133 paragraphs. Topical distribution: 168 explained topics with structured units vs 34 mentioned-only topics (topic density: 15.34 per 100 words).
 
 ## 8. Page Concentration & Topical Overlap
 - **Status:** `AVAILABLE`
@@ -84,10 +84,10 @@
 - **Page Title (58 chars):** "Materials Testing, NDT & Asset Integrity | TCR Engineering" [`OPTIMAL`]
 - **Meta Description (147 chars):** "India's oldest third-party materials testing, NDT and asset integrity company. NABL ISO/IEC 17025, NADCAP AC7101, BIS, IBR, BMC and CIDCO approved." [`OPTIMAL`]
 - **Heading Structure:** 1 H1, 17 H2, 26 H3
-- **Structured Data:** 8 types (BreadcrumbList, ItemList, VideoObject, WebSite, FAQPage, NewsArticle, WebPage, Organization) across 8 blocks
+- **Structured Data:** 8 types (WebPage, ItemList, Organization, WebSite, NewsArticle, BreadcrumbList, FAQPage, VideoObject) across 8 blocks
 - **Canonical URL:** `https://www.tcreng.com/` [`MATCHING`]
 - **Robots.txt:** Found | Sitemaps declared: 2
-- **Latency (TTFB):** 82.5ms (local_probe)
+- **Latency (TTFB):** 81.0ms (local_probe)
 
 ## 10. Accessibility & Transport Security
 - **WCAG 2.1 Automated Status:** `UNAVAILABLE` (0 violations: 0 critical, 0 serious)
@@ -108,7 +108,7 @@
 - **Bot Access Matrix:** 6/6 search indexers, 3/3 training scrapers allowed
 - **WAF / Barrier:** CHALLENGE/BLOCK DETECTED (Cloudflare)
 - **Snippet Directives:** Snippets allowed
-- **Word Count Rendering Impact:** 0 words delta (2309 static vs 0 rendered)
+- **Word Count Rendering Impact:** -20 words delta (2329 static vs 2309 rendered)
 - **/llms.txt Manifest:** Missing
 - **GEO Readiness Score:** 63/100
 
@@ -123,7 +123,7 @@
   - `FACTUAL_STATEMENT`: 3
   - `DIRECT_ANSWER`: 1
   - `SERVICE_DESCRIPTION`: 4
-- **Explained vs Mentioned Topics:** 161 explained, 35 mentioned only
+- **Explained vs Mentioned Topics:** 168 explained, 34 mentioned only
 - **Unsupported Headings:** 40
 
 ## 14. Claim Grounding & Assertion Support
@@ -184,13 +184,13 @@
 - Internal links observed: 148
 - External links observed: 395
 - Robots.txt found: True
-- Schema types declared: BreadcrumbList, ItemList, VideoObject, WebSite, FAQPage, NewsArticle, WebPage, Organization
+- Schema types declared: WebPage, ItemList, Organization, WebSite, NewsArticle, BreadcrumbList, FAQPage, VideoObject
 - HTTPS enforced: True
-- Server latency probe: 82.5ms (local_probe)
+- Server latency probe: 81.0ms (local_probe)
 - HTTP Status: 200
 
 ### 2. External Observations (Third-Party Probes)
-- Local network latency probe recorded 82.5ms TTFB
+- Local network latency probe recorded 81.0ms TTFB
 - External AI measurement was disabled during this collection pass (opt-in via --external-ai).
 
 ### 3. RankIntel Analysis & Syntheses

@@ -65,29 +65,29 @@
           "domain": "umspcs.in",
           "schema_types_count": 9,
           "detected_types": [
-            "PostalAddress",
+            "LocalBusiness",
+            "WebPage",
+            "Organization",
             "Place",
+            "WebSite",
+            "ImageObject",
             "BreadcrumbList",
             "FAQPage",
-            "WebSite",
-            "WebPage",
-            "ImageObject",
-            "LocalBusiness",
-            "Organization"
+            "PostalAddress"
           ]
         },
         {
           "domain": "tcreng.com",
           "schema_types_count": 8,
           "detected_types": [
-            "BreadcrumbList",
-            "ItemList",
-            "VideoObject",
-            "WebSite",
-            "FAQPage",
-            "NewsArticle",
             "WebPage",
-            "Organization"
+            "ItemList",
+            "Organization",
+            "WebSite",
+            "NewsArticle",
+            "BreadcrumbList",
+            "FAQPage",
+            "VideoObject"
           ]
         }
       ],
@@ -102,14 +102,14 @@
       "source_sites_present": [
         "ascgroup.in",
         "standphillindia.in",
-        "tcreng.com",
-        "umspcs.in"
+        "tcreng.com"
       ],
       "source_sites_absent": [
         "alephindia.in",
         "qualityinternational.org",
         "sqccertification.com",
         "sunrisetesting.vercel.app",
+        "umspcs.in",
         "uniquemeasurement.com",
         "yadavmeasurements.com",
         "zaubacorp.com"
@@ -155,13 +155,13 @@
         "sqccertification.com",
         "standphillindia.in",
         "tcreng.com",
-        "umspcs.in",
         "uniquemeasurement.com",
         "yadavmeasurements.com",
         "zaubacorp.com"
       ],
       "source_sites_absent": [
-        "sunrisetesting.vercel.app"
+        "sunrisetesting.vercel.app",
+        "umspcs.in"
       ],
       "target_site_status": "ABSENT",
       "supporting_fields": [
@@ -178,7 +178,7 @@
         },
         {
           "domain": "umspcs.in",
-          "forms_detected": 8
+          "forms_detected": 0
         },
         {
           "domain": "standphillindia.in",
@@ -514,22 +514,22 @@
     {
       "dimension": "Overall Search Health",
       "target_value": "48/100",
-      "cohort_median_or_avg": "60.2/100",
-      "observable_delta": -12.2,
+      "cohort_median_or_avg": "58.7/100",
+      "observable_delta": -10.7,
       "epistemic_note": "Triangulated health score difference based strictly on existing multi-engine formula (Δ=0)."
     },
     {
       "dimension": "Technical SEO Health",
       "target_value": "60/100",
-      "cohort_median_or_avg": "73.0/100",
-      "observable_delta": -13.0,
+      "cohort_median_or_avg": "71.5/100",
+      "observable_delta": -11.5,
       "epistemic_note": "Technical SEO score evaluating meta tags, robots, canonicals, and heading structures."
     },
     {
       "dimension": "GEO / AI Search Readiness",
       "target_value": "35/100",
-      "cohort_median_or_avg": "41.7/100",
-      "observable_delta": -6.7,
+      "cohort_median_or_avg": "38.9/100",
+      "observable_delta": -3.9,
       "epistemic_note": "Princeton GEO scoring evaluating answer density, quotes, citations, and LLM visibility."
     },
     {
@@ -549,29 +549,29 @@
     {
       "dimension": "Alt-Text Coverage Ratio",
       "target_value": "0.0%",
-      "cohort_median_or_avg": "50.0% (max: 99.0%)",
-      "observable_delta": -0.5,
+      "cohort_median_or_avg": "42.0% (max: 99.0%)",
+      "observable_delta": -0.42,
       "epistemic_note": "Target exhibits 0% alt coverage across 34 images; leading competitors reach 97%."
     },
     {
       "dimension": "Agent Form Action Surfaces",
       "target_value": "0 forms",
-      "cohort_median_or_avg": "3.0 forms (max: 8)",
-      "observable_delta": -3.0,
+      "cohort_median_or_avg": "2.2 forms (max: 6)",
+      "observable_delta": -2.2,
       "epistemic_note": "Target lacks interactive web forms, contrasting with competitor quote/inquiry surfaces."
     },
     {
       "dimension": "Visual Assets Count",
       "target_value": "34 images",
-      "cohort_median_or_avg": "118.3 images (max: 364)",
-      "observable_delta": -84.3,
+      "cohort_median_or_avg": "81.9 images (max: 351)",
+      "observable_delta": -47.9,
       "epistemic_note": "Total visual assets detected on landing page DOM."
     },
     {
       "dimension": "Automated WCAG Violations",
       "target_value": "22 violations",
-      "cohort_median_or_avg": "36.5 violations (min: 0)",
-      "observable_delta": -14.5,
+      "cohort_median_or_avg": "36.1 violations (min: 0)",
+      "observable_delta": -14.1,
       "epistemic_note": "Automated AST rule checks (non-certification scope)."
     },
     {
@@ -584,8 +584,8 @@
     {
       "dimension": "Claim Grounding Ratio",
       "target_value": "94.0%",
-      "cohort_median_or_avg": "71.0%",
-      "observable_delta": 0.23,
+      "cohort_median_or_avg": "65.0%",
+      "observable_delta": 0.29,
       "epistemic_note": "Percentage of extracted factual assertions corroborated by on-site evidence."
     }
   ],

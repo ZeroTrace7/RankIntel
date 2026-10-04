@@ -25,9 +25,9 @@
       "geo_readiness_score": 42,
       "trust_score": 56,
       "performance_score": 85,
-      "primary_intent": "local",
-      "entities_count": 10,
-      "topics_count": 217,
+      "primary_intent": "transactional",
+      "entities_count": 8,
+      "topics_count": 227,
       "dominant_concepts_count": 8,
       "schema_types_count": 2,
       "answer_units_count": 14,
@@ -36,7 +36,7 @@
       "alt_coverage_ratio": 0.33,
       "forms_count": 3,
       "buttons_count": 84,
-      "a11y_violations_count": 63,
+      "a11y_violations_count": 59,
       "security_findings_count": 7,
       "waf_barrier": "Cloudflare",
       "llms_txt_present": false
@@ -50,9 +50,9 @@
       "geo_readiness_score": 43,
       "trust_score": 56,
       "performance_score": 85,
-      "primary_intent": "transactional",
-      "entities_count": 7,
-      "topics_count": 189,
+      "primary_intent": "navigational",
+      "entities_count": 5,
+      "topics_count": 200,
       "dominant_concepts_count": 8,
       "schema_types_count": 1,
       "answer_units_count": 7,
@@ -75,9 +75,9 @@
       "geo_readiness_score": 30,
       "trust_score": 32,
       "performance_score": 85,
-      "primary_intent": "transactional",
-      "entities_count": 2,
-      "topics_count": 76,
+      "primary_intent": "navigational",
+      "entities_count": 3,
+      "topics_count": 79,
       "dominant_concepts_count": 8,
       "schema_types_count": 0,
       "answer_units_count": 0,
@@ -102,7 +102,7 @@
       "performance_score": 85,
       "primary_intent": "transactional",
       "entities_count": 9,
-      "topics_count": 123,
+      "topics_count": 133,
       "dominant_concepts_count": 8,
       "schema_types_count": 4,
       "answer_units_count": 0,
@@ -125,9 +125,9 @@
       "geo_readiness_score": 51,
       "trust_score": 64,
       "performance_score": 85,
-      "primary_intent": "transactional",
-      "entities_count": 10,
-      "topics_count": 119,
+      "primary_intent": "mixed",
+      "entities_count": 6,
+      "topics_count": 129,
       "dominant_concepts_count": 8,
       "schema_types_count": 3,
       "answer_units_count": 13,
@@ -150,9 +150,9 @@
       "geo_readiness_score": 35,
       "trust_score": 20,
       "performance_score": 85,
-      "primary_intent": "local",
-      "entities_count": 6,
-      "topics_count": 104,
+      "primary_intent": "navigational",
+      "entities_count": 4,
+      "topics_count": 109,
       "dominant_concepts_count": 8,
       "schema_types_count": 0,
       "answer_units_count": 11,
@@ -175,9 +175,9 @@
       "geo_readiness_score": 63,
       "trust_score": 60,
       "performance_score": 85,
-      "primary_intent": "navigational",
-      "entities_count": 12,
-      "topics_count": 227,
+      "primary_intent": "transactional_lead_gen",
+      "entities_count": 9,
+      "topics_count": 237,
       "dominant_concepts_count": 8,
       "schema_types_count": 8,
       "answer_units_count": 36,
@@ -195,22 +195,22 @@
       "domain": "umspcs.in",
       "name": "UMS PCS",
       "role": "competitor",
-      "health_score": 76,
-      "technical_health_score": 100,
-      "geo_readiness_score": 53,
-      "trust_score": 64,
+      "health_score": 61,
+      "technical_health_score": 85,
+      "geo_readiness_score": 25,
+      "trust_score": 56,
       "performance_score": 85,
-      "primary_intent": "local",
-      "entities_count": 14,
-      "topics_count": 159,
+      "primary_intent": "navigational",
+      "entities_count": 4,
+      "topics_count": 22,
       "dominant_concepts_count": 8,
       "schema_types_count": 9,
       "answer_units_count": 20,
-      "claims_grounded_ratio": 0.72,
-      "visual_assets_count": 364,
-      "alt_coverage_ratio": 0.86,
-      "forms_count": 8,
-      "buttons_count": 16,
+      "claims_grounded_ratio": 0.13,
+      "visual_assets_count": 0,
+      "alt_coverage_ratio": 0.0,
+      "forms_count": 0,
+      "buttons_count": 0,
       "a11y_violations_count": 15,
       "security_findings_count": 5,
       "waf_barrier": "None",
@@ -227,7 +227,7 @@
       "performance_score": 35,
       "primary_intent": "transactional",
       "entities_count": 3,
-      "topics_count": 83,
+      "topics_count": 84,
       "dominant_concepts_count": 8,
       "schema_types_count": 0,
       "answer_units_count": 5,
@@ -235,7 +235,7 @@
       "visual_assets_count": 32,
       "alt_coverage_ratio": 0.14,
       "forms_count": 2,
-      "buttons_count": 10,
+      "buttons_count": 8,
       "a11y_violations_count": 55,
       "security_findings_count": 6,
       "waf_barrier": "None",
@@ -250,9 +250,9 @@
       "geo_readiness_score": 28,
       "trust_score": 36,
       "performance_score": 85,
-      "primary_intent": "transactional",
-      "entities_count": 0,
-      "topics_count": 40,
+      "primary_intent": "navigational",
+      "entities_count": 1,
+      "topics_count": 37,
       "dominant_concepts_count": 8,
       "schema_types_count": 0,
       "answer_units_count": 1,
@@ -275,9 +275,9 @@
       "geo_readiness_score": 30,
       "trust_score": 48,
       "performance_score": 85,
-      "primary_intent": "transactional",
+      "primary_intent": "transactional_ecommerce",
       "entities_count": 2,
-      "topics_count": 107,
+      "topics_count": 117,
       "dominant_concepts_count": 8,
       "schema_types_count": 0,
       "answer_units_count": 3,
@@ -293,11 +293,8 @@
     }
   ],
   "entity_comparison": {
-    "total_unique_entities_across_benchmark": 46,
-    "common_entities": [
-      "UMSPCS",
-      "umspcs"
-    ],
+    "total_unique_entities_across_benchmark": 47,
+    "common_entities": [],
     "unique_entities_by_site": {
       "alephindia.in": [
         "Aleph INDIA",
@@ -316,7 +313,8 @@
       ],
       "qualityinternational.org": [
         "Contact Email (info@qengineering.in)",
-        "Contact Email (info@qualityinternational.org)"
+        "Contact Email (info@qualityinternational.org)",
+        "Quality International"
       ],
       "sqccertification.com": [
         "2026",
@@ -337,10 +335,12 @@
       "sunrisetesting.vercel.app": [
         "B-501, Harshit Jewels, Hirapur Road, Mohba Bazar, Raipur (C.",
         "Contact Email (sunqms@gmail.com)",
-        "Contact Phone (+919326048829)"
+        "Contact Phone (+919326048829)",
+        "Sunrise Testing & Calibration Centre"
       ],
       "tcreng.com": [
         "1973–2026 TCR Engineering Services Pvt",
+        "Contact Email (sales@tcreng.com)",
         "Contact Phone (+919833530200)",
         "Documents: Materials fail. Evidence doesn't.",
         "TCR Engineering",
@@ -350,22 +350,45 @@
       ],
       "umspcs.in": [
         "BIS Certifications Consultant & Other Certifications - UMSPCS",
-        "Best BIS registration consultants in Delhi, India- UMSPCS",
-        "Contact Phone (+917011067811)",
         "Noida",
-        "Registration CDSCO Approvals ISO Certification Privacy Polic"
+        "UMSPCS"
       ],
       "uniquemeasurement.com": [
         "Contact Phone (+9965251951)",
-        "Contact Phone (04445050301)"
+        "Contact Phone (04445050301)",
+        "Unique Measurement Service"
       ],
-      "yadavmeasurements.com": [],
+      "yadavmeasurements.com": [
+        "Yadav Measurements"
+      ],
       "zaubacorp.com": [
         "ZaubaCorp",
         "© 2026 Zauba Corp"
       ]
     },
     "entity_types_coverage": {
+      "ORGANIZATION": [
+        "alephindia.in",
+        "ascgroup.in",
+        "qualityinternational.org",
+        "sqccertification.com",
+        "standphillindia.in",
+        "sunrisetesting.vercel.app",
+        "tcreng.com",
+        "umspcs.in",
+        "uniquemeasurement.com",
+        "yadavmeasurements.com",
+        "zaubacorp.com"
+      ],
+      "LOCAL_BUSINESS": [
+        "alephindia.in",
+        "ascgroup.in",
+        "sqccertification.com",
+        "standphillindia.in",
+        "sunrisetesting.vercel.app",
+        "tcreng.com",
+        "uniquemeasurement.com"
+      ],
       "PERSON": [
         "alephindia.in",
         "standphillindia.in"
@@ -377,46 +400,25 @@
         "tcreng.com",
         "umspcs.in"
       ],
-      "ORGANIZATION": [
-        "alephindia.in",
-        "ascgroup.in",
-        "qualityinternational.org",
-        "sqccertification.com",
-        "standphillindia.in",
-        "sunrisetesting.vercel.app",
-        "tcreng.com",
-        "umspcs.in",
-        "zaubacorp.com"
-      ],
-      "LOCAL_BUSINESS": [
-        "alephindia.in",
-        "ascgroup.in",
-        "sqccertification.com",
-        "standphillindia.in",
-        "sunrisetesting.vercel.app",
-        "tcreng.com",
-        "umspcs.in",
-        "uniquemeasurement.com"
-      ],
       "PLACE": [
         "umspcs.in"
       ]
     },
     "entity_alignment_summary": {
-      "alephindia.in": "Detected 10 entity signals across 4 types (PERSON, OTHER, ORGANIZATION). Structured vs visible comparisons: 2 aligned, 1 divergent.",
-      "ascgroup.in": "Detected 7 entity signals across 2 types (ORGANIZATION, LOCAL_BUSINESS). Structured vs visible comparisons: 1 aligned, 0 divergent.",
-      "qualityinternational.org": "Detected 2 entity signals across 1 types (ORGANIZATION). Structured vs visible comparisons: 0 aligned, 0 divergent.",
-      "sqccertification.com": "Detected 9 entity signals across 3 types (OTHER, ORGANIZATION, LOCAL_BUSINESS). Structured vs visible comparisons: 1 aligned, 1 divergent.",
-      "standphillindia.in": "Detected 10 entity signals across 4 types (PERSON, OTHER, ORGANIZATION). Structured vs visible comparisons: 2 aligned, 1 divergent.",
-      "sunrisetesting.vercel.app": "Detected 6 entity signals across 2 types (ORGANIZATION, LOCAL_BUSINESS). Structured vs visible comparisons: 0 aligned, 0 divergent.",
-      "tcreng.com": "Detected 12 entity signals across 3 types (LOCAL_BUSINESS, ORGANIZATION, OTHER). Structured vs visible comparisons: 3 aligned, 0 divergent.",
-      "umspcs.in": "Detected 14 entity signals across 4 types (LOCAL_BUSINESS, ORGANIZATION, PLACE). Structured vs visible comparisons: 5 aligned, 0 divergent.",
-      "uniquemeasurement.com": "Detected 3 entity signals across 1 types (LOCAL_BUSINESS). Structured vs visible comparisons: 0 aligned, 0 divergent.",
-      "yadavmeasurements.com": "Detected 0 entity signals across 0 types (none). Structured vs visible comparisons: 0 aligned, 0 divergent.",
+      "alephindia.in": "Detected 8 entity signals across 4 types (ORGANIZATION, LOCAL_BUSINESS, PERSON). Structured vs visible comparisons: 2 aligned, 1 divergent.",
+      "ascgroup.in": "Detected 5 entity signals across 2 types (LOCAL_BUSINESS, ORGANIZATION). Structured vs visible comparisons: 1 aligned, 0 divergent.",
+      "qualityinternational.org": "Detected 3 entity signals across 1 types (ORGANIZATION). Structured vs visible comparisons: 0 aligned, 0 divergent.",
+      "sqccertification.com": "Detected 9 entity signals across 3 types (ORGANIZATION, LOCAL_BUSINESS, OTHER). Structured vs visible comparisons: 1 aligned, 1 divergent.",
+      "standphillindia.in": "Detected 6 entity signals across 4 types (ORGANIZATION, LOCAL_BUSINESS, PERSON). Structured vs visible comparisons: 2 aligned, 1 divergent.",
+      "sunrisetesting.vercel.app": "Detected 4 entity signals across 2 types (ORGANIZATION, LOCAL_BUSINESS). Structured vs visible comparisons: 0 aligned, 0 divergent.",
+      "tcreng.com": "Detected 9 entity signals across 3 types (ORGANIZATION, OTHER, LOCAL_BUSINESS). Structured vs visible comparisons: 3 aligned, 0 divergent.",
+      "umspcs.in": "Detected 4 entity signals across 3 types (PLACE, ORGANIZATION, OTHER). Structured vs visible comparisons: 1 aligned, 0 divergent.",
+      "uniquemeasurement.com": "Detected 3 entity signals across 2 types (ORGANIZATION, LOCAL_BUSINESS). Structured vs visible comparisons: 0 aligned, 0 divergent.",
+      "yadavmeasurements.com": "Detected 1 entity signals across 1 types (ORGANIZATION). Structured vs visible comparisons: 0 aligned, 0 divergent.",
       "zaubacorp.com": "Detected 2 entity signals across 1 types (ORGANIZATION). Structured vs visible comparisons: 0 aligned, 0 divergent."
     },
     "state": "OBSERVED_DIFFERENCE",
-    "summary": "Evaluated 46 unique entity mentions across 11 sites. Observed 2 common entities appearing in multiple sites, with Organization and LocalBusiness recognized as the dominant entity types."
+    "summary": "Evaluated 47 unique entity mentions across 11 sites. Observed 0 common entities appearing in multiple sites, with Organization and LocalBusiness recognized as the dominant entity types."
   },
   "service_comparison": {
     "all_observed_services": [
@@ -426,6 +428,7 @@
       "Audit, Consulting, Financial  Advisory, Taxation",
       "BIS Certification Consultant in India",
       "BIS Certification Consultants",
+      "BIS Certifications Consultant & Other Certifications - UMSPCS",
       "Calibration",
       "Certification",
       "Certifications",
@@ -434,7 +437,9 @@
       "Inspection",
       "Materials",
       "NDT",
+      "Sunrise Testing & Calibration Centre",
       "Testing",
+      "certification iso",
       "compliance",
       "research"
     ],
@@ -457,19 +462,22 @@
       ],
       "qualityinternational.org": [],
       "sqccertification.com": [
-        "About SQC Certification"
+        "About SQC Certification",
+        "certification iso"
       ],
       "standphillindia.in": [
         "BIS Certification Consultant in India"
       ],
       "sunrisetesting.vercel.app": [
-        "Inspection"
+        "Inspection",
+        "Sunrise Testing & Calibration Centre"
       ],
       "tcreng.com": [
         "Materials",
         "NDT"
       ],
       "umspcs.in": [
+        "BIS Certifications Consultant & Other Certifications - UMSPCS",
         "compliance"
       ],
       "uniquemeasurement.com": [],
@@ -493,7 +501,8 @@
       "sqccertification.com": [
         "Certification",
         "Certifications",
-        "About SQC Certification"
+        "About SQC Certification",
+        "certification iso"
       ],
       "standphillindia.in": [
         "Certification",
@@ -503,7 +512,8 @@
       "sunrisetesting.vercel.app": [
         "Calibration",
         "Testing",
-        "Inspection"
+        "Inspection",
+        "Sunrise Testing & Calibration Centre"
       ],
       "tcreng.com": [
         "Testing",
@@ -511,10 +521,10 @@
         "NDT"
       ],
       "umspcs.in": [
-        "Certification",
+        "Certifications",
         "Consultant",
-        "compliance",
-        "Certifications"
+        "BIS Certifications Consultant & Other Certifications - UMSPCS",
+        "compliance"
       ],
       "uniquemeasurement.com": [],
       "yadavmeasurements.com": [
@@ -530,10 +540,11 @@
       "Testing"
     ],
     "target_unique_services": [
-      "Inspection"
+      "Inspection",
+      "Sunrise Testing & Calibration Centre"
     ],
     "state": "OBSERVED_DIFFERENCE",
-    "summary": "Cataloged 17 observable services/products across 11 benchmark sites. Testing, Calibration, Certification, and Compliance represent the most prevalent common services across the industrial testing benchmark."
+    "summary": "Cataloged 20 observable services/products across 11 benchmark sites. Testing, Calibration, Certification, and Compliance represent the most prevalent common services across the industrial testing benchmark."
   },
   "topic_concept_comparison": {
     "all_dominant_concepts": [
@@ -547,16 +558,19 @@
       "asset",
       "assistant",
       "audit",
+      "bee",
       "bis",
       "bis certification consultants",
+      "bis certifications consultant & other certifications - umspcs",
       "business",
+      "businesses",
       "calibration",
+      "cdsco",
       "centre",
       "certificate",
       "certification",
       "certifications",
       "company",
-      "compliance",
       "consultant",
       "consultants",
       "consulting",
@@ -587,7 +601,6 @@
       "office",
       "our services",
       "platform",
-      "product",
       "provides",
       "quality",
       "quality international",
@@ -618,8 +631,8 @@
       "bis",
       "calibration",
       "certification",
+      "certifications",
       "consultant",
-      "india",
       "services",
       "testing"
     ],
@@ -654,7 +667,6 @@
       ],
       "sqccertification.com": [
         "about sqc certification",
-        "certifications",
         "globally",
         "iso",
         "provides",
@@ -664,6 +676,7 @@
       "standphillindia.in": [
         "get",
         "global",
+        "india",
         "standphill",
         "standphill india"
       ],
@@ -684,8 +697,10 @@
         "tcr engineering"
       ],
       "umspcs.in": [
-        "compliance",
-        "product",
+        "bee",
+        "bis certifications consultant & other certifications - umspcs",
+        "businesses",
+        "cdsco",
         "umspcs"
       ],
       "uniquemeasurement.com": [
@@ -725,7 +740,7 @@
         "standphillindia.in": 0.1429,
         "sunrisetesting.vercel.app": 0.0,
         "tcreng.com": 0.0,
-        "umspcs.in": 0.1429,
+        "umspcs.in": 0.0667,
         "uniquemeasurement.com": 0.0,
         "yadavmeasurements.com": 0.0,
         "zaubacorp.com": 0.0
@@ -777,7 +792,7 @@
         "standphillindia.in": 1.0,
         "sunrisetesting.vercel.app": 0.0,
         "tcreng.com": 0.0,
-        "umspcs.in": 0.3333,
+        "umspcs.in": 0.1429,
         "uniquemeasurement.com": 0.0,
         "yadavmeasurements.com": 0.0,
         "zaubacorp.com": 0.0
@@ -790,7 +805,7 @@
         "standphillindia.in": 0.0,
         "sunrisetesting.vercel.app": 1.0,
         "tcreng.com": 0.0667,
-        "umspcs.in": 0.0667,
+        "umspcs.in": 0.0,
         "uniquemeasurement.com": 0.0667,
         "yadavmeasurements.com": 0.1429,
         "zaubacorp.com": 0.0
@@ -809,15 +824,15 @@
         "zaubacorp.com": 0.0
       },
       "umspcs.in": {
-        "alephindia.in": 0.1429,
+        "alephindia.in": 0.0667,
         "ascgroup.in": 0.0,
         "qualityinternational.org": 0.0,
         "sqccertification.com": 0.0667,
-        "standphillindia.in": 0.3333,
-        "sunrisetesting.vercel.app": 0.0667,
+        "standphillindia.in": 0.1429,
+        "sunrisetesting.vercel.app": 0.0,
         "tcreng.com": 0.0,
         "umspcs.in": 1.0,
-        "uniquemeasurement.com": 0.0667,
+        "uniquemeasurement.com": 0.0,
         "yadavmeasurements.com": 0.0,
         "zaubacorp.com": 0.0
       },
@@ -829,7 +844,7 @@
         "standphillindia.in": 0.0,
         "sunrisetesting.vercel.app": 0.0667,
         "tcreng.com": 0.0,
-        "umspcs.in": 0.0667,
+        "umspcs.in": 0.0,
         "uniquemeasurement.com": 1.0,
         "yadavmeasurements.com": 0.0,
         "zaubacorp.com": 0.0
@@ -862,17 +877,17 @@
       }
     },
     "topic_breadth_by_site": {
-      "alephindia.in": 217,
-      "ascgroup.in": 189,
-      "qualityinternational.org": 76,
-      "sqccertification.com": 123,
-      "standphillindia.in": 119,
-      "sunrisetesting.vercel.app": 104,
-      "tcreng.com": 227,
-      "umspcs.in": 159,
-      "uniquemeasurement.com": 83,
-      "yadavmeasurements.com": 40,
-      "zaubacorp.com": 107
+      "alephindia.in": 227,
+      "ascgroup.in": 200,
+      "qualityinternational.org": 79,
+      "sqccertification.com": 133,
+      "standphillindia.in": 129,
+      "sunrisetesting.vercel.app": 109,
+      "tcreng.com": 237,
+      "umspcs.in": 22,
+      "uniquemeasurement.com": 84,
+      "yadavmeasurements.com": 37,
+      "zaubacorp.com": 117
     },
     "topic_breadth_tier": {
       "alephindia.in": "HIGH",
@@ -882,7 +897,7 @@
       "standphillindia.in": "MODERATE",
       "sunrisetesting.vercel.app": "MODERATE",
       "tcreng.com": "HIGH",
-      "umspcs.in": "HIGH",
+      "umspcs.in": "LOW",
       "uniquemeasurement.com": "MODERATE",
       "yadavmeasurements.com": "LOW",
       "zaubacorp.com": "MODERATE"
@@ -894,76 +909,87 @@
       "sqccertification.com": 0.0,
       "standphillindia.in": 0.0,
       "tcreng.com": 0.0667,
-      "umspcs.in": 0.0667,
+      "umspcs.in": 0.0,
       "uniquemeasurement.com": 0.0667,
       "yadavmeasurements.com": 0.1429,
       "zaubacorp.com": 0.0
     },
     "state": "OBSERVED_DIFFERENCE",
-    "summary": "Extracted 76 distinct topical concepts across the benchmark. Observed 7 common concepts shared across multiple sites. Topic breadth ranges from 40 topics (yadavmeasurements.com) to 227 topics (tcreng.com)."
+    "summary": "Extracted 78 distinct topical concepts across the benchmark. Observed 7 common concepts shared across multiple sites. Topic breadth ranges from 40 topics (yadavmeasurements.com) to 227 topics (tcreng.com)."
   },
   "search_intent_comparison": {
     "intent_distribution": {
-      "LOCAL": 3,
-      "TRANSACTIONAL": 7,
-      "NAVIGATIONAL": 1
+      "TRANSACTIONAL": 3,
+      "NAVIGATIONAL": 5,
+      "MIXED": 1,
+      "TRANSACTIONAL_LEAD_GEN": 1,
+      "TRANSACTIONAL_ECOMMERCE": 1
     },
     "primary_intent_by_site": {
-      "alephindia.in": "LOCAL",
-      "ascgroup.in": "TRANSACTIONAL",
-      "qualityinternational.org": "TRANSACTIONAL",
+      "alephindia.in": "TRANSACTIONAL",
+      "ascgroup.in": "NAVIGATIONAL",
+      "qualityinternational.org": "NAVIGATIONAL",
       "sqccertification.com": "TRANSACTIONAL",
-      "standphillindia.in": "TRANSACTIONAL",
-      "sunrisetesting.vercel.app": "LOCAL",
-      "tcreng.com": "NAVIGATIONAL",
-      "umspcs.in": "LOCAL",
+      "standphillindia.in": "MIXED",
+      "sunrisetesting.vercel.app": "NAVIGATIONAL",
+      "tcreng.com": "TRANSACTIONAL_LEAD_GEN",
+      "umspcs.in": "NAVIGATIONAL",
       "uniquemeasurement.com": "TRANSACTIONAL",
-      "yadavmeasurements.com": "TRANSACTIONAL",
-      "zaubacorp.com": "TRANSACTIONAL"
+      "yadavmeasurements.com": "NAVIGATIONAL",
+      "zaubacorp.com": "TRANSACTIONAL_ECOMMERCE"
     },
     "secondary_intents_by_site": {
       "alephindia.in": [
         "INFORMATIONAL",
+        "LOCAL",
         "NAVIGATIONAL",
-        "TRANSACTIONAL"
+        "TRANSACTIONAL_LEAD_GEN"
       ],
       "ascgroup.in": [
         "COMMERCIAL",
         "LOCAL",
-        "NAVIGATIONAL"
+        "TRANSACTIONAL",
+        "TRANSACTIONAL_LEAD_GEN"
       ],
       "qualityinternational.org": [
-        "LOCAL"
+        "LOCAL",
+        "TRANSACTIONAL",
+        "TRANSACTIONAL_LEAD_GEN"
       ],
       "sqccertification.com": [
         "LOCAL",
-        "NAVIGATIONAL"
+        "NAVIGATIONAL",
+        "TRANSACTIONAL_LEAD_GEN"
       ],
       "standphillindia.in": [
-        "INFORMATIONAL",
-        "LOCAL",
-        "NAVIGATIONAL"
-      ],
-      "sunrisetesting.vercel.app": [],
-      "tcreng.com": [
-        "INFORMATIONAL",
-        "LOCAL",
-        "TRANSACTIONAL"
-      ],
-      "umspcs.in": [
-        "COMMERCIAL",
-        "INFORMATIONAL",
         "NAVIGATIONAL",
         "TRANSACTIONAL"
       ],
-      "uniquemeasurement.com": [],
-      "yadavmeasurements.com": [],
+      "sunrisetesting.vercel.app": [
+        "LOCAL"
+      ],
+      "tcreng.com": [
+        "INFORMATIONAL",
+        "LOCAL",
+        "NAVIGATIONAL"
+      ],
+      "umspcs.in": [
+        "LOCAL"
+      ],
+      "uniquemeasurement.com": [
+        "NAVIGATIONAL",
+        "TRANSACTIONAL_LEAD_GEN"
+      ],
+      "yadavmeasurements.com": [
+        "TRANSACTIONAL",
+        "TRANSACTIONAL_LEAD_GEN"
+      ],
       "zaubacorp.com": [
         "NAVIGATIONAL"
       ]
     },
     "state": "OBSERVED_DIFFERENCE",
-    "summary": "Benchmark search intent distribution: LOCAL: 3 sites, NAVIGATIONAL: 1 sites, TRANSACTIONAL: 7 sites. Commercial/transactional intent dominates 6 sites, while local search intent characterizes 3 sites."
+    "summary": "Benchmark search intent distribution: MIXED: 1 sites, NAVIGATIONAL: 5 sites, TRANSACTIONAL: 3 sites, TRANSACTIONAL_ECOMMERCE: 1 sites, TRANSACTIONAL_LEAD_GEN: 1 sites. Commercial/transactional intent dominates 6 sites, while local search intent characterizes 3 sites."
   },
   "concentration_comparison": {
     "content_to_boilerplate_by_site": {
@@ -987,7 +1013,7 @@
       "standphillindia.in": 0.25,
       "sunrisetesting.vercel.app": 0.0,
       "tcreng.com": 0.1,
-      "umspcs.in": 0.2,
+      "umspcs.in": 0.0,
       "uniquemeasurement.com": 0.0,
       "yadavmeasurements.com": 0.0,
       "zaubacorp.com": 0.09
@@ -1227,7 +1253,7 @@
       "standphillindia.in": 39,
       "sunrisetesting.vercel.app": 17,
       "tcreng.com": 57,
-      "umspcs.in": 43,
+      "umspcs.in": 15,
       "uniquemeasurement.com": 12,
       "yadavmeasurements.com": 1,
       "zaubacorp.com": 4
@@ -1240,7 +1266,7 @@
       "standphillindia.in": 31,
       "sunrisetesting.vercel.app": 16,
       "tcreng.com": 34,
-      "umspcs.in": 31,
+      "umspcs.in": 2,
       "uniquemeasurement.com": 9,
       "yadavmeasurements.com": 0,
       "zaubacorp.com": 3
@@ -1253,7 +1279,7 @@
       "standphillindia.in": 0.79,
       "sunrisetesting.vercel.app": 0.94,
       "tcreng.com": 0.6,
-      "umspcs.in": 0.72,
+      "umspcs.in": 0.13,
       "uniquemeasurement.com": 0.75,
       "yadavmeasurements.com": 0.0,
       "zaubacorp.com": 0.75
@@ -1315,17 +1341,17 @@
       "zaubacorp.com": "Cloudflare"
     },
     "word_count_delta_by_site": {
-      "alephindia.in": 0,
-      "ascgroup.in": 0,
-      "qualityinternational.org": 0,
-      "sqccertification.com": 0,
-      "standphillindia.in": 0,
+      "alephindia.in": 1593,
+      "ascgroup.in": 566,
+      "qualityinternational.org": 11,
+      "sqccertification.com": 22,
+      "standphillindia.in": 424,
       "sunrisetesting.vercel.app": 0,
-      "tcreng.com": 0,
-      "umspcs.in": 0,
-      "uniquemeasurement.com": 0,
-      "yadavmeasurements.com": 0,
-      "zaubacorp.com": 0
+      "tcreng.com": -20,
+      "umspcs.in": -3759,
+      "uniquemeasurement.com": 30,
+      "yadavmeasurements.com": 4,
+      "zaubacorp.com": 115
     },
     "llms_txt_presence_by_site": {
       "alephindia.in": false,
@@ -1348,7 +1374,7 @@
       "standphillindia.in": 51,
       "sunrisetesting.vercel.app": 35,
       "tcreng.com": 63,
-      "umspcs.in": 53,
+      "umspcs.in": 25,
       "uniquemeasurement.com": 30,
       "yadavmeasurements.com": 28,
       "zaubacorp.com": 30
@@ -1365,7 +1391,7 @@
       "standphillindia.in": 155,
       "sunrisetesting.vercel.app": 34,
       "tcreng.com": 49,
-      "umspcs.in": 364,
+      "umspcs.in": 0,
       "uniquemeasurement.com": 32,
       "yadavmeasurements.com": 28,
       "zaubacorp.com": 34
@@ -1378,7 +1404,7 @@
       "standphillindia.in": 0.93,
       "sunrisetesting.vercel.app": 0.0,
       "tcreng.com": 0.97,
-      "umspcs.in": 0.86,
+      "umspcs.in": 0.0,
       "uniquemeasurement.com": 0.14,
       "yadavmeasurements.com": 0.3,
       "zaubacorp.com": 0.14
@@ -1391,7 +1417,7 @@
       "standphillindia.in": 1,
       "sunrisetesting.vercel.app": 3,
       "tcreng.com": 0,
-      "umspcs.in": 18,
+      "umspcs.in": 0,
       "uniquemeasurement.com": 24,
       "yadavmeasurements.com": 15,
       "zaubacorp.com": 18
@@ -1404,7 +1430,7 @@
       "standphillindia.in": 6,
       "sunrisetesting.vercel.app": 0,
       "tcreng.com": 1,
-      "umspcs.in": 8,
+      "umspcs.in": 0,
       "uniquemeasurement.com": 2,
       "yadavmeasurements.com": 2,
       "zaubacorp.com": 1
@@ -1417,8 +1443,8 @@
       "standphillindia.in": 31,
       "sunrisetesting.vercel.app": 1,
       "tcreng.com": 4,
-      "umspcs.in": 16,
-      "uniquemeasurement.com": 10,
+      "umspcs.in": 0,
+      "uniquemeasurement.com": 8,
       "yadavmeasurements.com": 17,
       "zaubacorp.com": 31
     },
@@ -1466,20 +1492,20 @@
       "zaubacorp.com": 128
     },
     "ttfb_ms_by_site": {
-      "alephindia.in": 325.8,
-      "ascgroup.in": 292.9,
-      "qualityinternational.org": 141.6,
-      "sqccertification.com": 699.7,
-      "standphillindia.in": 117.0,
-      "sunrisetesting.vercel.app": 90.8,
-      "tcreng.com": 82.5,
-      "umspcs.in": 132.0,
-      "uniquemeasurement.com": 2681.4,
-      "yadavmeasurements.com": 120.4,
-      "zaubacorp.com": 89.9
+      "alephindia.in": 452.7,
+      "ascgroup.in": 415.4,
+      "qualityinternational.org": 168.1,
+      "sqccertification.com": 796.9,
+      "standphillindia.in": 176.9,
+      "sunrisetesting.vercel.app": 95.5,
+      "tcreng.com": 81.0,
+      "umspcs.in": 139.3,
+      "uniquemeasurement.com": 2175.9,
+      "yadavmeasurements.com": 119.2,
+      "zaubacorp.com": 80.2
     },
     "a11y_violations_by_site": {
-      "alephindia.in": 63,
+      "alephindia.in": 59,
       "ascgroup.in": 129,
       "qualityinternational.org": 31,
       "sqccertification.com": 6,
@@ -1601,29 +1627,29 @@
           "domain": "umspcs.in",
           "schema_types_count": 9,
           "detected_types": [
-            "PostalAddress",
+            "LocalBusiness",
+            "WebPage",
+            "Organization",
             "Place",
+            "WebSite",
+            "ImageObject",
             "BreadcrumbList",
             "FAQPage",
-            "WebSite",
-            "WebPage",
-            "ImageObject",
-            "LocalBusiness",
-            "Organization"
+            "PostalAddress"
           ]
         },
         {
           "domain": "tcreng.com",
           "schema_types_count": 8,
           "detected_types": [
-            "BreadcrumbList",
-            "ItemList",
-            "VideoObject",
-            "WebSite",
-            "FAQPage",
-            "NewsArticle",
             "WebPage",
-            "Organization"
+            "ItemList",
+            "Organization",
+            "WebSite",
+            "NewsArticle",
+            "BreadcrumbList",
+            "FAQPage",
+            "VideoObject"
           ]
         }
       ],
@@ -1638,14 +1664,14 @@
       "source_sites_present": [
         "ascgroup.in",
         "standphillindia.in",
-        "tcreng.com",
-        "umspcs.in"
+        "tcreng.com"
       ],
       "source_sites_absent": [
         "alephindia.in",
         "qualityinternational.org",
         "sqccertification.com",
         "sunrisetesting.vercel.app",
+        "umspcs.in",
         "uniquemeasurement.com",
         "yadavmeasurements.com",
         "zaubacorp.com"
@@ -1691,13 +1717,13 @@
         "sqccertification.com",
         "standphillindia.in",
         "tcreng.com",
-        "umspcs.in",
         "uniquemeasurement.com",
         "yadavmeasurements.com",
         "zaubacorp.com"
       ],
       "source_sites_absent": [
-        "sunrisetesting.vercel.app"
+        "sunrisetesting.vercel.app",
+        "umspcs.in"
       ],
       "target_site_status": "ABSENT",
       "supporting_fields": [
@@ -1714,7 +1740,7 @@
         },
         {
           "domain": "umspcs.in",
-          "forms_detected": 8
+          "forms_detected": 0
         },
         {
           "domain": "standphillindia.in",
@@ -2195,29 +2221,29 @@
             "domain": "umspcs.in",
             "schema_types_count": 9,
             "detected_types": [
-              "PostalAddress",
+              "LocalBusiness",
+              "WebPage",
+              "Organization",
               "Place",
+              "WebSite",
+              "ImageObject",
               "BreadcrumbList",
               "FAQPage",
-              "WebSite",
-              "WebPage",
-              "ImageObject",
-              "LocalBusiness",
-              "Organization"
+              "PostalAddress"
             ]
           },
           {
             "domain": "tcreng.com",
             "schema_types_count": 8,
             "detected_types": [
-              "BreadcrumbList",
-              "ItemList",
-              "VideoObject",
-              "WebSite",
-              "FAQPage",
-              "NewsArticle",
               "WebPage",
-              "Organization"
+              "ItemList",
+              "Organization",
+              "WebSite",
+              "NewsArticle",
+              "BreadcrumbList",
+              "FAQPage",
+              "VideoObject"
             ]
           }
         ],
@@ -2232,14 +2258,14 @@
         "source_sites_present": [
           "ascgroup.in",
           "standphillindia.in",
-          "tcreng.com",
-          "umspcs.in"
+          "tcreng.com"
         ],
         "source_sites_absent": [
           "alephindia.in",
           "qualityinternational.org",
           "sqccertification.com",
           "sunrisetesting.vercel.app",
+          "umspcs.in",
           "uniquemeasurement.com",
           "yadavmeasurements.com",
           "zaubacorp.com"
@@ -2285,13 +2311,13 @@
           "sqccertification.com",
           "standphillindia.in",
           "tcreng.com",
-          "umspcs.in",
           "uniquemeasurement.com",
           "yadavmeasurements.com",
           "zaubacorp.com"
         ],
         "source_sites_absent": [
-          "sunrisetesting.vercel.app"
+          "sunrisetesting.vercel.app",
+          "umspcs.in"
         ],
         "target_site_status": "ABSENT",
         "supporting_fields": [
@@ -2308,7 +2334,7 @@
           },
           {
             "domain": "umspcs.in",
-            "forms_detected": 8
+            "forms_detected": 0
           },
           {
             "domain": "standphillindia.in",
@@ -2644,22 +2670,22 @@
       {
         "dimension": "Overall Search Health",
         "target_value": "48/100",
-        "cohort_median_or_avg": "60.2/100",
-        "observable_delta": -12.2,
+        "cohort_median_or_avg": "58.7/100",
+        "observable_delta": -10.7,
         "epistemic_note": "Triangulated health score difference based strictly on existing multi-engine formula (Δ=0)."
       },
       {
         "dimension": "Technical SEO Health",
         "target_value": "60/100",
-        "cohort_median_or_avg": "73.0/100",
-        "observable_delta": -13.0,
+        "cohort_median_or_avg": "71.5/100",
+        "observable_delta": -11.5,
         "epistemic_note": "Technical SEO score evaluating meta tags, robots, canonicals, and heading structures."
       },
       {
         "dimension": "GEO / AI Search Readiness",
         "target_value": "35/100",
-        "cohort_median_or_avg": "41.7/100",
-        "observable_delta": -6.7,
+        "cohort_median_or_avg": "38.9/100",
+        "observable_delta": -3.9,
         "epistemic_note": "Princeton GEO scoring evaluating answer density, quotes, citations, and LLM visibility."
       },
       {
@@ -2679,29 +2705,29 @@
       {
         "dimension": "Alt-Text Coverage Ratio",
         "target_value": "0.0%",
-        "cohort_median_or_avg": "50.0% (max: 99.0%)",
-        "observable_delta": -0.5,
+        "cohort_median_or_avg": "42.0% (max: 99.0%)",
+        "observable_delta": -0.42,
         "epistemic_note": "Target exhibits 0% alt coverage across 34 images; leading competitors reach 97%."
       },
       {
         "dimension": "Agent Form Action Surfaces",
         "target_value": "0 forms",
-        "cohort_median_or_avg": "3.0 forms (max: 8)",
-        "observable_delta": -3.0,
+        "cohort_median_or_avg": "2.2 forms (max: 6)",
+        "observable_delta": -2.2,
         "epistemic_note": "Target lacks interactive web forms, contrasting with competitor quote/inquiry surfaces."
       },
       {
         "dimension": "Visual Assets Count",
         "target_value": "34 images",
-        "cohort_median_or_avg": "118.3 images (max: 364)",
-        "observable_delta": -84.3,
+        "cohort_median_or_avg": "81.9 images (max: 351)",
+        "observable_delta": -47.9,
         "epistemic_note": "Total visual assets detected on landing page DOM."
       },
       {
         "dimension": "Automated WCAG Violations",
         "target_value": "22 violations",
-        "cohort_median_or_avg": "36.5 violations (min: 0)",
-        "observable_delta": -14.5,
+        "cohort_median_or_avg": "36.1 violations (min: 0)",
+        "observable_delta": -14.1,
         "epistemic_note": "Automated AST rule checks (non-certification scope)."
       },
       {
@@ -2714,8 +2740,8 @@
       {
         "dimension": "Claim Grounding Ratio",
         "target_value": "94.0%",
-        "cohort_median_or_avg": "71.0%",
-        "observable_delta": 0.23,
+        "cohort_median_or_avg": "65.0%",
+        "observable_delta": 0.29,
         "epistemic_note": "Percentage of extracted factual assertions corroborated by on-site evidence."
       }
     ],
@@ -2986,7 +3012,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 326ms",
+      "finding": "TTFB Latency: 453ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -3026,7 +3052,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "WCAG AA Automated Status: FAIL (63 violations)",
+      "finding": "WCAG AA Automated Status: FAIL (59 violations)",
       "engine": "axe_core_playwright",
       "source_file": "HTML DOM",
       "confidence": "high",
@@ -3066,7 +3092,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Detection: 10 entity signals (8 organization/business)",
+      "finding": "Entity Detection: 8 entity signals (6 organization/business)",
       "engine": "entity_engine",
       "source_file": "JSON-LD & HTML DOM",
       "confidence": "high",
@@ -3114,7 +3140,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 278 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 288 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -3138,7 +3164,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 217 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 227 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -3146,7 +3172,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 151 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 224 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -3154,7 +3180,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 258 observed concepts mapped to page (20 DIRECT, 124 SUPPORTED)",
+      "finding": "Query-Page Mapping: 268 observed concepts mapped to page (20 DIRECT, 133 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -3162,7 +3188,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 20 direct primary concepts, 124 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 20 direct primary concepts, 133 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -3170,7 +3196,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'local' (49 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (18 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -3178,7 +3204,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'local' based on 65 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 7 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
@@ -3202,6 +3228,14 @@
       "contradicted_by": []
     },
     {
+      "finding": "Content Availability Delta: +1593 words in rendered DOM",
+      "engine": "retrieval_readiness_engine",
+      "source_file": "DOM (hydration comparison)",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
       "finding": "Observable Information Units: 14 unit(s) across 5 structural types",
       "engine": "answerability_engine",
       "source_file": "DOM & Schema Structure",
@@ -3210,7 +3244,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 90 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 89 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",
@@ -3284,7 +3318,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 293ms",
+      "finding": "TTFB Latency: 415ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -3348,7 +3382,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Detection: 7 entity signals (7 organization/business)",
+      "finding": "Entity Detection: 5 entity signals (5 organization/business)",
       "engine": "entity_engine",
       "source_file": "JSON-LD & HTML DOM",
       "confidence": "high",
@@ -3372,7 +3406,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 226 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 237 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -3396,7 +3430,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 189 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 200 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -3404,7 +3438,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 108 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 175 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -3412,7 +3446,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 222 observed concepts mapped to page (12 DIRECT, 125 SUPPORTED)",
+      "finding": "Query-Page Mapping: 233 observed concepts mapped to page (12 DIRECT, 135 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -3420,7 +3454,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 12 direct primary concepts, 125 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 12 direct primary concepts, 135 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -3428,7 +3462,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (11 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'navigational' (11 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -3436,7 +3470,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 5 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'navigational' based on 4 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
@@ -3460,7 +3494,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Unsupported Topical Headings: 135 heading(s) without supporting body copy",
+      "finding": "Unsupported Topical Headings: 91 heading(s) without supporting body copy",
       "engine": "answerability_engine",
       "source_file": "Heading Section AST",
       "confidence": "high",
@@ -3526,7 +3560,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 142ms",
+      "finding": "TTFB Latency: 168ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -3590,7 +3624,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Detection: 2 entity signals (2 organization/business)",
+      "finding": "Entity Detection: 3 entity signals (3 organization/business)",
       "engine": "entity_engine",
       "source_file": "JSON-LD & HTML DOM",
       "confidence": "high",
@@ -3606,7 +3640,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 91 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 101 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -3622,7 +3656,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 76 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 79 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -3630,7 +3664,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 56 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 58 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -3638,7 +3672,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 85 observed concepts mapped to page (10 DIRECT, 42 SUPPORTED)",
+      "finding": "Query-Page Mapping: 95 observed concepts mapped to page (10 DIRECT, 52 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -3646,7 +3680,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 10 direct primary concepts, 42 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 10 direct primary concepts, 52 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -3654,7 +3688,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (6 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'navigational' (7 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -3662,7 +3696,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 4 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'navigational' based on 3 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
@@ -3702,7 +3736,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Surface Consistency: 2 candidate(s) tracked across 6 content surfaces",
+      "finding": "Entity Surface Consistency: 3 candidate(s) tracked across 6 content surfaces",
       "engine": "claim_grounding_engine",
       "source_file": "DOM, Headings, Meta, JSON-LD, Units",
       "confidence": "high",
@@ -3764,7 +3798,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 700ms",
+      "finding": "TTFB Latency: 797ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -3852,7 +3886,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 140 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 150 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -3876,7 +3910,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 123 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 133 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -3884,7 +3918,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 103 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 158 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -3892,7 +3926,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 137 observed concepts mapped to page (12 DIRECT, 43 SUPPORTED)",
+      "finding": "Query-Page Mapping: 147 observed concepts mapped to page (12 DIRECT, 53 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -3900,7 +3934,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 12 direct primary concepts, 43 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 12 direct primary concepts, 53 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -3911,6 +3945,14 @@
       "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (9 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 3 corroborating evidence points.",
+      "engine": "search_intent_engine",
+      "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
       "confirmed_by": [],
       "contradicted_by": []
@@ -4016,7 +4058,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 117ms",
+      "finding": "TTFB Latency: 177ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -4080,6 +4122,14 @@
       "contradicted_by": []
     },
     {
+      "finding": "Entity Detection: 6 entity signals (4 organization/business)",
+      "engine": "entity_engine",
+      "source_file": "JSON-LD & HTML DOM",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
       "finding": "Entity Alignment (telephone): EXACT_MATCH",
       "engine": "entity_engine",
       "source_file": "JSON-LD vs DOM Signals",
@@ -4096,7 +4146,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 188 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 198 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -4120,7 +4170,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 119 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 129 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -4128,7 +4178,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 170 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 221 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -4136,7 +4186,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 135 observed concepts mapped to page (22 DIRECT, 65 SUPPORTED)",
+      "finding": "Query-Page Mapping: 145 observed concepts mapped to page (23 DIRECT, 72 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -4144,7 +4194,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 22 direct primary concepts, 65 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 23 direct primary concepts, 72 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -4152,7 +4202,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (16 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'mixed' (15 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -4160,7 +4210,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 7 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Content exhibits balanced co-equal intent signals between 'transactional' and 'navigational' (classified as MIXED).",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
@@ -4192,7 +4242,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Unsupported Topical Headings: 82 heading(s) without supporting body copy",
+      "finding": "Unsupported Topical Headings: 58 heading(s) without supporting body copy",
       "engine": "answerability_engine",
       "source_file": "Heading Section AST",
       "confidence": "high",
@@ -4258,7 +4308,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 91ms",
+      "finding": "TTFB Latency: 96ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -4322,7 +4372,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Detection: 6 entity signals (6 organization/business)",
+      "finding": "Entity Detection: 4 entity signals (4 organization/business)",
       "engine": "entity_engine",
       "source_file": "JSON-LD & HTML DOM",
       "confidence": "high",
@@ -4338,7 +4388,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 119 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 129 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -4354,7 +4404,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 104 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 109 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -4362,7 +4412,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 86 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 112 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -4370,7 +4420,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 119 observed concepts mapped to page (18 DIRECT, 36 SUPPORTED)",
+      "finding": "Query-Page Mapping: 129 observed concepts mapped to page (18 DIRECT, 44 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -4378,7 +4428,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 18 direct primary concepts, 36 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 18 direct primary concepts, 44 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -4386,17 +4436,9 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'local' (3 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'navigational' (4 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
-      "confidence": "high",
-      "confirmed_by": [],
-      "contradicted_by": []
-    },
-    {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'local' based on 2 corroborating evidence points.",
-      "engine": "search_intent_engine",
-      "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
       "confirmed_by": [],
       "contradicted_by": []
@@ -4405,14 +4447,6 @@
       "finding": "Observable Information Units: 11 unit(s) across 6 structural types",
       "engine": "answerability_engine",
       "source_file": "DOM & Schema Structure",
-      "confidence": "high",
-      "confirmed_by": [],
-      "contradicted_by": []
-    },
-    {
-      "finding": "Phase 9 Topic Explanations: 71 topic(s) substantiated by explicit answerable structures",
-      "engine": "answerability_engine",
-      "source_file": "Heading & Body Passages",
       "confidence": "high",
       "confirmed_by": [],
       "contradicted_by": []
@@ -4429,14 +4463,6 @@
       "finding": "Observable Claims Grounding: 17 claim(s) (16 supported on-site, 0 uncorroborated)",
       "engine": "claim_grounding_engine",
       "source_file": "Visible Content & Answerable Units",
-      "confidence": "high",
-      "confirmed_by": [],
-      "contradicted_by": []
-    },
-    {
-      "finding": "Entity Surface Consistency: 3 candidate(s) tracked across 6 content surfaces",
-      "engine": "claim_grounding_engine",
-      "source_file": "DOM, Headings, Meta, JSON-LD, Units",
       "confidence": "high",
       "confirmed_by": [],
       "contradicted_by": []
@@ -4498,7 +4524,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 82ms",
+      "finding": "TTFB Latency: 81ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -4562,7 +4588,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Detection: 12 entity signals (8 organization/business)",
+      "finding": "Entity Detection: 9 entity signals (5 organization/business)",
       "engine": "entity_engine",
       "source_file": "JSON-LD & HTML DOM",
       "confidence": "high",
@@ -4578,7 +4604,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 280 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 290 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -4602,7 +4628,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 227 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 237 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -4610,7 +4636,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 96 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 143 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -4618,7 +4644,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 242 observed concepts mapped to page (15 DIRECT, 66 SUPPORTED)",
+      "finding": "Query-Page Mapping: 252 observed concepts mapped to page (15 DIRECT, 74 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -4626,7 +4652,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 15 direct primary concepts, 66 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 15 direct primary concepts, 74 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -4634,7 +4660,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'navigational' (21 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional_lead_gen' (12 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -4642,7 +4668,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'navigational' based on 11 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional_lead_gen' based on 6 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
@@ -4658,7 +4684,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 161 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 168 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",
@@ -4724,16 +4750,6 @@
       "contradicted_by": []
     },
     {
-      "finding": "Schema type 'LocalBusiness' detected",
-      "engine": "seo_engine",
-      "source_file": "application/ld+json",
-      "confidence": "high",
-      "confirmed_by": [
-        "browser_engine"
-      ],
-      "contradicted_by": []
-    },
-    {
       "finding": "Schema type 'Place' detected",
       "engine": "seo_engine",
       "source_file": "application/ld+json",
@@ -4764,7 +4780,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 132ms",
+      "finding": "TTFB Latency: 139ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -4772,17 +4788,9 @@
       "contradicted_by": []
     },
     {
-      "finding": "Princeton GEO Citability: 53/100",
+      "finding": "Princeton GEO Citability: 25/100",
       "engine": "rankintel_geo",
       "source_file": "DOM content passages",
-      "confidence": "high",
-      "confirmed_by": [],
-      "contradicted_by": []
-    },
-    {
-      "finding": "Image Optimization: 171 images detected (1 missing alt)",
-      "engine": "image_engine",
-      "source_file": "HTML DOM",
       "confidence": "high",
       "confirmed_by": [],
       "contradicted_by": []
@@ -4812,7 +4820,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Main Content Extraction: 4006 words (RAW_BODY_FALLBACK)",
+      "finding": "Main Content Extraction: 8 words (HEURISTIC_PRUNED_BODY)",
       "engine": "content_engine",
       "source_file": "HTML DOM",
       "confidence": "high",
@@ -4820,7 +4828,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Heading Structure: 124 headings (3 skips)",
+      "finding": "Heading Structure: 0 headings (0 skips)",
       "engine": "content_engine",
       "source_file": "HTML Headings",
       "confidence": "high",
@@ -4828,7 +4836,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Detection: 14 entity signals (11 organization/business)",
+      "finding": "Entity Detection: 4 entity signals (1 organization/business)",
       "engine": "entity_engine",
       "source_file": "JSON-LD & HTML DOM",
       "confidence": "high",
@@ -4836,7 +4844,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Internal Link Topology: 424 internal links (109 unique destinations)",
+      "finding": "Internal Link Topology: 0 internal links (0 unique destinations)",
       "engine": "internal_link_engine",
       "source_file": "HTML DOM",
       "confidence": "high",
@@ -4844,15 +4852,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Generic Anchor Text: 57 generic anchor links observed",
-      "engine": "internal_link_engine",
-      "source_file": "HTML DOM",
-      "confidence": "high",
-      "confirmed_by": [],
-      "contradicted_by": []
-    },
-    {
-      "finding": "Search Signal Evidence: 237 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 22 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -4860,7 +4860,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Structure: Multi-location co-occurrence observed for key terms: bis, certification, consultant, compliance, india.",
+      "finding": "Search Signal Structure: Multi-location co-occurrence observed for key terms: umspcs, certifications, bis.",
       "engine": "search_signal_engine",
       "source_file": "Structural Tag Correlation",
       "confidence": "high",
@@ -4868,15 +4868,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Structure: Title and H1 share 2 core evidenced terms: consultant, bis.",
-      "engine": "search_signal_engine",
-      "source_file": "Structural Tag Correlation",
-      "confidence": "high",
-      "confirmed_by": [],
-      "contradicted_by": []
-    },
-    {
-      "finding": "Topic Intelligence: 159 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 22 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -4884,7 +4876,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 117 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 10 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -4892,7 +4884,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 198 observed concepts mapped to page (13 DIRECT, 72 SUPPORTED)",
+      "finding": "Query-Page Mapping: 22 observed concepts mapped to page (8 DIRECT, 0 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -4900,7 +4892,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 13 direct primary concepts, 72 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 8 direct primary concepts, 0 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -4908,7 +4900,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'local' (24 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'navigational' (6 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -4916,7 +4908,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'local' based on 17 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'navigational' based on 5 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
@@ -4932,7 +4924,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 51 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 11 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",
@@ -4948,7 +4940,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Observable Claims Grounding: 43 claim(s) (31 supported on-site, 0 uncorroborated)",
+      "finding": "Observable Claims Grounding: 15 claim(s) (2 supported on-site, 1 uncorroborated)",
       "engine": "claim_grounding_engine",
       "source_file": "Visible Content & Answerable Units",
       "confidence": "high",
@@ -4956,41 +4948,9 @@
       "contradicted_by": []
     },
     {
-      "finding": "Structured vs Visible Alignment: 1 agreement(s), 3 disagreement(s)",
-      "engine": "claim_grounding_engine",
-      "source_file": "JSON-LD & DOM Content",
-      "confidence": "high",
-      "confirmed_by": [],
-      "contradicted_by": []
-    },
-    {
-      "finding": "Entity Surface Consistency: 7 candidate(s) tracked across 6 content surfaces",
-      "engine": "claim_grounding_engine",
-      "source_file": "DOM, Headings, Meta, JSON-LD, Units",
-      "confidence": "high",
-      "confirmed_by": [],
-      "contradicted_by": []
-    },
-    {
-      "finding": "Multimodal Information Representation: 364 visual asset(s) (153 informational, 132 alt-represented)",
+      "finding": "Multimodal Information Representation: 0 visual asset(s) (0 informational, 0 alt-represented)",
       "engine": "multimodal_agent_engine",
       "source_file": "HTML DOM & Image Assets",
-      "confidence": "high",
-      "confirmed_by": [],
-      "contradicted_by": []
-    },
-    {
-      "finding": "Agent Interaction Surfaces: 8 form(s) (8 labeled), 16 button(s)",
-      "engine": "multimodal_agent_engine",
-      "source_file": "HTML Forms & Controls",
-      "confidence": "high",
-      "confirmed_by": [],
-      "contradicted_by": []
-    },
-    {
-      "finding": "Information Access Paths: 6 path(s) triangulated across visual and interactive surfaces",
-      "engine": "multimodal_agent_engine",
-      "source_file": "Multi-Engine Triangulation",
       "confidence": "high",
       "confirmed_by": [],
       "contradicted_by": []
@@ -5006,7 +4966,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 2681ms",
+      "finding": "TTFB Latency: 2176ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -5046,7 +5006,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Main Content Extraction: 518 words (HEURISTIC_PRUNED_BODY)",
+      "finding": "Main Content Extraction: 505 words (HEURISTIC_PRUNED_BODY)",
       "engine": "content_engine",
       "source_file": "HTML DOM",
       "confidence": "high",
@@ -5057,14 +5017,6 @@
       "finding": "Heading Structure: 24 headings (1 skips)",
       "engine": "content_engine",
       "source_file": "HTML Headings",
-      "confidence": "high",
-      "confirmed_by": [],
-      "contradicted_by": []
-    },
-    {
-      "finding": "Entity Detection: 3 entity signals (3 organization/business)",
-      "engine": "entity_engine",
-      "source_file": "JSON-LD & HTML DOM",
       "confidence": "high",
       "confirmed_by": [],
       "contradicted_by": []
@@ -5086,7 +5038,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 98 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 106 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -5094,7 +5046,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Structure: Multi-location co-occurrence observed for key terms: service, measurement, unique, services, india.",
+      "finding": "Search Signal Structure: Multi-location co-occurrence observed for key terms: service, measurement, unique, unique measurement service, services.",
       "engine": "search_signal_engine",
       "source_file": "Structural Tag Correlation",
       "confidence": "high",
@@ -5102,7 +5054,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 83 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 84 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -5110,7 +5062,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 51 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 45 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -5118,7 +5070,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 94 observed concepts mapped to page (11 DIRECT, 44 SUPPORTED)",
+      "finding": "Query-Page Mapping: 102 observed concepts mapped to page (11 DIRECT, 53 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -5126,7 +5078,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 11 direct primary concepts, 44 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 11 direct primary concepts, 53 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -5134,7 +5086,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (7 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (8 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -5142,7 +5094,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 6 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 4 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
@@ -5158,7 +5110,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 50 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 56 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",
@@ -5190,7 +5142,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Agent Interaction Surfaces: 2 form(s) (2 labeled), 10 button(s)",
+      "finding": "Agent Interaction Surfaces: 2 form(s) (2 labeled), 8 button(s)",
       "engine": "multimodal_agent_engine",
       "source_file": "HTML Forms & Controls",
       "confidence": "high",
@@ -5216,7 +5168,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 120ms",
+      "finding": "TTFB Latency: 119ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -5272,6 +5224,14 @@
       "contradicted_by": []
     },
     {
+      "finding": "Entity Detection: 1 entity signals (1 organization/business)",
+      "engine": "entity_engine",
+      "source_file": "JSON-LD & HTML DOM",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
       "finding": "Internal Link Topology: 89 internal links (44 unique destinations)",
       "engine": "internal_link_engine",
       "source_file": "HTML DOM",
@@ -5288,7 +5248,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 53 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 50 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -5296,7 +5256,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Structure: Multi-location co-occurrence observed for key terms: testing, measurements, yadav measurements, leading, yadav.",
+      "finding": "Search Signal Structure: Multi-location co-occurrence observed for key terms: testing, yadav measurements, measurements, leading, yadav.",
       "engine": "search_signal_engine",
       "source_file": "Structural Tag Correlation",
       "confidence": "high",
@@ -5304,7 +5264,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 40 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 37 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -5312,7 +5272,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 39 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 38 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -5320,7 +5280,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 45 observed concepts mapped to page (9 DIRECT, 36 SUPPORTED)",
+      "finding": "Query-Page Mapping: 42 observed concepts mapped to page (9 DIRECT, 33 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -5328,7 +5288,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 9 direct primary concepts, 36 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 9 direct primary concepts, 33 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -5336,7 +5296,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (4 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'navigational' (5 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -5352,7 +5312,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 1 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 2 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",
@@ -5371,6 +5331,14 @@
       "finding": "Observable Claims Grounding: 1 claim(s) (0 supported on-site, 0 uncorroborated)",
       "engine": "claim_grounding_engine",
       "source_file": "Visible Content & Answerable Units",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Entity Surface Consistency: 1 candidate(s) tracked across 6 content surfaces",
+      "engine": "claim_grounding_engine",
+      "source_file": "DOM, Headings, Meta, JSON-LD, Units",
       "confidence": "high",
       "confirmed_by": [],
       "contradicted_by": []
@@ -5402,7 +5370,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 90ms",
+      "finding": "TTFB Latency: 80ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -5458,6 +5426,14 @@
       "contradicted_by": []
     },
     {
+      "finding": "Entity Detection: 2 entity signals (2 organization/business)",
+      "engine": "entity_engine",
+      "source_file": "JSON-LD & HTML DOM",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
       "finding": "Internal Link Topology: 54 internal links (30 unique destinations)",
       "engine": "internal_link_engine",
       "source_file": "HTML DOM",
@@ -5474,7 +5450,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 120 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 130 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -5490,7 +5466,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Structure: Title and H1 share 2 core evidenced terms: research, platform.",
+      "finding": "Search Signal Structure: Title and H1 share 2 core evidenced terms: platform, research.",
       "engine": "search_signal_engine",
       "source_file": "Structural Tag Correlation",
       "confidence": "high",
@@ -5498,7 +5474,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 107 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 117 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -5506,7 +5482,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 183 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 244 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -5514,7 +5490,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 112 observed concepts mapped to page (24 DIRECT, 41 SUPPORTED)",
+      "finding": "Query-Page Mapping: 122 observed concepts mapped to page (23 DIRECT, 52 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -5522,7 +5498,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 24 direct primary concepts, 41 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 23 direct primary concepts, 52 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -5530,7 +5506,15 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 11 corroborating evidence points.",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional_ecommerce' (9 observable evidence items)",
+      "engine": "search_intent_engine",
+      "source_file": "On-Site Structural Intent Heuristics",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional_ecommerce' based on 10 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
@@ -5546,7 +5530,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 48 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 43 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",
@@ -5565,6 +5549,14 @@
       "finding": "Observable Claims Grounding: 4 claim(s) (3 supported on-site, 0 uncorroborated)",
       "engine": "claim_grounding_engine",
       "source_file": "Visible Content & Answerable Units",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
+      "finding": "Entity Surface Consistency: 2 candidate(s) tracked across 6 content surfaces",
+      "engine": "claim_grounding_engine",
+      "source_file": "DOM, Headings, Meta, JSON-LD, Units",
       "confidence": "high",
       "confirmed_by": [],
       "contradicted_by": []

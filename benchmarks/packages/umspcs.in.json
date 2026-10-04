@@ -6,11 +6,11 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 13.17,
-  "overall_health_score": 76,
-  "technical_health_score": 100,
-  "geo_readiness_score": 53,
-  "trust_score": 64,
+  "execution_time_sec": 8.14,
+  "overall_health_score": 61,
+  "technical_health_score": 85,
+  "geo_readiness_score": 25,
+  "trust_score": 56,
   "performance_score": 85,
   "score_formula_mode": "4_engine",
   "formula_invariance_verified": true,
@@ -26,8 +26,8 @@
     "http_status_code": 200,
     "is_redirect": false,
     "canonical_url": "https://umspcs.in/",
-    "internal_links_count": 111,
-    "external_links_count": 512,
+    "internal_links_count": 112,
+    "external_links_count": 9,
     "robots_txt_found": true,
     "robots_txt_url": "https://umspcs.in/robots.txt",
     "sitemaps_declared": [
@@ -41,7 +41,7 @@
     ],
     "notes": [
       "HTTP Status: 200",
-      "Discovered 111 internal links"
+      "Discovered 112 internal links"
     ]
   },
   "technical_seo": {
@@ -50,26 +50,24 @@
     "title_length": 61,
     "meta_description": "UMSPCS provides certifications (BIS - ISI, CRS, FMCS), product compliance, MTCTE, WPC, CDSCO, BEE, EPR, ISO, CE, UKCE, and more for businesses in India and globally.",
     "meta_description_length": 165,
-    "h1_count": 1,
-    "h1_samples": [
-      "UMS Product Compliance Services –BIS Certification Consultant in India"
-    ],
-    "h2_count": 14,
-    "h3_count": 44,
+    "h1_count": 0,
+    "h1_samples": [],
+    "h2_count": 0,
+    "h3_count": 0,
     "detected_schema_types": [
-      "BreadcrumbList",
-      "Place",
-      "PostalAddress",
       "LocalBusiness",
       "WebPage",
-      "ImageObject",
-      "WebSite",
       "Organization",
-      "FAQPage"
+      "Place",
+      "WebSite",
+      "ImageObject",
+      "BreadcrumbList",
+      "FAQPage",
+      "PostalAddress"
     ],
     "schema_blocks_count": 9,
     "schema_validation_issues": [],
-    "ttfb_ms": 139.0,
+    "ttfb_ms": 139.3,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -214,53 +212,44 @@
   },
   "content": {
     "status": "AVAILABLE",
-    "main_content_words": 4006,
-    "total_body_words": 4006,
+    "main_content_words": 8,
+    "total_body_words": 8,
     "content_to_boilerplate_ratio": 1.0,
-    "paragraph_count": 64,
-    "extraction_method": "RAW_BODY_FALLBACK",
-    "thin_content_tier": "SUBSTANTIVE",
+    "paragraph_count": 0,
+    "extraction_method": "HEURISTIC_PRUNED_BODY",
+    "thin_content_tier": "VERY_LOW",
     "has_placeholder_text": false,
-    "exact_content_hash": "0c6df3f1b0d616e60122c885bf0d8c9d56f67c7122e8cc07874b69419e2d748f",
-    "simhash": "b3fd4912ab0821b3",
-    "title_h1_alignment": "MODERATE_ALIGNMENT",
-    "title_h1_token_overlap": 0.2,
+    "exact_content_hash": "3a0590a57480b71f339bc2bc3f983e528b33a8351faa437ac704af82492943a2",
+    "simhash": "7a7e7289b7b9b3e6",
+    "title_h1_alignment": "UNAVAILABLE",
+    "title_h1_token_overlap": 0.0,
     "heading_hierarchy_valid": false,
-    "heading_skips": [
-      "Heading skip: <h1> to <h3> ('Submit Your Query...')",
-      "Heading skip: <h2> to <h4> ('BIS ISI FMCS Certification (Fo...')",
-      "Heading skip: <h2> to <h4> ('Our Work Process...')"
-    ],
-    "empty_sections_count": 45,
+    "heading_skips": [],
+    "empty_sections_count": 0,
     "notes": [
-      "Extraction method: RAW_BODY_FALLBACK yielded 4006 main content words (4006 total body words).",
+      "Extraction method: HEURISTIC_PRUNED_BODY yielded 8 main content words (8 total body words).",
       "Content-to-body ratio: 100.0%.",
-      "Exact main-content SHA-256: 0c6df3f1b0d616e6..., Full HTML SHA-256: 8b316eeb90854c02...",
-      "SimHash fingerprint: b3fd4912ab0821b3."
+      "Exact main-content SHA-256: 3a0590a57480b71f..., Full HTML SHA-256: c5fec68433e275b3...",
+      "SimHash fingerprint: 7a7e7289b7b9b3e6."
     ]
   },
   "entity": {
     "status": "AVAILABLE",
-    "total_entities_detected": 8,
+    "total_entities_detected": 4,
     "entity_names": [
       "BIS Certifications Consultant & Other Certifications - UMSPCS",
       "UMSPCS",
       "UMSPCS",
-      "Best BIS registration consultants in Delhi, India- UMSPCS",
-      "Noida",
-      "Registration CDSCO Approvals ISO Certification Privacy Polic",
-      "Contact Phone (+917011067811)",
-      "Contact Email (biscro.customercare@umspcs.in)"
+      "Noida"
     ],
     "entity_types_detected": [
-      "OTHER",
       "PLACE",
       "ORGANIZATION",
-      "LOCAL_BUSINESS"
+      "OTHER"
     ],
-    "relationships_count": 15,
-    "structured_vs_visible_comparisons_count": 5,
-    "aligned_comparisons_count": 5,
+    "relationships_count": 6,
+    "structured_vs_visible_comparisons_count": 1,
+    "aligned_comparisons_count": 1,
     "divergent_comparisons_count": 0,
     "samples": [
       {
@@ -285,98 +274,66 @@
         "email": "seo@umspcs.in"
       },
       {
-        "name": "Best BIS registration consultants in Delhi, India- UMSPCS",
-        "type": "LOCAL_BUSINESS",
-        "source": "JSON_LD",
-        "telephone": "+91-7011067811",
-        "email": null
-      },
-      {
         "name": "Noida",
         "type": "PLACE",
         "source": "META_TAG",
         "telephone": null,
         "email": null
-      },
-      {
-        "name": "Registration CDSCO Approvals ISO Certification Privacy Polic",
-        "type": "ORGANIZATION",
-        "source": "VISIBLE_HTML",
-        "telephone": null,
-        "email": null
-      },
-      {
-        "name": "Contact Phone (+917011067811)",
-        "type": "LOCAL_BUSINESS",
-        "source": "VISIBLE_HTML",
-        "telephone": "+917011067811",
-        "email": null
-      },
-      {
-        "name": "Contact Email (biscro.customercare@umspcs.in)",
-        "type": "ORGANIZATION",
-        "source": "VISIBLE_HTML",
-        "telephone": null,
-        "email": "biscro.customercare@umspcs.in"
       }
     ],
     "notes": [
-      "Detected 8 entity signals (OTHER: 2, ORGANIZATION: 3, LOCAL_BUSINESS: 2, PLACE: 1).",
-      "Recorded 15 observable entity relationships."
+      "Detected 4 entity signals (OTHER: 2, ORGANIZATION: 1, PLACE: 1).",
+      "Recorded 6 observable entity relationships."
     ]
   },
   "internal_links": {
     "status": "AVAILABLE",
-    "total_internal_links": 111,
-    "unique_internal_targets": 111,
-    "total_external_links": 512,
-    "unique_external_targets": 129,
+    "total_internal_links": 112,
+    "unique_internal_targets": 112,
+    "total_external_links": 9,
+    "unique_external_targets": 9,
     "empty_anchors_count": 0,
     "sample_internal_targets": [
-      "https://umspcs.in/",
-      "https://umspcs.in/service/bis-certification-for-electronic-product/",
-      "https://umspcs.in/service/trademark-registration/",
-      "https://umspcs.in/service/bee-registration-india/",
-      "https://umspcs.in/service/fssai-licence-registration/",
-      "https://umspcs.in/service/gem-registration/",
-      "https://umspcs.in/service/copyright-registration/",
-      "https://umspcs.in/service/wpc-approval/",
-      "https://umspcs.in/service/msme-ssi-udyam-registration/",
-      "https://umspcs.in/service/tac-approval-certificate-for-automobile/"
+      "https://umspcs.in/service/global-market-access/",
+      "https://umspcs.in/blog/",
+      "https://umspcs.in/service/peso-certificate/",
+      "https://umspcs.in/local-service/bis-certificate-in-chennai/",
+      "https://umspcs.in/service/bis-isi-certificate-for-indian-manufacture/",
+      "https://umspcs.in/service/eco-mark/",
+      "https://umspcs.in/service/nsic-registration/",
+      "https://umspcs.in/service/mtcte-phase-wise-products/",
+      "https://umspcs.in/service/moef-certification/",
+      "https://umspcs.in/local-service/fmcs-consultant-in-pune/"
     ],
     "notes": [
-      "111 internal links observed, 111 unique targets"
+      "112 internal links observed, 112 unique targets"
     ]
   },
   "search_topic_query_intent": {
     "status": "AVAILABLE",
-    "search_signals_count": 247,
-    "topics_detected_count": 169,
+    "search_signals_count": 22,
+    "topics_detected_count": 22,
     "topics_sample": [
-      "BIS",
-      "Certification",
-      "Consultant",
-      "compliance",
-      "India",
-      "UMSPCS",
-      "product",
-      "Services",
       "Certifications",
-      "UMS"
+      "UMSPCS",
+      "BIS",
+      "Consultant",
+      "BEE",
+      "BIS Certifications Consultant & Other Certifications - UMSPCS",
+      "businesses",
+      "CDSCO",
+      "compliance",
+      "CRS"
     ],
-    "query_page_concepts_count": 208,
-    "primary_intent": "local",
+    "query_page_concepts_count": 22,
+    "primary_intent": "navigational",
     "secondary_intents": [
-      "navigational",
-      "informational",
-      "transactional_lead_gen",
-      "transactional",
-      "commercial"
+      "local"
     ],
-    "intent_evidence_items_count": 20,
+    "intent_evidence_items_count": 6,
     "notes": [
-      "Primary Intent: local",
-      "169 topics extracted"
+      "Primary Intent: navigational",
+      "22 topics extracted"
     ]
   },
   "cannibalization_search_gaps": {
@@ -404,15 +361,15 @@
     "has_data_nosnippet": false,
     "max_snippet": -1,
     "static_words": 3765,
-    "rendered_words": 3861,
-    "word_count_delta": 96,
-    "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (3765 raw vs 3861 rendered).",
+    "rendered_words": 6,
+    "word_count_delta": -3759,
+    "rendering_impact_summary": "Rendered DOM contains fewer text words (6 vs 3765 raw).",
     "notes": [
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
       "max-snippet threshold set to -1 characters (meta:robots)",
       "Static HTML contains 3765 words.",
-      "Rendered browser DOM contains 3861 words (delta: +96 words)."
+      "Rendered browser DOM contains 6 words (delta: -3759 words)."
     ]
   },
   "answerability": {
@@ -427,9 +384,9 @@
     "definition_patterns": "ABSENT",
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
-    "explained_topics_count": 47,
-    "mentioned_only_topics_count": 20,
-    "unsupported_heading_topics_count": 123,
+    "explained_topics_count": 11,
+    "mentioned_only_topics_count": 0,
+    "unsupported_heading_topics_count": 8,
     "unsupported_headings_sample": [
       "UMS Product Compliance Services –BIS Cer",
       "Submit Your Query",
@@ -439,59 +396,59 @@
     ],
     "notes": [
       "Detected 20 distinct observable information unit(s) across 2 structural types.",
-      "Evaluated 208 topic(s): 47 explained with explicit units, 20 mentioned only, 123 unsupported headings.",
+      "Evaluated 22 topic(s): 11 explained with explicit units, 0 mentioned only, 8 unsupported headings.",
       "Structure 'FAQ': 18 unit(s) observed.",
       "Structure 'LOCATION_CONTACT': 2 unit(s) observed."
     ]
   },
   "claim_grounding": {
     "status": "AVAILABLE",
-    "total_claims_detected": 43,
-    "supported_claims_count": 31,
+    "total_claims_detected": 15,
+    "supported_claims_count": 2,
     "partially_supported_count": 12,
-    "uncorroborated_count": 0,
+    "uncorroborated_count": 1,
     "contradicted_count": 0,
     "structured_agreements_count": 1,
-    "structured_disagreements_count": 3,
+    "structured_disagreements_count": 1,
     "entity_consistency_breakdown": {
-      "PARTIALLY_CONSISTENT": 5,
-      "CONSISTENT": 2
+      "PARTIALLY_CONSISTENT": 2,
+      "CONSISTENT": 1
     },
     "notes": [
-      "Detected 43 observable claim(s) on page https://umspcs.in/.",
-      "On-site support status: 31 supported, 12 partially supported, 0 uncorroborated, 0 contradicted.",
-      "Structured vs visible comparisons: 1 agreement(s), 3 explicit disagreement(s).",
-      "Evaluated 7 entity candidate(s) across 6 content surfaces."
+      "Detected 15 observable claim(s) on page https://umspcs.in/.",
+      "On-site support status: 2 supported, 12 partially supported, 1 uncorroborated, 0 contradicted.",
+      "Structured vs visible comparisons: 1 agreement(s), 1 explicit disagreement(s).",
+      "Evaluated 3 entity candidate(s) across 6 content surfaces."
     ]
   },
   "multimodal": {
     "status": "AVAILABLE",
-    "total_visual_assets": 364,
-    "informational_assets_count": 153,
-    "decorative_assets_count": 211,
-    "alt_represented_count": 132,
+    "total_visual_assets": 0,
+    "informational_assets_count": 0,
+    "decorative_assets_count": 0,
+    "alt_represented_count": 0,
     "caption_represented_count": 0,
-    "text_represented_count": 214,
-    "visual_only_observed_gaps": 18,
-    "modern_format_count": 56,
-    "missing_dimensions_count": 69,
+    "text_represented_count": 0,
+    "visual_only_observed_gaps": 0,
+    "modern_format_count": 0,
+    "missing_dimensions_count": 0,
     "notes": [
-      "364 visual assets audited (132 alt-represented)"
+      "0 visual assets audited (0 alt-represented)"
     ]
   },
   "agent_readiness": {
     "status": "AVAILABLE",
-    "total_forms_detected": 8,
-    "labeled_forms_count": 8,
-    "action_buttons_detected": 16,
-    "meaningful_accessible_buttons_count": 15,
-    "descriptive_navigation_links_count": 286,
+    "total_forms_detected": 0,
+    "labeled_forms_count": 0,
+    "action_buttons_detected": 0,
+    "meaningful_accessible_buttons_count": 0,
+    "descriptive_navigation_links_count": 0,
     "schema_actions_detected": 2,
     "webmcp_declarations_detected": 0,
-    "total_access_paths": 6,
+    "total_access_paths": 0,
     "action_surface_gaps": 0,
     "notes": [
-      "8 forms, 16 buttons audited"
+      "0 forms, 0 buttons audited"
     ]
   },
   "external_ai": {
@@ -512,53 +469,49 @@
   "epistemic_separation": {
     "facts": [
       "HTTP response code: 200",
-      "Static HTML word count: 3109",
+      "Static HTML word count: 8",
       "Title: 'BIS Certifications Consultant & Other Certifications - UMSPCS' (61 characters)",
       "Meta description: 'UMSPCS provides certifications (BIS - ISI, CRS, FMCS), product compliance, MTCTE, WPC, CDSCO, BEE, EPR, ISO, CE, UKCE, and more for businesses in India and globally.' (165 characters)",
-      "H1 tags observed: 1",
-      "Internal links observed: 111",
-      "External links observed: 512",
+      "H1 tags observed: 0",
+      "Internal links observed: 112",
+      "External links observed: 9",
       "Robots.txt found: True",
-      "Schema types declared: BreadcrumbList, Place, PostalAddress, LocalBusiness, WebPage, ImageObject, WebSite, Organization, FAQPage",
+      "Schema types declared: LocalBusiness, WebPage, Organization, Place, WebSite, ImageObject, BreadcrumbList, FAQPage, PostalAddress",
       "HTTPS enforced: True",
-      "Server latency probe: 139.0ms (local_probe)",
+      "Server latency probe: 139.3ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
       "max-snippet threshold set to -1 characters (meta:robots)",
       "Static HTML contains 3765 words.",
-      "Rendered browser DOM contains 3861 words (delta: +96 words).",
+      "Rendered browser DOM contains 6 words (delta: -3759 words).",
       "Detected 20 distinct observable information unit(s) across 2 structural types.",
-      "Evaluated 208 topic(s): 47 explained with explicit units, 20 mentioned only, 123 unsupported headings.",
+      "Evaluated 22 topic(s): 11 explained with explicit units, 0 mentioned only, 8 unsupported headings.",
       "Structure 'FAQ': 18 unit(s) observed.",
       "Structure 'LOCATION_CONTACT': 2 unit(s) observed.",
-      "Detected 43 observable claim(s) on page https://umspcs.in/.",
-      "On-site support status: 31 supported, 12 partially supported, 0 uncorroborated, 0 contradicted.",
-      "Structured vs visible comparisons: 1 agreement(s), 3 explicit disagreement(s).",
-      "Evaluated 7 entity candidate(s) across 6 content surfaces.",
-      "Observed 364 visual asset(s): 153 informational, 132 with meaningful alt text, 0 with figure captions, 18 visual-only information gap(s).",
-      "Observed 8 form(s) (8 labeled), 16 action button(s) (15 accessible names), 2 structured schema action(s), 0 WebMCP declaration(s).",
-      "Mapped 6 information access path(s) across multimodal and agent surfaces."
+      "Detected 15 observable claim(s) on page https://umspcs.in/.",
+      "On-site support status: 2 supported, 12 partially supported, 1 uncorroborated, 0 contradicted.",
+      "Structured vs visible comparisons: 1 agreement(s), 1 explicit disagreement(s).",
+      "Evaluated 3 entity candidate(s) across 6 content surfaces.",
+      "Observed 0 visual asset(s): 0 informational, 0 with meaningful alt text, 0 with figure captions, 0 visual-only information gap(s).",
+      "Observed 0 form(s) (0 labeled), 0 action button(s) (0 accessible names), 2 structured schema action(s), 0 WebMCP declaration(s)."
     ],
     "external_observations": [
-      "Local network latency probe recorded 139.0ms TTFB",
+      "Local network latency probe recorded 139.3ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
-      "Health score computed: 76/100 via invariant formula mode '4_engine'",
-      "Technical SEO foundation: 100/100",
-      "GEO citability readiness: 53/100",
-      "Trust stack: C (64/100)",
-      "Cross-engine conflict [MEDIUM] on 'Topic Heading without Supporting Content': Topic '201304' has dedicated heading 'Logix Technova, A-810, Sector 132, Noida, 201304, Uttar Pradesh', but supporting body content is genuinely absent. -> The page establishes an explicit topical heading promise for search/AI retrieval, but fails to provide observable explanatory or factual body copy under that section.",
-      "Cross-engine conflict [HIGH] on 'JSON-LD vs Visible Organization Name': JSON-LD declares 'UMSPCS' while visible content displays 'UMS Product Compliance Services –BIS Certification Consultant in India' under primary_identity context. -> Discrepancy detected between structured schema declarations and visible user-facing text. Search engines and AI systems comparing structured data against rendered pages may flag inconsistent identity signals for 'organization_name'.",
-      "Cross-engine conflict [HIGH] on 'JSON-LD vs Visible Telephone': JSON-LD declares '['07011067811']' while visible content displays '+91 7011067811' under primary_contact context. -> Discrepancy detected between structured schema declarations and visible user-facing text. Search engines and AI systems comparing structured data against rendered pages may flag inconsistent identity signals for 'telephone'.",
-      "Cross-engine conflict [MEDIUM] on 'JSON-LD vs Visible Email': JSON-LD declares 'seo@umspcs.in' while visible content displays 'biscro.customercare@umspcs.inFOR' under primary_contact context. -> Discrepancy detected between structured schema declarations and visible user-facing text. Search engines and AI systems comparing structured data against rendered pages may flag inconsistent identity signals for 'email'."
+      "Health score computed: 61/100 via invariant formula mode '4_engine'",
+      "Technical SEO foundation: 85/100",
+      "GEO citability readiness: 25/100",
+      "Trust stack: C (56/100)",
+      "Cross-engine conflict [MEDIUM] on 'Topic Heading without Supporting Content': Topic 'BEE' has dedicated heading 'BEE cerification (Bureau of Enery Efficiency)', but supporting body content is genuinely absent. -> The page establishes an explicit topical heading promise for search/AI retrieval, but fails to provide observable explanatory or factual body copy under that section.",
+      "Cross-engine conflict [HIGH] on 'JSON-LD vs Visible Organization Name': JSON-LD declares 'UMSPCS' while visible content displays 'UMS Product Compliance Services –BIS Certification Consultant in India' under primary_identity context. -> Discrepancy detected between structured schema declarations and visible user-facing text. Search engines and AI systems comparing structured data against rendered pages may flag inconsistent identity signals for 'organization_name'."
     ],
     "recommendations": [
       "[CRITICAL] Resolve Triangulation Conflict: JSON-LD vs Visible Organization Name: Discrepancy detected between structured schema declarations and visible user-facing text. Search engines and AI systems comparing structured data against rendered pages may flag inconsistent identity signals for 'organization_name'.",
-      "[CRITICAL] Resolve Triangulation Conflict: JSON-LD vs Visible Telephone: Discrepancy detected between structured schema declarations and visible user-facing text. Search engines and AI systems comparing structured data against rendered pages may flag inconsistent identity signals for 'telephone'.",
+      "[CRITICAL] Add Missing H1 Heading: Search engines depend on H1 for primary topical categorization.",
       "[HIGH] Harden Technical Trust & Security Headers: HSTS and Content-Security-Policy prevent security downgrades and satisfy AI agent reliability gates.",
-      "[GEO_WIN] Implement Answer-First H2 Structure: AutoGEO research proves AI models prioritize passages providing concrete numbers/facts in the first 150 characters.",
-      "[MEDIUM] Generic Anchor Text Optimization Opportunity: Generic anchor usage was observed across multiple internal links. Review whether important navigation links can incorporate more descriptive, topic-specific anchor text."
+      "[GEO_WIN] Implement Answer-First H2 Structure: AutoGEO research proves AI models prioritize passages providing concrete numbers/facts in the first 150 characters."
     ]
   },
   "provenance_tags": [
@@ -749,27 +702,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Schema type 'FAQPage' detected",
-      "engine": "seo_engine",
-      "source_file": "application/ld+json",
-      "confidence": "high",
-      "confirmed_by": [
-        "browser_engine"
-      ],
-      "contradicted_by": []
-    },
-    {
       "finding": "Schema type 'ImageObject' detected",
-      "engine": "seo_engine",
-      "source_file": "application/ld+json",
-      "confidence": "high",
-      "confirmed_by": [
-        "browser_engine"
-      ],
-      "contradicted_by": []
-    },
-    {
-      "finding": "Schema type 'LocalBusiness' detected",
       "engine": "seo_engine",
       "source_file": "application/ld+json",
       "confidence": "high",
@@ -855,7 +788,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Princeton GEO Citability: 53/100",
+      "finding": "Princeton GEO Citability: 25/100",
       "engine": "rankintel_geo",
       "source_file": "DOM content passages",
       "confidence": "high",
@@ -863,7 +796,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Image Optimization: 171 images detected (1 missing alt)",
+      "finding": "Image Optimization: 0 images detected (0 missing alt)",
       "engine": "image_engine",
       "source_file": "HTML DOM",
       "confidence": "high",
@@ -903,7 +836,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Main Content Extraction: 4006 words (RAW_BODY_FALLBACK)",
+      "finding": "Main Content Extraction: 8 words (HEURISTIC_PRUNED_BODY)",
       "engine": "content_engine",
       "source_file": "HTML DOM",
       "confidence": "high",
@@ -911,7 +844,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Heading Structure: 124 headings (3 skips)",
+      "finding": "Heading Structure: 0 headings (0 skips)",
       "engine": "content_engine",
       "source_file": "HTML Headings",
       "confidence": "high",
@@ -919,7 +852,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Detection: 8 entity signals (5 organization/business)",
+      "finding": "Entity Detection: 4 entity signals (1 organization/business)",
       "engine": "entity_engine",
       "source_file": "JSON-LD & HTML DOM",
       "confidence": "high",
@@ -935,39 +868,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Alignment (organization_name): EXACT_MATCH",
-      "engine": "entity_engine",
-      "source_file": "JSON-LD vs DOM Signals",
-      "confidence": "high",
-      "confirmed_by": [],
-      "contradicted_by": []
-    },
-    {
-      "finding": "Entity Alignment (organization_name): PARTIAL_MATCH",
-      "engine": "entity_engine",
-      "source_file": "JSON-LD vs DOM Signals",
-      "confidence": "high",
-      "confirmed_by": [],
-      "contradicted_by": []
-    },
-    {
-      "finding": "Entity Alignment (organization_name): PARTIAL_MATCH",
-      "engine": "entity_engine",
-      "source_file": "JSON-LD vs DOM Signals",
-      "confidence": "high",
-      "confirmed_by": [],
-      "contradicted_by": []
-    },
-    {
-      "finding": "Entity Alignment (telephone): EXACT_MATCH",
-      "engine": "entity_engine",
-      "source_file": "JSON-LD vs DOM Signals",
-      "confidence": "high",
-      "confirmed_by": [],
-      "contradicted_by": []
-    },
-    {
-      "finding": "Internal Link Topology: 424 internal links (109 unique destinations)",
+      "finding": "Internal Link Topology: 0 internal links (0 unique destinations)",
       "engine": "internal_link_engine",
       "source_file": "HTML DOM",
       "confidence": "high",
@@ -975,15 +876,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Generic Anchor Text: 57 generic anchor links observed",
-      "engine": "internal_link_engine",
-      "source_file": "HTML DOM",
-      "confidence": "high",
-      "confirmed_by": [],
-      "contradicted_by": []
-    },
-    {
-      "finding": "Search Signal Evidence: 247 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 22 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -991,7 +884,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Structure: Multi-location co-occurrence observed for key terms: bis, certification, consultant, compliance, india.",
+      "finding": "Search Signal Structure: Multi-location co-occurrence observed for key terms: umspcs, certifications, bis.",
       "engine": "search_signal_engine",
       "source_file": "Structural Tag Correlation",
       "confidence": "high",
@@ -999,15 +892,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Structure: Title and H1 share 2 core evidenced terms: consultant, bis.",
-      "engine": "search_signal_engine",
-      "source_file": "Structural Tag Correlation",
-      "confidence": "high",
-      "confirmed_by": [],
-      "contradicted_by": []
-    },
-    {
-      "finding": "Topic Intelligence: 169 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 22 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -1015,7 +900,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 181 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 10 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -1023,7 +908,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 208 observed concepts mapped to page (13 DIRECT, 81 SUPPORTED)",
+      "finding": "Query-Page Mapping: 22 observed concepts mapped to page (8 DIRECT, 0 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -1031,7 +916,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 13 direct primary concepts, 81 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 8 direct primary concepts, 0 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -1039,7 +924,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'local' (20 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'navigational' (6 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -1047,7 +932,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'local' based on 11 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'navigational' based on 5 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
@@ -1079,7 +964,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 47 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 11 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",
@@ -1095,7 +980,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Observable Claims Grounding: 43 claim(s) (31 supported on-site, 0 uncorroborated)",
+      "finding": "Observable Claims Grounding: 15 claim(s) (2 supported on-site, 1 uncorroborated)",
       "engine": "claim_grounding_engine",
       "source_file": "Visible Content & Answerable Units",
       "confidence": "high",
@@ -1103,7 +988,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Structured vs Visible Alignment: 1 agreement(s), 3 disagreement(s)",
+      "finding": "Structured vs Visible Alignment: 1 agreement(s), 1 disagreement(s)",
       "engine": "claim_grounding_engine",
       "source_file": "JSON-LD & DOM Content",
       "confidence": "high",
@@ -1111,7 +996,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Surface Consistency: 7 candidate(s) tracked across 6 content surfaces",
+      "finding": "Entity Surface Consistency: 3 candidate(s) tracked across 6 content surfaces",
       "engine": "claim_grounding_engine",
       "source_file": "DOM, Headings, Meta, JSON-LD, Units",
       "confidence": "high",
@@ -1119,25 +1004,9 @@
       "contradicted_by": []
     },
     {
-      "finding": "Multimodal Information Representation: 364 visual asset(s) (153 informational, 132 alt-represented)",
+      "finding": "Multimodal Information Representation: 0 visual asset(s) (0 informational, 0 alt-represented)",
       "engine": "multimodal_agent_engine",
       "source_file": "HTML DOM & Image Assets",
-      "confidence": "high",
-      "confirmed_by": [],
-      "contradicted_by": []
-    },
-    {
-      "finding": "Agent Interaction Surfaces: 8 form(s) (8 labeled), 16 button(s)",
-      "engine": "multimodal_agent_engine",
-      "source_file": "HTML Forms & Controls",
-      "confidence": "high",
-      "confirmed_by": [],
-      "contradicted_by": []
-    },
-    {
-      "finding": "Information Access Paths: 6 path(s) triangulated across visual and interactive surfaces",
-      "engine": "multimodal_agent_engine",
-      "source_file": "Multi-Engine Triangulation",
       "confidence": "high",
       "confirmed_by": [],
       "contradicted_by": []
@@ -1147,9 +1016,9 @@
     {
       "severity": "MEDIUM",
       "feature": "Topic Heading without Supporting Content",
-      "description": "Topic '201304' has dedicated heading 'Logix Technova, A-810, Sector 132, Noida, 201304, Uttar Pradesh', but supporting body content is genuinely absent.",
-      "engine_a_finding": "Topic Engine: Candidate topic '201304'",
-      "engine_b_finding": "Answerability Engine: Heading 'Logix Technova, A-810, Sector 132, Noida, 201304, Uttar Pradesh' has 0 supporting body words",
+      "description": "Topic 'BEE' has dedicated heading 'BEE cerification (Bureau of Enery Efficiency)', but supporting body content is genuinely absent.",
+      "engine_a_finding": "Topic Engine: Candidate topic 'BEE'",
+      "engine_b_finding": "Answerability Engine: Heading 'BEE cerification (Bureau of Enery Efficiency)' has 0 supporting body words",
       "interpretation": "The page establishes an explicit topical heading promise for search/AI retrieval, but fails to provide observable explanatory or factual body copy under that section."
     },
     {
@@ -1159,22 +1028,6 @@
       "engine_a_finding": "JSON-LD Schema: 'UMSPCS'",
       "engine_b_finding": "Visible Content: 'UMS Product Compliance Services –BIS Certification Consultant in India'",
       "interpretation": "Discrepancy detected between structured schema declarations and visible user-facing text. Search engines and AI systems comparing structured data against rendered pages may flag inconsistent identity signals for 'organization_name'."
-    },
-    {
-      "severity": "HIGH",
-      "feature": "JSON-LD vs Visible Telephone",
-      "description": "JSON-LD declares '['07011067811']' while visible content displays '+91 7011067811' under primary_contact context.",
-      "engine_a_finding": "JSON-LD Schema: '['07011067811']'",
-      "engine_b_finding": "Visible Content: '+91 7011067811'",
-      "interpretation": "Discrepancy detected between structured schema declarations and visible user-facing text. Search engines and AI systems comparing structured data against rendered pages may flag inconsistent identity signals for 'telephone'."
-    },
-    {
-      "severity": "MEDIUM",
-      "feature": "JSON-LD vs Visible Email",
-      "description": "JSON-LD declares 'seo@umspcs.in' while visible content displays 'biscro.customercare@umspcs.inFOR' under primary_contact context.",
-      "engine_a_finding": "JSON-LD Schema: 'seo@umspcs.in'",
-      "engine_b_finding": "Visible Content: 'biscro.customercare@umspcs.inFOR'",
-      "interpretation": "Discrepancy detected between structured schema declarations and visible user-facing text. Search engines and AI systems comparing structured data against rendered pages may flag inconsistent identity signals for 'email'."
     }
   ],
   "engines_executed": [

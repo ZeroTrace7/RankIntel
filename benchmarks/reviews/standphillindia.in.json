@@ -30,30 +30,26 @@
   },
   "entity_profile": {
     "status": "AVAILABLE",
-    "total_entities_detected": 10,
+    "total_entities_detected": 6,
     "entity_types_detected": [
-      "PERSON",
-      "OTHER",
       "ORGANIZATION",
-      "LOCAL_BUSINESS"
+      "LOCAL_BUSINESS",
+      "PERSON",
+      "OTHER"
     ],
     "named_entities": [
       "Standphill India",
       "Standphill India",
       "Standphill India",
-      "Standphill India",
       "Standphillindia",
       "Contact Phone (+919667674225)",
-      "Contact Phone (+919667674225)",
-      "Contact Phone (+919667674225)",
-      "Contact Email (info@standphillindia.in)",
       "Contact Email (info@standphillindia.in)"
     ],
     "relationships_count": 2,
     "structured_vs_visible_comparisons": 3,
     "aligned_comparisons": 2,
     "divergent_comparisons": 1,
-    "entity_alignment_summary": "Detected 10 entity signals across 4 types (PERSON, OTHER, ORGANIZATION). Structured vs visible comparisons: 2 aligned, 1 divergent.",
+    "entity_alignment_summary": "Detected 6 entity signals across 4 types (ORGANIZATION, LOCAL_BUSINESS, PERSON). Structured vs visible comparisons: 2 aligned, 1 divergent.",
     "samples": [
       {
         "name": "Standphill India",
@@ -71,13 +67,6 @@
       },
       {
         "name": "Standphill India",
-        "type": "ORGANIZATION",
-        "source": "META_TAG",
-        "telephone": null,
-        "email": null
-      },
-      {
-        "name": "Standphill India",
         "type": "PERSON",
         "source": "META_TAG",
         "telephone": null,
@@ -88,6 +77,13 @@
         "type": "ORGANIZATION",
         "source": "VISIBLE_HTML",
         "telephone": null,
+        "email": null
+      },
+      {
+        "name": "Contact Phone (+919667674225)",
+        "type": "LOCAL_BUSINESS",
+        "source": "VISIBLE_HTML",
+        "telephone": "+919667674225",
         "email": null
       }
     ]
@@ -111,7 +107,7 @@
   },
   "topic_taxonomy": {
     "status": "AVAILABLE",
-    "total_topics_detected": 119,
+    "total_topics_detected": 129,
     "primary_topics": [
       "Certification",
       "BIS",
@@ -148,7 +144,7 @@
       "Consultant",
       "GLOBAL"
     ],
-    "summary": "Identified 119 deterministic concept clusters. Primary topical anchors: Certification, BIS, Standphill India, India, Standphill."
+    "summary": "Identified 129 deterministic concept clusters. Primary topical anchors: Certification, BIS, Standphill India, India, Standphill."
   },
   "dominant_concepts": [
     "Certification",
@@ -162,26 +158,25 @@
   ],
   "search_intent": {
     "status": "AVAILABLE",
-    "primary_intent": "transactional",
+    "primary_intent": "mixed",
     "secondary_intents": [
-      "navigational",
-      "informational",
-      "local"
+      "transactional",
+      "navigational"
     ],
-    "intent_evidence_count": 16,
-    "intent_evidence_summary": "Primary search intent classified as 'transactional' supported by 16 observable structural signals. Secondary intent spectrum: navigational, informational, local."
+    "intent_evidence_count": 15,
+    "intent_evidence_summary": "Primary search intent classified as 'mixed' supported by 15 observable structural signals. Secondary intent spectrum: transactional, navigational."
   },
   "topic_distribution": {
     "status": "AVAILABLE",
     "direct_primary_concepts_count": 5,
     "secondary_supported_concepts_count": 5,
-    "query_page_concepts_count": 135,
+    "query_page_concepts_count": 145,
     "total_words": 2152,
     "paragraphs_count": 45,
     "explained_topics_count": 72,
-    "mentioned_only_topics_count": 28,
-    "concept_density_per_100_words": 5.53,
-    "summary": "Content corpus comprises 2152 words across 45 paragraphs. Topical distribution: 72 explained topics with structured units vs 28 mentioned-only topics (topic density: 5.53 per 100 words)."
+    "mentioned_only_topics_count": 37,
+    "concept_density_per_100_words": 5.99,
+    "summary": "Content corpus comprises 2152 words across 45 paragraphs. Topical distribution: 72 explained topics with structured units vs 37 mentioned-only topics (topic density: 5.99 per 100 words)."
   },
   "concentration_and_overlap": {
     "status": "AVAILABLE",
@@ -241,8 +236,8 @@
     "h3_count": 11,
     "schema_types": [
       "WebSite",
-      "FAQPage",
-      "Organization"
+      "Organization",
+      "FAQPage"
     ],
     "schema_blocks_count": 3,
     "schema_validation_issues": [],
@@ -252,10 +247,10 @@
     "sitemaps_declared": [
       "https://www.standphillindia.in/sitemap.xml"
     ],
-    "ttfb_ms": 117.0,
+    "ttfb_ms": 176.9,
     "performance_score": 85,
     "performance_source": "local_probe",
-    "summary": "Title length (56 chars: OPTIMAL), Meta description (186 chars: TRUNCATED_RISK). Headings: 3 H1, 12 H2, 11 H3. Structured data: 3 schema types declared across 3 blocks. TTFB latency: 117.0ms (local_probe)."
+    "summary": "Title length (56 chars: OPTIMAL), Meta description (186 chars: TRUNCATED_RISK). Headings: 3 H1, 12 H2, 11 H3. Structured data: 3 schema types declared across 3 blocks. TTFB latency: 176.9ms (local_probe)."
   },
   "accessibility_security": {
     "status": "AVAILABLE",
@@ -312,13 +307,13 @@
     "has_nosnippet": false,
     "has_data_nosnippet": false,
     "max_snippet": null,
-    "static_words": 2396,
-    "rendered_words": 0,
-    "word_count_delta": 0,
-    "rendering_impact_summary": "Static HTML observed (2396 words); browser DOM was not rendered in this pass.",
+    "static_words": 1972,
+    "rendered_words": 2396,
+    "word_count_delta": 424,
+    "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (1972 raw vs 2396 rendered).",
     "llms_txt_present": false,
     "geo_score": 51,
-    "summary": "Bot access: 6/6 search indexers, 1/3 training scrapers permitted. WAF status: No WAF challenge barriers observed. Snippet directives: snippets allowed. Word count rendering delta: 0 words (2396 static vs 0 rendered). /llms.txt manifest: Missing. GEO Score: 51/100."
+    "summary": "Bot access: 6/6 search indexers, 1/3 training scrapers permitted. WAF status: No WAF challenge barriers observed. Snippet directives: snippets allowed. Word count rendering delta: 424 words (1972 static vs 2396 rendered). /llms.txt manifest: Missing. GEO Score: 51/100."
   },
   "answerability": {
     "status": "AVAILABLE",
@@ -335,8 +330,8 @@
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
     "explained_topics_count": 72,
-    "mentioned_only_topics_count": 28,
-    "unsupported_heading_topics_count": 21,
+    "mentioned_only_topics_count": 37,
+    "unsupported_heading_topics_count": 22,
     "unsupported_headings_sample": [
       "LICENCE & CERTIFICATION",
       "REGISTRATION",
@@ -344,7 +339,7 @@
       "Standphill India- The house of Standards",
       "OUR SERVICES"
     ],
-    "summary": "Discovered 13 observable information units across 4 structural types (LOCATION_CONTACT:1, FAQ:6, FACTUAL_STATEMENT:5, SERVICE_DESCRIPTION:1). Topical support: 72 explained topics with explicit answerable structures, 28 mentioned-only topics, 21 unsupported headings."
+    "summary": "Discovered 13 observable information units across 4 structural types (LOCATION_CONTACT:1, FAQ:6, FACTUAL_STATEMENT:5, SERVICE_DESCRIPTION:1). Topical support: 72 explained topics with explicit answerable structures, 37 mentioned-only topics, 22 unsupported headings."
   },
   "claim_grounding": {
     "status": "AVAILABLE",
@@ -372,9 +367,9 @@
     "text_represented_count": 15,
     "visual_only_observed_gaps": 1,
     "modern_format_count": 113,
-    "missing_dimensions_count": 54,
+    "missing_dimensions_count": 52,
     "alt_coverage_ratio": 0.93,
-    "summary": "Identified 155 visual assets (149 informational, 6 decorative). Alt-text coverage: 139/149 informational assets (93%). Visual-only observed information gaps: 1. Modern formats (WebP/AVIF): 113. Layout shift risks (missing dimensions): 54."
+    "summary": "Identified 155 visual assets (149 informational, 6 decorative). Alt-text coverage: 139/149 informational assets (93%). Visual-only observed information gaps: 1. Modern formats (WebP/AVIF): 113. Layout shift risks (missing dimensions): 52."
   },
   "agent_readiness": {
     "status": "AVAILABLE",
@@ -471,14 +466,15 @@
       "Internal links observed: 57",
       "External links observed: 198",
       "Robots.txt found: True",
-      "Schema types declared: WebSite, FAQPage, Organization",
+      "Schema types declared: WebSite, Organization, FAQPage",
       "HTTPS enforced: True",
-      "Server latency probe: 117.0ms (local_probe)",
+      "Server latency probe: 176.9ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
-      "Static HTML contains 2396 words.",
+      "Static HTML contains 1972 words.",
+      "Rendered browser DOM contains 2396 words (delta: +424 words).",
       "Detected 13 distinct observable information unit(s) across 4 structural types.",
-      "Evaluated 135 topic(s): 72 explained with explicit units, 28 mentioned only, 21 unsupported headings.",
+      "Evaluated 145 topic(s): 72 explained with explicit units, 37 mentioned only, 22 unsupported headings.",
       "Structure 'FACTUAL_STATEMENT': 5 unit(s) observed.",
       "Structure 'FAQ': 6 unit(s) observed.",
       "Structure 'LOCATION_CONTACT': 1 unit(s) observed.",
@@ -491,7 +487,7 @@
       "Mapped 20 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 117.0ms TTFB",
+      "Local network latency probe recorded 176.9ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -729,7 +725,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 117ms",
+      "finding": "TTFB Latency: 177ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -809,7 +805,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Detection: 10 entity signals (8 organization/business)",
+      "finding": "Entity Detection: 6 entity signals (4 organization/business)",
       "engine": "entity_engine",
       "source_file": "JSON-LD & HTML DOM",
       "confidence": "high",
@@ -849,7 +845,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 188 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 198 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -873,7 +869,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 119 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 129 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -881,7 +877,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 170 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 221 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -889,7 +885,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 135 observed concepts mapped to page (22 DIRECT, 65 SUPPORTED)",
+      "finding": "Query-Page Mapping: 145 observed concepts mapped to page (23 DIRECT, 72 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -897,7 +893,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 22 direct primary concepts, 65 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 23 direct primary concepts, 72 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -905,7 +901,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (16 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'mixed' (15 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -913,7 +909,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 7 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Content exhibits balanced co-equal intent signals between 'transactional' and 'navigational' (classified as MIXED).",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
@@ -953,7 +949,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Unsupported Topical Headings: 82 heading(s) without supporting body copy",
+      "finding": "Unsupported Topical Headings: 58 heading(s) without supporting body copy",
       "engine": "answerability_engine",
       "source_file": "Heading Section AST",
       "confidence": "high",
@@ -1034,8 +1030,8 @@
     "status_code": 200,
     "word_count": 2152,
     "title_length": 56,
-    "entities_count": 10,
-    "topics_count": 119,
+    "entities_count": 6,
+    "topics_count": 129,
     "units_count": 13,
     "claims_count": 39,
     "visual_assets": 155,

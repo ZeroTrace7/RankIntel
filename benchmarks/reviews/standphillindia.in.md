@@ -32,11 +32,11 @@
 
 ## 2. Entities & Knowledge Graph Representation
 - **Status:** `AVAILABLE`
-- **Total Entities Detected:** 10
-- **Entity Types:** PERSON, OTHER, ORGANIZATION, LOCAL_BUSINESS
-- **Named Entities (Sample):** Standphill India, Standphill India, Standphill India, Standphill India, Standphillindia, Contact Phone (+919667674225)
+- **Total Entities Detected:** 6
+- **Entity Types:** ORGANIZATION, LOCAL_BUSINESS, PERSON, OTHER
+- **Named Entities (Sample):** Standphill India, Standphill India, Standphill India, Standphillindia, Contact Phone (+919667674225), Contact Email (info@standphillindia.in)
 - **Structured vs Visible Alignment:** 2 aligned, 1 divergent across 3 comparisons.
-- **Synthesis:** Detected 10 entity signals across 4 types (PERSON, OTHER, ORGANIZATION). Structured vs visible comparisons: 2 aligned, 1 divergent.
+- **Synthesis:** Detected 6 entity signals across 4 types (ORGANIZATION, LOCAL_BUSINESS, PERSON). Structured vs visible comparisons: 2 aligned, 1 divergent.
 
 ## 3. Observable Services & Products
 - **Status:** `AVAILABLE`
@@ -49,25 +49,25 @@
 
 ## 4 & 5. Topic Taxonomy & Dominant Concepts
 - **Status:** `AVAILABLE`
-- **Total Topics Detected:** 119
+- **Total Topics Detected:** 129
 - **Primary Topics (Top 5):** Certification, BIS, Standphill India, India, Standphill
 - **Supporting Topics (Sample):** Get, Consultant, GLOBAL, BIS Certification Consultant in India, Days
 - **Dominant Semantic Concepts:** Certification, BIS, Standphill India, India, Standphill, Get, Consultant, GLOBAL
-- **Synthesis:** Identified 119 deterministic concept clusters. Primary topical anchors: Certification, BIS, Standphill India, India, Standphill.
+- **Synthesis:** Identified 129 deterministic concept clusters. Primary topical anchors: Certification, BIS, Standphill India, India, Standphill.
 
 ## 6. Observable Search Intent
 - **Status:** `AVAILABLE`
-- **Primary Intent:** `transactional`
-- **Secondary Intents:** `navigational`, `informational`, `local`
-- **Supporting Evidence Count:** 16 observable signals
-- **Synthesis:** Primary search intent classified as 'transactional' supported by 16 observable structural signals. Secondary intent spectrum: navigational, informational, local.
+- **Primary Intent:** `mixed`
+- **Secondary Intents:** `transactional`, `navigational`
+- **Supporting Evidence Count:** 15 observable signals
+- **Synthesis:** Primary search intent classified as 'mixed' supported by 15 observable structural signals. Secondary intent spectrum: transactional, navigational.
 
 ## 7. Topic-to-Page Distribution
 - **Status:** `AVAILABLE`
 - **Content Length:** 2152 words across 45 paragraphs
-- **Topic Breadth:** 72 explained topics vs 28 mentioned-only topics
-- **Topic Density:** 5.53 concepts per 100 words
-- **Synthesis:** Content corpus comprises 2152 words across 45 paragraphs. Topical distribution: 72 explained topics with structured units vs 28 mentioned-only topics (topic density: 5.53 per 100 words).
+- **Topic Breadth:** 72 explained topics vs 37 mentioned-only topics
+- **Topic Density:** 5.99 concepts per 100 words
+- **Synthesis:** Content corpus comprises 2152 words across 45 paragraphs. Topical distribution: 72 explained topics with structured units vs 37 mentioned-only topics (topic density: 5.99 per 100 words).
 
 ## 8. Page Concentration & Topical Overlap
 - **Status:** `AVAILABLE`
@@ -84,10 +84,10 @@
 - **Page Title (56 chars):** "BIS Certification Consultant in India - Standphill India" [`OPTIMAL`]
 - **Meta Description (186 chars):** "Standphill India is a leading BIS certification consultant in India, offering a single window for ISI Mark, FMCS, CRS, BEE, EPR, WPC-ETA, LMPC, TEC, third-party inspection and many more." [`TRUNCATED_RISK`]
 - **Heading Structure:** 3 H1, 12 H2, 11 H3
-- **Structured Data:** 3 types (WebSite, FAQPage, Organization) across 3 blocks
+- **Structured Data:** 3 types (WebSite, Organization, FAQPage) across 3 blocks
 - **Canonical URL:** `https://www.standphillindia.in` [`MATCHING`]
 - **Robots.txt:** Found | Sitemaps declared: 1
-- **Latency (TTFB):** 117.0ms (local_probe)
+- **Latency (TTFB):** 176.9ms (local_probe)
 
 ## 10. Accessibility & Transport Security
 - **WCAG 2.1 Automated Status:** `FAIL` (42 violations: 0 critical, 42 serious)
@@ -108,7 +108,7 @@
 - **Bot Access Matrix:** 6/6 search indexers, 1/3 training scrapers allowed
 - **WAF / Barrier:** None observed
 - **Snippet Directives:** Snippets allowed
-- **Word Count Rendering Impact:** 0 words delta (2396 static vs 0 rendered)
+- **Word Count Rendering Impact:** 424 words delta (1972 static vs 2396 rendered)
 - **/llms.txt Manifest:** Missing
 - **GEO Readiness Score:** 51/100
 
@@ -120,8 +120,8 @@
   - `FAQ`: 6
   - `FACTUAL_STATEMENT`: 5
   - `SERVICE_DESCRIPTION`: 1
-- **Explained vs Mentioned Topics:** 72 explained, 28 mentioned only
-- **Unsupported Headings:** 21
+- **Explained vs Mentioned Topics:** 72 explained, 37 mentioned only
+- **Unsupported Headings:** 22
 
 ## 14. Claim Grounding & Assertion Support
 - **Status:** `AVAILABLE`
@@ -135,7 +135,7 @@
 - **Asset Breakdown:** 149 informational, 6 decorative
 - **Alt-Text Coverage:** 139/149 informational assets (93%)
 - **Visual-Only Gaps:** 1
-- **Layout Shift Risks (Missing Dimensions):** 54
+- **Layout Shift Risks (Missing Dimensions):** 52
 
 ## 16. Autonomous Agent Action Surfaces
 - **Status:** `AVAILABLE`
@@ -180,13 +180,13 @@
 - Internal links observed: 57
 - External links observed: 198
 - Robots.txt found: True
-- Schema types declared: WebSite, FAQPage, Organization
+- Schema types declared: WebSite, Organization, FAQPage
 - HTTPS enforced: True
-- Server latency probe: 117.0ms (local_probe)
+- Server latency probe: 176.9ms (local_probe)
 - HTTP Status: 200
 
 ### 2. External Observations (Third-Party Probes)
-- Local network latency probe recorded 117.0ms TTFB
+- Local network latency probe recorded 176.9ms TTFB
 - External AI measurement was disabled during this collection pass (opt-in via --external-ai).
 
 ### 3. RankIntel Analysis & Syntheses

@@ -33,11 +33,11 @@
 
 ## 2. Entities & Knowledge Graph Representation
 - **Status:** `AVAILABLE`
-- **Total Entities Detected:** 7
-- **Entity Types:** ORGANIZATION, LOCAL_BUSINESS
-- **Named Entities (Sample):** ASC Group, © 2026 ASC, Contact Phone (+919999043311), Contact Phone (+919999043311), Contact Phone (+919999043311), Contact Email (info@ascgroup.in)
+- **Total Entities Detected:** 5
+- **Entity Types:** LOCAL_BUSINESS, ORGANIZATION
+- **Named Entities (Sample):** ASC Group, © 2026 ASC, Contact Phone (+919999043311), Contact Email (info@ascgroup.in), Contact Email (Mahesh@insolvencyservices.in)
 - **Structured vs Visible Alignment:** 1 aligned, 0 divergent across 1 comparisons.
-- **Synthesis:** Detected 7 entity signals across 2 types (ORGANIZATION, LOCAL_BUSINESS). Structured vs visible comparisons: 1 aligned, 0 divergent.
+- **Synthesis:** Detected 5 entity signals across 2 types (LOCAL_BUSINESS, ORGANIZATION). Structured vs visible comparisons: 1 aligned, 0 divergent.
 
 ## 3. Observable Services & Products
 - **Status:** `AVAILABLE`
@@ -50,25 +50,25 @@
 
 ## 4 & 5. Topic Taxonomy & Dominant Concepts
 - **Status:** `AVAILABLE`
-- **Total Topics Detected:** 189
+- **Total Topics Detected:** 200
 - **Primary Topics (Top 5):** ASC Group®, Advisory, Consulting, Group®, Taxation
 - **Supporting Topics (Sample):** ASC, About ASC, Audit, Financial, Audit, Consulting, Financial  Advisory, Taxation
 - **Dominant Semantic Concepts:** ASC Group®, Advisory, Consulting, Group®, Taxation, ASC, About ASC, Audit
-- **Synthesis:** Identified 189 deterministic concept clusters. Primary topical anchors: ASC Group®, Advisory, Consulting, Group®, Taxation.
+- **Synthesis:** Identified 200 deterministic concept clusters. Primary topical anchors: ASC Group®, Advisory, Consulting, Group®, Taxation.
 
 ## 6. Observable Search Intent
 - **Status:** `AVAILABLE`
-- **Primary Intent:** `transactional`
-- **Secondary Intents:** `navigational`, `commercial`, `local`
+- **Primary Intent:** `navigational`
+- **Secondary Intents:** `commercial`, `transactional`, `local`, `transactional_lead_gen`
 - **Supporting Evidence Count:** 11 observable signals
-- **Synthesis:** Primary search intent classified as 'transactional' supported by 11 observable structural signals. Secondary intent spectrum: navigational, commercial, local.
+- **Synthesis:** Primary search intent classified as 'navigational' supported by 11 observable structural signals. Secondary intent spectrum: commercial, transactional, local, transactional_lead_gen.
 
 ## 7. Topic-to-Page Distribution
 - **Status:** `AVAILABLE`
 - **Content Length:** 414 words across 48 paragraphs
-- **Topic Breadth:** 37 explained topics vs 30 mentioned-only topics
-- **Topic Density:** 45.65 concepts per 100 words
-- **Synthesis:** Content corpus comprises 414 words across 48 paragraphs. Topical distribution: 37 explained topics with structured units vs 30 mentioned-only topics (topic density: 45.65 per 100 words).
+- **Topic Breadth:** 37 explained topics vs 41 mentioned-only topics
+- **Topic Density:** 48.31 concepts per 100 words
+- **Synthesis:** Content corpus comprises 414 words across 48 paragraphs. Topical distribution: 37 explained topics with structured units vs 41 mentioned-only topics (topic density: 48.31 per 100 words).
 
 ## 8. Page Concentration & Topical Overlap
 - **Status:** `AVAILABLE`
@@ -88,7 +88,7 @@
 - **Structured Data:** 1 types (Organization) across 1 blocks
 - **Canonical URL:** `https://www.ascgroup.in/` [`MATCHING`]
 - **Robots.txt:** Found | Sitemaps declared: 1
-- **Latency (TTFB):** 292.9ms (local_probe)
+- **Latency (TTFB):** 415.4ms (local_probe)
 
 ## 10. Accessibility & Transport Security
 - **WCAG 2.1 Automated Status:** `FAIL` (129 violations: 9 critical, 120 serious)
@@ -109,7 +109,7 @@
 - **Bot Access Matrix:** 6/6 search indexers, 3/3 training scrapers allowed
 - **WAF / Barrier:** None observed
 - **Snippet Directives:** Snippets allowed
-- **Word Count Rendering Impact:** 0 words delta (4320 static vs 0 rendered)
+- **Word Count Rendering Impact:** 566 words delta (3754 static vs 4320 rendered)
 - **/llms.txt Manifest:** Missing
 - **GEO Readiness Score:** 43/100
 
@@ -118,7 +118,7 @@
 - **Total Units Detected:** 7
 - **Units Breakdown:**
   - `SERVICE_DESCRIPTION`: 7
-- **Explained vs Mentioned Topics:** 37 explained, 30 mentioned only
+- **Explained vs Mentioned Topics:** 37 explained, 41 mentioned only
 - **Unsupported Headings:** 150
 
 ## 14. Claim Grounding & Assertion Support
@@ -133,7 +133,7 @@
 - **Asset Breakdown:** 108 informational, 11 decorative
 - **Alt-Text Coverage:** 107/108 informational assets (99%)
 - **Visual-Only Gaps:** 1
-- **Layout Shift Risks (Missing Dimensions):** 29
+- **Layout Shift Risks (Missing Dimensions):** 65
 
 ## 16. Autonomous Agent Action Surfaces
 - **Status:** `AVAILABLE`
@@ -178,11 +178,11 @@
 - Robots.txt found: True
 - Schema types declared: Organization
 - HTTPS enforced: True
-- Server latency probe: 292.9ms (local_probe)
+- Server latency probe: 415.4ms (local_probe)
 - HTTP Status: 200
 
 ### 2. External Observations (Third-Party Probes)
-- Local network latency probe recorded 292.9ms TTFB
+- Local network latency probe recorded 415.4ms TTFB
 - External AI measurement was disabled during this collection pass (opt-in via --external-ai).
 
 ### 3. RankIntel Analysis & Syntheses

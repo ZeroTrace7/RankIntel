@@ -32,11 +32,11 @@
 
 ## 2. Entities & Knowledge Graph Representation
 - **Status:** `AVAILABLE`
-- **Total Entities Detected:** 2
+- **Total Entities Detected:** 3
 - **Entity Types:** ORGANIZATION
-- **Named Entities (Sample):** Contact Email (info@qualityinternational.org), Contact Email (info@qengineering.in)
+- **Named Entities (Sample):** Contact Email (info@qualityinternational.org), Contact Email (info@qengineering.in), Quality International
 - **Structured vs Visible Alignment:** 0 aligned, 0 divergent across 0 comparisons.
-- **Synthesis:** Detected 2 entity signals across 1 types (ORGANIZATION). Structured vs visible comparisons: 0 aligned, 0 divergent.
+- **Synthesis:** Detected 3 entity signals across 1 types (ORGANIZATION). Structured vs visible comparisons: 0 aligned, 0 divergent.
 
 ## 3. Observable Services & Products
 - **Status:** `PARTIAL`
@@ -46,25 +46,25 @@
 
 ## 4 & 5. Topic Taxonomy & Dominant Concepts
 - **Status:** `AVAILABLE`
-- **Total Topics Detected:** 76
-- **Primary Topics (Top 5):** Quality, Japan, Quality International, Office, International
+- **Total Topics Detected:** 79
+- **Primary Topics (Top 5):** Quality, Quality International, Japan, Office, International
 - **Supporting Topics (Sample):** Delhi, Delhi Office :, Head, Head Office :, Japan Office :
-- **Dominant Semantic Concepts:** Quality, Japan, Quality International, Office, International, Delhi, Delhi Office :, Head
-- **Synthesis:** Identified 76 deterministic concept clusters. Primary topical anchors: Quality, Japan, Quality International, Office, International.
+- **Dominant Semantic Concepts:** Quality, Quality International, Japan, Office, International, Delhi, Delhi Office :, Head
+- **Synthesis:** Identified 79 deterministic concept clusters. Primary topical anchors: Quality, Quality International, Japan, Office, International.
 
 ## 6. Observable Search Intent
 - **Status:** `AVAILABLE`
-- **Primary Intent:** `transactional`
-- **Secondary Intents:** `local`
-- **Supporting Evidence Count:** 6 observable signals
-- **Synthesis:** Primary search intent classified as 'transactional' supported by 6 observable structural signals. Secondary intent spectrum: local.
+- **Primary Intent:** `navigational`
+- **Secondary Intents:** `local`, `transactional`, `transactional_lead_gen`
+- **Supporting Evidence Count:** 7 observable signals
+- **Synthesis:** Primary search intent classified as 'navigational' supported by 7 observable structural signals. Secondary intent spectrum: local, transactional, transactional_lead_gen.
 
 ## 7. Topic-to-Page Distribution
 - **Status:** `AVAILABLE`
 - **Content Length:** 578 words across 73 paragraphs
-- **Topic Breadth:** 0 explained topics vs 43 mentioned-only topics
-- **Topic Density:** 13.15 concepts per 100 words
-- **Synthesis:** Content corpus comprises 578 words across 73 paragraphs. Topical distribution: 0 explained topics with structured units vs 43 mentioned-only topics (topic density: 13.15 per 100 words).
+- **Topic Breadth:** 0 explained topics vs 38 mentioned-only topics
+- **Topic Density:** 13.67 concepts per 100 words
+- **Synthesis:** Content corpus comprises 578 words across 73 paragraphs. Topical distribution: 0 explained topics with structured units vs 38 mentioned-only topics (topic density: 13.67 per 100 words).
 
 ## 8. Page Concentration & Topical Overlap
 - **Status:** `AVAILABLE`
@@ -83,7 +83,7 @@
 - **Structured Data:** 0 types (None) across 0 blocks
 - **Canonical URL:** `https://qualityinternational.org/` [`MATCHING`]
 - **Robots.txt:** Found | Sitemaps declared: 0
-- **Latency (TTFB):** 141.6ms (local_probe)
+- **Latency (TTFB):** 168.1ms (local_probe)
 
 ## 10. Accessibility & Transport Security
 - **WCAG 2.1 Automated Status:** `FAIL` (31 violations: 9 critical, 22 serious)
@@ -104,7 +104,7 @@
 - **Bot Access Matrix:** 6/6 search indexers, 3/3 training scrapers allowed
 - **WAF / Barrier:** None observed
 - **Snippet Directives:** Snippets allowed
-- **Word Count Rendering Impact:** 0 words delta (571 static vs 0 rendered)
+- **Word Count Rendering Impact:** 11 words delta (560 static vs 571 rendered)
 - **/llms.txt Manifest:** Missing
 - **GEO Readiness Score:** 30/100
 
@@ -112,8 +112,8 @@
 - **Status:** `INSUFFICIENT_EVIDENCE`
 - **Total Units Detected:** 0
 - **Units Breakdown:** No structured information units detected on-site.
-- **Explained vs Mentioned Topics:** 0 explained, 43 mentioned only
-- **Unsupported Headings:** 39
+- **Explained vs Mentioned Topics:** 0 explained, 38 mentioned only
+- **Unsupported Headings:** 38
 
 ## 14. Claim Grounding & Assertion Support
 - **Status:** `AVAILABLE`
@@ -173,11 +173,11 @@
 - Robots.txt found: True
 - Schema types declared: None
 - HTTPS enforced: True
-- Server latency probe: 141.6ms (local_probe)
+- Server latency probe: 168.1ms (local_probe)
 - HTTP Status: 200
 
 ### 2. External Observations (Third-Party Probes)
-- Local network latency probe recorded 141.6ms TTFB
+- Local network latency probe recorded 168.1ms TTFB
 - External AI measurement was disabled during this collection pass (opt-in via --external-ai).
 
 ### 3. RankIntel Analysis & Syntheses

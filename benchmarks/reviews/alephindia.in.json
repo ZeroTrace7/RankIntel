@@ -30,20 +30,18 @@
   },
   "entity_profile": {
     "status": "AVAILABLE",
-    "total_entities_detected": 10,
+    "total_entities_detected": 8,
     "entity_types_detected": [
-      "PERSON",
-      "OTHER",
       "ORGANIZATION",
-      "LOCAL_BUSINESS"
+      "LOCAL_BUSINESS",
+      "PERSON",
+      "OTHER"
     ],
     "named_entities": [
       "Aleph INDIA",
       "Aleph INDIA",
       "Aleph INDIA",
-      "Aleph INDIA",
       "Aleph INDIA® 2009 - 2026",
-      "Contact Phone (+911234567890)",
       "Contact Phone (+911234567890)",
       "Contact Phone (+919818571192)",
       "Contact Email (inbox@alephindia.in)",
@@ -53,7 +51,7 @@
     "structured_vs_visible_comparisons": 3,
     "aligned_comparisons": 2,
     "divergent_comparisons": 1,
-    "entity_alignment_summary": "Detected 10 entity signals across 4 types (PERSON, OTHER, ORGANIZATION). Structured vs visible comparisons: 2 aligned, 1 divergent.",
+    "entity_alignment_summary": "Detected 8 entity signals across 4 types (ORGANIZATION, LOCAL_BUSINESS, PERSON). Structured vs visible comparisons: 2 aligned, 1 divergent.",
     "samples": [
       {
         "name": "Aleph INDIA",
@@ -71,13 +69,6 @@
       },
       {
         "name": "Aleph INDIA",
-        "type": "ORGANIZATION",
-        "source": "META_TAG",
-        "telephone": null,
-        "email": null
-      },
-      {
-        "name": "Aleph INDIA",
         "type": "PERSON",
         "source": "META_TAG",
         "telephone": null,
@@ -88,6 +79,13 @@
         "type": "ORGANIZATION",
         "source": "VISIBLE_HTML",
         "telephone": null,
+        "email": null
+      },
+      {
+        "name": "Contact Phone (+911234567890)",
+        "type": "LOCAL_BUSINESS",
+        "source": "VISIBLE_HTML",
+        "telephone": "+911234567890",
         "email": null
       }
     ]
@@ -111,7 +109,7 @@
   },
   "topic_taxonomy": {
     "status": "AVAILABLE",
-    "total_topics_detected": 217,
+    "total_topics_detected": 227,
     "primary_topics": [
       "INDIA®",
       "Certificate",
@@ -148,7 +146,7 @@
       "ISI",
       "Consultants"
     ],
-    "summary": "Identified 217 deterministic concept clusters. Primary topical anchors: INDIA®, Certificate, BIS, Certification, Aleph."
+    "summary": "Identified 227 deterministic concept clusters. Primary topical anchors: INDIA®, Certificate, BIS, Certification, Aleph."
   },
   "dominant_concepts": [
     "INDIA®",
@@ -162,26 +160,27 @@
   ],
   "search_intent": {
     "status": "AVAILABLE",
-    "primary_intent": "local",
+    "primary_intent": "transactional",
     "secondary_intents": [
-      "transactional",
+      "transactional_lead_gen",
       "navigational",
+      "local",
       "informational"
     ],
-    "intent_evidence_count": 49,
-    "intent_evidence_summary": "Primary search intent classified as 'local' supported by 49 observable structural signals. Secondary intent spectrum: transactional, navigational, informational."
+    "intent_evidence_count": 18,
+    "intent_evidence_summary": "Primary search intent classified as 'transactional' supported by 18 observable structural signals. Secondary intent spectrum: transactional_lead_gen, navigational, local, informational."
   },
   "topic_distribution": {
     "status": "AVAILABLE",
     "direct_primary_concepts_count": 5,
     "secondary_supported_concepts_count": 5,
-    "query_page_concepts_count": 258,
+    "query_page_concepts_count": 268,
     "total_words": 239,
     "paragraphs_count": 116,
-    "explained_topics_count": 90,
-    "mentioned_only_topics_count": 116,
-    "concept_density_per_100_words": 90.79,
-    "summary": "Content corpus comprises 239 words across 116 paragraphs. Topical distribution: 90 explained topics with structured units vs 116 mentioned-only topics (topic density: 90.79 per 100 words)."
+    "explained_topics_count": 89,
+    "mentioned_only_topics_count": 124,
+    "concept_density_per_100_words": 94.98,
+    "summary": "Content corpus comprises 239 words across 116 paragraphs. Topical distribution: 89 explained topics with structured units vs 124 mentioned-only topics (topic density: 94.98 per 100 words)."
   },
   "concentration_and_overlap": {
     "status": "AVAILABLE",
@@ -226,19 +225,19 @@
     "sitemaps_declared": [
       "https://alephindia.in/sitemap.xml"
     ],
-    "ttfb_ms": 325.8,
+    "ttfb_ms": 452.7,
     "performance_score": 85,
     "performance_source": "local_probe",
-    "summary": "Title length (63 chars: TRUNCATED_RISK), Meta description (298 chars: TRUNCATED_RISK). Headings: 1 H1, 9 H2, 57 H3. Structured data: 2 schema types declared across 2 blocks. TTFB latency: 325.8ms (local_probe)."
+    "summary": "Title length (63 chars: TRUNCATED_RISK), Meta description (298 chars: TRUNCATED_RISK). Headings: 1 H1, 9 H2, 57 H3. Structured data: 2 schema types declared across 2 blocks. TTFB latency: 452.7ms (local_probe)."
   },
   "accessibility_security": {
     "status": "AVAILABLE",
     "wcag_status": "FAIL",
-    "total_accessibility_violations": 63,
+    "total_accessibility_violations": 59,
     "critical_violations": 0,
-    "serious_violations": 63,
-    "rules_checked_count": 34,
-    "rules_passed_count": 31,
+    "serious_violations": 59,
+    "rules_checked_count": 32,
+    "rules_passed_count": 30,
     "a11y_disclaimer": "Automated checks evaluate observable criteria; non-certification scope.",
     "security_status": "FAIL",
     "is_https": true,
@@ -255,7 +254,7 @@
       "X-Powered-By: PHP/8.2.34"
     ],
     "security_findings_count": 7,
-    "summary": "Accessibility WCAG automated status: FAIL (63 violations: 63 serious, 0 critical). Security transport posture: FAIL (HTTPS: True, TLS days remaining: 68, HSTS: False, CSP: False, X-Frame-Options: MISSING)."
+    "summary": "Accessibility WCAG automated status: FAIL (59 violations: 59 serious, 0 critical). Security transport posture: FAIL (HTTPS: True, TLS days remaining: 68, HSTS: False, CSP: False, X-Frame-Options: MISSING)."
   },
   "internal_links": {
     "status": "AVAILABLE",
@@ -286,13 +285,13 @@
     "has_nosnippet": false,
     "has_data_nosnippet": false,
     "max_snippet": null,
-    "static_words": 4139,
-    "rendered_words": 0,
-    "word_count_delta": 0,
-    "rendering_impact_summary": "Static HTML observed (4139 words); browser DOM was not rendered in this pass.",
+    "static_words": 2546,
+    "rendered_words": 4139,
+    "word_count_delta": 1593,
+    "rendering_impact_summary": "Rendered HTML yields 1593 additional words (4139 vs 2546 raw). Some retrieval systems may have reduced access to this content if they do not execute client-side JavaScript.",
     "llms_txt_present": false,
     "geo_score": 42,
-    "summary": "Bot access: 6/6 search indexers, 3/3 training scrapers permitted. WAF status: CHALLENGE/BLOCK DETECTED (Cloudflare). Snippet directives: snippets allowed. Word count rendering delta: 0 words (4139 static vs 0 rendered). /llms.txt manifest: Missing. GEO Score: 42/100."
+    "summary": "Bot access: 6/6 search indexers, 3/3 training scrapers permitted. WAF status: CHALLENGE/BLOCK DETECTED (Cloudflare). Snippet directives: snippets allowed. Word count rendering delta: 1593 words (2546 static vs 4139 rendered). /llms.txt manifest: Missing. GEO Score: 42/100."
   },
   "answerability": {
     "status": "AVAILABLE",
@@ -309,8 +308,8 @@
     "definition_patterns": "ABSENT",
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
-    "explained_topics_count": 90,
-    "mentioned_only_topics_count": 116,
+    "explained_topics_count": 89,
+    "mentioned_only_topics_count": 124,
     "unsupported_heading_topics_count": 24,
     "unsupported_headings_sample": [
       "Latest Regulatory Updates",
@@ -319,7 +318,7 @@
       "Recognitions That ReflectOurCommitment t",
       "Industry expertiseAcross Diverse Sectors"
     ],
-    "summary": "Discovered 14 observable information units across 5 structural types (LOCATION_CONTACT:1, LIST:5, FACTUAL_STATEMENT:5, DIRECT_ANSWER:2, SERVICE_DESCRIPTION:1). Topical support: 90 explained topics with explicit answerable structures, 116 mentioned-only topics, 24 unsupported headings."
+    "summary": "Discovered 14 observable information units across 5 structural types (LOCATION_CONTACT:1, LIST:5, FACTUAL_STATEMENT:5, DIRECT_ANSWER:2, SERVICE_DESCRIPTION:1). Topical support: 89 explained topics with explicit answerable structures, 124 mentioned-only topics, 24 unsupported headings."
   },
   "claim_grounding": {
     "status": "AVAILABLE",
@@ -432,12 +431,13 @@
       "Robots.txt found: True",
       "Schema types declared: WebSite, Organization",
       "HTTPS enforced: True",
-      "Server latency probe: 325.8ms (local_probe)",
+      "Server latency probe: 452.7ms (local_probe)",
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
-      "Static HTML contains 4139 words.",
+      "Static HTML contains 2546 words.",
+      "Rendered browser DOM contains 4139 words (delta: +1593 words).",
       "Detected 14 distinct observable information unit(s) across 5 structural types.",
-      "Evaluated 258 topic(s): 90 explained with explicit units, 116 mentioned only, 24 unsupported headings.",
+      "Evaluated 268 topic(s): 89 explained with explicit units, 124 mentioned only, 24 unsupported headings.",
       "Structure 'DIRECT_ANSWER': 2 unit(s) observed.",
       "Structure 'FACTUAL_STATEMENT': 5 unit(s) observed.",
       "Structure 'LIST': 5 unit(s) observed.",
@@ -450,7 +450,7 @@
       "Mapped 22 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 325.8ms TTFB",
+      "Local network latency probe recorded 452.7ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -677,7 +677,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 326ms",
+      "finding": "TTFB Latency: 453ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -717,7 +717,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "WCAG AA Automated Status: FAIL (63 violations)",
+      "finding": "WCAG AA Automated Status: FAIL (59 violations)",
       "engine": "axe_core_playwright",
       "source_file": "HTML DOM",
       "confidence": "high",
@@ -757,7 +757,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Detection: 10 entity signals (8 organization/business)",
+      "finding": "Entity Detection: 8 entity signals (6 organization/business)",
       "engine": "entity_engine",
       "source_file": "JSON-LD & HTML DOM",
       "confidence": "high",
@@ -805,7 +805,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 278 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 288 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -829,7 +829,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 217 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 227 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -837,7 +837,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 151 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 224 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -845,7 +845,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 258 observed concepts mapped to page (20 DIRECT, 124 SUPPORTED)",
+      "finding": "Query-Page Mapping: 268 observed concepts mapped to page (20 DIRECT, 133 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -853,7 +853,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 20 direct primary concepts, 124 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 20 direct primary concepts, 133 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -861,7 +861,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'local' (49 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (18 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -869,7 +869,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'local' based on 65 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 7 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
@@ -893,6 +893,14 @@
       "contradicted_by": []
     },
     {
+      "finding": "Content Availability Delta: +1593 words in rendered DOM",
+      "engine": "retrieval_readiness_engine",
+      "source_file": "DOM (hydration comparison)",
+      "confidence": "high",
+      "confirmed_by": [],
+      "contradicted_by": []
+    },
+    {
       "finding": "Observable Information Units: 14 unit(s) across 5 structural types",
       "engine": "answerability_engine",
       "source_file": "DOM & Schema Structure",
@@ -901,7 +909,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Phase 9 Topic Explanations: 90 topic(s) substantiated by explicit answerable structures",
+      "finding": "Phase 9 Topic Explanations: 89 topic(s) substantiated by explicit answerable structures",
       "engine": "answerability_engine",
       "source_file": "Heading & Body Passages",
       "confidence": "high",
@@ -990,8 +998,8 @@
     "status_code": 200,
     "word_count": 239,
     "title_length": 63,
-    "entities_count": 10,
-    "topics_count": 217,
+    "entities_count": 8,
+    "topics_count": 227,
     "units_count": 14,
     "claims_count": 20,
     "visual_assets": 351,

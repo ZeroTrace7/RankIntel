@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 18.84,
+  "execution_time_sec": 19.59,
   "overall_health_score": 68,
   "technical_health_score": 90,
   "geo_readiness_score": 42,
@@ -62,7 +62,7 @@
     ],
     "schema_blocks_count": 2,
     "schema_validation_issues": [],
-    "ttfb_ms": 443.7,
+    "ttfb_ms": 452.7,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -75,38 +75,14 @@
     "wcag_status": "FAIL",
     "engine_source": "axe_core_playwright",
     "browser_evaluated": true,
-    "total_violations": 63,
+    "total_violations": 59,
     "critical_count": 0,
-    "serious_count": 63,
+    "serious_count": 59,
     "moderate_count": 0,
     "minor_count": 0,
-    "rules_checked_count": 34,
-    "rules_passed_count": 31,
+    "rules_checked_count": 32,
+    "rules_passed_count": 30,
     "violation_samples": [
-      {
-        "rule_id": "color-contrast",
-        "severity": "SERIOUS",
-        "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.56 (foreground color: #94a3b8, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-      },
-      {
-        "rule_id": "color-contrast",
-        "severity": "SERIOUS",
-        "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #6b7280, background color: #eef0f5, font size: 9.4pt (12.5px), font weight: normal). Expected contrast ratio of 4.5:1"
-      },
-      {
-        "rule_id": "color-contrast",
-        "severity": "SERIOUS",
-        "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.29 (foreground color: #46aefd, background color: #f8fafc, font size: 9.8pt (13.12px), font weight: bold). Expected contrast ratio of 4.5:1"
-      },
-      {
-        "rule_id": "color-contrast",
-        "severity": "SERIOUS",
-        "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.56 (foreground color: #94a3b8, background color: #ffffff, font size: 9.6pt (12.8px), font weight: normal). Expected contrast ratio of 4.5:1"
-      },
       {
         "rule_id": "nested-interactive",
         "severity": "SERIOUS",
@@ -142,6 +118,30 @@
         "severity": "SERIOUS",
         "description": "Ensure touch target have sufficient size and space",
         "failure_summary": "Fix any of the following:\n  Target has insufficient size (7px by 7px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 19px instead of at least 24px."
+      },
+      {
+        "rule_id": "target-size",
+        "severity": "SERIOUS",
+        "description": "Ensure touch target have sufficient size and space",
+        "failure_summary": "Fix any of the following:\n  Target has insufficient size (22px by 7px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 19px instead of at least 24px."
+      },
+      {
+        "rule_id": "target-size",
+        "severity": "SERIOUS",
+        "description": "Ensure touch target have sufficient size and space",
+        "failure_summary": "Fix any of the following:\n  Target has insufficient size (7px by 7px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 19px instead of at least 24px."
+      },
+      {
+        "rule_id": "target-size",
+        "severity": "SERIOUS",
+        "description": "Ensure touch target have sufficient size and space",
+        "failure_summary": "Fix any of the following:\n  Target has insufficient size (245px by 22.4px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 0px instead of at least 24px."
+      },
+      {
+        "rule_id": "target-size",
+        "severity": "SERIOUS",
+        "description": "Ensure touch target have sufficient size and space",
+        "failure_summary": "Fix any of the following:\n  Target has insufficient size (245px by 22.4px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 0px instead of at least 24px."
       }
     ],
     "disclaimer": "Automated checks evaluate observable criteria; non-certification scope.",
@@ -242,7 +242,7 @@
     "notes": [
       "Extraction method: SEMANTIC_ARTICLE yielded 239 main content words (4334 total body words).",
       "Content-to-body ratio: 5.5%.",
-      "Exact main-content SHA-256: f4b36f8a8d212849..., Full HTML SHA-256: 04cefb294255f6c8...",
+      "Exact main-content SHA-256: f4b36f8a8d212849..., Full HTML SHA-256: 5b303dd6e4524f5a...",
       "SimHash fingerprint: 720f44728969af4d."
     ]
   },
@@ -260,10 +260,10 @@
       "Contact Email (info@alephindia.in)"
     ],
     "entity_types_detected": [
+      "ORGANIZATION",
       "LOCAL_BUSINESS",
       "PERSON",
-      "OTHER",
-      "ORGANIZATION"
+      "OTHER"
     ],
     "relationships_count": 7,
     "structured_vs_visible_comparisons_count": 3,
@@ -532,7 +532,7 @@
       "Robots.txt found: True",
       "Schema types declared: WebSite, Organization",
       "HTTPS enforced: True",
-      "Server latency probe: 443.7ms (local_probe)",
+      "Server latency probe: 452.7ms (local_probe)",
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
       "Static HTML contains 2546 words.",
@@ -551,7 +551,7 @@
       "Mapped 22 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 443.7ms TTFB",
+      "Local network latency probe recorded 452.7ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -778,7 +778,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 444ms",
+      "finding": "TTFB Latency: 453ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -818,7 +818,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "WCAG AA Automated Status: FAIL (63 violations)",
+      "finding": "WCAG AA Automated Status: FAIL (59 violations)",
       "engine": "axe_core_playwright",
       "source_file": "HTML DOM",
       "confidence": "high",

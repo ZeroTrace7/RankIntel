@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 5.15,
+  "execution_time_sec": 4.83,
   "overall_health_score": 59,
   "technical_health_score": 80,
   "geo_readiness_score": 30,
@@ -59,7 +59,7 @@
     "detected_schema_types": [],
     "schema_blocks_count": 0,
     "schema_validation_issues": [],
-    "ttfb_ms": 78.6,
+    "ttfb_ms": 80.2,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -172,7 +172,7 @@
     "notes": [
       "Extraction method: SEMANTIC_MAIN yielded 650 main content words (1005 total body words).",
       "Content-to-body ratio: 64.7%.",
-      "Exact main-content SHA-256: e67647d457796dc8..., Full HTML SHA-256: 3eeb8005dbb0ee4c...",
+      "Exact main-content SHA-256: e67647d457796dc8..., Full HTML SHA-256: c98d78bdccbd0302...",
       "SimHash fingerprint: 97750d29c7b88dba."
     ]
   },
@@ -239,8 +239,8 @@
     "topics_detected_count": 117,
     "topics_sample": [
       "research",
-      "Sales",
       "ZaubaCorp",
+      "Sales",
       "business",
       "Market",
       "Art",
@@ -399,7 +399,7 @@
       "Robots.txt found: True",
       "Schema types declared: None",
       "HTTPS enforced: True",
-      "Server latency probe: 78.6ms (local_probe)",
+      "Server latency probe: 80.2ms (local_probe)",
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
       "Static HTML contains 864 words.",
@@ -416,7 +416,7 @@
       "Mapped 5 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 78.6ms TTFB",
+      "Local network latency probe recorded 80.2ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -622,7 +622,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 79ms",
+      "finding": "TTFB Latency: 80ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",

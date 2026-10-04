@@ -29,19 +29,20 @@
   },
   "entity_profile": {
     "status": "AVAILABLE",
-    "total_entities_detected": 2,
+    "total_entities_detected": 3,
     "entity_types_detected": [
       "ORGANIZATION"
     ],
     "named_entities": [
       "Contact Email (info@qualityinternational.org)",
-      "Contact Email (info@qengineering.in)"
+      "Contact Email (info@qengineering.in)",
+      "Quality International"
     ],
-    "relationships_count": 0,
+    "relationships_count": 1,
     "structured_vs_visible_comparisons": 0,
     "aligned_comparisons": 0,
     "divergent_comparisons": 0,
-    "entity_alignment_summary": "Detected 2 entity signals across 1 types (ORGANIZATION). Structured vs visible comparisons: 0 aligned, 0 divergent.",
+    "entity_alignment_summary": "Detected 3 entity signals across 1 types (ORGANIZATION). Structured vs visible comparisons: 0 aligned, 0 divergent.",
     "samples": [
       {
         "name": "Contact Email (info@qualityinternational.org)",
@@ -56,6 +57,13 @@
         "source": "VISIBLE_HTML",
         "telephone": null,
         "email": "info@qengineering.in"
+      },
+      {
+        "name": "Quality International",
+        "type": "ORGANIZATION",
+        "source": "VISIBLE_HTML",
+        "telephone": null,
+        "email": null
       }
     ]
   },
@@ -74,11 +82,11 @@
   },
   "topic_taxonomy": {
     "status": "AVAILABLE",
-    "total_topics_detected": 76,
+    "total_topics_detected": 79,
     "primary_topics": [
       "Quality",
-      "Japan",
       "Quality International",
+      "Japan",
       "Office",
       "International"
     ],
@@ -91,8 +99,8 @@
     ],
     "topics_sample": [
       "Quality",
-      "Japan",
       "Quality International",
+      "Japan",
       "Office",
       "International",
       "Delhi",
@@ -103,20 +111,20 @@
     ],
     "dominant_concepts": [
       "Quality",
-      "Japan",
       "Quality International",
+      "Japan",
       "Office",
       "International",
       "Delhi",
       "Delhi Office :",
       "Head"
     ],
-    "summary": "Identified 76 deterministic concept clusters. Primary topical anchors: Quality, Japan, Quality International, Office, International."
+    "summary": "Identified 79 deterministic concept clusters. Primary topical anchors: Quality, Quality International, Japan, Office, International."
   },
   "dominant_concepts": [
     "Quality",
-    "Japan",
     "Quality International",
+    "Japan",
     "Office",
     "International",
     "Delhi",
@@ -125,24 +133,26 @@
   ],
   "search_intent": {
     "status": "AVAILABLE",
-    "primary_intent": "transactional",
+    "primary_intent": "navigational",
     "secondary_intents": [
-      "local"
+      "local",
+      "transactional",
+      "transactional_lead_gen"
     ],
-    "intent_evidence_count": 6,
-    "intent_evidence_summary": "Primary search intent classified as 'transactional' supported by 6 observable structural signals. Secondary intent spectrum: local."
+    "intent_evidence_count": 7,
+    "intent_evidence_summary": "Primary search intent classified as 'navigational' supported by 7 observable structural signals. Secondary intent spectrum: local, transactional, transactional_lead_gen."
   },
   "topic_distribution": {
     "status": "AVAILABLE",
     "direct_primary_concepts_count": 5,
     "secondary_supported_concepts_count": 5,
-    "query_page_concepts_count": 85,
+    "query_page_concepts_count": 95,
     "total_words": 578,
     "paragraphs_count": 73,
     "explained_topics_count": 0,
-    "mentioned_only_topics_count": 43,
-    "concept_density_per_100_words": 13.15,
-    "summary": "Content corpus comprises 578 words across 73 paragraphs. Topical distribution: 0 explained topics with structured units vs 43 mentioned-only topics (topic density: 13.15 per 100 words)."
+    "mentioned_only_topics_count": 38,
+    "concept_density_per_100_words": 13.67,
+    "summary": "Content corpus comprises 578 words across 73 paragraphs. Topical distribution: 0 explained topics with structured units vs 38 mentioned-only topics (topic density: 13.67 per 100 words)."
   },
   "concentration_and_overlap": {
     "status": "AVAILABLE",
@@ -180,10 +190,10 @@
     "canonical_status": "MATCHING",
     "robots_txt_found": true,
     "sitemaps_declared": [],
-    "ttfb_ms": 141.6,
+    "ttfb_ms": 168.1,
     "performance_score": 85,
     "performance_source": "local_probe",
-    "summary": "Title length (23 chars: TOO_SHORT), Meta description (0 chars: MISSING). Headings: 3 H1, 3 H2, 14 H3. Structured data: 0 schema types declared across 0 blocks. TTFB latency: 141.6ms (local_probe)."
+    "summary": "Title length (23 chars: TOO_SHORT), Meta description (0 chars: MISSING). Headings: 3 H1, 3 H2, 14 H3. Structured data: 0 schema types declared across 0 blocks. TTFB latency: 168.1ms (local_probe)."
   },
   "accessibility_security": {
     "status": "AVAILABLE",
@@ -240,13 +250,13 @@
     "has_nosnippet": false,
     "has_data_nosnippet": false,
     "max_snippet": null,
-    "static_words": 571,
-    "rendered_words": 0,
-    "word_count_delta": 0,
-    "rendering_impact_summary": "Static HTML observed (571 words); browser DOM was not rendered in this pass.",
+    "static_words": 560,
+    "rendered_words": 571,
+    "word_count_delta": 11,
+    "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (560 raw vs 571 rendered).",
     "llms_txt_present": false,
     "geo_score": 30,
-    "summary": "Bot access: 6/6 search indexers, 3/3 training scrapers permitted. WAF status: No WAF challenge barriers observed. Snippet directives: snippets allowed. Word count rendering delta: 0 words (571 static vs 0 rendered). /llms.txt manifest: Missing. GEO Score: 30/100."
+    "summary": "Bot access: 6/6 search indexers, 3/3 training scrapers permitted. WAF status: No WAF challenge barriers observed. Snippet directives: snippets allowed. Word count rendering delta: 11 words (560 static vs 571 rendered). /llms.txt manifest: Missing. GEO Score: 30/100."
   },
   "answerability": {
     "status": "INSUFFICIENT_EVIDENCE",
@@ -258,8 +268,8 @@
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
     "explained_topics_count": 0,
-    "mentioned_only_topics_count": 43,
-    "unsupported_heading_topics_count": 39,
+    "mentioned_only_topics_count": 38,
+    "unsupported_heading_topics_count": 38,
     "unsupported_headings_sample": [
       "Physical , Virtual , Material , Product ",
       "ISI MARK Certificates",
@@ -267,7 +277,7 @@
       "Technical Consultancy",
       "Quality Inspection"
     ],
-    "summary": "Discovered 0 observable information units across 0 structural types (none). Topical support: 0 explained topics with explicit answerable structures, 43 mentioned-only topics, 39 unsupported headings."
+    "summary": "Discovered 0 observable information units across 0 structural types (none). Topical support: 0 explained topics with explicit answerable structures, 38 mentioned-only topics, 38 unsupported headings."
   },
   "claim_grounding": {
     "status": "AVAILABLE",
@@ -279,7 +289,7 @@
     "structured_agreements_count": 0,
     "structured_disagreements_count": 0,
     "entity_consistency_breakdown": {
-      "PARTIALLY_CONSISTENT": 2
+      "PARTIALLY_CONSISTENT": 3
     },
     "grounding_ratio": 1.0,
     "summary": "Evaluated 4 visible factual assertions: 4 fully supported on-site, 0 partially supported, 0 uncorroborated, 0 contradicted (100% grounding ratio). Schema-DOM alignment: 0 agreements, 0 disagreements."
@@ -387,22 +397,23 @@
       "Robots.txt found: True",
       "Schema types declared: None",
       "HTTPS enforced: True",
-      "Server latency probe: 141.6ms (local_probe)",
+      "Server latency probe: 168.1ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
-      "Static HTML contains 571 words.",
+      "Static HTML contains 560 words.",
+      "Rendered browser DOM contains 571 words (delta: +11 words).",
       "Detected 0 distinct observable information unit(s) across 0 structural types.",
-      "Evaluated 85 topic(s): 0 explained with explicit units, 43 mentioned only, 39 unsupported headings.",
+      "Evaluated 95 topic(s): 0 explained with explicit units, 38 mentioned only, 38 unsupported headings.",
       "Detected 4 observable claim(s) on page https://qualityinternational.org/.",
       "On-site support status: 4 supported, 0 partially supported, 0 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 0 agreement(s), 0 explicit disagreement(s).",
-      "Evaluated 2 entity candidate(s) across 6 content surfaces.",
+      "Evaluated 3 entity candidate(s) across 6 content surfaces.",
       "Observed 27 visual asset(s): 20 informational, 2 with meaningful alt text, 0 with figure captions, 18 visual-only information gap(s).",
       "Observed 2 form(s) (1 labeled), 1 action button(s) (1 accessible names), 0 structured schema action(s), 0 WebMCP declaration(s).",
       "Mapped 5 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 141.6ms TTFB",
+      "Local network latency probe recorded 168.1ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -624,7 +635,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 142ms",
+      "finding": "TTFB Latency: 168ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -704,7 +715,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Detection: 2 entity signals (2 organization/business)",
+      "finding": "Entity Detection: 3 entity signals (3 organization/business)",
       "engine": "entity_engine",
       "source_file": "JSON-LD & HTML DOM",
       "confidence": "high",
@@ -728,7 +739,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 91 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 101 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -752,7 +763,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 76 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 79 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -760,7 +771,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 56 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 58 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -768,7 +779,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 85 observed concepts mapped to page (10 DIRECT, 42 SUPPORTED)",
+      "finding": "Query-Page Mapping: 95 observed concepts mapped to page (10 DIRECT, 52 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -776,7 +787,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 10 direct primary concepts, 42 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 10 direct primary concepts, 52 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -784,7 +795,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (6 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'navigational' (7 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -792,7 +803,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 4 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'navigational' based on 3 corroborating evidence points.",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
@@ -848,7 +859,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Entity Surface Consistency: 2 candidate(s) tracked across 6 content surfaces",
+      "finding": "Entity Surface Consistency: 3 candidate(s) tracked across 6 content surfaces",
       "engine": "claim_grounding_engine",
       "source_file": "DOM, Headings, Meta, JSON-LD, Units",
       "confidence": "high",
@@ -905,8 +916,8 @@
     "status_code": 200,
     "word_count": 578,
     "title_length": 23,
-    "entities_count": 2,
-    "topics_count": 76,
+    "entities_count": 3,
+    "topics_count": 79,
     "units_count": 0,
     "claims_count": 4,
     "visual_assets": 27,

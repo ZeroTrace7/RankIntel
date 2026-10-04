@@ -34,10 +34,10 @@
 ## 2. Entities & Knowledge Graph Representation
 - **Status:** `AVAILABLE`
 - **Total Entities Detected:** 9
-- **Entity Types:** OTHER, ORGANIZATION, LOCAL_BUSINESS
+- **Entity Types:** ORGANIZATION, LOCAL_BUSINESS, OTHER
 - **Named Entities (Sample):** SQC Certification Services Pvt. Ltd, SQC Certification Provides Globally recognized ISO Certifications, SQC Certification Services Pvt. Ltd, SQC Certification Services Pvt. Ltd - Quality as our Signature, Satisfaction as Our Promise, 2026, Contact Phone (20+919990747758)
 - **Structured vs Visible Alignment:** 1 aligned, 1 divergent across 2 comparisons.
-- **Synthesis:** Detected 9 entity signals across 3 types (OTHER, ORGANIZATION, LOCAL_BUSINESS). Structured vs visible comparisons: 1 aligned, 1 divergent.
+- **Synthesis:** Detected 9 entity signals across 3 types (ORGANIZATION, LOCAL_BUSINESS, OTHER). Structured vs visible comparisons: 1 aligned, 1 divergent.
 
 ## 3. Observable Services & Products
 - **Status:** `AVAILABLE`
@@ -46,29 +46,30 @@
   - Certification
   - Certifications
   - About SQC Certification
-- **Synthesis:** Evidenced 3 distinct core service/capability domains and 0 explicit on-page service description units.
+  - certification iso
+- **Synthesis:** Evidenced 4 distinct core service/capability domains and 0 explicit on-page service description units.
 
 ## 4 & 5. Topic Taxonomy & Dominant Concepts
 - **Status:** `AVAILABLE`
-- **Total Topics Detected:** 123
+- **Total Topics Detected:** 133
 - **Primary Topics (Top 5):** ISO, Certification, SQC, recognized, Certifications
-- **Supporting Topics (Sample):** Globally, About SQC Certification, Provides, services, IEC
+- **Supporting Topics (Sample):** Globally, About SQC Certification, Provides, certification iso, services
 - **Dominant Semantic Concepts:** ISO, Certification, SQC, recognized, Certifications, Globally, About SQC Certification, Provides
-- **Synthesis:** Identified 123 deterministic concept clusters. Primary topical anchors: ISO, Certification, SQC, recognized, Certifications.
+- **Synthesis:** Identified 133 deterministic concept clusters. Primary topical anchors: ISO, Certification, SQC, recognized, Certifications.
 
 ## 6. Observable Search Intent
 - **Status:** `AVAILABLE`
 - **Primary Intent:** `transactional`
-- **Secondary Intents:** `navigational`, `local`
+- **Secondary Intents:** `navigational`, `local`, `transactional_lead_gen`
 - **Supporting Evidence Count:** 9 observable signals
-- **Synthesis:** Primary search intent classified as 'transactional' supported by 9 observable structural signals. Secondary intent spectrum: navigational, local.
+- **Synthesis:** Primary search intent classified as 'transactional' supported by 9 observable structural signals. Secondary intent spectrum: navigational, local, transactional_lead_gen.
 
 ## 7. Topic-to-Page Distribution
 - **Status:** `AVAILABLE`
 - **Content Length:** 963 words across 19 paragraphs
 - **Topic Breadth:** 0 explained topics vs 23 mentioned-only topics
-- **Topic Density:** 12.77 concepts per 100 words
-- **Synthesis:** Content corpus comprises 963 words across 19 paragraphs. Topical distribution: 0 explained topics with structured units vs 23 mentioned-only topics (topic density: 12.77 per 100 words).
+- **Topic Density:** 13.81 concepts per 100 words
+- **Synthesis:** Content corpus comprises 963 words across 19 paragraphs. Topical distribution: 0 explained topics with structured units vs 23 mentioned-only topics (topic density: 13.81 per 100 words).
 
 ## 8. Page Concentration & Topical Overlap
 - **Status:** `AVAILABLE`
@@ -85,10 +86,10 @@
 - **Page Title (65 chars):** "SQC Certification Provides Globally recognized ISO Certifications" [`TRUNCATED_RISK`]
 - **Meta Description (152 chars):** "We specialize in assessing and certifying organizations to internationally recognized standards such as ISO 9001, 14001, 45001, 37001, 42001, and 27001." [`OPTIMAL`]
 - **Heading Structure:** 1 H1, 22 H2, 10 H3
-- **Structured Data:** 4 types (WebSite, Organization, WebPage, BreadcrumbList) across 4 blocks
+- **Structured Data:** 4 types (BreadcrumbList, WebSite, Organization, WebPage) across 4 blocks
 - **Canonical URL:** `https://sqccertification.com/` [`MATCHING`]
 - **Robots.txt:** Found | Sitemaps declared: 2
-- **Latency (TTFB):** 699.7ms (local_probe)
+- **Latency (TTFB):** 796.9ms (local_probe)
 
 ## 10. Accessibility & Transport Security
 - **WCAG 2.1 Automated Status:** `FAIL` (6 violations: 0 critical, 6 serious)
@@ -109,7 +110,7 @@
 - **Bot Access Matrix:** 6/6 search indexers, 3/3 training scrapers allowed
 - **WAF / Barrier:** CHALLENGE/BLOCK DETECTED (unknown)
 - **Snippet Directives:** Snippets allowed
-- **Word Count Rendering Impact:** 0 words delta (939 static vs 0 rendered)
+- **Word Count Rendering Impact:** 22 words delta (917 static vs 939 rendered)
 - **/llms.txt Manifest:** Missing
 - **GEO Readiness Score:** 47/100
 
@@ -118,7 +119,7 @@
 - **Total Units Detected:** 0
 - **Units Breakdown:** No structured information units detected on-site.
 - **Explained vs Mentioned Topics:** 0 explained, 23 mentioned only
-- **Unsupported Headings:** 107
+- **Unsupported Headings:** 116
 
 ## 14. Claim Grounding & Assertion Support
 - **Status:** `AVAILABLE`
@@ -177,13 +178,13 @@
 - Internal links observed: 49
 - External links observed: 176
 - Robots.txt found: True
-- Schema types declared: WebSite, Organization, WebPage, BreadcrumbList
+- Schema types declared: BreadcrumbList, WebSite, Organization, WebPage
 - HTTPS enforced: True
-- Server latency probe: 699.7ms (local_probe)
+- Server latency probe: 796.9ms (local_probe)
 - HTTP Status: 200
 
 ### 2. External Observations (Third-Party Probes)
-- Local network latency probe recorded 699.7ms TTFB
+- Local network latency probe recorded 796.9ms TTFB
 - External AI measurement was disabled during this collection pass (opt-in via --external-ai).
 
 ### 3. RankIntel Analysis & Syntheses
