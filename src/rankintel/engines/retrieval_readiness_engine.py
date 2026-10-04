@@ -380,6 +380,7 @@ class RetrievalReadinessEngine:
         response_headers: Optional[Dict[str, Any]] = None,
         robots_content: Optional[str] = None,
         robots_found: bool = True,
+        bot_matrix: Optional[Any] = None,
         target_path: Optional[str] = None,
         core_bots_only: bool = True,
     ) -> RetrievalReadinessEvidence:
@@ -422,6 +423,7 @@ class RetrievalReadinessEngine:
         # 5. Robots.txt evaluation
         matrix_engine = BotMatrixEngine()
         blocks = matrix_engine.parse_robots_txt(robots_content or "") if (robots_found and robots_content) else []
+        bot_matrix_entries = {e.bot_name: e for e in bot_matrix.entries} if (bot_matrix and hasattr(bot_matrix, "entries")) else {}
 
         selected_bots = CORE_RETRIEVAL_BOTS if core_bots_only else list(MASTER_BOT_REGISTRY.keys())
         bot_records: Dict[str, BotRetrievalAccessRecord] = {}
@@ -443,7 +445,18 @@ class RetrievalReadinessEngine:
             notes: List[str] = []
 
             # Evaluate robots.txt status
-            if not robots_found:
+            if b_name in bot_matrix_entries:
+                bm_entry = bot_matrix_entries[b_name]
+                robots_status = RetrievalReadinessStatus.ALLOWED if bm_entry.status == "ALLOWED" else RetrievalReadinessStatus.DISALLOWED
+                rule_src = bm_entry.rule_source
+                matched_dir = bm_entry.matched_directive
+                line_no = bm_entry.line_number
+                raw_pat = bm_entry.raw_pattern
+                if matched_dir:
+                    notes.append(f"robots.txt directive matched: {matched_dir} (line {line_no})")
+                elif rule_src == "default_allow":
+                    notes.append("Permitted by default allow.")
+            elif not robots_found:
                 robots_status = RetrievalReadinessStatus.ALLOWED
                 rule_src = "default_allow"
                 matched_dir = None
@@ -457,7 +470,7 @@ class RetrievalReadinessEngine:
                 matched_dir = None
                 line_no = None
                 raw_pat = None
-                notes.append("User-initiated on-demand fetcher; generally operates independently of robots.txt.")
+                notes.append("User-initiated on-demand fetcher; operates independently of robots.txt.")
             else:
                 st_str, rule_src, matched_dir, line_no, raw_pat = matrix_engine.evaluate_bot(
                     b_name, blocks, path
