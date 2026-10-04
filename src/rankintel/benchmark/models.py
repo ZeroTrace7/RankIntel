@@ -677,3 +677,238 @@ class BenchmarkReviewDataset(BaseModel):
     sites_reviewed: int = 0
     reviews: Dict[str, WebsiteIntelligenceReview] = Field(default_factory=dict)
     summary_index: List[Dict[str, Any]] = Field(default_factory=list)
+
+
+# ── Phase 11.3 Cross-Site Comparison & Void Analysis Models ──────────────────
+
+class ComparisonState(str, Enum):
+    """Explicit epistemological state for cross-site comparisons."""
+    OBSERVED_DIFFERENCE = "OBSERVED_DIFFERENCE"
+    COMMON = "COMMON"
+    UNIQUE = "UNIQUE"
+    PARTIAL = "PARTIAL"
+    INSUFFICIENT_EVIDENCE = "INSUFFICIENT_EVIDENCE"
+    NOT_COMPARABLE = "NOT_COMPARABLE"
+
+
+class CrossSiteMatrixItem(BaseModel):
+    """Summary row for cross-site comparison matrices across the 11-site benchmark."""
+    domain: str
+    name: str = ""
+    role: str = "competitor"  # "competitor" or "target" / "sunrise"
+    health_score: int = 0
+    technical_health_score: int = 0
+    geo_readiness_score: int = 0
+    trust_score: int = 0
+    performance_score: int = 0
+    primary_intent: str = "INFORMATIONAL"
+    entities_count: int = 0
+    topics_count: int = 0
+    dominant_concepts_count: int = 0
+    schema_types_count: int = 0
+    answer_units_count: int = 0
+    claims_grounded_ratio: float = 0.0
+    visual_assets_count: int = 0
+    alt_coverage_ratio: float = 0.0
+    action_surfaces_count: int = 0
+    a11y_violations_count: int = 0
+    security_findings_count: int = 0
+    waf_barrier: str = "None"
+    llms_txt_present: bool = False
+
+
+class EntityComparisonAnalysis(BaseModel):
+    """Common vs unique entities and entity types across the benchmark."""
+    total_unique_entities_across_benchmark: int = 0
+    common_entities: List[str] = Field(default_factory=list)
+    unique_entities_by_site: Dict[str, List[str]] = Field(default_factory=dict)
+    entity_types_coverage: Dict[str, List[str]] = Field(default_factory=dict)
+    entity_alignment_summary: Dict[str, str] = Field(default_factory=dict)
+    state: ComparisonState = ComparisonState.OBSERVED_DIFFERENCE
+    summary: str = ""
+
+
+class ServiceProductComparisonAnalysis(BaseModel):
+    """Common vs unique services/products across the benchmark."""
+    all_observed_services: List[str] = Field(default_factory=list)
+    common_services: List[str] = Field(default_factory=list)
+    unique_services_by_site: Dict[str, List[str]] = Field(default_factory=dict)
+    service_offerings_by_site: Dict[str, List[str]] = Field(default_factory=dict)
+    target_common_services: List[str] = Field(default_factory=list)
+    target_unique_services: List[str] = Field(default_factory=list)
+    state: ComparisonState = ComparisonState.OBSERVED_DIFFERENCE
+    summary: str = ""
+
+
+class TopicConceptComparisonAnalysis(BaseModel):
+    """Topic and concept overlap, breadth, and Jaccard similarity matrix."""
+    all_dominant_concepts: List[str] = Field(default_factory=list)
+    common_concepts: List[str] = Field(default_factory=list)
+    unique_concepts_by_site: Dict[str, List[str]] = Field(default_factory=dict)
+    jaccard_similarity_matrix: Dict[str, Dict[str, float]] = Field(default_factory=dict)
+    topic_breadth_by_site: Dict[str, int] = Field(default_factory=dict)
+    topic_breadth_tier: Dict[str, str] = Field(default_factory=dict)
+    target_concept_overlap_with_cohort: Dict[str, float] = Field(default_factory=dict)
+    state: ComparisonState = ComparisonState.OBSERVED_DIFFERENCE
+    summary: str = ""
+
+
+class SearchIntentComparisonAnalysis(BaseModel):
+    """Search intent distribution and corroborating structural signals."""
+    intent_distribution: Dict[str, int] = Field(default_factory=dict)
+    primary_intent_by_site: Dict[str, str] = Field(default_factory=dict)
+    secondary_intents_by_site: Dict[str, List[str]] = Field(default_factory=dict)
+    state: ComparisonState = ComparisonState.OBSERVED_DIFFERENCE
+    summary: str = ""
+
+
+class ConcentrationOverlapComparisonAnalysis(BaseModel):
+    """Content-to-boilerplate, title-H1 alignment, and cannibalization signals."""
+    content_to_boilerplate_by_site: Dict[str, float] = Field(default_factory=dict)
+    title_h1_overlap_by_site: Dict[str, float] = Field(default_factory=dict)
+    heading_hierarchy_valid_by_site: Dict[str, bool] = Field(default_factory=dict)
+    potential_cannibalization_counts: Dict[str, int] = Field(default_factory=dict)
+    state: ComparisonState = ComparisonState.OBSERVED_DIFFERENCE
+    summary: str = ""
+
+
+class SchemaCoverageComparisonAnalysis(BaseModel):
+    """Schema types detected, block counts, and structured data adoption."""
+    schema_adoption_counts: Dict[str, int] = Field(default_factory=dict)
+    all_detected_schema_types: List[str] = Field(default_factory=list)
+    schema_types_by_site: Dict[str, List[str]] = Field(default_factory=dict)
+    schema_distribution_across_benchmark: Dict[str, int] = Field(default_factory=dict)
+    sites_with_no_schema: List[str] = Field(default_factory=list)
+    target_schema_status: str = "ABSENT"
+    state: ComparisonState = ComparisonState.OBSERVED_DIFFERENCE
+    summary: str = ""
+
+
+class AnswerabilityComparisonAnalysis(BaseModel):
+    """Answer units across sites and structural types distribution."""
+    total_units_by_site: Dict[str, int] = Field(default_factory=dict)
+    unit_types_distribution_across_benchmark: Dict[str, int] = Field(default_factory=dict)
+    units_by_site_and_type: Dict[str, Dict[str, int]] = Field(default_factory=dict)
+    structural_diversity_by_site: Dict[str, int] = Field(default_factory=dict)
+    zero_unit_sites: List[str] = Field(default_factory=list)
+    state: ComparisonState = ComparisonState.OBSERVED_DIFFERENCE
+    summary: str = ""
+
+
+class ClaimGroundingComparisonAnalysis(BaseModel):
+    """Claim grounding ratios, supported claims, and verification rates."""
+    total_claims_by_site: Dict[str, int] = Field(default_factory=dict)
+    supported_claims_by_site: Dict[str, int] = Field(default_factory=dict)
+    grounding_ratios_by_site: Dict[str, float] = Field(default_factory=dict)
+    contradicted_claims_by_site: Dict[str, int] = Field(default_factory=dict)
+    state: ComparisonState = ComparisonState.OBSERVED_DIFFERENCE
+    summary: str = ""
+
+
+class AiRetrievalComparisonAnalysis(BaseModel):
+    """12-bot access matrix, WAF challenge barriers, and GEO scores."""
+    search_bots_allowed_by_site: Dict[str, int] = Field(default_factory=dict)
+    ai_bots_allowed_by_site: Dict[str, int] = Field(default_factory=dict)
+    waf_barrier_by_site: Dict[str, str] = Field(default_factory=dict)
+    word_count_delta_by_site: Dict[str, int] = Field(default_factory=dict)
+    llms_txt_presence_by_site: Dict[str, bool] = Field(default_factory=dict)
+    geo_score_by_site: Dict[str, int] = Field(default_factory=dict)
+    state: ComparisonState = ComparisonState.OBSERVED_DIFFERENCE
+    summary: str = ""
+
+
+class MultimodalAgentComparisonAnalysis(BaseModel):
+    """Visual assets, alt coverage, and autonomous agent action surfaces."""
+    visual_assets_by_site: Dict[str, int] = Field(default_factory=dict)
+    alt_coverage_ratio_by_site: Dict[str, float] = Field(default_factory=dict)
+    visual_gaps_by_site: Dict[str, int] = Field(default_factory=dict)
+    forms_by_site: Dict[str, int] = Field(default_factory=dict)
+    buttons_by_site: Dict[str, int] = Field(default_factory=dict)
+    schema_actions_by_site: Dict[str, int] = Field(default_factory=dict)
+    state: ComparisonState = ComparisonState.OBSERVED_DIFFERENCE
+    summary: str = ""
+
+
+class TechnicalA11ySecurityComparisonAnalysis(BaseModel):
+    """Technical SEO, automated WCAG 2.1 AA violations, and security headers."""
+    title_length_by_site: Dict[str, int] = Field(default_factory=dict)
+    meta_desc_length_by_site: Dict[str, int] = Field(default_factory=dict)
+    ttfb_ms_by_site: Dict[str, float] = Field(default_factory=dict)
+    a11y_violations_by_site: Dict[str, int] = Field(default_factory=dict)
+    critical_a11y_violations_by_site: Dict[str, int] = Field(default_factory=dict)
+    a11y_disclaimer: str = "Automated checks evaluate observable criteria; non-certification scope."
+    https_by_site: Dict[str, bool] = Field(default_factory=dict)
+    hsts_by_site: Dict[str, bool] = Field(default_factory=dict)
+    csp_by_site: Dict[str, bool] = Field(default_factory=dict)
+    security_findings_by_site: Dict[str, int] = Field(default_factory=dict)
+    state: ComparisonState = ComparisonState.OBSERVED_DIFFERENCE
+    summary: str = ""
+
+
+class ObservableVoidItem(BaseModel):
+    """Deterministic, provenance-preserving representation of an observable gap or void."""
+    void_id: str
+    category: str  # "SCHEMA", "ANSWERABILITY", "MULTIMODAL", "ACTION_SURFACE", "TOPIC", "SERVICE", "SECURITY", "GEO"
+    title: str
+    description: str
+    state: ComparisonState = ComparisonState.OBSERVED_DIFFERENCE
+    source_sites_present: List[str] = Field(default_factory=list)
+    source_sites_absent: List[str] = Field(default_factory=list)
+    target_site_status: str = "ABSENT"  # "PRESENT", "ABSENT", "PARTIAL", "INSUFFICIENT_EVIDENCE"
+    supporting_fields: List[str] = Field(default_factory=list)
+    provenance_sources: List[str] = Field(default_factory=list)
+    evidence_references: List[Dict[str, Any]] = Field(default_factory=list)
+    epistemic_tier: str = "ANALYSIS"
+
+
+class TargetVsBenchmarkComparison(BaseModel):
+    """Target-centric comparison of sunrisetesting.vercel.app against the 10-site competitor benchmark cohort."""
+    target_domain: str = "sunrisetesting.vercel.app"
+    benchmark_cohort_domains: List[str] = Field(default_factory=list)
+    target_role: str = "sunrise"
+    common_capabilities: List[str] = Field(default_factory=list)
+    target_unique_capabilities: List[str] = Field(default_factory=list)
+    observable_voids: List[ObservableVoidItem] = Field(default_factory=list)
+    dimensional_deltas: List[Dict[str, Any]] = Field(default_factory=list)
+    summary: str = ""
+
+
+class EvidenceUncertaintyProfile(BaseModel):
+    """Evidence boundaries, crawl limitations, and comparison uncertainty."""
+    crawl_limitations_summary: str = ""
+    dimensional_statuses: Dict[str, str] = Field(default_factory=dict)
+    insufficient_evidence_notes: List[str] = Field(default_factory=list)
+    not_comparable_notes: List[str] = Field(default_factory=list)
+    epistemic_disclaimer: str = (
+        "All comparisons represent observable website differences derived solely from static DOM, "
+        "rendered browser DOM, HTTP headers, and robots.txt. No inference of commercial market leadership, "
+        "search engine rankings, traffic volume, or overall business performance is made."
+    )
+
+
+class BenchmarkComparisonReport(BaseModel):
+    """Complete, self-contained cross-site comparison and void analysis report."""
+    comparison_version: str = "11.3"
+    created_at: str
+    total_sites: int = 11
+    target_domain: str = "sunrisetesting.vercel.app"
+    cohort_domains: List[str] = Field(default_factory=list)
+    cross_site_matrix: List[CrossSiteMatrixItem] = Field(default_factory=list)
+    entity_comparison: EntityComparisonAnalysis = Field(default_factory=EntityComparisonAnalysis)
+    service_comparison: ServiceProductComparisonAnalysis = Field(default_factory=ServiceProductComparisonAnalysis)
+    topic_concept_comparison: TopicConceptComparisonAnalysis = Field(default_factory=TopicConceptComparisonAnalysis)
+    search_intent_comparison: SearchIntentComparisonAnalysis = Field(default_factory=SearchIntentComparisonAnalysis)
+    concentration_comparison: ConcentrationOverlapComparisonAnalysis = Field(default_factory=ConcentrationOverlapComparisonAnalysis)
+    schema_comparison: SchemaCoverageComparisonAnalysis = Field(default_factory=SchemaCoverageComparisonAnalysis)
+    answerability_comparison: AnswerabilityComparisonAnalysis = Field(default_factory=AnswerabilityComparisonAnalysis)
+    claim_grounding_comparison: ClaimGroundingComparisonAnalysis = Field(default_factory=ClaimGroundingComparisonAnalysis)
+    retrieval_comparison: AiRetrievalComparisonAnalysis = Field(default_factory=AiRetrievalComparisonAnalysis)
+    multimodal_agent_comparison: MultimodalAgentComparisonAnalysis = Field(default_factory=MultimodalAgentComparisonAnalysis)
+    technical_a11y_security_comparison: TechnicalA11ySecurityComparisonAnalysis = Field(default_factory=TechnicalA11ySecurityComparisonAnalysis)
+    observable_voids: List[ObservableVoidItem] = Field(default_factory=list)
+    target_vs_benchmark: TargetVsBenchmarkComparison = Field(default_factory=TargetVsBenchmarkComparison)
+    uncertainty_and_limitations: EvidenceUncertaintyProfile = Field(default_factory=EvidenceUncertaintyProfile)
+    epistemic_separation: EpistemicSeparation = Field(default_factory=EpistemicSeparation)
+    formula_invariance_verified: bool = True
+    provenance_tags: List[Dict[str, Any]] = Field(default_factory=list)
+

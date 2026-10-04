@@ -154,6 +154,26 @@ Whenever the user asks RankIntel to perform an "analysis", "audit", "validation"
   18. Evidence limitations and uncertainty
 - **Strict Offline Execution**: M11.2 operates purely in-memory on normalized benchmark packages with zero network socket requests.
 - **Formula Invariance & Epistemic Boundaries**: Health scores remain strictly invariant ($\Delta = 0$). Epistemic separation (`FACT`, `EXTERNAL OBSERVATION`, `ANALYSIS`, `RECOMMENDATION`) and engine provenance are fully preserved.
+- **Phase 11.3 Complete**: Cross-site competitive comparison and void analysis layer implemented (`CrossSiteComparator`, `ComparisonReporter`).
+- **Deterministic 14-Dimension Cross-Site Comparison**: Operates in-memory over Phase 11.2 review artifacts across the permanent 11-site benchmark:
+  1. Common vs unique entities
+  2. Common vs unique services/products
+  3. Topic/concept overlap and uniqueness (pairwise Jaccard similarity matrix)
+  4. Topic breadth and distribution tiers (HIGH, MODERATE, LOW)
+  5. Search-intent coverage
+  6. Page/topic concentration and overlap
+  7. Entity/schema coverage
+  8. Answerability coverage
+  9. Claim-grounding differences
+  10. AI retrieval/GEO signals
+  11. Multimodal and agent-readiness differences
+  12. Technical/accessibility/security differences
+  13. Observable content/knowledge gaps ("Voids" with provenance, source sites, supporting fields, references)
+  14. Evidence insufficiency and comparison uncertainty
+- **Strict Epistemic Rule**: Differences represent observable website differences only; no inference of commercial superiority, ranking, authority, or traffic. Explicit states: `OBSERVED_DIFFERENCE`, `COMMON`, `UNIQUE`, `PARTIAL`, `INSUFFICIENT_EVIDENCE`, `NOT_COMPARABLE`.
+- **Formula Invariance & Zero Network Calls**: Health-score formulas strictly invariant ($\Delta = 0$). Zero network/socket requests during execution.
+- **Reporting Parity & Artifacts**: Full parity across CLI (`audit_engine.py compare-benchmark`), JSON (`benchmarks/comparisons/benchmark_comparison_phase11.json`), and Markdown (`benchmarks/comparisons/benchmark_comparison_phase11.md`), alongside focused target comparisons (`target_vs_benchmark_sunrisetesting.vercel.app.{json,md}`).
+
 
 
 

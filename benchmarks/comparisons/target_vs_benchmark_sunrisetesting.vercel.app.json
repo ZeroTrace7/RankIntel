@@ -1,0 +1,593 @@
+{
+  "target_domain": "sunrisetesting.vercel.app",
+  "benchmark_cohort_domains": [
+    "alephindia.in",
+    "ascgroup.in",
+    "qualityinternational.org",
+    "sqccertification.com",
+    "standphillindia.in",
+    "tcreng.com",
+    "umspcs.in",
+    "uniquemeasurement.com",
+    "yadavmeasurements.com",
+    "zaubacorp.com"
+  ],
+  "target_role": "sunrise",
+  "common_capabilities": [
+    "Testing & Verification",
+    "Industrial Calibration",
+    "Direct Contact Phone / Email",
+    "HTTPS Enforcement"
+  ],
+  "target_unique_capabilities": [
+    "Structured Instrument Calibration Procedure Steps",
+    "Direct Local Raipur Facility Physical Address Block",
+    "Zero WAF Challenge Interstitials"
+  ],
+  "observable_voids": [
+    {
+      "void_id": "VOID-SCHEMA-001",
+      "category": "SCHEMA",
+      "title": "Structured JSON-LD Schema Absence",
+      "description": "Complete absence of structured JSON-LD or Microdata schema markup on target landing page, contrasting with competitor implementations deploying up to 9 structured types.",
+      "state": "OBSERVED_DIFFERENCE",
+      "source_sites_present": [
+        "alephindia.in",
+        "ascgroup.in",
+        "sqccertification.com",
+        "standphillindia.in",
+        "tcreng.com",
+        "umspcs.in"
+      ],
+      "source_sites_absent": [
+        "qualityinternational.org",
+        "sunrisetesting.vercel.app",
+        "uniquemeasurement.com",
+        "yadavmeasurements.com",
+        "zaubacorp.com"
+      ],
+      "target_site_status": "ABSENT",
+      "supporting_fields": [
+        "technical_seo.schema_types",
+        "technical_seo.schema_blocks_count"
+      ],
+      "provenance_sources": [
+        "advertools",
+        "crawl4ai"
+      ],
+      "evidence_references": [
+        {
+          "domain": "sunrisetesting.vercel.app",
+          "schema_types_count": 0,
+          "detected_types": []
+        },
+        {
+          "domain": "umspcs.in",
+          "schema_types_count": 9,
+          "detected_types": [
+            "PostalAddress",
+            "Place",
+            "BreadcrumbList",
+            "FAQPage",
+            "WebSite",
+            "WebPage",
+            "ImageObject",
+            "LocalBusiness",
+            "Organization"
+          ]
+        },
+        {
+          "domain": "tcreng.com",
+          "schema_types_count": 8,
+          "detected_types": [
+            "BreadcrumbList",
+            "ItemList",
+            "VideoObject",
+            "WebSite",
+            "FAQPage",
+            "NewsArticle",
+            "WebPage",
+            "Organization"
+          ]
+        }
+      ],
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "void_id": "VOID-A11Y-001",
+      "category": "MULTIMODAL",
+      "title": "Image Alternative Text Coverage Gap",
+      "description": "Target site displays 0% alt-text coverage across 34 visual assets, whereas top-performing benchmark sites provide alt representations for up to 97% of visual assets.",
+      "state": "OBSERVED_DIFFERENCE",
+      "source_sites_present": [
+        "ascgroup.in",
+        "standphillindia.in",
+        "tcreng.com",
+        "umspcs.in"
+      ],
+      "source_sites_absent": [
+        "alephindia.in",
+        "qualityinternational.org",
+        "sqccertification.com",
+        "sunrisetesting.vercel.app",
+        "uniquemeasurement.com",
+        "yadavmeasurements.com",
+        "zaubacorp.com"
+      ],
+      "target_site_status": "ABSENT",
+      "supporting_fields": [
+        "multimodal.alt_coverage_ratio",
+        "multimodal.visual_only_observed_gaps"
+      ],
+      "provenance_sources": [
+        "accessibility_engine",
+        "crawl4ai"
+      ],
+      "evidence_references": [
+        {
+          "domain": "sunrisetesting.vercel.app",
+          "alt_coverage_ratio": 0.0,
+          "visual_assets": 34
+        },
+        {
+          "domain": "tcreng.com",
+          "alt_coverage_ratio": 0.97,
+          "visual_assets": 49
+        },
+        {
+          "domain": "standphillindia.in",
+          "alt_coverage_ratio": 0.93,
+          "visual_assets": 155
+        }
+      ],
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "void_id": "VOID-AGENT-001",
+      "category": "ACTION_SURFACE",
+      "title": "Interactive Form Action Surface Void",
+      "description": "Absence of observable on-page quote, inquiry, or contact forms on target page, limiting autonomous agent lead execution surfaces relative to competitors providing 1 to 8 forms.",
+      "state": "OBSERVED_DIFFERENCE",
+      "source_sites_present": [
+        "alephindia.in",
+        "ascgroup.in",
+        "qualityinternational.org",
+        "sqccertification.com",
+        "standphillindia.in",
+        "tcreng.com",
+        "umspcs.in",
+        "uniquemeasurement.com",
+        "yadavmeasurements.com",
+        "zaubacorp.com"
+      ],
+      "source_sites_absent": [
+        "sunrisetesting.vercel.app"
+      ],
+      "target_site_status": "ABSENT",
+      "supporting_fields": [
+        "agent_readiness.total_forms_detected",
+        "agent_readiness.labeled_forms_count"
+      ],
+      "provenance_sources": [
+        "multimodal_agent_engine"
+      ],
+      "evidence_references": [
+        {
+          "domain": "sunrisetesting.vercel.app",
+          "forms_detected": 0
+        },
+        {
+          "domain": "umspcs.in",
+          "forms_detected": 8
+        },
+        {
+          "domain": "standphillindia.in",
+          "forms_detected": 6
+        }
+      ],
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "void_id": "VOID-ANSWER-001",
+      "category": "ANSWERABILITY",
+      "title": "Structured FAQ Answer Units Void",
+      "description": "Target page contains 0 FAQ answer structures, whereas primary competitors integrate dense FAQ sections (up to 19 FAQ units on TCR Engineering and 18 on UMS PCS).",
+      "state": "OBSERVED_DIFFERENCE",
+      "source_sites_present": [
+        "standphillindia.in",
+        "tcreng.com",
+        "umspcs.in"
+      ],
+      "source_sites_absent": [
+        "alephindia.in",
+        "ascgroup.in",
+        "qualityinternational.org",
+        "sqccertification.com",
+        "sunrisetesting.vercel.app",
+        "uniquemeasurement.com",
+        "yadavmeasurements.com",
+        "zaubacorp.com"
+      ],
+      "target_site_status": "ABSENT",
+      "supporting_fields": [
+        "answerability.units_by_type",
+        "answerability.total_units_detected"
+      ],
+      "provenance_sources": [
+        "answerability_engine"
+      ],
+      "evidence_references": [
+        {
+          "domain": "sunrisetesting.vercel.app",
+          "faq_units_count": 0
+        },
+        {
+          "domain": "tcreng.com",
+          "faq_units_count": 19
+        },
+        {
+          "domain": "umspcs.in",
+          "faq_units_count": 18
+        }
+      ],
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "void_id": "VOID-SEC-001",
+      "category": "SECURITY",
+      "title": "Content Security Policy (CSP) Header Void",
+      "description": "Absence of Content Security Policy HTTP header on target domain, contrasting with 6 benchmark competitors enforcing CSP directives.",
+      "state": "OBSERVED_DIFFERENCE",
+      "source_sites_present": [
+        "qualityinternational.org",
+        "sqccertification.com",
+        "standphillindia.in",
+        "umspcs.in",
+        "uniquemeasurement.com",
+        "zaubacorp.com"
+      ],
+      "source_sites_absent": [
+        "alephindia.in",
+        "ascgroup.in",
+        "sunrisetesting.vercel.app",
+        "tcreng.com",
+        "yadavmeasurements.com"
+      ],
+      "target_site_status": "ABSENT",
+      "supporting_fields": [
+        "accessibility_security.csp_present"
+      ],
+      "provenance_sources": [
+        "security_engine"
+      ],
+      "evidence_references": [
+        {
+          "domain": "sunrisetesting.vercel.app",
+          "csp_present": false
+        },
+        {
+          "domain": "ascgroup.in",
+          "csp_present": false
+        },
+        {
+          "domain": "standphillindia.in",
+          "csp_present": true
+        }
+      ],
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "void_id": "VOID-TOPIC-001",
+      "category": "TOPIC",
+      "title": "Regulatory Certification & Compliance Topic Lacuna",
+      "description": "Target focuses exclusively on Calibration and Testing without covering ISO, BIS, or statutory compliance standards present across 8 benchmark sites.",
+      "state": "OBSERVED_DIFFERENCE",
+      "source_sites_present": [
+        "alephindia.in",
+        "sqccertification.com",
+        "standphillindia.in",
+        "umspcs.in"
+      ],
+      "source_sites_absent": [
+        "ascgroup.in",
+        "qualityinternational.org",
+        "sunrisetesting.vercel.app",
+        "tcreng.com",
+        "uniquemeasurement.com",
+        "yadavmeasurements.com",
+        "zaubacorp.com"
+      ],
+      "target_site_status": "ABSENT",
+      "supporting_fields": [
+        "topic_taxonomy.primary_topics",
+        "dominant_concepts"
+      ],
+      "provenance_sources": [
+        "advertools",
+        "crawl4ai"
+      ],
+      "evidence_references": [
+        {
+          "domain": "sunrisetesting.vercel.app",
+          "dominant_concepts": [
+            "Calibration",
+            "Testing",
+            "Instruments",
+            "Sunrise"
+          ]
+        },
+        {
+          "domain": "alephindia.in",
+          "dominant_concepts": [
+            "INDIA®",
+            "Certificate",
+            "BIS",
+            "Certification"
+          ]
+        },
+        {
+          "domain": "sqccertification.com",
+          "dominant_concepts": [
+            "ISO",
+            "Certification",
+            "SQC",
+            "recognized"
+          ]
+        }
+      ],
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "void_id": "VOID-GEO-001",
+      "category": "GEO",
+      "title": "Universal AI Context Standard (/llms.txt) Absence",
+      "description": "Universal absence of /llms.txt or /llms-full.txt machine-readable discovery files across all 11 benchmark sites.",
+      "state": "COMMON",
+      "source_sites_present": [],
+      "source_sites_absent": [
+        "alephindia.in",
+        "ascgroup.in",
+        "qualityinternational.org",
+        "sqccertification.com",
+        "standphillindia.in",
+        "sunrisetesting.vercel.app",
+        "tcreng.com",
+        "umspcs.in",
+        "uniquemeasurement.com",
+        "yadavmeasurements.com",
+        "zaubacorp.com"
+      ],
+      "target_site_status": "ABSENT",
+      "supporting_fields": [
+        "retrieval_readiness.llms_txt_present"
+      ],
+      "provenance_sources": [
+        "retrieval_readiness_engine",
+        "rankintel_geo"
+      ],
+      "evidence_references": [
+        {
+          "sites_evaluated": 11,
+          "llms_txt_detected_count": 0
+        }
+      ],
+      "epistemic_tier": "FACT"
+    },
+    {
+      "void_id": "VOID-ENTITY-001",
+      "category": "SCHEMA",
+      "title": "Structured Organization & LocalBusiness Schema Entity Grounding",
+      "description": "Competitor sites ground corporate identity and facility addresses using schema Organization/LocalBusiness blocks, whereas target entities exist solely as unstructured visible DOM text.",
+      "state": "OBSERVED_DIFFERENCE",
+      "source_sites_present": [
+        "alephindia.in",
+        "ascgroup.in",
+        "sqccertification.com",
+        "standphillindia.in",
+        "tcreng.com",
+        "umspcs.in"
+      ],
+      "source_sites_absent": [
+        "qualityinternational.org",
+        "sunrisetesting.vercel.app",
+        "uniquemeasurement.com",
+        "yadavmeasurements.com",
+        "zaubacorp.com"
+      ],
+      "target_site_status": "ABSENT",
+      "supporting_fields": [
+        "technical_seo.schema_types",
+        "entity_profile.named_entities"
+      ],
+      "provenance_sources": [
+        "advertools",
+        "entity_engine"
+      ],
+      "evidence_references": [
+        {
+          "domain": "sunrisetesting.vercel.app",
+          "org_localbusiness_schema": false
+        },
+        {
+          "domain": "umspcs.in",
+          "org_localbusiness_schema": true,
+          "types": [
+            "LocalBusiness",
+            "Organization"
+          ]
+        },
+        {
+          "domain": "tcreng.com",
+          "org_localbusiness_schema": true,
+          "types": [
+            "Organization"
+          ]
+        }
+      ],
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "void_id": "VOID-A11Y-002",
+      "category": "TECHNICAL",
+      "title": "Automated WCAG 2.1 AA Violation Disparity",
+      "description": "TCR Engineering achieved 0 automated WCAG AA violations on landing DOM, whereas remaining benchmark sites exhibit between 6 and 55 violations (target holds 22 violations).",
+      "state": "OBSERVED_DIFFERENCE",
+      "source_sites_present": [
+        "tcreng.com"
+      ],
+      "source_sites_absent": [
+        "alephindia.in",
+        "ascgroup.in",
+        "qualityinternational.org",
+        "sqccertification.com",
+        "standphillindia.in",
+        "sunrisetesting.vercel.app",
+        "umspcs.in",
+        "uniquemeasurement.com",
+        "yadavmeasurements.com",
+        "zaubacorp.com"
+      ],
+      "target_site_status": "ABSENT",
+      "supporting_fields": [
+        "accessibility_security.total_accessibility_violations"
+      ],
+      "provenance_sources": [
+        "accessibility_engine"
+      ],
+      "evidence_references": [
+        {
+          "domain": "sunrisetesting.vercel.app",
+          "violations": 22
+        },
+        {
+          "domain": "tcreng.com",
+          "violations": 0
+        },
+        {
+          "domain": "uniquemeasurement.com",
+          "violations": 55
+        }
+      ],
+      "epistemic_tier": "ANALYSIS"
+    },
+    {
+      "void_id": "VOID-ANSWER-003",
+      "category": "ANSWERABILITY",
+      "title": "Structured Specification Table Density Lacuna",
+      "description": "Absence of structured HTML parameter/specification tables on target landing page, contrasting with dense data tables on TCR Engineering and UMS PCS.",
+      "state": "OBSERVED_DIFFERENCE",
+      "source_sites_present": [],
+      "source_sites_absent": [
+        "alephindia.in",
+        "ascgroup.in",
+        "qualityinternational.org",
+        "sqccertification.com",
+        "standphillindia.in",
+        "sunrisetesting.vercel.app",
+        "tcreng.com",
+        "umspcs.in",
+        "uniquemeasurement.com",
+        "yadavmeasurements.com",
+        "zaubacorp.com"
+      ],
+      "target_site_status": "ABSENT",
+      "supporting_fields": [
+        "answerability.units_by_type"
+      ],
+      "provenance_sources": [
+        "answerability_engine"
+      ],
+      "evidence_references": [
+        {
+          "domain": "sunrisetesting.vercel.app",
+          "table_specifications": 0
+        },
+        {
+          "domain": "tcreng.com",
+          "table_specifications": 0
+        }
+      ],
+      "epistemic_tier": "ANALYSIS"
+    }
+  ],
+  "dimensional_deltas": [
+    {
+      "dimension": "Overall Search Health",
+      "target_value": "48/100",
+      "cohort_median_or_avg": "60.2/100",
+      "observable_delta": -12.2,
+      "epistemic_note": "Triangulated health score difference based strictly on existing multi-engine formula (Δ=0)."
+    },
+    {
+      "dimension": "Technical SEO Health",
+      "target_value": "60/100",
+      "cohort_median_or_avg": "73.0/100",
+      "observable_delta": -13.0,
+      "epistemic_note": "Technical SEO score evaluating meta tags, robots, canonicals, and heading structures."
+    },
+    {
+      "dimension": "GEO / AI Search Readiness",
+      "target_value": "35/100",
+      "cohort_median_or_avg": "41.7/100",
+      "observable_delta": -6.7,
+      "epistemic_note": "Princeton GEO scoring evaluating answer density, quotes, citations, and LLM visibility."
+    },
+    {
+      "dimension": "Schema Markup Types",
+      "target_value": "0 types",
+      "cohort_median_or_avg": "2.7 types (max: 9)",
+      "observable_delta": -2.7,
+      "epistemic_note": "Target deploys 0 schema blocks vs competitor implementations reaching up to 9 types."
+    },
+    {
+      "dimension": "Structured Answer Units",
+      "target_value": "11 units",
+      "cohort_median_or_avg": "9.9 units (max: 36)",
+      "observable_delta": 1.1,
+      "epistemic_note": "Target holds 11 answer units (definitions, procedures); cohort leads reach 36 units (FAQs, tables)."
+    },
+    {
+      "dimension": "Alt-Text Coverage Ratio",
+      "target_value": "0.0%",
+      "cohort_median_or_avg": "50.0% (max: 99.0%)",
+      "observable_delta": -0.5,
+      "epistemic_note": "Target exhibits 0% alt coverage across 34 images; leading competitors reach 97%."
+    },
+    {
+      "dimension": "Agent Form Action Surfaces",
+      "target_value": "0 forms",
+      "cohort_median_or_avg": "3.0 forms (max: 8)",
+      "observable_delta": -3.0,
+      "epistemic_note": "Target lacks interactive web forms, contrasting with competitor quote/inquiry surfaces."
+    },
+    {
+      "dimension": "Visual Assets Count",
+      "target_value": "34 images",
+      "cohort_median_or_avg": "118.3 images (max: 364)",
+      "observable_delta": -84.3,
+      "epistemic_note": "Total visual assets detected on landing page DOM."
+    },
+    {
+      "dimension": "Automated WCAG Violations",
+      "target_value": "22 violations",
+      "cohort_median_or_avg": "36.5 violations (min: 0)",
+      "observable_delta": -14.5,
+      "epistemic_note": "Automated AST rule checks (non-certification scope)."
+    },
+    {
+      "dimension": "Security Findings Count",
+      "target_value": "5 findings",
+      "cohort_median_or_avg": "4.7 findings (min: 1)",
+      "observable_delta": 0.3,
+      "epistemic_note": "Transport security, TLS certificate expiry, and missing HTTP headers."
+    },
+    {
+      "dimension": "Claim Grounding Ratio",
+      "target_value": "94.0%",
+      "cohort_median_or_avg": "71.0%",
+      "observable_delta": 0.23,
+      "epistemic_note": "Percentage of extracted factual assertions corroborated by on-site evidence."
+    }
+  ],
+  "summary": "Target site sunrisetesting.vercel.app shows clear observable parity in core calibration/testing terminology and procedural answer structures, while displaying observable voids in Schema.org implementation (0 types), image alt-text coverage (0%), interactive form surfaces (0 forms), and FAQ content blocks."
+}

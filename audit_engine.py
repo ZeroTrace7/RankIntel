@@ -359,9 +359,87 @@ def run_review(
         return md_path
 
 
+def run_compare_benchmark(
+    target: Optional[str] = None,
+    reviews_file: str = "benchmarks/reviews/benchmark_reviews_phase11.json",
+    output_dir: str = "benchmarks/comparisons",
+    output_format: str = "markdown",
+):
+    from rankintel.benchmark.comparator import CrossSiteComparator
+    from rankintel.reporters.comparison_reporter import ComparisonReporter
+
+    console.print(Panel.fit(
+        f"[bold cyan]RankIntel Phase 11.3 — Cross-Site Benchmark Comparison & Void Analysis[/bold cyan]\n"
+        f"[dim]Deterministic analysis across 11-site benchmark without superiority scoring (Δ=0)[/dim]",
+        border_style="cyan"
+    ))
+
+    with console.status("[bold green]Executing deterministic cross-site comparison & void analysis...[/bold green]", spinner="dots"):
+        report = CrossSiteComparator.compare(reviews_file, target_domain=target)
+        saved_paths = ComparisonReporter.save_comparison_artifacts(report, output_dir=output_dir)
+
+    if output_format == "json":
+        console.print_json(ComparisonReporter.render_json(report))
+        return saved_paths["comparison_json"]
+
+    table = Table(title="Cross-Site Benchmark Intelligence Matrix", show_header=True, header_style="bold magenta")
+    table.add_column("Domain", style="cyan")
+    table.add_column("Role", justify="center")
+    table.add_column("Health", justify="center")
+    table.add_column("Tech", justify="center")
+    table.add_column("GEO", justify="center")
+    table.add_column("Schema", justify="center")
+    table.add_column("Answer Units", justify="center")
+    table.add_column("Grounded %", justify="center")
+    table.add_column("Alt %", justify="center")
+    table.add_column("Forms", justify="center")
+    table.add_column("WAF", justify="center")
+
+    for item in report.cross_site_matrix:
+        role_str = "[bold green]TARGET[/bold green]" if item.role in ("target", "sunrise") else "Competitor"
+        table.add_row(
+            item.domain,
+            role_str,
+            str(item.health_score),
+            str(item.technical_health_score),
+            str(item.geo_readiness_score),
+            str(item.schema_types_count),
+            str(item.answer_units_count),
+            f"{int(item.claims_grounded_ratio * 100)}%",
+            f"{int(item.alt_coverage_ratio * 100)}%",
+            str(item.action_surfaces_count),
+            item.waf_barrier,
+        )
+    console.print(table)
+
+    void_table = Table(title=f"Observable Voids Detected for Target: {report.target_domain}", show_header=True, header_style="bold yellow")
+    void_table.add_column("Void ID", style="cyan")
+    void_table.add_column("Category", justify="center")
+    void_table.add_column("Title", style="white")
+    void_table.add_column("State", justify="center")
+    void_table.add_column("Cohort Preval.", justify="center")
+
+    for v in report.target_vs_benchmark.observable_voids:
+        void_table.add_row(
+            v.void_id,
+            v.category,
+            v.title,
+            v.state.value,
+            f"{len(v.source_sites_present)} sites",
+        )
+    console.print(void_table)
+
+    console.print(f"\n[bold green][SUCCESS] Cross-site comparison completed across {report.total_sites} sites![/bold green]")
+    console.print(f"Main Comparison Markdown: [underline cyan]{saved_paths['comparison_md']}[/underline cyan]")
+    console.print(f"Main Comparison JSON:     [underline cyan]{saved_paths['comparison_json']}[/underline cyan]")
+    console.print(f"Target vs Benchmark MD:   [underline cyan]{saved_paths['target_md']}[/underline cyan]")
+    console.print(f"Target vs Benchmark JSON: [underline cyan]{saved_paths['target_json']}[/underline cyan]")
+    return saved_paths["comparison_md"]
+
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        console.print("[bold red]Usage:[/bold red] python audit_engine.py <url> [--format json] [--deep-crawl] [--external-ai] [--external-providers gemini,mock] OR python audit_engine.py compare <url1> vs <url2> [--format json] OR python audit_engine.py benchmark [--external-ai] OR python audit_engine.py review [<domain>|all] [--format json]")
+        console.print("[bold red]Usage:[/bold red] python audit_engine.py <url> [--format json] [--deep-crawl] [--external-ai] [--external-providers gemini,mock] OR python audit_engine.py compare <url1> vs <url2> [--format json] OR python audit_engine.py benchmark [--external-ai] OR python audit_engine.py review [<domain>|all] [--format json] OR python audit_engine.py compare-benchmark [--target <domain>] [--format json]")
         sys.exit(1)
 
     fmt = "json" if "--format" in sys.argv and "json" in sys.argv else ("json" if "--json" in sys.argv else "markdown")
@@ -377,9 +455,24 @@ if __name__ == "__main__":
         except (ValueError, IndexError):
             pass
 
-    cleaned_args = [a for a in sys.argv[1:] if not a.startswith("--") and a not in ("json", "markdown") and (ext_prov is None or a != ext_prov)]
+    target_opt = None
+    if "--target" in sys.argv:
+        try:
+            t_idx = sys.argv.index("--target") + 1
+            if t_idx < len(sys.argv) and not sys.argv[t_idx].startswith("--"):
+                target_opt = sys.argv[t_idx]
+        except (ValueError, IndexError):
+            pass
 
-    if cleaned_args and cleaned_args[0].lower() == "compare":
+    cleaned_args = [a for a in sys.argv[1:] if not a.startswith("--") and a not in ("json", "markdown") and (ext_prov is None or a != ext_prov) and (target_opt is None or a != target_opt)]
+
+    if cleaned_args and cleaned_args[0].lower() in ("compare-benchmark", "void-analysis"):
+        t_site = cleaned_args[1] if len(cleaned_args) > 1 else target_opt
+        run_compare_benchmark(target=t_site, output_format=fmt)
+    elif cleaned_args and cleaned_args[0].lower() == "compare" and len(cleaned_args) > 1 and cleaned_args[1].lower() == "benchmark":
+        t_site = cleaned_args[2] if len(cleaned_args) > 2 else target_opt
+        run_compare_benchmark(target=t_site, output_format=fmt)
+    elif cleaned_args and cleaned_args[0].lower() == "compare":
         if len(cleaned_args) < 3:
             console.print("[bold red]Usage:[/bold red] python audit_engine.py compare <url1> vs <url2> [--format json]")
             sys.exit(1)
@@ -405,3 +498,4 @@ if __name__ == "__main__":
             external_ai=ext_ai,
             external_providers=ext_prov,
         )
+
