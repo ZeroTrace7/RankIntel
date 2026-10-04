@@ -95,6 +95,11 @@ def rankintel_audit(url: str, deep_crawl: bool = False, max_pages: int = 25) -> 
         "retrieval_user_fetchers_allowed": report.unified_retrieval_readiness.user_fetch_allowed_count if report.unified_retrieval_readiness else 0,
         "retrieval_waf_blocked": report.unified_retrieval_readiness.waf_challenge.is_blocked if report.unified_retrieval_readiness else False,
         "retrieval_snippet_status": report.unified_retrieval_readiness.snippet_controls.status.value if report.unified_retrieval_readiness else "ALLOWED",
+        "answerability_units_detected": report.unified_answerability.total_units_detected if report.unified_answerability else 0,
+        "answerability_units_by_type": report.unified_answerability.units_by_type if report.unified_answerability else {},
+        "answerability_explained_topics_count": report.unified_answerability.explained_topics_count if report.unified_answerability else 0,
+        "answerability_clarity_qa_status": report.unified_answerability.clarity_assessment.question_answer_patterns.value if report.unified_answerability else "UNAVAILABLE",
+        "answerability_clarity_definitions_status": report.unified_answerability.clarity_assessment.definition_patterns.value if report.unified_answerability else "UNAVAILABLE",
     }
 
 @mcp.tool

@@ -230,6 +230,21 @@ def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_p
             "site-wide retrieval triangulation"
         )
 
+    if getattr(report, "unified_answerability", None):
+        ans = report.unified_answerability
+        table.add_row(
+            "AI Answerability & Extraction",
+            f"{ans.total_units_detected} unit(s) ({ans.explained_topics_count} topic(s) explained)",
+            "structured units + clarity + topic linkage (Phase 10.2)"
+        )
+    elif report.site_crawl and getattr(report.site_crawl, "answerability_intelligence", None):
+        ai = report.site_crawl.answerability_intelligence
+        table.add_row(
+            "Site AI Answerability Scope",
+            f"{ai.total_site_units_detected} units across {ai.total_pages_evaluated} pages ({len(ai.pages_with_faq)} FAQ pages)",
+            "site-wide information answerability"
+        )
+
     console.print(table)
 
     if report.conflicts_detected:
