@@ -556,6 +556,7 @@ class EvidenceCollector:
                 engine_name="cannibalization_analyzer",
                 status="error",
                 error_message=f"Cannibalization analyzer failed: {e}",
+            )
         # 17. AI Access & Retrieval Readiness Engine (Phase 10.1) — Reuses static HTML, browser DOM, headers, robots (zero extra HTTP requests)
         try:
             status_code = seo_res.on_page.status_code if (seo_res and seo_res.on_page) else (200 if browser_html else 0)
