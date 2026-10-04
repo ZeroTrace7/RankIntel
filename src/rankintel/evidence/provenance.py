@@ -393,4 +393,32 @@ class ProvenanceTagger:
                     confidence="high",
                 ))
 
+        # 19. AI Answerability & Information Extraction findings (Phase 10.2)
+        ans_res = engine_results.get("answerability_engine")
+        if ans_res and ans_res.answerability and ans_res.status == "success":
+            ans_ev = ans_res.answerability
+            tags.append(EvidenceProvenanceTag(
+                finding=f"Observable Information Units: {ans_ev.total_units_detected} unit(s) across {len(ans_ev.units_by_type)} structural types",
+                source_file="DOM & Schema Structure",
+                engine="answerability_engine",
+                evidence_snippet=f"Explained topics: {ans_ev.explained_topics_count}, Q&A clarity: {ans_ev.clarity_assessment.question_answer_patterns.value}",
+                confidence="high",
+            ))
+            if ans_ev.explained_topics_count > 0:
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"Phase 9 Topic Explanations: {ans_ev.explained_topics_count} topic(s) substantiated by explicit answerable structures",
+                    source_file="Heading & Body Passages",
+                    engine="answerability_engine",
+                    evidence_snippet=", ".join([tl.topic_name for tl in ans_ev.topic_links if tl.status.value == "EXPLAINED"][:4]),
+                    confidence="high",
+                ))
+            if ans_ev.clarity_assessment.unsupported_concepts:
+                tags.append(EvidenceProvenanceTag(
+                    finding=f"Unsupported Topical Headings: {len(ans_ev.clarity_assessment.unsupported_concepts)} heading(s) without supporting body copy",
+                    source_file="Heading Section AST",
+                    engine="answerability_engine",
+                    evidence_snippet=", ".join(ans_ev.clarity_assessment.unsupported_concepts[:3]),
+                    confidence="high",
+                ))
+
         return tags

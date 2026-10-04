@@ -239,4 +239,40 @@ class ConflictDetector:
                     severity="HIGH"
                 ))
 
+        # 9. Check Answerability & Extraction Conflicts (Phase 10.2)
+        ans_res = engine_results.get("answerability_engine")
+        if ans_res and ans_res.answerability and ans_res.status == "success":
+            ans_ev = ans_res.answerability
+            # Case A: Important Topic Promoted in Heading but Completely Unsupported
+            for tl in ans_ev.topic_links:
+                if tl.status.value == "UNSUPPORTED_HEADING" and tl.section_heading:
+                    conflicts.append(ConflictFinding(
+                        category="CONTENT_ANSWERABILITY_GAP",
+                        feature="Topic Heading without Supporting Content",
+                        description=f"Topic '{tl.topic_name}' has dedicated heading '{tl.section_heading}', but supporting body content is genuinely absent.",
+                        engine_a_finding=f"Topic Engine: Candidate topic '{tl.topic_name}'",
+                        engine_b_finding=f"Answerability Engine: Heading '{tl.section_heading}' has 0 supporting body words",
+                        interpretation=(
+                            "The page establishes an explicit topical heading promise for search/AI retrieval, "
+                            "but fails to provide observable explanatory or factual body copy under that section."
+                        ),
+                        severity="MEDIUM"
+                    ))
+                    break
+
+            # Case B: Answerable Unit Obscured by Snippet Control
+            if ans_ev.clarity_assessment.obscured_or_fragmented_items:
+                conflicts.append(ConflictFinding(
+                    category="SNIPPET_SUPPRESSION_CONFLICT",
+                    feature="Answer Unit Obscured by data-nosnippet",
+                    description=f"{len(ans_ev.clarity_assessment.obscured_or_fragmented_items)} answerable unit(s) are enclosed in data-nosnippet elements.",
+                    engine_a_finding=f"Answerability Engine: Structured answer units extracted ({len(ans_ev.clarity_assessment.obscured_or_fragmented_items)} items)",
+                    engine_b_finding="Snippet Controls: data-nosnippet attribute active on enclosing element",
+                    interpretation=(
+                        "Valuable factual or procedural answers exist on page but are tagged with data-nosnippet, "
+                        "instructing search engines and AI retrievers not to surface them in search snippets."
+                    ),
+                    severity="HIGH"
+                ))
+
         return conflicts
