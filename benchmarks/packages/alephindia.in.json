@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 19.14,
+  "execution_time_sec": 19.18,
   "overall_health_score": 68,
   "technical_health_score": 90,
   "geo_readiness_score": 42,
@@ -62,7 +62,7 @@
     ],
     "schema_blocks_count": 2,
     "schema_validation_issues": [],
-    "ttfb_ms": 442.7,
+    "ttfb_ms": 462.1,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -242,7 +242,7 @@
     "notes": [
       "Extraction method: SEMANTIC_ARTICLE yielded 239 main content words (4334 total body words).",
       "Content-to-body ratio: 5.5%.",
-      "Exact main-content SHA-256: f4b36f8a8d212849..., Full HTML SHA-256: fb075a00a892f64e...",
+      "Exact main-content SHA-256: f4b36f8a8d212849..., Full HTML SHA-256: 8958d92f95e8e633...",
       "SimHash fingerprint: 720f44728969af4d."
     ]
   },
@@ -486,7 +486,7 @@
     "text_represented_count": 88,
     "visual_only_observed_gaps": 174,
     "modern_format_count": 62,
-    "missing_dimensions_count": 49,
+    "missing_dimensions_count": 50,
     "notes": [
       "351 visual assets audited (89 alt-represented)"
     ]
@@ -533,7 +533,7 @@
       "Robots.txt found: True",
       "Schema types declared: Organization, WebSite",
       "HTTPS enforced: True",
-      "Server latency probe: 442.7ms (local_probe)",
+      "Server latency probe: 462.1ms (local_probe)",
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
       "Static HTML contains 2546 words.",
@@ -552,7 +552,7 @@
       "Mapped 22 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 442.7ms TTFB",
+      "Local network latency probe recorded 462.1ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -779,7 +779,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 443ms",
+      "finding": "TTFB Latency: 462ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",

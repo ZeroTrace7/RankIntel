@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 6.27,
+  "execution_time_sec": 6.59,
   "overall_health_score": 79,
   "technical_health_score": 100,
   "geo_readiness_score": 63,
@@ -58,18 +58,18 @@
     "h2_count": 17,
     "h3_count": 26,
     "detected_schema_types": [
-      "WebSite",
-      "WebPage",
       "FAQPage",
-      "ItemList",
-      "NewsArticle",
+      "BreadcrumbList",
+      "WebPage",
       "VideoObject",
       "Organization",
-      "BreadcrumbList"
+      "WebSite",
+      "ItemList",
+      "NewsArticle"
     ],
     "schema_blocks_count": 8,
     "schema_validation_issues": [],
-    "ttfb_ms": 78.5,
+    "ttfb_ms": 80.9,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -142,7 +142,7 @@
     "notes": [
       "Extraction method: SEMANTIC_MAIN yielded 1545 main content words (2463 total body words).",
       "Content-to-body ratio: 62.7%.",
-      "Exact main-content SHA-256: 7bd7d761d9e4300c..., Full HTML SHA-256: 1d4ab7bf5a966b88...",
+      "Exact main-content SHA-256: 7bd7d761d9e4300c..., Full HTML SHA-256: dadbefc79ca9761c...",
       "SimHash fingerprint: 8d6c4932dd1c4fb5."
     ]
   },
@@ -165,8 +165,8 @@
     ],
     "entity_types_detected": [
       "OTHER",
-      "LOCAL_BUSINESS",
-      "ORGANIZATION"
+      "ORGANIZATION",
+      "LOCAL_BUSINESS"
     ],
     "relationships_count": 10,
     "structured_vs_visible_comparisons_count": 3,
@@ -436,9 +436,9 @@
       "Internal links observed: 148",
       "External links observed: 395",
       "Robots.txt found: True",
-      "Schema types declared: WebSite, WebPage, FAQPage, ItemList, NewsArticle, VideoObject, Organization, BreadcrumbList",
+      "Schema types declared: FAQPage, BreadcrumbList, WebPage, VideoObject, Organization, WebSite, ItemList, NewsArticle",
       "HTTPS enforced: True",
-      "Server latency probe: 78.5ms (local_probe)",
+      "Server latency probe: 80.9ms (local_probe)",
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
       "Static HTML contains 2329 words.",
@@ -457,7 +457,7 @@
       "Mapped 24 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 78.5ms TTFB",
+      "Local network latency probe recorded 80.9ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -745,7 +745,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 78ms",
+      "finding": "TTFB Latency: 81ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",

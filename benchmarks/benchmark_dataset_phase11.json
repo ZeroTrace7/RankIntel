@@ -1,7 +1,7 @@
 {
   "benchmark_version": "11.1",
-  "created_at": "2026-10-04T22:52:42.023645",
-  "wall_clock_sec": 42.68,
+  "created_at": "2026-10-04T23:06:46.769044",
+  "wall_clock_sec": 42.75,
   "workers_used": 3,
   "total_sites": 11,
   "sites_succeeded": 11,
@@ -29,7 +29,7 @@
       "collection_timestamp": "2026-10-04",
       "collection_status": "SUCCESS",
       "error_message": null,
-      "execution_time_sec": 5.98,
+      "execution_time_sec": 5.25,
       "overall_health_score": 59,
       "technical_health_score": 80,
       "geo_readiness_score": 30,
@@ -82,7 +82,7 @@
         "detected_schema_types": [],
         "schema_blocks_count": 0,
         "schema_validation_issues": [],
-        "ttfb_ms": 92.3,
+        "ttfb_ms": 91.8,
         "performance_score": 85,
         "performance_source": "local_probe",
         "notes": [
@@ -195,7 +195,7 @@
         "notes": [
           "Extraction method: SEMANTIC_MAIN yielded 650 main content words (1005 total body words).",
           "Content-to-body ratio: 64.7%.",
-          "Exact main-content SHA-256: e67647d457796dc8..., Full HTML SHA-256: d65c15cde5281440...",
+          "Exact main-content SHA-256: e67647d457796dc8..., Full HTML SHA-256: 9a939a8120702bbd...",
           "SimHash fingerprint: 97750d29c7b88dba."
         ]
       },
@@ -262,8 +262,8 @@
         "topics_detected_count": 107,
         "topics_sample": [
           "research",
-          "Sales",
           "ZaubaCorp",
+          "Sales",
           "business",
           "Market",
           "Art",
@@ -422,7 +422,7 @@
           "Robots.txt found: True",
           "Schema types declared: None",
           "HTTPS enforced: True",
-          "Server latency probe: 92.3ms (local_probe)",
+          "Server latency probe: 91.8ms (local_probe)",
           "HTTP Status: 200",
           "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
           "Static HTML contains 864 words.",
@@ -439,7 +439,7 @@
           "Mapped 5 information access path(s) across multimodal and agent surfaces."
         ],
         "external_observations": [
-          "Local network latency probe recorded 92.3ms TTFB",
+          "Local network latency probe recorded 91.8ms TTFB",
           "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
         ],
         "analyses": [
@@ -765,7 +765,7 @@
           "contradicted_by": []
         },
         {
-          "finding": "Search Signal Structure: Title and H1 share 2 core evidenced terms: research, platform.",
+          "finding": "Search Signal Structure: Title and H1 share 2 core evidenced terms: platform, research.",
           "engine": "search_signal_engine",
           "source_file": "Structural Tag Correlation",
           "confidence": "high",
@@ -961,7 +961,7 @@
       "collection_timestamp": "2026-10-04",
       "collection_status": "SUCCESS",
       "error_message": null,
-      "execution_time_sec": 6.27,
+      "execution_time_sec": 6.59,
       "overall_health_score": 79,
       "technical_health_score": 100,
       "geo_readiness_score": 63,
@@ -1013,18 +1013,18 @@
         "h2_count": 17,
         "h3_count": 26,
         "detected_schema_types": [
-          "WebSite",
-          "WebPage",
           "FAQPage",
-          "ItemList",
-          "NewsArticle",
+          "BreadcrumbList",
+          "WebPage",
           "VideoObject",
           "Organization",
-          "BreadcrumbList"
+          "WebSite",
+          "ItemList",
+          "NewsArticle"
         ],
         "schema_blocks_count": 8,
         "schema_validation_issues": [],
-        "ttfb_ms": 78.5,
+        "ttfb_ms": 80.9,
         "performance_score": 85,
         "performance_source": "local_probe",
         "notes": [
@@ -1097,7 +1097,7 @@
         "notes": [
           "Extraction method: SEMANTIC_MAIN yielded 1545 main content words (2463 total body words).",
           "Content-to-body ratio: 62.7%.",
-          "Exact main-content SHA-256: 7bd7d761d9e4300c..., Full HTML SHA-256: 1d4ab7bf5a966b88...",
+          "Exact main-content SHA-256: 7bd7d761d9e4300c..., Full HTML SHA-256: dadbefc79ca9761c...",
           "SimHash fingerprint: 8d6c4932dd1c4fb5."
         ]
       },
@@ -1120,8 +1120,8 @@
         ],
         "entity_types_detected": [
           "OTHER",
-          "LOCAL_BUSINESS",
-          "ORGANIZATION"
+          "ORGANIZATION",
+          "LOCAL_BUSINESS"
         ],
         "relationships_count": 10,
         "structured_vs_visible_comparisons_count": 3,
@@ -1391,9 +1391,9 @@
           "Internal links observed: 148",
           "External links observed: 395",
           "Robots.txt found: True",
-          "Schema types declared: WebSite, WebPage, FAQPage, ItemList, NewsArticle, VideoObject, Organization, BreadcrumbList",
+          "Schema types declared: FAQPage, BreadcrumbList, WebPage, VideoObject, Organization, WebSite, ItemList, NewsArticle",
           "HTTPS enforced: True",
-          "Server latency probe: 78.5ms (local_probe)",
+          "Server latency probe: 80.9ms (local_probe)",
           "HTTP Status: 200",
           "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
           "Static HTML contains 2329 words.",
@@ -1412,7 +1412,7 @@
           "Mapped 24 information access path(s) across multimodal and agent surfaces."
         ],
         "external_observations": [
-          "Local network latency probe recorded 78.5ms TTFB",
+          "Local network latency probe recorded 80.9ms TTFB",
           "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
         ],
         "analyses": [
@@ -1700,7 +1700,7 @@
           "contradicted_by": []
         },
         {
-          "finding": "TTFB Latency: 78ms",
+          "finding": "TTFB Latency: 81ms",
           "engine": "performance_engine",
           "source_file": "HTTP response probe",
           "confidence": "medium",
@@ -2048,7 +2048,7 @@
       "collection_timestamp": "2026-10-04",
       "collection_status": "SUCCESS",
       "error_message": null,
-      "execution_time_sec": 7.15,
+      "execution_time_sec": 6.97,
       "overall_health_score": 41,
       "technical_health_score": 35,
       "geo_readiness_score": 28,
@@ -2097,7 +2097,7 @@
         "detected_schema_types": [],
         "schema_blocks_count": 0,
         "schema_validation_issues": [],
-        "ttfb_ms": 103.7,
+        "ttfb_ms": 100.4,
         "performance_score": 85,
         "performance_source": "local_probe",
         "notes": [
@@ -2264,7 +2264,7 @@
         "notes": [
           "Extraction method: HEURISTIC_PRUNED_BODY yielded 284 main content words (1068 total body words).",
           "Content-to-body ratio: 26.6%.",
-          "Exact main-content SHA-256: 74d5a15d46f189f0..., Full HTML SHA-256: ae0f40b0043427ca...",
+          "Exact main-content SHA-256: 74d5a15d46f189f0..., Full HTML SHA-256: c5da064a507df9c1...",
           "SimHash fingerprint: bbdd1d27400a29f2."
         ]
       },
@@ -2436,7 +2436,7 @@
         "text_represented_count": 5,
         "visual_only_observed_gaps": 15,
         "modern_format_count": 0,
-        "missing_dimensions_count": 5,
+        "missing_dimensions_count": 2,
         "notes": [
           "28 visual assets audited (8 alt-represented)"
         ]
@@ -2483,7 +2483,7 @@
           "Robots.txt found: True",
           "Schema types declared: None",
           "HTTPS enforced: True",
-          "Server latency probe: 103.7ms (local_probe)",
+          "Server latency probe: 100.4ms (local_probe)",
           "HTTP Status: 200",
           "WAF / Challenge Indicators: Observable embedded form protection in HTML: 'recaptcha'",
           "Static HTML contains 1055 words.",
@@ -2500,7 +2500,7 @@
           "Mapped 7 information access path(s) across multimodal and agent surfaces."
         ],
         "external_observations": [
-          "Local network latency probe recorded 103.7ms TTFB",
+          "Local network latency probe recorded 100.4ms TTFB",
           "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
         ],
         "analyses": [
@@ -2714,7 +2714,7 @@
           "contradicted_by": []
         },
         {
-          "finding": "TTFB Latency: 104ms",
+          "finding": "TTFB Latency: 100ms",
           "engine": "performance_engine",
           "source_file": "HTTP response probe",
           "confidence": "medium",
@@ -3014,1119 +3014,6 @@
         "json_audit": "audits\\yadavmeasurements.com-2026-10-04.json"
       }
     },
-    "alephindia.in": {
-      "site_url": "https://alephindia.in/",
-      "domain": "alephindia.in",
-      "name": "Aleph India",
-      "role": "competitor",
-      "collection_timestamp": "2026-10-04",
-      "collection_status": "SUCCESS",
-      "error_message": null,
-      "execution_time_sec": 19.14,
-      "overall_health_score": 68,
-      "technical_health_score": 90,
-      "geo_readiness_score": 42,
-      "trust_score": 56,
-      "performance_score": 85,
-      "score_formula_mode": "4_engine",
-      "formula_invariance_verified": true,
-      "crawl_limitations": [
-        "Single-page multi-engine collection pass",
-        "Process-isolated worker execution",
-        "Socket timeout: 15.0s",
-        "Respects robots.txt directives"
-      ],
-      "crawl_discovery": {
-        "status": "AVAILABLE",
-        "url": "https://alephindia.in/",
-        "http_status_code": 200,
-        "is_redirect": false,
-        "canonical_url": "https://alephindia.in/",
-        "internal_links_count": 81,
-        "external_links_count": 343,
-        "robots_txt_found": true,
-        "robots_txt_url": "https://alephindia.in/robots.txt",
-        "sitemaps_declared": [
-          "https://alephindia.in/sitemap.xml"
-        ],
-        "crawl_limitations": [
-          "Single-page multi-engine collection pass",
-          "Process-isolated worker execution",
-          "Socket timeout: 15.0s",
-          "Respects robots.txt directives"
-        ],
-        "notes": [
-          "HTTP Status: 200",
-          "Discovered 81 internal links"
-        ]
-      },
-      "technical_seo": {
-        "status": "AVAILABLE",
-        "title": "BIS Certification Consultants | ISI Mark, FMCS, CRS Certificate",
-        "title_length": 63,
-        "meta_description": "Aleph INDIA® is an expert BIS Registration Consultant in Delhi - India, providing a single window for all kinds of Technical Certification & Regulatory Compliances. We offer consulting services for BIS Registration, ISI Certification, WPC Approval, EPR Registration, BIS Hallmarking, and many more.",
-        "meta_description_length": 298,
-        "h1_count": 1,
-        "h1_samples": [
-          "Your Trusted Partner \n\n                    Aleph INDIA Group"
-        ],
-        "h2_count": 9,
-        "h3_count": 57,
-        "detected_schema_types": [
-          "Organization",
-          "WebSite"
-        ],
-        "schema_blocks_count": 2,
-        "schema_validation_issues": [],
-        "ttfb_ms": 442.7,
-        "performance_score": 85,
-        "performance_source": "local_probe",
-        "notes": [
-          "Title (63 chars)",
-          "2 schema types detected"
-        ]
-      },
-      "accessibility": {
-        "status": "AVAILABLE",
-        "wcag_status": "FAIL",
-        "engine_source": "axe_core_playwright",
-        "browser_evaluated": true,
-        "total_violations": 63,
-        "critical_count": 0,
-        "serious_count": 63,
-        "moderate_count": 0,
-        "minor_count": 0,
-        "rules_checked_count": 34,
-        "rules_passed_count": 31,
-        "violation_samples": [
-          {
-            "rule_id": "color-contrast",
-            "severity": "SERIOUS",
-            "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-            "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.56 (foreground color: #94a3b8, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
-          },
-          {
-            "rule_id": "color-contrast",
-            "severity": "SERIOUS",
-            "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-            "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #6b7280, background color: #eef0f5, font size: 9.4pt (12.5px), font weight: normal). Expected contrast ratio of 4.5:1"
-          },
-          {
-            "rule_id": "color-contrast",
-            "severity": "SERIOUS",
-            "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-            "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.29 (foreground color: #46aefd, background color: #f8fafc, font size: 9.8pt (13.12px), font weight: bold). Expected contrast ratio of 4.5:1"
-          },
-          {
-            "rule_id": "color-contrast",
-            "severity": "SERIOUS",
-            "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-            "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.56 (foreground color: #94a3b8, background color: #ffffff, font size: 9.6pt (12.8px), font weight: normal). Expected contrast ratio of 4.5:1"
-          },
-          {
-            "rule_id": "nested-interactive",
-            "severity": "SERIOUS",
-            "description": "Ensures interactive controls are not nested as they are not always announced by screen readers or can cause focus problems for assistive technologies",
-            "failure_summary": "Fix any of the following:\n  Element has focusable descendants"
-          },
-          {
-            "rule_id": "nested-interactive",
-            "severity": "SERIOUS",
-            "description": "Ensures interactive controls are not nested as they are not always announced by screen readers or can cause focus problems for assistive technologies",
-            "failure_summary": "Fix any of the following:\n  Element has focusable descendants"
-          },
-          {
-            "rule_id": "nested-interactive",
-            "severity": "SERIOUS",
-            "description": "Ensures interactive controls are not nested as they are not always announced by screen readers or can cause focus problems for assistive technologies",
-            "failure_summary": "Fix any of the following:\n  Element has focusable descendants"
-          },
-          {
-            "rule_id": "nested-interactive",
-            "severity": "SERIOUS",
-            "description": "Ensures interactive controls are not nested as they are not always announced by screen readers or can cause focus problems for assistive technologies",
-            "failure_summary": "Fix any of the following:\n  Element has focusable descendants"
-          },
-          {
-            "rule_id": "target-size",
-            "severity": "SERIOUS",
-            "description": "Ensure touch target have sufficient size and space",
-            "failure_summary": "Fix any of the following:\n  Target has insufficient size (22px by 7px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 19px instead of at least 24px."
-          },
-          {
-            "rule_id": "target-size",
-            "severity": "SERIOUS",
-            "description": "Ensure touch target have sufficient size and space",
-            "failure_summary": "Fix any of the following:\n  Target has insufficient size (7px by 7px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 19px instead of at least 24px."
-          }
-        ],
-        "disclaimer": "Automated checks evaluate observable criteria; non-certification scope.",
-        "notes": []
-      },
-      "security": {
-        "status": "AVAILABLE",
-        "overall_status": "FAIL",
-        "is_https": true,
-        "tls_valid": true,
-        "tls_protocol": "TLSv1.3",
-        "tls_days_remaining": 68,
-        "hsts_present": false,
-        "hsts_preload": false,
-        "csp_present": false,
-        "x_frame_options": null,
-        "x_content_type_options": null,
-        "referrer_policy": null,
-        "mixed_content_count": 0,
-        "server_leakage": [
-          "X-Powered-By: PHP/8.2.34"
-        ],
-        "findings_count": 7,
-        "findings_samples": [
-          {
-            "severity": "HIGH",
-            "category": "security_vulnerability",
-            "title": "Missing Strict-Transport-Security (HSTS) Header",
-            "recommendation": "Add 'Strict-Transport-Security: max-age=31536000; includeSubDomains; preload' to all HTTPS responses."
-          },
-          {
-            "severity": "HIGH",
-            "category": "security_vulnerability",
-            "title": "Missing Content-Security-Policy (CSP) Header",
-            "recommendation": "Implement a robust Content-Security-Policy defining trusted sources for scripts, styles, frames, and images."
-          },
-          {
-            "severity": "MEDIUM",
-            "category": "security_vulnerability",
-            "title": "Missing Clickjacking Defense (X-Frame-Options / frame-ancestors)",
-            "recommendation": "Add 'X-Frame-Options: SAMEORIGIN' or 'frame-ancestors 'self'' to prevent unauthorized framing."
-          },
-          {
-            "severity": "LOW",
-            "category": "security_vulnerability",
-            "title": "Missing 'X-Content-Type-Options: nosniff'",
-            "recommendation": "Add 'X-Content-Type-Options: nosniff' header."
-          },
-          {
-            "severity": "LOW",
-            "category": "best_practice",
-            "title": "Missing Referrer-Policy Header",
-            "recommendation": "Set 'Referrer-Policy: strict-origin-when-cross-origin' to protect internal analytics and sensitive query tokens."
-          },
-          {
-            "severity": "LOW",
-            "category": "best_practice",
-            "title": "Missing Permissions-Policy Header",
-            "recommendation": "Declare 'Permissions-Policy: camera=(), microphone=(), geolocation=()' to restrict unnecessary hardware access."
-          },
-          {
-            "severity": "LOW",
-            "category": "security_vulnerability",
-            "title": "X-Powered-By Header Discloses Technology Stack",
-            "recommendation": "Remove X-Powered-By header via server configuration or application middleware."
-          }
-        ],
-        "notes": [
-          "Add 'Strict-Transport-Security: max-age=31536000; includeSubDomains; preload' to all HTTPS responses.",
-          "Implement a robust Content-Security-Policy defining trusted sources for scripts, styles, frames, and images.",
-          "Add 'X-Frame-Options: SAMEORIGIN' or 'frame-ancestors 'self'' to prevent unauthorized framing.",
-          "Add 'X-Content-Type-Options: nosniff' header.",
-          "Set 'Referrer-Policy: strict-origin-when-cross-origin' to protect internal analytics and sensitive query tokens.",
-          "Declare 'Permissions-Policy: camera=(), microphone=(), geolocation=()' to restrict unnecessary hardware access.",
-          "Remove X-Powered-By header via server configuration or application middleware."
-        ]
-      },
-      "content": {
-        "status": "AVAILABLE",
-        "main_content_words": 239,
-        "total_body_words": 4334,
-        "content_to_boilerplate_ratio": 0.06,
-        "paragraph_count": 116,
-        "extraction_method": "SEMANTIC_ARTICLE",
-        "thin_content_tier": "MODERATE",
-        "has_placeholder_text": false,
-        "exact_content_hash": "f4b36f8a8d212849cb56f348a2a03bfda3ab92e8e25c7b8402cd8aedd389b9e8",
-        "simhash": "720f44728969af4d",
-        "title_h1_alignment": "MISALIGNED",
-        "title_h1_token_overlap": 0.0,
-        "heading_hierarchy_valid": false,
-        "heading_skips": [
-          "Heading skip: <h1> to <h3> ('Latest Regulatory Updates...')",
-          "Heading skip: <h2> to <h4> ('LATEST VIDEO...')",
-          "Heading skip: <h4> to <h6> ('Being Respectful...')"
-        ],
-        "empty_sections_count": 8,
-        "notes": [
-          "Extraction method: SEMANTIC_ARTICLE yielded 239 main content words (4334 total body words).",
-          "Content-to-body ratio: 5.5%.",
-          "Exact main-content SHA-256: f4b36f8a8d212849..., Full HTML SHA-256: fb075a00a892f64e...",
-          "SimHash fingerprint: 720f44728969af4d."
-        ]
-      },
-      "entity": {
-        "status": "AVAILABLE",
-        "total_entities_detected": 10,
-        "entity_names": [
-          "Aleph INDIA",
-          "Aleph INDIA",
-          "Aleph INDIA",
-          "Aleph INDIA",
-          "Aleph INDIA® 2009 - 2026",
-          "Contact Phone (+911234567890)",
-          "Contact Phone (+911234567890)",
-          "Contact Phone (+919818571192)",
-          "Contact Email (inbox@alephindia.in)",
-          "Contact Email (info@alephindia.in)"
-        ],
-        "entity_types_detected": [
-          "ORGANIZATION",
-          "LOCAL_BUSINESS",
-          "PERSON",
-          "OTHER"
-        ],
-        "relationships_count": 7,
-        "structured_vs_visible_comparisons_count": 3,
-        "aligned_comparisons_count": 2,
-        "divergent_comparisons_count": 1,
-        "samples": [
-          {
-            "name": "Aleph INDIA",
-            "type": "ORGANIZATION",
-            "source": "JSON_LD",
-            "telephone": "+91 99901 36656",
-            "email": "info@alephindia.in"
-          },
-          {
-            "name": "Aleph INDIA",
-            "type": "OTHER",
-            "source": "JSON_LD",
-            "telephone": null,
-            "email": null
-          },
-          {
-            "name": "Aleph INDIA",
-            "type": "ORGANIZATION",
-            "source": "META_TAG",
-            "telephone": null,
-            "email": null
-          },
-          {
-            "name": "Aleph INDIA",
-            "type": "PERSON",
-            "source": "META_TAG",
-            "telephone": null,
-            "email": null
-          },
-          {
-            "name": "Aleph INDIA® 2009 - 2026",
-            "type": "ORGANIZATION",
-            "source": "VISIBLE_HTML",
-            "telephone": null,
-            "email": null
-          },
-          {
-            "name": "Contact Phone (+911234567890)",
-            "type": "LOCAL_BUSINESS",
-            "source": "VISIBLE_HTML",
-            "telephone": "+911234567890",
-            "email": null
-          },
-          {
-            "name": "Contact Phone (+911234567890)",
-            "type": "LOCAL_BUSINESS",
-            "source": "VISIBLE_HTML",
-            "telephone": "+911234567890",
-            "email": null
-          },
-          {
-            "name": "Contact Phone (+919818571192)",
-            "type": "LOCAL_BUSINESS",
-            "source": "VISIBLE_HTML",
-            "telephone": "+919818571192",
-            "email": null
-          }
-        ],
-        "notes": [
-          "Detected 10 entity signals (ORGANIZATION: 5, OTHER: 1, PERSON: 1, LOCAL_BUSINESS: 3).",
-          "Recorded 7 observable entity relationships."
-        ]
-      },
-      "internal_links": {
-        "status": "AVAILABLE",
-        "total_internal_links": 81,
-        "unique_internal_targets": 81,
-        "total_external_links": 343,
-        "unique_external_targets": 110,
-        "empty_anchors_count": 0,
-        "sample_internal_targets": [
-          "https://alephindia.in/",
-          "https://alephindia.in/about-us.php",
-          "https://alephindia.in/message-from-management-desk.php",
-          "https://alephindia.in/our-team.php",
-          "https://alephindia.in/associations.php",
-          "https://alephindia.in/achievement-award.php",
-          "https://alephindia.in/our-media-presence.php",
-          "https://alephindia.in/foreign-manufacturers-certification-scheme-fmcs.php",
-          "https://alephindia.in/bis-certification-isi-mark.php",
-          "https://alephindia.in/bis-certification-scheme-x-machinery-and-electrical-equipment.php"
-        ],
-        "notes": [
-          "81 internal links observed, 81 unique targets"
-        ]
-      },
-      "search_topic_query_intent": {
-        "status": "AVAILABLE",
-        "search_signals_count": 278,
-        "topics_detected_count": 217,
-        "topics_sample": [
-          "INDIA®",
-          "Certificate",
-          "BIS",
-          "Certification",
-          "Aleph",
-          "BIS Certification Consultants",
-          "ISI",
-          "Consultants",
-          "CRS",
-          "FMCS"
-        ],
-        "query_page_concepts_count": 258,
-        "primary_intent": "transactional",
-        "secondary_intents": [
-          "navigational",
-          "local",
-          "informational"
-        ],
-        "intent_evidence_items_count": 18,
-        "notes": [
-          "Primary Intent: transactional",
-          "217 topics extracted"
-        ]
-      },
-      "cannibalization_search_gaps": {
-        "status": "AVAILABLE",
-        "potential_cannibalization_signals_count": 0,
-        "observable_gaps_count": 0,
-        "overlap_signals_sample": [],
-        "gaps_sample": [],
-        "layer_boundary_note": "Strictly deterministic identification of observable on-site topic overlaps and gaps. No external ranking, GSC, or competitor superiority claims.",
-        "notes": [
-          "0 potential cannibalization signals flagged",
-          "0 topic gaps identified"
-        ]
-      },
-      "retrieval_readiness": {
-        "status": "AVAILABLE",
-        "total_bots_evaluated": 12,
-        "search_index_allowed_count": 6,
-        "ai_training_allowed_count": 3,
-        "user_fetch_allowed_count": 3,
-        "waf_or_challenge_detected": true,
-        "waf_blocked": false,
-        "waf_provider": "Cloudflare",
-        "has_nosnippet": false,
-        "has_data_nosnippet": false,
-        "max_snippet": null,
-        "static_words": 2546,
-        "rendered_words": 4139,
-        "word_count_delta": 1593,
-        "rendering_impact_summary": "Rendered HTML yields 1593 additional words (4139 vs 2546 raw). Some retrieval systems may have reduced access to this content if they do not execute client-side JavaScript.",
-        "notes": [
-          "HTTP Status: 200",
-          "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
-          "Static HTML contains 2546 words.",
-          "Rendered browser DOM contains 4139 words (delta: +1593 words)."
-        ]
-      },
-      "answerability": {
-        "status": "AVAILABLE",
-        "total_units_detected": 14,
-        "units_by_type": {
-          "LOCATION_CONTACT": 1,
-          "LIST": 5,
-          "FACTUAL_STATEMENT": 5,
-          "DIRECT_ANSWER": 2,
-          "SERVICE_DESCRIPTION": 1
-        },
-        "heading_content_relationship": "PARTIAL",
-        "question_answer_patterns": "PRESENT",
-        "definition_patterns": "ABSENT",
-        "step_list_structure": "ABSENT",
-        "table_availability": "ABSENT",
-        "explained_topics_count": 90,
-        "mentioned_only_topics_count": 116,
-        "unsupported_heading_topics_count": 24,
-        "unsupported_headings_sample": [
-          "Latest Regulatory Updates",
-          "Upcoming Industry Events",
-          "TestingInspection & Certification Servic",
-          "Recognitions That ReflectOurCommitment t",
-          "Industry expertiseAcross Diverse Sectors"
-        ],
-        "notes": [
-          "Detected 14 distinct observable information unit(s) across 5 structural types.",
-          "Evaluated 258 topic(s): 90 explained with explicit units, 116 mentioned only, 24 unsupported headings.",
-          "Structure 'DIRECT_ANSWER': 2 unit(s) observed.",
-          "Structure 'FACTUAL_STATEMENT': 5 unit(s) observed.",
-          "Structure 'LIST': 5 unit(s) observed.",
-          "Structure 'LOCATION_CONTACT': 1 unit(s) observed.",
-          "Structure 'SERVICE_DESCRIPTION': 1 unit(s) observed."
-        ]
-      },
-      "claim_grounding": {
-        "status": "AVAILABLE",
-        "total_claims_detected": 20,
-        "supported_claims_count": 19,
-        "partially_supported_count": 1,
-        "uncorroborated_count": 0,
-        "contradicted_count": 0,
-        "structured_agreements_count": 4,
-        "structured_disagreements_count": 0,
-        "entity_consistency_breakdown": {
-          "CONSISTENT": 1,
-          "PARTIALLY_CONSISTENT": 5
-        },
-        "notes": [
-          "Detected 20 observable claim(s) on page https://alephindia.in/.",
-          "On-site support status: 19 supported, 1 partially supported, 0 uncorroborated, 0 contradicted.",
-          "Structured vs visible comparisons: 4 agreement(s), 0 explicit disagreement(s).",
-          "Evaluated 6 entity candidate(s) across 6 content surfaces."
-        ]
-      },
-      "multimodal": {
-        "status": "AVAILABLE",
-        "total_visual_assets": 351,
-        "informational_assets_count": 267,
-        "decorative_assets_count": 84,
-        "alt_represented_count": 89,
-        "caption_represented_count": 0,
-        "text_represented_count": 88,
-        "visual_only_observed_gaps": 174,
-        "modern_format_count": 62,
-        "missing_dimensions_count": 49,
-        "notes": [
-          "351 visual assets audited (89 alt-represented)"
-        ]
-      },
-      "agent_readiness": {
-        "status": "AVAILABLE",
-        "total_forms_detected": 3,
-        "labeled_forms_count": 1,
-        "action_buttons_detected": 84,
-        "meaningful_accessible_buttons_count": 83,
-        "descriptive_navigation_links_count": 214,
-        "schema_actions_detected": 0,
-        "webmcp_declarations_detected": 0,
-        "total_access_paths": 22,
-        "action_surface_gaps": 0,
-        "notes": [
-          "3 forms, 84 buttons audited"
-        ]
-      },
-      "external_ai": {
-        "status": "DISABLED",
-        "providers_evaluated": [],
-        "queries_executed_count": 0,
-        "successful_observations_count": 0,
-        "failed_observations_count": 0,
-        "target_domain_cited_count": 0,
-        "target_domain_mentioned_count": 0,
-        "total_external_citations": 0,
-        "failure_reason": null,
-        "limitation_disclaimer": "Controlled empirical observations under explicit API configurations. Strictly opt-in; does not imply universal AI rankings or traffic.",
-        "notes": [
-          "External AI visibility measurement was not requested (strictly opt-in via --external-ai)."
-        ]
-      },
-      "epistemic_separation": {
-        "facts": [
-          "HTTP response code: 200",
-          "Static HTML word count: 3326",
-          "Title: 'BIS Certification Consultants | ISI Mark, FMCS, CRS Certificate' (63 characters)",
-          "Meta description: 'Aleph INDIA® is an expert BIS Registration Consultant in Delhi - India, providing a single window for all kinds of Technical Certification & Regulatory Compliances. We offer consulting services for BIS Registration, ISI Certification, WPC Approval, EPR Registration, BIS Hallmarking, and many more.' (298 characters)",
-          "H1 tags observed: 1",
-          "Internal links observed: 81",
-          "External links observed: 343",
-          "Robots.txt found: True",
-          "Schema types declared: Organization, WebSite",
-          "HTTPS enforced: True",
-          "Server latency probe: 442.7ms (local_probe)",
-          "HTTP Status: 200",
-          "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
-          "Static HTML contains 2546 words.",
-          "Rendered browser DOM contains 4139 words (delta: +1593 words).",
-          "Detected 14 distinct observable information unit(s) across 5 structural types.",
-          "Evaluated 258 topic(s): 90 explained with explicit units, 116 mentioned only, 24 unsupported headings.",
-          "Structure 'DIRECT_ANSWER': 2 unit(s) observed.",
-          "Structure 'FACTUAL_STATEMENT': 5 unit(s) observed.",
-          "Structure 'LIST': 5 unit(s) observed.",
-          "Detected 20 observable claim(s) on page https://alephindia.in/.",
-          "On-site support status: 19 supported, 1 partially supported, 0 uncorroborated, 0 contradicted.",
-          "Structured vs visible comparisons: 4 agreement(s), 0 explicit disagreement(s).",
-          "Evaluated 6 entity candidate(s) across 6 content surfaces.",
-          "Observed 351 visual asset(s): 267 informational, 89 with meaningful alt text, 0 with figure captions, 174 visual-only information gap(s).",
-          "Observed 3 form(s) (1 labeled), 84 action button(s) (83 accessible names), 0 structured schema action(s), 0 WebMCP declaration(s).",
-          "Mapped 22 information access path(s) across multimodal and agent surfaces."
-        ],
-        "external_observations": [
-          "Local network latency probe recorded 442.7ms TTFB",
-          "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
-        ],
-        "analyses": [
-          "Health score computed: 68/100 via invariant formula mode '4_engine'",
-          "Technical SEO foundation: 90/100",
-          "GEO citability readiness: 42/100",
-          "Trust stack: C (56/100)",
-          "Cross-engine conflict [MEDIUM] on 'Topic Heading without Supporting Content': Topic 'Ahead' has dedicated heading 'Stay Ahead with the LatestRegulatory Updates', but supporting body content is genuinely absent. -> The page establishes an explicit topical heading promise for search/AI retrieval, but fails to provide observable explanatory or factual body copy under that section."
-        ],
-        "recommendations": [
-          "[HIGH] Rewrite Meta Description with Active Call-to-Action: Descriptions over 160 chars are clipped. Overly short descriptions fail to compel searcher clicks.",
-          "[HIGH] Harden Technical Trust & Security Headers: HSTS and Content-Security-Policy prevent security downgrades and satisfy AI agent reliability gates.",
-          "[GEO_WIN] Implement Answer-First H2 Structure: AutoGEO research proves AI models prioritize passages providing concrete numbers/facts in the first 150 characters.",
-          "[HIGH] Missing Strict-Transport-Security (HSTS) Header: Add 'Strict-Transport-Security: max-age=31536000; includeSubDomains; preload' to all HTTPS responses.",
-          "[HIGH] Missing Content-Security-Policy (CSP) Header: Implement a robust Content-Security-Policy defining trusted sources for scripts, styles, frames, and images.",
-          "[MEDIUM] Generic Anchor Text Optimization Opportunity: Generic anchor usage was observed across multiple internal links. Review whether important navigation links can incorporate more descriptive, topic-specific anchor text."
-        ]
-      },
-      "provenance_tags": [
-        {
-          "finding": "Googlebot: ALLOWED",
-          "engine": "seo_engine",
-          "source_file": "robots.txt",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Bingbot: ALLOWED",
-          "engine": "seo_engine",
-          "source_file": "robots.txt",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Slurp: ALLOWED",
-          "engine": "seo_engine",
-          "source_file": "robots.txt",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "DuckDuckBot: ALLOWED",
-          "engine": "seo_engine",
-          "source_file": "robots.txt",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "YandexBot: ALLOWED",
-          "engine": "seo_engine",
-          "source_file": "robots.txt",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Baiduspider: ALLOWED",
-          "engine": "seo_engine",
-          "source_file": "robots.txt",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "OAI-SearchBot: ALLOWED",
-          "engine": "seo_engine",
-          "source_file": "robots.txt",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "PerplexityBot: ALLOWED",
-          "engine": "seo_engine",
-          "source_file": "robots.txt",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Claude-SearchBot: ALLOWED",
-          "engine": "seo_engine",
-          "source_file": "robots.txt",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "ChatGPT-User: ALLOWED",
-          "engine": "seo_engine",
-          "source_file": "robots.txt",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Claude-User: ALLOWED",
-          "engine": "seo_engine",
-          "source_file": "robots.txt",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Perplexity-User: ALLOWED",
-          "engine": "seo_engine",
-          "source_file": "robots.txt",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "GPTBot: ALLOWED",
-          "engine": "seo_engine",
-          "source_file": "robots.txt",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "ClaudeBot: ALLOWED",
-          "engine": "seo_engine",
-          "source_file": "robots.txt",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Google-Extended: ALLOWED",
-          "engine": "seo_engine",
-          "source_file": "robots.txt",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Applebot-Extended: ALLOWED",
-          "engine": "seo_engine",
-          "source_file": "robots.txt",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "CCBot: ALLOWED",
-          "engine": "seo_engine",
-          "source_file": "robots.txt",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Bytespider: ALLOWED",
-          "engine": "seo_engine",
-          "source_file": "robots.txt",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "FacebookBot: ALLOWED",
-          "engine": "seo_engine",
-          "source_file": "robots.txt",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "cohere-ai: ALLOWED",
-          "engine": "seo_engine",
-          "source_file": "robots.txt",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "anthropic-ai: ALLOWED",
-          "engine": "seo_engine",
-          "source_file": "robots.txt",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Applebot: ALLOWED",
-          "engine": "seo_engine",
-          "source_file": "robots.txt",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Schema type 'Organization' detected",
-          "engine": "seo_engine",
-          "source_file": "application/ld+json",
-          "confidence": "high",
-          "confirmed_by": [
-            "browser_engine"
-          ],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Schema type 'WebSite' detected",
-          "engine": "seo_engine",
-          "source_file": "application/ld+json",
-          "confidence": "high",
-          "confirmed_by": [
-            "browser_engine"
-          ],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Page Title (63 chars): 'BIS Certification Consultants | ISI Mark, FMC...'",
-          "engine": "seo_engine",
-          "source_file": "<title> tag",
-          "confidence": "high",
-          "confirmed_by": [
-            "browser_engine"
-          ],
-          "contradicted_by": []
-        },
-        {
-          "finding": "TTFB Latency: 443ms",
-          "engine": "performance_engine",
-          "source_file": "HTTP response probe",
-          "confidence": "medium",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "/llms.txt: PRESENT",
-          "engine": "rankintel_geo",
-          "source_file": "/llms.txt HTTP check",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Princeton GEO Citability: 42/100",
-          "engine": "rankintel_geo",
-          "source_file": "DOM content passages",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Image Optimization: 97 images detected (0 missing alt)",
-          "engine": "image_engine",
-          "source_file": "HTML DOM",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "HTML Head Audit: Viewport Present, Lang Present",
-          "engine": "image_engine",
-          "source_file": "<head> HTML",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "WCAG AA Automated Status: FAIL (63 violations)",
-          "engine": "axe_core_playwright",
-          "source_file": "HTML DOM",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Security Posture Status: FAIL (7 findings)",
-          "engine": "security_engine",
-          "source_file": "HTTP Headers / TLS",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "TLS Certificate: Valid (68 days left)",
-          "engine": "security_engine",
-          "source_file": "TLS Handshake",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Main Content Extraction: 239 words (SEMANTIC_ARTICLE)",
-          "engine": "content_engine",
-          "source_file": "HTML DOM",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Heading Structure: 97 headings (3 skips)",
-          "engine": "content_engine",
-          "source_file": "HTML Headings",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Entity Detection: 10 entity signals (8 organization/business)",
-          "engine": "entity_engine",
-          "source_file": "JSON-LD & HTML DOM",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Entity Alignment (organization_name): EXACT_MATCH",
-          "engine": "entity_engine",
-          "source_file": "JSON-LD vs DOM Signals",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Entity Alignment (organization_name): PARTIAL_MATCH",
-          "engine": "entity_engine",
-          "source_file": "JSON-LD vs DOM Signals",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Entity Alignment (telephone): DIVERGENT_IDENTITY_SUSPECTED",
-          "engine": "entity_engine",
-          "source_file": "JSON-LD vs DOM Signals",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Internal Link Topology: 285 internal links (80 unique destinations)",
-          "engine": "internal_link_engine",
-          "source_file": "HTML DOM",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Generic Anchor Text: 8 generic anchor links observed",
-          "engine": "internal_link_engine",
-          "source_file": "HTML DOM",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Search Signal Evidence: 278 on-site search-relevant signal terms evidenced",
-          "engine": "search_signal_engine",
-          "source_file": "HTML DOM & Metadata",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Search Signal Structure: Multi-location co-occurrence observed for key terms: india, bis, certificate, certification, registration.",
-          "engine": "search_signal_engine",
-          "source_file": "Structural Tag Correlation",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Search Signal Structure: Title and H1 do not share any directly evidenced lexical terms.",
-          "engine": "search_signal_engine",
-          "source_file": "Structural Tag Correlation",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Topic Intelligence: 217 deterministic concept groups derived from on-site evidence",
-          "engine": "topic_intelligence_engine",
-          "source_file": "Search Signal & Entity Evidence",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Topic Relationships: 151 inter-topic relationships mapped",
-          "engine": "topic_intelligence_engine",
-          "source_file": "Deterministic Concept Clustering",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Query-Page Mapping: 258 observed concepts mapped to page (20 DIRECT, 124 SUPPORTED)",
-          "engine": "query_page_mapping_engine",
-          "source_file": "On-Site Evidence Triangulation",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 20 direct primary concepts, 124 secondary supported concepts.",
-          "engine": "query_page_mapping_engine",
-          "source_file": "Structural Evidence Matrix",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (18 observable evidence items)",
-          "engine": "search_intent_engine",
-          "source_file": "On-Site Structural Intent Heuristics",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 13 corroborating evidence points.",
-          "engine": "search_intent_engine",
-          "source_file": "Multi-Signal Corroboration Engine",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Cannibalization & Gap Observations: OBSERVED_WEBSITE_EVIDENCE: Multi-page competition cannot be evaluated on an isolated single page.",
-          "engine": "cannibalization_analyzer",
-          "source_file": "On-Site Evidence Triangulation",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "AI Search Retrieval Access: 6 indexers allowed, 3 training scrapers allowed",
-          "engine": "retrieval_readiness_engine",
-          "source_file": "robots.txt & HTTP Directives",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Content Availability Delta: +1593 words in rendered DOM",
-          "engine": "retrieval_readiness_engine",
-          "source_file": "DOM (hydration comparison)",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Observable Information Units: 14 unit(s) across 5 structural types",
-          "engine": "answerability_engine",
-          "source_file": "DOM & Schema Structure",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Phase 9 Topic Explanations: 90 topic(s) substantiated by explicit answerable structures",
-          "engine": "answerability_engine",
-          "source_file": "Heading & Body Passages",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Unsupported Topical Headings: 22 heading(s) without supporting body copy",
-          "engine": "answerability_engine",
-          "source_file": "Heading Section AST",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Observable Claims Grounding: 20 claim(s) (19 supported on-site, 0 uncorroborated)",
-          "engine": "claim_grounding_engine",
-          "source_file": "Visible Content & Answerable Units",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Structured vs Visible Alignment: 3 agreement(s), 0 disagreement(s)",
-          "engine": "claim_grounding_engine",
-          "source_file": "JSON-LD & DOM Content",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Entity Surface Consistency: 6 candidate(s) tracked across 6 content surfaces",
-          "engine": "claim_grounding_engine",
-          "source_file": "DOM, Headings, Meta, JSON-LD, Units",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Multimodal Information Representation: 351 visual asset(s) (267 informational, 89 alt-represented)",
-          "engine": "multimodal_agent_engine",
-          "source_file": "HTML DOM & Image Assets",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Agent Interaction Surfaces: 3 form(s) (1 labeled), 84 button(s)",
-          "engine": "multimodal_agent_engine",
-          "source_file": "HTML Forms & Controls",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        },
-        {
-          "finding": "Information Access Paths: 22 path(s) triangulated across visual and interactive surfaces",
-          "engine": "multimodal_agent_engine",
-          "source_file": "Multi-Engine Triangulation",
-          "confidence": "high",
-          "confirmed_by": [],
-          "contradicted_by": []
-        }
-      ],
-      "conflicts_detected": [
-        {
-          "severity": "MEDIUM",
-          "feature": "Topic Heading without Supporting Content",
-          "description": "Topic 'Ahead' has dedicated heading 'Stay Ahead with the LatestRegulatory Updates', but supporting body content is genuinely absent.",
-          "engine_a_finding": "Topic Engine: Candidate topic 'Ahead'",
-          "engine_b_finding": "Answerability Engine: Heading 'Stay Ahead with the LatestRegulatory Updates' has 0 supporting body words",
-          "interpretation": "The page establishes an explicit topical heading promise for search/AI retrieval, but fails to provide observable explanatory or factual body copy under that section."
-        }
-      ],
-      "engines_executed": [
-        "advertools_seo",
-        "browser_engine",
-        "rankintel_geo",
-        "performance_engine",
-        "image_engine",
-        "accessibility_engine",
-        "security_engine",
-        "content_engine",
-        "entity_engine",
-        "internal_link_engine",
-        "search_signal_engine",
-        "topic_intelligence_engine",
-        "query_page_mapping_engine",
-        "search_intent_engine",
-        "cannibalization_analyzer",
-        "retrieval_readiness_engine",
-        "answerability_engine",
-        "claim_grounding_engine",
-        "multimodal_agent_engine"
-      ],
-      "raw_report_paths": {
-        "markdown_audit": "audits\\alephindia.in-2026-10-04.md",
-        "json_audit": "audits\\alephindia.in-2026-10-04.json"
-      }
-    },
     "qualityinternational.org": {
       "site_url": "https://qualityinternational.org/",
       "domain": "qualityinternational.org",
@@ -4135,7 +3022,7 @@
       "collection_timestamp": "2026-10-04",
       "collection_status": "SUCCESS",
       "error_message": null,
-      "execution_time_sec": 6.26,
+      "execution_time_sec": 6.12,
       "overall_health_score": 37,
       "technical_health_score": 25,
       "geo_readiness_score": 30,
@@ -4188,7 +3075,7 @@
         "detected_schema_types": [],
         "schema_blocks_count": 0,
         "schema_validation_issues": [],
-        "ttfb_ms": 138.7,
+        "ttfb_ms": 137.3,
         "performance_score": 85,
         "performance_source": "local_probe",
         "notes": [
@@ -4597,7 +3484,7 @@
           "Robots.txt found: True",
           "Schema types declared: None",
           "HTTPS enforced: True",
-          "Server latency probe: 138.7ms (local_probe)",
+          "Server latency probe: 137.3ms (local_probe)",
           "HTTP Status: 200",
           "No active WAF or automated challenge barriers observed.",
           "Static HTML contains 560 words.",
@@ -4613,7 +3500,7 @@
           "Mapped 5 information access path(s) across multimodal and agent surfaces."
         ],
         "external_observations": [
-          "Local network latency probe recorded 138.7ms TTFB",
+          "Local network latency probe recorded 137.3ms TTFB",
           "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
         ],
         "analyses": [
@@ -4835,7 +3722,7 @@
           "contradicted_by": []
         },
         {
-          "finding": "TTFB Latency: 139ms",
+          "finding": "TTFB Latency: 137ms",
           "engine": "performance_engine",
           "source_file": "HTTP response probe",
           "confidence": "medium",
@@ -5135,6 +4022,1119 @@
         "json_audit": "audits\\qualityinternational.org-2026-10-04.json"
       }
     },
+    "alephindia.in": {
+      "site_url": "https://alephindia.in/",
+      "domain": "alephindia.in",
+      "name": "Aleph India",
+      "role": "competitor",
+      "collection_timestamp": "2026-10-04",
+      "collection_status": "SUCCESS",
+      "error_message": null,
+      "execution_time_sec": 19.18,
+      "overall_health_score": 68,
+      "technical_health_score": 90,
+      "geo_readiness_score": 42,
+      "trust_score": 56,
+      "performance_score": 85,
+      "score_formula_mode": "4_engine",
+      "formula_invariance_verified": true,
+      "crawl_limitations": [
+        "Single-page multi-engine collection pass",
+        "Process-isolated worker execution",
+        "Socket timeout: 15.0s",
+        "Respects robots.txt directives"
+      ],
+      "crawl_discovery": {
+        "status": "AVAILABLE",
+        "url": "https://alephindia.in/",
+        "http_status_code": 200,
+        "is_redirect": false,
+        "canonical_url": "https://alephindia.in/",
+        "internal_links_count": 81,
+        "external_links_count": 343,
+        "robots_txt_found": true,
+        "robots_txt_url": "https://alephindia.in/robots.txt",
+        "sitemaps_declared": [
+          "https://alephindia.in/sitemap.xml"
+        ],
+        "crawl_limitations": [
+          "Single-page multi-engine collection pass",
+          "Process-isolated worker execution",
+          "Socket timeout: 15.0s",
+          "Respects robots.txt directives"
+        ],
+        "notes": [
+          "HTTP Status: 200",
+          "Discovered 81 internal links"
+        ]
+      },
+      "technical_seo": {
+        "status": "AVAILABLE",
+        "title": "BIS Certification Consultants | ISI Mark, FMCS, CRS Certificate",
+        "title_length": 63,
+        "meta_description": "Aleph INDIA® is an expert BIS Registration Consultant in Delhi - India, providing a single window for all kinds of Technical Certification & Regulatory Compliances. We offer consulting services for BIS Registration, ISI Certification, WPC Approval, EPR Registration, BIS Hallmarking, and many more.",
+        "meta_description_length": 298,
+        "h1_count": 1,
+        "h1_samples": [
+          "Your Trusted Partner \n\n                    Aleph INDIA Group"
+        ],
+        "h2_count": 9,
+        "h3_count": 57,
+        "detected_schema_types": [
+          "Organization",
+          "WebSite"
+        ],
+        "schema_blocks_count": 2,
+        "schema_validation_issues": [],
+        "ttfb_ms": 462.1,
+        "performance_score": 85,
+        "performance_source": "local_probe",
+        "notes": [
+          "Title (63 chars)",
+          "2 schema types detected"
+        ]
+      },
+      "accessibility": {
+        "status": "AVAILABLE",
+        "wcag_status": "FAIL",
+        "engine_source": "axe_core_playwright",
+        "browser_evaluated": true,
+        "total_violations": 63,
+        "critical_count": 0,
+        "serious_count": 63,
+        "moderate_count": 0,
+        "minor_count": 0,
+        "rules_checked_count": 34,
+        "rules_passed_count": 31,
+        "violation_samples": [
+          {
+            "rule_id": "color-contrast",
+            "severity": "SERIOUS",
+            "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.56 (foreground color: #94a3b8, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "rule_id": "color-contrast",
+            "severity": "SERIOUS",
+            "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.24 (foreground color: #6b7280, background color: #eef0f5, font size: 9.4pt (12.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "rule_id": "color-contrast",
+            "severity": "SERIOUS",
+            "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.29 (foreground color: #46aefd, background color: #f8fafc, font size: 9.8pt (13.12px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "rule_id": "color-contrast",
+            "severity": "SERIOUS",
+            "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.56 (foreground color: #94a3b8, background color: #ffffff, font size: 9.6pt (12.8px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "rule_id": "nested-interactive",
+            "severity": "SERIOUS",
+            "description": "Ensures interactive controls are not nested as they are not always announced by screen readers or can cause focus problems for assistive technologies",
+            "failure_summary": "Fix any of the following:\n  Element has focusable descendants"
+          },
+          {
+            "rule_id": "nested-interactive",
+            "severity": "SERIOUS",
+            "description": "Ensures interactive controls are not nested as they are not always announced by screen readers or can cause focus problems for assistive technologies",
+            "failure_summary": "Fix any of the following:\n  Element has focusable descendants"
+          },
+          {
+            "rule_id": "nested-interactive",
+            "severity": "SERIOUS",
+            "description": "Ensures interactive controls are not nested as they are not always announced by screen readers or can cause focus problems for assistive technologies",
+            "failure_summary": "Fix any of the following:\n  Element has focusable descendants"
+          },
+          {
+            "rule_id": "nested-interactive",
+            "severity": "SERIOUS",
+            "description": "Ensures interactive controls are not nested as they are not always announced by screen readers or can cause focus problems for assistive technologies",
+            "failure_summary": "Fix any of the following:\n  Element has focusable descendants"
+          },
+          {
+            "rule_id": "target-size",
+            "severity": "SERIOUS",
+            "description": "Ensure touch target have sufficient size and space",
+            "failure_summary": "Fix any of the following:\n  Target has insufficient size (22px by 7px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 19px instead of at least 24px."
+          },
+          {
+            "rule_id": "target-size",
+            "severity": "SERIOUS",
+            "description": "Ensure touch target have sufficient size and space",
+            "failure_summary": "Fix any of the following:\n  Target has insufficient size (7px by 7px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 19px instead of at least 24px."
+          }
+        ],
+        "disclaimer": "Automated checks evaluate observable criteria; non-certification scope.",
+        "notes": []
+      },
+      "security": {
+        "status": "AVAILABLE",
+        "overall_status": "FAIL",
+        "is_https": true,
+        "tls_valid": true,
+        "tls_protocol": "TLSv1.3",
+        "tls_days_remaining": 68,
+        "hsts_present": false,
+        "hsts_preload": false,
+        "csp_present": false,
+        "x_frame_options": null,
+        "x_content_type_options": null,
+        "referrer_policy": null,
+        "mixed_content_count": 0,
+        "server_leakage": [
+          "X-Powered-By: PHP/8.2.34"
+        ],
+        "findings_count": 7,
+        "findings_samples": [
+          {
+            "severity": "HIGH",
+            "category": "security_vulnerability",
+            "title": "Missing Strict-Transport-Security (HSTS) Header",
+            "recommendation": "Add 'Strict-Transport-Security: max-age=31536000; includeSubDomains; preload' to all HTTPS responses."
+          },
+          {
+            "severity": "HIGH",
+            "category": "security_vulnerability",
+            "title": "Missing Content-Security-Policy (CSP) Header",
+            "recommendation": "Implement a robust Content-Security-Policy defining trusted sources for scripts, styles, frames, and images."
+          },
+          {
+            "severity": "MEDIUM",
+            "category": "security_vulnerability",
+            "title": "Missing Clickjacking Defense (X-Frame-Options / frame-ancestors)",
+            "recommendation": "Add 'X-Frame-Options: SAMEORIGIN' or 'frame-ancestors 'self'' to prevent unauthorized framing."
+          },
+          {
+            "severity": "LOW",
+            "category": "security_vulnerability",
+            "title": "Missing 'X-Content-Type-Options: nosniff'",
+            "recommendation": "Add 'X-Content-Type-Options: nosniff' header."
+          },
+          {
+            "severity": "LOW",
+            "category": "best_practice",
+            "title": "Missing Referrer-Policy Header",
+            "recommendation": "Set 'Referrer-Policy: strict-origin-when-cross-origin' to protect internal analytics and sensitive query tokens."
+          },
+          {
+            "severity": "LOW",
+            "category": "best_practice",
+            "title": "Missing Permissions-Policy Header",
+            "recommendation": "Declare 'Permissions-Policy: camera=(), microphone=(), geolocation=()' to restrict unnecessary hardware access."
+          },
+          {
+            "severity": "LOW",
+            "category": "security_vulnerability",
+            "title": "X-Powered-By Header Discloses Technology Stack",
+            "recommendation": "Remove X-Powered-By header via server configuration or application middleware."
+          }
+        ],
+        "notes": [
+          "Add 'Strict-Transport-Security: max-age=31536000; includeSubDomains; preload' to all HTTPS responses.",
+          "Implement a robust Content-Security-Policy defining trusted sources for scripts, styles, frames, and images.",
+          "Add 'X-Frame-Options: SAMEORIGIN' or 'frame-ancestors 'self'' to prevent unauthorized framing.",
+          "Add 'X-Content-Type-Options: nosniff' header.",
+          "Set 'Referrer-Policy: strict-origin-when-cross-origin' to protect internal analytics and sensitive query tokens.",
+          "Declare 'Permissions-Policy: camera=(), microphone=(), geolocation=()' to restrict unnecessary hardware access.",
+          "Remove X-Powered-By header via server configuration or application middleware."
+        ]
+      },
+      "content": {
+        "status": "AVAILABLE",
+        "main_content_words": 239,
+        "total_body_words": 4334,
+        "content_to_boilerplate_ratio": 0.06,
+        "paragraph_count": 116,
+        "extraction_method": "SEMANTIC_ARTICLE",
+        "thin_content_tier": "MODERATE",
+        "has_placeholder_text": false,
+        "exact_content_hash": "f4b36f8a8d212849cb56f348a2a03bfda3ab92e8e25c7b8402cd8aedd389b9e8",
+        "simhash": "720f44728969af4d",
+        "title_h1_alignment": "MISALIGNED",
+        "title_h1_token_overlap": 0.0,
+        "heading_hierarchy_valid": false,
+        "heading_skips": [
+          "Heading skip: <h1> to <h3> ('Latest Regulatory Updates...')",
+          "Heading skip: <h2> to <h4> ('LATEST VIDEO...')",
+          "Heading skip: <h4> to <h6> ('Being Respectful...')"
+        ],
+        "empty_sections_count": 8,
+        "notes": [
+          "Extraction method: SEMANTIC_ARTICLE yielded 239 main content words (4334 total body words).",
+          "Content-to-body ratio: 5.5%.",
+          "Exact main-content SHA-256: f4b36f8a8d212849..., Full HTML SHA-256: 8958d92f95e8e633...",
+          "SimHash fingerprint: 720f44728969af4d."
+        ]
+      },
+      "entity": {
+        "status": "AVAILABLE",
+        "total_entities_detected": 10,
+        "entity_names": [
+          "Aleph INDIA",
+          "Aleph INDIA",
+          "Aleph INDIA",
+          "Aleph INDIA",
+          "Aleph INDIA® 2009 - 2026",
+          "Contact Phone (+911234567890)",
+          "Contact Phone (+911234567890)",
+          "Contact Phone (+919818571192)",
+          "Contact Email (inbox@alephindia.in)",
+          "Contact Email (info@alephindia.in)"
+        ],
+        "entity_types_detected": [
+          "ORGANIZATION",
+          "LOCAL_BUSINESS",
+          "PERSON",
+          "OTHER"
+        ],
+        "relationships_count": 7,
+        "structured_vs_visible_comparisons_count": 3,
+        "aligned_comparisons_count": 2,
+        "divergent_comparisons_count": 1,
+        "samples": [
+          {
+            "name": "Aleph INDIA",
+            "type": "ORGANIZATION",
+            "source": "JSON_LD",
+            "telephone": "+91 99901 36656",
+            "email": "info@alephindia.in"
+          },
+          {
+            "name": "Aleph INDIA",
+            "type": "OTHER",
+            "source": "JSON_LD",
+            "telephone": null,
+            "email": null
+          },
+          {
+            "name": "Aleph INDIA",
+            "type": "ORGANIZATION",
+            "source": "META_TAG",
+            "telephone": null,
+            "email": null
+          },
+          {
+            "name": "Aleph INDIA",
+            "type": "PERSON",
+            "source": "META_TAG",
+            "telephone": null,
+            "email": null
+          },
+          {
+            "name": "Aleph INDIA® 2009 - 2026",
+            "type": "ORGANIZATION",
+            "source": "VISIBLE_HTML",
+            "telephone": null,
+            "email": null
+          },
+          {
+            "name": "Contact Phone (+911234567890)",
+            "type": "LOCAL_BUSINESS",
+            "source": "VISIBLE_HTML",
+            "telephone": "+911234567890",
+            "email": null
+          },
+          {
+            "name": "Contact Phone (+911234567890)",
+            "type": "LOCAL_BUSINESS",
+            "source": "VISIBLE_HTML",
+            "telephone": "+911234567890",
+            "email": null
+          },
+          {
+            "name": "Contact Phone (+919818571192)",
+            "type": "LOCAL_BUSINESS",
+            "source": "VISIBLE_HTML",
+            "telephone": "+919818571192",
+            "email": null
+          }
+        ],
+        "notes": [
+          "Detected 10 entity signals (ORGANIZATION: 5, OTHER: 1, PERSON: 1, LOCAL_BUSINESS: 3).",
+          "Recorded 7 observable entity relationships."
+        ]
+      },
+      "internal_links": {
+        "status": "AVAILABLE",
+        "total_internal_links": 81,
+        "unique_internal_targets": 81,
+        "total_external_links": 343,
+        "unique_external_targets": 110,
+        "empty_anchors_count": 0,
+        "sample_internal_targets": [
+          "https://alephindia.in/",
+          "https://alephindia.in/about-us.php",
+          "https://alephindia.in/message-from-management-desk.php",
+          "https://alephindia.in/our-team.php",
+          "https://alephindia.in/associations.php",
+          "https://alephindia.in/achievement-award.php",
+          "https://alephindia.in/our-media-presence.php",
+          "https://alephindia.in/foreign-manufacturers-certification-scheme-fmcs.php",
+          "https://alephindia.in/bis-certification-isi-mark.php",
+          "https://alephindia.in/bis-certification-scheme-x-machinery-and-electrical-equipment.php"
+        ],
+        "notes": [
+          "81 internal links observed, 81 unique targets"
+        ]
+      },
+      "search_topic_query_intent": {
+        "status": "AVAILABLE",
+        "search_signals_count": 278,
+        "topics_detected_count": 217,
+        "topics_sample": [
+          "INDIA®",
+          "Certificate",
+          "BIS",
+          "Certification",
+          "Aleph",
+          "BIS Certification Consultants",
+          "ISI",
+          "Consultants",
+          "CRS",
+          "FMCS"
+        ],
+        "query_page_concepts_count": 258,
+        "primary_intent": "transactional",
+        "secondary_intents": [
+          "navigational",
+          "local",
+          "informational"
+        ],
+        "intent_evidence_items_count": 18,
+        "notes": [
+          "Primary Intent: transactional",
+          "217 topics extracted"
+        ]
+      },
+      "cannibalization_search_gaps": {
+        "status": "AVAILABLE",
+        "potential_cannibalization_signals_count": 0,
+        "observable_gaps_count": 0,
+        "overlap_signals_sample": [],
+        "gaps_sample": [],
+        "layer_boundary_note": "Strictly deterministic identification of observable on-site topic overlaps and gaps. No external ranking, GSC, or competitor superiority claims.",
+        "notes": [
+          "0 potential cannibalization signals flagged",
+          "0 topic gaps identified"
+        ]
+      },
+      "retrieval_readiness": {
+        "status": "AVAILABLE",
+        "total_bots_evaluated": 12,
+        "search_index_allowed_count": 6,
+        "ai_training_allowed_count": 3,
+        "user_fetch_allowed_count": 3,
+        "waf_or_challenge_detected": true,
+        "waf_blocked": false,
+        "waf_provider": "Cloudflare",
+        "has_nosnippet": false,
+        "has_data_nosnippet": false,
+        "max_snippet": null,
+        "static_words": 2546,
+        "rendered_words": 4139,
+        "word_count_delta": 1593,
+        "rendering_impact_summary": "Rendered HTML yields 1593 additional words (4139 vs 2546 raw). Some retrieval systems may have reduced access to this content if they do not execute client-side JavaScript.",
+        "notes": [
+          "HTTP Status: 200",
+          "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
+          "Static HTML contains 2546 words.",
+          "Rendered browser DOM contains 4139 words (delta: +1593 words)."
+        ]
+      },
+      "answerability": {
+        "status": "AVAILABLE",
+        "total_units_detected": 14,
+        "units_by_type": {
+          "LOCATION_CONTACT": 1,
+          "LIST": 5,
+          "FACTUAL_STATEMENT": 5,
+          "DIRECT_ANSWER": 2,
+          "SERVICE_DESCRIPTION": 1
+        },
+        "heading_content_relationship": "PARTIAL",
+        "question_answer_patterns": "PRESENT",
+        "definition_patterns": "ABSENT",
+        "step_list_structure": "ABSENT",
+        "table_availability": "ABSENT",
+        "explained_topics_count": 90,
+        "mentioned_only_topics_count": 116,
+        "unsupported_heading_topics_count": 24,
+        "unsupported_headings_sample": [
+          "Latest Regulatory Updates",
+          "Upcoming Industry Events",
+          "TestingInspection & Certification Servic",
+          "Recognitions That ReflectOurCommitment t",
+          "Industry expertiseAcross Diverse Sectors"
+        ],
+        "notes": [
+          "Detected 14 distinct observable information unit(s) across 5 structural types.",
+          "Evaluated 258 topic(s): 90 explained with explicit units, 116 mentioned only, 24 unsupported headings.",
+          "Structure 'DIRECT_ANSWER': 2 unit(s) observed.",
+          "Structure 'FACTUAL_STATEMENT': 5 unit(s) observed.",
+          "Structure 'LIST': 5 unit(s) observed.",
+          "Structure 'LOCATION_CONTACT': 1 unit(s) observed.",
+          "Structure 'SERVICE_DESCRIPTION': 1 unit(s) observed."
+        ]
+      },
+      "claim_grounding": {
+        "status": "AVAILABLE",
+        "total_claims_detected": 20,
+        "supported_claims_count": 19,
+        "partially_supported_count": 1,
+        "uncorroborated_count": 0,
+        "contradicted_count": 0,
+        "structured_agreements_count": 4,
+        "structured_disagreements_count": 0,
+        "entity_consistency_breakdown": {
+          "CONSISTENT": 1,
+          "PARTIALLY_CONSISTENT": 5
+        },
+        "notes": [
+          "Detected 20 observable claim(s) on page https://alephindia.in/.",
+          "On-site support status: 19 supported, 1 partially supported, 0 uncorroborated, 0 contradicted.",
+          "Structured vs visible comparisons: 4 agreement(s), 0 explicit disagreement(s).",
+          "Evaluated 6 entity candidate(s) across 6 content surfaces."
+        ]
+      },
+      "multimodal": {
+        "status": "AVAILABLE",
+        "total_visual_assets": 351,
+        "informational_assets_count": 267,
+        "decorative_assets_count": 84,
+        "alt_represented_count": 89,
+        "caption_represented_count": 0,
+        "text_represented_count": 88,
+        "visual_only_observed_gaps": 174,
+        "modern_format_count": 62,
+        "missing_dimensions_count": 50,
+        "notes": [
+          "351 visual assets audited (89 alt-represented)"
+        ]
+      },
+      "agent_readiness": {
+        "status": "AVAILABLE",
+        "total_forms_detected": 3,
+        "labeled_forms_count": 1,
+        "action_buttons_detected": 84,
+        "meaningful_accessible_buttons_count": 83,
+        "descriptive_navigation_links_count": 214,
+        "schema_actions_detected": 0,
+        "webmcp_declarations_detected": 0,
+        "total_access_paths": 22,
+        "action_surface_gaps": 0,
+        "notes": [
+          "3 forms, 84 buttons audited"
+        ]
+      },
+      "external_ai": {
+        "status": "DISABLED",
+        "providers_evaluated": [],
+        "queries_executed_count": 0,
+        "successful_observations_count": 0,
+        "failed_observations_count": 0,
+        "target_domain_cited_count": 0,
+        "target_domain_mentioned_count": 0,
+        "total_external_citations": 0,
+        "failure_reason": null,
+        "limitation_disclaimer": "Controlled empirical observations under explicit API configurations. Strictly opt-in; does not imply universal AI rankings or traffic.",
+        "notes": [
+          "External AI visibility measurement was not requested (strictly opt-in via --external-ai)."
+        ]
+      },
+      "epistemic_separation": {
+        "facts": [
+          "HTTP response code: 200",
+          "Static HTML word count: 3326",
+          "Title: 'BIS Certification Consultants | ISI Mark, FMCS, CRS Certificate' (63 characters)",
+          "Meta description: 'Aleph INDIA® is an expert BIS Registration Consultant in Delhi - India, providing a single window for all kinds of Technical Certification & Regulatory Compliances. We offer consulting services for BIS Registration, ISI Certification, WPC Approval, EPR Registration, BIS Hallmarking, and many more.' (298 characters)",
+          "H1 tags observed: 1",
+          "Internal links observed: 81",
+          "External links observed: 343",
+          "Robots.txt found: True",
+          "Schema types declared: Organization, WebSite",
+          "HTTPS enforced: True",
+          "Server latency probe: 462.1ms (local_probe)",
+          "HTTP Status: 200",
+          "WAF / Challenge Indicators: Cloudflare cf-ray tracking header present, Server header identifies Cloudflare",
+          "Static HTML contains 2546 words.",
+          "Rendered browser DOM contains 4139 words (delta: +1593 words).",
+          "Detected 14 distinct observable information unit(s) across 5 structural types.",
+          "Evaluated 258 topic(s): 90 explained with explicit units, 116 mentioned only, 24 unsupported headings.",
+          "Structure 'DIRECT_ANSWER': 2 unit(s) observed.",
+          "Structure 'FACTUAL_STATEMENT': 5 unit(s) observed.",
+          "Structure 'LIST': 5 unit(s) observed.",
+          "Detected 20 observable claim(s) on page https://alephindia.in/.",
+          "On-site support status: 19 supported, 1 partially supported, 0 uncorroborated, 0 contradicted.",
+          "Structured vs visible comparisons: 4 agreement(s), 0 explicit disagreement(s).",
+          "Evaluated 6 entity candidate(s) across 6 content surfaces.",
+          "Observed 351 visual asset(s): 267 informational, 89 with meaningful alt text, 0 with figure captions, 174 visual-only information gap(s).",
+          "Observed 3 form(s) (1 labeled), 84 action button(s) (83 accessible names), 0 structured schema action(s), 0 WebMCP declaration(s).",
+          "Mapped 22 information access path(s) across multimodal and agent surfaces."
+        ],
+        "external_observations": [
+          "Local network latency probe recorded 462.1ms TTFB",
+          "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
+        ],
+        "analyses": [
+          "Health score computed: 68/100 via invariant formula mode '4_engine'",
+          "Technical SEO foundation: 90/100",
+          "GEO citability readiness: 42/100",
+          "Trust stack: C (56/100)",
+          "Cross-engine conflict [MEDIUM] on 'Topic Heading without Supporting Content': Topic 'Ahead' has dedicated heading 'Stay Ahead with the LatestRegulatory Updates', but supporting body content is genuinely absent. -> The page establishes an explicit topical heading promise for search/AI retrieval, but fails to provide observable explanatory or factual body copy under that section."
+        ],
+        "recommendations": [
+          "[HIGH] Rewrite Meta Description with Active Call-to-Action: Descriptions over 160 chars are clipped. Overly short descriptions fail to compel searcher clicks.",
+          "[HIGH] Harden Technical Trust & Security Headers: HSTS and Content-Security-Policy prevent security downgrades and satisfy AI agent reliability gates.",
+          "[GEO_WIN] Implement Answer-First H2 Structure: AutoGEO research proves AI models prioritize passages providing concrete numbers/facts in the first 150 characters.",
+          "[HIGH] Missing Strict-Transport-Security (HSTS) Header: Add 'Strict-Transport-Security: max-age=31536000; includeSubDomains; preload' to all HTTPS responses.",
+          "[HIGH] Missing Content-Security-Policy (CSP) Header: Implement a robust Content-Security-Policy defining trusted sources for scripts, styles, frames, and images.",
+          "[MEDIUM] Generic Anchor Text Optimization Opportunity: Generic anchor usage was observed across multiple internal links. Review whether important navigation links can incorporate more descriptive, topic-specific anchor text."
+        ]
+      },
+      "provenance_tags": [
+        {
+          "finding": "Googlebot: ALLOWED",
+          "engine": "seo_engine",
+          "source_file": "robots.txt",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Bingbot: ALLOWED",
+          "engine": "seo_engine",
+          "source_file": "robots.txt",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Slurp: ALLOWED",
+          "engine": "seo_engine",
+          "source_file": "robots.txt",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "DuckDuckBot: ALLOWED",
+          "engine": "seo_engine",
+          "source_file": "robots.txt",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "YandexBot: ALLOWED",
+          "engine": "seo_engine",
+          "source_file": "robots.txt",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Baiduspider: ALLOWED",
+          "engine": "seo_engine",
+          "source_file": "robots.txt",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "OAI-SearchBot: ALLOWED",
+          "engine": "seo_engine",
+          "source_file": "robots.txt",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "PerplexityBot: ALLOWED",
+          "engine": "seo_engine",
+          "source_file": "robots.txt",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Claude-SearchBot: ALLOWED",
+          "engine": "seo_engine",
+          "source_file": "robots.txt",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "ChatGPT-User: ALLOWED",
+          "engine": "seo_engine",
+          "source_file": "robots.txt",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Claude-User: ALLOWED",
+          "engine": "seo_engine",
+          "source_file": "robots.txt",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Perplexity-User: ALLOWED",
+          "engine": "seo_engine",
+          "source_file": "robots.txt",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "GPTBot: ALLOWED",
+          "engine": "seo_engine",
+          "source_file": "robots.txt",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "ClaudeBot: ALLOWED",
+          "engine": "seo_engine",
+          "source_file": "robots.txt",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Google-Extended: ALLOWED",
+          "engine": "seo_engine",
+          "source_file": "robots.txt",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Applebot-Extended: ALLOWED",
+          "engine": "seo_engine",
+          "source_file": "robots.txt",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "CCBot: ALLOWED",
+          "engine": "seo_engine",
+          "source_file": "robots.txt",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Bytespider: ALLOWED",
+          "engine": "seo_engine",
+          "source_file": "robots.txt",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "FacebookBot: ALLOWED",
+          "engine": "seo_engine",
+          "source_file": "robots.txt",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "cohere-ai: ALLOWED",
+          "engine": "seo_engine",
+          "source_file": "robots.txt",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "anthropic-ai: ALLOWED",
+          "engine": "seo_engine",
+          "source_file": "robots.txt",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Applebot: ALLOWED",
+          "engine": "seo_engine",
+          "source_file": "robots.txt",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Schema type 'Organization' detected",
+          "engine": "seo_engine",
+          "source_file": "application/ld+json",
+          "confidence": "high",
+          "confirmed_by": [
+            "browser_engine"
+          ],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Schema type 'WebSite' detected",
+          "engine": "seo_engine",
+          "source_file": "application/ld+json",
+          "confidence": "high",
+          "confirmed_by": [
+            "browser_engine"
+          ],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Page Title (63 chars): 'BIS Certification Consultants | ISI Mark, FMC...'",
+          "engine": "seo_engine",
+          "source_file": "<title> tag",
+          "confidence": "high",
+          "confirmed_by": [
+            "browser_engine"
+          ],
+          "contradicted_by": []
+        },
+        {
+          "finding": "TTFB Latency: 462ms",
+          "engine": "performance_engine",
+          "source_file": "HTTP response probe",
+          "confidence": "medium",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "/llms.txt: PRESENT",
+          "engine": "rankintel_geo",
+          "source_file": "/llms.txt HTTP check",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Princeton GEO Citability: 42/100",
+          "engine": "rankintel_geo",
+          "source_file": "DOM content passages",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Image Optimization: 97 images detected (0 missing alt)",
+          "engine": "image_engine",
+          "source_file": "HTML DOM",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "HTML Head Audit: Viewport Present, Lang Present",
+          "engine": "image_engine",
+          "source_file": "<head> HTML",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "WCAG AA Automated Status: FAIL (63 violations)",
+          "engine": "axe_core_playwright",
+          "source_file": "HTML DOM",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Security Posture Status: FAIL (7 findings)",
+          "engine": "security_engine",
+          "source_file": "HTTP Headers / TLS",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "TLS Certificate: Valid (68 days left)",
+          "engine": "security_engine",
+          "source_file": "TLS Handshake",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Main Content Extraction: 239 words (SEMANTIC_ARTICLE)",
+          "engine": "content_engine",
+          "source_file": "HTML DOM",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Heading Structure: 97 headings (3 skips)",
+          "engine": "content_engine",
+          "source_file": "HTML Headings",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Entity Detection: 10 entity signals (8 organization/business)",
+          "engine": "entity_engine",
+          "source_file": "JSON-LD & HTML DOM",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Entity Alignment (organization_name): EXACT_MATCH",
+          "engine": "entity_engine",
+          "source_file": "JSON-LD vs DOM Signals",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Entity Alignment (organization_name): PARTIAL_MATCH",
+          "engine": "entity_engine",
+          "source_file": "JSON-LD vs DOM Signals",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Entity Alignment (telephone): DIVERGENT_IDENTITY_SUSPECTED",
+          "engine": "entity_engine",
+          "source_file": "JSON-LD vs DOM Signals",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Internal Link Topology: 285 internal links (80 unique destinations)",
+          "engine": "internal_link_engine",
+          "source_file": "HTML DOM",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Generic Anchor Text: 8 generic anchor links observed",
+          "engine": "internal_link_engine",
+          "source_file": "HTML DOM",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Search Signal Evidence: 278 on-site search-relevant signal terms evidenced",
+          "engine": "search_signal_engine",
+          "source_file": "HTML DOM & Metadata",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Search Signal Structure: Multi-location co-occurrence observed for key terms: india, bis, certificate, certification, registration.",
+          "engine": "search_signal_engine",
+          "source_file": "Structural Tag Correlation",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Search Signal Structure: Title and H1 do not share any directly evidenced lexical terms.",
+          "engine": "search_signal_engine",
+          "source_file": "Structural Tag Correlation",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Topic Intelligence: 217 deterministic concept groups derived from on-site evidence",
+          "engine": "topic_intelligence_engine",
+          "source_file": "Search Signal & Entity Evidence",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Topic Relationships: 151 inter-topic relationships mapped",
+          "engine": "topic_intelligence_engine",
+          "source_file": "Deterministic Concept Clustering",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Query-Page Mapping: 258 observed concepts mapped to page (20 DIRECT, 124 SUPPORTED)",
+          "engine": "query_page_mapping_engine",
+          "source_file": "On-Site Evidence Triangulation",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 20 direct primary concepts, 124 secondary supported concepts.",
+          "engine": "query_page_mapping_engine",
+          "source_file": "Structural Evidence Matrix",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Search Intent Signals: Primary observed intent signal is 'transactional' (18 observable evidence items)",
+          "engine": "search_intent_engine",
+          "source_file": "On-Site Structural Intent Heuristics",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional' based on 13 corroborating evidence points.",
+          "engine": "search_intent_engine",
+          "source_file": "Multi-Signal Corroboration Engine",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Cannibalization & Gap Observations: OBSERVED_WEBSITE_EVIDENCE: Multi-page competition cannot be evaluated on an isolated single page.",
+          "engine": "cannibalization_analyzer",
+          "source_file": "On-Site Evidence Triangulation",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "AI Search Retrieval Access: 6 indexers allowed, 3 training scrapers allowed",
+          "engine": "retrieval_readiness_engine",
+          "source_file": "robots.txt & HTTP Directives",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Content Availability Delta: +1593 words in rendered DOM",
+          "engine": "retrieval_readiness_engine",
+          "source_file": "DOM (hydration comparison)",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Observable Information Units: 14 unit(s) across 5 structural types",
+          "engine": "answerability_engine",
+          "source_file": "DOM & Schema Structure",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Phase 9 Topic Explanations: 90 topic(s) substantiated by explicit answerable structures",
+          "engine": "answerability_engine",
+          "source_file": "Heading & Body Passages",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Unsupported Topical Headings: 22 heading(s) without supporting body copy",
+          "engine": "answerability_engine",
+          "source_file": "Heading Section AST",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Observable Claims Grounding: 20 claim(s) (19 supported on-site, 0 uncorroborated)",
+          "engine": "claim_grounding_engine",
+          "source_file": "Visible Content & Answerable Units",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Structured vs Visible Alignment: 3 agreement(s), 0 disagreement(s)",
+          "engine": "claim_grounding_engine",
+          "source_file": "JSON-LD & DOM Content",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Entity Surface Consistency: 6 candidate(s) tracked across 6 content surfaces",
+          "engine": "claim_grounding_engine",
+          "source_file": "DOM, Headings, Meta, JSON-LD, Units",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Multimodal Information Representation: 351 visual asset(s) (267 informational, 89 alt-represented)",
+          "engine": "multimodal_agent_engine",
+          "source_file": "HTML DOM & Image Assets",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Agent Interaction Surfaces: 3 form(s) (1 labeled), 84 button(s)",
+          "engine": "multimodal_agent_engine",
+          "source_file": "HTML Forms & Controls",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        },
+        {
+          "finding": "Information Access Paths: 22 path(s) triangulated across visual and interactive surfaces",
+          "engine": "multimodal_agent_engine",
+          "source_file": "Multi-Engine Triangulation",
+          "confidence": "high",
+          "confirmed_by": [],
+          "contradicted_by": []
+        }
+      ],
+      "conflicts_detected": [
+        {
+          "severity": "MEDIUM",
+          "feature": "Topic Heading without Supporting Content",
+          "description": "Topic 'Ahead' has dedicated heading 'Stay Ahead with the LatestRegulatory Updates', but supporting body content is genuinely absent.",
+          "engine_a_finding": "Topic Engine: Candidate topic 'Ahead'",
+          "engine_b_finding": "Answerability Engine: Heading 'Stay Ahead with the LatestRegulatory Updates' has 0 supporting body words",
+          "interpretation": "The page establishes an explicit topical heading promise for search/AI retrieval, but fails to provide observable explanatory or factual body copy under that section."
+        }
+      ],
+      "engines_executed": [
+        "advertools_seo",
+        "browser_engine",
+        "rankintel_geo",
+        "performance_engine",
+        "image_engine",
+        "accessibility_engine",
+        "security_engine",
+        "content_engine",
+        "entity_engine",
+        "internal_link_engine",
+        "search_signal_engine",
+        "topic_intelligence_engine",
+        "query_page_mapping_engine",
+        "search_intent_engine",
+        "cannibalization_analyzer",
+        "retrieval_readiness_engine",
+        "answerability_engine",
+        "claim_grounding_engine",
+        "multimodal_agent_engine"
+      ],
+      "raw_report_paths": {
+        "markdown_audit": "audits\\alephindia.in-2026-10-04.md",
+        "json_audit": "audits\\alephindia.in-2026-10-04.json"
+      }
+    },
     "uniquemeasurement.com": {
       "site_url": "https://www.uniquemeasurement.com/",
       "domain": "www.uniquemeasurement.com",
@@ -5143,12 +5143,12 @@
       "collection_timestamp": "2026-10-04",
       "collection_status": "SUCCESS",
       "error_message": null,
-      "execution_time_sec": 15.49,
-      "overall_health_score": 33,
+      "execution_time_sec": 14.52,
+      "overall_health_score": 37,
       "technical_health_score": 35,
       "geo_readiness_score": 30,
       "trust_score": 32,
-      "performance_score": 35,
+      "performance_score": 65,
       "score_formula_mode": "4_engine",
       "formula_invariance_verified": true,
       "crawl_limitations": [
@@ -5197,8 +5197,8 @@
         "detected_schema_types": [],
         "schema_blocks_count": 0,
         "schema_validation_issues": [],
-        "ttfb_ms": 2125.5,
-        "performance_score": 35,
+        "ttfb_ms": 1465.2,
+        "performance_score": 65,
         "performance_source": "local_probe",
         "notes": [
           "Title (26 chars)",
@@ -5349,15 +5349,15 @@
       },
       "content": {
         "status": "AVAILABLE",
-        "main_content_words": 505,
-        "total_body_words": 959,
+        "main_content_words": 518,
+        "total_body_words": 972,
         "content_to_boilerplate_ratio": 0.53,
         "paragraph_count": 42,
         "extraction_method": "HEURISTIC_PRUNED_BODY",
         "thin_content_tier": "MODERATE",
         "has_placeholder_text": false,
-        "exact_content_hash": "c33d3e5a11113c9176f41ba94fda100b67db31ff6c10dc9a0eeceb01c926ffbc",
-        "simhash": "ad8d9117fd99a5a6",
+        "exact_content_hash": "a31488a25b8e23f8b1d984b5985c46e4e7696edf78999b3c428c2c1bb4681c40",
+        "simhash": "ad8d9117fd81a5a6",
         "title_h1_alignment": "MISALIGNED",
         "title_h1_token_overlap": 0.0,
         "heading_hierarchy_valid": false,
@@ -5366,10 +5366,10 @@
         ],
         "empty_sections_count": 3,
         "notes": [
-          "Extraction method: HEURISTIC_PRUNED_BODY yielded 505 main content words (959 total body words).",
-          "Content-to-body ratio: 52.7%.",
-          "Exact main-content SHA-256: c33d3e5a11113c91..., Full HTML SHA-256: 77e0d1dd7d0d99f5...",
-          "SimHash fingerprint: ad8d9117fd99a5a6."
+          "Extraction method: HEURISTIC_PRUNED_BODY yielded 518 main content words (972 total body words).",
+          "Content-to-body ratio: 53.3%.",
+          "Exact main-content SHA-256: a31488a25b8e23f8..., Full HTML SHA-256: 76c6bb60e66f8ff4...",
+          "SimHash fingerprint: ad8d9117fd81a5a6."
         ]
       },
       "entity": {
@@ -5382,8 +5382,8 @@
           "Unique Measurement Service"
         ],
         "entity_types_detected": [
-          "LOCAL_BUSINESS",
-          "ORGANIZATION"
+          "ORGANIZATION",
+          "LOCAL_BUSINESS"
         ],
         "relationships_count": 1,
         "structured_vs_visible_comparisons_count": 0,
@@ -5449,8 +5449,8 @@
       },
       "search_topic_query_intent": {
         "status": "AVAILABLE",
-        "search_signals_count": 97,
-        "topics_detected_count": 81,
+        "search_signals_count": 98,
+        "topics_detected_count": 83,
         "topics_sample": [
           "Service",
           "Measurement",
@@ -5463,7 +5463,7 @@
           "🤖 UMS Assistant",
           "read"
         ],
-        "query_page_concepts_count": 93,
+        "query_page_concepts_count": 94,
         "primary_intent": "transactional",
         "secondary_intents": [
           "navigational"
@@ -5471,7 +5471,7 @@
         "intent_evidence_items_count": 8,
         "notes": [
           "Primary Intent: transactional",
-          "81 topics extracted"
+          "83 topics extracted"
         ]
       },
       "cannibalization_search_gaps": {
@@ -5499,14 +5499,14 @@
         "has_data_nosnippet": false,
         "max_snippet": null,
         "static_words": 879,
-        "rendered_words": 909,
-        "word_count_delta": 30,
-        "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (879 raw vs 909 rendered).",
+        "rendered_words": 921,
+        "word_count_delta": 42,
+        "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (879 raw vs 921 rendered).",
         "notes": [
           "HTTP Status: 200",
           "No active WAF or automated challenge barriers observed.",
           "Static HTML contains 879 words.",
-          "Rendered browser DOM contains 909 words (delta: +30 words)."
+          "Rendered browser DOM contains 921 words (delta: +42 words)."
         ]
       },
       "answerability": {
@@ -5523,7 +5523,7 @@
         "step_list_structure": "ABSENT",
         "table_availability": "ABSENT",
         "explained_topics_count": 50,
-        "mentioned_only_topics_count": 21,
+        "mentioned_only_topics_count": 22,
         "unsupported_heading_topics_count": 19,
         "unsupported_headings_sample": [
           "THE LARGEST MEASUREMENT, CALIBRATION, TE",
@@ -5534,7 +5534,7 @@
         ],
         "notes": [
           "Detected 5 distinct observable information unit(s) across 3 structural types.",
-          "Evaluated 93 topic(s): 50 explained with explicit units, 21 mentioned only, 19 unsupported headings.",
+          "Evaluated 94 topic(s): 50 explained with explicit units, 22 mentioned only, 19 unsupported headings.",
           "Structure 'DEFINITION': 1 unit(s) observed.",
           "Structure 'LIST': 2 unit(s) observed.",
           "Structure 'SERVICE_DESCRIPTION': 2 unit(s) observed."
@@ -5570,7 +5570,7 @@
         "text_represented_count": 4,
         "visual_only_observed_gaps": 24,
         "modern_format_count": 0,
-        "missing_dimensions_count": 9,
+        "missing_dimensions_count": 8,
         "notes": [
           "32 visual assets audited (4 alt-represented)"
         ]
@@ -5579,15 +5579,15 @@
         "status": "AVAILABLE",
         "total_forms_detected": 2,
         "labeled_forms_count": 2,
-        "action_buttons_detected": 8,
-        "meaningful_accessible_buttons_count": 8,
+        "action_buttons_detected": 10,
+        "meaningful_accessible_buttons_count": 10,
         "descriptive_navigation_links_count": 0,
         "schema_actions_detected": 0,
         "webmcp_declarations_detected": 0,
         "total_access_paths": 7,
         "action_surface_gaps": 0,
         "notes": [
-          "2 forms, 8 buttons audited"
+          "2 forms, 10 buttons audited"
         ]
       },
       "external_ai": {
@@ -5608,7 +5608,7 @@
       "epistemic_separation": {
         "facts": [
           "HTTP response code: 200",
-          "Static HTML word count: 962",
+          "Static HTML word count: 975",
           "Title: 'Unique Measurement Service' (26 characters)",
           "Meta description: 'Unique Measurement Service | Advanced Measuring Solution Provider in India' (74 characters)",
           "H1 tags observed: 2",
@@ -5617,13 +5617,13 @@
           "Robots.txt found: True",
           "Schema types declared: None",
           "HTTPS enforced: True",
-          "Server latency probe: 2125.5ms (local_probe)",
+          "Server latency probe: 1465.2ms (local_probe)",
           "HTTP Status: 200",
           "No active WAF or automated challenge barriers observed.",
           "Static HTML contains 879 words.",
-          "Rendered browser DOM contains 909 words (delta: +30 words).",
+          "Rendered browser DOM contains 921 words (delta: +42 words).",
           "Detected 5 distinct observable information unit(s) across 3 structural types.",
-          "Evaluated 93 topic(s): 50 explained with explicit units, 21 mentioned only, 19 unsupported headings.",
+          "Evaluated 94 topic(s): 50 explained with explicit units, 22 mentioned only, 19 unsupported headings.",
           "Structure 'DEFINITION': 1 unit(s) observed.",
           "Structure 'LIST': 2 unit(s) observed.",
           "Structure 'SERVICE_DESCRIPTION': 2 unit(s) observed.",
@@ -5632,15 +5632,15 @@
           "Structured vs visible comparisons: 0 agreement(s), 0 explicit disagreement(s).",
           "Evaluated 3 entity candidate(s) across 6 content surfaces.",
           "Observed 32 visual asset(s): 28 informational, 4 with meaningful alt text, 0 with figure captions, 24 visual-only information gap(s).",
-          "Observed 2 form(s) (2 labeled), 8 action button(s) (8 accessible names), 0 structured schema action(s), 0 WebMCP declaration(s).",
+          "Observed 2 form(s) (2 labeled), 10 action button(s) (10 accessible names), 0 structured schema action(s), 0 WebMCP declaration(s).",
           "Mapped 7 information access path(s) across multimodal and agent surfaces."
         ],
         "external_observations": [
-          "Local network latency probe recorded 2125.5ms TTFB",
+          "Local network latency probe recorded 1465.2ms TTFB",
           "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
         ],
         "analyses": [
-          "Health score computed: 33/100 via invariant formula mode '4_engine'",
+          "Health score computed: 37/100 via invariant formula mode '4_engine'",
           "Technical SEO foundation: 35/100",
           "GEO citability readiness: 30/100",
           "Trust stack: F (32/100)",
@@ -5874,7 +5874,7 @@
           "contradicted_by": []
         },
         {
-          "finding": "TTFB Latency: 2126ms",
+          "finding": "TTFB Latency: 1465ms",
           "engine": "performance_engine",
           "source_file": "HTTP response probe",
           "confidence": "medium",
@@ -5938,7 +5938,7 @@
           "contradicted_by": []
         },
         {
-          "finding": "Main Content Extraction: 505 words (HEURISTIC_PRUNED_BODY)",
+          "finding": "Main Content Extraction: 518 words (HEURISTIC_PRUNED_BODY)",
           "engine": "content_engine",
           "source_file": "HTML DOM",
           "confidence": "high",
@@ -5978,7 +5978,7 @@
           "contradicted_by": []
         },
         {
-          "finding": "Search Signal Evidence: 97 on-site search-relevant signal terms evidenced",
+          "finding": "Search Signal Evidence: 98 on-site search-relevant signal terms evidenced",
           "engine": "search_signal_engine",
           "source_file": "HTML DOM & Metadata",
           "confidence": "high",
@@ -6002,7 +6002,7 @@
           "contradicted_by": []
         },
         {
-          "finding": "Topic Intelligence: 81 deterministic concept groups derived from on-site evidence",
+          "finding": "Topic Intelligence: 83 deterministic concept groups derived from on-site evidence",
           "engine": "topic_intelligence_engine",
           "source_file": "Search Signal & Entity Evidence",
           "confidence": "high",
@@ -6010,7 +6010,7 @@
           "contradicted_by": []
         },
         {
-          "finding": "Topic Relationships: 44 inter-topic relationships mapped",
+          "finding": "Topic Relationships: 51 inter-topic relationships mapped",
           "engine": "topic_intelligence_engine",
           "source_file": "Deterministic Concept Clustering",
           "confidence": "high",
@@ -6018,7 +6018,7 @@
           "contradicted_by": []
         },
         {
-          "finding": "Query-Page Mapping: 93 observed concepts mapped to page (11 DIRECT, 44 SUPPORTED)",
+          "finding": "Query-Page Mapping: 94 observed concepts mapped to page (11 DIRECT, 44 SUPPORTED)",
           "engine": "query_page_mapping_engine",
           "source_file": "On-Site Evidence Triangulation",
           "confidence": "high",
@@ -6122,7 +6122,7 @@
           "contradicted_by": []
         },
         {
-          "finding": "Agent Interaction Surfaces: 2 form(s) (2 labeled), 8 button(s)",
+          "finding": "Agent Interaction Surfaces: 2 form(s) (2 labeled), 10 button(s)",
           "engine": "multimodal_agent_engine",
           "source_file": "HTML Forms & Controls",
           "confidence": "high",
@@ -6190,7 +6190,7 @@
       "collection_timestamp": "2026-10-04",
       "collection_status": "SUCCESS",
       "error_message": null,
-      "execution_time_sec": 8.81,
+      "execution_time_sec": 8.21,
       "overall_health_score": 67,
       "technical_health_score": 75,
       "geo_readiness_score": 51,
@@ -6243,13 +6243,13 @@
         "h2_count": 12,
         "h3_count": 11,
         "detected_schema_types": [
-          "WebSite",
           "Organization",
-          "FAQPage"
+          "FAQPage",
+          "WebSite"
         ],
         "schema_blocks_count": 3,
         "schema_validation_issues": [],
-        "ttfb_ms": 114.9,
+        "ttfb_ms": 119.4,
         "performance_score": 85,
         "performance_source": "local_probe",
         "notes": [
@@ -6292,43 +6292,43 @@
             "rule_id": "color-contrast",
             "severity": "SERIOUS",
             "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-            "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.43 (foreground color: #d4d8dd, background color: #ffffff, font size: 25.5pt (34px), font weight: bold). Expected contrast ratio of 3:1"
+            "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.37 (foreground color: #d9dce1, background color: #ffffff, font size: 25.5pt (34px), font weight: bold). Expected contrast ratio of 3:1"
           },
           {
             "rule_id": "color-contrast",
             "severity": "SERIOUS",
             "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-            "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.43 (foreground color: #d4d8dd, background color: #ffffff, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+            "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.37 (foreground color: #d9dce1, background color: #ffffff, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
           },
           {
             "rule_id": "color-contrast",
             "severity": "SERIOUS",
             "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-            "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.43 (foreground color: #d4d8dd, background color: #ffffff, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+            "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.37 (foreground color: #d9dce1, background color: #ffffff, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
           },
           {
             "rule_id": "color-contrast",
             "severity": "SERIOUS",
             "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-            "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.24 (foreground color: #ffffff, background color: #ffe0da, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.2 (foreground color: #ffffff, background color: #ffe4de, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
           },
           {
             "rule_id": "color-contrast",
             "severity": "SERIOUS",
             "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-            "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.24 (foreground color: #ffffff, background color: #ffe0da, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.2 (foreground color: #ffffff, background color: #ffe4de, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
           },
           {
             "rule_id": "color-contrast",
             "severity": "SERIOUS",
             "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-            "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.24 (foreground color: #ffffff, background color: #ffe0da, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.2 (foreground color: #ffffff, background color: #ffe4de, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
           },
           {
             "rule_id": "color-contrast",
             "severity": "SERIOUS",
             "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-            "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.24 (foreground color: #ffffff, background color: #ffe0da, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.2 (foreground color: #ffffff, background color: #ffe4de, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
           }
         ],
         "disclaimer": "Automated checks evaluate observable criteria; non-certification scope.",
@@ -6439,8 +6439,8 @@
         "entity_types_detected": [
           "ORGANIZATION",
           "LOCAL_BUSINESS",
-          "OTHER",
-          "PERSON"
+          "PERSON",
+          "OTHER"
         ],
         "relationships_count": 2,
         "structured_vs_visible_comparisons_count": 3,
@@ -6703,9 +6703,9 @@
           "Internal links observed: 57",
           "External links observed: 198",
           "Robots.txt found: True",
-          "Schema types declared: WebSite, Organization, FAQPage",
+          "Schema types declared: Organization, FAQPage, WebSite",
           "HTTPS enforced: True",
-          "Server latency probe: 114.9ms (local_probe)",
+          "Server latency probe: 119.4ms (local_probe)",
           "HTTP Status: 200",
           "No active WAF or automated challenge barriers observed.",
           "Static HTML contains 1972 words.",
@@ -6724,7 +6724,7 @@
           "Mapped 20 information access path(s) across multimodal and agent surfaces."
         ],
         "external_observations": [
-          "Local network latency probe recorded 114.9ms TTFB",
+          "Local network latency probe recorded 119.4ms TTFB",
           "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
         ],
         "analyses": [
@@ -6962,7 +6962,7 @@
           "contradicted_by": []
         },
         {
-          "finding": "TTFB Latency: 115ms",
+          "finding": "TTFB Latency: 119ms",
           "engine": "performance_engine",
           "source_file": "HTTP response probe",
           "confidence": "medium",
@@ -7302,7 +7302,7 @@
       "collection_timestamp": "2026-10-04",
       "collection_status": "SUCCESS",
       "error_message": null,
-      "execution_time_sec": 14.32,
+      "execution_time_sec": 15.6,
       "overall_health_score": 72,
       "technical_health_score": 100,
       "geo_readiness_score": 43,
@@ -7357,7 +7357,7 @@
         ],
         "schema_blocks_count": 1,
         "schema_validation_issues": [],
-        "ttfb_ms": 337.4,
+        "ttfb_ms": 311.6,
         "performance_score": 85,
         "performance_source": "local_probe",
         "notes": [
@@ -7530,7 +7530,7 @@
         "notes": [
           "Extraction method: SEMANTIC_ARTICLE yielded 414 main content words (4562 total body words).",
           "Content-to-body ratio: 9.1%.",
-          "Exact main-content SHA-256: 05463680c8327421..., Full HTML SHA-256: 70efa893ba7d5038...",
+          "Exact main-content SHA-256: 05463680c8327421..., Full HTML SHA-256: 8f7f5f48c8024af3...",
           "SimHash fingerprint: 3c5f750cf8c27d53."
         ]
       },
@@ -7547,8 +7547,8 @@
           "Contact Email (Mahesh@insolvencyservices.in)"
         ],
         "entity_types_detected": [
-          "ORGANIZATION",
-          "LOCAL_BUSINESS"
+          "LOCAL_BUSINESS",
+          "ORGANIZATION"
         ],
         "relationships_count": 6,
         "structured_vs_visible_comparisons_count": 1,
@@ -7642,8 +7642,8 @@
           "Advisory",
           "Consulting",
           "Group®",
-          "Taxation",
           "ASC",
+          "Taxation",
           "About ASC",
           "Audit",
           "Financial",
@@ -7755,7 +7755,7 @@
         "text_represented_count": 11,
         "visual_only_observed_gaps": 1,
         "modern_format_count": 32,
-        "missing_dimensions_count": 14,
+        "missing_dimensions_count": 7,
         "notes": [
           "119 visual assets audited (107 alt-represented)"
         ]
@@ -7802,7 +7802,7 @@
           "Robots.txt found: True",
           "Schema types declared: Organization",
           "HTTPS enforced: True",
-          "Server latency probe: 337.4ms (local_probe)",
+          "Server latency probe: 311.6ms (local_probe)",
           "HTTP Status: 200",
           "No active WAF or automated challenge barriers observed.",
           "max-snippet threshold set to -1 characters (meta:robots)",
@@ -7820,7 +7820,7 @@
           "Mapped 9 information access path(s) across multimodal and agent surfaces."
         ],
         "external_observations": [
-          "Local network latency probe recorded 337.4ms TTFB",
+          "Local network latency probe recorded 311.6ms TTFB",
           "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
         ],
         "analyses": [
@@ -8046,7 +8046,7 @@
           "contradicted_by": []
         },
         {
-          "finding": "TTFB Latency: 337ms",
+          "finding": "TTFB Latency: 312ms",
           "engine": "performance_engine",
           "source_file": "HTTP response probe",
           "confidence": "medium",
@@ -8362,7 +8362,7 @@
       "collection_timestamp": "2026-10-04",
       "collection_status": "SUCCESS",
       "error_message": null,
-      "execution_time_sec": 12.28,
+      "execution_time_sec": 13.96,
       "overall_health_score": 76,
       "technical_health_score": 100,
       "geo_readiness_score": 53,
@@ -8413,19 +8413,19 @@
         "h2_count": 14,
         "h3_count": 44,
         "detected_schema_types": [
+          "FAQPage",
+          "BreadcrumbList",
           "LocalBusiness",
           "Place",
-          "WebSite",
-          "WebPage",
-          "ImageObject",
-          "FAQPage",
           "PostalAddress",
-          "Organization",
-          "BreadcrumbList"
+          "WebSite",
+          "ImageObject",
+          "WebPage",
+          "Organization"
         ],
         "schema_blocks_count": 9,
         "schema_validation_issues": [],
-        "ttfb_ms": 149.3,
+        "ttfb_ms": 142.8,
         "performance_score": 85,
         "performance_source": "local_probe",
         "notes": [
@@ -8591,7 +8591,7 @@
         "notes": [
           "Extraction method: RAW_BODY_FALLBACK yielded 4006 main content words (4006 total body words).",
           "Content-to-body ratio: 100.0%.",
-          "Exact main-content SHA-256: 0c6df3f1b0d616e6..., Full HTML SHA-256: 347d8e1dad79e3c4...",
+          "Exact main-content SHA-256: 0c6df3f1b0d616e6..., Full HTML SHA-256: da842fa9ff1312ad...",
           "SimHash fingerprint: b3fd4912ab0821b3."
         ]
       },
@@ -8615,10 +8615,10 @@
           "Contact Email (Biscro.customercare@umspcs.in)"
         ],
         "entity_types_detected": [
-          "OTHER",
-          "LOCAL_BUSINESS",
           "PLACE",
-          "ORGANIZATION"
+          "OTHER",
+          "ORGANIZATION",
+          "LOCAL_BUSINESS"
         ],
         "relationships_count": 21,
         "structured_vs_visible_comparisons_count": 5,
@@ -8880,9 +8880,9 @@
           "Internal links observed: 111",
           "External links observed: 512",
           "Robots.txt found: True",
-          "Schema types declared: LocalBusiness, Place, WebSite, WebPage, ImageObject, FAQPage, PostalAddress, Organization, BreadcrumbList",
+          "Schema types declared: FAQPage, BreadcrumbList, LocalBusiness, Place, PostalAddress, WebSite, ImageObject, WebPage, Organization",
           "HTTPS enforced: True",
-          "Server latency probe: 149.3ms (local_probe)",
+          "Server latency probe: 142.8ms (local_probe)",
           "HTTP Status: 200",
           "No active WAF or automated challenge barriers observed.",
           "max-snippet threshold set to -1 characters (meta:robots)",
@@ -8901,7 +8901,7 @@
           "Mapped 6 information access path(s) across multimodal and agent surfaces."
         ],
         "external_observations": [
-          "Local network latency probe recorded 149.3ms TTFB",
+          "Local network latency probe recorded 142.8ms TTFB",
           "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
         ],
         "analyses": [
@@ -9200,7 +9200,7 @@
           "contradicted_by": []
         },
         {
-          "finding": "TTFB Latency: 149ms",
+          "finding": "TTFB Latency: 143ms",
           "engine": "performance_engine",
           "source_file": "HTTP response probe",
           "confidence": "medium",
@@ -9572,7 +9572,7 @@
       "collection_timestamp": "2026-10-04",
       "collection_status": "SUCCESS",
       "error_message": null,
-      "execution_time_sec": 5.58,
+      "execution_time_sec": 6.22,
       "overall_health_score": 48,
       "technical_health_score": 60,
       "geo_readiness_score": 35,
@@ -9623,7 +9623,7 @@
         "detected_schema_types": [],
         "schema_blocks_count": 0,
         "schema_validation_issues": [],
-        "ttfb_ms": 95.7,
+        "ttfb_ms": 123.7,
         "performance_score": 85,
         "performance_source": "local_probe",
         "notes": [
@@ -9800,8 +9800,8 @@
           "Sunrise Testing & Calibration Centre"
         ],
         "entity_types_detected": [
-          "ORGANIZATION",
-          "LOCAL_BUSINESS"
+          "LOCAL_BUSINESS",
+          "ORGANIZATION"
         ],
         "relationships_count": 1,
         "structured_vs_visible_comparisons_count": 0,
@@ -10052,7 +10052,7 @@
           "Robots.txt found: False",
           "Schema types declared: None",
           "HTTPS enforced: True",
-          "Server latency probe: 95.7ms (local_probe)",
+          "Server latency probe: 123.7ms (local_probe)",
           "HTTP Status: 200",
           "No active WAF or automated challenge barriers observed.",
           "Static HTML contains 957 words.",
@@ -10071,7 +10071,7 @@
           "Mapped 3 information access path(s) across multimodal and agent surfaces."
         ],
         "external_observations": [
-          "Local network latency probe recorded 95.7ms TTFB",
+          "Local network latency probe recorded 123.7ms TTFB",
           "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
         ],
         "analyses": [
@@ -10103,7 +10103,7 @@
           "contradicted_by": []
         },
         {
-          "finding": "TTFB Latency: 96ms",
+          "finding": "TTFB Latency: 124ms",
           "engine": "performance_engine",
           "source_file": "HTTP response probe",
           "confidence": "medium",
@@ -10395,12 +10395,12 @@
       "collection_timestamp": "2026-10-04",
       "collection_status": "SUCCESS",
       "error_message": null,
-      "execution_time_sec": 11.84,
-      "overall_health_score": 70,
+      "execution_time_sec": 12.84,
+      "overall_health_score": 67,
       "technical_health_score": 90,
       "geo_readiness_score": 47,
       "trust_score": 56,
-      "performance_score": 85,
+      "performance_score": 65,
       "score_formula_mode": "4_engine",
       "formula_invariance_verified": true,
       "crawl_limitations": [
@@ -10447,15 +10447,15 @@
         "h2_count": 22,
         "h3_count": 10,
         "detected_schema_types": [
-          "WebSite",
+          "BreadcrumbList",
           "Organization",
-          "WebPage",
-          "BreadcrumbList"
+          "WebSite",
+          "WebPage"
         ],
         "schema_blocks_count": 4,
         "schema_validation_issues": [],
-        "ttfb_ms": 784.3,
-        "performance_score": 85,
+        "ttfb_ms": 885.7,
+        "performance_score": 65,
         "performance_source": "local_probe",
         "notes": [
           "Title (65 chars)",
@@ -10582,15 +10582,15 @@
       },
       "content": {
         "status": "AVAILABLE",
-        "main_content_words": 963,
-        "total_body_words": 963,
+        "main_content_words": 944,
+        "total_body_words": 944,
         "content_to_boilerplate_ratio": 1.0,
-        "paragraph_count": 19,
+        "paragraph_count": 18,
         "extraction_method": "RAW_BODY_FALLBACK",
         "thin_content_tier": "SUBSTANTIVE",
         "has_placeholder_text": false,
-        "exact_content_hash": "c5fcf368fefdbad02d6591962b1ed263c45b4fe1ba737b420b095d11d3fcb8dd",
-        "simhash": "f10c9917d13cad70",
+        "exact_content_hash": "a27a36f8e24d27962eaa9c1ad0589a35d7d01088178eb53b90e0577875ba6a4b",
+        "simhash": "f10c9937d13cad70",
         "title_h1_alignment": "MODERATE_ALIGNMENT",
         "title_h1_token_overlap": 0.29,
         "heading_hierarchy_valid": false,
@@ -10600,10 +10600,10 @@
         ],
         "empty_sections_count": 26,
         "notes": [
-          "Extraction method: RAW_BODY_FALLBACK yielded 963 main content words (963 total body words).",
+          "Extraction method: RAW_BODY_FALLBACK yielded 944 main content words (944 total body words).",
           "Content-to-body ratio: 100.0%.",
-          "Exact main-content SHA-256: c5fcf368fefdbad0..., Full HTML SHA-256: 5e891261581f734a...",
-          "SimHash fingerprint: f10c9917d13cad70."
+          "Exact main-content SHA-256: a27a36f8e24d2796..., Full HTML SHA-256: edf9146b2451e440...",
+          "SimHash fingerprint: f10c9937d13cad70."
         ]
       },
       "entity": {
@@ -10717,13 +10717,13 @@
       },
       "search_topic_query_intent": {
         "status": "AVAILABLE",
-        "search_signals_count": 140,
-        "topics_detected_count": 123,
+        "search_signals_count": 141,
+        "topics_detected_count": 124,
         "topics_sample": [
           "ISO",
           "Certification",
-          "SQC",
           "recognized",
+          "SQC",
           "Certifications",
           "Globally",
           "About SQC Certification",
@@ -10731,7 +10731,7 @@
           "services",
           "IEC"
         ],
-        "query_page_concepts_count": 137,
+        "query_page_concepts_count": 138,
         "primary_intent": "transactional",
         "secondary_intents": [
           "navigational",
@@ -10740,7 +10740,7 @@
         "intent_evidence_items_count": 9,
         "notes": [
           "Primary Intent: transactional",
-          "123 topics extracted"
+          "124 topics extracted"
         ]
       },
       "cannibalization_search_gaps": {
@@ -10768,14 +10768,14 @@
         "has_data_nosnippet": false,
         "max_snippet": null,
         "static_words": 917,
-        "rendered_words": 939,
-        "word_count_delta": 22,
-        "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (917 raw vs 939 rendered).",
+        "rendered_words": 921,
+        "word_count_delta": 4,
+        "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (917 raw vs 921 rendered).",
         "notes": [
           "HTTP Status: 200",
           "WAF / Challenge Indicators: Observable embedded form protection in HTML: 'recaptcha'",
           "Static HTML contains 917 words.",
-          "Rendered browser DOM contains 939 words (delta: +22 words)."
+          "Rendered browser DOM contains 921 words (delta: +4 words)."
         ]
       },
       "answerability": {
@@ -10788,7 +10788,7 @@
         "step_list_structure": "ABSENT",
         "table_availability": "ABSENT",
         "explained_topics_count": 0,
-        "mentioned_only_topics_count": 23,
+        "mentioned_only_topics_count": 24,
         "unsupported_heading_topics_count": 107,
         "unsupported_headings_sample": [
           "Achieve ISO certification:ISO 9001:2026I",
@@ -10799,7 +10799,7 @@
         ],
         "notes": [
           "Detected 0 distinct observable information unit(s) across 0 structural types.",
-          "Evaluated 136 topic(s): 0 explained with explicit units, 23 mentioned only, 107 unsupported headings."
+          "Evaluated 137 topic(s): 0 explained with explicit units, 24 mentioned only, 107 unsupported headings."
         ]
       },
       "claim_grounding": {
@@ -10870,22 +10870,22 @@
       "epistemic_separation": {
         "facts": [
           "HTTP response code: 200",
-          "Static HTML word count: 710",
+          "Static HTML word count: 691",
           "Title: 'SQC Certification Provides Globally recognized ISO Certifications' (65 characters)",
           "Meta description: 'We specialize in assessing and certifying organizations to internationally recognized standards such as ISO 9001, 14001, 45001, 37001, 42001, and 27001.' (152 characters)",
           "H1 tags observed: 1",
           "Internal links observed: 49",
           "External links observed: 176",
           "Robots.txt found: True",
-          "Schema types declared: WebSite, Organization, WebPage, BreadcrumbList",
+          "Schema types declared: BreadcrumbList, Organization, WebSite, WebPage",
           "HTTPS enforced: True",
-          "Server latency probe: 784.3ms (local_probe)",
+          "Server latency probe: 885.7ms (local_probe)",
           "HTTP Status: 200",
           "WAF / Challenge Indicators: Observable embedded form protection in HTML: 'recaptcha'",
           "Static HTML contains 917 words.",
-          "Rendered browser DOM contains 939 words (delta: +22 words).",
+          "Rendered browser DOM contains 921 words (delta: +4 words).",
           "Detected 0 distinct observable information unit(s) across 0 structural types.",
-          "Evaluated 136 topic(s): 0 explained with explicit units, 23 mentioned only, 107 unsupported headings.",
+          "Evaluated 137 topic(s): 0 explained with explicit units, 24 mentioned only, 107 unsupported headings.",
           "Detected 21 observable claim(s) on page https://sqccertification.com/.",
           "On-site support status: 21 supported, 0 partially supported, 0 uncorroborated, 0 contradicted.",
           "Structured vs visible comparisons: 1 agreement(s), 1 explicit disagreement(s).",
@@ -10894,11 +10894,11 @@
           "Observed 1 form(s) (1 labeled), 2 action button(s) (2 accessible names), 0 structured schema action(s), 0 WebMCP declaration(s)."
         ],
         "external_observations": [
-          "Local network latency probe recorded 784.3ms TTFB",
+          "Local network latency probe recorded 885.7ms TTFB",
           "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
         ],
         "analyses": [
-          "Health score computed: 70/100 via invariant formula mode '4_engine'",
+          "Health score computed: 67/100 via invariant formula mode '4_engine'",
           "Technical SEO foundation: 90/100",
           "GEO citability readiness: 47/100",
           "Trust stack: C (56/100)",
@@ -11143,7 +11143,7 @@
           "contradicted_by": []
         },
         {
-          "finding": "TTFB Latency: 784ms",
+          "finding": "TTFB Latency: 886ms",
           "engine": "performance_engine",
           "source_file": "HTTP response probe",
           "confidence": "medium",
@@ -11207,7 +11207,7 @@
           "contradicted_by": []
         },
         {
-          "finding": "Main Content Extraction: 963 words (RAW_BODY_FALLBACK)",
+          "finding": "Main Content Extraction: 944 words (RAW_BODY_FALLBACK)",
           "engine": "content_engine",
           "source_file": "HTML DOM",
           "confidence": "high",
@@ -11263,7 +11263,7 @@
           "contradicted_by": []
         },
         {
-          "finding": "Search Signal Evidence: 140 on-site search-relevant signal terms evidenced",
+          "finding": "Search Signal Evidence: 141 on-site search-relevant signal terms evidenced",
           "engine": "search_signal_engine",
           "source_file": "HTML DOM & Metadata",
           "confidence": "high",
@@ -11287,7 +11287,7 @@
           "contradicted_by": []
         },
         {
-          "finding": "Topic Intelligence: 123 deterministic concept groups derived from on-site evidence",
+          "finding": "Topic Intelligence: 124 deterministic concept groups derived from on-site evidence",
           "engine": "topic_intelligence_engine",
           "source_file": "Search Signal & Entity Evidence",
           "confidence": "high",
@@ -11295,7 +11295,7 @@
           "contradicted_by": []
         },
         {
-          "finding": "Topic Relationships: 103 inter-topic relationships mapped",
+          "finding": "Topic Relationships: 104 inter-topic relationships mapped",
           "engine": "topic_intelligence_engine",
           "source_file": "Deterministic Concept Clustering",
           "confidence": "high",
@@ -11303,7 +11303,7 @@
           "contradicted_by": []
         },
         {
-          "finding": "Query-Page Mapping: 137 observed concepts mapped to page (12 DIRECT, 43 SUPPORTED)",
+          "finding": "Query-Page Mapping: 138 observed concepts mapped to page (12 DIRECT, 44 SUPPORTED)",
           "engine": "query_page_mapping_engine",
           "source_file": "On-Site Evidence Triangulation",
           "confidence": "high",
@@ -11311,7 +11311,7 @@
           "contradicted_by": []
         },
         {
-          "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 12 direct primary concepts, 43 secondary supported concepts.",
+          "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 12 direct primary concepts, 44 secondary supported concepts.",
           "engine": "query_page_mapping_engine",
           "source_file": "Structural Evidence Matrix",
           "confidence": "high",
@@ -11474,7 +11474,7 @@
       "performance_score": 85,
       "score_formula_mode": "4_engine",
       "formula_invariance_verified": true,
-      "ttfb_ms": 92.3,
+      "ttfb_ms": 91.8,
       "m10_1_allowed_search_bots": 6,
       "m10_1_waf_barrier": "Detected",
       "m10_2_answer_units": 3,
@@ -11482,7 +11482,7 @@
       "m10_4_visual_assets": 34,
       "m10_4_agent_forms": 1,
       "m10_5_external_ai_status": "DISABLED",
-      "execution_time_sec": 5.98
+      "execution_time_sec": 5.25
     },
     {
       "site": "https://www.tcreng.com/",
@@ -11497,7 +11497,7 @@
       "performance_score": 85,
       "score_formula_mode": "4_engine",
       "formula_invariance_verified": true,
-      "ttfb_ms": 78.5,
+      "ttfb_ms": 80.9,
       "m10_1_allowed_search_bots": 6,
       "m10_1_waf_barrier": "Detected",
       "m10_2_answer_units": 36,
@@ -11505,7 +11505,7 @@
       "m10_4_visual_assets": 49,
       "m10_4_agent_forms": 1,
       "m10_5_external_ai_status": "DISABLED",
-      "execution_time_sec": 6.27
+      "execution_time_sec": 6.59
     },
     {
       "site": "https://www.yadavmeasurements.com/",
@@ -11520,7 +11520,7 @@
       "performance_score": 85,
       "score_formula_mode": "4_engine",
       "formula_invariance_verified": true,
-      "ttfb_ms": 103.7,
+      "ttfb_ms": 100.4,
       "m10_1_allowed_search_bots": 6,
       "m10_1_waf_barrier": "Detected",
       "m10_2_answer_units": 1,
@@ -11528,30 +11528,7 @@
       "m10_4_visual_assets": 28,
       "m10_4_agent_forms": 2,
       "m10_5_external_ai_status": "DISABLED",
-      "execution_time_sec": 7.15
-    },
-    {
-      "site": "https://alephindia.in/",
-      "domain": "alephindia.in",
-      "name": "Aleph India",
-      "role": "competitor",
-      "collection_status": "SUCCESS",
-      "overall_health_score": 68,
-      "technical_health_score": 90,
-      "geo_readiness_score": 42,
-      "trust_score": 56,
-      "performance_score": 85,
-      "score_formula_mode": "4_engine",
-      "formula_invariance_verified": true,
-      "ttfb_ms": 442.7,
-      "m10_1_allowed_search_bots": 6,
-      "m10_1_waf_barrier": "Detected",
-      "m10_2_answer_units": 14,
-      "m10_3_claims_grounded": "19/20",
-      "m10_4_visual_assets": 351,
-      "m10_4_agent_forms": 3,
-      "m10_5_external_ai_status": "DISABLED",
-      "execution_time_sec": 19.14
+      "execution_time_sec": 6.97
     },
     {
       "site": "https://qualityinternational.org/",
@@ -11566,7 +11543,7 @@
       "performance_score": 85,
       "score_formula_mode": "4_engine",
       "formula_invariance_verified": true,
-      "ttfb_ms": 138.7,
+      "ttfb_ms": 137.3,
       "m10_1_allowed_search_bots": 6,
       "m10_1_waf_barrier": "None",
       "m10_2_answer_units": 0,
@@ -11574,7 +11551,30 @@
       "m10_4_visual_assets": 27,
       "m10_4_agent_forms": 2,
       "m10_5_external_ai_status": "DISABLED",
-      "execution_time_sec": 6.26
+      "execution_time_sec": 6.12
+    },
+    {
+      "site": "https://alephindia.in/",
+      "domain": "alephindia.in",
+      "name": "Aleph India",
+      "role": "competitor",
+      "collection_status": "SUCCESS",
+      "overall_health_score": 68,
+      "technical_health_score": 90,
+      "geo_readiness_score": 42,
+      "trust_score": 56,
+      "performance_score": 85,
+      "score_formula_mode": "4_engine",
+      "formula_invariance_verified": true,
+      "ttfb_ms": 462.1,
+      "m10_1_allowed_search_bots": 6,
+      "m10_1_waf_barrier": "Detected",
+      "m10_2_answer_units": 14,
+      "m10_3_claims_grounded": "19/20",
+      "m10_4_visual_assets": 351,
+      "m10_4_agent_forms": 3,
+      "m10_5_external_ai_status": "DISABLED",
+      "execution_time_sec": 19.18
     },
     {
       "site": "https://www.uniquemeasurement.com/",
@@ -11582,14 +11582,14 @@
       "name": "Unique Measurement",
       "role": "competitor",
       "collection_status": "SUCCESS",
-      "overall_health_score": 33,
+      "overall_health_score": 37,
       "technical_health_score": 35,
       "geo_readiness_score": 30,
       "trust_score": 32,
-      "performance_score": 35,
+      "performance_score": 65,
       "score_formula_mode": "4_engine",
       "formula_invariance_verified": true,
-      "ttfb_ms": 2125.5,
+      "ttfb_ms": 1465.2,
       "m10_1_allowed_search_bots": 6,
       "m10_1_waf_barrier": "None",
       "m10_2_answer_units": 5,
@@ -11597,7 +11597,7 @@
       "m10_4_visual_assets": 32,
       "m10_4_agent_forms": 2,
       "m10_5_external_ai_status": "DISABLED",
-      "execution_time_sec": 15.49
+      "execution_time_sec": 14.52
     },
     {
       "site": "https://www.standphillindia.in/",
@@ -11612,7 +11612,7 @@
       "performance_score": 85,
       "score_formula_mode": "4_engine",
       "formula_invariance_verified": true,
-      "ttfb_ms": 114.9,
+      "ttfb_ms": 119.4,
       "m10_1_allowed_search_bots": 6,
       "m10_1_waf_barrier": "None",
       "m10_2_answer_units": 13,
@@ -11620,7 +11620,7 @@
       "m10_4_visual_assets": 155,
       "m10_4_agent_forms": 6,
       "m10_5_external_ai_status": "DISABLED",
-      "execution_time_sec": 8.81
+      "execution_time_sec": 8.21
     },
     {
       "site": "https://www.ascgroup.in/",
@@ -11635,7 +11635,7 @@
       "performance_score": 85,
       "score_formula_mode": "4_engine",
       "formula_invariance_verified": true,
-      "ttfb_ms": 337.4,
+      "ttfb_ms": 311.6,
       "m10_1_allowed_search_bots": 6,
       "m10_1_waf_barrier": "None",
       "m10_2_answer_units": 7,
@@ -11643,7 +11643,7 @@
       "m10_4_visual_assets": 119,
       "m10_4_agent_forms": 4,
       "m10_5_external_ai_status": "DISABLED",
-      "execution_time_sec": 14.32
+      "execution_time_sec": 15.6
     },
     {
       "site": "https://umspcs.in/",
@@ -11658,7 +11658,7 @@
       "performance_score": 85,
       "score_formula_mode": "4_engine",
       "formula_invariance_verified": true,
-      "ttfb_ms": 149.3,
+      "ttfb_ms": 142.8,
       "m10_1_allowed_search_bots": 6,
       "m10_1_waf_barrier": "None",
       "m10_2_answer_units": 20,
@@ -11666,7 +11666,7 @@
       "m10_4_visual_assets": 364,
       "m10_4_agent_forms": 8,
       "m10_5_external_ai_status": "DISABLED",
-      "execution_time_sec": 12.28
+      "execution_time_sec": 13.96
     },
     {
       "site": "https://sunrisetesting.vercel.app/",
@@ -11681,7 +11681,7 @@
       "performance_score": 85,
       "score_formula_mode": "4_engine",
       "formula_invariance_verified": true,
-      "ttfb_ms": 95.7,
+      "ttfb_ms": 123.7,
       "m10_1_allowed_search_bots": 6,
       "m10_1_waf_barrier": "None",
       "m10_2_answer_units": 11,
@@ -11689,7 +11689,7 @@
       "m10_4_visual_assets": 34,
       "m10_4_agent_forms": 0,
       "m10_5_external_ai_status": "DISABLED",
-      "execution_time_sec": 5.58
+      "execution_time_sec": 6.22
     },
     {
       "site": "https://sqccertification.com/",
@@ -11697,14 +11697,14 @@
       "name": "SQC Certification",
       "role": "competitor",
       "collection_status": "SUCCESS",
-      "overall_health_score": 70,
+      "overall_health_score": 67,
       "technical_health_score": 90,
       "geo_readiness_score": 47,
       "trust_score": 56,
-      "performance_score": 85,
+      "performance_score": 65,
       "score_formula_mode": "4_engine",
       "formula_invariance_verified": true,
-      "ttfb_ms": 784.3,
+      "ttfb_ms": 885.7,
       "m10_1_allowed_search_bots": 6,
       "m10_1_waf_barrier": "Detected",
       "m10_2_answer_units": 0,
@@ -11712,7 +11712,7 @@
       "m10_4_visual_assets": 24,
       "m10_4_agent_forms": 1,
       "m10_5_external_ai_status": "DISABLED",
-      "execution_time_sec": 11.84
+      "execution_time_sec": 12.84
     }
   ]
 }

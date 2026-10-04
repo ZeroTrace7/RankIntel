@@ -6,12 +6,12 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 15.49,
-  "overall_health_score": 33,
+  "execution_time_sec": 14.52,
+  "overall_health_score": 37,
   "technical_health_score": 35,
   "geo_readiness_score": 30,
   "trust_score": 32,
-  "performance_score": 35,
+  "performance_score": 65,
   "score_formula_mode": "4_engine",
   "formula_invariance_verified": true,
   "crawl_limitations": [
@@ -60,8 +60,8 @@
     "detected_schema_types": [],
     "schema_blocks_count": 0,
     "schema_validation_issues": [],
-    "ttfb_ms": 2125.5,
-    "performance_score": 35,
+    "ttfb_ms": 1465.2,
+    "performance_score": 65,
     "performance_source": "local_probe",
     "notes": [
       "Title (26 chars)",
@@ -212,15 +212,15 @@
   },
   "content": {
     "status": "AVAILABLE",
-    "main_content_words": 505,
-    "total_body_words": 959,
+    "main_content_words": 518,
+    "total_body_words": 972,
     "content_to_boilerplate_ratio": 0.53,
     "paragraph_count": 42,
     "extraction_method": "HEURISTIC_PRUNED_BODY",
     "thin_content_tier": "MODERATE",
     "has_placeholder_text": false,
-    "exact_content_hash": "c33d3e5a11113c9176f41ba94fda100b67db31ff6c10dc9a0eeceb01c926ffbc",
-    "simhash": "ad8d9117fd99a5a6",
+    "exact_content_hash": "a31488a25b8e23f8b1d984b5985c46e4e7696edf78999b3c428c2c1bb4681c40",
+    "simhash": "ad8d9117fd81a5a6",
     "title_h1_alignment": "MISALIGNED",
     "title_h1_token_overlap": 0.0,
     "heading_hierarchy_valid": false,
@@ -229,10 +229,10 @@
     ],
     "empty_sections_count": 3,
     "notes": [
-      "Extraction method: HEURISTIC_PRUNED_BODY yielded 505 main content words (959 total body words).",
-      "Content-to-body ratio: 52.7%.",
-      "Exact main-content SHA-256: c33d3e5a11113c91..., Full HTML SHA-256: 77e0d1dd7d0d99f5...",
-      "SimHash fingerprint: ad8d9117fd99a5a6."
+      "Extraction method: HEURISTIC_PRUNED_BODY yielded 518 main content words (972 total body words).",
+      "Content-to-body ratio: 53.3%.",
+      "Exact main-content SHA-256: a31488a25b8e23f8..., Full HTML SHA-256: 76c6bb60e66f8ff4...",
+      "SimHash fingerprint: ad8d9117fd81a5a6."
     ]
   },
   "entity": {
@@ -245,8 +245,8 @@
       "Unique Measurement Service"
     ],
     "entity_types_detected": [
-      "LOCAL_BUSINESS",
-      "ORGANIZATION"
+      "ORGANIZATION",
+      "LOCAL_BUSINESS"
     ],
     "relationships_count": 1,
     "structured_vs_visible_comparisons_count": 0,
@@ -312,8 +312,8 @@
   },
   "search_topic_query_intent": {
     "status": "AVAILABLE",
-    "search_signals_count": 97,
-    "topics_detected_count": 81,
+    "search_signals_count": 98,
+    "topics_detected_count": 83,
     "topics_sample": [
       "Service",
       "Measurement",
@@ -326,7 +326,7 @@
       "🤖 UMS Assistant",
       "read"
     ],
-    "query_page_concepts_count": 93,
+    "query_page_concepts_count": 94,
     "primary_intent": "transactional",
     "secondary_intents": [
       "navigational"
@@ -334,7 +334,7 @@
     "intent_evidence_items_count": 8,
     "notes": [
       "Primary Intent: transactional",
-      "81 topics extracted"
+      "83 topics extracted"
     ]
   },
   "cannibalization_search_gaps": {
@@ -362,14 +362,14 @@
     "has_data_nosnippet": false,
     "max_snippet": null,
     "static_words": 879,
-    "rendered_words": 909,
-    "word_count_delta": 30,
-    "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (879 raw vs 909 rendered).",
+    "rendered_words": 921,
+    "word_count_delta": 42,
+    "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (879 raw vs 921 rendered).",
     "notes": [
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
       "Static HTML contains 879 words.",
-      "Rendered browser DOM contains 909 words (delta: +30 words)."
+      "Rendered browser DOM contains 921 words (delta: +42 words)."
     ]
   },
   "answerability": {
@@ -386,7 +386,7 @@
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
     "explained_topics_count": 50,
-    "mentioned_only_topics_count": 21,
+    "mentioned_only_topics_count": 22,
     "unsupported_heading_topics_count": 19,
     "unsupported_headings_sample": [
       "THE LARGEST MEASUREMENT, CALIBRATION, TE",
@@ -397,7 +397,7 @@
     ],
     "notes": [
       "Detected 5 distinct observable information unit(s) across 3 structural types.",
-      "Evaluated 93 topic(s): 50 explained with explicit units, 21 mentioned only, 19 unsupported headings.",
+      "Evaluated 94 topic(s): 50 explained with explicit units, 22 mentioned only, 19 unsupported headings.",
       "Structure 'DEFINITION': 1 unit(s) observed.",
       "Structure 'LIST': 2 unit(s) observed.",
       "Structure 'SERVICE_DESCRIPTION': 2 unit(s) observed."
@@ -433,7 +433,7 @@
     "text_represented_count": 4,
     "visual_only_observed_gaps": 24,
     "modern_format_count": 0,
-    "missing_dimensions_count": 9,
+    "missing_dimensions_count": 8,
     "notes": [
       "32 visual assets audited (4 alt-represented)"
     ]
@@ -442,15 +442,15 @@
     "status": "AVAILABLE",
     "total_forms_detected": 2,
     "labeled_forms_count": 2,
-    "action_buttons_detected": 8,
-    "meaningful_accessible_buttons_count": 8,
+    "action_buttons_detected": 10,
+    "meaningful_accessible_buttons_count": 10,
     "descriptive_navigation_links_count": 0,
     "schema_actions_detected": 0,
     "webmcp_declarations_detected": 0,
     "total_access_paths": 7,
     "action_surface_gaps": 0,
     "notes": [
-      "2 forms, 8 buttons audited"
+      "2 forms, 10 buttons audited"
     ]
   },
   "external_ai": {
@@ -471,7 +471,7 @@
   "epistemic_separation": {
     "facts": [
       "HTTP response code: 200",
-      "Static HTML word count: 962",
+      "Static HTML word count: 975",
       "Title: 'Unique Measurement Service' (26 characters)",
       "Meta description: 'Unique Measurement Service | Advanced Measuring Solution Provider in India' (74 characters)",
       "H1 tags observed: 2",
@@ -480,13 +480,13 @@
       "Robots.txt found: True",
       "Schema types declared: None",
       "HTTPS enforced: True",
-      "Server latency probe: 2125.5ms (local_probe)",
+      "Server latency probe: 1465.2ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
       "Static HTML contains 879 words.",
-      "Rendered browser DOM contains 909 words (delta: +30 words).",
+      "Rendered browser DOM contains 921 words (delta: +42 words).",
       "Detected 5 distinct observable information unit(s) across 3 structural types.",
-      "Evaluated 93 topic(s): 50 explained with explicit units, 21 mentioned only, 19 unsupported headings.",
+      "Evaluated 94 topic(s): 50 explained with explicit units, 22 mentioned only, 19 unsupported headings.",
       "Structure 'DEFINITION': 1 unit(s) observed.",
       "Structure 'LIST': 2 unit(s) observed.",
       "Structure 'SERVICE_DESCRIPTION': 2 unit(s) observed.",
@@ -495,15 +495,15 @@
       "Structured vs visible comparisons: 0 agreement(s), 0 explicit disagreement(s).",
       "Evaluated 3 entity candidate(s) across 6 content surfaces.",
       "Observed 32 visual asset(s): 28 informational, 4 with meaningful alt text, 0 with figure captions, 24 visual-only information gap(s).",
-      "Observed 2 form(s) (2 labeled), 8 action button(s) (8 accessible names), 0 structured schema action(s), 0 WebMCP declaration(s).",
+      "Observed 2 form(s) (2 labeled), 10 action button(s) (10 accessible names), 0 structured schema action(s), 0 WebMCP declaration(s).",
       "Mapped 7 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 2125.5ms TTFB",
+      "Local network latency probe recorded 1465.2ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
-      "Health score computed: 33/100 via invariant formula mode '4_engine'",
+      "Health score computed: 37/100 via invariant formula mode '4_engine'",
       "Technical SEO foundation: 35/100",
       "GEO citability readiness: 30/100",
       "Trust stack: F (32/100)",
@@ -737,7 +737,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 2126ms",
+      "finding": "TTFB Latency: 1465ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -801,7 +801,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Main Content Extraction: 505 words (HEURISTIC_PRUNED_BODY)",
+      "finding": "Main Content Extraction: 518 words (HEURISTIC_PRUNED_BODY)",
       "engine": "content_engine",
       "source_file": "HTML DOM",
       "confidence": "high",
@@ -841,7 +841,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 97 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 98 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -865,7 +865,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 81 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 83 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -873,7 +873,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 44 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 51 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -881,7 +881,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 93 observed concepts mapped to page (11 DIRECT, 44 SUPPORTED)",
+      "finding": "Query-Page Mapping: 94 observed concepts mapped to page (11 DIRECT, 44 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -985,7 +985,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Agent Interaction Surfaces: 2 form(s) (2 labeled), 8 button(s)",
+      "finding": "Agent Interaction Surfaces: 2 form(s) (2 labeled), 10 button(s)",
       "engine": "multimodal_agent_engine",
       "source_file": "HTML Forms & Controls",
       "confidence": "high",

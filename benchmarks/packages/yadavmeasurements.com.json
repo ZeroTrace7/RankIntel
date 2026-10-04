@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 7.15,
+  "execution_time_sec": 6.97,
   "overall_health_score": 41,
   "technical_health_score": 35,
   "geo_readiness_score": 28,
@@ -55,7 +55,7 @@
     "detected_schema_types": [],
     "schema_blocks_count": 0,
     "schema_validation_issues": [],
-    "ttfb_ms": 103.7,
+    "ttfb_ms": 100.4,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -222,7 +222,7 @@
     "notes": [
       "Extraction method: HEURISTIC_PRUNED_BODY yielded 284 main content words (1068 total body words).",
       "Content-to-body ratio: 26.6%.",
-      "Exact main-content SHA-256: 74d5a15d46f189f0..., Full HTML SHA-256: ae0f40b0043427ca...",
+      "Exact main-content SHA-256: 74d5a15d46f189f0..., Full HTML SHA-256: c5da064a507df9c1...",
       "SimHash fingerprint: bbdd1d27400a29f2."
     ]
   },
@@ -394,7 +394,7 @@
     "text_represented_count": 5,
     "visual_only_observed_gaps": 15,
     "modern_format_count": 0,
-    "missing_dimensions_count": 5,
+    "missing_dimensions_count": 2,
     "notes": [
       "28 visual assets audited (8 alt-represented)"
     ]
@@ -441,7 +441,7 @@
       "Robots.txt found: True",
       "Schema types declared: None",
       "HTTPS enforced: True",
-      "Server latency probe: 103.7ms (local_probe)",
+      "Server latency probe: 100.4ms (local_probe)",
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Observable embedded form protection in HTML: 'recaptcha'",
       "Static HTML contains 1055 words.",
@@ -458,7 +458,7 @@
       "Mapped 7 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 103.7ms TTFB",
+      "Local network latency probe recorded 100.4ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -672,7 +672,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 104ms",
+      "finding": "TTFB Latency: 100ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",

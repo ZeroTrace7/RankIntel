@@ -6,12 +6,12 @@
   "collection_timestamp": "2026-10-04",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 11.84,
-  "overall_health_score": 70,
+  "execution_time_sec": 12.84,
+  "overall_health_score": 67,
   "technical_health_score": 90,
   "geo_readiness_score": 47,
   "trust_score": 56,
-  "performance_score": 85,
+  "performance_score": 65,
   "score_formula_mode": "4_engine",
   "formula_invariance_verified": true,
   "crawl_limitations": [
@@ -58,15 +58,15 @@
     "h2_count": 22,
     "h3_count": 10,
     "detected_schema_types": [
-      "WebSite",
+      "BreadcrumbList",
       "Organization",
-      "WebPage",
-      "BreadcrumbList"
+      "WebSite",
+      "WebPage"
     ],
     "schema_blocks_count": 4,
     "schema_validation_issues": [],
-    "ttfb_ms": 784.3,
-    "performance_score": 85,
+    "ttfb_ms": 885.7,
+    "performance_score": 65,
     "performance_source": "local_probe",
     "notes": [
       "Title (65 chars)",
@@ -193,15 +193,15 @@
   },
   "content": {
     "status": "AVAILABLE",
-    "main_content_words": 963,
-    "total_body_words": 963,
+    "main_content_words": 944,
+    "total_body_words": 944,
     "content_to_boilerplate_ratio": 1.0,
-    "paragraph_count": 19,
+    "paragraph_count": 18,
     "extraction_method": "RAW_BODY_FALLBACK",
     "thin_content_tier": "SUBSTANTIVE",
     "has_placeholder_text": false,
-    "exact_content_hash": "c5fcf368fefdbad02d6591962b1ed263c45b4fe1ba737b420b095d11d3fcb8dd",
-    "simhash": "f10c9917d13cad70",
+    "exact_content_hash": "a27a36f8e24d27962eaa9c1ad0589a35d7d01088178eb53b90e0577875ba6a4b",
+    "simhash": "f10c9937d13cad70",
     "title_h1_alignment": "MODERATE_ALIGNMENT",
     "title_h1_token_overlap": 0.29,
     "heading_hierarchy_valid": false,
@@ -211,10 +211,10 @@
     ],
     "empty_sections_count": 26,
     "notes": [
-      "Extraction method: RAW_BODY_FALLBACK yielded 963 main content words (963 total body words).",
+      "Extraction method: RAW_BODY_FALLBACK yielded 944 main content words (944 total body words).",
       "Content-to-body ratio: 100.0%.",
-      "Exact main-content SHA-256: c5fcf368fefdbad0..., Full HTML SHA-256: 5e891261581f734a...",
-      "SimHash fingerprint: f10c9917d13cad70."
+      "Exact main-content SHA-256: a27a36f8e24d2796..., Full HTML SHA-256: edf9146b2451e440...",
+      "SimHash fingerprint: f10c9937d13cad70."
     ]
   },
   "entity": {
@@ -328,13 +328,13 @@
   },
   "search_topic_query_intent": {
     "status": "AVAILABLE",
-    "search_signals_count": 140,
-    "topics_detected_count": 123,
+    "search_signals_count": 141,
+    "topics_detected_count": 124,
     "topics_sample": [
       "ISO",
       "Certification",
-      "SQC",
       "recognized",
+      "SQC",
       "Certifications",
       "Globally",
       "About SQC Certification",
@@ -342,7 +342,7 @@
       "services",
       "IEC"
     ],
-    "query_page_concepts_count": 137,
+    "query_page_concepts_count": 138,
     "primary_intent": "transactional",
     "secondary_intents": [
       "navigational",
@@ -351,7 +351,7 @@
     "intent_evidence_items_count": 9,
     "notes": [
       "Primary Intent: transactional",
-      "123 topics extracted"
+      "124 topics extracted"
     ]
   },
   "cannibalization_search_gaps": {
@@ -379,14 +379,14 @@
     "has_data_nosnippet": false,
     "max_snippet": null,
     "static_words": 917,
-    "rendered_words": 939,
-    "word_count_delta": 22,
-    "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (917 raw vs 939 rendered).",
+    "rendered_words": 921,
+    "word_count_delta": 4,
+    "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (917 raw vs 921 rendered).",
     "notes": [
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Observable embedded form protection in HTML: 'recaptcha'",
       "Static HTML contains 917 words.",
-      "Rendered browser DOM contains 939 words (delta: +22 words)."
+      "Rendered browser DOM contains 921 words (delta: +4 words)."
     ]
   },
   "answerability": {
@@ -399,7 +399,7 @@
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
     "explained_topics_count": 0,
-    "mentioned_only_topics_count": 23,
+    "mentioned_only_topics_count": 24,
     "unsupported_heading_topics_count": 107,
     "unsupported_headings_sample": [
       "Achieve ISO certification:ISO 9001:2026I",
@@ -410,7 +410,7 @@
     ],
     "notes": [
       "Detected 0 distinct observable information unit(s) across 0 structural types.",
-      "Evaluated 136 topic(s): 0 explained with explicit units, 23 mentioned only, 107 unsupported headings."
+      "Evaluated 137 topic(s): 0 explained with explicit units, 24 mentioned only, 107 unsupported headings."
     ]
   },
   "claim_grounding": {
@@ -481,22 +481,22 @@
   "epistemic_separation": {
     "facts": [
       "HTTP response code: 200",
-      "Static HTML word count: 710",
+      "Static HTML word count: 691",
       "Title: 'SQC Certification Provides Globally recognized ISO Certifications' (65 characters)",
       "Meta description: 'We specialize in assessing and certifying organizations to internationally recognized standards such as ISO 9001, 14001, 45001, 37001, 42001, and 27001.' (152 characters)",
       "H1 tags observed: 1",
       "Internal links observed: 49",
       "External links observed: 176",
       "Robots.txt found: True",
-      "Schema types declared: WebSite, Organization, WebPage, BreadcrumbList",
+      "Schema types declared: BreadcrumbList, Organization, WebSite, WebPage",
       "HTTPS enforced: True",
-      "Server latency probe: 784.3ms (local_probe)",
+      "Server latency probe: 885.7ms (local_probe)",
       "HTTP Status: 200",
       "WAF / Challenge Indicators: Observable embedded form protection in HTML: 'recaptcha'",
       "Static HTML contains 917 words.",
-      "Rendered browser DOM contains 939 words (delta: +22 words).",
+      "Rendered browser DOM contains 921 words (delta: +4 words).",
       "Detected 0 distinct observable information unit(s) across 0 structural types.",
-      "Evaluated 136 topic(s): 0 explained with explicit units, 23 mentioned only, 107 unsupported headings.",
+      "Evaluated 137 topic(s): 0 explained with explicit units, 24 mentioned only, 107 unsupported headings.",
       "Detected 21 observable claim(s) on page https://sqccertification.com/.",
       "On-site support status: 21 supported, 0 partially supported, 0 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 1 agreement(s), 1 explicit disagreement(s).",
@@ -505,11 +505,11 @@
       "Observed 1 form(s) (1 labeled), 2 action button(s) (2 accessible names), 0 structured schema action(s), 0 WebMCP declaration(s)."
     ],
     "external_observations": [
-      "Local network latency probe recorded 784.3ms TTFB",
+      "Local network latency probe recorded 885.7ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
-      "Health score computed: 70/100 via invariant formula mode '4_engine'",
+      "Health score computed: 67/100 via invariant formula mode '4_engine'",
       "Technical SEO foundation: 90/100",
       "GEO citability readiness: 47/100",
       "Trust stack: C (56/100)",
@@ -754,7 +754,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 784ms",
+      "finding": "TTFB Latency: 886ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -818,7 +818,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Main Content Extraction: 963 words (RAW_BODY_FALLBACK)",
+      "finding": "Main Content Extraction: 944 words (RAW_BODY_FALLBACK)",
       "engine": "content_engine",
       "source_file": "HTML DOM",
       "confidence": "high",
@@ -874,7 +874,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 140 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 141 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -898,7 +898,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 123 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 124 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -906,7 +906,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 103 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 104 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -914,7 +914,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 137 observed concepts mapped to page (12 DIRECT, 43 SUPPORTED)",
+      "finding": "Query-Page Mapping: 138 observed concepts mapped to page (12 DIRECT, 44 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -922,7 +922,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 12 direct primary concepts, 43 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 12 direct primary concepts, 44 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
