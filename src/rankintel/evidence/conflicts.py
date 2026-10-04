@@ -204,4 +204,39 @@ class ConflictDetector:
                     ))
                     break
 
+        # 8. Check Retrieval Readiness Directives vs Access Conflicts (Phase 10.1)
+        retrieval_res = engine_results.get("retrieval_readiness_engine")
+        if retrieval_res and retrieval_res.retrieval_readiness and retrieval_res.status == "success":
+            r_ev = retrieval_res.retrieval_readiness
+            # Case A: robots.txt allows search bot, but page declares noindex
+            oai_rec = r_ev.bot_access_records.get("OAI-SearchBot")
+            if oai_rec and oai_rec.robots_access.value == "ALLOWED" and r_ev.indexability_interaction.has_noindex:
+                conflicts.append(ConflictFinding(
+                    category="AI_RETRIEVAL_DIRECTIVE_CONFLICT",
+                    feature="robots.txt Crawl Permitted vs noindex Suppression",
+                    description="OAI-SearchBot is permitted in robots.txt, but page declares noindex.",
+                    engine_a_finding="robots.txt: OAI-SearchBot ALLOWED",
+                    engine_b_finding=f"Page Directives: noindex in {', '.join(r_ev.indexability_interaction.noindex_sources)}",
+                    interpretation=(
+                        "Search indexers are allowed to fetch the URL, but the noindex directive "
+                        "instructs search engines not to index or surface citations from this page."
+                    ),
+                    severity="HIGH"
+                ))
+
+            # Case B: robots.txt allows crawlers, but server/WAF blocked access
+            if r_ev.waf_challenge.is_blocked and any(b.robots_access.value == "ALLOWED" for b in r_ev.bot_access_records.values()):
+                conflicts.append(ConflictFinding(
+                    category="WAF_RETRIEVAL_BLOCK",
+                    feature="robots.txt Permitted vs Network/WAF Blocked",
+                    description=f"robots.txt permits crawler access, but server returned HTTP {r_ev.waf_challenge.status_code} / challenge.",
+                    engine_a_finding="robots.txt: Crawler access permitted",
+                    engine_b_finding=f"Network/WAF: HTTP {r_ev.waf_challenge.status_code} ({r_ev.waf_challenge.waf_provider})",
+                    interpretation=(
+                        "While robots.txt grants crawler access, automated requests are intercepted "
+                        "by firewall or challenge barriers before reaching the application."
+                    ),
+                    severity="HIGH"
+                ))
+
         return conflicts

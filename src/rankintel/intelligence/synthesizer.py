@@ -30,6 +30,7 @@ from rankintel.models.schema import (
     PageQueryEvidence,
     PageIntentEvidence,
     PageCannibalizationEvidence,
+    RetrievalReadinessEvidence,
     SecurityStatus,
     WcagStatus,
     SecuritySeverity,
@@ -310,6 +311,14 @@ class IntelligenceSynthesizer:
             else PageCannibalizationEvidence(url=url)
         )
 
+        # 17. Retrieval Readiness Reconciliation (Phase 10.1)
+        retrieval_res = engine_results.get("retrieval_readiness_engine")
+        unified_retrieval_readiness = (
+            retrieval_res.retrieval_readiness
+            if (retrieval_res and retrieval_res.retrieval_readiness)
+            else None
+        )
+
         # Build Prioritized Actions
         actions = self._build_prioritized_actions(
             unified_on_page,
@@ -373,6 +382,7 @@ class IntelligenceSynthesizer:
             unified_query_page=unified_query_page,
             unified_search_intent=unified_search_intent,
             unified_cannibalization=unified_cannibalization,
+            unified_retrieval_readiness=unified_retrieval_readiness,
             cloud_intelligence=cloud_intelligence,
             fixes=fixes
         )
