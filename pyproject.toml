@@ -47,8 +47,12 @@ mcp = [
     "mcp[cli]>=1.0.0",
     "fastmcp>=0.1.0",
 ]
+gsc = [
+    "google-api-python-client>=2.100.0",
+    "google-auth-oauthlib>=1.1.0",
+]
 all = [
-    "rankintel[advertools,browser,geo,mcp]",
+    "rankintel[advertools,browser,geo,mcp,gsc]",
 ]
 dev = [
     "pytest>=8.0.0",

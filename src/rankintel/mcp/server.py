@@ -35,11 +35,13 @@ def rankintel_audit(
     max_pages: int = 25,
     external_ai: bool = False,
     external_providers: Optional[str] = None,
+    gsc_property: Optional[str] = None,
 ) -> Dict[str, Any]:
     """
     Run full multi-engine SEO, GEO citability, Trust Stack, and CWV performance audit on a URL.
     Optionally crawls internal site pages for site-wide issues.
     Optionally enables controlled external AI visibility observations via external_ai=True.
+    Optionally enriches with first-party GSC data via gsc_property.
     """
     if not url.startswith("http"):
         url = "https://" + url
@@ -57,7 +59,7 @@ def rankintel_audit(
     )
 
     synthesizer = IntelligenceSynthesizer()
-    report = synthesizer.synthesize(url, results)
+    report = synthesizer.synthesize(url, results, gsc_property=gsc_property)
 
     if deep_crawl:
         report.site_crawl = collector.seo_engine.crawl_site(url, max_pages=max_pages)

@@ -2325,6 +2325,7 @@ class SynthesisReport(BaseModel):
     provenance: List[EvidenceProvenanceTag] = Field(default_factory=list)
     
     external_intelligence: Optional[ExternalIntelligenceResult] = None
+    search_console_intelligence: Optional[ExternalIntelligenceResult] = None
     # Unified reconciled states
     unified_on_page: OnPageEvidence = Field(default_factory=OnPageEvidence)
     unified_robots: RobotsEvidence = Field(default_factory=RobotsEvidence)

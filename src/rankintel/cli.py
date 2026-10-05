@@ -43,7 +43,13 @@ def main():
 @click.option("--ci-fail-on", default=None, help="Comma-separated remediation classifications to fail on (e.g. HUMAN_REVIEW)")
 @click.option("--ci-max-remediations", type=int, default=None, help="Maximum number of remediations allowed before failing")
 @click.option("--external-intelligence", is_flag=True, default=False, help="Enable Phase 12.3 controlled OpenSEO external intelligence enrichment")
-def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_pages: int, external_ai: bool, external_providers: Optional[str] = None, ci: bool = False, ci_fail_on: Optional[str] = None, ci_max_remediations: Optional[int] = None, external_intelligence: bool = False):
+@click.option("--search-console", is_flag=True, default=False, help="Explicit opt-in to fetch first-party intelligence from Google Search Console")
+@click.option("--gsc-property", default=None, help="Google Search Console property URL (e.g. https://sunrisecertifications.com/)")
+@click.option("--gsc-start-date", default=None, help="GSC start date (YYYY-MM-DD)")
+@click.option("--gsc-end-date", default=None, help="GSC end date (YYYY-MM-DD)")
+@click.option("--gsc-data-state", default="final", help="GSC data state ('final' or 'all')")
+@click.option("--gsc-dimensions", default="query,page", help="Comma-separated GSC dimensions")
+def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_pages: int, external_ai: bool, external_providers: Optional[str] = None, ci: bool = False, ci_fail_on: Optional[str] = None, ci_max_remediations: Optional[int] = None, external_intelligence: bool = False, search_console: bool = False, gsc_property: Optional[str] = None, gsc_start_date: Optional[str] = None, gsc_end_date: Optional[str] = None, gsc_data_state: str = "final", gsc_dimensions: str = "query,page"):
     """Run full multi-engine SEO, GEO, browser, and performance triangulation audit."""
     if not url.startswith("http://") and not url.startswith("https://"):
         url = "https://" + url
@@ -68,7 +74,16 @@ def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_p
     # Phase 2: Synthesize Intelligence
     with console.status("[bold cyan]Reconciling evidence, provenance, and detecting cross-engine conflicts...[/bold cyan]", spinner="dots"):
         synthesizer = IntelligenceSynthesizer()
-        report = synthesizer.synthesize(url, engine_results, external_intelligence=external_intelligence)
+        gsc_kwargs = {}
+        if search_console and gsc_property:
+            gsc_kwargs = {
+                "gsc_property": gsc_property,
+                "gsc_start_date": gsc_start_date,
+                "gsc_end_date": gsc_end_date,
+                "gsc_data_state": gsc_data_state,
+                "gsc_dimensions": [d.strip() for d in gsc_dimensions.split(",")] if gsc_dimensions else None
+            }
+        report = synthesizer.synthesize(url, engine_results, external_intelligence=external_intelligence, **gsc_kwargs)
 
     # Optional: Deep Multi-Page Crawling
     if deep_crawl:
@@ -329,6 +344,42 @@ def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_p
         )
 
     console.print(table)
+
+    if report.search_console_intelligence and report.search_console_intelligence.status.value == "AVAILABLE":
+        obs = report.search_console_intelligence.observations
+        if obs:
+            gsc_table = Table(title="Google Search Console — First-Party Search Performance", show_header=True, header_style="bold green")
+            gsc_table.add_column("Metric / Dimension", style="cyan")
+            gsc_table.add_column("Value", justify="right")
+            
+            total_clicks = sum(o.result.get("clicks", 0) for o in obs)
+            total_imp = sum(o.result.get("impressions", 0) for o in obs)
+            avg_ctr = (total_clicks / total_imp * 100) if total_imp > 0 else 0.0
+            
+            # Simple average position (weighted by impressions is better, but simple is fine for summary if not calculated exactly, we'll do weighted)
+            weighted_pos = sum(o.result.get("position", 0.0) * o.result.get("impressions", 0) for o in obs)
+            avg_pos = (weighted_pos / total_imp) if total_imp > 0 else 0.0
+            
+            gsc_table.add_row("Total Clicks", f"{total_clicks:,}")
+            gsc_table.add_row("Total Impressions", f"{total_imp:,}")
+            gsc_table.add_row("Average CTR", f"{avg_ctr:.2f}%")
+            gsc_table.add_row("Average Position", f"{avg_pos:.1f}")
+            
+            console.print("\n")
+            console.print(gsc_table)
+            
+            # Top Queries
+            queries = [o for o in obs if o.result.get("query") and o.result.get("query") != "UNKNOWN"]
+            if queries:
+                q_table = Table(title="Top Queries", show_header=True)
+                q_table.add_column("Query", style="cyan")
+                q_table.add_column("Clicks", justify="right")
+                q_table.add_column("Impressions", justify="right")
+                q_table.add_column("Position", justify="right")
+                for q in sorted(queries, key=lambda x: x.result.get("clicks", 0), reverse=True)[:5]:
+                    q_table.add_row(q.result.get("query"), str(q.result.get("clicks", 0)), str(q.result.get("impressions", 0)), f"{q.result.get('position', 0):.1f}")
+                console.print(q_table)
+
 
     if report.conflicts_detected:
         console.print("\n[bold yellow]Triangulation Insights & Engine Conflicts Detected:[/bold yellow]")

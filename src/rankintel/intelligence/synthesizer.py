@@ -5,7 +5,7 @@ computes holistic health scores, builds prioritized action plans, and generates 
 from __future__ import annotations
 from datetime import datetime
 from urllib.parse import urlparse
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from rankintel.models.schema import (
     EngineResult,
@@ -41,6 +41,7 @@ from rankintel.evidence.provenance import ProvenanceTagger
 from rankintel.intelligence.fixer import FixGenerator
 from rankintel.intelligence.remediation_engine import RemediationEngine
 from rankintel.providers.external import OpenSEOProvider
+from rankintel.providers.search_console import SearchConsoleProvider
 from rankintel.references.quality_gates import META_LENGTH_BOUNDS, HEADING_HIERARCHY_RULES
 from rankintel.analyzers.trust_evaluator import TrustEvaluator
 
@@ -50,7 +51,7 @@ class IntelligenceSynthesizer:
     def __init__(self):
         self.conflict_detector = ConflictDetector()
 
-    def synthesize(self, url: str, engine_results: Dict[str, EngineResult], external_intelligence: bool = False) -> SynthesisReport:
+    def synthesize(self, url: str, engine_results: Dict[str, EngineResult], external_intelligence: bool = False, gsc_property: Optional[str] = None, gsc_start_date: Optional[str] = None, gsc_end_date: Optional[str] = None, gsc_data_state: str = "final", gsc_dimensions: Optional[List[str]] = None) -> SynthesisReport:
         if not url.startswith("http://") and not url.startswith("https://"):
             url = "https://" + url
         parsed = urlparse(url)
@@ -428,6 +429,24 @@ class IntelligenceSynthesizer:
         if external_intelligence:
             provider = OpenSEOProvider()
             report.external_intelligence = provider.enrich(url, report.remediation_records)
+        
+        if gsc_property:
+            import datetime as dt
+            if not gsc_start_date or not gsc_end_date:
+                end_dt = dt.date.today() - dt.timedelta(days=2)
+                start_dt = end_dt - dt.timedelta(days=30)
+                gsc_end_date = gsc_end_date or end_dt.isoformat()
+                gsc_start_date = gsc_start_date or start_dt.isoformat()
+                
+            gsc_provider = SearchConsoleProvider(
+                property_url=gsc_property,
+                start_date=gsc_start_date,
+                end_date=gsc_end_date,
+                data_state=gsc_data_state,
+                dimensions=gsc_dimensions
+            )
+            report.search_console_intelligence = gsc_provider.enrich(url, report.remediation_records)
+            
         return report
 
     def _compute_technical_score(
