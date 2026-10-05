@@ -40,6 +40,7 @@ from rankintel.evidence.conflicts import ConflictDetector
 from rankintel.evidence.provenance import ProvenanceTagger
 from rankintel.intelligence.fixer import FixGenerator
 from rankintel.intelligence.remediation_engine import RemediationEngine
+from rankintel.providers.external import OpenSEOProvider
 from rankintel.references.quality_gates import META_LENGTH_BOUNDS, HEADING_HIERARCHY_RULES
 from rankintel.analyzers.trust_evaluator import TrustEvaluator
 
@@ -49,7 +50,7 @@ class IntelligenceSynthesizer:
     def __init__(self):
         self.conflict_detector = ConflictDetector()
 
-    def synthesize(self, url: str, engine_results: Dict[str, EngineResult]) -> SynthesisReport:
+    def synthesize(self, url: str, engine_results: Dict[str, EngineResult], external_intelligence: bool = False) -> SynthesisReport:
         if not url.startswith("http://") and not url.startswith("https://"):
             url = "https://" + url
         parsed = urlparse(url)
@@ -424,6 +425,9 @@ class IntelligenceSynthesizer:
             fixes=fixes
         )
         report.remediation_records = RemediationEngine.generate_remediations(report)
+        if external_intelligence:
+            provider = OpenSEOProvider()
+            report.external_intelligence = provider.enrich(url, report.remediation_records)
         return report
 
     def _compute_technical_score(

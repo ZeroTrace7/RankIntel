@@ -35,6 +35,7 @@ def run_audit(
     max_pages: int = 25,
     external_ai: bool = False,
     external_providers: Optional[str] = None,
+    external_intelligence: bool = False,
 ):
     if not url.startswith("http://") and not url.startswith("https://"):
         url = "https://" + url
@@ -64,7 +65,7 @@ def run_audit(
     # Phase 2: Synthesize Intelligence
     with console.status("[bold cyan]Reconciling evidence, provenance, and detecting cross-engine conflicts...[/bold cyan]", spinner="dots"):
         synthesizer = IntelligenceSynthesizer()
-        report = synthesizer.synthesize(url, engine_results)
+        report = synthesizer.synthesize(url, engine_results, external_intelligence=external_intelligence)
 
     # Optional: Deep Multi-Page Crawling
     if deep_crawl:
@@ -530,6 +531,7 @@ if __name__ == "__main__":
     fmt = "json" if "--format" in sys.argv and "json" in sys.argv else ("json" if "--json" in sys.argv else "markdown")
     deep = "--deep-crawl" in sys.argv
     ext_ai = "--external-ai" in sys.argv
+    ext_intel = "--external-intelligence" in sys.argv
 
     ext_prov = None
     if "--external-providers" in sys.argv:
@@ -585,5 +587,6 @@ if __name__ == "__main__":
             deep_crawl=deep,
             external_ai=ext_ai,
             external_providers=ext_prov,
+            external_intelligence=ext_intel,
         )
 

@@ -42,7 +42,8 @@ def main():
 @click.option("--ci", is_flag=True, default=False, help="Enable CI policy evaluation mode")
 @click.option("--ci-fail-on", default=None, help="Comma-separated remediation classifications to fail on (e.g. HUMAN_REVIEW)")
 @click.option("--ci-max-remediations", type=int, default=None, help="Maximum number of remediations allowed before failing")
-def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_pages: int, external_ai: bool, external_providers: Optional[str] = None, ci: bool = False, ci_fail_on: Optional[str] = None, ci_max_remediations: Optional[int] = None):
+@click.option("--external-intelligence", is_flag=True, default=False, help="Enable Phase 12.3 controlled OpenSEO external intelligence enrichment")
+def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_pages: int, external_ai: bool, external_providers: Optional[str] = None, ci: bool = False, ci_fail_on: Optional[str] = None, ci_max_remediations: Optional[int] = None, external_intelligence: bool = False):
     """Run full multi-engine SEO, GEO, browser, and performance triangulation audit."""
     if not url.startswith("http://") and not url.startswith("https://"):
         url = "https://" + url
@@ -67,7 +68,7 @@ def audit(url: str, output_dir: str, output_format: str, deep_crawl: bool, max_p
     # Phase 2: Synthesize Intelligence
     with console.status("[bold cyan]Reconciling evidence, provenance, and detecting cross-engine conflicts...[/bold cyan]", spinner="dots"):
         synthesizer = IntelligenceSynthesizer()
-        report = synthesizer.synthesize(url, engine_results)
+        report = synthesizer.synthesize(url, engine_results, external_intelligence=external_intelligence)
 
     # Optional: Deep Multi-Page Crawling
     if deep_crawl:

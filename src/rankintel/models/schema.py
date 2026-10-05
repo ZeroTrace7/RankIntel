@@ -2276,6 +2276,32 @@ class CIPolicyResult(BaseModel):
     failed_classifications_found: List[str] = Field(default_factory=list)
     failure_reasons: List[str] = Field(default_factory=list)
 
+class ExternalValidationState(str, Enum):
+    NOT_REQUESTED = "NOT_REQUESTED"
+    AVAILABLE = "AVAILABLE"
+    UNAVAILABLE = "UNAVAILABLE"
+    ERROR = "ERROR"
+    INSUFFICIENT_EVIDENCE = "INSUFFICIENT_EVIDENCE"
+
+class ExternalIntelligenceObservation(BaseModel):
+    provider: str
+    observation_id: str
+    query: str
+    result: Any
+    timestamp: str
+    provenance: str = "EXTERNAL_OBSERVATION"
+    status: ExternalValidationState
+    error: Optional[str] = None
+    raw_metadata: Optional[Dict[str, Any]] = None
+
+class ExternalIntelligenceResult(BaseModel):
+    provider: str
+    status: ExternalValidationState
+    observations: List[ExternalIntelligenceObservation] = Field(default_factory=list)
+    provenance: str = "EXTERNAL_OBSERVATION"
+    errors: List[str] = Field(default_factory=list)
+
+
 class SynthesisReport(BaseModel):
     url: str
     domain: str
@@ -2298,6 +2324,7 @@ class SynthesisReport(BaseModel):
     remediation_records: List[RemediationRecord] = Field(default_factory=list)
     provenance: List[EvidenceProvenanceTag] = Field(default_factory=list)
     
+    external_intelligence: Optional[ExternalIntelligenceResult] = None
     # Unified reconciled states
     unified_on_page: OnPageEvidence = Field(default_factory=OnPageEvidence)
     unified_robots: RobotsEvidence = Field(default_factory=RobotsEvidence)
