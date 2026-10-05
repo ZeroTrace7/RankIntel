@@ -1316,6 +1316,17 @@ class MarkdownReporter:
         lines.append(report.fixes.get("hardened_robots", ""))
         lines.append("```\n")
 
+        if report.external_intelligence:
+            lines.append("## ☁️ CONTROLLED OPENSEO EXTERNAL INTELLIGENCE")
+            lines.append(f"- **Provider:** {report.external_intelligence.provider}")
+            lines.append(f"- **Status:** {report.external_intelligence.status.value}")
+            if report.external_intelligence.errors:
+                for err in report.external_intelligence.errors:
+                    lines.append(f"- **Error:** {err}")
+            for obs in report.external_intelligence.observations:
+                lines.append(f"- **Observation:** {obs.query} -> {obs.result}")
+            lines.append("")
+
         return "\n".join(lines)
 
     @staticmethod
