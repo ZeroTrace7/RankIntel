@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-05",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 5.81,
+  "execution_time_sec": 5.94,
   "overall_health_score": 48,
   "technical_health_score": 60,
   "geo_readiness_score": 35,
@@ -57,7 +57,7 @@
     "detected_schema_types": [],
     "schema_blocks_count": 0,
     "schema_validation_issues": [],
-    "ttfb_ms": 99.4,
+    "ttfb_ms": 158.0,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -148,7 +148,7 @@
     "is_https": true,
     "tls_valid": true,
     "tls_protocol": "TLSv1.3",
-    "tls_days_remaining": 54,
+    "tls_days_remaining": 53,
     "hsts_present": true,
     "hsts_preload": true,
     "csp_present": false,
@@ -462,7 +462,7 @@
       "Robots.txt found: False",
       "Schema types declared: None",
       "HTTPS enforced: True",
-      "Server latency probe: 99.4ms (local_probe)",
+      "Server latency probe: 158.0ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
       "Static HTML contains 957 words.",
@@ -481,7 +481,7 @@
       "Mapped 3 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 99.4ms TTFB",
+      "Local network latency probe recorded 158.0ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -513,7 +513,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 99ms",
+      "finding": "TTFB Latency: 158ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -569,7 +569,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TLS Certificate: Valid (54 days left)",
+      "finding": "TLS Certificate: Valid (53 days left)",
       "engine": "security_engine",
       "source_file": "TLS Handshake",
       "confidence": "high",

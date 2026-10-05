@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-05",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 6.47,
+  "execution_time_sec": 7.44,
   "overall_health_score": 37,
   "technical_health_score": 25,
   "geo_readiness_score": 30,
@@ -59,7 +59,7 @@
     "detected_schema_types": [],
     "schema_blocks_count": 0,
     "schema_validation_issues": [],
-    "ttfb_ms": 142.3,
+    "ttfb_ms": 139.5,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -150,7 +150,7 @@
     "is_https": true,
     "tls_valid": true,
     "tls_protocol": "TLSv1.3",
-    "tls_days_remaining": 63,
+    "tls_days_remaining": 62,
     "hsts_present": false,
     "hsts_preload": false,
     "csp_present": true,
@@ -235,7 +235,7 @@
     "notes": [
       "Extraction method: SEMANTIC_ARTICLE yielded 578 main content words (617 total body words).",
       "Content-to-body ratio: 93.7%.",
-      "Exact main-content SHA-256: 48427092ce58e5b2..., Full HTML SHA-256: a0f8baa33beabd39...",
+      "Exact main-content SHA-256: 48427092ce58e5b2..., Full HTML SHA-256: 95830e4df8a718b7...",
       "SimHash fingerprint: dddc10a3d3aa25db."
     ]
   },
@@ -472,7 +472,7 @@
       "Robots.txt found: True",
       "Schema types declared: None",
       "HTTPS enforced: True",
-      "Server latency probe: 142.3ms (local_probe)",
+      "Server latency probe: 139.5ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
       "Static HTML contains 560 words.",
@@ -489,7 +489,7 @@
       "Mapped 5 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 142.3ms TTFB",
+      "Local network latency probe recorded 139.5ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -711,7 +711,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 142ms",
+      "finding": "TTFB Latency: 140ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -767,7 +767,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TLS Certificate: Valid (63 days left)",
+      "finding": "TLS Certificate: Valid (62 days left)",
       "engine": "security_engine",
       "source_file": "TLS Handshake",
       "confidence": "high",

@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-05",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 17.73,
+  "execution_time_sec": 18.42,
   "overall_health_score": 68,
   "technical_health_score": 90,
   "geo_readiness_score": 42,
@@ -26,8 +26,8 @@
     "http_status_code": 200,
     "is_redirect": false,
     "canonical_url": "https://alephindia.in/",
-    "internal_links_count": 81,
-    "external_links_count": 343,
+    "internal_links_count": 80,
+    "external_links_count": 342,
     "robots_txt_found": true,
     "robots_txt_url": "https://alephindia.in/robots.txt",
     "sitemaps_declared": [
@@ -41,7 +41,7 @@
     ],
     "notes": [
       "HTTP Status: 200",
-      "Discovered 81 internal links"
+      "Discovered 80 internal links"
     ]
   },
   "technical_seo": {
@@ -55,14 +55,14 @@
       "Your Trusted Partner \n\n                    Aleph INDIA Group"
     ],
     "h2_count": 9,
-    "h3_count": 57,
+    "h3_count": 56,
     "detected_schema_types": [
       "WebSite",
       "Organization"
     ],
     "schema_blocks_count": 2,
     "schema_validation_issues": [],
-    "ttfb_ms": 554.8,
+    "ttfb_ms": 441.7,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -75,9 +75,9 @@
     "wcag_status": "FAIL",
     "engine_source": "axe_core_playwright",
     "browser_evaluated": true,
-    "total_violations": 63,
+    "total_violations": 62,
     "critical_count": 0,
-    "serious_count": 63,
+    "serious_count": 62,
     "moderate_count": 0,
     "minor_count": 0,
     "rules_checked_count": 34,
@@ -153,7 +153,7 @@
     "is_https": true,
     "tls_valid": true,
     "tls_protocol": "TLSv1.3",
-    "tls_days_remaining": 68,
+    "tls_days_remaining": 67,
     "hsts_present": false,
     "hsts_preload": false,
     "csp_present": false,
@@ -222,7 +222,7 @@
   "content": {
     "status": "AVAILABLE",
     "main_content_words": 239,
-    "total_body_words": 4334,
+    "total_body_words": 4319,
     "content_to_boilerplate_ratio": 0.06,
     "paragraph_count": 116,
     "extraction_method": "SEMANTIC_ARTICLE",
@@ -240,9 +240,9 @@
     ],
     "empty_sections_count": 8,
     "notes": [
-      "Extraction method: SEMANTIC_ARTICLE yielded 239 main content words (4334 total body words).",
+      "Extraction method: SEMANTIC_ARTICLE yielded 239 main content words (4319 total body words).",
       "Content-to-body ratio: 5.5%.",
-      "Exact main-content SHA-256: f4b36f8a8d212849..., Full HTML SHA-256: a979657729a18e33...",
+      "Exact main-content SHA-256: f4b36f8a8d212849..., Full HTML SHA-256: d9b7c355c1754043...",
       "SimHash fingerprint: 720f44728969af4d."
     ]
   },
@@ -262,8 +262,8 @@
     "entity_types_detected": [
       "PERSON",
       "LOCAL_BUSINESS",
-      "OTHER",
-      "ORGANIZATION"
+      "ORGANIZATION",
+      "OTHER"
     ],
     "relationships_count": 7,
     "structured_vs_visible_comparisons_count": 3,
@@ -334,10 +334,10 @@
   },
   "internal_links": {
     "status": "AVAILABLE",
-    "total_internal_links": 81,
-    "unique_internal_targets": 81,
-    "total_external_links": 343,
-    "unique_external_targets": 110,
+    "total_internal_links": 80,
+    "unique_internal_targets": 80,
+    "total_external_links": 342,
+    "unique_external_targets": 109,
     "empty_anchors_count": 0,
     "sample_internal_targets": [
       "https://alephindia.in/",
@@ -352,16 +352,16 @@
       "https://alephindia.in/bis-certification-scheme-x-machinery-and-electrical-equipment.php"
     ],
     "notes": [
-      "81 internal links observed, 81 unique targets"
+      "80 internal links observed, 80 unique targets"
     ]
   },
   "search_topic_query_intent": {
     "status": "AVAILABLE",
-    "search_signals_count": 288,
-    "topics_detected_count": 227,
+    "search_signals_count": 286,
+    "topics_detected_count": 226,
     "topics_sample": [
-      "INDIA®",
       "Certificate",
+      "INDIA®",
       "BIS",
       "Certification",
       "Aleph",
@@ -371,7 +371,7 @@
       "CRS",
       "FMCS"
     ],
-    "query_page_concepts_count": 268,
+    "query_page_concepts_count": 267,
     "primary_intent": "transactional",
     "secondary_intents": [
       "transactional_lead_gen",
@@ -382,7 +382,7 @@
     "intent_evidence_items_count": 18,
     "notes": [
       "Primary Intent: transactional",
-      "227 topics extracted"
+      "226 topics extracted"
     ]
   },
   "cannibalization_search_gaps": {
@@ -409,15 +409,15 @@
     "has_nosnippet": false,
     "has_data_nosnippet": false,
     "max_snippet": null,
-    "static_words": 2546,
-    "rendered_words": 4139,
+    "static_words": 2532,
+    "rendered_words": 4125,
     "word_count_delta": 1593,
-    "rendering_impact_summary": "Rendered HTML yields 1593 additional words (4139 vs 2546 raw). Some retrieval systems may have reduced access to this content if they do not execute client-side JavaScript.",
+    "rendering_impact_summary": "Rendered HTML yields 1593 additional words (4125 vs 2532 raw). Some retrieval systems may have reduced access to this content if they do not execute client-side JavaScript.",
     "notes": [
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
-      "Static HTML contains 2546 words.",
-      "Rendered browser DOM contains 4139 words (delta: +1593 words)."
+      "Static HTML contains 2532 words.",
+      "Rendered browser DOM contains 4125 words (delta: +1593 words)."
     ]
   },
   "answerability": {
@@ -436,7 +436,7 @@
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
     "explained_topics_count": 107,
-    "mentioned_only_topics_count": 107,
+    "mentioned_only_topics_count": 106,
     "unsupported_heading_topics_count": 23,
     "unsupported_headings_sample": [
       "Latest Regulatory Updates",
@@ -447,7 +447,7 @@
     ],
     "notes": [
       "Detected 23 distinct observable information unit(s) across 5 structural types.",
-      "Evaluated 268 topic(s): 107 explained with explicit units, 107 mentioned only, 23 unsupported headings.",
+      "Evaluated 267 topic(s): 107 explained with explicit units, 106 mentioned only, 23 unsupported headings.",
       "Structure 'DIRECT_ANSWER': 2 unit(s) observed.",
       "Structure 'FACTUAL_STATEMENT': 14 unit(s) observed.",
       "Structure 'LIST': 5 unit(s) observed.",
@@ -477,32 +477,32 @@
   },
   "multimodal": {
     "status": "AVAILABLE",
-    "total_visual_assets": 351,
-    "informational_assets_count": 267,
+    "total_visual_assets": 350,
+    "informational_assets_count": 266,
     "decorative_assets_count": 84,
-    "alt_represented_count": 89,
+    "alt_represented_count": 88,
     "caption_represented_count": 0,
     "text_represented_count": 88,
     "visual_only_observed_gaps": 174,
-    "modern_format_count": 62,
+    "modern_format_count": 61,
     "missing_dimensions_count": 50,
     "notes": [
-      "351 visual assets audited (89 alt-represented)"
+      "350 visual assets audited (88 alt-represented)"
     ]
   },
   "agent_readiness": {
     "status": "AVAILABLE",
     "total_forms_detected": 3,
     "labeled_forms_count": 1,
-    "action_buttons_detected": 84,
-    "meaningful_accessible_buttons_count": 83,
+    "action_buttons_detected": 82,
+    "meaningful_accessible_buttons_count": 81,
     "descriptive_navigation_links_count": 214,
     "schema_actions_detected": 0,
     "webmcp_declarations_detected": 0,
     "total_access_paths": 29,
     "action_surface_gaps": 0,
     "notes": [
-      "3 forms, 84 buttons audited"
+      "3 forms, 82 buttons audited"
     ]
   },
   "external_ai": {
@@ -523,22 +523,22 @@
   "epistemic_separation": {
     "facts": [
       "HTTP response code: 200",
-      "Static HTML word count: 3326",
+      "Static HTML word count: 3311",
       "Title: 'BIS Certification Consultants | ISI Mark, FMCS, CRS Certificate' (63 characters)",
       "Meta description: 'Aleph INDIA® is an expert BIS Registration Consultant in Delhi - India, providing a single window for all kinds of Technical Certification & Regulatory Compliances. We offer consulting services for BIS Registration, ISI Certification, WPC Approval, EPR Registration, BIS Hallmarking, and many more.' (298 characters)",
       "H1 tags observed: 1",
-      "Internal links observed: 81",
-      "External links observed: 343",
+      "Internal links observed: 80",
+      "External links observed: 342",
       "Robots.txt found: True",
       "Schema types declared: WebSite, Organization",
       "HTTPS enforced: True",
-      "Server latency probe: 554.8ms (local_probe)",
+      "Server latency probe: 441.7ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
-      "Static HTML contains 2546 words.",
-      "Rendered browser DOM contains 4139 words (delta: +1593 words).",
+      "Static HTML contains 2532 words.",
+      "Rendered browser DOM contains 4125 words (delta: +1593 words).",
       "Detected 23 distinct observable information unit(s) across 5 structural types.",
-      "Evaluated 268 topic(s): 107 explained with explicit units, 107 mentioned only, 23 unsupported headings.",
+      "Evaluated 267 topic(s): 107 explained with explicit units, 106 mentioned only, 23 unsupported headings.",
       "Structure 'DIRECT_ANSWER': 2 unit(s) observed.",
       "Structure 'FACTUAL_STATEMENT': 14 unit(s) observed.",
       "Structure 'LIST': 5 unit(s) observed.",
@@ -546,12 +546,12 @@
       "On-site support status: 19 supported, 1 partially supported, 9 uncorroborated, 0 contradicted.",
       "Structured vs visible comparisons: 4 agreement(s), 0 explicit disagreement(s).",
       "Evaluated 6 entity candidate(s) across 6 content surfaces.",
-      "Observed 351 visual asset(s): 267 informational, 89 with meaningful alt text, 0 with figure captions, 174 visual-only information gap(s).",
-      "Observed 3 form(s) (1 labeled), 84 action button(s) (83 accessible names), 0 structured schema action(s), 0 WebMCP declaration(s).",
+      "Observed 350 visual asset(s): 266 informational, 88 with meaningful alt text, 0 with figure captions, 174 visual-only information gap(s).",
+      "Observed 3 form(s) (1 labeled), 82 action button(s) (81 accessible names), 0 structured schema action(s), 0 WebMCP declaration(s).",
       "Mapped 29 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 554.8ms TTFB",
+      "Local network latency probe recorded 441.7ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -778,7 +778,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 555ms",
+      "finding": "TTFB Latency: 442ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -802,7 +802,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Image Optimization: 97 images detected (0 missing alt)",
+      "finding": "Image Optimization: 96 images detected (0 missing alt)",
       "engine": "image_engine",
       "source_file": "HTML DOM",
       "confidence": "high",
@@ -818,7 +818,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "WCAG AA Automated Status: FAIL (63 violations)",
+      "finding": "WCAG AA Automated Status: FAIL (62 violations)",
       "engine": "axe_core_playwright",
       "source_file": "HTML DOM",
       "confidence": "high",
@@ -834,7 +834,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TLS Certificate: Valid (68 days left)",
+      "finding": "TLS Certificate: Valid (67 days left)",
       "engine": "security_engine",
       "source_file": "TLS Handshake",
       "confidence": "high",
@@ -850,7 +850,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Heading Structure: 97 headings (3 skips)",
+      "finding": "Heading Structure: 96 headings (3 skips)",
       "engine": "content_engine",
       "source_file": "HTML Headings",
       "confidence": "high",
@@ -890,7 +890,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Internal Link Topology: 285 internal links (80 unique destinations)",
+      "finding": "Internal Link Topology: 284 internal links (79 unique destinations)",
       "engine": "internal_link_engine",
       "source_file": "HTML DOM",
       "confidence": "high",
@@ -906,7 +906,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 288 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 286 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -914,7 +914,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Structure: Multi-location co-occurrence observed for key terms: india, bis, certificate, certification, registration.",
+      "finding": "Search Signal Structure: Multi-location co-occurrence observed for key terms: india, bis, certificate, registration, certification.",
       "engine": "search_signal_engine",
       "source_file": "Structural Tag Correlation",
       "confidence": "high",
@@ -930,7 +930,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 227 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 226 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -946,7 +946,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 268 observed concepts mapped to page (20 DIRECT, 133 SUPPORTED)",
+      "finding": "Query-Page Mapping: 267 observed concepts mapped to page (20 DIRECT, 133 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -1050,7 +1050,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Multimodal Information Representation: 351 visual asset(s) (267 informational, 89 alt-represented)",
+      "finding": "Multimodal Information Representation: 350 visual asset(s) (266 informational, 88 alt-represented)",
       "engine": "multimodal_agent_engine",
       "source_file": "HTML DOM & Image Assets",
       "confidence": "high",
@@ -1058,7 +1058,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Agent Interaction Surfaces: 3 form(s) (1 labeled), 84 button(s)",
+      "finding": "Agent Interaction Surfaces: 3 form(s) (1 labeled), 82 button(s)",
       "engine": "multimodal_agent_engine",
       "source_file": "HTML Forms & Controls",
       "confidence": "high",

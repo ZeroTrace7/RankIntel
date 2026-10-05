@@ -6,10 +6,10 @@
   "collection_timestamp": "2026-10-05",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 6.86,
-  "overall_health_score": 79,
+  "execution_time_sec": 9.31,
+  "overall_health_score": 78,
   "technical_health_score": 100,
-  "geo_readiness_score": 63,
+  "geo_readiness_score": 62,
   "trust_score": 60,
   "performance_score": 85,
   "score_formula_mode": "4_engine",
@@ -26,8 +26,8 @@
     "http_status_code": 200,
     "is_redirect": false,
     "canonical_url": "https://www.tcreng.com/",
-    "internal_links_count": 148,
-    "external_links_count": 395,
+    "internal_links_count": 150,
+    "external_links_count": 399,
     "robots_txt_found": true,
     "robots_txt_url": "https://www.tcreng.com/robots.txt",
     "sitemaps_declared": [
@@ -42,7 +42,7 @@
     ],
     "notes": [
       "HTTP Status: 200",
-      "Discovered 148 internal links"
+      "Discovered 150 internal links"
     ]
   },
   "technical_seo": {
@@ -58,18 +58,18 @@
     "h2_count": 17,
     "h3_count": 26,
     "detected_schema_types": [
-      "FAQPage",
-      "VideoObject",
-      "Organization",
-      "WebPage",
       "ItemList",
-      "BreadcrumbList",
+      "Organization",
+      "VideoObject",
+      "WebSite",
       "NewsArticle",
-      "WebSite"
+      "BreadcrumbList",
+      "FAQPage",
+      "WebPage"
     ],
     "schema_blocks_count": 8,
     "schema_validation_issues": [],
-    "ttfb_ms": 111.9,
+    "ttfb_ms": 77.7,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -101,7 +101,7 @@
     "is_https": true,
     "tls_valid": true,
     "tls_protocol": "TLSv1.3",
-    "tls_days_remaining": 83,
+    "tls_days_remaining": 82,
     "hsts_present": true,
     "hsts_preload": false,
     "csp_present": false,
@@ -125,25 +125,25 @@
   },
   "content": {
     "status": "AVAILABLE",
-    "main_content_words": 1545,
-    "total_body_words": 2463,
+    "main_content_words": 1548,
+    "total_body_words": 2474,
     "content_to_boilerplate_ratio": 0.63,
     "paragraph_count": 133,
     "extraction_method": "SEMANTIC_MAIN",
     "thin_content_tier": "SUBSTANTIVE",
     "has_placeholder_text": false,
-    "exact_content_hash": "7bd7d761d9e4300cf469ba117bb6cf00786c7619b2820b12db61ec6465da3b17",
-    "simhash": "8d6c4932dd1c4fb5",
+    "exact_content_hash": "580fd9db6e610acbe585c90b63ccf0931ccf35a3cadd1f49073b686f77f9536f",
+    "simhash": "8d6c4d32dd1c4fb5",
     "title_h1_alignment": "MODERATE_ALIGNMENT",
     "title_h1_token_overlap": 0.1,
     "heading_hierarchy_valid": true,
     "heading_skips": [],
     "empty_sections_count": 15,
     "notes": [
-      "Extraction method: SEMANTIC_MAIN yielded 1545 main content words (2463 total body words).",
-      "Content-to-body ratio: 62.7%.",
-      "Exact main-content SHA-256: 7bd7d761d9e4300c..., Full HTML SHA-256: f57eaf081c17c342...",
-      "SimHash fingerprint: 8d6c4932dd1c4fb5."
+      "Extraction method: SEMANTIC_MAIN yielded 1548 main content words (2474 total body words).",
+      "Content-to-body ratio: 62.6%.",
+      "Exact main-content SHA-256: 580fd9db6e610acb..., Full HTML SHA-256: b187c26d64fdec26...",
+      "SimHash fingerprint: 8d6c4d32dd1c4fb5."
     ]
   },
   "entity": {
@@ -161,9 +161,9 @@
       "Contact Email (sales@tcreng.com)"
     ],
     "entity_types_detected": [
-      "LOCAL_BUSINESS",
       "ORGANIZATION",
-      "OTHER"
+      "OTHER",
+      "LOCAL_BUSINESS"
     ],
     "relationships_count": 10,
     "structured_vs_visible_comparisons_count": 3,
@@ -234,10 +234,10 @@
   },
   "internal_links": {
     "status": "AVAILABLE",
-    "total_internal_links": 148,
-    "unique_internal_targets": 148,
-    "total_external_links": 395,
-    "unique_external_targets": 169,
+    "total_internal_links": 150,
+    "unique_internal_targets": 150,
+    "total_external_links": 399,
+    "unique_external_targets": 171,
     "empty_anchors_count": 0,
     "sample_internal_targets": [
       "https://www.tcreng.com/",
@@ -252,13 +252,13 @@
       "https://www.tcreng.com/client-login/"
     ],
     "notes": [
-      "148 internal links observed, 148 unique targets"
+      "150 internal links observed, 150 unique targets"
     ]
   },
   "search_topic_query_intent": {
     "status": "AVAILABLE",
-    "search_signals_count": 290,
-    "topics_detected_count": 237,
+    "search_signals_count": 295,
+    "topics_detected_count": 243,
     "topics_sample": [
       "TCR",
       "Testing",
@@ -271,17 +271,16 @@
       "doesn't.",
       "Evidence"
     ],
-    "query_page_concepts_count": 252,
-    "primary_intent": "transactional_lead_gen",
+    "query_page_concepts_count": 258,
+    "primary_intent": "mixed",
     "secondary_intents": [
       "informational",
-      "navigational",
-      "local"
+      "transactional_lead_gen"
     ],
-    "intent_evidence_items_count": 12,
+    "intent_evidence_items_count": 13,
     "notes": [
-      "Primary Intent: transactional_lead_gen",
-      "237 topics extracted"
+      "Primary Intent: mixed",
+      "243 topics extracted"
     ]
   },
   "cannibalization_search_gaps": {
@@ -308,15 +307,15 @@
     "has_nosnippet": false,
     "has_data_nosnippet": false,
     "max_snippet": null,
-    "static_words": 2329,
-    "rendered_words": 2309,
+    "static_words": 2340,
+    "rendered_words": 2320,
     "word_count_delta": -20,
-    "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (2329 raw vs 2309 rendered).",
+    "rendering_impact_summary": "Raw and rendered HTML text counts are aligned (2340 raw vs 2320 rendered).",
     "notes": [
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
-      "Static HTML contains 2329 words.",
-      "Rendered browser DOM contains 2309 words (delta: -20 words)."
+      "Static HTML contains 2340 words.",
+      "Rendered browser DOM contains 2320 words (delta: -20 words)."
     ]
   },
   "answerability": {
@@ -337,18 +336,18 @@
     "step_list_structure": "ABSENT",
     "table_availability": "ABSENT",
     "explained_topics_count": 185,
-    "mentioned_only_topics_count": 20,
-    "unsupported_heading_topics_count": 38,
+    "mentioned_only_topics_count": 21,
+    "unsupported_heading_topics_count": 41,
     "unsupported_headings_sample": [
       "Latest Insights",
+      "One NACE method, four pass marks: sour s",
       "Rebuilding a 13Cr valve seat on a WCB bo",
       "Hydrogen induced disbonding testing to A",
-      "TCR commissions a WDXRF spectrometer for",
-      "What an Accredited Materials Test Report"
+      "TCR commissions a WDXRF spectrometer for"
     ],
     "notes": [
       "Detected 43 distinct observable information unit(s) across 7 structural types.",
-      "Evaluated 252 topic(s): 185 explained with explicit units, 20 mentioned only, 38 unsupported headings.",
+      "Evaluated 258 topic(s): 185 explained with explicit units, 21 mentioned only, 41 unsupported headings.",
       "Structure 'DIRECT_ANSWER': 1 unit(s) observed.",
       "Structure 'EXAMPLE': 1 unit(s) observed.",
       "Structure 'FACTUAL_STATEMENT': 10 unit(s) observed.",
@@ -360,10 +359,10 @@
   },
   "claim_grounding": {
     "status": "AVAILABLE",
-    "total_claims_detected": 64,
-    "supported_claims_count": 32,
+    "total_claims_detected": 63,
+    "supported_claims_count": 30,
     "partially_supported_count": 18,
-    "uncorroborated_count": 9,
+    "uncorroborated_count": 10,
     "contradicted_count": 5,
     "structured_agreements_count": 3,
     "structured_disagreements_count": 1,
@@ -372,8 +371,8 @@
       "PARTIALLY_CONSISTENT": 6
     },
     "notes": [
-      "Detected 64 observable claim(s) on page https://www.tcreng.com/.",
-      "On-site support status: 32 supported, 18 partially supported, 9 uncorroborated, 5 contradicted.",
+      "Detected 63 observable claim(s) on page https://www.tcreng.com/.",
+      "On-site support status: 30 supported, 18 partially supported, 10 uncorroborated, 5 contradicted.",
       "Structured vs visible comparisons: 3 agreement(s), 1 explicit disagreement(s).",
       "Evaluated 8 entity candidate(s) across 6 content surfaces."
     ]
@@ -399,7 +398,7 @@
     "labeled_forms_count": 1,
     "action_buttons_detected": 4,
     "meaningful_accessible_buttons_count": 4,
-    "descriptive_navigation_links_count": 126,
+    "descriptive_navigation_links_count": 128,
     "schema_actions_detected": 1,
     "webmcp_declarations_detected": 0,
     "total_access_paths": 26,
@@ -426,27 +425,27 @@
   "epistemic_separation": {
     "facts": [
       "HTTP response code: 200",
-      "Static HTML word count: 2016",
+      "Static HTML word count: 2023",
       "Title: 'Materials Testing, NDT & Asset Integrity | TCR Engineering' (58 characters)",
       "Meta description: 'India's oldest third-party materials testing, NDT and asset integrity company. NABL ISO/IEC 17025, NADCAP AC7101, BIS, IBR, BMC and CIDCO approved.' (147 characters)",
       "H1 tags observed: 1",
-      "Internal links observed: 148",
-      "External links observed: 395",
+      "Internal links observed: 150",
+      "External links observed: 399",
       "Robots.txt found: True",
-      "Schema types declared: FAQPage, VideoObject, Organization, WebPage, ItemList, BreadcrumbList, NewsArticle, WebSite",
+      "Schema types declared: ItemList, Organization, VideoObject, WebSite, NewsArticle, BreadcrumbList, FAQPage, WebPage",
       "HTTPS enforced: True",
-      "Server latency probe: 111.9ms (local_probe)",
+      "Server latency probe: 77.7ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
-      "Static HTML contains 2329 words.",
-      "Rendered browser DOM contains 2309 words (delta: -20 words).",
+      "Static HTML contains 2340 words.",
+      "Rendered browser DOM contains 2320 words (delta: -20 words).",
       "Detected 43 distinct observable information unit(s) across 7 structural types.",
-      "Evaluated 252 topic(s): 185 explained with explicit units, 20 mentioned only, 38 unsupported headings.",
+      "Evaluated 258 topic(s): 185 explained with explicit units, 21 mentioned only, 41 unsupported headings.",
       "Structure 'DIRECT_ANSWER': 1 unit(s) observed.",
       "Structure 'EXAMPLE': 1 unit(s) observed.",
       "Structure 'FACTUAL_STATEMENT': 10 unit(s) observed.",
-      "Detected 64 observable claim(s) on page https://www.tcreng.com/.",
-      "On-site support status: 32 supported, 18 partially supported, 9 uncorroborated, 5 contradicted.",
+      "Detected 63 observable claim(s) on page https://www.tcreng.com/.",
+      "On-site support status: 30 supported, 18 partially supported, 10 uncorroborated, 5 contradicted.",
       "Structured vs visible comparisons: 3 agreement(s), 1 explicit disagreement(s).",
       "Evaluated 8 entity candidate(s) across 6 content surfaces.",
       "Observed 49 visual asset(s): 40 informational, 39 with meaningful alt text, 0 with figure captions, 0 visual-only information gap(s).",
@@ -454,15 +453,15 @@
       "Mapped 26 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 111.9ms TTFB",
+      "Local network latency probe recorded 77.7ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
-      "Health score computed: 79/100 via invariant formula mode '4_engine'",
+      "Health score computed: 78/100 via invariant formula mode '4_engine'",
       "Technical SEO foundation: 100/100",
-      "GEO citability readiness: 63/100",
+      "GEO citability readiness: 62/100",
       "Trust stack: C (60/100)",
-      "Cross-engine conflict [MEDIUM] on 'Topic Heading without Supporting Content': Topic 'Answers' has dedicated heading 'Concrete NDT: Which Test Answers Which Question, and What Each One Cannot Tell You', but supporting body content is genuinely absent. -> The page establishes an explicit topical heading promise for search/AI retrieval, but fails to provide observable explanatory or factual body copy under that section.",
+      "Cross-engine conflict [MEDIUM] on 'Topic Heading without Supporting Content': Topic 'ASTM' has dedicated heading 'Hydrogen induced disbonding testing to ASTM G146 opens at Mahape, and why the overlay fails on the way down', but supporting body content is genuinely absent. -> The page establishes an explicit topical heading promise for search/AI retrieval, but fails to provide observable explanatory or factual body copy under that section.",
       "Cross-engine conflict [HIGH] on 'JSON-LD vs Visible Organization Name': JSON-LD declares 'TCR Engineering Services Pvt. Ltd.' while visible content displays 'Materials fail. Evidence doesn't.' under primary_identity context. -> Discrepancy detected between structured schema declarations and visible user-facing text. Search engines and AI systems comparing structured data against rendered pages may flag inconsistent identity signals for 'organization_name'.",
       "Cross-engine conflict [HIGH] on 'Contradicting Claims: Founding Claim': Observable statement '06 Inspection Manpower & Third-Party Services 700+ PMI proje...' is explicitly contradicted by 'India's oldest third-party inspection company Materials fail...' on the site. -> The site presents mutually incompatible factual values for the same subject and context, creating ambiguous signals for both human readers and AI retrieval systems.",
       "Cross-engine conflict [MEDIUM] on 'JSON-LD Action Target vs DOM Form Action Discrepancy': Schema declares action target '{'@type': 'entrypoint', 'urltemplate': 'https://www.tcreng.com/search' while DOM form targets '/services'. -> Structured data declares an automated interaction target endpoint that diverges from the actual interactive form action attribute rendered in the DOM."
@@ -742,7 +741,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 112ms",
+      "finding": "TTFB Latency: 78ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -758,7 +757,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Princeton GEO Citability: 63/100",
+      "finding": "Princeton GEO Citability: 62/100",
       "engine": "rankintel_geo",
       "source_file": "DOM content passages",
       "confidence": "high",
@@ -798,7 +797,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TLS Certificate: Valid (83 days left)",
+      "finding": "TLS Certificate: Valid (82 days left)",
       "engine": "security_engine",
       "source_file": "TLS Handshake",
       "confidence": "high",
@@ -806,7 +805,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Main Content Extraction: 1545 words (SEMANTIC_MAIN)",
+      "finding": "Main Content Extraction: 1548 words (SEMANTIC_MAIN)",
       "engine": "content_engine",
       "source_file": "HTML DOM",
       "confidence": "high",
@@ -854,7 +853,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Internal Link Topology: 360 internal links (148 unique destinations)",
+      "finding": "Internal Link Topology: 364 internal links (150 unique destinations)",
       "engine": "internal_link_engine",
       "source_file": "HTML DOM",
       "confidence": "high",
@@ -862,7 +861,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Evidence: 290 on-site search-relevant signal terms evidenced",
+      "finding": "Search Signal Evidence: 295 on-site search-relevant signal terms evidenced",
       "engine": "search_signal_engine",
       "source_file": "HTML DOM & Metadata",
       "confidence": "high",
@@ -886,7 +885,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Intelligence: 237 deterministic concept groups derived from on-site evidence",
+      "finding": "Topic Intelligence: 243 deterministic concept groups derived from on-site evidence",
       "engine": "topic_intelligence_engine",
       "source_file": "Search Signal & Entity Evidence",
       "confidence": "high",
@@ -894,7 +893,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Topic Relationships: 143 inter-topic relationships mapped",
+      "finding": "Topic Relationships: 138 inter-topic relationships mapped",
       "engine": "topic_intelligence_engine",
       "source_file": "Deterministic Concept Clustering",
       "confidence": "high",
@@ -902,7 +901,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Mapping: 252 observed concepts mapped to page (15 DIRECT, 74 SUPPORTED)",
+      "finding": "Query-Page Mapping: 258 observed concepts mapped to page (15 DIRECT, 77 SUPPORTED)",
       "engine": "query_page_mapping_engine",
       "source_file": "On-Site Evidence Triangulation",
       "confidence": "high",
@@ -910,7 +909,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 15 direct primary concepts, 74 secondary supported concepts.",
+      "finding": "Query-Page Evidence Distribution: Concept-to-page evidence distribution: 15 direct primary concepts, 77 secondary supported concepts.",
       "engine": "query_page_mapping_engine",
       "source_file": "Structural Evidence Matrix",
       "confidence": "high",
@@ -918,7 +917,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Signals: Primary observed intent signal is 'transactional_lead_gen' (12 observable evidence items)",
+      "finding": "Search Intent Signals: Primary observed intent signal is 'mixed' (13 observable evidence items)",
       "engine": "search_intent_engine",
       "source_file": "On-Site Structural Intent Heuristics",
       "confidence": "high",
@@ -926,7 +925,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Primary observed intent signal is 'transactional_lead_gen' based on 6 corroborating evidence points.",
+      "finding": "Search Intent Corroboration: INFERRED_FROM_ON_SITE_EVIDENCE: Content exhibits balanced co-equal intent signals between 'informational' and 'transactional_lead_gen' (classified as MIXED).",
       "engine": "search_intent_engine",
       "source_file": "Multi-Signal Corroboration Engine",
       "confidence": "high",
@@ -974,7 +973,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Observable Claims Grounding: 64 claim(s) (32 supported on-site, 9 uncorroborated)",
+      "finding": "Observable Claims Grounding: 63 claim(s) (30 supported on-site, 10 uncorroborated)",
       "engine": "claim_grounding_engine",
       "source_file": "Visible Content & Answerable Units",
       "confidence": "high",
@@ -1026,9 +1025,9 @@
     {
       "severity": "MEDIUM",
       "feature": "Topic Heading without Supporting Content",
-      "description": "Topic 'Answers' has dedicated heading 'Concrete NDT: Which Test Answers Which Question, and What Each One Cannot Tell You', but supporting body content is genuinely absent.",
-      "engine_a_finding": "Topic Engine: Candidate topic 'Answers'",
-      "engine_b_finding": "Answerability Engine: Heading 'Concrete NDT: Which Test Answers Which Question, and What Each One Cannot Tell You' has 0 supporting body words",
+      "description": "Topic 'ASTM' has dedicated heading 'Hydrogen induced disbonding testing to ASTM G146 opens at Mahape, and why the overlay fails on the way down', but supporting body content is genuinely absent.",
+      "engine_a_finding": "Topic Engine: Candidate topic 'ASTM'",
+      "engine_b_finding": "Answerability Engine: Heading 'Hydrogen induced disbonding testing to ASTM G146 opens at Mahape, and why the overlay fails on the way down' has 0 supporting body words",
       "interpretation": "The page establishes an explicit topical heading promise for search/AI retrieval, but fails to provide observable explanatory or factual body copy under that section."
     },
     {

@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-05",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 8.76,
+  "execution_time_sec": 9.05,
   "overall_health_score": 67,
   "technical_health_score": 75,
   "geo_readiness_score": 51,
@@ -59,13 +59,13 @@
     "h2_count": 12,
     "h3_count": 11,
     "detected_schema_types": [
-      "WebSite",
+      "Organization",
       "FAQPage",
-      "Organization"
+      "WebSite"
     ],
     "schema_blocks_count": 3,
     "schema_validation_issues": [],
-    "ttfb_ms": 125.2,
+    "ttfb_ms": 156.1,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -108,43 +108,43 @@
         "rule_id": "color-contrast",
         "severity": "SERIOUS",
         "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.97 (foreground color: #b3b9c2, background color: #ffffff, font size: 25.5pt (34px), font weight: bold). Expected contrast ratio of 3:1"
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.43 (foreground color: #d4d8dd, background color: #ffffff, font size: 25.5pt (34px), font weight: bold). Expected contrast ratio of 3:1"
       },
       {
         "rule_id": "color-contrast",
         "severity": "SERIOUS",
         "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.97 (foreground color: #b3b9c2, background color: #ffffff, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.43 (foreground color: #d4d8dd, background color: #ffffff, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
       },
       {
         "rule_id": "color-contrast",
         "severity": "SERIOUS",
         "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.97 (foreground color: #b3b9c2, background color: #ffffff, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.43 (foreground color: #d4d8dd, background color: #ffffff, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
       },
       {
         "rule_id": "color-contrast",
         "severity": "SERIOUS",
         "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.47 (foreground color: #ffffff, background color: #ffc8bd, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.24 (foreground color: #ffffff, background color: #ffe0da, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
       },
       {
         "rule_id": "color-contrast",
         "severity": "SERIOUS",
         "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.47 (foreground color: #ffffff, background color: #ffc8bd, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.24 (foreground color: #ffffff, background color: #ffe0da, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
       },
       {
         "rule_id": "color-contrast",
         "severity": "SERIOUS",
         "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.47 (foreground color: #ffffff, background color: #ffc8bd, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.24 (foreground color: #ffffff, background color: #ffe0da, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
       },
       {
         "rule_id": "color-contrast",
         "severity": "SERIOUS",
         "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.47 (foreground color: #ffffff, background color: #ffc8bd, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+        "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.24 (foreground color: #ffffff, background color: #ffe0da, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
       }
     ],
     "disclaimer": "Automated checks evaluate observable criteria; non-certification scope.",
@@ -156,7 +156,7 @@
     "is_https": true,
     "tls_valid": true,
     "tls_protocol": "TLSv1.3",
-    "tls_days_remaining": 74,
+    "tls_days_remaining": 73,
     "hsts_present": true,
     "hsts_preload": false,
     "csp_present": true,
@@ -233,7 +233,7 @@
     "notes": [
       "Extraction method: HEURISTIC_PRUNED_BODY yielded 2152 main content words (2499 total body words).",
       "Content-to-body ratio: 86.1%.",
-      "Exact main-content SHA-256: 6c11969954d15882..., Full HTML SHA-256: 75bdfe7fef77cbd2...",
+      "Exact main-content SHA-256: 6c11969954d15882..., Full HTML SHA-256: 3a911e648fa74bfe...",
       "SimHash fingerprint: b36c09274708a5b3."
     ]
   },
@@ -249,10 +249,10 @@
       "Contact Email (info@standphillindia.in)"
     ],
     "entity_types_detected": [
-      "ORGANIZATION",
-      "PERSON",
+      "LOCAL_BUSINESS",
       "OTHER",
-      "LOCAL_BUSINESS"
+      "ORGANIZATION",
+      "PERSON"
     ],
     "relationships_count": 2,
     "structured_vs_visible_comparisons_count": 3,
@@ -456,7 +456,7 @@
     "text_represented_count": 15,
     "visual_only_observed_gaps": 1,
     "modern_format_count": 113,
-    "missing_dimensions_count": 56,
+    "missing_dimensions_count": 71,
     "notes": [
       "155 visual assets audited (139 alt-represented)"
     ]
@@ -501,9 +501,9 @@
       "Internal links observed: 57",
       "External links observed: 198",
       "Robots.txt found: True",
-      "Schema types declared: WebSite, FAQPage, Organization",
+      "Schema types declared: Organization, FAQPage, WebSite",
       "HTTPS enforced: True",
-      "Server latency probe: 125.2ms (local_probe)",
+      "Server latency probe: 156.1ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
       "Static HTML contains 1972 words.",
@@ -522,7 +522,7 @@
       "Mapped 45 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 125.2ms TTFB",
+      "Local network latency probe recorded 156.1ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -760,7 +760,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 125ms",
+      "finding": "TTFB Latency: 156ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -816,7 +816,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TLS Certificate: Valid (74 days left)",
+      "finding": "TLS Certificate: Valid (73 days left)",
       "engine": "security_engine",
       "source_file": "TLS Handshake",
       "confidence": "high",

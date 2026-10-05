@@ -6,7 +6,7 @@
   "collection_timestamp": "2026-10-05",
   "collection_status": "SUCCESS",
   "error_message": null,
-  "execution_time_sec": 13.78,
+  "execution_time_sec": 13.35,
   "overall_health_score": 76,
   "technical_health_score": 100,
   "geo_readiness_score": 53,
@@ -57,19 +57,19 @@
     "h2_count": 14,
     "h3_count": 44,
     "detected_schema_types": [
-      "FAQPage",
-      "PostalAddress",
       "Organization",
       "LocalBusiness",
-      "ImageObject",
-      "WebPage",
-      "BreadcrumbList",
       "Place",
-      "WebSite"
+      "PostalAddress",
+      "ImageObject",
+      "WebSite",
+      "BreadcrumbList",
+      "FAQPage",
+      "WebPage"
     ],
     "schema_blocks_count": 9,
     "schema_validation_issues": [],
-    "ttfb_ms": 122.2,
+    "ttfb_ms": 136.4,
     "performance_score": 85,
     "performance_source": "local_probe",
     "notes": [
@@ -160,7 +160,7 @@
     "is_https": true,
     "tls_valid": true,
     "tls_protocol": "TLSv1.3",
-    "tls_days_remaining": 31,
+    "tls_days_remaining": 30,
     "hsts_present": true,
     "hsts_preload": false,
     "csp_present": true,
@@ -235,7 +235,7 @@
     "notes": [
       "Extraction method: RAW_BODY_FALLBACK yielded 4006 main content words (4006 total body words).",
       "Content-to-body ratio: 100.0%.",
-      "Exact main-content SHA-256: 0c6df3f1b0d616e6..., Full HTML SHA-256: c59d84a723e86264...",
+      "Exact main-content SHA-256: 0c6df3f1b0d616e6..., Full HTML SHA-256: e8de12406fc226e5...",
       "SimHash fingerprint: b3fd4912ab0821b3."
     ]
   },
@@ -253,10 +253,10 @@
       "Contact Email (biscro.customercare@umspcs.in)"
     ],
     "entity_types_detected": [
-      "PLACE",
-      "LOCAL_BUSINESS",
       "ORGANIZATION",
-      "OTHER"
+      "PLACE",
+      "OTHER",
+      "LOCAL_BUSINESS"
     ],
     "relationships_count": 15,
     "structured_vs_visible_comparisons_count": 5,
@@ -519,9 +519,9 @@
       "Internal links observed: 111",
       "External links observed: 512",
       "Robots.txt found: True",
-      "Schema types declared: FAQPage, PostalAddress, Organization, LocalBusiness, ImageObject, WebPage, BreadcrumbList, Place, WebSite",
+      "Schema types declared: Organization, LocalBusiness, Place, PostalAddress, ImageObject, WebSite, BreadcrumbList, FAQPage, WebPage",
       "HTTPS enforced: True",
-      "Server latency probe: 122.2ms (local_probe)",
+      "Server latency probe: 136.4ms (local_probe)",
       "HTTP Status: 200",
       "No active WAF or automated challenge barriers observed.",
       "max-snippet threshold set to -1 characters (meta:robots)",
@@ -540,7 +540,7 @@
       "Mapped 6 information access path(s) across multimodal and agent surfaces."
     ],
     "external_observations": [
-      "Local network latency probe recorded 122.2ms TTFB",
+      "Local network latency probe recorded 136.4ms TTFB",
       "External AI measurement was disabled during this collection pass (opt-in via --external-ai)."
     ],
     "analyses": [
@@ -839,7 +839,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TTFB Latency: 122ms",
+      "finding": "TTFB Latency: 136ms",
       "engine": "performance_engine",
       "source_file": "HTTP response probe",
       "confidence": "medium",
@@ -895,7 +895,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "TLS Certificate: Valid (31 days left)",
+      "finding": "TLS Certificate: Valid (30 days left)",
       "engine": "security_engine",
       "source_file": "TLS Handshake",
       "confidence": "high",
@@ -999,7 +999,7 @@
       "contradicted_by": []
     },
     {
-      "finding": "Search Signal Structure: Title and H1 share 2 core evidenced terms: bis, consultant.",
+      "finding": "Search Signal Structure: Title and H1 share 2 core evidenced terms: consultant, bis.",
       "engine": "search_signal_engine",
       "source_file": "Structural Tag Correlation",
       "confidence": "high",
