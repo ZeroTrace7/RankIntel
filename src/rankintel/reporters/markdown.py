@@ -1316,6 +1316,40 @@ class MarkdownReporter:
         lines.append(report.fixes.get("hardened_robots", ""))
         lines.append("```\n")
 
+        if getattr(report, "search_console_intelligence", None):
+            lines.append("## \U0001F50D GOOGLE SEARCH CONSOLE — FIRST-PARTY SEARCH PERFORMANCE")
+            gsc = report.search_console_intelligence
+            lines.append(f"- **Status:** {gsc.status.value}")
+            lines.append(f"- **Provenance:** {gsc.provenance}")
+            if gsc.errors:
+                for err in gsc.errors:
+                    lines.append(f"- **Error:** {err}")
+            
+            if gsc.status.value == "AVAILABLE" and gsc.observations:
+                obs = gsc.observations
+                total_clicks = sum(o.result.get("clicks", 0) for o in obs)
+                total_imp = sum(o.result.get("impressions", 0) for o in obs)
+                avg_ctr = (total_clicks / total_imp * 100) if total_imp > 0 else 0.0
+                weighted_pos = sum(o.result.get("position", 0.0) * o.result.get("impressions", 0) for o in obs)
+                avg_pos = (weighted_pos / total_imp) if total_imp > 0 else 0.0
+                
+                lines.append("\n### Factual Metrics (Aggregated)")
+                lines.append(f"- **Total Clicks:** {total_clicks:,}")
+                lines.append(f"- **Total Impressions:** {total_imp:,}")
+                lines.append(f"- **Average CTR:** {avg_ctr:.2f}%")
+                lines.append(f"- **Average Position:** {avg_pos:.1f}")
+                
+                lines.append("\n### Top Queries (Sample)")
+                sorted_obs = sorted(obs, key=lambda x: x.result.get("clicks", 0), reverse=True)[:10]
+                lines.append("| Query | Page | Clicks | Impressions | CTR | Position | Data State |")
+                lines.append("|---|---|---|---|---|---|---|")
+                for o in sorted_obs:
+                    r = o.result
+                    q = r.get("query", "N/A")
+                    p = r.get("page", "N/A")
+                    lines.append(f"| {q} | {p} | {r.get('clicks', 0):,} | {r.get('impressions', 0):,} | {r.get('ctr', 0.0):.4f} | {r.get('position', 0.0):.1f} | {r.get('dataState', 'N/A')} |")
+            lines.append("\n")
+
         if report.external_intelligence:
             lines.append("## ☁️ CONTROLLED OPENSEO EXTERNAL INTELLIGENCE")
             lines.append(f"- **Provider:** {report.external_intelligence.provider}")

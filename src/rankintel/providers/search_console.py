@@ -54,7 +54,7 @@ class SearchConsoleProvider(ExternalIntelligenceAdapter):
         )
         self.token_path = os.getenv(
             "GSC_TOKEN_PATH",
-            os.path.join("D:\\", "RankIntel-Secrets", "google-search-console-token.json")
+            os.path.join("D:\\", "RankIntel-Secrets", "gsc-token.json")
         )
 
     def _authenticate(self) -> Optional[Credentials]:
@@ -81,9 +81,34 @@ class SearchConsoleProvider(ExternalIntelligenceAdapter):
                     flow = InstalledAppFlow.from_client_secrets_file(
                         self.credentials_path, self.SCOPES
                     )
-                    # Run local server, but don't hang indefinitely. Wait 60 seconds.
-                    creds = flow.run_local_server(port=0, timeout_seconds=60)
-                except Exception:
+
+                    class UrlCapturePrompt:
+                        def __init__(self, secrets_dir: str):
+                            self.secrets_dir = secrets_dir
+
+                        def format(self, url=None, **kwargs):
+                            try:
+                                import subprocess
+                                subprocess.Popen(f'start "" "{url}"', shell=True)
+                            except Exception:
+                                pass
+                            try:
+                                url_path = os.path.join(self.secrets_dir, "last_auth_url.txt")
+                                with open(url_path, "w", encoding="utf-8") as f:
+                                    f.write(str(url))
+                            except Exception:
+                                pass
+                            return f"Please visit this URL to authorize this application: {url}"
+
+                    prompt_handler = UrlCapturePrompt(os.path.dirname(self.token_path))
+                    # Run local server and wait indefinitely for the user
+                    creds = flow.run_local_server(
+                        port=0,
+                        authorization_prompt_message=prompt_handler
+                    )
+                except Exception as e:
+                    import traceback
+                    traceback.print_exc()
                     return None
             
             if creds:

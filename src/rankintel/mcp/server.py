@@ -145,6 +145,7 @@ def rankintel_audit(
         "external_target_domain_mentioned_count": report.unified_external_visibility.target_domain_mention_count if report.unified_external_visibility else 0,
         "external_observations_sample": [o.model_dump() for o in report.unified_external_visibility.observations[:3]] if report.unified_external_visibility else [],
         "remediation_records": [r.model_dump() for r in getattr(report, "remediation_records", [])],
+        "search_console_intelligence": report.search_console_intelligence.model_dump() if getattr(report, "search_console_intelligence", None) else None,
     }
 
 @mcp.tool
