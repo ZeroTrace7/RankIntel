@@ -1831,7 +1831,7 @@ class MultimodalRepresentationStatus(str, Enum):
     CAPTION_REPRESENTED = "CAPTION_REPRESENTED"
     STRUCTURED_CONTEXT_AVAILABLE = "STRUCTURED_CONTEXT_AVAILABLE"
     VISUAL_ONLY_OBSERVED = "VISUAL_ONLY_OBSERVED"
-    UNKNOWN = "UNKNOWN"
+    UNLABELED_UNKNOWN = "UNLABELED_UNKNOWN"
     UNAVAILABLE = "UNAVAILABLE"
 
 class AgentInteractionSignal(str, Enum):
@@ -1861,8 +1861,8 @@ class MultimodalAssetItem(BaseModel):
     asset_id: str
     asset_type: str = "image"  # image, figure, picture, svg, canvas
     src_or_id: str = ""
-    representation_status: MultimodalRepresentationStatus = MultimodalRepresentationStatus.UNKNOWN
-    is_informational: bool = True
+    representation_status: MultimodalRepresentationStatus = MultimodalRepresentationStatus.UNLABELED_UNKNOWN
+    is_informational: Optional[bool] = None
     alt_text: Optional[str] = None
     caption_text: Optional[str] = None
     is_responsive_or_picture: bool = False
@@ -1946,7 +1946,7 @@ class InformationAccessPathEvidence(BaseModel):
     textual_representation_present: bool = False
     multimodal_representation_present: bool = False
     agent_action_surface_present: bool = False
-    representation_status: MultimodalRepresentationStatus = MultimodalRepresentationStatus.UNKNOWN
+    representation_status: MultimodalRepresentationStatus = MultimodalRepresentationStatus.UNLABELED_UNKNOWN
     interaction_status: AgentInteractionStatus = AgentInteractionStatus.UNKNOWN
     linked_unit_id: Optional[str] = None
     linked_claim_id: Optional[str] = None

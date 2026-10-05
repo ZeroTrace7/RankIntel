@@ -419,8 +419,8 @@ class MultimodalAgentEngine:
         # Calculate counts
         evidence.total_visual_assets = len(assets)
         evidence.assets = assets
-        evidence.informational_assets_count = sum(1 for a in assets if a.is_informational)
-        evidence.decorative_assets_count = sum(1 for a in assets if not a.is_informational)
+        evidence.informational_assets_count = sum(1 for a in assets if a.is_informational is True)
+        evidence.decorative_assets_count = sum(1 for a in assets if a.is_informational is False)
         evidence.text_represented_count = sum(
             1 for a in assets if a.representation_status == MultimodalRepresentationStatus.TEXT_REPRESENTED
         )
@@ -447,7 +447,7 @@ class MultimodalAgentEngine:
         caption_text: Optional[str],
         parent_a: Optional[Tag],
         is_in_figure: bool,
-    ) -> bool:
+    ) -> Optional[bool]:
         """Distinguish informational images from purely decorative assets."""
         # Explicit decorative indicators
         if img.get("role") in ("presentation", "none"):
@@ -484,25 +484,25 @@ class MultimodalAgentEngine:
         if alt_text and len(alt_text.split()) >= 2:
             return True
 
-        # Default: consider it informational if inside content container
+        # Default: consider it unknown/unlabeled if not inside a strong content container
         parent_containers = [p.name for p in img.parents if p.name]
         if any(c in parent_containers for c in ("main", "article", "section", "figure")):
             return True
 
-        return True
+        return None
 
     @classmethod
     def _determine_representation_status(
         cls,
-        is_informational: bool,
+        is_informational: Optional[bool],
         alt_text: Optional[str],
         caption_text: Optional[str],
         heading: Optional[str],
         parent_a: Optional[Tag],
     ) -> Tuple[MultimodalRepresentationStatus, Optional[str]]:
         """Determine representation status for a visual asset."""
-        if not is_informational:
-            return MultimodalRepresentationStatus.TEXT_REPRESENTED, None
+        if is_informational is False:
+            return MultimodalRepresentationStatus.UNAVAILABLE, "Asset is explicitly decorative or non-informational"
 
         # 1. Caption represented
         if caption_text and len(caption_text.strip().split()) >= 2:
@@ -521,7 +521,12 @@ class MultimodalAgentEngine:
         if parent_a and parent_a.get_text(strip=True):
             return MultimodalRepresentationStatus.TEXT_REPRESENTED, None
 
-        # 4. Informational with missing or generic alt and no caption/link text
+        # 4. Unknown/unlabeled semantic role
+        if is_informational is None:
+            reason = "Visual asset lacks explicit alt/role attributes and does not reside in a semantic content container"
+            return MultimodalRepresentationStatus.UNLABELED_UNKNOWN, reason
+
+        # 5. Informational with missing or generic alt and no caption/link text
         reason = "Informational visual asset lacks meaningful alt text, caption, or accessible textual context"
         return MultimodalRepresentationStatus.VISUAL_ONLY_OBSERVED, reason
 

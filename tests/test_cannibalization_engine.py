@@ -49,7 +49,7 @@ def test_single_page_baseline_evaluation():
     """Verify single-page audit returns factual baseline explaining >=2 pages required."""
     res = CannibalizationAnalyzer.evaluate_page("https://example.com/page-a")
     assert isinstance(res, PageCannibalizationEvidence)
-    assert res.status == "success"
+    assert res.status == "INSUFFICIENT_EVIDENCE"
     assert len(res.potential_signals) == 0
     assert any("requires multi-page crawl evidence" in f for f in res.facts)
 

@@ -102,7 +102,7 @@ class CannibalizationAnalyzer:
         return PageCannibalizationEvidence(
             url=url,
             engine_source="cannibalization_analyzer",
-            status="success",
+            status="INSUFFICIENT_EVIDENCE",
             potential_signals=[],
             observable_gaps=[],
             facts=facts,
@@ -140,7 +140,7 @@ class CannibalizationAnalyzer:
                     f"Crawl contained {len(records)} page(s). Multi-page cannibalization analysis requires at least 2 crawled pages."
                 ]
                 intel = SiteCannibalizationIntelligence(
-                    status="partial" if is_partial else "success",
+                    status="INSUFFICIENT_EVIDENCE",
                     total_pages_evaluated=len(records),
                     is_partial_crawl=is_partial,
                     completeness_disclaimer=disclaimer,
