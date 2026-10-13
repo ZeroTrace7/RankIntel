@@ -29,6 +29,7 @@ Whenever asked to `audit <url>`:
 
 ## 6. Git Configuration
 - **Author Email**: All commits for this project must strictly use `shreyashgupta999@gmail.com` and username `ZeroTrace7` to ensure proper contribution tracking on GitHub. Local git config is set, but agents must verify this if environment resets occur.
+- **GitHub Push Rule**: Always commit and push directly to GitHub (`origin`); never leave local-only commits unpushed. All verified changes must be live on GitHub.
 
 ## 7. Real Analysis / Audit Rule
 Whenever the user asks RankIntel to perform an "analysis", "audit", "validation", "review", "benchmark", "investigation", or similar evaluation of real websites:
